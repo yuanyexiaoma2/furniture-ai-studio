@@ -4,6 +4,10 @@
 
 ## 如何运行
 
+任务 2 仅启用 KIE，ZenMux 未开通、未启用。官方模型与字段核实记录见 [docs/kie-notes.md](docs/kie-notes.md)。
+
+本机重新打开项目：数据库和 MinIO 已运行时，在项目目录执行 `npm run dev -- --hostname 127.0.0.1`，然后访问 <http://localhost:3000>。
+
 ### 1. 环境准备
 
 - 安装 Git、Node.js **22.12+ 或 24 LTS**、npm、Docker Desktop。
@@ -122,6 +126,10 @@ npm run test:e2e
 本机 GitHub 登录及 Docker 引擎检查通过。Docker Hub 连接超时已通过复用缓存的 PostgreSQL 镜像和官方 Quay MinIO 镜像完成本地启动；新电脑仍需可以下载这些镜像。
 
 ## 本次完成内容
+
+- 任务 2 文档核实：确认 Nano Banana 2.1 API 模型为 `nano-banana-2-1`，记录价格、输入字段、任务查询与文件上传有效期；ZenMux 规划保留，当前不启用。
+
+- 2026-10-12：重新启动本地工作台并打开登录页，HTTP 200；lint 与 typecheck 通过。
 
 - 创建私有仓库、main 分支与环境变量忽略规则。
 - 建立 Next.js / Tailwind / shadcn/ui 骨架与八个 Prisma 数据模型。

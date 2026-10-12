@@ -16,6 +16,7 @@
 - 本地开发用 docker-compose 运行 Postgres 和 MinIO
 
 ## 外部服务
+- 当前阶段仅启用 KIE，ZenMux 待开通后再接入。以下 ZenMux 规划保留。
 - LLM：ZenMux（OpenAI 兼容协议）。环境变量 ZENMUX_API_KEY, ZENMUX_BASE_URL, LLM_MODEL
 - 生图：ZenMux + KIE 双网关，互为备份
   - ZenMux 生图走 Google Gemini 协议（@google/genai，base URL 指向 ZenMux），同步返回图片。
