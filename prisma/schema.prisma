@@ -1,0 +1,197 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  admin
+  template_editor
+  designer
+  viewer
+}
+
+enum Complexity {
+  simple
+  complex
+}
+
+enum AssetType {
+  photo
+  white_bg
+  mask
+  depth
+  generated
+  final
+  style_ref
+}
+
+enum PackStatus {
+  draft
+  confirmed
+  generating
+  reviewing
+  completed
+}
+
+enum SlotType {
+  main
+  scene
+  dimension
+  selling_point
+  detail
+  installation
+}
+
+enum JobStatus {
+  pending
+  running
+  succeeded
+  failed
+  cancelled
+}
+
+enum ChatRole {
+  user
+  assistant
+  system
+  tool
+}
+
+model User {
+  id            String          @id @default(cuid())
+  name          String
+  email         String          @unique
+  passwordHash  String
+  role          Role            @default(designer)
+  department    String?
+  monthlyQuota  Int             @default(100)
+  authVersion   Int             @default(0)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  products      Product[]
+  assets        Asset[]
+  generationJobs GenerationJob[]
+}
+
+model Product {
+  id             String       @id @default(cuid())
+  sku            String       @unique
+  name           String
+  category       String
+  dimensions     Json
+  materials      String
+  colors         Json
+  sellingPoints  Json
+  complexity     Complexity   @default(simple)
+  identityTraits String?      @db.Text
+  createdById    String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  createdBy      User         @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  assets         Asset[]
+  imagePacks     ImagePack[]
+  chatMessages   ChatMessage[]
+
+  @@index([createdById])
+}
+
+model Asset {
+  id            String       @id @default(cuid())
+  productId     String?
+  type          AssetType
+  storageKey    String       @unique
+  width         Int
+  height        Int
+  createdById   String
+  createdAt     DateTime     @default(now())
+  product       Product?     @relation(fields: [productId], references: [id], onDelete: SetNull)
+  createdBy     User         @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  finalSlots    ImageSlot[]  @relation("FinalAsset")
+  templates     Template[]   @relation("ExampleAsset")
+
+  @@index([productId, type])
+  @@index([createdById])
+}
+
+model ImagePack {
+  id        String      @id @default(cuid())
+  productId String
+  status    PackStatus  @default(draft)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  product   Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  slots     ImageSlot[]
+
+  @@index([productId])
+}
+
+model ImageSlot {
+  id           String          @id @default(cuid())
+  packId       String
+  order        Int
+  slotType     SlotType
+  goal         String          @db.Text
+  method       String
+  finalAssetId String?
+  pack         ImagePack       @relation(fields: [packId], references: [id], onDelete: Cascade)
+  finalAsset   Asset?          @relation("FinalAsset", fields: [finalAssetId], references: [id], onDelete: SetNull)
+  jobs         GenerationJob[]
+
+  @@unique([packId, order])
+  @@index([finalAssetId])
+}
+
+model Template {
+  id             String  @id @default(cuid())
+  name           String
+  style          String
+  room           String
+  promptTemplate String  @db.Text
+  logicalModel   String
+  aspectRatio    String
+  exampleAssetId String?
+  enabled        Boolean @default(true)
+  exampleAsset   Asset?  @relation("ExampleAsset", fields: [exampleAssetId], references: [id], onDelete: SetNull)
+
+  @@index([enabled])
+  @@index([exampleAssetId])
+}
+
+model GenerationJob {
+  id             String     @id @default(cuid())
+  slotId         String?
+  logicalModel   String
+  provider       String?
+  model          String?
+  input          Json
+  externalTaskId String?
+  status         JobStatus  @default(pending)
+  cost           Decimal?   @db.Decimal(12, 6)
+  resultAssetIds Json       @default("[]")
+  error          String?    @db.Text
+  createdById    String
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  slot           ImageSlot? @relation(fields: [slotId], references: [id], onDelete: SetNull)
+  createdBy      User       @relation(fields: [createdById], references: [id], onDelete: Restrict)
+
+  @@index([slotId])
+  @@index([createdById, createdAt])
+  @@index([status, createdAt])
+  @@index([provider, externalTaskId])
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  productId String
+  role      ChatRole
+  content   Json
+  createdAt DateTime @default(now())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId, createdAt])
+}
