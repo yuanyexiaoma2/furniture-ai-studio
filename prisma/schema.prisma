@@ -49,7 +49,7 @@ enum SlotType {
 enum JobStatus {
   pending
   running
-  succeeded
+  success
   failed
   cancelled
 }
@@ -95,6 +95,7 @@ model Product {
   assets         Asset[]
   imagePacks     ImagePack[]
   chatMessages   ChatMessage[]
+  generationJobs GenerationJob[]
 
   @@index([createdById])
 }
@@ -164,6 +165,7 @@ model Template {
 model GenerationJob {
   id             String     @id @default(cuid())
   slotId         String?
+  productId      String?
   logicalModel   String
   provider       String?
   model          String?
@@ -176,13 +178,38 @@ model GenerationJob {
   createdById    String
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
+  startedAt      DateTime?
+  completedAt    DateTime?
+  nextPollAt     DateTime?
   slot           ImageSlot? @relation(fields: [slotId], references: [id], onDelete: SetNull)
   createdBy      User       @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  product        Product?   @relation(fields: [productId], references: [id], onDelete: Restrict)
 
   @@index([slotId])
   @@index([createdById, createdAt])
   @@index([status, createdAt])
   @@index([provider, externalTaskId])
+  @@index([productId, createdAt])
+}
+
+// KIE 上传 URL 只有 24 小时有效，按内容和账户缓存 23 小时。
+model KieUpload {
+  id          String   @id
+  url         String
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+}
+
+// 跨进程限制所有 KIE 请求的间隔，429 重试也占用名额。
+model ProviderRateLimit {
+  id            String   @id
+  nextAllowedAt DateTime
+}
+
+model WorkerHeartbeat {
+  id         String   @id
+  instanceId String
+  updatedAt  DateTime @updatedAt
 }
 
 model ChatMessage {

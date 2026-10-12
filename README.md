@@ -52,7 +52,7 @@ node scripts/configure-local-env.mjs --database-only
 
 省略 `--database-only` 时也会重新生成 `AUTH_SECRET`，已有登录会话会失效。脚本只写本地被 Git 忽略的 `.env`。
 
-`ZENMUX_API_KEY`、`ZENMUX_BASE_URL`、`LLM_MODEL`、`ZENMUX_IMAGE_BASE_URL`、`KIE_API_KEY`、`KIE_BASE_URL`、`KIE_CALLBACK_URL` 当前留空。`PG_BOSS_SCHEMA` 保留默认值，本任务不运行队列。
+`ZENMUX_API_KEY`、`ZENMUX_BASE_URL`、`LLM_MODEL`、`ZENMUX_IMAGE_BASE_URL` 留空，ZenMux 未启用。填写 `KIE_API_KEY`；`KIE_BASE_URL` 留空默认 `https://api.kie.ai`，`KIE_UPLOAD_BASE_URL` 留空默认 `https://kieai.redpandaai.co`。本地 `KIE_CALLBACK_URL` 必须留空，使用轮询。`PG_BOSS_SCHEMA` 保留 `pgboss`。
 
 所有 `.env`、`.env.local`、`.env.*` 都已被 Git 忽略，只有 `.env.example` 可提交。可用 `git check-ignore .env .env.local` 验证。
 
@@ -65,6 +65,8 @@ npx prisma migrate dev
 npm run seed
 npm run dev
 ```
+
+任务 2 的增量迁移可通过 `npx prisma migrate deploy` 应用，不会重置数据库。在第二个终端进入同一项目目录执行 `npm run worker`。worker 必须持续运行，网页和 worker 均需在修改 `.env` 后重启。密钥未配置、worker 未启动或月度积分配额不足时，页面会给出中文提示。
 
 仓库提供初始迁移，`prisma migrate dev` 会直接应用；修改 schema 后该命令会要求输入新迁移名称。`npm install` 自动生成 Prisma 客户端，之后改 schema 时再执行 `npx prisma generate`。Prisma 7 不会自动执行种子，需显式运行 `npm run seed`。
 
@@ -126,6 +128,8 @@ npm run test:e2e
 本机 GitHub 登录及 Docker 引擎检查通过。Docker Hub 连接超时已通过复用缓存的 PostgreSQL 镜像和官方 Quay MinIO 镜像完成本地启动；新电脑仍需可以下载这些镜像。
 
 ## 本次完成内容
+
+- KIE 适配器：服务端文件上传、23 小时缓存、任务提交与状态解析、429 指数退避；pg-boss 串行提交与持久轮询，10 分钟超时，成功后立刻保存到私有 MinIO。
 
 - 任务 2 文档核实：确认 Nano Banana 2.1 API 模型为 `nano-banana-2-1`，记录价格、输入字段、任务查询与文件上传有效期；ZenMux 规划保留，当前不启用。
 

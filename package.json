@@ -12,6 +12,7 @@
     "typecheck": "next typegen && tsc --noEmit",
     "postinstall": "prisma generate",
     "seed": "tsx prisma/seed.ts",
+    "worker": "node --conditions=react-server --import tsx scripts/kie-worker.ts",
     "test:e2e": "playwright test"
   },
   "dependencies": {
