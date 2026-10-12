@@ -1,7 +1,8 @@
 import "dotenv/config";
 import bcrypt from "bcrypt";
+import { ZodError } from "zod";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../src/generated/prisma/client";
+import { Prisma, PrismaClient } from "../src/generated/prisma/client";
 import { emailSchema, passwordSchema } from "../src/lib/validation";
 
 async function main() {
@@ -24,4 +25,9 @@ async function main() {
   } finally { await db.$disconnect(); }
 }
 
-main().catch(() => { console.error("种子执行失败：请核对数据库、ADMIN_EMAIL 与 ADMIN_PASSWORD（至少 12 个字符且最多 72 字节），并确认邮箱没有被非管理员占用"); process.exitCode = 1; });
+main().catch((error) => {
+  if (error instanceof ZodError) console.error("管理员配置校验失败：请填写有效 ADMIN_EMAIL，并确保 ADMIN_PASSWORD 至少 12 个字符、最多 72 字节");
+  else if (error instanceof Prisma.PrismaClientKnownRequestError) console.error(`数据库写入失败，Prisma 错误码：${error.code}`);
+  else console.error(`种子执行失败，错误类型：${error instanceof Error ? error.name : "未知"}；请检查数据库连通性与管理员邮箱是否被普通用户占用`);
+  process.exitCode = 1;
+});

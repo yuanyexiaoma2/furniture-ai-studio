@@ -4,7 +4,9 @@ import pg from "pg";
 
 const s3 = new S3Client({ endpoint: process.env.S3_ENDPOINT, region: process.env.S3_REGION || "us-east-1", forcePathStyle: true,
   credentials: { accessKeyId: process.env.MINIO_ROOT_USER || "", secretAccessKey: process.env.MINIO_ROOT_PASSWORD || "" } });
-const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL, connectionTimeoutMillis: 3000 });
+// 用与 compose 相同的变量检查本地服务，独立于应用连接地址的填写格式。
+const pool = new pg.Pool({ host: "127.0.0.1", port: 5432, user: process.env.POSTGRES_USER || "furniture",
+  password: process.env.POSTGRES_PASSWORD, database: process.env.POSTGRES_DB || "furniture_ai_studio", connectionTimeoutMillis: 3000 });
 try {
   let ready = false;
   for (let attempt = 0; attempt < 30; attempt++) {

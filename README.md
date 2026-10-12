@@ -40,6 +40,14 @@ macOS / Linux 将复制命令改为 `cp .env.example .env`。
 node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
 ```
 
+如果连接地址格式不正确，可本人运行以下命令，根据已填的 `POSTGRES_PASSWORD` 自动构造本地连接地址，仅改 `.env` 的 `DATABASE_URL`，不显示密码：
+
+```powershell
+node scripts/configure-local-env.mjs --database-only
+```
+
+省略 `--database-only` 时也会重新生成 `AUTH_SECRET`，已有登录会话会失效。脚本只写本地被 Git 忽略的 `.env`。
+
 `ZENMUX_API_KEY`、`ZENMUX_BASE_URL`、`LLM_MODEL`、`ZENMUX_IMAGE_BASE_URL`、`KIE_API_KEY`、`KIE_BASE_URL`、`KIE_CALLBACK_URL` 当前留空。`PG_BOSS_SCHEMA` 保留默认值，本任务不运行队列。
 
 所有 `.env`、`.env.local`、`.env.*` 都已被 Git 忽略，只有 `.env.example` 可提交。可用 `git check-ignore .env .env.local` 验证。
@@ -60,6 +68,8 @@ npm run dev
 - 用户管理：<http://localhost:3000/admin/users>。
 - MinIO 控制台：<http://localhost:9001>；S3 API：<http://localhost:9000>。
 - `minio-init` 自动创建私有 `assets` bucket，`docker compose ps -a` 中应为 `Exited (0)`。
+- 本地使用 PostgreSQL 16；MinIO 来自官方 Quay 镜像，初始化容器复用镜像内置的 `mc`，无需额外下载 mc 镜像。
+- 镜像固定到本次验证的 SHA-256 摘要，避免上游标签变化影响启动行为。
 - 数据保存在 Docker 命名卷，`docker compose down` 停止服务并保留数据。修改已有数据库密码时，仅修改 `.env` 不会改变数据库内密码。
 - 种子可重复执行：管理员已存在时保留现有密码及配置；不会提升已有普通用户权限。重置密码请在管理页面操作。
 
@@ -97,6 +107,20 @@ npm run test:e2e
 - pg-boss、S3 SDK、AI SDK、sharp 已安装，本阶段没有业务调用。
 - `AGENTS.md` 保留指定原文，后续模型路由必须核实官方文档。
 
+## 本机环境记录
+
+| 工具 | 检测版本 |
+| --- | --- |
+| 操作系统 | Windows 11 专业版，64 位，10.0.26200 |
+| Git | 2.53.0.windows.2 |
+| Node.js / npm | 24.14.0 / 11.9.0 |
+| Docker Desktop / Engine | 4.90.0 / 29.7.2 |
+| GitHub CLI | 2.102.0 |
+| Next.js / Prisma Client | 16.4.0 / 7.10.0 |
+| Auth.js | next-auth 5.0.0-beta.32（官方 v5 安装渠道仍为 beta） |
+
+本机 GitHub 登录及 Docker 引擎检查通过。Docker Hub 连接超时已通过复用缓存的 PostgreSQL 镜像和官方 Quay MinIO 镜像完成本地启动；新电脑仍需可以下载这些镜像。
+
 ## 本次完成内容
 
 - 创建私有仓库、main 分支与环境变量忽略规则。
@@ -107,4 +131,4 @@ npm run test:e2e
 - 提供 SKU 空列表、模板库与管理配置占位页。
 - 提供环境模板、完整启动步骤和端到端验收脚本。
 
-验收状态：开发中，待填写本地 `.env` 后执行数据库迁移和浏览器验收。
+验收状态（2026-10-12）：PostgreSQL / MinIO 启动、assets 私有 bucket、初始迁移、管理员种子、完整登录与权限浏览器验收已通过；临时验收账号已清理。lint、typecheck 和生产构建通过。

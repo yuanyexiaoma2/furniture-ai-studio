@@ -66,20 +66,20 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   }
   const unauthenticated = await adminContext.request.post("/api/admin/users", { data: {} });
   expect(unauthenticated.status()).toBe(401);
-  await admin.screenshot({ path: ".local/verification/login-desktop.png", fullPage: true });
+  await admin.screenshot({ path: ".local/verification/login-desktop.png", fullPage: true, animations: "disabled" });
   await admin.getByLabel("公司邮箱").fill(`unknown-${runId}@example.invalid`);
   await admin.getByLabel("密码", { exact: true }).fill(password);
   await admin.getByRole("button", { name: "进入工作台" }).click();
-  await expect(admin.getByRole("alert")).toContainText("邮箱或密码不正确");
+  await expect(admin.getByRole("main").getByRole("alert")).toContainText("邮箱或密码不正确");
   await login(admin, process.env.ADMIN_EMAIL!, process.env.ADMIN_PASSWORD!);
   await expect(admin.getByRole("heading", { name: "还没有 SKU 项目" })).toBeVisible();
-  await admin.screenshot({ path: ".local/verification/projects-desktop.png", fullPage: true });
+  await admin.screenshot({ path: ".local/verification/projects-desktop.png", fullPage: true, animations: "disabled" });
   await admin.getByRole("link", { name: "模板库", exact: true }).click();
   await expect(admin.getByRole("heading", { name: "即将开放" })).toBeVisible();
   await admin.goto("/admin/users");
   await createUser(admin, "验收设计师", designerEmail, "designer");
   await createUser(admin, "验收只读成员", viewerEmail, "viewer");
-  await admin.screenshot({ path: ".local/verification/users-desktop.png", fullPage: true });
+  await admin.screenshot({ path: ".local/verification/users-desktop.png", fullPage: true, animations: "disabled" });
   const designerRecord = await db.user.findUniqueOrThrow({ where: { email: designerEmail } });
   expect(await bcrypt.compare(password, designerRecord.passwordHash)).toBe(true);
   expect(designerRecord.monthlyQuota).toBe(100);
@@ -122,7 +122,7 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   await designer.getByLabel("公司邮箱").fill(designerEmail);
   await designer.getByLabel("密码", { exact: true }).fill(password);
   await designer.getByRole("button", { name: "进入工作台" }).click();
-  await expect(designer.getByRole("alert")).toContainText("邮箱或密码不正确");
+  await expect(designer.getByRole("main").getByRole("alert")).toContainText("邮箱或密码不正确");
   await login(designer, designerEmail, newPassword);
   await row.getByLabel("验收设计师的角色").selectOption("viewer");
   await row.getByRole("button", { name: "保存角色" }).click();
@@ -134,7 +134,7 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   await admin.goto("/");
   await expect(admin.getByRole("heading", { name: "SKU 项目." })).toBeVisible();
   expect(await admin.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await admin.screenshot({ path: ".local/verification/projects-mobile.png", fullPage: true });
+  await admin.screenshot({ path: ".local/verification/projects-mobile.png", fullPage: true, animations: "disabled" });
 });
 
 async function loginAfterLogout(page: Page, email: string, password: string) {
