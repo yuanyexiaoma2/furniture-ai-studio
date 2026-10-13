@@ -1,15 +1,16 @@
 import "server-only";
 import { setTimeout as delay } from "node:timers/promises";
 import { db } from "@/lib/db";
+import { GatewayError, safeGatewayMessage } from "@/lib/gateway-error";
 
-export class KieError extends Error {
-  constructor(message: string, public code: number = 500) { super(message); }
+export class KieError extends GatewayError {
+  constructor(message: string, public code: number = 500, uncertain = false) { super("kie", message, code, code === 429 || code >= 500, uncertain); }
 }
 
 export function safeKieMessage(message: unknown, key = process.env.KIE_API_KEY || "") {
   let text = typeof message === "string" ? message : "未知错误";
   if (key) text = text.split(key).join("[密钥已隐藏]");
-  return text.replace(/Bearer\s+\S+/gi, "Bearer [已隐藏]").slice(0, 300);
+  return safeGatewayMessage(text).slice(0, 300);
 }
 
 export function kieFailure(code: number, detail?: unknown) {
@@ -33,7 +34,7 @@ export async function reserveKieRequest() {
   if (wait > 0) await delay(wait);
 }
 
-type Options = { key?: string; fetcher?: typeof fetch; beforeRequest?: () => Promise<void>; sleep?: (ms: number) => Promise<unknown> };
+type Options = { key?: string; fetcher?: typeof fetch; beforeRequest?: () => Promise<void>; sleep?: (ms: number) => Promise<unknown>; allowMissingCode?: boolean; timeoutMs?: number };
 export async function kieRequest(url: string, init: RequestInit, options: Options = {}) {
   const key = options.key ?? process.env.KIE_API_KEY?.trim();
   if (!key) throw new KieError("尚未配置 KIE_API_KEY，请管理员在 .env 填写密钥后重启网页与 worker", 401);
@@ -41,10 +42,10 @@ export async function kieRequest(url: string, init: RequestInit, options: Option
     await (options.beforeRequest ?? reserveKieRequest)();
     let response: Response;
     try {
-      response = await (options.fetcher ?? fetch)(url, { ...init, headers: { ...init.headers, Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(30000), redirect: "error" });
-    } catch { throw new KieError("连接 KIE 超时或网络不可用。任务已停止，请稍后重新生成（未自动重发付费请求）"); }
+      response = await (options.fetcher ?? fetch)(url, { ...init, headers: { ...init.headers, Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(options.timeoutMs ?? 30000), redirect: "error" });
+    } catch { throw new KieError("连接 KIE 超时或网络不可用（未自动重发同一付费请求）", 500, true); }
     const data = await response.json().catch(() => null);
-    const code = response.status === 429 ? 429 : !response.ok ? response.status : Number(data?.code ?? 500);
+    const code = response.status === 429 ? 429 : !response.ok ? response.status : Number(data?.code ?? (options.allowMissingCode ? 200 : 500));
     if (code === 429 && attempt < 4) {
       const retryAfter = Number(response.headers.get("retry-after"));
       await (options.sleep ?? delay)(Math.min(30000, Math.max(1000 * 2 ** attempt, Number.isFinite(retryAfter) ? retryAfter * 1000 : 0)));
