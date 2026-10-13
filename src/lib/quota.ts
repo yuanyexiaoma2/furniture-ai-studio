@@ -5,6 +5,7 @@ import { candidatesFor, gatewayConfigured } from "./gateway-router";
 import { databaseCircuit } from "./gateway-circuit";
 import { StudioError } from "./studio-error";
 import type { LogicalModel } from "./models.config";
+import { quotaShortage } from "./quota-math";
 export function quotaMonth(now = new Date()) {
   const local = new Date(now.getTime() + 8 * 3600000), year = local.getUTCFullYear(), month = local.getUTCMonth();
   return { start: new Date(Date.UTC(year, month, 1) - 8 * 3600000), end: new Date(Date.UTC(year, month + 1, 1) - 8 * 3600000) };
@@ -27,5 +28,6 @@ export async function assertUsdQuota(tx: Prisma.TransactionClient, userId: strin
   const user = await tx.user.findUniqueOrThrow({ where: { id: userId } });
   if (user.role === "viewer") throw new StudioError("只读成员不能生成图片或调用 AI", 403);
   const used = await monthlySpendUsd(tx, userId, exclude);
-  if (used + estimate > Number(user.monthlyQuota) + 0.0000001) throw new StudioError(`本月美元配额不足：已消耗或预留 $${used.toFixed(6)}，本次预估 $${estimate.toFixed(6)}，配额 $${Number(user.monthlyQuota).toFixed(6)}，还差 $${(used + estimate - Number(user.monthlyQuota)).toFixed(6)}`, 409);
+  const shortage = quotaShortage(Number(user.monthlyQuota), used, estimate);
+  if (shortage > 0) throw new StudioError(`本月美元配额不足：已消耗或预留 $${used.toFixed(6)}，本次预估 $${estimate.toFixed(6)}，配额 $${Number(user.monthlyQuota).toFixed(6)}，还差 $${shortage.toFixed(6)}`, 409);
 }

@@ -82,7 +82,7 @@ async function createImageJob(userId: string, productId: string, intent: string,
       if (!originalJob || originalJob.productId !== productId || originalJob.status !== "success" || !Array.isArray(originalJob.resultAssetIds) || !originalJob.resultAssetIds.includes(source.sourceAssetId) || !originalAsset || originalAsset.productId !== productId || originalAsset.type !== "generated" || originalAsset.deletedAt) throw new StudioError("请选择当前商品已完成的生成图片进行编辑", 400);
     }
     const createdAt = new Date();
-    const prompt = source ? buildEditPrompt(product.identityTraits, intent) : buildScenePrompt(product.identityTraits, intent);
+    const prompt = buildEditPrompt(product.identityTraits, intent);
     if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
     const estimate = estimateImageUsd(candidate, resolution, prompt, product.assets);
     await assertUsdQuota(tx, userId, estimate);

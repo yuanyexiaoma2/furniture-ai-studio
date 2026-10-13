@@ -13,7 +13,7 @@ export async function productSnapshot(id: string) {
     generationJobs: { take: 50, orderBy: { createdAt: "desc" }, select: { id: true, logicalModel: true, provider: true, model: true, input: true, externalTaskId: true, status: true, costUsd: true, credits: true, costEstimated: true, fallback: true, reservedUsd: true, resultAssetIds: true, error: true, createdAt: true, startedAt: true, completedAt: true } },
   } });
   if (!product) return null;
-  const resultImages = await db.asset.findMany({ where: { id: { in: product.generationJobs.flatMap(j => Array.isArray(j.resultAssetIds) ? j.resultAssetIds.filter((s): s is string => typeof s === "string") : []) } }, select: { id: true, width: true, height: true } });
+  const resultImages = await db.asset.findMany({ where: { deletedAt: null, id: { in: product.generationJobs.flatMap(j => Array.isArray(j.resultAssetIds) ? j.resultAssetIds.filter((s): s is string => typeof s === "string") : []) } }, select: { id: true, width: true, height: true } });
   const version = product.identityVersions[0];
   return {
     id: product.id, sku: product.sku, name: product.name, category: product.category,
@@ -31,7 +31,7 @@ export async function productSnapshot(id: string) {
       status: job.status, costUsd: job.costUsd === null ? null : Number(job.costUsd), credits: job.credits === null ? null : Number(job.credits), costEstimated: job.costEstimated, fallback: job.fallback, reservedUsd: Number(job.reservedUsd), error: job.error,
       identityTraits: String((job.input as Record<string, unknown>).identityTraits ?? ""), identityVersionId: (job.input as Record<string, unknown>).identityVersionId as string | null ?? null, identitySavedById: (job.input as Record<string, unknown>).identitySavedById as string | null ?? null, identitySavedAt: (job.input as Record<string, unknown>).identitySavedAt as string | null ?? null,
       resultImages: resultImages.filter(a => Array.isArray(job.resultAssetIds) && job.resultAssetIds.includes(a.id)),
-      resultAssetIds: Array.isArray(job.resultAssetIds) ? job.resultAssetIds.filter((value): value is string => typeof value === "string") : [],
+      resultAssetIds: Array.isArray(job.resultAssetIds) ? job.resultAssetIds.filter((value): value is string => typeof value === "string" && resultImages.some(a => a.id === value)) : [],
       createdAt: job.createdAt.toISOString(), startedAt: job.startedAt?.toISOString() ?? null, completedAt: job.completedAt?.toISOString() ?? null,
     })),
   };

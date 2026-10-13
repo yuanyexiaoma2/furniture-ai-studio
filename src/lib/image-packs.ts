@@ -9,6 +9,7 @@ import { prepareSceneInput, enqueueImageJob } from "./scene-generation";
 import { workerIsReady, getBoss, expireOverdueJobs } from "./generation-queue";
 import { roundUsd, estimateImageUsd } from "./gateway-cost";
 import { KIE_USD_PER_CREDIT, type SceneAspectRatio } from "./models.config";
+import { quotaShortage } from "./quota-math";
 
 async function lockProduct(tx: Prisma.TransactionClient, productId: string) {
   await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${productId}, 0))`;
@@ -96,7 +97,7 @@ export async function quoteBatch(userId: string, productId: string, selection: B
   return db.$transaction(async tx => {
     const plan = await planBatch(tx, productId, selection), quote = summarizePlan(plan);
     const user = await tx.user.findUniqueOrThrow({ where: { id: userId } }), used = await monthlySpendUsd(tx, userId);
-    return { ...quote, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: roundUsd(Math.max(0, used + quote.estimatedCostUsd - Number(user.monthlyQuota))) };
+    return { ...quote, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: quotaShortage(Number(user.monthlyQuota), used, quote.estimatedCostUsd) };
   }, { timeout: 20000 });
 }
 export async function submitBatch(userId: string, productId: string, selection: BatchSelection, fingerprint: string, requestKey: string) {
@@ -107,11 +108,13 @@ export async function submitBatch(userId: string, productId: string, selection: 
     await tx.$queryRaw`SELECT id FROM "User" WHERE id=${userId} FOR UPDATE`;
     const existing = await tx.generationBatch.findUnique({ where: { requestKey } });
     if (existing) { if (existing.createdById !== userId || (await tx.imagePack.findUniqueOrThrow({ where: { id: existing.packId } })).productId !== productId) throw new StudioError("提交编号冲突", 409); return existing.id; }
+    const retried = await tx.generationJob.findFirst({ where: { productId, createdById: userId, input: { path: ["batchRequestKey"], equals: requestKey } } });
+    if (retried?.batchId) return retried.batchId;
     const plan = await planBatch(tx, productId, selection), quote = summarizePlan(plan);
     if (fingerprint !== quote.fingerprint) throw new StudioError("图位、身份特征或价格已变化，请重新查看生成确认框", 409);
     await assertUsdQuota(tx, userId, quote.estimatedCostUsd);
     const batch = plan.old ? await tx.generationBatch.findUniqueOrThrow({ where: { id: plan.old.batchId! } }) : await tx.generationBatch.create({ data: { packId: plan.pack.id, createdById: userId, slotCount: quote.slotCount, totalCount: quote.totalCount, estimatedCostUsd: quote.estimatedCostUsd, requestKey } });
-    for (const entry of plan.entries) for (let n = 0; n < entry.count; n++) await enqueueImageJob(tx, { productId, slotId: entry.slotId, batchId: batch.id, retryOfId: plan.old?.id, logicalModel: "scene-main", createdById: userId, input: entry.prepared.input, reservedUsd: entry.prepared.estimate });
+    for (const entry of plan.entries) for (let n = 0; n < entry.count; n++) await enqueueImageJob(tx, { productId, slotId: entry.slotId, batchId: batch.id, retryOfId: plan.old?.id, logicalModel: "scene-main", createdById: userId, input: { ...entry.prepared.input, batchRequestKey: requestKey }, reservedUsd: entry.prepared.estimate });
     return batch.id;
   }, { timeout: 30000 });
 }
