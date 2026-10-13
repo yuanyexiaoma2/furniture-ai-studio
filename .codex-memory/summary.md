@@ -4,7 +4,7 @@
 
 最新交互升级已完成：本地图片拖入即上传、删除替换、拖动和按钮排序；全部 15 比例、2K/4K 及 6/9 积分预留；选中原图的指令二次编辑与连续新版本。来源图在服务端核对，原图与历史参考不删除，图片删除为 Asset.deletedAt 标记，排序持久化。增量迁移 20261013020000_reference_management 已应用。
 
-继续前阅读 [升级记录](../docs/image-workflow-upgrade.md) 和 [任务 2 记录](../docs/task-2-progress.md)。lint/typecheck/build、扩展隔离及浏览器验收通过；自动验收未额外调用付费 API，未 push。实际编辑效果由用户新入口测试。
+任务 2 已由用户验收：2026-10-13 用户确认“我已经测试过了，可以保存推送了”，接受当前功能与交互升级，并授权推送 origin/main。不再要求重复测试或再次确认。继续前阅读 [升级记录](../docs/image-workflow-upgrade.md) 和 [任务 2 记录](../docs/task-2-progress.md)。lint/typecheck/build、扩展隔离及浏览器验收通过，自动验收未额外调用付费 API；不虚构真实错误密钥专测或用户测试细节。最终同步状态以 Git 远程查询为准。
 
 网页和 worker 后台运行，日志位于 .local/；不要重复启动或等待常驻服务退出。开发模式曾保留旧 CSS，重启网页已加载新规则并以样式断言和截图验证。常规 Windows 沙箱初始化失败，使用已获自动审批的 escalated exec；Python 仅 WindowsApps 占位，测试和 UTF-8 记忆维护使用 Node/TypeScript。
 
