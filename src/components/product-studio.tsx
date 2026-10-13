@@ -1,10 +1,12 @@
 "use client";
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import Image from "next/image";
-import { ArrowUpRight, LoaderCircle, Sparkles, RefreshCw, Download } from "lucide-react";
+import { ArrowUpRight, LoaderCircle, Sparkles, RefreshCw, Download, Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductEditor } from "@/components/product-editor";
-import { models, modelCost, sceneAspectRatios } from "@/lib/models.config";
+import { models, modelCost, type SceneResolution, type SceneAspectRatio } from "@/lib/models.config";
+import { GenerationOptions, generationBlockReason } from "@/components/generation-options";
+import { ImageEditPanel } from "@/components/image-edit-panel";
 import type { ProductSnapshot } from "@/lib/product-data";
 import type { GenerationAvailability } from "@/lib/scene-generation";
 
@@ -21,6 +23,9 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [refreshError, setRefreshError] = useState("");
+  const [resolution, setResolution] = useState<SceneResolution>("2K");
+  const [aspectRatio, setAspectRatio] = useState<SceneAspectRatio>("1:1");
+  const [editSource, setEditSource] = useState<ProductSnapshot["jobs"][number] | null>(null);
   const refresh = useCallback(async (signal?: AbortSignal) => {
     const response = await fetch(`/api/products/${initial.id}/generations`, { cache: "no-store", signal });
     const result = await response.json();
@@ -40,15 +45,15 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
     const timer = setInterval(() => void poll(), 5000);
     return () => { controller.abort(); clearInterval(timer); };
   }, [refresh]);
-  const { credits, usd } = modelCost("scene-main");
-  const unavailable = readonly ? "只读成员可以查看生成记录" : !availability.configured ? "请管理员配置 KIE 密钥" : !availability.workerReady ? "生图服务离线，请启动 worker" : product.photos.length < 2 ? "请先上传至少 2 张实拍图" : !product.identityTraits.trim() ? "请先保存产品身份特征" : availability.remaining < credits ? "本月剩余积分不足，请联系管理员" : "";
+  const { credits, usd } = modelCost("scene-main", resolution);
+  const unavailable = generationBlockReason(product, availability, readonly, credits);
   async function generate(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setPending(true); setError(""); setNotice("");
     const form = new FormData(event.currentTarget);
     try {
       let response: Response;
       try {
-        response = await fetch(`/api/products/${product.id}/generations`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sceneIntent: form.get("sceneIntent"), aspectRatio: form.get("aspectRatio") }) });
+        response = await fetch(`/api/products/${product.id}/generations`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sceneIntent: form.get("sceneIntent"), aspectRatio, resolution }) });
       } catch { throw new Error("提交结果未确认，请先刷新生成记录，核对任务后再重试"); }
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "任务创建失败");
@@ -58,27 +63,28 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
     finally { setPending(false); }
   }
   return <>
-    <ProductEditor product={initial} readonly={readonly} onUpdate={setProduct}>
+    <ProductEditor product={product} readonly={readonly} onUpdate={setProduct}>
       <section className="workspace-panel scene-panel">
         <div className="panel-heading"><h2>03 / 场景创作</h2><Sparkles size={17} aria-hidden="true" /></div>
         <form className="scene-form" onSubmit={generate}>
           <label htmlFor="scene-intent">想把产品放进怎样的空间？</label>
           <textarea id="scene-intent" name="sceneIntent" placeholder="例如：温暖自然的北欧客厅，以浅色墙面与原木家具营造日常居家的氛围。" required maxLength={8000} rows={4} disabled={readonly || pending} />
           <p className="field-hint">自动使用已保存的产品身份特征和全部实拍参考。修改资料后请先保存。</p>
-          <fieldset className="aspect-options" disabled={readonly || pending}><legend>画面比例</legend>{sceneAspectRatios.map((ratio) => <label key={ratio}><input type="radio" name="aspectRatio" value={ratio} defaultChecked={ratio === "1:1"} /><span>{ratio}</span></label>)}</fieldset>
-          <div className="generation-spec"><span>{models["scene-main"].label} · 2K · PNG</span><strong>{credits} 积分 <small>约 ${usd.toFixed(2)}</small></strong></div>
+          <GenerationOptions prefix="scene" resolution={resolution} aspectRatio={aspectRatio} disabled={readonly || pending} onResolution={setResolution} onAspectRatio={setAspectRatio} />
+          <div className="generation-spec"><span>{models["scene-main"].label} · {resolution} · PNG</span><strong>{credits} 积分 <small>约 ${usd.toFixed(3).replace(/0$/, "")}</small></strong></div>
           <div className="scene-action"><Button type="submit" disabled={pending || Boolean(unavailable)}>{pending ? <LoaderCircle size={16} className="animate-spin" /> : <ArrowUpRight size={16} />}生成一张场景图</Button><span>本月剩余 {availability.remaining} / {availability.quota} 积分</span></div>
           {unavailable && <p className="field-hint">{unavailable}</p>}
           <p className={error ? "form-notice error-notice" : "form-notice"} role={error ? "alert" : "status"}>{error || notice}</p>
         </form>
       </section>
+      {editSource && <ImageEditPanel key={editSource.id} source={editSource} product={product} availability={availability} readonly={readonly} onClose={() => setEditSource(null)} onQueued={refresh} />}
     </ProductEditor>
     <section className="workspace-panel generation-history">
       <div className="panel-heading"><h2>04 / 生成记录 <span className="history-count">{product.jobs.length}</span></h2><Button variant="ghost" size="sm" onClick={() => void refresh().catch(() => setRefreshError("读取记录失败，请稍后重试"))}><RefreshCw size={14} />刷新记录</Button></div>
       {refreshError && <p role="alert" className="history-warning">{refreshError}</p>}
       {!product.jobs.length ? <div className="history-empty"><Sparkles size={25} /><p>第一张场景图，从一个空间想法开始。</p><span>生成记录自动保存，刷新或重新登录后仍可查看。</span></div> : <div className="generation-grid">{product.jobs.map((job) => <article key={job.id} className="generation-card" data-testid={`generation-${job.id}`}>
         <div className="generation-preview">{job.resultAssetIds[0] ? <a href={`/api/assets/${job.resultAssetIds[0]}`} target="_blank" rel="noreferrer"><Image src={`/api/assets/${job.resultAssetIds[0]}`} width={640} height={640} unoptimized alt="生成场景图预览" /></a> : <div className="generation-placeholder">{["pending", "running"].includes(job.status) ? <LoaderCircle size={26} className="animate-spin" /> : <Sparkles size={26} />}<p>{statuses[job.status]}</p></div>}<span className={`job-status job-${job.status}`}>{statuses[job.status]}</span></div>
-        <div className="generation-details"><p className="generation-intent">{job.sceneIntent || "场景创作"}</p><p>{job.model} · {job.provider} · {job.resolution} · {job.aspectRatio}</p><p>{new Date(job.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai", hour12: false })} · {elapsed(job)} · {job.cost} 积分</p>{job.taskId && <p className="job-task">任务编号：{job.taskId}</p>}{job.error && <p className="job-error">{job.error}</p>}{job.resultAssetIds[0] && <a className="generation-download" href={`/api/assets/${job.resultAssetIds[0]}?download=1`}><Download size={14} />下载候选图</a>}</div>
+        <div className="generation-details">{job.logicalModel === "edit" && <p className="edit-version-label">二次编辑版本{job.sourceAssetId && <> · <a href={`/api/assets/${job.sourceAssetId}`} target="_blank" rel="noreferrer">查看原图</a></>}</p>}<p className="generation-intent">{job.editIntent || job.sceneIntent || "场景创作"}</p><p>{job.model} · {job.provider} · {job.resolution} · {job.aspectRatio === "auto" ? "自动" : job.aspectRatio}</p><p>{new Date(job.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai", hour12: false })} · {elapsed(job)} · {job.cost} 积分</p>{job.taskId && <p className="job-task">任务编号：{job.taskId}</p>}{job.error && <p className="job-error">{job.error}</p>}{job.resultAssetIds[0] && <div className="generation-card-actions"><a className="generation-download" href={`/api/assets/${job.resultAssetIds[0]}?download=1`}><Download size={14} />下载候选图</a>{job.status === "success" && !readonly && <Button variant="outline" size="sm" onClick={() => setEditSource(job)}><Pencil size={13} />二次编辑</Button>}</div>}</div>
       </article>)}</div>}
       <p className="history-footnote">生成图为候选图，需美工确认后作为终稿使用。提交前预留积分；扣费状态不确定时保留预留，需核对账户记录。</p>
     </section>

@@ -8,7 +8,7 @@ function readable(value: unknown) {
 export async function productSnapshot(id: string) {
   await expireOverdueJobs();
   const product = await db.product.findUnique({ where: { id }, include: {
-    assets: { where: { type: "photo" }, orderBy: { createdAt: "asc" }, select: { id: true, width: true, height: true } },
+    assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], select: { id: true, width: true, height: true } },
     generationJobs: { take: 50, orderBy: { createdAt: "desc" }, select: { id: true, logicalModel: true, provider: true, model: true, input: true, externalTaskId: true, status: true, cost: true, resultAssetIds: true, error: true, createdAt: true, startedAt: true, completedAt: true } },
   } });
   if (!product) return null;
@@ -21,6 +21,9 @@ export async function productSnapshot(id: string) {
       resolution: (job.input as Record<string, unknown>)?.resolution as string ?? "",
       aspectRatio: (job.input as Record<string, unknown>)?.aspect_ratio as string ?? "",
       sceneIntent: (job.input as Record<string, unknown>)?.sceneIntent as string ?? "",
+      editIntent: (job.input as Record<string, unknown>)?.editIntent as string ?? "",
+      sourceJobId: (job.input as Record<string, unknown>)?.sourceJobId as string ?? null,
+      sourceAssetId: (job.input as Record<string, unknown>)?.sourceAssetId as string ?? null,
       status: job.status, cost: Number(job.cost ?? 0), error: job.error,
       resultAssetIds: Array.isArray(job.resultAssetIds) ? job.resultAssetIds.filter((value): value is string => typeof value === "string") : [],
       createdAt: job.createdAt.toISOString(), startedAt: job.startedAt?.toISOString() ?? null, completedAt: job.completedAt?.toISOString() ?? null,

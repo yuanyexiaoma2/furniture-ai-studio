@@ -1,13 +1,13 @@
 # KIE 官方文档核实（2026-10-12）
 
-2026-10-13 续作复核：官方 [产品页](https://kie.ai/zh-CN/nano-banana-2-1) 与 [API 示例](https://docs.kie.ai/market/google/nanobanana-2-1) 仍确认 `nano-banana-2-1`、`image_input`、2K 6 积分及小写 `png`，未发现字段差异。本次没有调用付费 API，真实 taskId / 耗时待同一家具实拍验收后补充。
+2026-10-13 续作及升级复核：官方 [产品页](https://kie.ai/zh-CN/nano-banana-2-1) 与 [API 示例](https://docs.kie.ai/market/google/nanobanana-2-1) 确认 `nano-banana-2-1`、`image_input`、2K 6 积分、4K 9 积分及小写 `png`，未发现字段差异。用户随后自主完成真实产品测试，数据库有成功记录与转存文件；交互升级自动验收没有额外调用付费 API。
 
 ## 1. 模型上线、价格与输入输出
 
 - Nano Banana 2.1 已在 KIE 产品页上线。本项目使用该版本，不使用预计 2026-10-29 下线的旧版。来源：[产品页](https://kie.ai/zh-CN/nano-banana-2-1)。
 - 价格：1K 4 积分（$0.02），2K 6 积分（$0.03），4K 9 积分（$0.045）。来源：[产品页](https://kie.ai/zh-CN/nano-banana-2-1)。
 - 参考图：JPEG / PNG / WEBP，单张不超过 30 MB，最多 10 张；本任务的商品实拍图限定 2～3 张。来源：[产品页](https://kie.ai/zh-CN/nano-banana-2-1)、[API 文档](https://docs.kie.ai/market/google/nanobanana-2-1)。
-- 支持比例：1:1、2:3、3:2、1:4、4:1、3:4、4:3、4:5、5:4、1:8、8:1、9:16、16:9、21:9、auto。输出分辨率：1K / 2K / 4K；格式：jpg / png（小写）。本任务 UI 提供 1:1、3:4、4:3、16:9，默认 2K / png。来源：[产品页字段列表](https://kie.ai/zh-CN/nano-banana-2-1)、[API 文档](https://docs.kie.ai/market/google/nanobanana-2-1)。
+- 支持比例：1:1、2:3、3:2、1:4、4:1、3:4、4:3、4:5、5:4、1:8、8:1、9:16、16:9、21:9、auto。输出分辨率：1K / 2K / 4K；格式：jpg / png（小写）。2026-10-13 按用户反馈，UI 已提供全部比例和 2K / 4K，默认 2K / png。来源：[产品页字段列表](https://kie.ai/zh-CN/nano-banana-2-1)、[API 文档](https://docs.kie.ai/market/google/nanobanana-2-1)。
 
 ## 2. 创建任务：已核实的准确模型 ID
 

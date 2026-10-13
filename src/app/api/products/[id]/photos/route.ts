@@ -3,6 +3,8 @@ import { randomUUID } from "node:crypto";
 import { db } from "@/lib/db";
 import { inspectPhoto, putObject, deleteObject, MAX_PHOTO_BYTES } from "@/lib/storage";
 import { StudioError, studioUser, studioError } from "@/lib/studio-api";
+import { photoOrderSchema } from "@/lib/product-validation";
+import { reorderProductPhotos } from "@/lib/product-photos";
 
 export const runtime = "nodejs";
 export async function POST(request: Request, context: { params: Promise<{ id: string }> }) {
@@ -29,12 +31,24 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
     for (const photo of photos) { await putObject(photo.storageKey, photo.bytes, photo.mime); storedKeys.push(photo.storageKey); }
     await db.$transaction(async (tx) => {
       await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${id}, 0))`;
-      const count = await tx.asset.count({ where: { productId: id, type: "photo" } });
+      const existing = await tx.asset.findMany({ where: { productId: id, type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], select: { id: true } });
+      const count = existing.length;
       if (count + photos.length > 3) throw new StudioError("每件商品最多保存 3 张实拍参考图");
-      for (const photo of photos) await tx.asset.create({ data: { productId: id, type: "photo", storageKey: photo.storageKey, width: photo.width, height: photo.height, createdById: user.id } });
+      for (const [sortOrder, asset] of existing.entries()) await tx.asset.update({ where: { id: asset.id }, data: { sortOrder } });
+      for (const [index, photo] of photos.entries()) await tx.asset.create({ data: { productId: id, type: "photo", storageKey: photo.storageKey, width: photo.width, height: photo.height, createdById: user.id, sortOrder: count + index } });
     });
     storedKeys.length = 0;
     return NextResponse.json({ message: "实拍图已保存" }, { status: 201 });
   } catch (error) { return studioError(error, "参考图上传失败，请检查 MinIO 服务后重试"); }
   finally { for (const key of storedKeys) await deleteObject(key).catch(() => undefined); }
+}
+
+export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
+  try {
+    await studioUser(request, true);
+    const parsed = photoOrderSchema.safeParse(await request.json().catch(() => null));
+    if (!parsed.success) throw new StudioError("请提交完整且不重复的实拍图片排序");
+    await reorderProductPhotos((await context.params).id, parsed.data.photoIds);
+    return NextResponse.json({ message: "参考图顺序已保存" });
+  } catch (error) { return studioError(error, "保存图片排序失败，请刷新后重试"); }
 }

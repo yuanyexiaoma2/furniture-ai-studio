@@ -13,6 +13,7 @@ export default defineConfig({
     baseURL: "http://localhost:3000",
     channel: process.env.PLAYWRIGHT_CHANNEL === "chromium" ? undefined : "chrome",
     headless: true,
+    actionTimeout: 15000,
     trace: "off",
     screenshot: "off",
   },

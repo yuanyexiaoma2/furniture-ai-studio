@@ -1,9 +1,11 @@
 # 项目记忆
 
-任务 2 已于 2026-10-13 恢复。生成 API / UI、月度积分原子预留、pg-boss 事务入队、持久记录与候选图下载已实现。lint、typecheck、build、登录权限及商品页浏览器测试、隔离生成测试通过；尚未进行真实 KIE 家具生图或 push。
+2026-10-13 用户已自行上传真实产品并生成一张成功图片；不再要求重复提供实拍或创建 TEST-001。现有产品、3 个素材文件和成功记录已核对保留。
 
-继续前阅读 [任务 2 续作记录](../docs/task-2-progress.md)。缺少 TEST-001 的 2～3 张同一家具不同角度实拍图片路径和身份特征，用户问题已发出。模拟验收不能替代真实图，最终必须记录真实 taskId / 耗时 / MinIO key。
+最新交互升级已完成：本地图片拖入即上传、删除替换、拖动和按钮排序；全部 15 比例、2K/4K 及 6/9 积分预留；选中原图的指令二次编辑与连续新版本。来源图在服务端核对，原图与历史参考不删除，图片删除为 Asset.deletedAt 标记，排序持久化。增量迁移 20261013020000_reference_management 已应用。
 
-网页与 KIE worker 已后台启动，PostgreSQL / MinIO 运行正常。日志位于 .local/；不要等待常驻进程退出，不要重复启动服务。常规 Windows 沙箱失败时本机可用已获自动审批的 escalated exec。Python 命令是 WindowsApps 占位入口，实际未安装；记忆维护用 Node UTF-8 文件读写，测试用已有 Playwright / TypeScript。
+继续前阅读 [升级记录](../docs/image-workflow-upgrade.md) 和 [任务 2 记录](../docs/task-2-progress.md)。lint/typecheck/build、扩展隔离及浏览器验收通过；自动验收未额外调用付费 API，未 push。实际编辑效果由用户新入口测试。
 
-积分 cost 按北京时间自然月记录；明确未提交 / 被拒绝释放预留，已提交或扣费不确定保留，需人工核对。后台页面 403 使用 Next.js forbidden()，experimental.authInterrupts 已开启并通过权限回归。
+网页和 worker 后台运行，日志位于 .local/；不要重复启动或等待常驻服务退出。开发模式曾保留旧 CSS，重启网页已加载新规则并以样式断言和截图验证。常规 Windows 沙箱初始化失败，使用已获自动审批的 escalated exec；Python 仅 WindowsApps 占位，测试和 UTF-8 记忆维护使用 Node/TypeScript。
+
+配额按北京时间自然月，明确未提交/被拒绝释放预留，扣费不确定保留。仅启用 KIE，ZenMux 和 Agent 尚未接入；后台页面 403 使用 Next.js forbidden()，authInterrupts 已开启。

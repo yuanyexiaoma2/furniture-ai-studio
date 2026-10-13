@@ -12,16 +12,18 @@ export const KIE_IMAGE_MODEL = {
 
 export const models = {
   "scene-main": KIE_IMAGE_MODEL,
-  // 暂指向同一模型；蒙版与涂抹编辑留给后续任务，可独立替换路由。
+  // 指令二次编辑使用同一多图参考模型；蒙版与涂抹编辑另行实现。
   edit: KIE_IMAGE_MODEL,
 } as const;
 
-export const sceneAspectRatios = ["1:1", "3:4", "4:3", "16:9"] as const;
+export const sceneAspectRatios = ["1:1", "2:3", "3:2", "3:4", "4:3", "4:5", "5:4", "9:16", "16:9", "21:9", "1:4", "4:1", "1:8", "8:1", "auto"] as const;
+export const sceneResolutions = ["2K", "4K"] as const;
+export type SceneResolution = typeof sceneResolutions[number];
 export type SceneAspectRatio = typeof sceneAspectRatios[number];
 export type LogicalModel = keyof typeof models;
 
-export function modelCost(logicalModel: LogicalModel) {
+export function modelCost(logicalModel: LogicalModel, resolution: SceneResolution = "2K") {
   const config = models[logicalModel];
-  const credits = config.prices[config.resolution];
+  const credits = config.prices[resolution];
   return { credits, usd: credits * config.usdPerCredit };
 }

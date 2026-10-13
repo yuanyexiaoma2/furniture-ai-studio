@@ -109,12 +109,15 @@ model Asset {
   height        Int
   createdById   String
   createdAt     DateTime     @default(now())
+  sortOrder     Int          @default(0)
+  deletedAt     DateTime?
   product       Product?     @relation(fields: [productId], references: [id], onDelete: SetNull)
   createdBy     User         @relation(fields: [createdById], references: [id], onDelete: Restrict)
   finalSlots    ImageSlot[]  @relation("FinalAsset")
   templates     Template[]   @relation("ExampleAsset")
 
   @@index([productId, type])
+  @@index([productId, type, deletedAt, sortOrder])
   @@index([createdById])
 }
 

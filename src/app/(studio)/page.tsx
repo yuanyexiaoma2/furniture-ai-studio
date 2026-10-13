@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { requireUser } from "@/lib/access";
 export default async function ProjectsPage() {
   const user = await requireUser();
-  const products = await db.product.findMany({ orderBy: { createdAt: "desc" }, select: { id: true, sku: true, name: true, category: true, complexity: true, _count: { select: { assets: { where: { type: "photo" } } } } } });
+  const products = await db.product.findMany({ orderBy: { createdAt: "desc" }, select: { id: true, sku: true, name: true, category: true, complexity: true, _count: { select: { assets: { where: { type: "photo", deletedAt: null } } } } } });
   return <>
     <div className="page-intro"><div><p className="eyebrow">创意从产品开始</p><h1>SKU 项目<span className="title-dot">.</span></h1><p className="intro-copy">{user.name}，欢迎回来。这里是团队的产品创意工作空间。</p></div><Badge variant="outline" className="stage-badge"><span className="status-dot" />工作台已就绪</Badge></div>
     {user.role !== "viewer" && <ProductCreate />}

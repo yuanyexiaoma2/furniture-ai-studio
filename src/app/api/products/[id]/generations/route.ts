@@ -11,7 +11,7 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
     const parsed = sceneSchema.safeParse(await request.json().catch(() => null));
     if (!parsed.success) throw new StudioError(parsed.error.issues[0]?.message || "场景参数无效");
     const { id } = await context.params;
-    const jobId = await createSceneJob(user.id, id, parsed.data.sceneIntent, parsed.data.aspectRatio);
+    const jobId = await createSceneJob(user.id, id, parsed.data.sceneIntent, parsed.data.aspectRatio, parsed.data.resolution);
     // 返回提交编号即可；避免入队成功后的读取失败使客户端误以为需要重发。
     return NextResponse.json({ jobId }, { status: 202 });
   } catch (error) { return studioError(error, "生成任务创建失败，请稍后重试"); }
