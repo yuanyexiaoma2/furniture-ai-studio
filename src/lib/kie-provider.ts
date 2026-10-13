@@ -3,9 +3,26 @@ import { createHash } from "node:crypto";
 import { db } from "@/lib/db";
 import { readObject, inspectPhoto } from "@/lib/storage";
 import { KieError, kieRequest, safeKieMessage } from "@/lib/kie-http";
-import type { ImageInput, ImageProvider, ImageResult } from "@/lib/image-provider";
+import type { ImageInput, ImageProvider, ImageResult, ImageRequest, ImageGeneration } from "@/lib/image-provider";
+import { GatewayError } from "@/lib/gateway-error";
+import { downloadResultImage } from "@/lib/remote-image";
 
 export class KieProvider implements ImageProvider {
+  constructor(private model = "nano-banana-2-1", private download: (url: string) => Promise<Buffer> = downloadResultImage) {}
+  isConfigured() { return Boolean(process.env.KIE_API_KEY?.trim()); }
+  async generate(input: ImageRequest): Promise<ImageGeneration> {
+    const urls: string[] = [];
+    for (const asset of input.referenceImages) urls.push(await this.uploadFile(asset.id));
+    const requestInput: ImageInput = { prompt: input.prompt, image_input: urls, aspect_ratio: input.aspectRatio, resolution: input.resolution, output_format: input.outputFormat };
+    const taskId = await this.submit(this.model, requestInput);
+    return { kind: "pending", taskId, requestInput };
+  }
+  async poll(taskId: string): Promise<ImageGeneration> {
+    const result = await this.getResult(taskId);
+    if (result.status === "pending") return { kind: "pending", taskId };
+    if (result.status === "failed") throw new GatewayError("kie", result.error, 500, true);
+    return { kind: "done", images: await Promise.all(result.urls.map((url) => this.download(url))) };
+  }
   private baseUrl = process.env.KIE_BASE_URL?.trim() || "https://api.kie.ai";
   private uploadBaseUrl = process.env.KIE_UPLOAD_BASE_URL?.trim() || "https://kieai.redpandaai.co";
 

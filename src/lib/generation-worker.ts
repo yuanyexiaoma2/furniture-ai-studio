@@ -1,9 +1,9 @@
 import "server-only";
 import { db } from "@/lib/db";
 import { downloadResultImage } from "@/lib/remote-image";
-import { putObject, inspectPhoto, deleteObject } from "@/lib/storage";
+import { saveGenerationResult } from "@/lib/save-generation-result";
 import { KieError, safeKieMessage } from "@/lib/kie-http";
-import type { ImageInput, ImageProvider } from "@/lib/image-provider";
+import type { ImageInput, LegacyImageProvider } from "@/lib/image-provider";
 import type { Prisma } from "@/generated/prisma/client";
 
 async function fail(id: string, error: unknown) {
@@ -18,7 +18,7 @@ async function fail(id: string, error: unknown) {
   });
 }
 
-export async function submitSceneJob(id: string, provider: ImageProvider) {
+export async function submitSceneJob(id: string, provider: LegacyImageProvider) {
   const claimed = await db.generationJob.updateMany({ where: { id, status: "pending" }, data: { status: "running", startedAt: new Date() } });
   if (!claimed.count) return;
   try {
@@ -35,31 +35,18 @@ export async function submitSceneJob(id: string, provider: ImageProvider) {
   } catch (error) { await fail(id, error); }
 }
 
-export async function pollSceneJob(id: string, provider: ImageProvider, download: (address: string) => Promise<Buffer> = downloadResultImage) {
+export async function pollSceneJob(id: string, provider: LegacyImageProvider, download: (address: string) => Promise<Buffer> = downloadResultImage) {
   const job = await db.generationJob.findUnique({ where: { id } });
   if (!job || job.status !== "running" || !job.externalTaskId) return;
-  const storedKeys: string[] = [];
   try {
     const result = await provider.getResult(job.externalTaskId);
     if (result.status === "failed") { await fail(id, new Error(result.error)); return; }
     if (result.status === "pending") { await db.generationJob.updateMany({ where: { id, status: "running" }, data: { nextPollAt: new Date(Date.now() + 5000), error: null } }); return; }
     // 单张场景图任务：完整下载后创建 Asset 与成功记录，同一事务提交。
     const bytes = await download(result.urls[0]);
-    const photo = await inspectPhoto(bytes);
-    const storageKey = `products/${job.productId}/generated/${id}.${photo.extension}`;
-    await putObject(storageKey, bytes, photo.mime);
-    storedKeys.push(storageKey);
-    await db.$transaction(async (tx) => {
-      const claimed = await tx.generationJob.updateMany({ where: { id, status: "running" }, data: { status: "success", completedAt: new Date(), error: null } });
-      if (!claimed.count) throw new Error("任务已经结束，停止转存");
-      const asset = await tx.asset.create({ data: { productId: job.productId, type: "generated", storageKey, width: photo.width, height: photo.height, createdById: job.createdById } });
-      await tx.generationJob.update({ where: { id }, data: { resultAssetIds: [asset.id] } });
-    });
-    storedKeys.length = 0;
+    await saveGenerationResult(id, [bytes]);
   } catch (error) {
     if (error instanceof KieError && error.code < 500) await fail(id, error);
     else await db.generationJob.updateMany({ where: { id, status: "running" }, data: { nextPollAt: new Date(Date.now() + 5000), error: "查询或结果转存暂时失败，正在重试；10 分钟后停止等待" } });
-  } finally {
-    for (const key of storedKeys) await deleteObject(key).catch(() => undefined);
   }
 }
