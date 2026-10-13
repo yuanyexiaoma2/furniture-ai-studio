@@ -27,5 +27,5 @@ export async function assertUsdQuota(tx: Prisma.TransactionClient, userId: strin
   const user = await tx.user.findUniqueOrThrow({ where: { id: userId } });
   if (user.role === "viewer") throw new StudioError("只读成员不能生成图片或调用 AI", 403);
   const used = await monthlySpendUsd(tx, userId, exclude);
-  if (used + estimate > Number(user.monthlyQuota) + 0.0000001) throw new StudioError(`本月美元配额不足：已消耗或预留 $${used.toFixed(6)}，本次预估 $${estimate.toFixed(6)}，配额 $${Number(user.monthlyQuota).toFixed(6)}`, 409);
+  if (used + estimate > Number(user.monthlyQuota) + 0.0000001) throw new StudioError(`本月美元配额不足：已消耗或预留 $${used.toFixed(6)}，本次预估 $${estimate.toFixed(6)}，配额 $${Number(user.monthlyQuota).toFixed(6)}，还差 $${(used + estimate - Number(user.monthlyQuota)).toFixed(6)}`, 409);
 }

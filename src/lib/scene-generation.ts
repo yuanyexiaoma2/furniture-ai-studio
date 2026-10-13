@@ -10,6 +10,28 @@ import { candidatesFor, gatewayConfigured } from "./gateway-router";
 import { buildScenePrompt } from "@/prompts/scene";
 import { buildEditPrompt } from "@/prompts/edit";
 import { StudioError } from "@/lib/studio-error";
+import type { Prisma } from "@/generated/prisma/client";
+import type { ModelCandidate } from "./models.config";
+
+// 单张与图包共用身份冻结、参考图和事务入队，批次负责一次性校验总配额。
+export async function prepareSceneInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, candidate: ModelCandidate, resolution: SceneResolution = "2K") {
+  await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${productId}, 0))`;
+  const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], take: 3 } } });
+  if (!product) throw new StudioError("商品不存在", 404);
+  if (!product.identityTraits?.trim()) throw new StudioError("请先填写并保存产品身份特征");
+  if (product.assets.length < 2) throw new StudioError("生成需要同一商品至少 2 张不同角度实拍图");
+  const prompt = buildScenePrompt(product.identityTraits, intent);
+  if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
+  const version = await tx.productIdentityVersion.findFirst({ where: { productId }, orderBy: [{ savedAt: "desc" }, { id: "desc" }] });
+  return { estimate: estimateImageUsd(candidate, resolution, prompt, product.assets), input: { prompt, sceneIntent: intent, identityTraits: product.identityTraits, identityVersionId: version?.id ?? null, identitySavedById: version?.savedById ?? null, identitySavedAt: version && !version.historical ? version.savedAt.toISOString() : null, referenceAssetIds: product.assets.map(a => a.id), image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false } };
+}
+export async function enqueueImageJob(tx: Prisma.TransactionClient, data: Prisma.GenerationJobUncheckedCreateInput) {
+  const boss = await getBoss();
+  const createdAt = new Date();
+  const job = await tx.generationJob.create({ data: { createdAt, deadlineAt: new Date(createdAt.getTime() + MAX_JOB_MS), ...data } });
+  if (!await boss.send(SUBMIT_QUEUE, { jobId: job.id }, { db: fromPrisma(tx) })) throw new StudioError("任务未能入队，美元配额未预留，请稍后重试", 503);
+  return job.id;
+}
 
 export async function generationAvailability(userId: string) {
   const [user, used, ready, candidate] = await Promise.all([
@@ -36,12 +58,17 @@ async function createImageJob(userId: string, productId: string, intent: string,
   await expireOverdueJobs();
   const logicalModel = source ? "edit" : "scene-main";
   const candidate = await configuredCandidate(logicalModel);
-  const boss = await getBoss();
+  await getBoss();
   return db.$transaction(async (tx) => {
     // 与预留在同一事务锁定用户；两个并发请求不能使用同一份剩余额度。
     await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${userId} FOR UPDATE`;
     const user = await tx.user.findUniqueOrThrow({ where: { id: userId } });
     if (user.role === "viewer") throw new StudioError("只读成员不能生成图片", 403);
+    if (!source) {
+      const prepared = await prepareSceneInput(tx, productId, intent, aspectRatio, candidate, resolution);
+      await assertUsdQuota(tx, userId, prepared.estimate);
+      return enqueueImageJob(tx, { productId, logicalModel, createdById: userId, reservedUsd: prepared.estimate, input: prepared.input });
+    }
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${productId}, 0))`;
     const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }] } } });
     if (!product) throw new StudioError("商品不存在", 404);
@@ -60,12 +87,9 @@ async function createImageJob(userId: string, productId: string, intent: string,
     const estimate = estimateImageUsd(candidate, resolution, prompt, product.assets);
     await assertUsdQuota(tx, userId, estimate);
     const version = await tx.productIdentityVersion.findFirst({ where: { productId }, orderBy: { savedAt: "desc" } });
-    const job = await tx.generationJob.create({ data: {
+    return enqueueImageJob(tx, {
       productId, logicalModel, reservedUsd: estimate, createdById: userId, createdAt, deadlineAt: new Date(createdAt.getTime() + MAX_JOB_MS),
       input: { prompt, ...(source ? { ...source, editIntent: intent } : { sceneIntent: intent }), identityTraits: product.identityTraits, identityVersionId: version?.id ?? null, identitySavedById: version?.savedById ?? null, identitySavedAt: version && !version.historical ? version.savedAt.toISOString() : null, referenceAssetIds: [...(source ? [source.sourceAssetId] : []), ...product.assets.map((asset) => asset.id)], image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false },
-    } });
-    const queued = await boss.send(SUBMIT_QUEUE, { jobId: job.id }, { db: fromPrisma(tx) });
-    if (!queued) throw new StudioError("任务未能入队，美元配额未预留，请稍后重试", 503);
-    return job.id;
+    });
   }, { timeout: 15000 });
 }
