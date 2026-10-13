@@ -1,10 +1,9 @@
 import "server-only";
 import { auth } from "@/auth";
 import { NextResponse } from "next/server";
+import { StudioError } from "@/lib/studio-error";
+export { StudioError } from "@/lib/studio-error";
 
-export class StudioError extends Error {
-  constructor(message: string, public status = 400) { super(message); }
-}
 export async function studioUser(request: Request, write = false) {
   const session = await auth();
   if (!session?.user) throw new StudioError("请先登录", 401);

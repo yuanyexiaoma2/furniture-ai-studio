@@ -11,7 +11,8 @@ export default auth((request) => {
   if (request.auth && request.auth.user.role !== "admin" &&
       (path === "/admin" || path.startsWith("/admin/") || path.startsWith("/api/admin/"))) {
     if (path.startsWith("/api/")) return NextResponse.json({ error: "仅管理员可以操作" }, { status: 403 });
-    return NextResponse.rewrite(new URL("/forbidden", request.url), { status: 403 });
+    // 页面权限交给服务端布局抛出 403，避免重写后状态被覆盖及导航 hydration 差异。
+    return NextResponse.next();
   }
   return NextResponse.next();
 });

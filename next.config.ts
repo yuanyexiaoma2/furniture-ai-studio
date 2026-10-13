@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   agentRules: false,
   devIndicators: false,
+  experimental: { authInterrupts: true },
   turbopack: {
     rules: {
       "*.css": {

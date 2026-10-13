@@ -19,6 +19,8 @@ export async function productSnapshot(id: string) {
     jobs: product.generationJobs.map((job) => ({
       id: job.id, logicalModel: job.logicalModel, provider: job.provider, model: job.model, taskId: job.externalTaskId,
       resolution: (job.input as Record<string, unknown>)?.resolution as string ?? "",
+      aspectRatio: (job.input as Record<string, unknown>)?.aspect_ratio as string ?? "",
+      sceneIntent: (job.input as Record<string, unknown>)?.sceneIntent as string ?? "",
       status: job.status, cost: Number(job.cost ?? 0), error: job.error,
       resultAssetIds: Array.isArray(job.resultAssetIds) ? job.resultAssetIds.filter((value): value is string => typeof value === "string") : [],
       createdAt: job.createdAt.toISOString(), startedAt: job.startedAt?.toISOString() ?? null, completedAt: job.completedAt?.toISOString() ?? null,

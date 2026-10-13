@@ -26,8 +26,11 @@ export async function workerIsReady() {
 }
 
 export async function expireOverdueJobs() {
-  await db.generationJob.updateMany({
-    where: { provider: "kie", status: { in: ["pending", "running"] }, createdAt: { lt: new Date(Date.now() - MAX_JOB_MS) } },
-    data: { status: "failed", error: "任务超过 10 分钟未完成，已停止等待。若已提交到 KIE，请检查账户任务记录；可重新发起生成。", completedAt: new Date() },
-  });
+  // 单条 SQL 锁住状态与预留，防止超时监测与提交标记交错后错误退款。
+  await db.$executeRaw`UPDATE "GenerationJob" SET status = 'failed', "completedAt" = NOW(), "updatedAt" = NOW(),
+    cost = CASE WHEN input->>'submissionAttempted' = 'true' OR "externalTaskId" IS NOT NULL THEN cost ELSE 0 END,
+    error = CASE WHEN input->>'submissionAttempted' = 'true' OR "externalTaskId" IS NOT NULL
+      THEN '任务超过 10 分钟未完成，已停止等待。扣费状态未确定，积分预留保留，请核对 KIE 账户任务记录。'
+      ELSE '任务超过 10 分钟未提交，已停止等待并释放积分预留，请检查 worker 后重新生成。' END
+    WHERE provider = 'kie' AND status IN ('pending', 'running') AND "createdAt" < ${new Date(Date.now() - MAX_JOB_MS)}`;
 }
