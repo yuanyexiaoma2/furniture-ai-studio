@@ -6,9 +6,12 @@ export function safeGatewayMessage(value: unknown) {
 }
 export class GatewayError extends Error {
   constructor(public provider: GatewayName, message: string, public status = 500, public retryable = status === 429 || status >= 500, public uncertain = false) {
-    super(`${provider === "kie" ? "KIE" : "ZenMux"}：${safeGatewayMessage(message)}`);
+    const label = provider === "kie" ? "KIE" : "ZenMux";
+    const clean = safeGatewayMessage(message).replace(new RegExp(`^(?:${label}：)+`), "");
+    super(`${label}：${clean}`);
   }
 }
+export class ImageTaskFailure extends GatewayError {}
 export function gatewayException(provider: GatewayName, error: unknown): GatewayError {
   if (error instanceof GatewayError) return error;
   const detail = error as { status?: number; code?: number; message?: string; name?: string };

@@ -4,7 +4,7 @@ import type { ProductSnapshot } from "@/lib/product-data";
 import type { GenerationAvailability } from "@/lib/scene-generation";
 
 export function generationBlockReason(product: ProductSnapshot, availability: GenerationAvailability, readonly: boolean, credits: number) {
-  return readonly ? "只读成员可以查看生成记录" : !availability.configured ? "请管理员配置 KIE 密钥" : !availability.workerReady ? "生图服务离线，请启动 worker" : product.photos.length < 2 ? "请先上传至少 2 张实拍图" : !product.identityTraits.trim() ? "请先保存产品身份特征" : availability.remaining < credits ? "本月剩余积分不足，请联系管理员" : "";
+  return readonly ? "只读成员可以查看生成记录" : !availability.configured ? "请管理员配置至少一家生图网关密钥" : !availability.workerReady ? "生图服务离线，请启动 worker" : product.photos.length < 2 ? "请先上传至少 2 张实拍图" : !product.identityTraits.trim() ? "请先保存产品身份特征" : availability.remaining < credits ? "本月剩余积分不足，请联系管理员" : "";
 }
 export function GenerationOptions({ prefix, resolution, aspectRatio, disabled, onResolution, onAspectRatio }: { prefix: string; resolution: SceneResolution; aspectRatio: SceneAspectRatio; disabled: boolean; onResolution: (resolution: SceneResolution) => void; onAspectRatio: (ratio: SceneAspectRatio) => void }) {
   return <>

@@ -3,7 +3,7 @@ import { db } from "./db";
 import { routeCall, candidatesFor, gatewayConfigured } from "./gateway-router";
 import { databaseCircuit } from "./gateway-circuit";
 import { imageProvider } from "./gateway-providers";
-import { GatewayError, gatewayException } from "./gateway-error";
+import { GatewayError, ImageTaskFailure, gatewayException } from "./gateway-error";
 import { saveGenerationResult } from "./save-generation-result";
 import type { ImageGeneration, ImageRequest, ImageProvider } from "./image-provider";
 import type { LogicalModel, ModelCandidate } from "./models.config";
@@ -21,7 +21,8 @@ async function generate(id: string, factory: (candidate: ModelCandidate) => Imag
   const request: ImageRequest = { prompt: String(input.prompt), referenceImages: (input.referenceAssetIds as string[]).map(id => ({ id })), aspectRatio: String(input.aspect_ratio), resolution: input.resolution as ImageRequest["resolution"], outputFormat: input.output_format as ImageRequest["outputFormat"] };
   let activeAttempt: string | undefined;
   try {
-    await routeCall({ logical: job.logicalModel as LogicalModel, circuit: databaseCircuit, alreadyFallback,
+    const routed = await routeCall<ImageGeneration>({ logical: job.logicalModel as LogicalModel, circuit: databaseCircuit, alreadyFallback, probe: typeof input.testProvider === "string", isSuccessful: result => result.kind === "done",
+      previousErrors: job.attempts.filter(a => a.status === "failed" && a.error).map(a => a.error!), previousProvider: job.provider === "zenmux" ? "zenmux" : "kie",
       candidates: typeof input.testProvider === "string" ? candidatesFor("scene-main").filter(c => c.provider === input.testProvider) : undefined,
       excluded: job.attempts.map(a => `${a.provider}:${a.model}`), configured: gatewayConfigured,
       async call(candidate) { return factory(candidate).generate(request); },
@@ -42,6 +43,7 @@ async function generate(id: string, factory: (candidate: ModelCandidate) => Imag
         },
       },
     });
+    if (routed.fallback && routed.warnings.length) await db.generationJob.update({ where: { id }, data: { error: `已自动切换备用线路：${routed.warnings.join('；')}` } });
   } catch (error) {
     if (activeAttempt) await db.generationAttempt.updateMany({ where: { id: activeAttempt, status: "running" }, data: { status: "failed", completedAt: new Date(), error: "调用或结果转存失败，请核对网关记录" } });
     await failGatewayJob(id, error);
@@ -74,7 +76,7 @@ export async function pollGatewayJob(id: string, factory = imageProvider) {
   catch (error) {
     const failure = gatewayException(candidate.provider, error);
     // 查询网络故障或下载故障重试原任务，不再重复付费提交。
-    if (failure.uncertain || !(error instanceof GatewayError)) { await scheduleRetry(id); return; }
+    if (failure.uncertain || !(error instanceof ImageTaskFailure) && failure.retryable) { await scheduleRetry(id, "查询或下载暂时失败，正在重试原任务；10 分钟后停止等待"); return; }
     await db.generationAttempt.update({ where: { id: attempt.id }, data: { status: "failed", completedAt: new Date(), durationMs: Date.now() - attempt.createdAt.getTime(), error: failure.message } });
     await databaseCircuit.failure(candidate.provider);
     if (failure.retryable) await generate(id, factory, true);

@@ -13,9 +13,9 @@ export async function analyzeProductIdentity(userId: string, productId: string) 
   const recent = await db.llmCall.findFirst({ where: { productId, logicalModel: "llm-vision", status: "running", createdAt: { gt: new Date(Date.now() - 90_000) } } });
   if (recent) throw new StudioError("该商品正在提炼中，请等待当前请求返回后再试", 409);
   const input = identityPrompt({ sku: product.sku, name: product.name, category: product.category, dimensions: product.dimensions, colors: product.colors, materials: product.materials, sellingPoints: product.sellingPoints }, product.assets.map(a => a.id));
-  const response = await chatWithGateway("llm-vision", input, { userId, productId, validate(result) {
+  const response = await chatWithGateway("llm-vision", input, { userId, productId, validate(result, candidate) {
     const parsed = identitySchema.safeParse(result.json);
-    if (!parsed.success || identityText(parsed.data).length > 10000) throw new GatewayError("kie", "AI 返回的产品特征格式无效或过长，请重试", 500, true);
+    if (!parsed.success || identityText(parsed.data).length > 10000) throw new GatewayError(candidate.provider, "AI 返回的产品特征格式无效或过长，请重试", 500, true);
   } });
-  return { text: identityText(identitySchema.parse(response.result.json)), analysis: response.result.json, provider: response.candidate.provider, model: response.candidate.model, fallback: response.fallback, callId: response.attemptId };
+  return { text: identityText(identitySchema.parse(response.result.json)), analysis: response.result.json, provider: response.candidate.provider, model: response.candidate.model, fallback: response.fallback, warnings: response.warnings, callId: response.attemptId };
 }

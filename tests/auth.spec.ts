@@ -99,12 +99,14 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   const viewerContext = await browser.newContext(); contexts.push(viewerContext);
   const viewer = await viewerContext.newPage();
   await login(viewer, viewerEmail, password);
-  for (const path of ["/admin", "/admin/users"]) {
+  for (const path of ["/admin", "/admin/users", "/admin/gateways"]) {
     const response = await viewer.goto(path);
     expect(response?.status()).toBe(403);
     await expect(viewer.getByRole("heading", { name: "没有访问权限" })).toBeVisible();
   }
   const viewerWrite = await viewerContext.request.post("/api/admin/users", { headers: { Origin: "http://localhost:3000" }, data: {} });
+  expect((await viewerContext.request.get("/api/admin/gateways")).status()).toBe(403);
+  expect((await viewerContext.request.post("/api/admin/gateways/test", { headers: { Origin: "http://localhost:3000" }, data: { provider: "kie", kind: "image", confirmed: true } })).status()).toBe(403);
   expect(viewerWrite.status()).toBe(403);
   const viewerPatch = await viewerContext.request.patch(`/api/admin/users/${designerRecord.id}`, { headers: { Origin: "http://localhost:3000" }, data: { action: "role", role: "admin" } });
   expect(viewerPatch.status()).toBe(403);

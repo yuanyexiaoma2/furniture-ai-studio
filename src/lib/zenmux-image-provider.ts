@@ -18,7 +18,7 @@ export class ZenMuxImageProvider implements ImageProvider {
         const { bytes, mime } = await this.read(id);
         return { inlineData: { mimeType: mime, data: bytes.toString("base64") } };
       }));
-      const client = this.injected ?? new GoogleGenAI({ apiKey: process.env.ZENMUX_API_KEY!.trim(), vertexai: true, httpOptions: { baseUrl: process.env.ZENMUX_VERTEX_BASE_URL?.trim() || "https://zenmux.ai/api/vertex-ai", apiVersion: "v1", timeout: 30000 } });
+      const client = this.injected ?? new GoogleGenAI({ apiKey: process.env.ZENMUX_API_KEY!.trim(), vertexai: true, httpOptions: { baseUrl: process.env.ZENMUX_VERTEX_BASE_URL?.trim() || "https://zenmux.ai/api/vertex-ai", apiVersion: "v1", timeout: 30000, retryOptions: { attempts: 1 } } });
       const response = await client.models.generateContent({ model: this.model, contents: [{ role: "user", parts: [{ text: input.prompt }, ...references] }], config: { responseModalities: ["TEXT", "IMAGE"], imageConfig: { ...(input.aspectRatio !== "auto" ? { aspectRatio: input.aspectRatio } : {}), imageSize: input.resolution, outputMimeType: input.outputFormat === "jpg" ? "image/jpeg" : "image/png" } } }) as Reply;
       if (response.promptFeedback?.blockReason || response.candidates?.some((candidate) => /SAFETY|BLOCKLIST|PROHIBITED_CONTENT/.test(candidate.finishReason ?? "") || candidate.safetyRatings?.some((rating) => rating.blocked))) throw new GatewayError("zenmux", "内容被安全策略拦截", 500, true);
       const images: Buffer[] = [];

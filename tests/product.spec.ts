@@ -169,7 +169,7 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   await viewer.goto(`/products/${productId}`);
   await expect(viewer.getByRole("button", { name: "生成一张场景图" })).toBeDisabled();
   await expect(viewer.getByLabel("产品身份特征", { exact: true })).toBeDisabled();
-  for (const path of ["", "/photos", "/generations"]) {
+  for (const path of ["", "/photos", "/generations", "/identity"]) {
     const denied = path ? await viewerContext.request.post(`/api/products/${productId}${path}`, { headers: { Origin: origin }, data: {} }) : await viewerContext.request.patch(`/api/products/${productId}`, { headers: { Origin: origin }, data: {} });
     expect(denied.status()).toBe(403);
   }

@@ -22,14 +22,16 @@ export type RouteHooks<T> = {
 export async function routeCall<T>(options: {
   logical: LogicalModel; circuit: CircuitStore; call(candidate: ModelCandidate): Promise<T>;
   hooks: RouteHooks<T>; configured?: typeof gatewayConfigured; candidates?: readonly ModelCandidate[];
-  excluded?: string[]; alreadyFallback?: boolean; now?: () => number;
+  excluded?: string[]; alreadyFallback?: boolean; now?: () => number; probe?: boolean; isSuccessful?: (result: T) => boolean; previousErrors?: string[]; previousProvider?: GatewayName;
 }) {
   const now = options.now ?? Date.now;
-  const failures: string[] = [];
+  const failures: string[] = [...(options.previousErrors ?? [])];
+  let lastProvider: GatewayName = options.previousProvider ?? "kie";
   let fallback = options.alreadyFallback ?? false;
   for (const candidate of options.candidates ?? candidatesFor(options.logical)) {
     if (!candidate.model || !(options.configured ?? gatewayConfigured)(candidate.provider) || options.excluded?.includes(`${candidate.provider}:${candidate.model}`)) continue;
-    if (await options.circuit.isOpen(candidate.provider)) { failures.push(`${candidate.provider === "kie" ? "KIE" : "ZenMux"} 已熔断`); fallback = true; continue; }
+    lastProvider = candidate.provider;
+    if (!options.probe && await options.circuit.isOpen(candidate.provider)) { failures.push(`${candidate.provider === "kie" ? "KIE" : "ZenMux"} 已熔断`); fallback = true; continue; }
     const id = await options.hooks.start(candidate, fallback);
     const start = now();
     let result: T;
@@ -44,8 +46,8 @@ export async function routeCall<T>(options: {
     }
     // 本地保存 / 记录失败不能再次发起付费生成。
     await options.hooks.success(id, result, now() - start);
-    await options.circuit.success(candidate.provider);
-    return { result, candidate, fallback, attemptId: id };
+    if (!options.isSuccessful || options.isSuccessful(result)) await options.circuit.success(candidate.provider);
+    return { result, candidate, fallback, attemptId: id, warnings: failures };
   }
-  throw new GatewayError("kie", failures.length ? `${failures.join('；')}；已自动尝试可用备用线路，仍未成功，请稍后重试` : "没有可用网关，请配置 API Key 后重启服务", 503, true);
+  throw new GatewayError(lastProvider, failures.length ? `${failures.join('；')}；已检查可用备用线路，仍未成功，请稍后重试` : "没有可用网关，请配置 API Key 后重启服务", 503, true);
 }

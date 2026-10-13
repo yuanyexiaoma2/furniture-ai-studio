@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { readObject, inspectPhoto } from "@/lib/storage";
 import { KieError, kieRequest, safeKieMessage } from "@/lib/kie-http";
 import type { ImageInput, ImageProvider, ImageResult, ImageRequest, ImageGeneration } from "@/lib/image-provider";
-import { GatewayError } from "@/lib/gateway-error";
+import { ImageTaskFailure } from "@/lib/gateway-error";
 import { downloadResultImage } from "@/lib/remote-image";
 
 export class KieProvider implements ImageProvider {
@@ -20,7 +20,7 @@ export class KieProvider implements ImageProvider {
   async poll(taskId: string): Promise<ImageGeneration> {
     const result = await this.getResult(taskId);
     if (result.status === "pending") return { kind: "pending", taskId };
-    if (result.status === "failed") throw new GatewayError("kie", result.error, 500, true);
+    if (result.status === "failed") { const status = result.code && result.code >= 400 && result.code <= 599 ? result.code : 500; throw new ImageTaskFailure("kie", result.error, status, status === 429 || status >= 500); }
     return { kind: "done", images: await Promise.all(result.urls.map((url) => this.download(url))), cost: result.cost };
   }
   private baseUrl = process.env.KIE_BASE_URL?.trim() || "https://api.kie.ai";
@@ -67,7 +67,7 @@ export class KieProvider implements ImageProvider {
     const response = await kieRequest(`${this.baseUrl}/api/v1/jobs/recordInfo?taskId=${encodeURIComponent(taskId)}`, { method: "GET" });
     const data = response.data;
     if (["waiting", "queuing", "generating"].includes(data?.state)) return { status: "pending" };
-    if (data?.state === "fail") return { status: "failed", error: `KIE 生图失败${data.failCode ? `（${safeKieMessage(data.failCode)}）` : ""}：${safeKieMessage(data.failMsg)}` };
+    if (data?.state === "fail") return { status: "failed", code: /安全|拦截|safety|blocked|policy|content/i.test(String(data.failMsg)) ? 500 : Number(data.failCode) || 500, error: `KIE 生图失败${data.failCode ? `（${safeKieMessage(String(data.failCode))}）` : ""}：${safeKieMessage(data.failMsg)}` };
     if (data?.state === "success") {
       let result;
       try { result = JSON.parse(data.resultJson); } catch { throw new KieError("KIE 结果数据无法解析，未获得图片地址"); }

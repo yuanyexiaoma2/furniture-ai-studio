@@ -16,6 +16,8 @@ const isolatedUrl = new URL(originalUrl); isolatedUrl.pathname = `/${databaseNam
 process.env.DATABASE_URL = isolatedUrl.href;
 process.env.KIE_API_KEY = "local-test-valid-key";
 process.env.KIE_CALLBACK_URL = "";
+process.env.ZENMUX_API_KEY = "";
+process.env.GATEWAY_PREFERENCE = "zenmux";
 process.env.PG_BOSS_SCHEMA = "pgboss";
 let uploads = 0, submissions = 0;
 let mode: "pending" | "success" | "network" | "fail" = "pending";
@@ -49,7 +51,7 @@ try {
   const { reorderProductPhotos, removeProductPhoto } = await import("../src/lib/product-photos");
   const { productSnapshot } = await import("../src/lib/product-data");
   const { sceneSchema } = await import("../src/lib/product-validation");
-  const { sceneAspectRatios } = await import("../src/lib/models.config");
+  const { sceneAspectRatios, models } = await import("../src/lib/models.config");
   const { submitSceneJob, pollSceneJob } = await import("../src/lib/generation-worker");
   const { KieProvider } = await import("../src/lib/kie-provider");
   const { kieRequest, safeKieMessage } = await import("../src/lib/kie-http");
@@ -68,7 +70,7 @@ try {
   await assert.rejects(createSceneJob(user.id, product.id, "测试", "1:1"), /worker/);
   await db.workerHeartbeat.create({ data: { id: WORKER_ID, instanceId: "isolated-test" } });
   const currentKey = process.env.KIE_API_KEY; delete process.env.KIE_API_KEY;
-  await assert.rejects(createSceneJob(user.id, product.id, "测试", "1:1"), /KIE_API_KEY/); process.env.KIE_API_KEY = currentKey;
+  await assert.rejects(createSceneJob(user.id, product.id, "测试", "1:1"), /API Key/); process.env.KIE_API_KEY = currentKey;
   const results = await Promise.allSettled(Array.from({ length: 3 }, () => createSceneJob(user.id, product.id, "隔离场景意图", "3:4")));
   assert.equal(results.filter((result) => result.status === "fulfilled").length, 1);
   assert.equal(results.filter((result) => result.status === "rejected" && /配额不足/.test(result.reason.message)).length, 2);
@@ -81,10 +83,10 @@ try {
   console.log("通过：并发配额与 GenerationJob / pg-boss 事务入队");
 
   process.env.KIE_API_KEY = "local-test-wrong-key";
-  const provider = new KieProvider();
+  const provider = () => new KieProvider();
   await submitSceneJob(jobId, provider);
   let job = await db.generationJob.findUniqueOrThrow({ where: { id: jobId } });
-  assert.equal(job.status, "failed"); assert.equal(Number(job.cost), 0); assert.match(job.error!, /密钥无效/); assert.equal(submissions, 0);
+  assert.equal(job.status, "failed"); assert.equal(Number(job.reservedCredits), 0); assert.match(job.error!, /密钥无效/); assert.equal(submissions, 0);
   process.env.KIE_API_KEY = currentKey;
   console.log("通过：模拟错误密钥明确失败，释放积分，不提交付费任务");
 
@@ -97,12 +99,14 @@ try {
   await pollSceneJob(restored, provider);
   assert.equal((await db.generationJob.findUniqueOrThrow({ where: { id: restored } })).status, "running");
   mode = "success";
-  await pollSceneJob(restored, provider, async () => { throw new Error("模拟转存网络错误"); });
+  await pollSceneJob(restored, () => new KieProvider(undefined, async () => { throw new Error("模拟转存网络错误"); }));
   assert.equal((await db.generationJob.findUniqueOrThrow({ where: { id: restored } })).status, "running");
   const resultBytes = await sharp({ create: { width: 2048, height: 2048, channels: 3, background: "#dddddd" } }).png().toBuffer();
-  await pollSceneJob(restored, provider, async () => resultBytes);
+  await pollSceneJob(restored, () => new KieProvider(undefined, async () => resultBytes));
   job = await db.generationJob.findUniqueOrThrow({ where: { id: restored } });
-  assert.equal(job.status, "success"); assert.equal(Number(job.cost), 6);
+  assert.equal(job.status, "success"); assert.equal(Number(job.reservedCredits), 6);
+  assert.equal(job.provider, "kie"); assert.equal(Number(job.cost), 6); assert.equal(job.costCurrency, "credits"); assert.equal(job.fallback, false);
+  const firstAttempts = await db.generationAttempt.findMany({ where: { jobId: restored } }); assert.equal(firstAttempts.length, 1); assert.equal(firstAttempts[0].status, "success");
   const asset = await db.asset.findUniqueOrThrow({ where: { id: (job.resultAssetIds as string[])[0] } });
   assert.equal(asset.width, 2048); assert.equal(asset.height, 2048); assert.deepEqual((await readObject(asset.storageKey)).bytes, resultBytes);
   console.log("通过：恢复提交、轮询、转存重试、真实 MinIO 写入与成功事务（模拟图）");
@@ -118,7 +122,7 @@ try {
   const uncertain = await createSceneJob(user.id, product.id, "模拟提交断网", "1:1");
   await submitSceneJob(uncertain, provider);
   job = await db.generationJob.findUniqueOrThrow({ where: { id: uncertain } });
-  assert.equal(job.status, "failed"); assert.equal(Number(job.cost), 6); assert.equal(submissions, 2); assert.equal(uploads, 2);
+  assert.equal(job.status, "failed"); assert.equal(Number(job.reservedCredits), 6); assert.equal(submissions, 2); assert.equal(uploads, 2);
   console.log("通过：入队失败事务回滚、上传缓存、提交断网不重发且保留预留");
 
   mode = "pending";
@@ -127,8 +131,8 @@ try {
   await submitSceneJob(expiredSubmitted, provider);
   await db.generationJob.updateMany({ where: { id: { in: [expiredQueued, expiredSubmitted] } }, data: { createdAt: new Date(Date.now() - 11 * 60000) } });
   await expireOverdueJobs();
-  assert.equal(Number((await db.generationJob.findUniqueOrThrow({ where: { id: expiredQueued } })).cost), 0);
-  assert.equal(Number((await db.generationJob.findUniqueOrThrow({ where: { id: expiredSubmitted } })).cost), 6);
+  assert.equal(Number((await db.generationJob.findUniqueOrThrow({ where: { id: expiredQueued } })).reservedCredits), 0);
+  assert.equal(Number((await db.generationJob.findUniqueOrThrow({ where: { id: expiredSubmitted } })).reservedCredits), 6);
   for (const ratio of sceneAspectRatios) assert.equal(sceneSchema.safeParse({ sceneIntent: "测试全部比例", aspectRatio: ratio, resolution: "4K" }).success, true);
   assert.equal(sceneSchema.safeParse({ sceneIntent: "测试", resolution: "8K" }).success, false);
   const photos = await db.asset.findMany({ where: { productId: product.id, type: "photo", deletedAt: null }, orderBy: { createdAt: "asc" } });
@@ -139,7 +143,7 @@ try {
   await assert.rejects(createEditJob(user.id, product.id, "修改", "1:1", "4K", { sourceJobId: restored, sourceAssetId: photos[0].id }), /已完成的生成/);
   const editId = await createEditJob(user.id, product.id, "将背景改为暖白色，保留产品", "21:9", "4K", { sourceJobId: restored, sourceAssetId: asset.id });
   const edit = await db.generationJob.findUniqueOrThrow({ where: { id: editId } });
-  assert.equal(Number(edit.cost), 9); assert.equal(edit.logicalModel, "edit");
+  assert.equal(Number(edit.reservedCredits), 9); assert.equal(edit.logicalModel, "edit");
   const editInput = edit.input as Record<string, unknown>;
   assert.deepEqual(editInput.referenceAssetIds, [asset.id, ...reverse]);
   assert.equal(editInput.sourceJobId, restored); assert.equal(editInput.sourceAssetId, asset.id); assert.match(String(editInput.prompt), /第一张参考图/);
@@ -158,7 +162,7 @@ try {
   assert.equal((submitted!.input as Record<string, unknown>).aspect_ratio, "21:9");
   assert.equal(((submitted!.input as Record<string, unknown>).image_input as string[]).length, 3);
   mode = "success";
-  await pollSceneJob(editId, provider, async () => resultBytes);
+  await pollSceneJob(editId, () => new KieProvider(undefined, async () => resultBytes));
   const edited = await db.generationJob.findUniqueOrThrow({ where: { id: editId } });
   assert.equal(edited.status, "success"); assert.notDeepEqual(edited.resultAssetIds, job.resultAssetIds);
   assert.deepEqual((await db.generationJob.findUniqueOrThrow({ where: { id: restored } })).resultAssetIds, [asset.id]);
@@ -169,6 +173,37 @@ try {
   const nextVersion = await createEditJob(user.id, product.id, "继续调整光线", "auto", "2K", { sourceJobId: editId, sourceAssetId: (edited.resultAssetIds as string[])[0] });
   assert.equal((await db.generationJob.findUniqueOrThrow({ where: { id: nextVersion } })).logicalModel, "edit");
   console.log("通过：全部比例、4K定价与配额、排序快照、删除保留旧任务、原图编辑和连续版本");
+  const { submitGatewayJob, pollGatewayJob } = await import("../src/lib/image-router");
+  const { GatewayError } = await import("../src/lib/gateway-error");
+  const { databaseCircuit, gatewayCircuitState } = await import("../src/lib/gateway-circuit");
+  const { chatWithGateway } = await import("../src/lib/llm-router");
+  await db.user.update({ where: { id: user.id }, data: { monthlyQuota: 1000 } });
+  process.env.ZENMUX_API_KEY = "local-test-zenmux"; process.env.GATEWAY_PREFERENCE = "auto";
+  const syncFactory = (candidate: import("../src/lib/models.config").ModelCandidate) => candidate.provider === "zenmux" ? { isConfigured: () => true, generate: async () => ({ kind: "done" as const, images: [resultBytes, resultBytes], cost: { amount: 0.02, currency: "USD" as const }, usage: { inputTokens: 2, outputTokens: 3, totalTokens: 5 } }) } : new KieProvider(undefined, async () => resultBytes);
+  const syncId = await createSceneJob(user.id, product.id, "同步网关模拟", "1:1"); await submitGatewayJob(syncId, syncFactory);
+  const syncJob = await db.generationJob.findUniqueOrThrow({ where: { id: syncId } }); assert.equal(syncJob.status, "success"); assert.equal(syncJob.provider, "zenmux"); assert.equal(syncJob.costCurrency, "USD"); assert.equal(Number(syncJob.cost), 0.02); assert.equal((syncJob.resultAssetIds as string[]).length, 2); assert.equal(syncJob.reservedCredits, 6);
+  const backupFactory = (candidate: import("../src/lib/models.config").ModelCandidate) => candidate.provider === "zenmux" ? { isConfigured: () => true, generate: async (): Promise<never> => { throw new GatewayError("zenmux", "模拟服务 503", 503); } } : new KieProvider(undefined, async () => resultBytes);
+  const backupId = await createSceneJob(user.id, product.id, "主网关失败转异步备用", "1:1"); mode = "pending"; await submitGatewayJob(backupId, backupFactory);
+  mode = "success"; await pollGatewayJob(backupId, backupFactory); const backupJob = await db.generationJob.findUniqueOrThrow({ where: { id: backupId } }); assert.equal(backupJob.status, "success"); assert.equal(backupJob.provider, "kie"); assert.equal(backupJob.fallback, true);
+  const backupAttempts = await db.generationAttempt.findMany({ where: { jobId: backupId }, orderBy: { createdAt: "asc" } }); assert.deepEqual(backupAttempts.map(a => [a.provider, a.status, a.fallback]), [["zenmux", "failed", false], ["kie", "success", true]]);
+  process.env.GATEWAY_PREFERENCE = "kie";
+  const blockedId = await createSceneJob(user.id, product.id, "异步内容拦截转同步备用", "1:1"); mode = "pending"; await submitGatewayJob(blockedId, syncFactory); mode = "fail"; await pollGatewayJob(blockedId, syncFactory);
+  const blockedJob = await db.generationJob.findUniqueOrThrow({ where: { id: blockedId } }); assert.equal(blockedJob.status, "success"); assert.equal(blockedJob.provider, "zenmux"); assert.equal(blockedJob.fallback, true);
+  // 本地存储失败不能触发下一家重复付费；保留已经生成的费用预留。
+  process.env.GATEWAY_PREFERENCE = "auto"; let secondProviderCalls = 0;
+  const storageFailureId = await createSceneJob(user.id, product.id, "同步保存失败", "1:1");
+  await submitGatewayJob(storageFailureId, candidate => { if (candidate.provider === "kie") secondProviderCalls++; return { isConfigured: () => true, generate: async () => ({ kind: "done", images: [Buffer.from("invalid-image")] }) }; });
+  const storageFailure = await db.generationJob.findUniqueOrThrow({ where: { id: storageFailureId } }); assert.equal(storageFailure.status, "failed"); assert.equal(storageFailure.reservedCredits, 6); assert.equal(secondProviderCalls, 0);
+  // 实际数据库熔断跨路由共享，并在更换凭据或到期后恢复。
+  await databaseCircuit.success("zenmux"); for (let i = 0; i < 3; i++) await databaseCircuit.failure("zenmux"); assert.equal(await databaseCircuit.isOpen("zenmux"), true);
+  process.env.ZENMUX_API_KEY = "different-local-key"; assert.equal(await databaseCircuit.isOpen("zenmux"), false); await databaseCircuit.success("zenmux");
+  for (let i = 0; i < 3; i++) await databaseCircuit.failure("zenmux"); await db.gatewayCircuit.update({ where: { provider: "zenmux" }, data: { openUntil: new Date(Date.now() - 1) } }); assert.equal(await databaseCircuit.isOpen("zenmux"), false); await databaseCircuit.failure("zenmux"); assert.equal((await gatewayCircuitState("zenmux"))?.consecutiveFailures, 1);
+  process.env.ZENMUX_API_KEY = "";
+  const llmCandidate = models["llm-vision"].find(c => c.provider === "kie")!; assert.equal(llmCandidate.supportsTools, false);
+  // 本地模拟聊天返回业务错误：必须有一条失败 LlmCall，不能当成功。
+  process.env.KIE_API_KEY = "wrong-key"; await assert.rejects(chatWithGateway("llm-vision", { messages: [{ role: "user", content: "模拟问候" }] }, { userId: user.id }), /密钥无效/); process.env.KIE_API_KEY = currentKey;
+  const llmLog = await db.llmCall.findFirstOrThrow({ where: { createdById: user.id } }); assert.equal(llmLog.provider, "kie"); assert.equal(llmLog.status, "failed");
+  console.log("通过：双网关同步/异步统一保存、多图转存、跨模型备用标记、逐次账本、保存失败不重复付费、数据库熔断与 LLM 失败记录");
   await db.user.update({ where: { id: user.id }, data: { role: "viewer" } });
   await assert.rejects(createSceneJob(user.id, product.id, "模拟只读请求", "1:1"), /只读/);
   assert.equal(quotaMonth(new Date("2026-10-31T16:00:00Z")).start.toISOString(), "2026-10-31T16:00:00.000Z");

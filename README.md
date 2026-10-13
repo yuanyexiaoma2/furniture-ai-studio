@@ -1,10 +1,10 @@
 # 家具电商 AI 生图工作台
 
-公司内部创意工作空间。已实现账号密码登录、管理员用户管理、商品实拍管理、KIE 场景生成和指令二次编辑。任务 2 及交互升级已通过自动验收，用户于 2026-10-13 确认测试完成并授权保存推送。
+公司内部创意工作空间。已实现账号密码登录、管理员用户管理、商品实拍管理、双网关场景生成和指令二次编辑、AI 提炼产品身份特征及网关状态后台。任务 2 已由用户验收；任务 3 验证记录见 [双网关验收记录](docs/task-3-progress.md)。
 
 ## 如何运行
 
-任务 2 仅启用 KIE，ZenMux 未开通、未启用。官方模型与字段核实记录见 [docs/kie-notes.md](docs/kie-notes.md)。
+目前只配置 KIE，ZenMux Key 为空时自动跳过。两家生图 / LLM 代码均已接入，无需未来改代码。协议和模型核实记录见 [docs/gateways.md](docs/gateways.md)。
 
 本机重新打开项目：先确认 Docker Desktop 已启动，运行 `docker compose up -d`；在项目目录执行 `npm run dev -- --hostname 127.0.0.1`，另一终端执行 `npm run worker`，然后访问 <http://localhost:3000>。网页与 worker 都是常驻服务，无需等待退出。不要重复启动已运行的服务。
 
@@ -52,7 +52,7 @@ node scripts/configure-local-env.mjs --database-only
 
 省略 `--database-only` 时也会重新生成 `AUTH_SECRET`，已有登录会话会失效。脚本只写本地被 Git 忽略的 `.env`。
 
-`ZENMUX_API_KEY`、`ZENMUX_BASE_URL`、`LLM_MODEL`、`ZENMUX_IMAGE_BASE_URL` 留空，ZenMux 未启用。填写 `KIE_API_KEY`；`KIE_BASE_URL` 留空默认 `https://api.kie.ai`，`KIE_UPLOAD_BASE_URL` 留空默认 `https://kieai.redpandaai.co`。本地 `KIE_CALLBACK_URL` 必须留空，使用轮询。`PG_BOSS_SCHEMA` 保留 `pgboss`。
+`ZENMUX_API_KEY` 当前留空；`ZENMUX_BASE_URL=https://zenmux.ai/api/v1`、`ZENMUX_VERTEX_BASE_URL=https://zenmux.ai/api/vertex-ai`，两者为空也使用官方默认值。`GATEWAY_PREFERENCE=auto` 默认按候选顺序；`zenmux` / `kie` 优先指定网关，未配置直接跳过，符合条件的失败切换另一家。填写 `KIE_API_KEY`；`KIE_BASE_URL` 默认 `https://api.kie.ai`，`KIE_UPLOAD_BASE_URL` 默认 `https://kieai.redpandaai.co`。本地 `KIE_CALLBACK_URL` 留空，使用轮询。`PG_BOSS_SCHEMA` 保留 `pgboss`。旧的 `LLM_MODEL` / `ZENMUX_IMAGE_BASE_URL` 不再使用。
 
 所有 `.env`、`.env.local`、`.env.*` 都已被 Git 忽略，只有 `.env.example` 可提交。可用 `git check-ignore .env .env.local` 验证。
 
@@ -66,7 +66,7 @@ npm run seed
 npm run dev
 ```
 
-任务 2 的增量迁移可通过 `npx prisma migrate deploy` 应用，不会重置数据库。在第二个终端进入同一项目目录执行 `npm run worker`。worker 必须持续运行，网页和 worker 均需在修改 `.env` 后重启。密钥未配置、worker 未启动或月度积分配额不足时，页面会给出中文提示。
+已有项目升级时执行 `npm install` 和 `npx prisma migrate deploy`，增量迁移不会重置数据库。在第二个终端进入同一项目目录执行 `npm run worker`。worker 必须持续运行，网页和 worker 均需在修改 `.env` 后重启。密钥未配置、worker 未启动或月度积分配额不足时，页面会给出中文提示。
 
 仓库提供初始迁移，`prisma migrate dev` 会直接应用；修改 schema 后该命令会要求输入新迁移名称。`npm install` 自动生成 Prisma 客户端，之后改 schema 时再执行 `npx prisma generate`。Prisma 7 不会自动执行种子，需显式运行 `npm run seed`。
 
@@ -87,6 +87,7 @@ npm run typecheck
 npm run build
 npm run test:e2e
 npm run test:generation
+npm run test:gateways
 ```
 
 端到端验收需要正在运行的 `npm run dev`、数据库及 `.env` 的管理员账号。默认使用本机 Chrome 的独立无头会话，不操作日常浏览器资料。没有 Chrome 时可运行 `npx playwright install chromium`，随后设置 `PLAYWRIGHT_CHANNEL=chromium`。
@@ -101,7 +102,19 @@ npm run test:generation
 
 对不满意的生成图点击“二次编辑”，在原图预览下填写修改要求，可选择 2K / 4K 和任意比例，再点击“生成编辑版本”。服务端核对原图属于当前商品且生成成功，使用原图作为第一张参考，后续为当前按顺序排列的实拍，并注入身份约束。原图保留，新版本记录来源与修改要求，成功后也可继续编辑。
 
-用户月度配额按北京时间自然月计算，`GenerationJob.cost` 保存积分而非美元。明确未提交或被 KIE 拒绝时释放预留；已提交失败、转存超时或提交结果不确定时保留预留，需管理员核对 KIE 扣费记录后处理，本阶段没有自动对账功能。
+用户月度配额按北京时间自然月计算，`GenerationJob.reservedCredits` 保存内部积分预留；实际费用写 `cost` / `costCurrency` / `costEstimated`，美元和积分分开。明确拒绝且没有其他可能扣费的尝试时释放预留；已提交或扣费不确定时保留，需管理员核对网关账单，本阶段没有自动对账。每次生图尝试写 `GenerationAttempt`，每次 LLM 请求写 `LlmCall`。
+
+SKU 页“AI 提炼”读取已保存资料及排序最前的 2～3 张实拍图，返回结构与数量、比例、材质、五金、Logo 和易出错细节。只填写文本框，不自动保存；请核对修改后点击“保存产品资料”。`npm run test:gateways` 使用模拟 SDK 响应验证 ZenMux、路由与错误处理，不需要 ZenMux Key，也不发起付费请求。
+
+## 启用 ZenMux
+
+1. 在 ZenMux 开通 **Pay As You Go**，生成 API Key；生产环境不能使用 Builder Plan。
+2. 在被 Git 忽略的 `.env` 填写 `ZENMUX_API_KEY`。保留 `ZENMUX_BASE_URL=https://zenmux.ai/api/v1`、`ZENMUX_VERTEX_BASE_URL=https://zenmux.ai/api/vertex-ai`、`GATEWAY_PREFERENCE=auto`（省略地址也会使用这些默认值）。不要把 Key 发到聊天或提交 Git。
+3. 重启网页和 worker：开发环境重新运行 `npm run dev -- --hostname 127.0.0.1` 与 `npm run worker`；生产环境重启 `npm run start` 所属服务和 worker。无需改代码、模型配置或重建数据库。
+4. 管理员进入 `/admin/gateways`，确认 ZenMux 显示已配置，依次点击“连通性测试 · LLM”和“连通性测试 · 1K 生图”。弹窗确认后才会调用并产生费用；生图占用 4 积分内部月度配额，ZenMux 实付美元费用以账单为准。测试固定指定网关，不会悄悄切换另一家，成功会清除该网关熔断。
+5. 在商品页按正常流程生成或提炼。`auto` 优先 ZenMux；如需优先 KIE，将 `GATEWAY_PREFERENCE=kie` 并重启两项服务。
+
+没有 ZenMux Key 时，其真实连通性、完整比例和参考数量上限仍需开通后验证；SDK 返回解析、参数发送、失败和熔断已通过模拟测试。逐次未知费用在后台明确标注，不假设固定美元单价。
 
 ### 5. 页面与权限
 
@@ -111,8 +124,9 @@ npm run test:generation
 | `/` | 全员登录：SKU 项目列表，非 viewer 可新建商品 |
 | `/products/[id]` | 全员登录：商品资料、参考图和持久生成记录，非 viewer 可保存、上传和生成 |
 | `/templates` | 全员登录：模板库占位 |
-| `/admin` | 仅管理员：管理入口，其余设置占位 |
+| `/admin` | 仅管理员：用户管理和网关管理入口 |
 | `/admin/users` | 仅管理员：新增用户、角色修改与密码重置 |
+| `/admin/gateways` | 仅管理员：配置状态、数据库熔断、24 小时调用指标、分币种费用、付费测试和只读路由 |
 
 四种角色为 `admin` / `template_editor` / `designer` / `viewer`。viewer 只读，不能创建、修改商品、上传实拍或生成图片。未登录页面跳转登录页，接口返回 401；非管理员后台请求返回 403。修改角色或重置密码会撤销目标用户旧会话。当前管理员不能降低自己的权限。
 
@@ -120,7 +134,7 @@ npm run test:generation
 
 - Next.js App Router + TypeScript、Tailwind CSS、官方 shadcn/ui 基础组件。
 - Auth.js Credentials + JWT 会话、bcrypt 成本 12；权限在入口、布局和写入接口中检查。
-- PostgreSQL + Prisma 7（pg driver adapter），八个业务模型包含关系、唯一约束及索引。
+- PostgreSQL + Prisma 7（pg driver adapter），业务模型包含关系、唯一约束及索引；新增调用账本和共享熔断表。
 - API 使用用户资料字段白名单，密码哈希不会发送给浏览器；写入接口校验同源请求。
 - pg-boss 执行串行提交与持久轮询，S3 SDK / sharp 负责实拍验证和结果转存；Agent 对话尚未实现。
 - 后台页面拒绝访问使用 Next.js `forbidden()`，已启用 `experimental.authInterrupts` 并通过 403 浏览器验收；避免 rewrite 将拒绝页面状态覆盖为 200。参考 [Next.js 官方文档](https://nextjs.org/docs/app/api-reference/functions/forbidden)。
@@ -141,6 +155,8 @@ npm run test:generation
 本机 GitHub 登录及 Docker 引擎检查通过。Docker Hub 连接超时已通过复用缓存的 PostgreSQL 镜像和官方 Quay MinIO 镜像完成本地启动；新电脑仍需可以下载这些镜像。
 
 ## 本次完成内容
+
+- 2026-10-13 任务 3：完成 KIE / ZenMux 同步与异步生图、大语言模型抽象、统一路由、数据库共享熔断、调用账本、网关状态后台和 AI 产品身份提炼。真实商品 NL27TS01 的 KIE 提炼约 15 秒，消耗 0.25 积分；真实错误 Key 生图 / LLM 和恢复、偏好 ZenMux 但无 Key 跳过均已验证。13 项单元模拟、扩展隔离转存、3 项浏览器回归以及 lint / typecheck / build 通过；ZenMux 无 Key，仅模拟验证。详见 [任务 3 记录](docs/task-3-progress.md)。
 
 - 2026-10-13 用户验收收尾：用户确认已测试，接受任务 2 及图片交互升级，明确授权保存并推送到 GitHub main。代码此前已通过 lint / typecheck / build、隔离生成测试和浏览器验收；本次保存最终验收记录与项目记忆。真实错误密钥专测未由助手单独执行，其自动模拟失败路径已通过，不将模拟测试表述为真实 API 验收。
 

@@ -55,3 +55,11 @@ ZenMux 图片 slug 来自指定[模型列表](https://zenmux.ai/models?sort=newe
 - 超时、5xx、429、内容拦截、无图片或无有效结果可切换；参数 / 鉴权等 4xx（非429）直接报错。KIE HTTP200业务错误仍须识别，再按有效错误码分类，避免参数错误重复扣费。
 - 熔断使用数据库，web 与 worker 共用，网关在5分钟内连续3次失败后暂停3分钟；成功清零，Key更换时重置旧熔断，密钥仅保存不可逆指纹。逐次生成尝试单独记录，轮询不重复算一笔付费生图；LLM每次实际请求写LlmCall。
 - 内部月度额度继续用积分预留，与实际网关费用分开。费用分别统计 credits / USD，不把两种币种直接相加；未知显示未知，估算注明估算。备用路线在结果和页面标记。
+
+## 实际调用核对与实现取舍
+
+- 2026-10-13 已用现有 SKU NL27TS01 的真实照片验证 KIE Gemini endpoint、reasoning_effort:low、image_url 和 response_format:json_schema，约14.8秒收到有效六分类 JSON，usage=3060 token、credits_consumed=0.25。未观察到该次调用与文档字段冲突；属性表未列 response_format 的差异已有实际成功证据。详见 [验收记录](task-3-progress.md)。
+- 实际错误 Key 生图和聊天均明确失败；恢复后在偏好 ZenMux 且其 Key 为空时使用 KIE 成功。ZenMux 未购买 Key，不能声称真实连通性已验证。
+- KIE 已创建的任务遇到查询 / 下载超时、5xx 或429，重试原任务直至10分钟截止，避免另一家再收费；明确终态失败才切换。此为已接受异步任务的费用保护，提交阶段仍按路由规则切换。同步结果本地存储失败不重发生成，保留费用预留供核对。
+- Google SDK 显式 retryOptions.attempts=1，OpenAI SDK maxRetries=0；LLM 的 KIE 请求限流即交由路由，不做长时间退避。KIE 生图提交 / 上传保留任务2的限流退避。
+- GenerationAttempt / LlmCall 是逐次调用账本；GenerationJob 表示最终生图结果。KIE 实际 creditsConsumed / credits_consumed 优先；缺失时生图按已核实分辨率价格估算。ZenMux 固定美元价未知，不以目录 token 价推造每图固定费用。

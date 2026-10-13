@@ -9,14 +9,7 @@ export type ImageInput = {
 export type ImageResult =
   | { status: "pending" }
   | { status: "success"; urls: string[]; cost?: GatewayCost }
-  | { status: "failed"; error: string };
-
-// 保留旧接口供任务 2 回归测试；业务改为以下同步 / 异步统一接口。
-export interface LegacyImageProvider {
-  uploadFile(assetId: string): Promise<string>;
-  submit(model: string, input: ImageInput): Promise<string>;
-  getResult(taskId: string): Promise<ImageResult>;
-}
+  | { status: "failed"; error: string; code?: number };
 
 export type ImageResolution = "1K" | "2K" | "4K";
 export type ImageRequest = {

@@ -1,11 +1,13 @@
 # 项目记忆
 
-2026-10-13 用户已自行上传真实产品并生成一张成功图片；不再要求重复提供实拍或创建 TEST-001。现有产品、3 个素材文件和成功记录已核对保留。
+2026-10-13 任务2已由用户亲自验收并推送。任务3双网关底座已完成，用户明确要求完成后提交推送。保留既有真实SKU NL27TS01、实拍和生成记录；不要要求重复上传或创建TEST-001。
 
-最新交互升级已完成：本地图片拖入即上传、删除替换、拖动和按钮排序；全部 15 比例、2K/4K 及 6/9 积分预留；选中原图的指令二次编辑与连续新版本。来源图在服务端核对，原图与历史参考不删除，图片删除为 Asset.deletedAt 标记，排序持久化。增量迁移 20261013020000_reference_management 已应用。
+任务3：KIE异步与ZenMux同步生图共享保存函数，统一LLM接口；models.config.ts逻辑候选+GATEWAY_PREFERENCE；空Key跳过，4xx非429不换，其他有效失败备用。DB GatewayCircuit共享熔断（5分钟3次失败，暂停3分钟，完成成功或Key变更恢复）；异步pending不清零失败，查询/下载故障重试原任务防重复收费，终态失败换备用。GenerationAttempt、LlmCall记录每次尝试；GenerationJob记录最终provider/model/fallback，reservedCredits为内部月度额度，cost/currency为实付或估算，美元/积分不混加。
 
-任务 2 已由用户验收：2026-10-13 用户确认“我已经测试过了，可以保存推送了”，接受当前功能与交互升级，并授权推送 origin/main。不再要求重复测试或再次确认。继续前阅读 [升级记录](../docs/image-workflow-upgrade.md) 和 [任务 2 记录](../docs/task-2-progress.md)。lint/typecheck/build、扩展隔离及浏览器验收通过，自动验收未额外调用付费 API；不虚构真实错误密钥专测或用户测试细节。最终同步状态以 Git 远程查询为准。
+/admin/gateways仅管理员，配置/熔断/24小时指标/分币种费用/确认付费测试/只读路由；显式测试固定网关并允许熔断探测。商品identityTraits旁AI提炼使用已保存资料和2～3实拍，只填文本框需人工保存。提示词src/prompts/identity.ts。
 
-网页和 worker 后台运行，日志位于 .local/；不要重复启动或等待常驻服务退出。开发模式曾保留旧 CSS，重启网页已加载新规则并以样式断言和截图验证。常规 Windows 沙箱初始化失败，使用已获自动审批的 escalated exec；Python 仅 WindowsApps 占位，测试和 UTF-8 记忆维护使用 Node/TypeScript。
+真实NL27TS01 KIE提炼14.8秒、3060token、0.25积分已记录；数据库身份未自动覆盖。真实错误Key生图/LLM失败及恢复、偏好ZenMux空Key走KIE都已验证，无新付费图。13模拟单元、扩展隔离数据库+真实MinIO转存和3浏览器回归、lint/typecheck/build通过。新迁移20261013034846_dual_gateways已应用。目标slug均核实，ZenMux尚无Key只模拟：google/gemini-nano-banana-2.1、google/gemini-2.5-pro；KIE nano-banana-2-1、gemini-3-6-flash-openai（supportsTools=false）、gpt-6-1-sol（Responses，仅配置Agent）。未知ZenMux真实全比例/参考上限/精确费用，不猜价格。
 
-配额按北京时间自然月，明确未提交/被拒绝释放预留，扣费不确定保留。仅启用 KIE，ZenMux 和 Agent 尚未接入；后台页面 403 使用 Next.js forbidden()，authInterrupts 已开启。
+启用ZenMux只填ZENMUX_API_KEY，地址默认OpenAI /api/v1与Google /api/vertex-ai，使用Pay As You Go，重启web+worker后后台确认付费测试。详见[任务3记录](../docs/task-3-progress.md)和[协议核实](../docs/gateways.md)，推送状态以Git远程为准。
+
+网页和worker是常驻后台服务，日志.local/，不要重复启动或等待退出。改.env须重启两者；重启worker前检查无pending/running任务，只停止已核实本项目PID。Windows普通sandbox初始化失败，用已获自动审批的escalated exec；Python为WindowsApps占位，UTF-8记忆维护用Node/tsx。密钥不写日志/Git/前端，测试隔离数据清理。

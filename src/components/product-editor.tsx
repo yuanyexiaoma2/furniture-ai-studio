@@ -20,7 +20,7 @@ export function ProductEditor({ product, readonly, onUpdate, children }: { produ
       const response = await fetch(`/api/products/${current.id}/identity`, { method: "POST", signal: AbortSignal.timeout(65000) });
       const result = await response.json(); if (!response.ok) throw new Error(result.error || "AI 提炼失败");
       if (identityRef.current) identityRef.current.value = result.text;
-      setNotice(`AI 提炼完成（${result.provider === 'kie' ? 'KIE' : 'ZenMux'}${result.fallback ? ' · 备用线路' : ''}），请核对并修改后点击保存产品资料；尚未保存。`);
+      setNotice(`AI 提炼完成（${result.provider === 'kie' ? 'KIE' : 'ZenMux'}${result.fallback ? ' · 备用线路' : ''}），请核对并修改后点击保存产品资料；尚未保存。${result.warnings?.length ? ` 已自动切换：${result.warnings.join('；')}` : ''}`);
     } catch (e) { setError(e instanceof Error && e.name === 'TimeoutError' ? "AI 提炼等待超时，请刷新后核对网关记录；当前文本未修改" : e instanceof Error ? e.message : "AI 提炼失败"); }
     finally { setAnalyzing(false); }
   }

@@ -1,0 +1,43 @@
+import "dotenv/config";
+import { test, expect } from "@playwright/test";
+import { randomUUID } from "node:crypto";
+import { PrismaClient } from "../src/generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { mkdir } from "node:fs/promises";
+import sharp from "sharp";
+let db: PrismaClient, productId = "";
+test.beforeAll(async () => { db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) }); await mkdir(".local/verification", { recursive: true }); });
+test.afterAll(async () => { if (productId) { await db.asset.deleteMany({ where: { productId } }); await db.product.delete({ where: { id: productId } }); } await db.$disconnect(); });
+test("网关后台与 AI 提炼：确认付费、空 Key、结构化填入且手动保存（不产生真实调用）", async ({ page }) => {
+  await page.goto("/login"); await page.getByLabel("公司邮箱").fill(process.env.ADMIN_EMAIL!); await page.getByLabel("密码", { exact: true }).fill(process.env.ADMIN_PASSWORD!); await page.getByRole("button", { name: "进入工作台" }).click(); await expect(page).toHaveURL("http://localhost:3000/");
+  await page.goto("/admin/gateways"); await expect(page.getByRole("heading", { name: "网关状态." })).toBeVisible();
+  const kie = page.locator(".gateway-card").filter({ has: page.getByRole("heading", { name: "KIE", exact: true }) });
+  const zenmux = page.locator(".gateway-card").filter({ has: page.getByRole("heading", { name: "ZenMux", exact: true }) });
+  if (!process.env.ZENMUX_API_KEY?.trim()) { await expect(zenmux.getByText("未配置", { exact: true })).toBeVisible(); await expect(zenmux.getByRole("button", { name: "连通性测试 · LLM" })).toBeDisabled(); }
+  await expect(kie.locator(".gateway-badge")).toHaveText("正常");
+  expect((await page.request.post("/api/admin/gateways/test", { headers: { Origin: "http://localhost:3000" }, data: { provider: "kie", kind: "image", confirmed: false } })).status()).toBe(400);
+  await expect(page.locator(".gateway-grid")).toHaveCSS("display", "grid");
+  let requests = 0;
+  await page.route("**/api/admin/gateways/test", async route => { requests++; expect(route.request().postDataJSON().confirmed).toBe(true); await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ message: "模拟连通性测试成功" }) }); });
+  await kie.getByRole("button", { name: "连通性测试 · 1K 生图" }).click();
+  const dialog = page.getByRole("dialog"); await expect(dialog).toContainText("产生真实网关费用"); await dialog.getByRole("button", { name: "取消", exact: true }).click(); expect(requests).toBe(0);
+  await kie.getByRole("button", { name: "连通性测试 · LLM" }).click(); await dialog.getByRole("button", { name: "确认并测试" }).click(); await expect(page.getByRole("status")).toContainText("模拟连通性测试成功"); expect(requests).toBe(1);
+  await expect(kie.getByRole("button", { name: "连通性测试 · LLM" })).toBeEnabled();
+  await page.screenshot({ path: ".local/verification/gateways-desktop.png", fullPage: true, animations: "disabled" });
+  await page.setViewportSize({ width: 390, height: 844 }); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true); await kie.getByRole("button", { name: "连通性测试 · LLM" }).scrollIntoViewIfNeeded(); await expect(kie.getByRole("button", { name: "连通性测试 · LLM" })).toBeVisible(); await page.screenshot({ path: ".local/verification/gateways-mobile.png", fullPage: true, animations: "disabled" }); await page.setViewportSize({ width: 1440, height: 1100 });
+  const admin = await db.user.findUniqueOrThrow({ where: { email: process.env.ADMIN_EMAIL } });
+  const product = await db.product.create({ data: { sku: `E2E-GATEWAY-${randomUUID()}`, name: "身份提炼模拟商品", category: "柜", dimensions: "80cm", colors: "木色", sellingPoints: "模拟收纳", materials: "木", identityTraits: "原有人工确认内容", createdById: admin.id } }); productId = product.id;
+  const photo = await sharp({ create: { width: 64, height: 64, channels: 3, background: "#eeeeee" } }).png().toBuffer();
+  await page.route("**/api/assets/**", route => route.fulfill({ contentType: "image/png", body: photo }));
+  // 文件不读取，接口由本测试拦截；仅用记录满足页面两张图前置条件。
+  for (let i = 0; i < 2; i++) await db.asset.create({ data: { productId, createdById: admin.id, storageKey: `verification/not-stored/${productId}/${i}.png`, type: "photo", width: 64, height: 64, sortOrder: i } });
+  await page.route(`**/api/products/${productId}/identity`, async route => { await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ provider: "kie", fallback: true, text: "结构与部件（含数量）\n• 柜门：2 扇\n\n易被 AI 改错的细节提醒\n• 不可增加柜门" }) }); });
+  await page.goto(`/products/${productId}`); page.on("dialog", dialog => void dialog.accept()); await page.getByRole("button", { name: "AI 提炼", exact: true }).click();
+  await expect(page.getByLabel("产品身份特征", { exact: true })).toContainText("原有人工确认内容");
+  await expect.poll(() => page.getByLabel("产品身份特征", { exact: true }).inputValue()).toContain("柜门：2 扇");
+  await expect(page.getByRole("status").first()).toContainText("备用线路"); await expect(page.getByRole("status").first()).toContainText("尚未保存");
+  expect((await db.product.findUniqueOrThrow({ where: { id: productId } })).identityTraits).toBe("原有人工确认内容");
+  await page.getByLabel("产品身份特征", { exact: true }).fill("人工核对：双门柜，2 扇柜门"); await page.getByRole("button", { name: "保存产品资料", exact: true }).click(); await expect(page.getByText("产品资料与身份特征已保存", { exact: true })).toBeVisible(); expect((await db.product.findUniqueOrThrow({ where: { id: productId } })).identityTraits).toBe("人工核对：双门柜，2 扇柜门");
+  await page.route(`**/api/products/${productId}/identity`, route => route.fulfill({ status: 401, contentType: "application/json", body: JSON.stringify({ error: "KIE：密钥无效或没有访问权限；未自动切换" }) }));
+  await page.getByRole("button", { name: "AI 提炼", exact: true }).click(); await expect(page.locator(".product-information").getByRole("alert")).toContainText("KIE：密钥无效"); expect(await page.getByLabel("产品身份特征", { exact: true }).inputValue()).toBe("人工核对：双门柜，2 扇柜门");
+});

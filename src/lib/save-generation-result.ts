@@ -16,7 +16,9 @@ export async function saveGenerationResult(jobId: string, images: Buffer[], meta
       await putObject(key, bytes, photo.mime); stored.push({ key, width: photo.width, height: photo.height });
     }
     const ids = await db.$transaction(async (tx) => {
-      const claimed = await tx.generationJob.updateMany({ where: { id: jobId, status: "running" }, data: { status: "success", completedAt: new Date(), error: null } });
+      const failures = job.fallback ? await tx.generationAttempt.findMany({ where: { jobId, status: "failed" }, select: { error: true } }) : [];
+      const explanation = failures.map(a => a.error).filter(Boolean).join('；');
+      const claimed = await tx.generationJob.updateMany({ where: { id: jobId, status: "running" }, data: { status: "success", completedAt: new Date(), error: job.fallback && explanation ? `已自动切换备用线路：${explanation}` : null } });
       if (!claimed.count) throw new Error("任务已经结束，停止转存");
       const ids: string[] = [];
       for (const file of stored) {

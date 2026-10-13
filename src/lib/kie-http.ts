@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { GatewayError, safeGatewayMessage } from "@/lib/gateway-error";
 
 export class KieError extends GatewayError {
-  constructor(message: string, public code: number = 500, uncertain = false) { super("kie", message, code, code === 429 || code >= 500, uncertain); }
+  constructor(message: string, public code: number = 500, uncertain = false) { super("kie", message, code >= 400 && code <= 599 ? code : 502, code === 429 || code < 400 || code >= 500, uncertain); }
 }
 
 export function safeKieMessage(message: unknown, key = process.env.KIE_API_KEY || "") {
