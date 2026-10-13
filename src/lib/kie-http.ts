@@ -38,7 +38,8 @@ type Options = { key?: string; fetcher?: typeof fetch; beforeRequest?: () => Pro
 export async function kieRequest(url: string, init: RequestInit, options: Options = {}) {
   const key = options.key ?? process.env.KIE_API_KEY?.trim();
   if (!key) throw new KieError("尚未配置 KIE_API_KEY，请管理员在 .env 填写密钥后重启网页与 worker", 401);
-  for (let attempt = 0; attempt < 5; attempt++) {
+  const attempts = options.allowMissingCode ? 1 : 5;
+  for (let attempt = 0; attempt < attempts; attempt++) {
     await (options.beforeRequest ?? reserveKieRequest)();
     let response: Response;
     try {
@@ -46,7 +47,7 @@ export async function kieRequest(url: string, init: RequestInit, options: Option
     } catch { throw new KieError("连接 KIE 超时或网络不可用（未自动重发同一付费请求）", 500, true); }
     const data = await response.json().catch(() => null);
     const code = response.status === 429 ? 429 : !response.ok ? response.status : Number(data?.code ?? (options.allowMissingCode ? 200 : 500));
-    if (code === 429 && attempt < 4) {
+    if (code === 429 && attempt < attempts - 1) {
       const retryAfter = Number(response.headers.get("retry-after"));
       await (options.sleep ?? delay)(Math.min(30000, Math.max(1000 * 2 ** attempt, Number.isFinite(retryAfter) ? retryAfter * 1000 : 0)));
       continue;
