@@ -75,6 +75,7 @@ model User {
   products      Product[]
   assets        Asset[]
   generationJobs GenerationJob[]
+  generationBatches GenerationBatch[]
   llmCalls      LlmCall[]
   identityVersions ProductIdentityVersion[]
 }
@@ -133,6 +134,9 @@ model ImagePack {
   updatedAt DateTime    @updatedAt
   product   Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
   slots     ImageSlot[]
+  version   Int         @default(1)
+  isCurrent Boolean     @default(true)
+  batches   GenerationBatch[]
 
   @@index([productId])
 }
@@ -144,6 +148,10 @@ model ImageSlot {
   slotType     SlotType
   goal         String          @db.Text
   method       String
+  name         String          @default("图位")
+  candidateCount Int           @default(2)
+  aspectRatio  String          @default("1:1")
+  deletedAt    DateTime?
   finalAssetId String?
   pack         ImagePack       @relation(fields: [packId], references: [id], onDelete: Cascade)
   finalAsset   Asset?          @relation("FinalAsset", fields: [finalAssetId], references: [id], onDelete: SetNull)
@@ -172,6 +180,11 @@ model Template {
 model GenerationJob {
   id             String     @id @default(cuid())
   slotId         String?
+  batchId        String?
+  retryOfId      String?    @unique
+  retryOf        GenerationJob? @relation("JobRetry", fields: [retryOfId], references: [id], onDelete: Restrict)
+  retriedBy      GenerationJob? @relation("JobRetry")
+  batch          GenerationBatch? @relation(fields: [batchId], references: [id], onDelete: Restrict)
   productId      String?
   logicalModel   String
   provider       String?
@@ -203,10 +216,27 @@ model GenerationJob {
   attempts       GenerationAttempt[]
 
   @@index([slotId])
+  @@index([batchId])
   @@index([createdById, createdAt])
   @@index([status, createdAt])
   @@index([provider, externalTaskId])
   @@index([productId, createdAt])
+}
+
+model GenerationBatch {
+  id            String   @id @default(cuid())
+  packId        String
+  createdById   String
+  createdAt     DateTime @default(now())
+  slotCount     Int
+  totalCount    Int
+  estimatedCostUsd Decimal @db.Decimal(12, 6)
+  status        String   @default("pending")
+  requestKey    String   @unique
+  pack          ImagePack @relation(fields: [packId], references: [id], onDelete: Restrict)
+  createdBy     User @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  jobs          GenerationJob[]
+  @@index([packId, createdAt])
 }
 
 // 一次付费提交对应一条记录，轮询不另算一次调用。
