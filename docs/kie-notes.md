@@ -1,5 +1,7 @@
 # KIE 官方文档核实（2026-10-12）
 
+2026-10-13 续作复核：官方 [产品页](https://kie.ai/zh-CN/nano-banana-2-1) 与 [API 示例](https://docs.kie.ai/market/google/nanobanana-2-1) 仍确认 `nano-banana-2-1`、`image_input`、2K 6 积分及小写 `png`，未发现字段差异。本次没有调用付费 API，真实 taskId / 耗时待同一家具实拍验收后补充。
+
 ## 1. 模型上线、价格与输入输出
 
 - Nano Banana 2.1 已在 KIE 产品页上线。本项目使用该版本，不使用预计 2026-10-29 下线的旧版。来源：[产品页](https://kie.ai/zh-CN/nano-banana-2-1)。

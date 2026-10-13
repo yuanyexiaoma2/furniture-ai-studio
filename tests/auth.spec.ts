@@ -72,7 +72,7 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   await admin.getByRole("button", { name: "进入工作台" }).click();
   await expect(admin.getByRole("main").getByRole("alert")).toContainText("邮箱或密码不正确");
   await login(admin, process.env.ADMIN_EMAIL!, process.env.ADMIN_PASSWORD!);
-  await expect(admin.getByRole("heading", { name: "还没有 SKU 项目" })).toBeVisible();
+  await expect(admin.getByRole("heading", { name: "SKU 项目." })).toBeVisible();
   await admin.screenshot({ path: ".local/verification/projects-desktop.png", fullPage: true, animations: "disabled" });
   await admin.getByRole("link", { name: "模板库", exact: true }).click();
   await expect(admin.getByRole("heading", { name: "即将开放" })).toBeVisible();
@@ -93,7 +93,7 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   await admin.getByRole("button", { name: "退出登录" }).click();
   await expect(admin).toHaveURL(/\/login$/);
   await login(admin, designerEmail, password);
-  await expect(admin.getByRole("heading", { name: "还没有 SKU 项目" })).toBeVisible();
+  await expect(admin.getByRole("heading", { name: "SKU 项目." })).toBeVisible();
   await loginAfterLogout(admin, process.env.ADMIN_EMAIL!, process.env.ADMIN_PASSWORD!);
 
   const viewerContext = await browser.newContext(); contexts.push(viewerContext);

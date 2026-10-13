@@ -63,4 +63,3 @@ export async function pollSceneJob(id: string, provider: ImageProvider, download
     for (const key of storedKeys) await deleteObject(key).catch(() => undefined);
   }
 }
-

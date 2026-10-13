@@ -1,12 +1,12 @@
 # 家具电商 AI 生图工作台
 
-公司内部创意工作空间。任务 1 实现项目骨架、账号密码登录和管理员用户管理。
+公司内部创意工作空间。已实现账号密码登录、管理员用户管理，以及商品资料、实拍上传和 KIE 场景生成工作流。任务 2 真实家具生图验收尚未完成。
 
 ## 如何运行
 
 任务 2 仅启用 KIE，ZenMux 未开通、未启用。官方模型与字段核实记录见 [docs/kie-notes.md](docs/kie-notes.md)。
 
-本机重新打开项目：数据库和 MinIO 已运行时，在项目目录执行 `npm run dev -- --hostname 127.0.0.1`，然后访问 <http://localhost:3000>。
+本机重新打开项目：先确认 Docker Desktop 已启动，运行 `docker compose up -d`；在项目目录执行 `npm run dev -- --hostname 127.0.0.1`，另一终端执行 `npm run worker`，然后访问 <http://localhost:3000>。网页与 worker 都是常驻服务，无需等待退出。不要重复启动已运行的服务。
 
 ### 1. 环境准备
 
@@ -86,23 +86,31 @@ npm run lint
 npm run typecheck
 npm run build
 npm run test:e2e
+npm run test:generation
 ```
 
 端到端验收需要正在运行的 `npm run dev`、数据库及 `.env` 的管理员账号。默认使用本机 Chrome 的独立无头会话，不操作日常浏览器资料。没有 Chrome 时可运行 `npx playwright install chromium`，随后设置 `PLAYWRIGHT_CHANNEL=chromium`。
 
-测试仅创建随机邮箱临时账号，结束后删除自己创建的账号，不修改真实管理员密码或角色。验收覆盖管理员登录、创建设计师、退出后设计师登录、viewer 后台及接口 403、角色变更和密码重置后的会话失效。不记录含密码的浏览器 trace。
+浏览器测试仅创建随机临时账号和 `E2E-` 商品，结束后清理自己创建的账号、商品与存储对象，不修改真实管理员密码或角色。验收覆盖登录与权限、商品保存、图片格式与上传数量、生成条件、模拟记录刷新留存、下载及移动端布局。不记录含密码的浏览器 trace，不发起真实 KIE 生图。
+
+`test:generation` 使用随机隔离的本地 PostgreSQL 数据库、真实 MinIO 和本地模拟 KIE 服务，验证并发配额、事务入队、错误密钥、上传缓存、断网不重发、结果转存重试、超时和 429 退避。数据库账号需有创建数据库权限；测试结束会删除该临时数据库及测试对象，原 `.env` 不变。测试图不能替代同一家具 2～3 张不同角度实拍的真实验收。
+
+进入商品页，先保存身份特征并上传 2～3 张实拍，再输入场景意图、选择比例，点击“生成一张场景图”。默认 2K / PNG，预留 6 积分；记录每 5 秒刷新，也可手动刷新。生成结果为待美工确认的候选图，可预览和下载。
+
+用户月度配额按北京时间自然月计算，`GenerationJob.cost` 保存积分而非美元。明确未提交或被 KIE 拒绝时释放预留；已提交失败、转存超时或提交结果不确定时保留预留，需管理员核对 KIE 扣费记录后处理，本阶段没有自动对账功能。
 
 ### 5. 页面与权限
 
 | 路径 | 权限与内容 |
 | --- | --- |
 | `/login` | 账号密码登录；已登录成员跳转首页 |
-| `/` | 全员登录：SKU 项目空列表 |
+| `/` | 全员登录：SKU 项目列表，非 viewer 可新建商品 |
+| `/products/[id]` | 全员登录：商品资料、参考图和持久生成记录，非 viewer 可保存、上传和生成 |
 | `/templates` | 全员登录：模板库占位 |
 | `/admin` | 仅管理员：管理入口，其余设置占位 |
 | `/admin/users` | 仅管理员：新增用户、角色修改与密码重置 |
 
-四种角色为 `admin` / `template_editor` / `designer` / `viewer`。本阶段除后台外页面权限相同，后续定义业务权限。未登录页面跳转登录页，接口返回 401；非管理员后台请求返回 403。修改角色或重置密码会撤销目标用户旧会话。当前管理员不能降低自己的权限。
+四种角色为 `admin` / `template_editor` / `designer` / `viewer`。viewer 只读，不能创建、修改商品、上传实拍或生成图片。未登录页面跳转登录页，接口返回 401；非管理员后台请求返回 403。修改角色或重置密码会撤销目标用户旧会话。当前管理员不能降低自己的权限。
 
 ## 技术实现
 
@@ -110,7 +118,8 @@ npm run test:e2e
 - Auth.js Credentials + JWT 会话、bcrypt 成本 12；权限在入口、布局和写入接口中检查。
 - PostgreSQL + Prisma 7（pg driver adapter），八个业务模型包含关系、唯一约束及索引。
 - API 使用用户资料字段白名单，密码哈希不会发送给浏览器；写入接口校验同源请求。
-- pg-boss、S3 SDK、AI SDK、sharp 已安装，本阶段没有业务调用。
+- pg-boss 执行串行提交与持久轮询，S3 SDK / sharp 负责实拍验证和结果转存；Agent 对话尚未实现。
+- 后台页面拒绝访问使用 Next.js `forbidden()`，已启用 `experimental.authInterrupts` 并通过 403 浏览器验收；避免 rewrite 将拒绝页面状态覆盖为 200。参考 [Next.js 官方文档](https://nextjs.org/docs/app/api-reference/functions/forbidden)。
 - `AGENTS.md` 保留指定原文，后续模型路由必须核实官方文档。
 
 ## 本机环境记录
@@ -128,6 +137,8 @@ npm run test:e2e
 本机 GitHub 登录及 Docker 引擎检查通过。Docker Hub 连接超时已通过复用缓存的 PostgreSQL 镜像和官方 Quay MinIO 镜像完成本地启动；新电脑仍需可以下载这些镜像。
 
 ## 本次完成内容
+
+- 2026-10-13 任务 2 续作：完成场景生成 API 与面板、北京时间月度积分原子预留、GenerationJob / pg-boss 事务入队、刷新留存、候选图预览与下载；修复超时预留、转存重试和后台 403。lint、typecheck、生产构建、登录权限回归、商品页浏览器验收及隔离生成测试通过。网页与 worker 已后台启动，未调用付费生图；仍待 TEST-001 实拍与真实 KIE 验收，未 push。详见 [续作记录](docs/task-2-progress.md)。
 
 - 2026-10-12 任务 2 暂停点：商品创建、资料与身份特征保存、私有 MinIO 实拍上传及商品页已实现。生成面板、配额校验、真实 KIE 生图及完整验收尚未完成；本次未发起付费生图，尚未 push。续作清单见 [docs/task-2-progress.md](docs/task-2-progress.md)。
 
