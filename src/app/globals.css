@@ -2,6 +2,31 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+.gateway-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.gateway-card, .gateway-routes { padding: 28px; }
+.gateway-card .panel-heading h2 { display: flex; align-items: center; gap: 10px; }
+.gateway-badge { padding: 5px 10px; border-radius: 5px; background: #ecece6; color: #6b7067; font-size: 12px; }
+.gateway-badge.healthy { background: #e5eddf; color: #355139; }
+.gateway-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 28px 0; }
+.gateway-stats strong { display: block; font-size: 27px; font-weight: 600; letter-spacing: -1px; }
+.gateway-stats span, .gateway-cost small { font-size: 12px; color: #777d72; }
+.gateway-cost { padding: 16px 0; border-top: 1px solid #e5e7dd; border-bottom: 1px solid #e5e7dd; display: flex; flex-direction: column; gap: 7px; font-size: 13px; }
+.gateway-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.gateway-routes { margin-top: 24px; }
+.gateway-route-list > div { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid #e5e7dd; font-size: 13px; }
+.gateway-route-list ol { list-style: decimal; padding-left: 20px; }
+.gateway-route-list li { padding: 5px; }
+.gateway-route-list li span { margin-right: 10px; color: #6a7466; }
+.gateway-route-list li small { display: block; color: #777d72; }
+.gateway-route-list code { overflow-wrap: anywhere; }
+.gateway-dialog-backdrop { position: fixed; z-index: 100; inset: 0; background: #18211980; display: grid; place-items: center; padding: 24px; }
+.gateway-dialog { width: min(480px, 100%); padding: 32px; background: #fffef9; }
+.gateway-dialog h2 { margin-bottom: 16px; font-size: 21px; font-weight: 600; }
+.gateway-dialog p { font-size: 14px; line-height: 1.8; }
+.identity-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.fallback-label { color: #977139; font-weight: 500; }
+@media (max-width: 760px) { .gateway-grid { grid-template-columns: 1fr; } .gateway-card, .gateway-routes { padding: 20px; } .gateway-route-list > div { grid-template-columns: 1fr; gap: 8px; } .gateway-routes .panel-heading { flex-wrap: wrap; gap: 12px; } }
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
