@@ -5,6 +5,9 @@ export function safeGatewayMessage(value: unknown) {
   return text.replace(/Bearer\s+\S+/gi, "Bearer [已隐藏]").replace(/([?&](?:key|api_key|token)=)[^&\s]+/gi, "$1[已隐藏]").slice(0, 400);
 }
 export class GatewayError extends Error {
+  cost?: import("./image-provider").GatewayCost;
+  usage?: import("./image-provider").TokenUsage;
+  externalGenerationId?: string;
   constructor(public provider: GatewayName, message: string, public status = 500, public retryable = status === 429 || status >= 500, public uncertain = false) {
     const label = provider === "kie" ? "KIE" : "ZenMux";
     const clean = safeGatewayMessage(message).replace(new RegExp(`^(?:${label}：)+`), "");

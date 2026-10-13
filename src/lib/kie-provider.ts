@@ -2,17 +2,19 @@ import "server-only";
 import { createHash } from "node:crypto";
 import { db } from "@/lib/db";
 import { readObject, inspectPhoto } from "@/lib/storage";
-import { KieError, kieRequest, safeKieMessage } from "@/lib/kie-http";
+import { KieError, kieRequest, kieFailure, ReferenceImageFailure, referenceImageUnavailable } from "@/lib/kie-http";
+import { models } from "./models.config";
+import { kieCreditCost } from "./gateway-cost";
 import type { ImageInput, ImageProvider, ImageResult, ImageRequest, ImageGeneration } from "@/lib/image-provider";
 import { ImageTaskFailure } from "@/lib/gateway-error";
 import { downloadResultImage } from "@/lib/remote-image";
 
 export class KieProvider implements ImageProvider {
-  constructor(private model = "nano-banana-2-1", private download: (url: string) => Promise<Buffer> = downloadResultImage) {}
+  constructor(private model = models["scene-main"].find(c => c.provider === "kie")!.model, private download: (url: string) => Promise<Buffer> = downloadResultImage) {}
   isConfigured() { return Boolean(process.env.KIE_API_KEY?.trim()); }
   async generate(input: ImageRequest): Promise<ImageGeneration> {
     const urls: string[] = [];
-    for (const asset of input.referenceImages) urls.push(await this.uploadFile(asset.id));
+    for (const asset of input.referenceImages) urls.push(await this.uploadFile(asset.id, input.forceReferenceUpload));
     const requestInput: ImageInput = { prompt: input.prompt, image_input: urls, aspect_ratio: input.aspectRatio, resolution: input.resolution, output_format: input.outputFormat };
     const taskId = await this.submit(this.model, requestInput);
     return { kind: "pending", taskId, requestInput };
@@ -20,13 +22,13 @@ export class KieProvider implements ImageProvider {
   async poll(taskId: string): Promise<ImageGeneration> {
     const result = await this.getResult(taskId);
     if (result.status === "pending") return { kind: "pending", taskId };
-    if (result.status === "failed") { const status = result.code && result.code >= 400 && result.code <= 599 ? result.code : 500; throw new ImageTaskFailure("kie", result.error, status, status === 429 || status >= 500); }
+    if (result.status === "failed") { if (result.referenceUnavailable) throw new ReferenceImageFailure(result.error, result.cost); const status = result.code && result.code >= 400 && result.code <= 599 ? result.code : 500; const error = new ImageTaskFailure("kie", result.error, status, status === 429 || status >= 500); Object.assign(error, { cost: result.cost }); throw error; }
     return { kind: "done", images: await Promise.all(result.urls.map((url) => this.download(url))), cost: result.cost };
   }
   private baseUrl = process.env.KIE_BASE_URL?.trim() || "https://api.kie.ai";
   private uploadBaseUrl = process.env.KIE_UPLOAD_BASE_URL?.trim() || "https://kieai.redpandaai.co";
 
-  async uploadFile(assetId: string) {
+  async uploadFile(assetId: string, force = false) {
     const key = process.env.KIE_API_KEY?.trim();
     if (!key) throw new KieError("尚未配置 KIE_API_KEY，请联系管理员", 401);
     const asset = await db.asset.findUniqueOrThrow({ where: { id: assetId } });
@@ -39,7 +41,7 @@ export class KieProvider implements ImageProvider {
     return db.$transaction(async (tx) => {
       await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${id}, 0))`;
       const cached = await tx.kieUpload.findUnique({ where: { id } });
-      if (cached && cached.expiresAt.getTime() > Date.now()) return cached.url;
+      if (!force && cached && cached.expiresAt.getTime() > Date.now() && Date.now() - cached.uploadedAt.getTime() < 23 * 3600000) return cached.url;
       const form = new FormData();
       form.append("file", new Blob([new Uint8Array(bytes)], { type: photo.mime }), `${contentHash}.${photo.extension}`);
       form.append("uploadPath", "furniture-ai-studio/references");
@@ -48,7 +50,8 @@ export class KieProvider implements ImageProvider {
       if (response.success !== true || typeof response.data?.downloadUrl !== "string") throw new KieError("KIE 参考图上传失败：未返回可用文件地址");
       const url = response.data.downloadUrl as string;
       if (!/^https:\/\//.test(url)) throw new KieError("KIE 参考图上传返回了不安全的地址");
-      await tx.kieUpload.upsert({ where: { id }, create: { id, url, expiresAt: new Date(Date.now() + 23 * 3600000) }, update: { url, expiresAt: new Date(Date.now() + 23 * 3600000) } });
+      const uploadedAt = new Date(), expiresAt = new Date(uploadedAt.getTime() + 23 * 3600000);
+      await tx.kieUpload.upsert({ where: { id }, create: { id, url, uploadedAt, expiresAt }, update: { url, uploadedAt, expiresAt } });
       return url;
     }, { timeout: 180000, maxWait: 180000 });
   }
@@ -67,13 +70,16 @@ export class KieProvider implements ImageProvider {
     const response = await kieRequest(`${this.baseUrl}/api/v1/jobs/recordInfo?taskId=${encodeURIComponent(taskId)}`, { method: "GET" });
     const data = response.data;
     if (["waiting", "queuing", "generating"].includes(data?.state)) return { status: "pending" };
-    if (data?.state === "fail") return { status: "failed", code: /安全|拦截|safety|blocked|policy|content/i.test(String(data.failMsg)) ? 500 : Number(data.failCode) || 500, error: `KIE 生图失败${data.failCode ? `（${safeKieMessage(String(data.failCode))}）` : ""}：${safeKieMessage(data.failMsg)}` };
+    if (data?.state === "fail") { const failure = kieFailureForTask(data.failCode, data.failMsg); return { status: "failed", code: failure.status, referenceUnavailable: referenceImageUnavailable(data.failMsg), error: failure.message, cost: kieCreditCost(data.creditsConsumed) }; }
     if (data?.state === "success") {
       let result;
       try { result = JSON.parse(data.resultJson); } catch { throw new KieError("KIE 结果数据无法解析，未获得图片地址"); }
       if (!Array.isArray(result.resultUrls) || !result.resultUrls.length || result.resultUrls.some((url: unknown) => typeof url !== "string" || !url.startsWith("https://"))) throw new KieError("KIE 已完成任务但未返回有效图片地址");
-      return { status: "success", urls: result.resultUrls, ...(Number.isFinite(Number(data.creditsConsumed)) && data.creditsConsumed != null ? { cost: { amount: Number(data.creditsConsumed), currency: "credits" as const } } : {}) };
+      return { status: "success", urls: result.resultUrls, cost: kieCreditCost(data.creditsConsumed) };
     }
     throw new KieError("KIE 返回了未知任务状态，请检查账户任务记录");
   }
+}
+function kieFailureForTask(code: unknown, msg: unknown) {
+  return kieFailure(Number(code) || 500, msg);
 }

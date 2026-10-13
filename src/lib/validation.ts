@@ -14,7 +14,7 @@ export const createUserSchema = z.object({
   password: passwordSchema,
   role: roleSchema,
   department: z.string().trim().max(80).optional().default(""),
-  monthlyQuota: z.number().int().min(0).max(1000000),
+  monthlyQuota: z.number().finite().min(0).max(999999.999999).refine(value => Math.abs(value * 1_000_000 - Math.round(value * 1_000_000)) < 0.00001, "美元配额最多保留 6 位小数"),
 });
 export const updateUserSchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("role"), role: roleSchema }),

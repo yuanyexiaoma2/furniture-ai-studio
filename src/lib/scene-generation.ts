@@ -1,29 +1,24 @@
 import "server-only";
 import { fromPrisma } from "pg-boss";
 import { db } from "@/lib/db";
-import { getBoss, SUBMIT_QUEUE, workerIsReady, expireOverdueJobs } from "@/lib/generation-queue";
-import { KIE_IMAGE_MODEL, modelCost, sceneAspectRatios, sceneResolutions, type SceneAspectRatio, type SceneResolution } from "@/lib/models.config";
+import { getBoss, SUBMIT_QUEUE, workerIsReady, expireOverdueJobs, MAX_JOB_MS } from "@/lib/generation-queue";
+import { IMAGE_DEFAULTS, sceneAspectRatios, sceneResolutions, type SceneAspectRatio, type SceneResolution } from "@/lib/models.config";
+import { estimateImageUsd } from "./gateway-cost";
+import { configuredCandidate, assertUsdQuota, monthlySpendUsd } from "./quota";
+export { quotaMonth } from "./quota";
 import { candidatesFor, gatewayConfigured } from "./gateway-router";
 import { buildScenePrompt } from "@/prompts/scene";
 import { buildEditPrompt } from "@/prompts/edit";
 import { StudioError } from "@/lib/studio-error";
 
-// 配额按北京时间自然月计算；reservedCredits 与网关实际费用分开。
-export function quotaMonth(now = new Date()) {
-  const local = new Date(now.getTime() + 8 * 3600000);
-  const year = local.getUTCFullYear(), month = local.getUTCMonth();
-  return { start: new Date(Date.UTC(year, month, 1) - 8 * 3600000), end: new Date(Date.UTC(year, month + 1, 1) - 8 * 3600000) };
-}
-
 export async function generationAvailability(userId: string) {
-  const month = quotaMonth();
-  const [user, usage, ready] = await Promise.all([
+  const [user, used, ready, candidate] = await Promise.all([
     db.user.findUniqueOrThrow({ where: { id: userId }, select: { monthlyQuota: true } }),
-    db.generationJob.aggregate({ where: { createdById: userId, createdAt: { gte: month.start, lt: month.end } }, _sum: { reservedCredits: true } }),
+    monthlySpendUsd(db, userId),
     workerIsReady(),
+    configuredCandidate("scene-main").catch(() => null),
   ]);
-  const used = Number(usage._sum.reservedCredits ?? 0);
-  return { quota: user.monthlyQuota, used, remaining: Math.max(0, user.monthlyQuota - used), workerReady: ready, configured: candidatesFor("scene-main").some(c => gatewayConfigured(c.provider)) };
+  return { quota: Number(user.monthlyQuota), used, remaining: Math.max(0, Number(user.monthlyQuota) - used), workerReady: ready, configured: candidatesFor("scene-main").some(c => gatewayConfigured(c.provider)), estimates: { "2K": candidate ? estimateImageUsd(candidate, "2K") : 0, "4K": candidate ? estimateImageUsd(candidate, "4K") : 0 }, estimateProvider: candidate?.provider ?? null };
 }
 export type GenerationAvailability = Awaited<ReturnType<typeof generationAvailability>>;
 
@@ -39,6 +34,8 @@ async function createImageJob(userId: string, productId: string, intent: string,
   if (!candidatesFor("scene-main").some(c => gatewayConfigured(c.provider))) throw new StudioError("没有已配置的生图网关，请管理员填写 API Key 并重启网页与 worker", 503);
   if (!await workerIsReady()) throw new StudioError("生图 worker 未启动或已离线，请运行 npm run worker 后重试", 503);
   await expireOverdueJobs();
+  const logicalModel = source ? "edit" : "scene-main";
+  const candidate = await configuredCandidate(logicalModel);
   const boss = await getBoss();
   return db.$transaction(async (tx) => {
     // 与预留在同一事务锁定用户；两个并发请求不能使用同一份剩余额度。
@@ -58,19 +55,17 @@ async function createImageJob(userId: string, productId: string, intent: string,
       if (!originalJob || originalJob.productId !== productId || originalJob.status !== "success" || !Array.isArray(originalJob.resultAssetIds) || !originalJob.resultAssetIds.includes(source.sourceAssetId) || !originalAsset || originalAsset.productId !== productId || originalAsset.type !== "generated" || originalAsset.deletedAt) throw new StudioError("请选择当前商品已完成的生成图片进行编辑", 400);
     }
     const createdAt = new Date();
-    const month = quotaMonth(createdAt);
-    const usage = await tx.generationJob.aggregate({ where: { createdById: userId, createdAt: { gte: month.start, lt: month.end } }, _sum: { reservedCredits: true } });
-    const logicalModel = source ? "edit" : "scene-main";
-    const config = KIE_IMAGE_MODEL, { credits } = modelCost(logicalModel, resolution);
-    if (Number(usage._sum.reservedCredits ?? 0) + credits > user.monthlyQuota) throw new StudioError(`本月积分配额不足，本次需要 ${credits} 积分，请联系管理员`, 409);
     const prompt = source ? buildEditPrompt(product.identityTraits, intent) : buildScenePrompt(product.identityTraits, intent);
     if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
+    const estimate = estimateImageUsd(candidate, resolution, prompt, product.assets);
+    await assertUsdQuota(tx, userId, estimate);
+    const version = await tx.productIdentityVersion.findFirst({ where: { productId }, orderBy: { savedAt: "desc" } });
     const job = await tx.generationJob.create({ data: {
-      productId, logicalModel, reservedCredits: credits, createdById: userId, createdAt,
-      input: { prompt, ...(source ? { ...source, editIntent: intent } : { sceneIntent: intent }), identityTraits: product.identityTraits, referenceAssetIds: [...(source ? [source.sourceAssetId] : []), ...product.assets.map((asset) => asset.id)], image_input: [], aspect_ratio: aspectRatio, resolution, output_format: config.output_format, submissionAttempted: false },
+      productId, logicalModel, reservedUsd: estimate, createdById: userId, createdAt, deadlineAt: new Date(createdAt.getTime() + MAX_JOB_MS),
+      input: { prompt, ...(source ? { ...source, editIntent: intent } : { sceneIntent: intent }), identityTraits: product.identityTraits, identityVersionId: version?.id ?? null, identitySavedById: version?.savedById ?? null, identitySavedAt: version && !version.historical ? version.savedAt.toISOString() : null, referenceAssetIds: [...(source ? [source.sourceAssetId] : []), ...product.assets.map((asset) => asset.id)], image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false },
     } });
     const queued = await boss.send(SUBMIT_QUEUE, { jobId: job.id }, { db: fromPrisma(tx) });
-    if (!queued) throw new StudioError("任务未能入队，积分未预留，请稍后重试", 503);
+    if (!queued) throw new StudioError("任务未能入队，美元配额未预留，请稍后重试", 503);
     return job.id;
   }, { timeout: 15000 });
 }

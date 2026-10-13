@@ -75,6 +75,9 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   await page.getByLabel("产品身份特征", { exact: true }).fill("模拟身份已确认：双门四脚，两个黑色把手，纹理一致");
   await page.getByRole("button", { name: "保存产品资料" }).click();
   await expect(page.getByText("产品资料与身份特征已保存", { exact: true })).toBeVisible();
+  await expect(page.getByText(/最近保存：/)).toBeVisible();
+  const identityVersion = await db.productIdentityVersion.findFirstOrThrow({ where: { productId }, orderBy: { savedAt: "desc" } });
+  expect(identityVersion.savedById).toBe((await db.product.findUniqueOrThrow({ where: { id: productId } })).createdById);
 
   const png = await sharp({ create: { width: 64, height: 64, channels: 3, background: "#e7e5d8" } }).png().toBuffer();
   const png2 = await sharp({ create: { width: 64, height: 64, channels: 3, background: "#d9ddd0" } }).png().toBuffer();
@@ -112,9 +115,9 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   await expect(page.locator(".reference-card")).toHaveCount(3);
   const scene = page.locator(".scene-panel");
   await expect(scene.locator('input[name="scene-aspectRatio"]')).toHaveCount(15);
-  await scene.getByRole("radio", { name: "4K 9 积分" }).check();
+  await scene.getByRole("radio", { name: "4K", exact: true }).check();
   await expect(scene.locator(".generation-spec")).toContainText("4K");
-  await expect(scene.locator(".generation-spec")).toContainText("9 积分");
+  await expect(scene.locator(".generation-spec")).toContainText("$0.045000");
   await scene.getByRole("radio", { name: "21:9", exact: true }).check();
   await scene.getByLabel("想把产品放进怎样的空间？").fill("模拟 4K 宽幅场景，仅用于参数验收");
   let scenePayload: Record<string, unknown> | undefined;
@@ -134,12 +137,19 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   const generatedKey = `verification/e2e-${runId}/generated.png`;
   await storage.send(new PutObjectCommand({ Bucket: "assets", Key: generatedKey, Body: png, ContentType: "image/png" })); storage.destroy();
   const generated = await db.asset.create({ data: { productId, createdById: product.createdById, type: "generated", width: 64, height: 64, storageKey: generatedKey } });
-  const job = await db.generationJob.create({ data: { productId, createdById: product.createdById, logicalModel: "scene-main", provider: "simulation", model: "模拟测试记录", cost: 0, status: "success", input: { sceneIntent: "模拟场景记录，仅用于 UI 验收", resolution: "2K", aspect_ratio: "1:1" }, resultAssetIds: [generated.id], completedAt: new Date() } });
+  const job = await db.generationJob.create({ data: { productId, createdById: product.createdById, logicalModel: "scene-main", provider: "simulation", model: "模拟测试记录", costUsd: 0.03, credits: 6, costEstimated: true, status: "success", input: { sceneIntent: "模拟场景记录，仅用于 UI 验收", resolution: "2K", aspect_ratio: "1:1", identityTraits: "冻结的旧版身份" }, resultAssetIds: [generated.id], completedAt: new Date() } });
   await page.reload();
   await expect(page.getByTestId(`generation-${job.id}`)).toContainText("模拟场景记录");
+  await expect(page.getByTestId(`generation-${job.id}`)).toContainText("实际像素：64 × 64 px");
+  await expect(page.getByTestId(`generation-${job.id}`)).toContainText("预估 $0.030000");
+  await expect(page.getByTestId(`generation-${job.id}`).getByText("分辨率不足亚马逊建议值", { exact: true })).toBeVisible();
+  await expect(page.getByTestId(`generation-${job.id}`).locator(".resolution-warning")).toHaveCSS("background-color", "rgb(255, 243, 207)");
+  await page.getByTestId(`generation-${job.id}`).getByText("本次使用的身份特征版本", { exact: true }).click(); await expect(page.getByTestId(`generation-${job.id}`)).toContainText("冻结的旧版身份");
+  const failedJob = await db.generationJob.create({ data: { productId, createdById: product.createdById, logicalModel: "scene-main", provider: "simulation", model: "模拟业务错误", status: "failed", costUsd: 0, costEstimated: true, input: { sceneIntent: "模拟KIE HTTP200业务失败" }, error: "KIE：内容被安全策略拦截；已停止等待", completedAt: new Date() } });
+  await page.getByRole("button", { name: "刷新记录", exact: true }).click(); await expect(page.getByTestId(`generation-${failedJob.id}`)).toContainText("生成失败"); await expect(page.getByTestId(`generation-${failedJob.id}`)).toContainText("内容被安全策略拦截");
   await expect(page.getByLabel("产品身份特征", { exact: true })).toHaveValue("模拟身份已确认：双门四脚，两个黑色把手，纹理一致");
   const result = await api.get(`/api/products/${productId}/generations`);
-  expect(result.status()).toBe(200); expect((await result.json()).product.jobs[0].id).toBe(job.id);
+  expect(result.status()).toBe(200); expect((await result.json()).product.jobs.some((row: { id: string }) => row.id === job.id)).toBe(true);
   const download = await api.get(`/api/assets/${photos[0].id}?download=1`);
   expect(download.status()).toBe(200); expect(download.headers()["content-disposition"]).toContain("attachment");
   expect(download.headers()["cache-control"]).toBe("private, no-store");
@@ -147,7 +157,7 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   const editPanel = page.getByRole("region", { name: "二次编辑面板" });
   await expect(editPanel.getByAltText("二次编辑原图")).toHaveAttribute("src", `/api/assets/${generated.id}`);
   await editPanel.getByLabel("这张图需要怎样修改？").fill("保留产品，将墙面改为暖白色");
-  await editPanel.getByRole("radio", { name: "4K 9 积分" }).check();
+  await editPanel.getByRole("radio", { name: "4K", exact: true }).check();
   await editPanel.getByRole("radio", { name: "自动", exact: true }).check();
   // 拦截最终付费请求，只验证选中原图和用户选择送达；真实队列/版本由隔离测试覆盖。
   let editingPayload: Record<string, unknown> | undefined;

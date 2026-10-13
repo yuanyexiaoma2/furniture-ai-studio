@@ -1,13 +1,13 @@
 # 项目记忆
 
-2026-10-13 任务2已由用户亲自验收并推送。任务3双网关底座已完成，用户明确要求完成后提交推送。保留既有真实SKU NL27TS01、实拍和生成记录；不要要求重复上传或创建TEST-001。
+2026-10-13 最新九项审查已完成。任务2和任务3此前已验收并推送；本次用户明确要求修补后中文commit并push。保留真实SKU NL27TS01，不要求重新上传、创建TEST-001或重复付费生图。
 
-任务3：KIE异步与ZenMux同步生图共享保存函数，统一LLM接口；models.config.ts逻辑候选+GATEWAY_PREFERENCE；空Key跳过，4xx非429不换，其他有效失败备用。DB GatewayCircuit共享熔断（5分钟3次失败，暂停3分钟，完成成功或Key变更恢复）；异步pending不清零失败，查询/下载故障重试原任务防重复收费，终态失败换备用。GenerationAttempt、LlmCall记录每次尝试；GenerationJob记录最终provider/model/fallback，reservedCredits为内部月度额度，cost/currency为实付或估算，美元/积分不混加。
+当前费用/配额统一美元：monthlyQuota Decimal默认$0.50，迁移旧100积分为$0.50；GenerationJob/LlmCall/GenerationAttempt costUsd，原credits保留，reservedUsd与生图+LLM共同额度检查。旧cost/currency/reservedCredits仅原始历史，不能再作为当前业务单位。实际费用优先，缺失估算；KIE名义$0.005/积分，ZenMuxGoogle上游预估后5min management/generation查询、严格ID/model校验，有界异步回填。没有ZenMuxKey，真实ID映射/全比例/账单仍待实测。
 
-/admin/gateways仅管理员，配置/熔断/24小时指标/分币种费用/确认付费测试/只读路由；显式测试固定网关并允许熔断探测。商品identityTraits旁AI提炼使用已保存资料和2～3实拍，只填文本框需人工保存。提示词src/prompts/identity.ts。
+KIE四类请求检查业务code，错误中文化；标准OpenAI成功无code可接受但有code必须200。redpanda当前文档24h保留，缓存23h并更新uploadedAt；明确参考图访问失败仅原KIE重传一次、独立记录尝试，不把普通HTTP状态猜为过期。适配器默认模型均读models.config，业务仅逻辑路由，场景提示词只有prompts/scene.ts。
 
-真实NL27TS01 KIE提炼14.8秒、3060token、0.25积分已记录；数据库身份未自动覆盖。真实错误Key生图/LLM失败及恢复、偏好ZenMux空Key走KIE都已验证，无新付费图。13模拟单元、扩展隔离数据库+真实MinIO转存和3浏览器回归、lint/typecheck/build通过。新迁移20261013034846_dual_gateways已应用。目标slug均核实，ZenMux尚无Key只模拟：google/gemini-nano-banana-2.1、google/gemini-2.5-pro；KIE nano-banana-2-1、gemini-3-6-flash-openai（supportsTools=false）、gpt-6-1-sol（Responses，仅配置Agent）。未知ZenMux真实全比例/参考上限/精确费用，不猜价格。
+独立常驻worker有唯一租约；启动取消旧队列占用，接管旧KIE taskId而不重复提交，恢复pending并给新的10分钟查询窗口；中断的同步ZenMux或未知taskId收费提交failed，先核对账单再重试。网页重启不影响worker。ProductIdentityVersion每次手动保存记录人/时间/全文，生成input冻结版本全文；历史缺失不能伪造。sharp像素转存一直正确，UI显示真实像素和低于2000px黄色警告。
 
-启用ZenMux只填ZENMUX_API_KEY，地址默认OpenAI /api/v1与Google /api/vertex-ai，使用Pay As You Go，重启web+worker后后台确认付费测试。详见[任务3记录](../docs/task-3-progress.md)和[协议核实](../docs/gateways.md)，推送状态以Git远程为准。
+17单元、扩展隔离Postgres/真实MinIO和3浏览器回归、lint/typecheck/build通过。本次仅新增真实job cmv6aypd7000b5wv8p6c22f6x，在dev重启后成功2048x2048，实耗5积分/$0.025（配置预估6积分/$0.030），完整冻结原身份“藤编门上的五金把手”，未改商品资料。迁移前1产品/4素材/3生成记录和配额转换均已核对保留。详见[审查记录](../docs/task-2-3-review.md)、[KIE核实](../docs/kie-notes.md)和[网关文档](../docs/gateways.md)。
 
-网页和worker是常驻后台服务，日志.local/，不要重复启动或等待退出。改.env须重启两者；重启worker前检查无pending/running任务，只停止已核实本项目PID。Windows普通sandbox初始化失败，用已获自动审批的escalated exec；Python为WindowsApps占位，UTF-8记忆维护用Node/tsx。密钥不写日志/Git/前端，测试隔离数据清理。
+启用ZenMux填Pay As You Go Key、重启web+worker后/admin/gateways确认付费测试，无需改代码。官方未确认备用上传域名，失效时确认地址再改KIE_UPLOAD_BASE_URL并重启。所有Key只服务端，不输出或提交；.local日志/证据忽略。停止worker前检查无pending/running，只停止已核实本项目PID，不等待常驻服务退出。Windows普通sandbox初始化失败，用自动审批escalated exec；Python为占位，文件修改用UTF8脚本文件，不能将中文JS直接经PowerShell默认编码stdin传Node（会变问号）。

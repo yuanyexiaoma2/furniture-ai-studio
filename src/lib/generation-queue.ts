@@ -29,11 +29,13 @@ export async function workerIsReady() {
 export async function expireOverdueJobs() {
   // 单条 SQL 锁住状态与预留，防止超时监测与提交标记交错后错误退款。
   const expired = await db.$queryRaw<{ provider: string | null; attempted: boolean }[]>`UPDATE "GenerationJob" SET status = 'failed', "completedAt" = NOW(), "updatedAt" = NOW(),
-    "reservedCredits" = CASE WHEN input->>'submissionAttempted' = 'true' OR "externalTaskId" IS NOT NULL THEN "reservedCredits" ELSE 0 END,
+    "reservedUsd" = CASE WHEN input->>'submissionAttempted' = 'true' OR "externalTaskId" IS NOT NULL THEN "reservedUsd" ELSE 0 END,
+    "costUsd" = CASE WHEN input->>'submissionAttempted' = 'true' OR "externalTaskId" IS NOT NULL THEN COALESCE("costUsd","reservedUsd") ELSE 0 END,
+    "costEstimated" = true,
     error = CASE WHEN input->>'submissionAttempted' = 'true' OR "externalTaskId" IS NOT NULL
-      THEN '任务超过 10 分钟未完成，已停止等待。扣费状态未确定，积分预留保留，请核对网关任务记录。'
-      ELSE '任务超过 10 分钟未提交，已停止等待并释放积分预留，请检查 worker 后重新生成。' END
-    WHERE status IN ('pending', 'running') AND "createdAt" < ${new Date(Date.now() - MAX_JOB_MS)} RETURNING provider, (input->>'submissionAttempted' = 'true' OR "externalTaskId" IS NOT NULL) AS attempted`;
+      THEN '任务超过 10 分钟未完成，已停止等待。扣费状态未确定，美元预估保留，请核对网关任务记录。'
+      ELSE '任务超过 10 分钟未提交，已停止等待并释放美元配额预留，请检查 worker 后重新生成。' END
+    WHERE status IN ('pending', 'running') AND COALESCE("deadlineAt","createdAt" + INTERVAL '10 minutes') < NOW() RETURNING provider, (input->>'submissionAttempted' = 'true' OR "externalTaskId" IS NOT NULL) AS attempted`;
   for (const job of expired) if (job.attempted && (job.provider === "kie" || job.provider === "zenmux")) await databaseCircuit.failure(job.provider);
   await db.$executeRaw`UPDATE "GenerationAttempt" a SET status = 'failed', "completedAt" = NOW(), "durationMs" = GREATEST(0, EXTRACT(EPOCH FROM (NOW() - a."createdAt"))*1000)::integer, error = j.error FROM "GenerationJob" j WHERE a."jobId" = j.id AND j.status = 'failed' AND a.status IN ('running', 'pending')`;
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ArrowUpRight, LoaderCircle, Sparkles, RefreshCw, Download, Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductEditor } from "@/components/product-editor";
-import { modelLabel, modelCost, type SceneResolution, type SceneAspectRatio } from "@/lib/models.config";
+import { modelLabel, type SceneResolution, type SceneAspectRatio } from "@/lib/models.config";
 import { GenerationOptions, generationBlockReason } from "@/components/generation-options";
 import { ImageEditPanel } from "@/components/image-edit-panel";
 import type { ProductSnapshot } from "@/lib/product-data";
@@ -45,8 +45,8 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
     const timer = setInterval(() => void poll(), 5000);
     return () => { controller.abort(); clearInterval(timer); };
   }, [refresh]);
-  const { credits, usd } = modelCost("scene-main", resolution);
-  const unavailable = generationBlockReason(product, availability, readonly, credits);
+  const usd = availability.estimates[resolution];
+  const unavailable = generationBlockReason(product, availability, readonly, usd);
   async function generate(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setPending(true); setError(""); setNotice("");
     const form = new FormData(event.currentTarget);
@@ -71,8 +71,8 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
           <textarea id="scene-intent" name="sceneIntent" placeholder="例如：温暖自然的北欧客厅，以浅色墙面与原木家具营造日常居家的氛围。" required maxLength={8000} rows={4} disabled={readonly || pending} />
           <p className="field-hint">自动使用已保存的产品身份特征和全部实拍参考。修改资料后请先保存。</p>
           <GenerationOptions prefix="scene" resolution={resolution} aspectRatio={aspectRatio} disabled={readonly || pending} onResolution={setResolution} onAspectRatio={setAspectRatio} />
-          <div className="generation-spec"><span>{modelLabel()} · {resolution} · PNG</span><strong>配额 {credits} 积分 <small>KIE 约 ${usd.toFixed(3).replace(/0$/, "")}</small></strong></div>
-          <div className="scene-action"><Button type="submit" disabled={pending || Boolean(unavailable)}>{pending ? <LoaderCircle size={16} className="animate-spin" /> : <ArrowUpRight size={16} />}生成一张场景图</Button><span>本月剩余 {availability.remaining} / {availability.quota} 积分</span></div>
+          <div className="generation-spec"><span>{modelLabel()} · {resolution} · PNG</span><strong>预估 ${usd.toFixed(6)} 起 <small>提交时按参考图与实际线路校验</small></strong></div>
+          <div className="scene-action"><Button type="submit" disabled={pending || Boolean(unavailable)}>{pending ? <LoaderCircle size={16} className="animate-spin" /> : <ArrowUpRight size={16} />}生成一张场景图</Button><span>本月剩余 ${availability.remaining.toFixed(6)} / ${availability.quota.toFixed(6)}</span></div>
           {unavailable && <p className="field-hint">{unavailable}</p>}
           <p className={error ? "form-notice error-notice" : "form-notice"} role={error ? "alert" : "status"}>{error || notice}</p>
         </form>
@@ -84,9 +84,9 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
       {refreshError && <p role="alert" className="history-warning">{refreshError}</p>}
       {!product.jobs.length ? <div className="history-empty"><Sparkles size={25} /><p>第一张场景图，从一个空间想法开始。</p><span>生成记录自动保存，刷新或重新登录后仍可查看。</span></div> : <div className="generation-grid">{product.jobs.map((job) => <article key={job.id} className="generation-card" data-testid={`generation-${job.id}`}>
         <div className="generation-preview">{job.resultAssetIds[0] ? <a href={`/api/assets/${job.resultAssetIds[0]}`} target="_blank" rel="noreferrer"><Image src={`/api/assets/${job.resultAssetIds[0]}`} width={640} height={640} unoptimized alt="生成场景图预览" /></a> : <div className="generation-placeholder">{["pending", "running"].includes(job.status) ? <LoaderCircle size={26} className="animate-spin" /> : <Sparkles size={26} />}<p>{statuses[job.status]}</p></div>}<span className={`job-status job-${job.status}`}>{statuses[job.status]}</span></div>
-        <div className="generation-details">{job.logicalModel === "edit" && <p className="edit-version-label">二次编辑版本{job.sourceAssetId && <> · <a href={`/api/assets/${job.sourceAssetId}`} target="_blank" rel="noreferrer">查看原图</a></>}</p>}<p className="generation-intent">{job.editIntent || job.sceneIntent || "场景创作"}</p><p>{job.fallback && <strong className="fallback-label">备用线路 · </strong>}{job.model} · {job.provider} · {job.resolution} · {job.aspectRatio === "auto" ? "自动" : job.aspectRatio}</p><p>{new Date(job.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai", hour12: false })} · {elapsed(job)} · {job.cost === null ? `配额预留 ${job.reservedCredits} 积分，费用待确认` : `${job.costEstimated ? "预计 " : ""}${job.cost} ${job.costCurrency === "USD" ? "美元" : "积分"}`}</p>{job.taskId && <p className="job-task">任务编号：{job.taskId}</p>}{job.error && <p className="job-error">{job.error}</p>}{job.resultAssetIds[0] && <div className="generation-card-actions"><a className="generation-download" href={`/api/assets/${job.resultAssetIds[0]}?download=1`}><Download size={14} />下载候选图</a>{job.status === "success" && !readonly && <Button variant="outline" size="sm" onClick={() => setEditSource(job)}><Pencil size={13} />二次编辑</Button>}</div>}</div>
+        <div className="generation-details">{job.logicalModel === "edit" && <p className="edit-version-label">二次编辑版本{job.sourceAssetId && <> · <a href={`/api/assets/${job.sourceAssetId}`} target="_blank" rel="noreferrer">查看原图</a></>}</p>}<p className="generation-intent">{job.editIntent || job.sceneIntent || "场景创作"}</p><p>{job.fallback && <strong className="fallback-label">备用线路 · </strong>}{job.model} · {job.provider} · {job.resolution} · {job.aspectRatio === "auto" ? "自动" : job.aspectRatio}</p><p>{new Date(job.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai", hour12: false })} · {elapsed(job)} · {job.costUsd === null ? `费用待确认（美元预留 $${job.reservedUsd.toFixed(6)}）` : `${job.costEstimated ? "预估" : "实际"} $${job.costUsd.toFixed(6)}`}{job.credits !== null && `（原始 ${job.credits} KIE 积分）`}</p>{job.resultImages.map(image => <div key={image.id}><p>实际像素：{image.width} × {image.height} px</p>{Math.max(image.width, image.height) < 2000 && <p className="resolution-warning">分辨率不足亚马逊建议值</p>}</div>)}{job.identityTraits && <details className="identity-snapshot"><summary>本次使用的身份特征版本</summary><p>{job.identityVersionId || "历史快照"}{job.identitySavedAt && ` · ${new Date(job.identitySavedAt).toLocaleString("zh-CN")}`}</p><p>{job.identityTraits}</p></details>}{job.taskId && <p className="job-task">任务编号：{job.taskId}</p>}{job.error && <p className="job-error">{job.error}</p>}{job.resultAssetIds[0] && <div className="generation-card-actions"><a className="generation-download" href={`/api/assets/${job.resultAssetIds[0]}?download=1`}><Download size={14} />下载候选图</a>{job.status === "success" && !readonly && <Button variant="outline" size="sm" onClick={() => setEditSource(job)}><Pencil size={13} />二次编辑</Button>}</div>}</div>
       </article>)}</div>}
-      <p className="history-footnote">生成图为候选图，需美工确认后作为终稿使用。提交前预留积分；扣费状态不确定时保留预留，需核对账户记录。</p>
+      <p className="history-footnote">生成图为候选图，需美工确认后作为终稿使用。费用和配额统一美元；预估会在获得实际消耗后更新，扣费不确定时请核对账单。</p>
     </section>
   </>;
 }

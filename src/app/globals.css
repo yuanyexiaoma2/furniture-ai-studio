@@ -25,6 +25,9 @@
 .gateway-dialog p { font-size: 14px; line-height: 1.8; }
 .identity-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .fallback-label { color: #977139; font-weight: 500; }
+.resolution-warning { padding: 7px 10px; background: #fff3cf; color: #926717; border-radius: 4px; }
+.identity-snapshot { margin: 8px 0; font-size: 11px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.identity-snapshot summary { cursor: pointer; color: #586d4b; }
 @media (max-width: 760px) { .gateway-grid { grid-template-columns: 1fr; } .gateway-card, .gateway-routes { padding: 20px; } .gateway-route-list > div { grid-template-columns: 1fr; gap: 8px; } .gateway-routes .panel-heading { flex-wrap: wrap; gap: 12px; } }
 
 @custom-variant dark (&:is(.dark *));

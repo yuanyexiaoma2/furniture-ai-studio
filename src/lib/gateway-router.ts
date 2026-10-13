@@ -41,7 +41,7 @@ export async function routeCall<T>(options: {
       await options.hooks.failure(id, failure, now() - start);
       await options.circuit.failure(candidate.provider);
       failures.push(failure.message);
-      if (!failure.retryable) throw new GatewayError(candidate.provider, `${failure.message}；参数或权限错误，未自动切换${fallback ? '（本次已尝试备用线路）' : ''}`, failure.status, false, failure.uncertain);
+      if (!failure.retryable) throw new GatewayError(candidate.provider, `${failure.message}；该错误未自动切换${fallback ? '（本次已尝试备用线路）' : ''}`, failure.status, false, failure.uncertain);
       fallback = true; continue;
     }
     // 本地保存 / 记录失败不能再次发起付费生成。

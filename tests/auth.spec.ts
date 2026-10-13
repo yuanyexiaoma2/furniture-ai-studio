@@ -82,7 +82,7 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   await admin.screenshot({ path: ".local/verification/users-desktop.png", fullPage: true, animations: "disabled" });
   const designerRecord = await db.user.findUniqueOrThrow({ where: { email: designerEmail } });
   expect(await bcrypt.compare(password, designerRecord.passwordHash)).toBe(true);
-  expect(designerRecord.monthlyQuota).toBe(100);
+  expect(Number(designerRecord.monthlyQuota)).toBe(0.5);
   const duplicate = await adminContext.request.post("/api/admin/users", { headers: { Origin: "http://localhost:3000" }, data: { name: "重复用户", email: designerEmail, password, role: "designer", monthlyQuota: 100 } });
   expect(duplicate.status()).toBe(409);
   const self = await db.user.findUniqueOrThrow({ where: { email: process.env.ADMIN_EMAIL!.trim().toLowerCase() } });

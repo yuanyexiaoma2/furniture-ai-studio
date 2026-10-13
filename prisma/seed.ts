@@ -19,7 +19,7 @@ async function main() {
     }
     await db.user.create({ data: {
       name: process.env.ADMIN_NAME?.trim() || "管理员",
-      email, passwordHash: await bcrypt.hash(password, 12), role: "admin", monthlyQuota: 100,
+      email, passwordHash: await bcrypt.hash(password, 12), role: "admin", monthlyQuota: 0.5,
     } });
     console.log("管理员创建成功，密码已使用 bcrypt 哈希保存");
   } finally { await db.$disconnect(); }

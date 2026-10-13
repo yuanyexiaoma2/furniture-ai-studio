@@ -5,5 +5,5 @@ export type LLMMessage = { role: "system" | "user" | "assistant"; content: strin
 export type LLMTool = { type: "function"; function: { name: string; description?: string; parameters: Record<string, unknown> } };
 export type ResponseFormat = { type: "json_object" } | { type: "json_schema"; json_schema: { name: string; strict?: boolean; schema: Record<string, unknown> } };
 export type LLMInput = { messages: LLMMessage[]; images?: { id: string }[]; tools?: LLMTool[]; responseFormat?: ResponseFormat };
-export type LLMResult = { text: string; json?: unknown; toolCalls?: ToolCall[]; usage: TokenUsage; cost?: GatewayCost };
+export type LLMResult = { text: string; json?: unknown; toolCalls?: ToolCall[]; usage: TokenUsage; cost?: GatewayCost; externalGenerationId?: string };
 export interface LLMProvider { isConfigured(): boolean; chat(input: LLMInput): Promise<LLMResult> }

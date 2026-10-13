@@ -4,9 +4,10 @@ import { fromPrisma } from "pg-boss";
 import { db } from "@/lib/db";
 import { studioUser, studioError, StudioError } from "@/lib/studio-api";
 import { chatWithGateway } from "@/lib/llm-router";
-import { gatewayConfigured } from "@/lib/gateway-router";
+import { gatewayConfigured, candidatesFor } from "@/lib/gateway-router";
 import { getBoss, SUBMIT_QUEUE, workerIsReady } from "@/lib/generation-queue";
-import { quotaMonth } from "@/lib/scene-generation";
+import { assertUsdQuota } from "@/lib/quota";
+import { estimateImageUsd } from "@/lib/gateway-cost";
 const schema = z.object({ provider: z.enum(["zenmux", "kie"]), kind: z.enum(["llm", "image"]), confirmed: z.literal(true) });
 export async function POST(request: Request) {
   try {
@@ -21,11 +22,11 @@ export async function POST(request: Request) {
     const boss = await getBoss();
     const job = await db.$transaction(async tx => {
       await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${user.id} FOR UPDATE`;
-      const account = await tx.user.findUniqueOrThrow({ where: { id: user.id } });
-      const month = quotaMonth();
-      const used = await tx.generationJob.aggregate({ where: { createdById: user.id, createdAt: { gte: month.start, lt: month.end } }, _sum: { reservedCredits: true } });
-      if ((used._sum.reservedCredits ?? 0) + 4 > account.monthlyQuota) throw new StudioError("测试需要 4 积分配额，本月剩余额度不足", 409);
-      const job = await tx.generationJob.create({ data: { createdById: user.id, logicalModel: "scene-main", reservedCredits: 4, input: { testProvider: provider, prompt: "A simple wooden stool on a plain white background, studio product photograph, no text.", referenceAssetIds: [], aspect_ratio: "1:1", resolution: "1K", output_format: "png", submissionAttempted: false } } });
+      const prompt = "A simple wooden stool on a plain white background, studio product photograph, no text.";
+      const candidate = candidatesFor("scene-main").find(c => c.provider === provider)!;
+      const estimate = estimateImageUsd(candidate, "1K", prompt);
+      await assertUsdQuota(tx, user.id, estimate);
+      const job = await tx.generationJob.create({ data: { createdById: user.id, logicalModel: "scene-main", reservedUsd: estimate, input: { testProvider: provider, prompt, referenceAssetIds: [], aspect_ratio: "1:1", resolution: "1K", output_format: "png", submissionAttempted: false } } });
       if (!await boss.send(SUBMIT_QUEUE, { jobId: job.id }, { db: fromPrisma(tx) })) throw new StudioError("测试未能入队，请稍后重试", 503);
       return job;
     });

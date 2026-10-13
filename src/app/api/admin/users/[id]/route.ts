@@ -29,7 +29,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       }
       return tx.user.update({ where: { id }, data: { ...(action.action === "role" ? { role: action.role } : { passwordHash }), authVersion: { increment: 1 } }, select: { id: true, name: true, email: true, role: true, department: true, monthlyQuota: true } });
     }, { isolationLevel: Prisma.TransactionIsolationLevel.Serializable });
-    return NextResponse.json({ user });
+    return NextResponse.json({ user: { ...user, monthlyQuota: Number(user.monthlyQuota) } });
   } catch (error) {
     if (error instanceof UserError) return NextResponse.json({ error: error.message }, { status: error.status });
     if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2034") return NextResponse.json({ error: "其他管理员同时修改了数据，请重试" }, { status: 409 });

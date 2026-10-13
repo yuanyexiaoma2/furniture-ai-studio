@@ -54,7 +54,7 @@ ZenMux 图片 slug 来自指定[模型列表](https://zenmux.ai/models?sort=newe
 - 自动按候选顺序，跳过 Key 为空的网关；明确偏好只调整顺序。未配置被跳过不算失败或备用调用。
 - 超时、5xx、429、内容拦截、无图片或无有效结果可切换；参数 / 鉴权等 4xx（非429）直接报错。KIE HTTP200业务错误仍须识别，再按有效错误码分类，避免参数错误重复扣费。
 - 熔断使用数据库，web 与 worker 共用，网关在5分钟内连续3次失败后暂停3分钟；成功清零，Key更换时重置旧熔断，密钥仅保存不可逆指纹。逐次生成尝试单独记录，轮询不重复算一笔付费生图；LLM每次实际请求写LlmCall。
-- 内部月度额度继续用积分预留，与实际网关费用分开。费用分别统计 credits / USD，不把两种币种直接相加；未知显示未知，估算注明估算。备用路线在结果和页面标记。
+- 最新审查已将成本与月度配额统一为美元：costUsd / reservedUsd，保留KIE原始credits。旧cost/currency/reservedCredits仅作历史原始数据保留，不再用于当前业务计算。预估与实际分开显示，备用路线标记不变。
 
 ## 实际调用核对与实现取舍
 
@@ -63,3 +63,18 @@ ZenMux 图片 slug 来自指定[模型列表](https://zenmux.ai/models?sort=newe
 - KIE 已创建的任务遇到查询 / 下载超时、5xx 或429，重试原任务直至10分钟截止，避免另一家再收费；明确终态失败才切换。此为已接受异步任务的费用保护，提交阶段仍按路由规则切换。同步结果本地存储失败不重发生成，保留费用预留供核对。
 - Google SDK 显式 retryOptions.attempts=1，OpenAI SDK maxRetries=0；LLM 的 KIE 请求限流即交由路由，不做长时间退避。KIE 生图提交 / 上传保留任务2的限流退避。
 - GenerationAttempt / LlmCall 是逐次调用账本；GenerationJob 表示最终生图结果。KIE 实际 creditsConsumed / credits_consumed 优先；缺失时生图按已核实分辨率价格估算。ZenMux 固定美元价未知，不以目录 token 价推造每图固定费用。
+
+## 上传域名：实际选择、有效期与故障方案
+
+- **文档网页正文及 cURL**：`https://kieai.redpandaai.co/api/file-stream-upload`；**同页 Markdown OpenAPI servers**：`https://api.kie.ai`。这是官方内部不一致，不是模型接口的不同版本。来源：[Quickstart](https://docs.kie.ai/file-upload-api/quickstart)、[文件流上传网页](https://docs.kie.ai/file-upload-api/upload-file-stream)、[OpenAPI Markdown](https://docs.kie.ai/file-upload-api/upload-file-stream.md)。
+- **实际代码默认使用 redpanda**：与当前Quickstart示例一致，且任务2实拍上传和后续真实提炼已成功。24h保留说明也来自该地址的当前正文，缓存23h留1h余量；记录并刷新最近上传时间，参考访问失败同网关重传一次。
+- **未核实的备用域名**：没有官方证据保证 api.kie.ai 的上传路径可作为可用备用，不进行猜测性自动切换。若当前域名失效，先查看官方Quickstart或联系KIE确认替代地址，再仅修改服务端 `KIE_UPLOAD_BASE_URL` 并重启网页 / worker；缓存指纹包含实际域名和账户，换域名不会复用旧地址。恢复域名前明确中文报错，原MinIO实拍保留。不是要求重新上传原图到工作台。
+
+## 美元成本、估算与 ZenMux 延迟回填
+
+- KIE名义积分换算集中在配置，$0.005/积分；图费4/6/9积分等价$0.020/$0.030/$0.045，实际creditsConsumed / credits_consumed优先并保留原始数值。来源：[KIE价格](https://kie.ai/pricing)、[模型页](https://kie.ai/nano-banana-2-1)。
+- ZenMux账单查询为 **GET `https://zenmux.ai/api/v1/management/generation?id=...`**，Bearer使用已有Pay As You Go Key；支持所有协议，包括Vertex generateContent。费用延迟3～5分钟。响应generationId / model / usage / ratingResponses.billAmount，PAYG一credit对应$1；优先billAmount，明确合法的0也是实付0。参数标题generate_id与curl的id不一致，按curl和地址使用id，不用废弃的 `/api/v1/generation`。来源：[账单查询](https://zenmux.ai/docs/zh/api/platform/get-generation.html)、[PAYG](https://zenmux.ai/docs/zh/guide/pay-as-you-go.html)。
+- 暂以OpenAI id、Google responseId作为候选查询ID；官方未明确承诺其与generationId完全相同，**回填必须同时校验返回generationId与model**。无ID、缺费用或不匹配均保留预估；没有ZenMux Key，映射仍待实测。不得把请求头ID猜成账单ID。
+- worker在完成5分钟后首次查账，之后有界退避，最多10次；该频率为本项目取舍。账单匹配后原记录costUsd回填、costEstimated=false；重启仍从数据库继续查账。查询不创建新的生图或聊天任务。
+- 图片预估采用Google官方上游Nano Banana2.1价格：输入$1.5/M、文本/思考输出$7.5/M、**图片输出$30/M**；1K/2K/4K图片输出分别1120/1680/3780 token，加输入及文本预算，不能把$7.5应用于图片，也不宣称是ZenMux固定总价。图像输入按258 token瓦片、文字按字符粗估，实际usage可更新估计。来源：[Google价格](https://ai.google.dev/gemini-api/docs/pricing)、[token估算](https://ai.google.dev/gemini-api/docs/tokens)。
+- Gemini2.5Pro按≤200K输入$1.25/M、输出$10/M，超过分档$2.5/$15估算；分档来源Google上游，最终由ZenMux账单替换。KIE聊天按配置积分token单价换算。来源：[Google价格](https://ai.google.dev/gemini-api/docs/pricing)、[ZenMux模型](https://zenmux.ai/google/gemini-2.5-pro)。

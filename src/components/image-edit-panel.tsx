@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Pencil, X, LoaderCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GenerationOptions, generationBlockReason } from "@/components/generation-options";
-import { modelCost, modelLabel, sceneAspectRatios, type SceneResolution, type SceneAspectRatio } from "@/lib/models.config";
+import { modelLabel, sceneAspectRatios, type SceneResolution, type SceneAspectRatio } from "@/lib/models.config";
 import type { ProductSnapshot } from "@/lib/product-data";
 import type { GenerationAvailability } from "@/lib/scene-generation";
 
@@ -16,8 +16,8 @@ export function ImageEditPanel({ source, product, availability, readonly, onClos
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
-  const { credits, usd } = modelCost("edit", resolution);
-  const blocked = generationBlockReason(product, availability, readonly, credits);
+  const usd = availability.estimates[resolution];
+  const blocked = generationBlockReason(product, availability, readonly, usd);
   useEffect(() => { panel.current?.scrollIntoView({ behavior: "smooth", block: "center" }); instruction.current?.focus({ preventScroll: true }); }, []);
   async function edit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setPending(true); setError(""); setNotice("");
@@ -37,6 +37,6 @@ export function ImageEditPanel({ source, product, availability, readonly, onClos
     <div className="edit-source"><Image src={`/api/assets/${source.resultAssetIds[0]}`} width={96} height={96} unoptimized alt="二次编辑原图" /><div><strong>在这张图的基础上修改</strong><p>选中原图与当前实拍共同作为参考，锁定产品身份；原图保留，编辑后新增版本。</p></div></div>
     <label htmlFor="edit-intent">这张图需要怎样修改？</label><textarea ref={instruction} id="edit-intent" name="editIntent" required maxLength={8000} rows={4} placeholder="例如：保留产品和现有构图，将墙面改为暖白色，去掉右侧落地灯，减弱窗边光线。" disabled={readonly || pending} />
     <GenerationOptions prefix="edit" resolution={resolution} aspectRatio={aspectRatio} disabled={readonly || pending} onResolution={setResolution} onAspectRatio={setAspectRatio} />
-    <div className="generation-spec"><span>{modelLabel()} · {resolution} · PNG</span><strong>{credits} 积分 <small>约 ${usd.toFixed(3).replace(/0$/, "")}</small></strong></div><div className="scene-action"><Button type="submit" disabled={pending || Boolean(blocked)}>{pending ? <LoaderCircle size={16} className="animate-spin" /> : <Pencil size={16} />}生成编辑版本</Button><span>本月剩余 {availability.remaining} 积分</span></div>{blocked && <p className="field-hint">{blocked}</p>}<p role={error ? "alert" : "status"} className={error ? "form-notice error-notice" : "form-notice"}>{error || notice}</p>
+    <div className="generation-spec"><span>{modelLabel()} · {resolution} · PNG</span><strong>预估 ${usd.toFixed(6)} 起</strong></div><div className="scene-action"><Button type="submit" disabled={pending || Boolean(blocked)}>{pending ? <LoaderCircle size={16} className="animate-spin" /> : <Pencil size={16} />}生成编辑版本</Button><span>本月剩余 ${availability.remaining.toFixed(6)}</span></div>{blocked && <p className="field-hint">{blocked}</p>}<p role={error ? "alert" : "status"} className={error ? "form-notice error-notice" : "form-notice"}>{error || notice}</p>
   </form></section>;
 }

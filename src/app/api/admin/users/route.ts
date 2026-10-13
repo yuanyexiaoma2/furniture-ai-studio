@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   try {
     const { password, ...data } = parsed.data;
     const user = await db.user.create({ data: { ...data, department: data.department || null, passwordHash: await bcrypt.hash(password, 12) }, select: { id: true, name: true, email: true, role: true, department: true, monthlyQuota: true } });
-    return NextResponse.json({ user }, { status: 201 });
+    return NextResponse.json({ user: { ...user, monthlyQuota: Number(user.monthlyQuota) } }, { status: 201 });
   } catch (error) {
     if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002") return NextResponse.json({ error: "该邮箱已存在" }, { status: 409 });
     return NextResponse.json({ error: "新增失败，请稍后重试" }, { status: 500 });
