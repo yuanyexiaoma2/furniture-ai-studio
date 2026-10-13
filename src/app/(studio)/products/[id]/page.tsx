@@ -10,5 +10,5 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   const product = await productSnapshot((await params).id);
   if (!product) notFound();
   const availability = await generationAvailability(user.id);
-  return <><Link href="/" className="back-link">← 全部 SKU 项目</Link><div className="page-intro"><div><p className="eyebrow">{product.sku} / 产品创作空间</p><h1>{product.name}<span className="title-dot">.</span></h1><p className="intro-copy">从多角度实拍出发，保留产品身份，探索新的场景。</p></div></div><ProductStudio initial={product} initialAvailability={availability} readonly={user.role === "viewer"} /></>;
+  return <><Link href="/" className="back-link">← 全部 SKU 项目</Link><div className="page-intro"><div><p className="eyebrow">{product.sku} / 产品创作空间</p><h1>{product.name}<span className="title-dot">.</span></h1><p className="intro-copy">从多角度实拍出发，保留产品身份，探索新的场景。</p></div><Link className="pack-entry" href={`/products/${product.id}/pack`}>进入图包与批量生成 →</Link></div><ProductStudio initial={product} initialAvailability={availability} readonly={user.role === "viewer"} /></>;
 }

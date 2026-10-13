@@ -399,3 +399,32 @@ a, button, summary { touch-action: manipulation; }
   .workspace-panel { animation-delay: .08s; }
   @keyframes reveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 }
+/* 图包沿用工作台的纸色背景与细线卡片，终稿以深绿边框标识。 */
+.pack-entry { display:inline-flex; padding:12px 18px; background:var(--foreground); color:var(--background); border-radius:6px; font-weight:600; }
+.pack-board { display:grid; gap:22px; }
+.pack-toolbar { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px; }
+.pack-actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.pack-slot { padding:24px; }
+.pack-slot-heading { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.pack-slot-heading > span:last-child { color:#69746b; font-size:12px; }
+.pack-number { color:#718473; font:italic 28px Georgia,serif; }
+.pack-slot-editor { display:grid; grid-template-columns:2fr 1fr 1.5fr 1fr 1fr; gap:14px; margin:20px 0; }
+.pack-slot-editor label { display:grid; gap:7px; font-size:12px; color:#5c685e; }
+.pack-slot-editor input,.pack-slot-editor select,.pack-slot-editor textarea { width:100%; border:1px solid #d8ded7; background:#fffefa; color:#233528; padding:10px; border-radius:5px; font-size:14px; }
+.pack-goal { grid-column:1/-1; }
+.pack-slot-generate { display:flex; align-items:center; justify-content:space-between; gap:12px; color:#69746b; font-size:12px; margin-bottom:20px; }
+.pack-placeholder { padding:20px; border:1px dashed #ccd4c9; color:#75806f; }
+.pack-progress { display:grid; grid-template-columns:auto 1fr; gap:12px; padding:18px 24px; background:#ecf0e8; border-radius:8px; }
+.pack-progress span { font-size:12px; text-align:right; color:#67735f; overflow-wrap:anywhere; }
+.pack-progress progress { width:100%; height:5px; accent-color:#52674a; grid-column:1/-1; }
+.pack-candidates { grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
+.pack-final { border:2px solid #49734c !important; }
+.pack-image { display:block; width:100%; cursor:zoom-in; background:#edf0e8; }
+.pack-image img { width:100%; aspect-ratio:1; object-fit:contain; }
+.pack-dialog { position:fixed; inset:0; margin:auto; width:min(780px,94vw); max-height:90vh; overflow:auto; padding:28px; border:1px solid #d9ded3; border-radius:12px; background:#fffef8; color:#243627; box-shadow:0 28px 100px #182a2433; }
+.pack-dialog::backdrop { background:#14241dc0; }
+.pack-dialog p { margin:16px 0; }
+.pack-quote { font-size:24px; font-weight:600; }
+.pack-quote small { font-size:14px; font-weight:400; }
+.pack-large-image { width:100%; height:auto; }
+@media(max-width:800px) { .pack-toolbar,.pack-slot>.panel-heading { align-items:flex-start; flex-direction:column; } .pack-slot-editor { grid-template-columns:1fr 1fr; } .pack-slot-editor label:first-child { grid-column:1/-1; } .pack-progress { grid-template-columns:1fr; } .pack-progress span { text-align:left; } .pack-slot { padding:16px; } }
