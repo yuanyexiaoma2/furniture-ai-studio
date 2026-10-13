@@ -8,7 +8,7 @@ export type ImageInput = {
 
 export type ImageResult =
   | { status: "pending" }
-  | { status: "success"; urls: string[] }
+  | { status: "success"; urls: string[]; cost?: GatewayCost }
   | { status: "failed"; error: string };
 
 // 保留旧接口供任务 2 回归测试；业务改为以下同步 / 异步统一接口。

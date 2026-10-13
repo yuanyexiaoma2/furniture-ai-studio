@@ -2,6 +2,7 @@ import "server-only";
 import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 import { StudioError } from "@/lib/studio-error";
+import { GatewayError } from "./gateway-error";
 export { StudioError } from "@/lib/studio-error";
 
 export async function studioUser(request: Request, write = false) {
@@ -12,5 +13,5 @@ export async function studioUser(request: Request, write = false) {
   return session.user;
 }
 export function studioError(error: unknown, fallback: string) {
-  return NextResponse.json({ error: error instanceof StudioError ? error.message : fallback }, { status: error instanceof StudioError ? error.status : 500 });
+  return NextResponse.json({ error: error instanceof StudioError || error instanceof GatewayError ? error.message : fallback }, { status: error instanceof StudioError || error instanceof GatewayError ? Math.min(599, Math.max(400, error.status)) : 500 });
 }

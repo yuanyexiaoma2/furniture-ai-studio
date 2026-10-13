@@ -21,7 +21,7 @@ export class KieProvider implements ImageProvider {
     const result = await this.getResult(taskId);
     if (result.status === "pending") return { kind: "pending", taskId };
     if (result.status === "failed") throw new GatewayError("kie", result.error, 500, true);
-    return { kind: "done", images: await Promise.all(result.urls.map((url) => this.download(url))) };
+    return { kind: "done", images: await Promise.all(result.urls.map((url) => this.download(url))), cost: result.cost };
   }
   private baseUrl = process.env.KIE_BASE_URL?.trim() || "https://api.kie.ai";
   private uploadBaseUrl = process.env.KIE_UPLOAD_BASE_URL?.trim() || "https://kieai.redpandaai.co";
@@ -72,7 +72,7 @@ export class KieProvider implements ImageProvider {
       let result;
       try { result = JSON.parse(data.resultJson); } catch { throw new KieError("KIE 结果数据无法解析，未获得图片地址"); }
       if (!Array.isArray(result.resultUrls) || !result.resultUrls.length || result.resultUrls.some((url: unknown) => typeof url !== "string" || !url.startsWith("https://"))) throw new KieError("KIE 已完成任务但未返回有效图片地址");
-      return { status: "success", urls: result.resultUrls };
+      return { status: "success", urls: result.resultUrls, ...(Number.isFinite(Number(data.creditsConsumed)) && data.creditsConsumed != null ? { cost: { amount: Number(data.creditsConsumed), currency: "credits" as const } } : {}) };
     }
     throw new KieError("KIE 返回了未知任务状态，请检查账户任务记录");
   }

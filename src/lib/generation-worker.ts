@@ -5,6 +5,7 @@ import { saveGenerationResult } from "@/lib/save-generation-result";
 import { KieError, safeKieMessage } from "@/lib/kie-http";
 import type { ImageInput, LegacyImageProvider } from "@/lib/image-provider";
 import type { Prisma } from "@/generated/prisma/client";
+import { submitGatewayJob, pollGatewayJob } from "./image-router";
 
 async function fail(id: string, error: unknown) {
   await db.$transaction(async (tx) => {
@@ -18,7 +19,8 @@ async function fail(id: string, error: unknown) {
   });
 }
 
-export async function submitSceneJob(id: string, provider: LegacyImageProvider) {
+export async function submitSceneJob(id: string, provider?: LegacyImageProvider) {
+  if (!provider) return submitGatewayJob(id);
   const claimed = await db.generationJob.updateMany({ where: { id, status: "pending" }, data: { status: "running", startedAt: new Date() } });
   if (!claimed.count) return;
   try {
@@ -35,7 +37,8 @@ export async function submitSceneJob(id: string, provider: LegacyImageProvider) 
   } catch (error) { await fail(id, error); }
 }
 
-export async function pollSceneJob(id: string, provider: LegacyImageProvider, download: (address: string) => Promise<Buffer> = downloadResultImage) {
+export async function pollSceneJob(id: string, provider?: LegacyImageProvider, download: (address: string) => Promise<Buffer> = downloadResultImage) {
+  if (!provider) return pollGatewayJob(id);
   const job = await db.generationJob.findUnique({ where: { id } });
   if (!job || job.status !== "running" || !job.externalTaskId) return;
   try {

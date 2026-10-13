@@ -2,12 +2,13 @@ import "server-only";
 import { fromPrisma } from "pg-boss";
 import { db } from "@/lib/db";
 import { getBoss, SUBMIT_QUEUE, workerIsReady, expireOverdueJobs } from "@/lib/generation-queue";
-import { models, modelCost, sceneAspectRatios, sceneResolutions, type SceneAspectRatio, type SceneResolution } from "@/lib/models.config";
+import { KIE_IMAGE_MODEL, modelCost, sceneAspectRatios, sceneResolutions, type SceneAspectRatio, type SceneResolution } from "@/lib/models.config";
+import { candidatesFor, gatewayConfigured } from "./gateway-router";
 import { buildScenePrompt } from "@/prompts/scene";
 import { buildEditPrompt } from "@/prompts/edit";
 import { StudioError } from "@/lib/studio-error";
 
-// 公司月度配额按北京时间自然月计算；cost 保存预留或确认消耗的积分。
+// 配额按北京时间自然月计算；reservedCredits 与网关实际费用分开。
 export function quotaMonth(now = new Date()) {
   const local = new Date(now.getTime() + 8 * 3600000);
   const year = local.getUTCFullYear(), month = local.getUTCMonth();
@@ -18,11 +19,11 @@ export async function generationAvailability(userId: string) {
   const month = quotaMonth();
   const [user, usage, ready] = await Promise.all([
     db.user.findUniqueOrThrow({ where: { id: userId }, select: { monthlyQuota: true } }),
-    db.generationJob.aggregate({ where: { createdById: userId, createdAt: { gte: month.start, lt: month.end } }, _sum: { cost: true } }),
+    db.generationJob.aggregate({ where: { createdById: userId, createdAt: { gte: month.start, lt: month.end } }, _sum: { reservedCredits: true } }),
     workerIsReady(),
   ]);
-  const used = Number(usage._sum.cost ?? 0);
-  return { quota: user.monthlyQuota, used, remaining: Math.max(0, user.monthlyQuota - used), workerReady: ready, configured: Boolean(process.env.KIE_API_KEY?.trim()) };
+  const used = Number(usage._sum.reservedCredits ?? 0);
+  return { quota: user.monthlyQuota, used, remaining: Math.max(0, user.monthlyQuota - used), workerReady: ready, configured: candidatesFor("scene-main").some(c => gatewayConfigured(c.provider)) };
 }
 export type GenerationAvailability = Awaited<ReturnType<typeof generationAvailability>>;
 
@@ -35,7 +36,7 @@ export async function createEditJob(userId: string, productId: string, editInten
 }
 async function createImageJob(userId: string, productId: string, intent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution, source?: EditSource) {
   if (!sceneAspectRatios.includes(aspectRatio) || !sceneResolutions.includes(resolution)) throw new StudioError("不支持该比例或分辨率");
-  if (!process.env.KIE_API_KEY?.trim()) throw new StudioError("尚未配置 KIE_API_KEY，请联系管理员配置后重启网页与 worker", 503);
+  if (!candidatesFor("scene-main").some(c => gatewayConfigured(c.provider))) throw new StudioError("没有已配置的生图网关，请管理员填写 API Key 并重启网页与 worker", 503);
   if (!await workerIsReady()) throw new StudioError("生图 worker 未启动或已离线，请运行 npm run worker 后重试", 503);
   await expireOverdueJobs();
   const boss = await getBoss();
@@ -58,14 +59,14 @@ async function createImageJob(userId: string, productId: string, intent: string,
     }
     const createdAt = new Date();
     const month = quotaMonth(createdAt);
-    const usage = await tx.generationJob.aggregate({ where: { createdById: userId, createdAt: { gte: month.start, lt: month.end } }, _sum: { cost: true } });
+    const usage = await tx.generationJob.aggregate({ where: { createdById: userId, createdAt: { gte: month.start, lt: month.end } }, _sum: { reservedCredits: true } });
     const logicalModel = source ? "edit" : "scene-main";
-    const config = models[logicalModel], { credits } = modelCost(logicalModel, resolution);
-    if (Number(usage._sum.cost ?? 0) + credits > user.monthlyQuota) throw new StudioError(`本月积分配额不足，本次需要 ${credits} 积分，请联系管理员`, 409);
+    const config = KIE_IMAGE_MODEL, { credits } = modelCost(logicalModel, resolution);
+    if (Number(usage._sum.reservedCredits ?? 0) + credits > user.monthlyQuota) throw new StudioError(`本月积分配额不足，本次需要 ${credits} 积分，请联系管理员`, 409);
     const prompt = source ? buildEditPrompt(product.identityTraits, intent) : buildScenePrompt(product.identityTraits, intent);
     if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
     const job = await tx.generationJob.create({ data: {
-      productId, logicalModel, provider: config.provider, model: config.model, cost: credits, createdById: userId, createdAt,
+      productId, logicalModel, reservedCredits: credits, createdById: userId, createdAt,
       input: { prompt, ...(source ? { ...source, editIntent: intent } : { sceneIntent: intent }), identityTraits: product.identityTraits, referenceAssetIds: [...(source ? [source.sourceAssetId] : []), ...product.assets.map((asset) => asset.id)], image_input: [], aspect_ratio: aspectRatio, resolution, output_format: config.output_format, submissionAttempted: false },
     } });
     const queued = await boss.send(SUBMIT_QUEUE, { jobId: job.id }, { db: fromPrisma(tx) });
