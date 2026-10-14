@@ -77,7 +77,7 @@ export async function kieRequest(url: string, init: RequestInit, options: Option
 export async function readKieStream(response: Response, onDelta?: (text: string) => void) {
   if (!response.body) throw new KieError("模型流式响应为空", 502, true);
   const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = "";
-  let completed: Record<string, unknown> | undefined;
+  let completed: Record<string, unknown> | undefined; let consumed: number | undefined;
   try {
     for (;;) {
       const chunk = await reader.read(); buffer += decoder.decode(chunk.value, { stream: !chunk.done }).replace(/\r\n/g, "\n");
@@ -87,8 +87,10 @@ export async function readKieStream(response: Response, onDelta?: (text: string)
         const raw = event.split("\n").filter(l => l.startsWith("data:")).map(l => l.slice(5).trimStart()).join("\n");
         if (!raw || raw === "[DONE]") continue;
         const data = JSON.parse(raw);
+        if (typeof data.credits_consumed === "number") consumed = data.credits_consumed;
+        if (typeof data.response?.credits_consumed === "number") consumed = data.response.credits_consumed;
         if (data.type === "response.output_text.delta" && typeof data.delta === "string") onDelta?.(data.delta);
-        if (data.type === "response.completed") completed = data.response;
+        if (data.type === "response.completed") { completed = data.response; if (completed) { await reader.cancel().catch(() => undefined); return consumed === undefined ? completed : { ...completed, credits_consumed: consumed }; } }
         if (["response.failed", "response.incomplete", "error"].includes(data.type)) throw kieFailure(502, data.error?.message ?? data.response?.error?.message);
       }
       if (chunk.done) break;
@@ -96,5 +98,5 @@ export async function readKieStream(response: Response, onDelta?: (text: string)
   } catch (error) { if (error instanceof GatewayError) throw error; throw new KieError("模型流式响应中断；已保留调用记录，请核对成本后重试", 502, true); }
   finally { reader.releaseLock(); }
   if (!completed) throw new KieError("模型流式响应未完成；没有执行工具", 502, true);
-  return completed;
+  return consumed === undefined ? completed : { ...completed, credits_consumed: consumed };
 }

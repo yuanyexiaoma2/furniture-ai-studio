@@ -23,7 +23,7 @@ export async function chatWithGateway(logical: "llm-vision" | "llm-agent", input
           await assertUsdQuota(tx, context.userId, estimate);
           if (context.productId) {
             await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${`identity:${context.productId}`}, 0))`;
-            if (await tx.llmCall.findFirst({ where: { productId: context.productId, logicalModel: logical, status: "running", createdAt: { gt: new Date(Date.now() - 90_000) } } })) throw new StudioError("该商品正在提炼中，请等待当前请求完成", 409);
+            if (await tx.llmCall.findFirst({ where: { productId: context.productId, logicalModel: logical, status: "running", createdAt: { gt: new Date(Date.now() - (logical === "llm-agent" ? 210_000 : 90_000)) } } })) throw new StudioError("该商品正在提炼中，请等待当前请求完成", 409);
           }
           return (await tx.llmCall.create({ data: { logicalModel: logical, provider: candidate.provider, model: candidate.model, fallback, createdById: context.userId, productId: context.productId, sessionId: context.sessionId, reservedUsd: estimate, costUsd: estimate, costEstimated: true } })).id;
         });

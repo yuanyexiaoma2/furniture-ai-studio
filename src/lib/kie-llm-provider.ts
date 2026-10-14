@@ -25,7 +25,7 @@ export class KieLLMProvider implements LLMProvider {
       } : { messages, stream: false, reasoning_effort: "low", ...(input.responseFormat ? { response_format: input.responseFormat } : {}), ...(input.tools?.length ? { tools: input.tools } : {}) };
       const base = process.env.KIE_BASE_URL?.trim();
       const endpoint = base ? new URL(new URL(this.config.endpoint).pathname, base).href : this.config.endpoint;
-      const response = await this.request(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }, { allowMissingCode: true, timeoutMs: 90000, onDelta: input.onDelta });
+      const response = await this.request(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }, { allowMissingCode: true, timeoutMs: this.config.protocol === "responses" ? 180000 : 90000, onDelta: input.onDelta });
       reply = response;
       return this.config.protocol === "responses" ? parseResponses(response, input) : parseChatReply(response, input, "kie");
     } catch (error) { const failure = gatewayException("kie", error); failure.cost ??= kieCreditCost(reply?.credits_consumed); throw failure; }

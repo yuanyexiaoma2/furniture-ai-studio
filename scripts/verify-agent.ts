@@ -48,7 +48,7 @@ const mock = createServer(async (request, response) => {
   if (!request.url?.includes("responses")) { response.writeHead(404); response.end("{}"); return; }
   calls++;
   for (const item of (body.input ?? []) as { type?: string; output?: string }[]) { if (item.type === "function_call_output") { try { const data = JSON.parse(item.output ?? "{}"); if (data.product && data.documents) latestMaterials = data; } catch {} } }
-  const step = steps.shift(), tool = typeof step === "function" ? step(latestMaterials) : step;
+  const step = Array.isArray(body.tools) && body.tools.length ? steps.shift() : undefined, tool = typeof step === "function" ? step(latestMaterials) : step;
   const output = tool ? [{ type: "function_call", call_id: `mock-call-${calls}`, name: tool.name, arguments: JSON.stringify(tool.args) }] : [{ type: "message", role: "assistant", content: [{ type: "output_text", text: "当前操作已经记录，请查看确认卡或候选看板。" }] }];
   const result = { status: "completed", output, usage: { input_tokens: 500, output_tokens: 150, total_tokens: 650 }, credits_consumed: 0.1 };
   if (body.stream) { response.setHeader("Content-Type", "text/event-stream"); if (!tool) response.write(`data: ${JSON.stringify({ type: "response.output_text.delta", delta: "当前操作已经记录，请查看确认卡或候选看板。" })}\n\n`); response.end(`data: ${JSON.stringify({ type: "response.completed", response: result })}\n\n`); }
@@ -74,8 +74,18 @@ try {
   const run = async (name: string, text = "请继续", params: Record<string,unknown> = {}) => { phase(name,params); await runAgentTurn(product.id,user.id,text,randomUUID()); const failed = await db.agentToolCall.findMany({ where: { sessionId: session.id,status:"failed" } }); assert.deepEqual(failed.map(f=>f.error),[]); };
   const card = (kind: string) => db.agentCard.findFirstOrThrow({ where: { sessionId:session.id,kind,status:"pending" },orderBy:{createdAt:"desc"} });
   await run("initial", "请读完所有资料"); let state=await agentSnapshot(product.id,user.id); assert.equal(state.understanding.conflicts.length,1); assert.equal(((await card("questions")).data as {questions:unknown[]}).questions.length,3); assert.equal(await db.productProfile.count({where:{productId:product.id}}),0);
+  const materialAliases=await executeAgentTool(session.id,"read_product_materials",{}) as {sourceReferences:{alias:string;kind:string;id:string}[]};
+  const oldMessageRef=materialAliases.sourceReferences.find(r=>r.kind==="message")!; await db.chatMessage.create({data:{productId:product.id,sessionId:session.id,role:"user",content:{text:"新增一条对话不应改变旧来源短编号"}}}); const newAliases=await executeAgentTool(session.id,"read_product_materials",{}) as typeof materialAliases; assert.equal(newAliases.sourceReferences.find(r=>r.id===oldMessageRef.id)!.alias,oldMessageRef.alias);
+  const csvAlias=materialAliases.sourceReferences.find(r=>r.kind==="document"&&r.id===latestMaterials.documents.find(d=>d.type==="csv")!.id)!;
+  const aliasField={field:"colorsAndTextures",data:{value:"橡木木纹、黑色五金",status:"confirmed",sources:[{kind:"document",id:csvAlias.alias,quote:"参数表材质"}],conflicts:[]}};
+  await executeAgentTool(session.id,"update_profile_draft",{fields:[aliasField]});
+  const canonical=(await db.agentSession.findUniqueOrThrow({where:{id:session.id}})).profileDraft as {colorsAndTextures:{sources:{id:string}[]}}; assert.equal(canonical.colorsAndTextures.sources[0].id,csvAlias.id);
+  await assert.rejects(executeAgentTool(session.id,"update_profile_draft",{fields:[{...aliasField,data:{...aliasField.data,sources:[{kind:"document",id:"D99999",quote:"不存在的资料"}]}}]}),/不属于本 SKU/);
+  const imageRef=materialAliases.sourceReferences.find(r=>r.kind==="image")!; const visionCalls=calls;
+  await assert.rejects(executeAgentTool(session.id,"view_images",{imageIds:[imageRef.alias],instruction:"核对图片",classifications:[{documentId:imageRef.id,imageType:"photo"}]}),/不能使用Asset/); assert.equal(calls,visionCalls);
   await approveAgentCard(session.id,(await card("questions")).id,{answers:["参数表80cm","没有","小户型家庭"]}); await run("profile");
   const profileCard=await card("profile"), profile=(profileCard.data as unknown as {profile:ReturnType<typeof emptyProfile>}).profile; profile.driftWarnings.value += "，美工确认门缝不能加宽"; await approveAgentCard(session.id,profileCard.id,{profile}); assert.equal(await db.productIdentityVersion.count({where:{productId:product.id}}),1);
+  await assert.rejects(executeAgentTool(session.id,"propose_image_pack",{reason:"校验新增图位",slots:[{id:"fabricated-new-slot",name:"新增场景",slotType:"scene",method:"ai_scene",goal:"新的空间意图",aspectRatio:"1:1",candidateCount:1,reason:"新增"}]}),/新增图位请省略id/);
   await run("pack"); const packCard=await card("pack"), proposal=packCard.data as {slots:{goal:string}[]}; proposal.slots[1].goal="温暖的客厅中展现封闭收纳，浅色木地板"; await approveAgentCard(session.id,packCard.id,{proposal});
   await db.agentSession.update({where:{id:session.id},data:{autoConfirm:true}}); await run("generate"); const firstCost=await card("cost"); assert.equal(await db.generationJob.count({where:{productId:product.id}}),0); await approveAgentCard(session.id,firstCost.id,{}); await approveAgentCard(session.id,firstCost.id,{}); assert.equal(await db.generationJob.count({where:{productId:product.id}}),4);
   await db.agentCard.update({ where: { id: firstCost.id }, data: { status: "executing", data: { ...(firstCost.data as Record<string,unknown>), startedAt: new Date(Date.now()-180000).toISOString() } } });

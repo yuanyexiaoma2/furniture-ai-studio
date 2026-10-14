@@ -19,11 +19,11 @@ export const agentToolSchemas = {
 export type AgentToolName = keyof typeof agentToolSchemas;
 export const toolDescriptions: Record<AgentToolName, string> = {
   read_product_materials: "读取当前 SKU 全部商品数据、文档解析文本、图片清单、档案、图位和候选。先调用本工具。",
-  view_images: "通过逻辑视觉模型查看当前 SKU 指定图片，不猜测图片内容；根据视觉结果再提交 classifications 图片类型。",
-  update_profile_draft: "更新草稿字段。每字段有 value/status/sources/conflicts；矛盾列出来源并标推测，不能写正式版本。美工亲自确认的信息才 confirmed。",
+  view_images: "通过逻辑视觉模型查看当前 SKU 指定图片，不猜测图片内容；classifications.documentId须逐字使用documents[].documentId，不可用Asset图片ID；已有实拍无文档时不传分类。仅处理当前SKU图片。",
+  update_profile_draft: "更新草稿字段。优先将read_product_materials.sourceReferences短编号(P、D1、I1、M1等)写入来源id；服务器精确映射到真实ID。禁止猜测长ID。每字段有 value/status/sources/conflicts；矛盾列出来源并标推测，不能写正式版本。美工亲自确认的信息才 confirmed。",
   ask_user: "展示最多 3 个结构化问题，尽量提供选项，只问图片和材料无法确定的问题；随后等待美工回答。",
   request_profile_confirmation: "展示可编辑的产品理解确认卡；正式档案和身份特征仅由美工确认后写入。",
-  propose_image_pack: "提出可编辑图包方案，以默认 7 个图位为起点并解释增减原因。已有图位传 id，未列出的原图位保留；等待美工确认。",
+  propose_image_pack: "提出可编辑图包方案，以默认 7 个图位为起点并解释增减原因。已有图位传读取的真实 id，新增图位必须省略 id，禁止编造；未列出的原图位保留；等待美工确认。",
   generate_slot: "为单个已确认图位生成 1～4 张，先展示费用卡；手动模式只能当前未挑好终稿的第一个 AI 图位。",
   generate_batch: "快速模式为全部 AI 场景图位生成，费用确认后才执行；第一批始终手动确认。",
   edit_image: "调整指定候选图，原图+最多3张实拍+当前身份特征；先费用确认，结果加入父图图位。",

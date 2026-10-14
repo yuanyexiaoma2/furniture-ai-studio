@@ -53,7 +53,7 @@ export function AgentWorkspace({ initial, pack, readonly }: { initial: AgentSnap
     } catch (e) { setError(e instanceof Error ? e.message : "对话暂时中断，已保存的操作可刷新查看"); }
     finally { setBusy(false); setProgress(""); await refresh(); }
   }
-  async function approve(card: Card, changes: unknown) { setBusy(true); setError(""); try { await patch({ action: "approve", cardId: card.id, changes }); } catch (e) { setError(e instanceof Error ? e.message : "确认失败"); setBusy(false); return; } setBusy(false); await send("我已在卡片上确认，请继续本 SKU 策划。", undefined); }
+  async function approve(card: Card, changes: unknown) { setBusy(true); setError(""); try { await patch({ action: "approve", cardId: card.id, changes }); } catch (e) { setError(e instanceof Error ? e.message : "确认失败"); setBusy(false); return; } setBusy(false); await send(`我已在${({ questions: "问题回答", profile: "产品理解", pack: "图包方案", cost: "费用生成", final: "终稿选择" } as Record<string,string>)[card.kind] ?? card.kind}卡片上确认（卡片ID：${card.id}），请按最新服务器状态继续本 SKU 策划。`, undefined); }
   async function upload(files: File[]) {
     if (!files.length || uploading || readonly) return; setUploading(true); setError("");
     try { const form = new FormData(); files.forEach(file => form.append("files", file)); const res = await fetch(`/api/products/${pack.productId}/documents`, { method: "POST", body: form }); const data = await res.json(); if (!res.ok) throw new Error(data.error); setError(data.results.filter((r: { error?: string }) => r.error).map((r: { filename: string; error: string }) => `${r.filename}：${r.error}`).join("；")); await refresh(); } catch (e) { setError(e instanceof Error ? e.message : "上传失败"); } finally { setUploading(false); }

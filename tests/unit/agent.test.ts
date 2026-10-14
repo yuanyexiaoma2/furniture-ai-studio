@@ -63,3 +63,23 @@ test("有效PDF正文可提取，扫描或空PDF不伪造信息", async () => {
   assert.match(await parseDocument(Buffer.from(pdf), "pdf"), /Furniture manual width 90cm/);
   const empty = pdf.replace("Furniture manual width 90cm", "                          "); await assert.rejects(parseDocument(Buffer.from(empty), "pdf"), /未提取到文字/);
 });
+
+test("KIE真实完成事件外层积分必须进入费用记录", async () => {
+  const response = { status: "completed", output: [] };
+  const raw = `data: ${JSON.stringify({ type: "response.completed", response, credits_consumed: 4.46 })}\n\n`;
+  const parsed = await readKieStream(new Response(raw)); assert.equal(parsed.credits_consumed,4.46);
+});
+
+test("Excel空值、富文本及公式缓存安全提取，未缓存公式提示人工核对", async () => {
+  const wb=new ExcelJS.Workbook(), sheet=wb.addWorksheet("真实表结构回归");
+  sheet.getCell("A1").value={richText:[{text:"浅色"},{text:"木纹"}]}; sheet.getCell("C1").value="末列";
+  sheet.getCell("A2").value={formula:"1+2",result:3}; sheet.getCell("A3").value={formula:"1+2"};
+  const text=await parseDocument(Buffer.from(await wb.xlsx.writeBuffer()),"xlsx");
+  assert.match(text,/浅色木纹 \|  \| 末列/); assert.match(text,/\n3\n/); assert.match(text,/公式未缓存结果，需人工核对/);
+});
+
+test("KIE完成事件后立即结束，不等待上游关闭SSE连接", async()=>{
+ let cancelled=false; const event={type:"response.completed",response:{status:"completed",output:[]},credits_consumed:0.5};
+ const stream=new ReadableStream({start(c){c.enqueue(new TextEncoder().encode("data: "+JSON.stringify(event)+"\n\n"));},cancel(){cancelled=true;}});
+ const result=await readKieStream(new Response(stream)); assert.equal(result.status,"completed"); assert.equal(result.credits_consumed,0.5); assert.equal(cancelled,true);
+});
