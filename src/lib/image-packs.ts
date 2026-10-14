@@ -67,7 +67,7 @@ export async function mutatePack(productId: string, action: Record<string, unkno
   });
 }
 
-export type BatchSelection = { slotId?: string; retryJobId?: string };
+export type BatchSelection = { slotId?: string; retryJobId?: string; count?: number };
 async function planBatch(tx: Prisma.TransactionClient, productId: string, selection: BatchSelection) {
   await lockProduct(tx, productId);
   const candidate = await configuredCandidate("scene-main");
@@ -85,7 +85,7 @@ async function planBatch(tx: Prisma.TransactionClient, productId: string, select
   if (selection.slotId && !selected.length) throw new StudioError("图位不存在", 404);
   const skipped = selected.filter(s => s.method === "ai_scene" && !s.goal.trim()).map(s => s.name);
   const entries = [];
-  for (const s of eligibleSlots(selected)) entries.push({ slotId: s.id, count: s.candidateCount, prepared: await prepareSceneInput(tx, productId, s.goal, s.aspectRatio as SceneAspectRatio, candidate) });
+  for (const s of eligibleSlots(selected)) entries.push({ slotId: s.id, count: selection.count ?? s.candidateCount, prepared: await prepareSceneInput(tx, productId, s.goal, s.aspectRatio as SceneAspectRatio, candidate) });
   if (!entries.length) throw new StudioError(`没有可生成的图位${skipped.length ? `，以下图位 goal 为空，已跳过：${skipped.join("、")}` : "；人工上传图位本阶段暂不自动生成"}`);
   return { pack, candidate, skipped, entries, old: null };
 }
@@ -100,7 +100,7 @@ export async function quoteBatch(userId: string, productId: string, selection: B
     return { ...quote, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: quotaShortage(Number(user.monthlyQuota), used, quote.estimatedCostUsd) };
   }, { timeout: 20000 });
 }
-export async function submitBatch(userId: string, productId: string, selection: BatchSelection, fingerprint: string, requestKey: string) {
+export async function submitBatch(userId: string, productId: string, selection: BatchSelection, fingerprint: string, requestKey: string, sessionId?: string) {
   if (!await workerIsReady()) throw new StudioError("生图 worker 未启动或已离线，请启动后重试", 503);
   await getBoss();
   await expireOverdueJobs();
@@ -114,7 +114,7 @@ export async function submitBatch(userId: string, productId: string, selection: 
     if (fingerprint !== quote.fingerprint) throw new StudioError("图位、身份特征或价格已变化，请重新查看生成确认框", 409);
     await assertUsdQuota(tx, userId, quote.estimatedCostUsd);
     const batch = plan.old ? await tx.generationBatch.findUniqueOrThrow({ where: { id: plan.old.batchId! } }) : await tx.generationBatch.create({ data: { packId: plan.pack.id, createdById: userId, slotCount: quote.slotCount, totalCount: quote.totalCount, estimatedCostUsd: quote.estimatedCostUsd, requestKey } });
-    for (const entry of plan.entries) for (let n = 0; n < entry.count; n++) await enqueueImageJob(tx, { productId, slotId: entry.slotId, batchId: batch.id, retryOfId: plan.old?.id, logicalModel: "scene-main", createdById: userId, input: { ...entry.prepared.input, batchRequestKey: requestKey }, reservedUsd: entry.prepared.estimate });
+    for (const entry of plan.entries) for (let n = 0; n < entry.count; n++) await enqueueImageJob(tx, { productId, sessionId, slotId: entry.slotId, batchId: batch.id, retryOfId: plan.old?.id, logicalModel: "scene-main", createdById: userId, input: { ...entry.prepared.input, batchRequestKey: requestKey }, reservedUsd: entry.prepared.estimate });
     return batch.id;
   }, { timeout: 30000 });
 }

@@ -69,11 +69,18 @@ async function createImageJob(userId: string, productId: string, intent: string,
       await assertUsdQuota(tx, userId, prepared.estimate);
       return enqueueImageJob(tx, { productId, logicalModel, createdById: userId, reservedUsd: prepared.estimate, input: prepared.input });
     }
+    const prepared = await prepareEditInput(tx, productId, intent, aspectRatio, resolution, source, candidate);
+    await assertUsdQuota(tx, userId, prepared.estimate);
+    return enqueueImageJob(tx, { productId, logicalModel, reservedUsd: prepared.estimate, createdById: userId, input: prepared.input });
+  }, { timeout: 15000 });
+}
+
+export async function prepareEditInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution, source: EditSource, candidate: ModelCandidate) {
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${productId}, 0))`;
-    const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }] } } });
+    const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], take: 3 } } });
     if (!product) throw new StudioError("商品不存在", 404);
     if (!product.identityTraits?.trim()) throw new StudioError("请先填写并保存产品身份特征");
-    if (product.assets.length < 2 || product.assets.length > 3) throw new StudioError("生成需要同一商品 2～3 张不同角度实拍图");
+    if (product.assets.length < 2) throw new StudioError("生成需要同一商品 2～3 张不同角度实拍图");
     if (source) {
       const [originalJob, originalAsset] = await Promise.all([
         tx.generationJob.findUnique({ where: { id: source.sourceJobId } }),
@@ -81,15 +88,10 @@ async function createImageJob(userId: string, productId: string, intent: string,
       ]);
       if (!originalJob || originalJob.productId !== productId || originalJob.status !== "success" || !Array.isArray(originalJob.resultAssetIds) || !originalJob.resultAssetIds.includes(source.sourceAssetId) || !originalAsset || originalAsset.productId !== productId || originalAsset.type !== "generated" || originalAsset.deletedAt) throw new StudioError("请选择当前商品已完成的生成图片进行编辑", 400);
     }
-    const createdAt = new Date();
+
     const prompt = buildEditPrompt(product.identityTraits, intent);
     if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
-    const estimate = estimateImageUsd(candidate, resolution, prompt, product.assets);
-    await assertUsdQuota(tx, userId, estimate);
-    const version = await tx.productIdentityVersion.findFirst({ where: { productId }, orderBy: { savedAt: "desc" } });
-    return enqueueImageJob(tx, {
-      productId, logicalModel, reservedUsd: estimate, createdById: userId, createdAt, deadlineAt: new Date(createdAt.getTime() + MAX_JOB_MS),
-      input: { prompt, ...(source ? { ...source, editIntent: intent } : { sceneIntent: intent }), identityTraits: product.identityTraits, identityVersionId: version?.id ?? null, identitySavedById: version?.savedById ?? null, identitySavedAt: version && !version.historical ? version.savedAt.toISOString() : null, referenceAssetIds: [...(source ? [source.sourceAssetId] : []), ...product.assets.map((asset) => asset.id)], image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false },
-    });
-  }, { timeout: 15000 });
+    const originalAsset = await tx.asset.findUniqueOrThrow({ where: { id: source.sourceAssetId } });
+    const version = await tx.productIdentityVersion.findFirst({ where: { productId }, orderBy: [{ savedAt: "desc" }, { id: "desc" }] });
+    return { estimate: estimateImageUsd(candidate, resolution, prompt, [originalAsset, ...product.assets]), input: { prompt, ...source, editIntent: intent, identityTraits: product.identityTraits, identityVersionId: version?.id ?? null, identitySavedById: version?.savedById ?? null, identitySavedAt: version && !version.historical ? version.savedAt.toISOString() : null, referenceAssetIds: [source.sourceAssetId, ...product.assets.map(a => a.id)], image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false } };
 }
