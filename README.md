@@ -4,7 +4,7 @@
 
 ## 如何运行
 
-任务 7 第一阶段设计预览：沿用现有网页服务，登录后访问 <http://localhost:3000/design>；顶部可切换 SKU 列表、Agent 提问、候选调整和用户管理四张稿。仅假数据与本地交互，不需启动 worker、不调用模型、不保存到业务系统。截图与设计说明见 [docs/design/README.md](docs/design/README.md)，规范见 [docs/design-system.md](docs/design-system.md)，bug 排查见 [docs/task-7-progress.md](docs/task-7-progress.md)。复现截图与交互检查可执行 `node scripts/verify-design.mjs`（要求本地网页已启动、`.env` 管理员账号可用）。
+任务 7 修订版：登录后访问 <http://localhost:3000/design-preview>，顶部可组合切换五页与亮 / 暗 / 跟随系统主题。已实现真实无限画布、节点拖动、涂抹蒙版、扩图拖框与对话联动，全部为假数据，不调用业务接口。正式审阅版本也可在 <http://localhost:3001/design-preview> 查看。启动命令、所有新增依赖的精确版本和许可证、十张截图、操作 GIF、验证与已知问题集中在 [docs/design-preview/README.md](docs/design-preview/README.md)。原 `/design` 保留为被否决的历史稿；本阶段不修业务 bug，不进入第二阶段。
 
 目前只配置 KIE，ZenMux Key 为空时自动跳过。两家生图 / LLM 代码均已接入，无需未来改代码。协议和模型核实记录见 [docs/gateways.md](docs/gateways.md)。
 
@@ -169,6 +169,8 @@ SKU 页“AI 提炼”读取已保存资料及排序最前的 2～3 张实拍图
 本机 GitHub 登录及 Docker 引擎检查通过。Docker Hub 连接超时已通过复用缓存的 PostgreSQL 镜像和官方 Quay MinIO 镜像完成本地启动；新电脑仍需可以下载这些镜像。
 
 ## 本次完成内容
+
+- 2026-10-14 任务 7 第一阶段修订：新增 `/design-preview` 五页亮暗静态可交互原型；使用 Radix shadcn、React Flow、Konva、zustand、next-themes、motion 与 react-dropzone；交付十张截图、画布操作 GIF、安装前许可证核验记录与完整版权声明。业务逻辑与数据库未修改，等待设计审阅。
 
 - 2026-10-14 任务 7 第一阶段：新增 `/design` 下四张静态高保真设计稿、统一设计规范、页面截图与说明；只读排查理解度、会话费用、实拍数量及旧档案候选四个问题，记录原因与修复方案。现有业务页面及问题逻辑未修改，等待用户确认后再迁移。详见 [任务 7 进度](docs/task-7-progress.md)。
 

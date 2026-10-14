@@ -1,0 +1,1060 @@
+[
+  {
+    "name": "@radix-ui/number",
+    "version": "1.1.3",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/number/-/number-1.1.3.tgz"
+  },
+  {
+    "name": "@radix-ui/react-arrow",
+    "version": "1.1.17",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-arrow/-/react-arrow-1.1.17.tgz"
+  },
+  {
+    "name": "@radix-ui/react-arrow/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-checkbox",
+    "version": "1.4.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-checkbox/-/react-checkbox-1.4.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-checkbox/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-checkbox/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-checkbox/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-checkbox/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-checkbox/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-collection",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-collection/-/react-collection-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-collection/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-collection/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-compose-refs",
+    "version": "1.1.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-context",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-context/-/react-context-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dialog",
+    "version": "1.3.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-dialog/-/react-dialog-1.3.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dialog/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dialog/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dialog/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dialog/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dialog/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-direction",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-direction/-/react-direction-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dismissable-layer",
+    "version": "1.2.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.2.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dismissable-layer/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dismissable-layer/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dismissable-layer/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dismissable-layer/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dropdown-menu",
+    "version": "2.2.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-2.2.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dropdown-menu/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dropdown-menu/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dropdown-menu/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dropdown-menu/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-dropdown-menu/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-focus-guards",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-focus-guards/-/react-focus-guards-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-focus-scope",
+    "version": "1.3.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-focus-scope/-/react-focus-scope-1.3.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-focus-scope/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-id",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-id/-/react-id-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-id/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-label",
+    "version": "2.1.17",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-label/-/react-label-2.1.17.tgz"
+  },
+  {
+    "name": "@radix-ui/react-label/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-menu",
+    "version": "2.2.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-menu/-/react-menu-2.2.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-menu/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-menu/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-popover",
+    "version": "1.3.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-popover/-/react-popover-1.3.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-popover/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-popover/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-popover/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-popover/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-popover/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-popper",
+    "version": "1.4.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-popper/-/react-popper-1.4.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-popper/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-popper/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-portal",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-portal/-/react-portal-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-portal/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-portal/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-presence",
+    "version": "1.1.11",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-presence/-/react-presence-1.1.11.tgz"
+  },
+  {
+    "name": "@radix-ui/react-presence/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-primitive/node_modules/@radix-ui/react-compose-refs",
+    "version": "1.1.2",
+    "license": "MIT",
+    "licenseFile": "LICENSE.official",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.2.tgz"
+  },
+  {
+    "name": "@radix-ui/react-primitive/node_modules/@radix-ui/react-slot",
+    "version": "1.2.3",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-slot/-/react-slot-1.2.3.tgz"
+  },
+  {
+    "name": "@radix-ui/react-roving-focus",
+    "version": "1.2.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-roving-focus/-/react-roving-focus-1.2.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-roving-focus/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-roving-focus/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-roving-focus/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-roving-focus/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-roving-focus/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-select",
+    "version": "2.4.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-select/-/react-select-2.4.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-select/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-select/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-select/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-select/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-select/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-separator",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-separator/-/react-separator-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-separator/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-slider",
+    "version": "1.6.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-slider/-/react-slider-1.6.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-slider/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-slider/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-slider/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-slider/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-slider/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-slot",
+    "version": "1.5.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-slot/-/react-slot-1.5.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-switch",
+    "version": "1.4.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-switch/-/react-switch-1.4.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-switch/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-switch/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-switch/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-switch/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-switch/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tabs",
+    "version": "1.2.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-tabs/-/react-tabs-1.2.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tabs/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tabs/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tabs/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tabs/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tabs/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tooltip",
+    "version": "1.4.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-tooltip/-/react-tooltip-1.4.1.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tooltip/node_modules/@radix-ui/primitive",
+    "version": "1.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tooltip/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tooltip/node_modules/@radix-ui/react-use-controllable-state",
+    "version": "1.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tooltip/node_modules/@radix-ui/react-use-effect-event",
+    "version": "0.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-tooltip/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-use-callback-ref",
+    "version": "1.1.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-use-callback-ref/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-use-is-hydrated",
+    "version": "0.1.3",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-is-hydrated/-/react-use-is-hydrated-0.1.3.tgz"
+  },
+  {
+    "name": "@radix-ui/react-use-rect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-rect/-/react-use-rect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-use-size",
+    "version": "1.1.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-size/-/react-use-size-1.1.5.tgz"
+  },
+  {
+    "name": "@radix-ui/react-use-size/node_modules/@radix-ui/react-use-layout-effect",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz"
+  },
+  {
+    "name": "@radix-ui/react-visually-hidden",
+    "version": "1.2.13",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-visually-hidden/-/react-visually-hidden-1.2.13.tgz"
+  },
+  {
+    "name": "@radix-ui/react-visually-hidden/node_modules/@radix-ui/react-primitive",
+    "version": "2.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz"
+  },
+  {
+    "name": "@radix-ui/rect",
+    "version": "1.1.3",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@radix-ui/rect/-/rect-1.1.3.tgz"
+  },
+  {
+    "name": "@tailwindcss/oxide-wasm32-wasi/node_modules/@emnapi/core",
+    "version": "1.11.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmjs.org/@emnapi/core/-/core-1.11.1.tgz"
+  },
+  {
+    "name": "@tailwindcss/oxide-wasm32-wasi/node_modules/@emnapi/runtime",
+    "version": "1.11.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.1.tgz"
+  },
+  {
+    "name": "@tailwindcss/oxide-wasm32-wasi/node_modules/@emnapi/wasi-threads",
+    "version": "1.2.2",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.2.tgz"
+  },
+  {
+    "name": "@tailwindcss/oxide-wasm32-wasi/node_modules/@napi-rs/wasm-runtime",
+    "version": "1.1.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE.official",
+    "source": "https://registry.npmjs.org/@napi-rs/wasm-runtime/-/wasm-runtime-1.1.4.tgz"
+  },
+  {
+    "name": "@tailwindcss/oxide-wasm32-wasi/node_modules/@tybys/wasm-util",
+    "version": "0.10.2",
+    "license": "MIT",
+    "licenseFile": "LICENSE.official",
+    "source": "https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.2.tgz"
+  },
+  {
+    "name": "@tailwindcss/oxide-wasm32-wasi/node_modules/tslib",
+    "version": "2.8.1",
+    "license": "0BSD",
+    "licenseFile": "LICENSE.txt",
+    "source": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz"
+  },
+  {
+    "name": "@types/d3-drag",
+    "version": "3.0.7",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@types/d3-drag/-/d3-drag-3.0.7.tgz"
+  },
+  {
+    "name": "@types/d3-selection",
+    "version": "3.0.12",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@types/d3-selection/-/d3-selection-3.0.12.tgz"
+  },
+  {
+    "name": "@types/d3-transition",
+    "version": "3.0.9",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@types/d3-transition/-/d3-transition-3.0.9.tgz"
+  },
+  {
+    "name": "@types/d3-zoom",
+    "version": "3.0.9",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@types/d3-zoom/-/d3-zoom-3.0.9.tgz"
+  },
+  {
+    "name": "@types/react-reconciler",
+    "version": "0.33.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@types/react-reconciler/-/react-reconciler-0.33.1.tgz"
+  },
+  {
+    "name": "@xyflow/react",
+    "version": "12.12.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@xyflow/react/-/react-12.12.0.tgz"
+  },
+  {
+    "name": "@xyflow/react/node_modules/zustand",
+    "version": "4.5.7",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/zustand/-/zustand-4.5.7.tgz"
+  },
+  {
+    "name": "@xyflow/system",
+    "version": "0.0.83",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@xyflow/system/-/system-0.0.83.tgz"
+  },
+  {
+    "name": "@xyflow/system/node_modules/@types/d3-interpolate",
+    "version": "3.0.4",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@types/d3-interpolate/-/d3-interpolate-3.0.4.tgz"
+  },
+  {
+    "name": "aria-hidden",
+    "version": "1.2.6",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/aria-hidden/-/aria-hidden-1.2.6.tgz"
+  },
+  {
+    "name": "attr-accept",
+    "version": "4.0.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/attr-accept/-/attr-accept-4.0.1.tgz"
+  },
+  {
+    "name": "classcat",
+    "version": "5.0.5",
+    "license": "MIT",
+    "licenseFile": "LICENSE.md",
+    "source": "https://registry.npmmirror.com/classcat/-/classcat-5.0.5.tgz"
+  },
+  {
+    "name": "d3-dispatch",
+    "version": "3.0.1",
+    "license": "ISC",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/d3-dispatch/-/d3-dispatch-3.0.1.tgz"
+  },
+  {
+    "name": "d3-drag",
+    "version": "3.0.0",
+    "license": "ISC",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/d3-drag/-/d3-drag-3.0.0.tgz"
+  },
+  {
+    "name": "d3-ease",
+    "version": "3.0.1",
+    "license": "BSD-3-Clause",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/d3-ease/-/d3-ease-3.0.1.tgz"
+  },
+  {
+    "name": "d3-selection",
+    "version": "3.0.0",
+    "license": "ISC",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/d3-selection/-/d3-selection-3.0.0.tgz"
+  },
+  {
+    "name": "d3-timer",
+    "version": "3.0.1",
+    "license": "ISC",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/d3-timer/-/d3-timer-3.0.1.tgz"
+  },
+  {
+    "name": "d3-transition",
+    "version": "3.0.1",
+    "license": "ISC",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/d3-transition/-/d3-transition-3.0.1.tgz"
+  },
+  {
+    "name": "d3-zoom",
+    "version": "3.0.0",
+    "license": "ISC",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/d3-zoom/-/d3-zoom-3.0.0.tgz"
+  },
+  {
+    "name": "detect-node-es",
+    "version": "1.1.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/detect-node-es/-/detect-node-es-1.1.0.tgz"
+  },
+  {
+    "name": "file-selector",
+    "version": "5.0.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/file-selector/-/file-selector-5.0.1.tgz"
+  },
+  {
+    "name": "framer-motion",
+    "version": "14.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE.md",
+    "source": "https://registry.npmmirror.com/framer-motion/-/framer-motion-14.2.0.tgz"
+  },
+  {
+    "name": "get-nonce",
+    "version": "1.0.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/get-nonce/-/get-nonce-1.0.1.tgz"
+  },
+  {
+    "name": "its-fine",
+    "version": "2.1.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/its-fine/-/its-fine-2.1.1.tgz"
+  },
+  {
+    "name": "its-fine/node_modules/@types/react-reconciler",
+    "version": "0.28.9",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/@types/react-reconciler/-/react-reconciler-0.28.9.tgz"
+  },
+  {
+    "name": "konva",
+    "version": "10.8.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/konva/-/konva-10.8.0.tgz"
+  },
+  {
+    "name": "motion",
+    "version": "14.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE.md",
+    "source": "https://registry.npmmirror.com/motion/-/motion-14.2.0.tgz"
+  },
+  {
+    "name": "motion-dom",
+    "version": "14.2.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE.md",
+    "source": "https://registry.npmmirror.com/motion-dom/-/motion-dom-14.2.0.tgz"
+  },
+  {
+    "name": "motion-utils",
+    "version": "14.1.1",
+    "license": "MIT",
+    "licenseFile": "LICENSE.md",
+    "source": "https://registry.npmmirror.com/motion-utils/-/motion-utils-14.1.1.tgz"
+  },
+  {
+    "name": "react-dropzone",
+    "version": "20.1.3",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/react-dropzone/-/react-dropzone-20.1.3.tgz"
+  },
+  {
+    "name": "react-konva",
+    "version": "19.3.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/react-konva/-/react-konva-19.3.0.tgz"
+  },
+  {
+    "name": "react-reconciler",
+    "version": "0.34.0",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/react-reconciler/-/react-reconciler-0.34.0.tgz"
+  },
+  {
+    "name": "react-remove-scroll",
+    "version": "2.7.2",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/react-remove-scroll/-/react-remove-scroll-2.7.2.tgz"
+  },
+  {
+    "name": "react-remove-scroll-bar",
+    "version": "2.3.8",
+    "license": "MIT",
+    "licenseFile": "LICENSE.official",
+    "source": "https://registry.npmmirror.com/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.8.tgz",
+    "licenseSource": "https://raw.githubusercontent.com/theKashey/react-remove-scroll-bar/master/LICENSE"
+  },
+  {
+    "name": "react-style-singleton",
+    "version": "2.2.3",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/react-style-singleton/-/react-style-singleton-2.2.3.tgz"
+  },
+  {
+    "name": "use-callback-ref",
+    "version": "1.3.3",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/use-callback-ref/-/use-callback-ref-1.3.3.tgz"
+  },
+  {
+    "name": "use-sidecar",
+    "version": "1.1.3",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/use-sidecar/-/use-sidecar-1.1.3.tgz"
+  },
+  {
+    "name": "zustand",
+    "version": "5.0.15",
+    "license": "MIT",
+    "licenseFile": "LICENSE",
+    "source": "https://registry.npmmirror.com/zustand/-/zustand-5.0.15.tgz"
+  },
+  {
+    "name": "gifenc",
+    "version": "1.0.3",
+    "license": "MIT",
+    "licenseFile": "LICENSE.md",
+    "source": "https://registry.npmjs.org/gifenc/-/gifenc-1.0.3.tgz"
+  }
+]

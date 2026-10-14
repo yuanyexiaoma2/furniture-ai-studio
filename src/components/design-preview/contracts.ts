@@ -1,0 +1,11 @@
+// 第二阶段接入时使用此边界，当前仅由本地模拟器消费。
+export type ImageAction = "final"|"paint"|"erase"|"expand"|"cutout"|"background"|"regenerate"|"download";
+export type ActionRequest = {
+  action:ImageAction; imageId:string; originalImage:string;
+  productReferences:string[]; mask?:Blob; instruction?:string;
+  expansion?:{width:number;height:number;offsetX:number;offsetY:number};
+  parameters?:{count:number;ratio:string;quality:"标准"|"精细"};
+  editCount:number;
+};
+export type OnImageAction = (request:ActionRequest)=>void|Promise<void>;
+export interface MaskExportHandle { exportMask:()=>Promise<Blob>; }

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "screenshots": 10,
+  "frames": 7,
+  "initialImages": 30,
+  "pageErrors": [],
+  "businessApiRequests": [],
+  "observedIdleFps": 60,
+  "observedDragFps": 60,
+  "diagnostics": [],
+  "checks": [
+    "双主题及存储",
+    "模板轮播与 Tab 提示",
+    "SKU 筛选",
+    "7 个 Frame / 30 张图",
+    "父图位与子图联动拖动",
+    "平移 / Ctrl 缩放",
+    "图片拖拽",
+    "选中工具条与对话定位",
+    "Konva 涂抹 / PNG 蒙版",
+    "扩图拖框",
+    "多选对比",
+    "画布参考选取",
+    "便签与图层"
+  ]
+}
