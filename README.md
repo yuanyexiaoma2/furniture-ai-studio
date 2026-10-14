@@ -4,6 +4,8 @@
 
 ## 如何运行
 
+任务 7 第一阶段设计预览：沿用现有网页服务，登录后访问 <http://localhost:3000/design>；顶部可切换 SKU 列表、Agent 提问、候选调整和用户管理四张稿。仅假数据与本地交互，不需启动 worker、不调用模型、不保存到业务系统。截图与设计说明见 [docs/design/README.md](docs/design/README.md)，规范见 [docs/design-system.md](docs/design-system.md)，bug 排查见 [docs/task-7-progress.md](docs/task-7-progress.md)。复现截图与交互检查可执行 `node scripts/verify-design.mjs`（要求本地网页已启动、`.env` 管理员账号可用）。
+
 目前只配置 KIE，ZenMux Key 为空时自动跳过。两家生图 / LLM 代码均已接入，无需未来改代码。协议和模型核实记录见 [docs/gateways.md](docs/gateways.md)。
 
 本机重新打开项目：先确认 Docker Desktop 已启动，运行 `docker compose up -d`；在项目目录执行 `npm run dev -- --hostname 127.0.0.1`，另一终端执行 `npm run worker`，然后访问 <http://localhost:3000>。网页与 worker 都是常驻服务，无需等待退出。不要重复启动已运行的服务。
@@ -167,6 +169,8 @@ SKU 页“AI 提炼”读取已保存资料及排序最前的 2～3 张实拍图
 本机 GitHub 登录及 Docker 引擎检查通过。Docker Hub 连接超时已通过复用缓存的 PostgreSQL 镜像和官方 Quay MinIO 镜像完成本地启动；新电脑仍需可以下载这些镜像。
 
 ## 本次完成内容
+
+- 2026-10-14 任务 7 第一阶段：新增 `/design` 下四张静态高保真设计稿、统一设计规范、页面截图与说明；只读排查理解度、会话费用、实拍数量及旧档案候选四个问题，记录原因与修复方案。现有业务页面及问题逻辑未修改，等待用户确认后再迁移。详见 [任务 7 进度](docs/task-7-progress.md)。
 
 - 2026-10-14 任务 5：实现对话式产品理解、PDF/Word/Excel/CSV资料解析、带来源与冲突的档案版本、7图位策划、生成费用确认、快速/手动模式和候选引用调整；复用既有双网关、配额、账本及身份冻结。自动测试与构建通过；真实SKU验收尚待用户资料和外传授权，不能视为真实验收完成。详见 [任务 5 进度](docs/task-5-progress.md)。
 
