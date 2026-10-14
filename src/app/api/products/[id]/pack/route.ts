@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { studioUser, studioError, StudioError } from "@/lib/studio-api";
 import { packSnapshot, mutatePack, quoteBatch, submitBatch } from "@/lib/image-packs";
+import { agentSession, recordBoardEvent } from "@/lib/agent-state";
 import { z } from "zod";
 export const runtime = "nodejs";
 const selectionSchema = z.object({ slotId: z.string().optional(), retryJobId: z.string().optional() });
@@ -18,9 +19,12 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
       if (!selection.success) throw new StudioError("生成范围参数无效");
       if (body.action === "quote") return NextResponse.json(await quoteBatch(user.id, id, selection.data));
       if (typeof body.fingerprint !== "string" || !z.string().uuid().safeParse(body.requestKey).success) throw new StudioError("请先查看生成确认框");
-      return NextResponse.json({ batchId: await submitBatch(user.id, id, selection.data, body.fingerprint, body.requestKey) }, { status: 202 });
+      const batchId = await submitBatch(user.id, id, selection.data, body.fingerprint, body.requestKey, (await agentSession(id, user.id)).id);
+      await recordBoardEvent(id, user.id, { action: "generate", selection: selection.data, batchId });
+      return NextResponse.json({ batchId }, { status: 202 });
     }
     await mutatePack(id, body);
+    await recordBoardEvent(id, user.id, body);
     return NextResponse.json({ ok: true });
   } catch (error) { return studioError(error, "图包操作失败，请刷新后重试"); }
 }

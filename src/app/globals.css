@@ -428,3 +428,71 @@ a, button, summary { touch-action: manipulation; }
 .pack-quote small { font-size:14px; font-weight:400; }
 .pack-large-image { width:100%; height:auto; }
 @media(max-width:800px) { .pack-toolbar,.pack-slot>.panel-heading { align-items:flex-start; flex-direction:column; } .pack-slot-editor { grid-template-columns:1fr 1fr; } .pack-slot-editor label:first-child { grid-column:1/-1; } .pack-progress { grid-template-columns:1fr; } .pack-progress span { text-align:left; } .pack-slot { padding:16px; } }
+
+/* 策划工作台延续米白、墨绿和细线，左侧对话保持可读，右侧用于比较候选。 */
+.agent-workspace { display:grid; grid-template-columns:minmax(340px, 430px) minmax(0, 1fr); gap:22px; align-items:start; }
+.agent-mode-bar { grid-column:1 / -1; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; padding:20px 24px; background:#e9ede3; border:1px solid #d6ddcf; }
+.agent-mode-toggle { display:flex; gap:3px; margin-top:6px; }
+.agent-mode-toggle button { padding:9px 16px; font-size:13px; border:1px solid transparent; }
+.agent-mode-toggle button[aria-pressed=true] { background:#243b2e; color:#fffdf5; }
+.agent-mode-bar label { font-size:13px; display:block; }
+.agent-mode-bar small, .agent-session-cost small { display:block; color:#66735f; font-size:11px; margin-top:6px; }
+.agent-panel { position:sticky; top:20px; padding:22px; min-width:0; }
+.agent-heading { display:flex; justify-content:space-between; gap:10px; margin-bottom:16px; }
+.agent-heading h2 { font-size:22px; margin-top:6px; }
+.agent-heading strong { font-size:25px; color:#405d39; }
+.agent-heading small { display:block; font-size:10px; font-weight:400; }
+.agent-panel>progress { width:100%; accent-color:#567344; height:5px; }
+.agent-uncertainty { font-size:11px; line-height:1.8; color:#797361; margin:8px 0 16px; }
+.agent-materials { padding:12px; border:1px dashed #b8c2ac; background:#f4f5ec; }
+.agent-upload-label { display:block; cursor:pointer; font-size:12px; }
+.agent-upload-label input { width:100%; font-size:11px; margin:8px 0; }
+.agent-upload-label small { display:block; font-size:10px; color:#7a806f; }
+.agent-document { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:8px 0; border-top:1px solid #dde2d3; font-size:11px; overflow-wrap:anywhere; }
+.agent-document small { display:block; color:#7b826f; font-size:10px; }
+.agent-document select { max-width:112px; padding:4px; background:#fffdf4; }
+.agent-transcript { max-height:65vh; min-height:240px; overflow-y:auto; padding:20px 2px; }
+.agent-welcome { font-size:13px; line-height:1.9; color:#72816b; padding:16px 0; }
+.agent-message { margin-bottom:16px; padding:12px 14px; border-left:2px solid #d2daca; background:#f6f6ef; }
+.agent-message>span { display:block; font-size:10px; letter-spacing:.06em; margin-bottom:8px; color:#79836c; }
+.agent-message p { font-size:13px; line-height:1.85; white-space:pre-wrap; overflow-wrap:anywhere; }
+.agent-user { background:#eaf0e3; border-left-color:#70865c; }
+.agent-system { background:transparent; padding:6px; border:0; color:#8a8a78; }
+.agent-system p { font-size:10px; }
+.agent-card { border:1px solid #a6b596; padding:16px; background:#fffdf6; margin-bottom:16px; box-shadow:0 3px 0 #dce4d0; }
+.agent-card h3 { font-size:15px; font-weight:600; }
+.agent-card .panel-heading { margin-bottom:16px; gap:8px; }
+.agent-card .panel-heading span { font-size:10px; color:#637b50; white-space:nowrap; }
+.agent-card p { font-size:12px; line-height:1.8; margin:10px 0; }
+.agent-card button { margin-top:8px; }
+.agent-card-receipt { padding:8px 12px; font-size:11px; border-bottom:1px solid #e0e6d8; color:#6a7c5e; }
+.agent-card input:not([type=checkbox]), .agent-card textarea, .agent-card select { display:block; width:100%; border:1px solid #d8dfce; background:#fffefa; padding:8px; font-size:12px; margin:6px 0; border-radius:2px; }
+.agent-profile-fields { max-height:420px; overflow:auto; }
+.agent-profile-fields>label { display:block; margin-bottom:15px; font-size:12px; font-weight:600; }
+.agent-profile-fields small { font-size:10px; color:#7b806f; font-weight:400; overflow-wrap:anywhere; }
+.agent-proposal-slot { border-top:1px solid #e0e4d6; margin-top:14px; padding-top:10px; }
+.agent-proposal-slot small { color:#77816c; font-size:11px; }
+.agent-card-options { display:grid; grid-template-columns:1fr 1fr; gap:0 8px; }
+.agent-question { display:block; font-size:12px; line-height:1.8; margin-bottom:16px; }
+.agent-question-options { display:flex; flex-wrap:wrap; gap:5px; }
+.agent-question-options button { border:1px solid #ccd6bf; padding:5px 10px; background:#f5f7f0; }
+.agent-question-options .selected { background:#dce6d1; border-color:#6f875a; }
+.agent-cost { display:block; font-size:25px; color:#395332; margin-top:15px; }
+.agent-composer { border-top:1px solid #dbe1d2; padding-top:14px; }
+.agent-composer textarea { width:100%; background:#fffefa; border:1px solid #c8d2bc; padding:12px; font-size:13px; resize:vertical; }
+.agent-composer>div { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.agent-composer button { font-size:11px; }
+.agent-reference { align-items:center; font-size:12px; padding:6px; background:#edf2e6; }
+.agent-reference button { margin-left:auto; }
+.agent-progress { font-size:12px; color:#5d7c43; padding:10px; }
+.agent-tool-history { font-size:10px; color:#7d846f; margin:16px 0; }
+.agent-tool-history p { margin:5px 0; }
+.agent-board { min-width:0; }
+.agent-board .pack-toolbar { flex-wrap:wrap; gap:16px; }
+.agent-board .pack-slot-editor { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.agent-board .pack-candidates { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.agent-parent { color:#638146; }
+.agent-parent button { text-decoration:underline; }
+@media(min-width:1500px) { .agent-workspace { grid-template-columns:450px minmax(0,1fr); } .agent-board .pack-candidates { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media(max-width:1100px) { .agent-workspace { grid-template-columns:1fr; } .agent-panel { position:static; } .agent-transcript { max-height:60vh; } }
+@media(max-width:600px) { .agent-mode-bar { padding:15px; } .agent-panel { padding:16px; } .agent-board .pack-candidates { grid-template-columns:1fr; } }
