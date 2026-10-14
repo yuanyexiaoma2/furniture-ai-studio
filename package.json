@@ -17,7 +17,9 @@
     "worker": "node --conditions=react-server --import tsx scripts/kie-worker.ts",
     "test:e2e": "playwright test",
     "test:generation": "node --conditions=react-server --import tsx scripts/verify-generation.ts",
-    "test:gateways": "node --conditions=react-server --import tsx --test tests/unit/*.test.ts"
+    "test:gateways": "node --conditions=react-server --import tsx --test tests/unit/*.test.ts",
+    "test:agent": "node --conditions=react-server --import tsx scripts/verify-agent.ts",
+    "test:agent:browser": "node --conditions=react-server --import tsx scripts/verify-agent.ts --browser"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.0.0",

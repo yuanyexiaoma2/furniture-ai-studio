@@ -7,6 +7,7 @@ import { StudioError } from "./studio-error";
 export const imageTypes = ["photo", "white_bg", "render_3d", "detail", "other"] as const;
 export async function uploadProductDocuments(productId: string, userId: string, files: File[]) {
   if (!await db.product.findUnique({ where: { id: productId } })) throw new StudioError("商品不存在", 404);
+  if (files.reduce((n, file) => n + file.size, 0) > 100 * 1024 * 1024) throw new StudioError("单次上传不能超过 100MB");
   if (!files.length || files.length > 15) throw new StudioError("每次可上传 1～15 个文件");
   const results: { filename: string; id?: string; error?: string }[] = [];
   for (const file of files) {
@@ -33,7 +34,9 @@ export async function uploadProductDocuments(productId: string, userId: string, 
       results.push({ filename: file.name, ...(documentId ? { id: documentId } : {}), error: message });
     }
   }
-  await db.agentSession.updateMany({ where: { productId }, data: { confirmedProfileId: null, confirmedPack: false } });
+  await db.agentSession.updateMany({ where: { productId }, data: { confirmedProfileId: null, confirmedPack: false, draftRevision: { increment: 1 } } });
+  const sessions = await db.agentSession.findMany({ where: { productId }, select: { id: true } });
+  await db.agentCard.updateMany({ where: { sessionId: { in: sessions.map(s => s.id) }, kind: { in: ["profile", "pack", "cost"] }, status: "pending" }, data: { status: "cancelled" } });
   return results;
 }
 export async function classifyDocument(productId: string, documentId: string, imageType: typeof imageTypes[number]) {

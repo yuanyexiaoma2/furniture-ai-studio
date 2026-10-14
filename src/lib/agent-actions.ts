@@ -35,17 +35,18 @@ export async function quoteAgentAction(sessionId: string, action: PaidAction) {
   if (action.operation !== "edit_image") {
     const selection = action.operation === "generate_slot" ? { slotId: action.slotId, count: action.count } : {};
     const quote = await quoteBatch(session.createdById, session.productId, selection);
-    return { ...quote, risk, content: action.operation === "generate_batch" ? "整套 AI 场景图位" : `图位 ${action.slotId}` };
+    const slots = await db.imageSlot.findMany({ where: { pack: { productId: session.productId, isCurrent: true }, deletedAt: null, method: "ai_scene", ...(action.operation === "generate_slot" ? { id: action.slotId } : {}) }, orderBy: { order: "asc" } });
+    return { ...quote, risk, content: slots.filter(slot => slot.goal.trim()).map(slot => `${slot.name}：${slot.goal}`).join("\n") };
   }
   return db.$transaction(async tx => { const prepared = await prepareEdit(tx, session.productId, action); const user = await tx.user.findUniqueOrThrow({ where: { id: session.createdById } }), used = await monthlySpendUsd(tx, user.id); return { fingerprint: prepared.fingerprint, estimatedCostUsd: prepared.estimate, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: Math.max(0, prepared.estimate + used - Number(user.monthlyQuota)), totalCount: 1, slotCount: 1, skipped: [], risk, content: action.instruction }; });
 }
 export async function createCostCard(sessionId: string, action: PaidAction) {
   const session = await validGeneration(sessionId, action), quote = await quoteAgentAction(sessionId, action);
   const data = { action, quote };
-  const old = await db.agentCard.findFirst({ where: { sessionId, kind: "cost", status: "pending", data: { equals: json(data) } } });
-  const card = old ?? await db.agentCard.create({ data: { sessionId, kind: "cost", data: json(data) } });
+  const old = await db.agentCard.findFirst({ where: { sessionId, kind: "cost", status: "pending", data: { path: ["action"], equals: json(action) } } });
+  const card = old ? await db.agentCard.update({ where: { id: old.id }, data: { data: json(data) } }) : await db.agentCard.create({ data: { sessionId, kind: "cost", data: json(data) } });
   const priorBatch = await db.agentCard.findFirst({ where: { sessionId, kind: "cost", status: "executed", data: { path: ["action", "operation"], equals: "generate_batch" } } });
-  const automatic = autoApproval({ enabled: session.autoConfirm, firstConfirmed: session.firstGenerationConfirmed && (action.operation !== "generate_batch" || Boolean(priorBatch)), costUsd: quote.estimatedCostUsd, risk: !quote.risk.ready });
+  const automatic = autoApproval({ enabled: session.autoConfirm, firstConfirmed: session.firstGenerationConfirmed && (action.operation !== "generate_batch" || Boolean(priorBatch)), costUsd: quote.estimatedCostUsd, risk: !quote.risk.ready || (session.mode === "manual" && action.operation === "generate_slot") });
   if (automatic && quote.shortage <= 0) { const result = await approveAgentCard(sessionId, card.id, { acceptRisk: false }, true); return { cardId: card.id, automatic: true, result }; }
   return { cardId: card.id, waitForUser: true, quote };
 }
@@ -78,8 +79,8 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
     const quote = await quoteAgentAction(sessionId, action), old = raw.quote as typeof quote;
     if (quote.fingerprint !== old.fingerprint) { await db.agentCard.update({ where: { id: card.id }, data: { data: json({ action, quote }) } }); throw new StudioError("图位、身份或价格变化，费用卡已更新，请重新确认", 409); }
     if (!quote.risk.ready && changes.acceptRisk !== true) throw new StudioError("产品仍有缺失或冲突，请勾选已了解风险后再生成", 409);
-    if (automatic && !autoApproval({ enabled: session.autoConfirm, firstConfirmed: session.firstGenerationConfirmed, costUsd: quote.estimatedCostUsd, risk: !quote.risk.ready })) throw new StudioError("当前操作必须人工确认", 409);
-    const claimed = await db.agentCard.updateMany({ where: { id: cardId, status: "pending" }, data: { status: "executing" } });
+    if (automatic && !autoApproval({ enabled: session.autoConfirm, firstConfirmed: session.firstGenerationConfirmed, costUsd: quote.estimatedCostUsd, risk: !quote.risk.ready || (session.mode === "manual" && action.operation === "generate_slot") })) throw new StudioError("当前操作必须人工确认", 409);
+    const claimed = await db.agentCard.updateMany({ where: { id: cardId, status: "pending" }, data: { status: "executing", data: json({ ...raw, startedAt: new Date().toISOString() }) } });
     if (!claimed.count) throw new StudioError("确认卡正在执行，请勿重复提交", 409);
     try {
       let result;
@@ -105,7 +106,8 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
       const submitted = json(changes.profile ?? raw.profile) as unknown as Record<string, { value: string; status: string; sources: unknown[] }>;
       for (const field of Object.values(submitted)) if (field && typeof field === "object" && field.status !== "missing" && Array.isArray(field.sources)) field.sources.push({ kind: "product", id: session.productId, quote: `美工在理解确认卡 ${cardId} 确认：${field.value}`.slice(0,2000) });
       const profile = profileSchema.parse(submitted), saved = await confirmProfile(tx, session.productId, session.createdById, profile);
-      await tx.agentSession.update({ where: { id: sessionId }, data: { profileDraft: profile, confirmedProfileId: saved.id, confirmedPack: false } }); result = { profileId: saved.id, version: saved.version, identityVersionId: saved.identityVersionId };
+      await tx.agentSession.update({ where: { id: sessionId }, data: { profileDraft: profile, confirmedProfileId: saved.id, confirmedPack: false } });
+      await tx.agentCard.updateMany({ where: { sessionId, kind: { in: ["pack", "cost"] }, status: "pending" }, data: { status: "cancelled" } }); result = { profileId: saved.id, version: saved.version, identityVersionId: saved.identityVersionId };
     } else if (card.kind === "pack") { result = await applyProposal(tx, session.productId, changes.proposal ?? raw); await tx.agentSession.update({ where: { id: sessionId }, data: { confirmedPack: true } }); }
     else if (card.kind === "questions") {
       const questions = (raw.questions ?? []) as { question: string; options: string[]; allowFreeText: boolean }[];
@@ -114,7 +116,8 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
     } else if (card.kind === "final") {
       const selection = agentToolSchemas.set_final.parse(raw);
       const asset = await tx.asset.findFirst({ where: { id: selection.assetId, productId: session.productId, deletedAt: null } }), job = await tx.generationJob.findFirst({ where: { productId: session.productId, slotId: selection.slotId, status: "success", resultAssetIds: { array_contains: [selection.assetId] } } });
-      if (!asset || !job) throw new StudioError("候选图已失效，请重新选择", 409);
+      const slot = await tx.imageSlot.findFirst({ where: { id: selection.slotId, deletedAt: null, pack: { productId: session.productId, isCurrent: true } } });
+      if (!asset || !job || !slot) throw new StudioError("候选图或图位已失效，请重新选择", 409);
       await tx.imageSlot.update({ where: { id: selection.slotId }, data: { finalAssetId: selection.assetId } }); result = { finalAssetId: selection.assetId };
     } else throw new StudioError("未知确认卡");
     await tx.agentCard.update({ where: { id: cardId }, data: { status: "executed", result: json(result) } });

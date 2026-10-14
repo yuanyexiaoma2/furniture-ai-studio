@@ -16,7 +16,7 @@ export async function parseDocument(bytes: Buffer, type: string) {
     if (!bytes.subarray(0, 5).equals(Buffer.from("%PDF-"))) throw new Error("PDF 文件内容无效");
     const { PDFParse } = await import("pdf-parse");
     const parser = new PDFParse({ data: bytes });
-    try { const info = await parser.getInfo(); if (info.total > 200) throw new Error("PDF 超过 200 页，请拆分后上传"); text = (await parser.getText()).text; } finally { await parser.destroy(); }
+    try { const info = await parser.getInfo(); if (info.total > 200) throw new Error("PDF 超过 200 页，请拆分后上传"); text = (await parser.getText()).pages.map(page => page.text).join("\n"); } finally { await parser.destroy(); }
   } else if (type === "docx") text = (await mammoth.extractRawText({ buffer: bytes })).value;
   else if (type === "xlsx") {
     const workbook = new ExcelJS.Workbook(); await workbook.xlsx.load(bytes as unknown as Parameters<typeof workbook.xlsx.load>[0]);

@@ -11,7 +11,7 @@ export default defineConfig({
   expect: { timeout: 15000 },
   reporter: "list",
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: process.env.E2E_BASE_URL ?? "http://localhost:3000",
     channel: process.env.PLAYWRIGHT_CHANNEL === "chromium" ? undefined : "chrome",
     headless: true,
     actionTimeout: 15000,

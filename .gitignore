@@ -13,3 +13,5 @@ test-results/
 tsconfig.tsbuildinfo
 src/generated/
 .local/
+
+.next-agent-test/

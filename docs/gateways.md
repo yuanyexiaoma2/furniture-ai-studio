@@ -78,3 +78,12 @@ ZenMux 图片 slug 来自指定[模型列表](https://zenmux.ai/models?sort=newe
 - worker在完成5分钟后首次查账，之后有界退避，最多10次；该频率为本项目取舍。账单匹配后原记录costUsd回填、costEstimated=false；重启仍从数据库继续查账。查询不创建新的生图或聊天任务。
 - 图片预估采用Google官方上游Nano Banana2.1价格：输入$1.5/M、文本/思考输出$7.5/M、**图片输出$30/M**；1K/2K/4K图片输出分别1120/1680/3780 token，加输入及文本预算，不能把$7.5应用于图片，也不宣称是ZenMux固定总价。图像输入按258 token瓦片、文字按字符粗估，实际usage可更新估计。来源：[Google价格](https://ai.google.dev/gemini-api/docs/pricing)、[token估算](https://ai.google.dev/gemini-api/docs/tokens)。
 - Gemini2.5Pro按≤200K输入$1.25/M、输出$10/M，超过分档$2.5/$15估算；分档来源Google上游，最终由ZenMux账单替换。KIE聊天按配置积分token单价换算。来源：[Google价格](https://ai.google.dev/gemini-api/docs/pricing)、[ZenMux模型](https://zenmux.ai/google/gemini-2.5-pro)。
+
+
+## 任务 5：Agent 接入与流式协议（2026-10-14）
+
+- llm-agent现在实际接入工具循环。KIE仍为gpt-6-1-sol、/codex/v1/responses；ZenMux仍为google/gemini-2.5-pro、OpenAI chat协议。所有请求经chatWithGateway，逐次LlmCall关联会话、校验配额并保存用量和费用。
+- KIE官方模型页现列输入120积分/M、输出600积分/M；名义$0.005/积分折算$0.60/M和$3.00/M。配置据此预留，实际credits_consumed优先，缓存优惠不作为保守估价依据。[KIE模型与价格](https://kie.ai/gpt-6-1-sol)。
+- KIE Responses开启stream:true，处理response.output_text.delta和response.completed；完整完成事件后才执行工具。保留function_call和function_call_output的call_id，助手正文使用output_text。流中断明确失败，不自动重发收费请求。[Responses协议](https://docs.kie.ai/market/chat/gpt-6-1-sol)。
+- 双网关流式输出仍使用现有Provider和路由、熔断、账本。视觉工具复用llm-vision和既有KIE参考上传缓存，图片不会使用不可访问的本机MinIO链接。
+- Responses工具往返和SSE已通过本地HTTP mock及实际浏览器验证；真实KIE Agent调用被自动审批阻止（要求具体SKU资料外传与付费授权），尚未完成真实协议验收。不得将mock结果表述为真实模型表现。ZenMux无Key的实际兼容性继续待验证。

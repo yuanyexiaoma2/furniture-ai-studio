@@ -108,7 +108,13 @@ export async function executeAgentTool(sessionId: string, name: AgentToolName, r
         const valid = source.kind === "product" ? source.id === productId : source.kind === "document" ? await db.productDocument.findFirst({ where: { id: source.id, productId } }) : source.kind === "image" ? await db.asset.findFirst({ where: { id: source.id, productId } }) : await db.chatMessage.findFirst({ where: { id: source.id, sessionId } });
         if (!valid) throw new StudioError(`字段 ${item.field} 的来源不属于本 SKU；对话来源请用读取的消息ID`);
       }
-      draft[item.field] = item.data;
+      const prior = draft[item.field];
+      const incoming = item.data;
+      const differentDocument = incoming.sources.some(source => source.kind === "document" && !prior.sources.some(old => old.kind === "document" && old.id === source.id));
+      if (prior.value.trim() && incoming.value.trim() && prior.value.trim() !== incoming.value.trim() && differentDocument && !incoming.sources.some(source => source.kind === "message") && !incoming.conflicts.length) {
+        incoming.status = "inferred"; incoming.conflicts = [{ value: prior.value, source: prior.sources[0] }, { value: incoming.value, source: incoming.sources[0] }];
+      }
+      draft[item.field] = incoming;
     }
     await db.agentSession.update({ where: { id: sessionId }, data: { profileDraft: draft, draftRevision: { increment: 1 }, confirmedProfileId: null, confirmedPack: false } });
     await db.agentCard.updateMany({ where: { sessionId, kind: "profile", status: "pending" }, data: { status: "cancelled" } });
