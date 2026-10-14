@@ -47,7 +47,7 @@ export async function reserveKieRequest() {
   if (wait > 0) await delay(wait);
 }
 
-type Options = { key?: string; fetcher?: typeof fetch; beforeRequest?: () => Promise<void>; sleep?: (ms: number) => Promise<unknown>; allowMissingCode?: boolean; timeoutMs?: number };
+type Options = { onDelta?: (text: string) => void; key?: string; fetcher?: typeof fetch; beforeRequest?: () => Promise<void>; sleep?: (ms: number) => Promise<unknown>; allowMissingCode?: boolean; timeoutMs?: number };
 export async function kieRequest(url: string, init: RequestInit, options: Options = {}) {
   const key = options.key ?? process.env.KIE_API_KEY?.trim();
   if (!key) throw new KieError("尚未配置 KIE_API_KEY，请管理员在 .env 填写密钥后重启网页与 worker", 401);
@@ -58,7 +58,7 @@ export async function kieRequest(url: string, init: RequestInit, options: Option
     try {
       response = await (options.fetcher ?? fetch)(url, { ...init, headers: { ...init.headers, Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(options.timeoutMs ?? 30000), redirect: "error" });
     } catch { throw new KieError("连接 KIE 超时或网络不可用（未自动重发同一付费请求）", 500, true); }
-    const data = await response.json().catch(() => null);
+    const data = response.ok && response.headers.get("content-type")?.includes("text/event-stream") ? await readKieStream(response, options.onDelta) : await response.json().catch(() => null);
     const hasCode = data !== null && Object.prototype.hasOwnProperty.call(data, "code");
     const bodyCode = hasCode ? data.code === null || data.code === '' ? 502 : Number(data.code) : options.allowMissingCode ? 200 : 502;
     const code = response.status === 429 ? 429 : !response.ok ? response.status : Number.isFinite(bodyCode) ? bodyCode : 502;
@@ -71,4 +71,30 @@ export async function kieRequest(url: string, init: RequestInit, options: Option
     return data;
   }
   throw kieFailure(429);
+}
+
+// Responses SSE 的最终完成事件包含工具调用、用量和积分；只在完整结束后执行工具。
+export async function readKieStream(response: Response, onDelta?: (text: string) => void) {
+  if (!response.body) throw new KieError("模型流式响应为空", 502, true);
+  const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = "";
+  let completed: Record<string, unknown> | undefined;
+  try {
+    for (;;) {
+      const chunk = await reader.read(); buffer += decoder.decode(chunk.value, { stream: !chunk.done }).replace(/\r\n/g, "\n");
+      let end;
+      while ((end = buffer.indexOf("\n\n")) >= 0) {
+        const event = buffer.slice(0, end); buffer = buffer.slice(end + 2);
+        const raw = event.split("\n").filter(l => l.startsWith("data:")).map(l => l.slice(5).trimStart()).join("\n");
+        if (!raw || raw === "[DONE]") continue;
+        const data = JSON.parse(raw);
+        if (data.type === "response.output_text.delta" && typeof data.delta === "string") onDelta?.(data.delta);
+        if (data.type === "response.completed") completed = data.response;
+        if (["response.failed", "response.incomplete", "error"].includes(data.type)) throw kieFailure(502, data.error?.message ?? data.response?.error?.message);
+      }
+      if (chunk.done) break;
+    }
+  } catch (error) { if (error instanceof GatewayError) throw error; throw new KieError("模型流式响应中断；已保留调用记录，请核对成本后重试", 502, true); }
+  finally { reader.releaseLock(); }
+  if (!completed) throw new KieError("模型流式响应未完成；没有执行工具", 502, true);
+  return completed;
 }

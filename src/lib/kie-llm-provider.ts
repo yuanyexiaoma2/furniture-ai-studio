@@ -19,13 +19,13 @@ export class KieLLMProvider implements LLMProvider {
       const urls = await Promise.all((input.images ?? []).map(({ id }) => this.upload(id)));
       const messages = withImages(input, urls);
       const body = this.config.protocol === "responses" ? {
-        model: this.config.model, input: messages.flatMap(responseMessages), stream: false,
+        model: this.config.model, input: messages.flatMap(responseMessages), stream: Boolean(input.onDelta), reasoning: { effort: "low" }, ...(input.maxOutputTokens ? { max_output_tokens: input.maxOutputTokens } : {}),
         ...(input.tools?.length ? { tools: input.tools.map((tool) => ({ type: "function", ...tool.function })), tool_choice: "auto" } : {}),
         ...(input.responseFormat ? { text: { format: input.responseFormat.type === "json_schema" ? { type: "json_schema", ...input.responseFormat.json_schema } : { type: "json_object" } } } : {}),
       } : { messages, stream: false, reasoning_effort: "low", ...(input.responseFormat ? { response_format: input.responseFormat } : {}), ...(input.tools?.length ? { tools: input.tools } : {}) };
       const base = process.env.KIE_BASE_URL?.trim();
       const endpoint = base ? new URL(new URL(this.config.endpoint).pathname, base).href : this.config.endpoint;
-      const response = await this.request(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }, { allowMissingCode: true, timeoutMs: 25000 });
+      const response = await this.request(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }, { allowMissingCode: true, timeoutMs: 90000, onDelta: input.onDelta });
       reply = response;
       return this.config.protocol === "responses" ? parseResponses(response, input) : parseChatReply(response, input, "kie");
     } catch (error) { const failure = gatewayException("kie", error); failure.cost ??= kieCreditCost(reply?.credits_consumed); throw failure; }
@@ -35,7 +35,7 @@ function defaultConfig(): KieLLMConfig { const c = models["llm-vision"].find(c =
 function responseMessages(message: LLMMessage): Record<string, unknown>[] {
   if (message.role === "tool") return [{ type: "function_call_output", call_id: message.tool_call_id, output: message.content }];
   const parts = typeof message.content === "string" ? [{ type: "text" as const, text: message.content }] : message.content;
-  const content = parts.map((part) => part.type === "text" ? { type: "input_text", text: part.text } : { type: "input_image", image_url: part.image_url.url });
+  const content = parts.map((part) => part.type === "text" ? { type: message.role === "assistant" ? "output_text" : "input_text", text: part.text } : { type: "input_image", image_url: part.image_url.url });
   const result: Record<string, unknown>[] = content.length ? [{ role: message.role, content }] : [];
   for (const call of message.tool_calls ?? []) result.push({ type: "function_call", call_id: call.id, name: call.function.name, arguments: call.function.arguments });
   return result;

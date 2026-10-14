@@ -33,10 +33,10 @@ export const models = {
     { provider: "zenmux", model: "google/gemini-2.5-pro", supportsTools: true, pricing: { currency: "USD", inputPerMillion: 1.25, outputPerMillion: 10, longContextInputPerMillion: 2.5, longContextOutputPerMillion: 15, estimateSource: "Google 上游分档参考，ZenMux 账单回填为准" } },
     { provider: "kie", model: "gemini-3-6-flash-openai", endpoint: "https://api.kie.ai/gemini-3-6-flash-openai/v1/chat/completions", protocol: "chat", supportsTools: false, pricing: { currency: "credits", inputPerMillion: 45, outputPerMillion: 225 } },
   ],
-  // KIE 已核实的工具模型走 Responses 协议；这里只配置，不调用 Agent。
+  // KIE Responses 工具模型；单价来源 kie.ai/gpt-6-1-sol（2026-10-14）。
   "llm-agent": [
     { provider: "zenmux", model: "google/gemini-2.5-pro", supportsTools: true, pricing: { currency: "USD", inputPerMillion: 1.25, outputPerMillion: 10, longContextInputPerMillion: 2.5, longContextOutputPerMillion: 15 } },
-    { provider: "kie", model: "gpt-6-1-sol", endpoint: "https://api.kie.ai/codex/v1/responses", protocol: "responses", supportsTools: true, pricing: { currency: "credits" } },
+    { provider: "kie", model: "gpt-6-1-sol", endpoint: "https://api.kie.ai/codex/v1/responses", protocol: "responses", supportsTools: true, pricing: { currency: "credits", inputPerMillion: 120, outputPerMillion: 600 } },
   ],
 } satisfies Record<string, readonly ModelCandidate[]>;
 export function modelLabel() { return KIE_IMAGE_MODEL.label; }
