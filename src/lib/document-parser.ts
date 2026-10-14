@@ -24,7 +24,7 @@ export async function parseDocument(bytes: Buffer, type: string) {
     for (const sheet of workbook.worksheets) {
       if (sheet.rowCount > 10000 || sheet.columnCount > 100) throw new Error("参数表过大，请保留产品相关数据后上传");
       text += `\n工作表：${sheet.name}\n`;
-      sheet.eachRow(row => { const cells: string[] = []; row.eachCell({ includeEmpty: true }, cell => cells.push(cell.text.replace(/\s*\n\s*/g, " "))); text += cells.join(" | ") + "\n"; });
+      sheet.eachRow(row => { const cells: string[] = []; row.eachCell({ includeEmpty: true }, cell => cells.push(excelText(cell.value).replace(/\s*\n\s*/g, " "))); text += cells.join(" | ") + "\n"; });
     }
   } else if (type === "csv") {
     const rows: string[][] = parse(bytes.toString("utf8"), { bom: true, skip_empty_lines: true, relax_column_count: true, max_record_size: 20000 });
@@ -35,4 +35,17 @@ export async function parseDocument(bytes: Buffer, type: string) {
   if (!text) throw new Error("未提取到文字；扫描 PDF 请提供可复制文字版本或粘贴说明");
   if (text.length > MAX_TEXT_CHARS) throw new Error("文档文字超过 12 万字符，请拆分后上传");
   return text;
+}
+
+function excelText(value: unknown): string {
+  if (value === null || value === undefined) return "";
+  if (value instanceof Date) return value.toISOString();
+  if (typeof value !== "object") return String(value);
+  const cell = value as Record<string, unknown>;
+  if (Array.isArray(cell.richText)) return cell.richText.map(part => typeof part?.text === "string" ? part.text : "").join("");
+  if ("text" in cell) return typeof cell.text === "string" ? cell.text : "";
+  if ("result" in cell) return excelText(cell.result);
+  if ("error" in cell) return String(cell.error ?? "");
+  if ("formula" in cell || "sharedFormula" in cell) return "[公式未缓存结果，需人工核对]";
+  return "";
 }

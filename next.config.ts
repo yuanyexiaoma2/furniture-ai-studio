@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   agentRules: false,
   devIndicators: false,
-  experimental: { authInterrupts: true },
+  experimental: { authInterrupts: true, proxyClientMaxBodySize: "102mb" },
   turbopack: {
     rules: {
       "*.css": {
