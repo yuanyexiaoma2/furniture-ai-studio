@@ -78,6 +78,9 @@ model User {
   generationBatches GenerationBatch[]
   llmCalls      LlmCall[]
   identityVersions ProductIdentityVersion[]
+  documents ProductDocument[]
+  profiles ProductProfile[]
+  agentSessions AgentSession[]
 }
 
 model Product {
@@ -101,6 +104,9 @@ model Product {
   generationJobs GenerationJob[]
   llmCalls       LlmCall[]
   identityVersions ProductIdentityVersion[]
+  documents ProductDocument[]
+  profiles ProductProfile[]
+  agentSessions AgentSession[]
 
   @@index([createdById])
 }
@@ -119,6 +125,7 @@ model Asset {
   product       Product?     @relation(fields: [productId], references: [id], onDelete: SetNull)
   createdBy     User         @relation(fields: [createdById], references: [id], onDelete: Restrict)
   finalSlots    ImageSlot[]  @relation("FinalAsset")
+  documents     ProductDocument[]
   templates     Template[]   @relation("ExampleAsset")
 
   @@index([productId, type])
@@ -186,6 +193,8 @@ model GenerationJob {
   retriedBy      GenerationJob? @relation("JobRetry")
   batch          GenerationBatch? @relation(fields: [batchId], references: [id], onDelete: Restrict)
   productId      String?
+  sessionId      String?
+  session        AgentSession? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
   logicalModel   String
   provider       String?
   model          String?
@@ -270,6 +279,8 @@ model GenerationAttempt {
 
 model LlmCall {
   id            String   @id @default(cuid())
+  sessionId     String?
+  session       AgentSession? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
   logicalModel  String
   provider      String
   model         String
@@ -350,10 +361,101 @@ model WorkerHeartbeat {
 model ChatMessage {
   id        String   @id @default(cuid())
   productId String
+  sessionId String?
+  session   AgentSession? @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  requestKey String? @unique
   role      ChatRole
   content   Json
   createdAt DateTime @default(now())
   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([productId, createdAt])
+}
+
+
+// 原件保留在私有 MinIO，失败文件也保留解析状态，图片与 Asset 共用原件。
+model ProductDocument {
+  id String @id @default(cuid())
+  productId String
+  createdById String
+  filename String
+  type String
+  mime String
+  storageKey String @unique
+  assetId String?
+  imageType String?
+  parseStatus String @default("pending")
+  text String @default("") @db.Text
+  error String?
+  createdAt DateTime @default(now())
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdBy User @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  asset Asset? @relation(fields: [assetId], references: [id], onDelete: SetNull)
+  @@index([productId, createdAt])
+}
+
+// 仅美工确认后的正式档案；草稿放在会话中。
+model ProductProfile {
+  id String @id @default(cuid())
+  productId String
+  version Int
+  data Json
+  confirmedById String
+  identityVersionId String
+  createdAt DateTime @default(now())
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  confirmedBy User @relation(fields: [confirmedById], references: [id], onDelete: Restrict)
+  @@unique([productId, version])
+}
+
+model AgentSession {
+  id String @id @default(cuid())
+  productId String
+  createdById String
+  mode String @default("quick")
+  autoConfirm Boolean @default(false)
+  firstGenerationConfirmed Boolean @default(false)
+  stopQuestions Boolean @default(false)
+  profileDraft Json @default("{}")
+  draftRevision Int @default(0)
+  confirmedProfileId String?
+  confirmedPack Boolean @default(false)
+  activeSlotId String?
+  runningAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdBy User @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  messages ChatMessage[]
+  tools AgentToolCall[]
+  cards AgentCard[]
+  llmCalls LlmCall[]
+  jobs GenerationJob[]
+  @@unique([productId, createdById])
+}
+
+model AgentToolCall {
+  id String @id @default(cuid())
+  sessionId String
+  callId String
+  name String
+  arguments Json
+  result Json?
+  status String @default("running")
+  error String?
+  createdAt DateTime @default(now())
+  session AgentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  @@unique([sessionId, callId])
+}
+
+model AgentCard {
+  id String @id @default(cuid())
+  sessionId String
+  kind String
+  data Json
+  status String @default("pending")
+  result Json?
+  createdAt DateTime @default(now())
+  session AgentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  @@index([sessionId, status])
 }
