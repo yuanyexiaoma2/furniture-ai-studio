@@ -7,6 +7,7 @@ import "./task8.css";
 import "./round4.css";
 import "./task9.css";
 import "./task9-round1.css";
+import "./task10.css";
 export const metadata: Metadata = { title: "家具创作室 · 设计预览" };
 export default function PreviewLayout({ children }: { children: React.ReactNode }) {
   return <PreviewProvider>{children}</PreviewProvider>;

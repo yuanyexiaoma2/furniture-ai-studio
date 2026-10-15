@@ -19,7 +19,7 @@ export async function prepareSceneInput(tx: Prisma.TransactionClient, productId:
   const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], take: 3 } } });
   if (!product) throw new StudioError("商品不存在", 404);
   if (!product.identityTraits?.trim()) throw new StudioError("请先填写并保存产品身份特征");
-  if (product.assets.length < 2) throw new StudioError("生成需要同一商品至少 2 张不同角度实拍图");
+  if (product.assets.length < 1) throw new StudioError("没有原始实拍，无法保持产品外观；请先上传至少1张实拍");
   const prompt = buildScenePrompt(product.identityTraits, intent);
   if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
   const version = await tx.productIdentityVersion.findFirst({ where: { productId }, orderBy: [{ savedAt: "desc" }, { id: "desc" }] });
@@ -40,7 +40,7 @@ export async function generationAvailability(userId: string) {
     workerIsReady(),
     configuredCandidate("scene-main").catch(() => null),
   ]);
-  return { quota: Number(user.monthlyQuota), used, remaining: Math.max(0, Number(user.monthlyQuota) - used), workerReady: ready, configured: candidatesFor("scene-main").some(c => gatewayConfigured(c.provider)), estimates: { "2K": candidate ? estimateImageUsd(candidate, "2K") : 0, "4K": candidate ? estimateImageUsd(candidate, "4K") : 0 }, estimateProvider: candidate?.provider ?? null };
+  return { quota: Number(user.monthlyQuota), used, remaining: Math.max(0, Number(user.monthlyQuota) - used), workerReady: ready, configured: candidatesFor("scene-main").some(c => gatewayConfigured(c.provider)), estimates: { "1K": candidate ? estimateImageUsd(candidate,"1K") : 0, "2K": candidate ? estimateImageUsd(candidate, "2K") : 0, "4K": candidate ? estimateImageUsd(candidate, "4K") : 0 }, estimateProvider: candidate?.provider ?? null };
 }
 export type GenerationAvailability = Awaited<ReturnType<typeof generationAvailability>>;
 
@@ -80,7 +80,7 @@ export async function prepareEditInput(tx: Prisma.TransactionClient, productId: 
     const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], take: 3 } } });
     if (!product) throw new StudioError("商品不存在", 404);
     if (!product.identityTraits?.trim()) throw new StudioError("请先填写并保存产品身份特征");
-    if (product.assets.length < 2) throw new StudioError("生成需要同一商品 2～3 张不同角度实拍图");
+    if (product.assets.length < 1) throw new StudioError("修图必须包含原始实拍；请先上传至少1张实拍");
     if (source) {
       const [originalJob, originalAsset] = await Promise.all([
         tx.generationJob.findUnique({ where: { id: source.sourceJobId } }),

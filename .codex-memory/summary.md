@@ -1,3 +1,7 @@
+## 2026-10-15 · 最新：任务10用户主动暂停，真实生图验证改由用户完成
+
+用户最新要求：现在暂停并汇报；不要继续做真实生图验证，由用户自己做。验收Python进程已停止，所有5个真实图像任务已经结束，不再自动调用付费服务。现有任务10改动将作为阶段版本提交Git，本地服务localhost:3001（Web36448，worker25348，先核实再操作）。先读 docs/task-10/STATUS.md 和 docs/task-10/model-probe.md，再看git diff；不能重建UI或自动续跑 scripts/verify-task10-real.py。模型探测GPT20/20工具+20/20上下文，Gemini16/20参数不开放，Claude限流不开放，ZenMux缺key。已接新版前后端接口、种子与主路径；保存前 lint/typecheck 与60项单元测试通过；最终生产构建、浏览器验收及部分文档未收尾。真实SKU衍生验收记录NL27TS01-T10已成功4张候选+1张蒙版修改，修改结果终稿/ZIP未完整验收，不能说E2E通过。联网缺Tavilykey；第二产品缺资料。
+
 ## 2026-10-15 · 最新：任务 9 审阅第 1 轮完成，等待审阅
 
 项目 `C:/Users/Administrator/Projects/furniture-ai-studio`，承接 c76ae83。已交付三张首页图片任务卡、统一任务目录、全站概念图标映射与官方模型 SVG、`/design-preview/icons` 规范页、空画布拖放、常驻生图与联网文字胶囊、单行变体/材质实拍校验、终稿 Frame 数量及外置图位标签。上一轮模型/发送/费用规则继续有效。新交付 `docs/task-9/round1/index.html`，20 张亮暗 PNG、自查及浏览器检查 JSON；30 测试、lint/typecheck/build 通过。额外检查保留旧品牌迁移后的图包/输出、源图包刷新、附件费用、两张画布实拍与品类确认。图标统一入口 `src/components/icons/concept-icons.ts`；不要把非图标组件的 size 归一，React Flow Background 必须 size=1。预览 localhost:3001，PID 37504 停前核实。用户明确完成后停止等待审阅，仍纯静态，不接 8B、真实模型或后台接口，不 push。

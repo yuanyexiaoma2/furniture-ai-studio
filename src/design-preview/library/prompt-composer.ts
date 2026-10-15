@@ -2,7 +2,7 @@ import type {Actor,GenerationRecipe,Product,Prop,PropSet,ReferenceImage,SceneTem
 import {canView,recentRecipes} from "./rules";
 import type {BrandStyle} from "../workflows/types";
 import {brandConstraints} from "../workflows/rules";
-export type ComposeInput={brand?:BrandStyle;template:SceneTemplate;product:Product;propSets:PropSet[];props:Prop[];variables:Record<string,string>;references?:ReferenceImage[];selectedPropIds?:string[];actor:Actor};
+export type ComposeInput={dimensionsUnknown?:boolean;brand?:BrandStyle;template:SceneTemplate;product:Product;propSets:PropSet[];props:Prop[];variables:Record<string,string>;references?:ReferenceImage[];selectedPropIds?:string[];actor:Actor};
 export type ComposedPrompt={finalPrompt:string;propIds:string[];variables:Record<string,string>;refIds:string[];originalPhotoIds:string[];referenceInputs:{id:string;image:string;kind:"original"|"style"|"previous"}[];combinationKey:string};
 export class PromptError extends Error{constructor(public code:string,message:string){super(message);this.name="PromptError";}}
 function fail(code:string,message:string):never{throw new PromptError(code,message);}
@@ -25,8 +25,8 @@ export class PromptComposer {
   const selectedProps:Prop[]=propIds.map(id=>{if(!sets.some(g=>g.propIds.includes(id)))return fail("UNKNOWN_PROP","道具不属于所选道具组");const prop=input.props.find(p=>p.id===id);if(!prop||!canView(prop,actor)||!prop.categoryIds.includes(product.categoryId))return fail("UNKNOWN_PROP","道具不存在或不可用");return prop;});
   const refs=[...(input.references??[])].sort((a,b)=>a.id.localeCompare(b.id,"en"));if(refs.some(r=>!canView(r,actor)))fail("FORBIDDEN","参考图不可用");
   const features=[...product.features].sort((a,b)=>a.key.localeCompare(b.key,"zh-CN")),dimensions=product.dimensions;
-  if([dimensions.width,dimensions.depth,dimensions.height].some(v=>!Number.isFinite(v)||v<=0))fail("INVALID_DIMENSIONS","尺寸必须是正数");
-  const description=`${product.name}; ${features.map(f=>f.key+": "+f.value).join("; ")}; dimensions: ${dimensions.width} × ${dimensions.depth} × ${dimensions.height} ${dimensions.unit}`;
+  if(!input.dimensionsUnknown&&[dimensions.width,dimensions.depth,dimensions.height].some(v=>!Number.isFinite(v)||v<=0))fail("INVALID_DIMENSIONS","尺寸必须是正数");
+  const description=`${product.name}; ${features.map(f=>f.key+": "+f.value).join("; ")}; ${input.dimensionsUnknown?"dimensions unknown; do not add measurement claims":"dimensions: "+dimensions.width+" × "+dimensions.depth+" × "+dimensions.height+" "+dimensions.unit}`;
   const propText=selectedProps.length?selectedProps.map(p=>`${p.keywordsEn} (${p.shape}, ${p.color}, ${p.material}, ${p.size})`).join("; "):"no additional props",values:Record<string,string>={...variables,product:description,props:propText};
   const text=template.skeleton.replace(/\{([^{}]+)\}/g,(_,key:string)=>values[key]),originalPhotoIds=unique(product.photos.map(p=>p.id)),locked=features.filter(f=>f.locked).map(f=>f.key+": "+f.value).join("; ");
   const finalPrompt=[text,...template.fixed,brandConstraints(input.brand),"Locked product features: "+(locked||"follow the original product photographs")+".","Original identity references: "+originalPhotoIds.join(", ")+".",...(refs.length?["Environment references only: "+refs.map(r=>r.id).join(", ")+"."]:[])].map(s=>s.trim()).filter(Boolean).join("\n");

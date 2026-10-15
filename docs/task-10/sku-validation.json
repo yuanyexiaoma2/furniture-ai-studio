@@ -1,0 +1,16 @@
+{
+  "status": "paused_by_user",
+  "e2ePassed": false,
+  "realImageValidationOwner": "user",
+  "productId": "cmv9b8fmb0000o4v8eym7cy21",
+  "sku": "NL27TS01-T10",
+  "successfulImages": 5,
+  "runningJobs": 0,
+  "costs": {
+    "llmUsd": 0.012049999999999998,
+    "imagesUsd": 0.125,
+    "totalUsd": 0.13705,
+    "estimated": false
+  },
+  "note": "4张初始候选及1张蒙版修改已成功；旧终稿ZIP已下载，但修改结果尚未完成终稿/导出验收。此前脚本打印PASS未覆盖修图断言，已撤回该结论。用户要求暂停，停止浏览器验收，不再自动调用真实生图。"
+}

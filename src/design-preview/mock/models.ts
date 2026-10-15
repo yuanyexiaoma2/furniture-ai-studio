@@ -5,7 +5,7 @@ export type ModelTier = { id: Quality; label: string; seconds: number; price: nu
 export type MockModel = {
   id: string; kind: ModelKind; name: string; brandIcon: string; color: string;
   description: string; tag?: string; seconds: number; price: number;
-  failureRate: number; enabled: boolean; visible: boolean; isDefault?: boolean; tiers?: ModelTier[];
+  pricesByResolution?:Partial<Record<"1K"|"2K"|"4K",number>>;failureRate: number; enabled: boolean; visible: boolean; isDefault?: boolean; tiers?: ModelTier[];
 };
 export const models: MockModel[] = [
   {id:"agent-sol",kind:"agent",name:"GPT-6.1 Sol",brandIcon:"/design-preview/brands/openai.svg",color:"#365c4c",description:"强推理，适合复杂图包规划",tag:"推荐",seconds:8,price:.006,failureRate:.8,enabled:true,visible:true,isDefault:true},

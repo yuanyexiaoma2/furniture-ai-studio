@@ -413,6 +413,7 @@ model AgentSession {
   productId String
   createdById String
   mode String @default("quick")
+  settings Json @default("{}")
   autoConfirm Boolean @default(false)
   firstGenerationConfirmed Boolean @default(false)
   stopQuestions Boolean @default(false)
@@ -458,4 +459,38 @@ model AgentCard {
   createdAt DateTime @default(now())
   session AgentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
   @@index([sessionId, status])
+}
+
+model StudioModel {
+ id String @id
+ name String
+ kind String
+ candidate Json
+ visible Boolean @default(false)
+ enabled Boolean @default(true)
+ probe Json @default("{}")
+ updatedAt DateTime @updatedAt
+}
+model StudioLibraryEntry {
+ id String @id
+ kind String
+ name String
+ data Json
+ updatedAt DateTime @updatedAt
+ @@index([kind])
+}
+model SearchCall {
+ id String @id @default(cuid())
+ sessionId String
+ createdById String
+ query String
+ resultCount Int @default(0)
+ sources Json @default("[]")
+ costUsd Decimal @db.Decimal(12,6)
+ costEstimated Boolean @default(true)
+ status String @default("running")
+ durationMs Int?
+ error String?
+ createdAt DateTime @default(now())
+ @@index([sessionId,createdAt])
 }

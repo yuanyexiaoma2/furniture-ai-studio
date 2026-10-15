@@ -13,7 +13,7 @@ export function BrandIcon({model}:{model:MockModel}){return <span className={"p-
 export function ModelPicker({kind,scope,menu=false}:{kind:ModelKind;scope:string;menu?:boolean}){
  const state=useModelStore(),selected=resolveSelection(state,scope);
  const [open,setOpen]=useState(false);
- const list=availableModels(state,kind),current=models.find(m=>m.id===(kind==="agent"?selected.agentId:selected.imageId));
+ const list=availableModels(state,kind),current=(state.catalog??models).find(m=>m.id===(kind==="agent"?selected.agentId:selected.imageId));
  const defaultImage=list.find(m=>m.id===state.defaults.image)?.id??list[0]?.id;
  const selectedImages=kind==="image"?list.filter(m=>selected.imageIds.includes(m.id)):[];
  const multiple=kind==="image"&&selected.auto&&selectedImages.length>=2;

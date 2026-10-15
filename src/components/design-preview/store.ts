@@ -6,7 +6,7 @@ import {models} from "@/design-preview/mock/models";
 import {originalPhotoReferences,useLibraryStore} from "./library/library-store";
 import type {ImageAction,OnImageAction} from "./contracts";
 import type {CopyLayout} from "@/design-preview/workflows/types";
-export type ImageData = {hideFinalBadge?:boolean;variantColor?:string;copy?:CopyLayout;label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
+export type ImageData = {hideFinalBadge?:boolean;externalLabel?:boolean;error?:string;jobId?:string;variantColor?:string;copy?:CopyLayout;label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
 export type StudioNode = Node<ImageData>;
 export const frameNames=["产品主图","客厅场景","空间搭配","材质细节","核心卖点","尺寸说明","安装说明"];
 export const imagePath=(name:string)=>/^(\/|data:|blob:)/.test(name)?name:`/design-preview/${name}.webp`;
@@ -16,11 +16,11 @@ export function initialNodes():StudioNode[]{
  const images:StudioNode[]=frameNames.slice(0,6).flatMap((slot,i)=>Array.from({length:5},(_,j)=>({id:`image-${i}-${j}`,type:"picture",parentId:`frame-${i}`,position:{x:24+j*236,y:30},data:{label:`候选 0${j+1}`,slot,image:`r3-${String(frameImages[i][j]).padStart(2,"0")}`,final:j===0&&i!==1,effect:i===0?"main":i===3?"detail":i===5?"dimensions":"",editCount:0},style:{width:224,height:180}})));
  return [...frames,...images];
 }
-type PreviewStore={nodes:StudioNode[];selected:string[];contextId:string|null;target:string;theme:string;tool:"select"|"pan";referencePicking:boolean;references:string[];editor:{id:string;action:ImageAction}|null;messages:string[];history:string[];pending:number;
+type PreviewStore={liveMode:boolean;nodes:StudioNode[];selected:string[];contextId:string|null;target:string;theme:string;tool:"select"|"pan";referencePicking:boolean;references:string[];editor:{id:string;action:ImageAction}|null;messages:string[];history:string[];pending:number;
  restoreTask:(images:{id:string;image:string}[])=>void;clearTask:()=>void;addBatch:(images:string[])=>{id:string;image:string}[];setTheme:(theme:string)=>void;changeNodes:(changes:NodeChange<StudioNode>[])=>void;select:(ids:string[])=>void;clearContext:()=>void;setTarget:(target:string)=>void;setTool:(tool:"select"|"pan")=>void;setPicking:(value:boolean)=>void;addReference:(id:string)=>void;setEditor:(editor:PreviewStore["editor"])=>void;setFinal:(id:string)=>void;update:(id:string,data:Partial<ImageData>)=>void;addImage:(image:string,position?:{x:number;y:number})=>void;addNote:()=>void;removeSelected:()=>void;send:(message:string)=>void;simulate:(id:string,action:ImageAction,onAction?:OnImageAction,mask?:Blob,count?:number)=>Promise<void>;reset:()=>void;
 };
 export const usePreviewStore=create<PreviewStore>((set,get)=>({
- nodes:[],selected:[],contextId:null,target:"客厅场景",theme:"system",tool:"select",referencePicking:false,references:[],editor:null,messages:[],history:["14:32 · 调整客厅光线","14:20 · 生成 30 张候选","14:08 · 确认产品与图包"],pending:0,
+ liveMode:false,nodes:[],selected:[],contextId:null,target:"客厅场景",theme:"system",tool:"select",referencePicking:false,references:[],editor:null,messages:[],history:["14:32 · 调整客厅光线","14:20 · 生成 30 张候选","14:08 · 确认产品与图包"],pending:0,
  restoreTask:images=>{get().clearTask();get().addBatch(images.map(i=>i.image));const ids=images.map(i=>i.id);set(s=>({nodes:s.nodes.map(n=>n.type==="picture"?{...n,id:ids.shift()!}:n)}));},
  clearTask:()=>set({nodes:[{id:"frame-0",type:"frame",position:{x:0,y:0},style:{width:1215,height:240},dragHandle:".p-frame-title",data:{label:"01 场景候选",slot:"场景候选",image:"",effect:"empty",candidateCount:0}}],selected:[],contextId:null,editor:null,messages:[],pending:0,references:[]}),
  addBatch:images=>{const results=images.map(image=>({id:"candidate-"+crypto.randomUUID(),image}));set(s=>({nodes:[...s.nodes.map(n=>n.id==="frame-0"?{...n,style:{...n.style,width:Math.max(1215,24+(s.nodes.filter(n=>n.parentId==="frame-0").length+images.length)*236)},data:{...n.data,effect:"",candidateCount:s.nodes.filter(n=>n.parentId==="frame-0").length+images.length}}:n),...results.map((r,i)=>({id:r.id,type:"picture",parentId:"frame-0",position:{x:24+(s.nodes.filter(n=>n.parentId==="frame-0").length+i)*236,y:30},style:{width:224,height:180},data:{image:r.image,label:"候选 0"+(i+1),slot:"场景候选"}}))]}));return results;},
@@ -36,12 +36,13 @@ export const usePreviewStore=create<PreviewStore>((set,get)=>({
  send:message=>set(s=>({messages:[...s.messages,message]})),
  simulate:async(id,action,onAction,mask,count=1)=>{
   const node=get().nodes.find(n=>n.id===id);if(!node)return;
+  if(get().liveMode&&onAction){await onAction({action,imageId:id,originalImage:node.data.image,originalPhotoReferences:[],productReferences:[],mask,editCount:node.data.editCount??0});set({editor:null});return;}
   const isFrame=node.type==='frame';const seed=isFrame?{...node,type:'picture',style:{width:224,height:180},dragHandle:undefined,data:{...node.data,image:'sofa',label:'新候选',effect:'',final:false}}:node;
   if(!originalPhotoReferences().length)throw new Error("修图必须同时保留原始实拍");
   const quote=estimateCost(useModelStore.getState(),demoSession,count);if(quote>.20&&typeof window!=="undefined"&&!window.confirm("本次预计 $"+quote.toFixed(2)+"，超过单次 $0.20 的确认额度。是否继续？"))return;
   const beforeIds=new Set(get().nodes.map(n=>n.id));
   const original=/^(blob:|data:|\/)/.test(seed.data.image)?seed.data.image:imagePath(seed.data.image);
-  await onAction?.({action,imageId:id,originalImage:original,originalPhotoReferences:originalPhotoReferences(),productReferences:[...originalPhotoReferences(),...get().references.map(ref=>{const image=get().nodes.find(n=>n.id===ref)?.data.image??ref;return image.startsWith('blob:')?image:imagePath(image);})],mask,editCount:node.data.editCount??0});
+  await onAction?.({action,imageId:id,originalImage:original,originalPhotoReferences:originalPhotoReferences(),productReferences:[...originalPhotoReferences(),...get().references.map(ref=>{const image=get().nodes.find(n=>n.id===ref)?.data.image??ref;return /^(blob:|data:|\/)/.test(image)?image:imagePath(image);})],mask,editCount:node.data.editCount??0});
   get().update(id,{loading:true});set(s=>({pending:s.pending+1}));
   await new Promise(resolve=>setTimeout(resolve,1500));
   const parent=get().nodes.find(n=>n.id===node.parentId);

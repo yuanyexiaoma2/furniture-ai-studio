@@ -42,7 +42,7 @@ export const models = {
 export function modelLabel() { return KIE_IMAGE_MODEL.label; }
 
 export const sceneAspectRatios = ["1:1", "2:3", "3:2", "3:4", "4:3", "4:5", "5:4", "9:16", "16:9", "21:9", "1:4", "4:1", "1:8", "8:1", "auto"] as const;
-export const sceneResolutions = ["2K", "4K"] as const;
+export const sceneResolutions = ["1K", "2K", "4K"] as const;
 export type SceneResolution = typeof sceneResolutions[number];
 export type SceneAspectRatio = typeof sceneAspectRatios[number];
 export type LogicalModel = keyof typeof models;

@@ -15,3 +15,7 @@ src/generated/
 .local/
 
 .next-agent-test/
+
+# 任务10未完成验收的本地录屏与生成图包，保留文件但不提交大体积二进制
+/docs/task-10/recordings/
+/docs/task-10/*.zip

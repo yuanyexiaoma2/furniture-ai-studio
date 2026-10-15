@@ -1,0 +1,18 @@
+import "dotenv/config";
+import {readFileSync,mkdirSync,writeFileSync} from "node:fs";
+import {parse} from "csv-parse/sync";
+import {db} from "../src/lib/db";
+import {json} from "../src/lib/agent-state";
+import {seedCategories,seedScenes,seedProps,seedPropSets} from "../src/design-preview/mock/library";
+import {models as backendModels} from "../src/lib/models.config";
+const categoryIds=["C01","C02","C03"];
+const source=[...seedCategories.filter(c=>categoryIds.includes(c.id)).map(c=>({...c,kind:"category"})),...seedScenes.filter(s=>s.categoryIds.some(id=>categoryIds.includes(id))),...seedProps,...seedPropSets.filter(s=>s.categoryIds.some(id=>categoryIds.includes(id)))];
+const path="docs/task-10/csv";mkdirSync(path,{recursive:true});
+const kinds=["category","scene","prop","set"];
+if(process.argv.includes("--templates"))for(const kind of kinds){const entries=source.filter(e=>e.kind===kind);writeFileSync(path+"/"+kind+".csv","id,name,data_json\r\n"+entries.map(e=>[e.id,e.name,JSON.stringify({...e,visibility:"public"})].map(v=>'"'+v.replaceAll('"','""')+'"').join(",")).join("\r\n")+"\r\n","utf8");}
+const input=process.argv.find(a=>a.startsWith("--file="))?.slice(7);
+const entries=input?(parse(readFileSync(input,"utf8"),{columns:true,bom:true}) as {id:string;name:string;data_json:string}[]).map(r=>{const e=JSON.parse(r.data_json);if(e.id!==r.id||e.name!==r.name||!kinds.includes(e.kind)||e.visibility!=="public")throw Error("CSV 的ID、名称、类型或可见性无效");return e;}):source.map(e=>({...e,visibility:"public"}));
+for(const e of entries)await db.studioLibraryEntry.upsert({where:{id:e.id},create:{id:e.id,kind:e.kind,name:e.name,data:json(e)},update:{name:e.name,data:json(e)}});
+const planned=[{id:"agent-sol",name:"GPT-6.1 Sol",kind:"agent",candidate:backendModels["llm-agent"].find(c=>c.provider==="kie")!},{id:"agent-flash",name:"Gemini 3.8 Flash",kind:"agent",candidate:{provider:"kie",model:"gemini-3-8-flash-openai",endpoint:"https://api.kie.ai/gemini-3-8-flash-openai/v1/chat/completions",protocol:"chat",supportsTools:true,pricing:{currency:"credits",inputPerMillion:45,outputPerMillion:225}}},{id:"agent-haiku",name:"Claude Haiku 5.5",kind:"agent",candidate:{provider:"kie",model:"claude-haiku-5-5",endpoint:"https://api.kie.ai/claude/v1/messages",protocol:"anthropic",supportsTools:true,pricing:{currency:"credits",inputPerMillion:12,outputPerMillion:60}}},{id:"agent-zenmux",name:"Gemini 2.5 Pro",kind:"agent",candidate:backendModels["llm-agent"].find(c=>c.provider==="zenmux")!},{id:"image-banana",name:"Nano Banana 2.1",kind:"image",candidate:backendModels["scene-main"].find(c=>c.provider==="kie")!}];
+for(const m of planned)await db.studioModel.upsert({where:{id:m.id},create:{...m,candidate:json(m.candidate),visible:m.kind==="image"},update:{}});
+console.log("种子数据已导入："+entries.length+" 条；品类3个；模型未通过探测前不会开放给美工。");await db.$disconnect();

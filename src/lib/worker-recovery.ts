@@ -55,5 +55,5 @@ export async function recoverInterruptedJobs(instanceId: string, boss: PgBoss) {
   }
 }
 export async function expireInterruptedLlmCalls() {
-  await db.$executeRaw`UPDATE "LlmCall" SET status='failed', "completedAt"=NOW(), "durationMs"=90000, "reservedUsd"=0, "costEstimated"=true, error='大语言模型请求超过90秒或服务已中断，已停止等待；可重试，先核对未知扣费' WHERE status='running' AND "createdAt"<${new Date(Date.now() - 90_000)}`;
+  await db.$executeRaw`UPDATE "LlmCall" SET status='failed', "completedAt"=NOW(), "durationMs"=210000, "reservedUsd"=0, "costEstimated"=true, error='大语言模型请求超过210秒或服务已中断，已停止等待；可重试，先核对未知扣费' WHERE status='running' AND "createdAt"<${new Date(Date.now() - 210_000)}`;
 }

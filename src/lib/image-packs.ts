@@ -1,4 +1,5 @@
 import "server-only";
+import {selectedCandidate,settingsOf} from "./studio-models";
 import { createHash } from "node:crypto";
 import { db } from "./db";
 import type { Prisma } from "@/generated/prisma/client";
@@ -68,9 +69,12 @@ export async function mutatePack(productId: string, action: Record<string, unkno
 }
 
 export type BatchSelection = { slotId?: string; retryJobId?: string; count?: number };
-async function planBatch(tx: Prisma.TransactionClient, productId: string, selection: BatchSelection) {
+async function planBatch(tx: Prisma.TransactionClient, productId: string, selection: BatchSelection, userId:string) {
   await lockProduct(tx, productId);
-  const candidate = await configuredCandidate("scene-main");
+  const session=await tx.agentSession.findUnique({where:{productId_createdById:{productId,createdById:userId}}});
+  const settings=settingsOf(session?.settings);
+  const candidate=settings.imageId?await selectedCandidate("image",settings):await configuredCandidate("scene-main");
+  const resolution=settings.resolution==="4K"?"4K":settings.resolution==="1K"?"1K":"2K";
   const pack = await tx.imagePack.findFirst({ where: { productId, isCurrent: true }, include: { slots: { where: { deletedAt: null }, orderBy: { order: "asc" } } } });
   if (!pack) throw new StudioError("请先套用默认图包或新增图位");
   if (selection.retryJobId) {
@@ -78,14 +82,14 @@ async function planBatch(tx: Prisma.TransactionClient, productId: string, select
     if (!old || old.productId !== productId || !old.batchId || !old.slotId || !pack.slots.some(s => s.id === old.slotId) || old.status !== "failed" || old.retriedBy) throw new StudioError("只能重试当前图包尚未重试的失败候选图", 409);
     const raw = old.input as Record<string, Prisma.InputJsonValue>;
     const refs = await tx.asset.findMany({ where: { id: { in: raw.referenceAssetIds as string[] } } });
-    const input = { ...raw, submissionAttempted: false, uncertainCharge: false, referenceRetryCount: 0, image_input: [] };
+    const input = { ...raw, selectedCandidate:JSON.parse(JSON.stringify(candidate)), autoRetryCount:0, submissionAttempted: false, uncertainCharge: false, referenceRetryCount: 0, image_input: [] };
     return { pack, candidate, skipped: [] as string[], entries: [{ slotId: old.slotId, count: 1, prepared: { input, estimate: estimateImageUsd(candidate, "2K", String(raw.prompt), refs) } }], old };
   }
   const selected = selection.slotId ? pack.slots.filter(s => s.id === selection.slotId) : pack.slots;
   if (selection.slotId && !selected.length) throw new StudioError("图位不存在", 404);
   const skipped = selected.filter(s => s.method === "ai_scene" && !s.goal.trim()).map(s => s.name);
   const entries = [];
-  for (const s of eligibleSlots(selected)) entries.push({ slotId: s.id, count: selection.count ?? s.candidateCount, prepared: await prepareSceneInput(tx, productId, s.goal, s.aspectRatio as SceneAspectRatio, candidate) });
+  for (const s of eligibleSlots(selected)) entries.push({ slotId: s.id, count: selection.count ?? s.candidateCount, prepared: await prepareSceneInput(tx, productId, s.goal, s.aspectRatio as SceneAspectRatio, candidate,resolution) });
   if (!entries.length) throw new StudioError(`没有可生成的图位${skipped.length ? `，以下图位 goal 为空，已跳过：${skipped.join("、")}` : "；人工上传图位本阶段暂不自动生成"}`);
   return { pack, candidate, skipped, entries, old: null };
 }
@@ -95,7 +99,7 @@ function summarizePlan(plan: Awaited<ReturnType<typeof planBatch>>) {
 }
 export async function quoteBatch(userId: string, productId: string, selection: BatchSelection) {
   return db.$transaction(async tx => {
-    const plan = await planBatch(tx, productId, selection), quote = summarizePlan(plan);
+    const plan = await planBatch(tx, productId, selection, userId), quote = summarizePlan(plan);
     const user = await tx.user.findUniqueOrThrow({ where: { id: userId } }), used = await monthlySpendUsd(tx, userId);
     return { ...quote, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: quotaShortage(Number(user.monthlyQuota), used, quote.estimatedCostUsd) };
   }, { timeout: 20000 });
@@ -110,11 +114,11 @@ export async function submitBatch(userId: string, productId: string, selection: 
     if (existing) { if (existing.createdById !== userId || (await tx.imagePack.findUniqueOrThrow({ where: { id: existing.packId } })).productId !== productId) throw new StudioError("提交编号冲突", 409); return existing.id; }
     const retried = await tx.generationJob.findFirst({ where: { productId, createdById: userId, input: { path: ["batchRequestKey"], equals: requestKey } } });
     if (retried?.batchId) return retried.batchId;
-    const plan = await planBatch(tx, productId, selection), quote = summarizePlan(plan);
+    const plan = await planBatch(tx, productId, selection, userId), quote = summarizePlan(plan);
     if (fingerprint !== quote.fingerprint) throw new StudioError("图位、身份特征或价格已变化，请重新查看生成确认框", 409);
     await assertUsdQuota(tx, userId, quote.estimatedCostUsd);
     const batch = plan.old ? await tx.generationBatch.findUniqueOrThrow({ where: { id: plan.old.batchId! } }) : await tx.generationBatch.create({ data: { packId: plan.pack.id, createdById: userId, slotCount: quote.slotCount, totalCount: quote.totalCount, estimatedCostUsd: quote.estimatedCostUsd, requestKey } });
-    for (const entry of plan.entries) for (let n = 0; n < entry.count; n++) await enqueueImageJob(tx, { productId, sessionId, slotId: entry.slotId, batchId: batch.id, retryOfId: plan.old?.id, logicalModel: "scene-main", createdById: userId, input: { ...entry.prepared.input, batchRequestKey: requestKey }, reservedUsd: entry.prepared.estimate });
+    for (const entry of plan.entries) for (let n = 0; n < entry.count; n++) await enqueueImageJob(tx, { productId, sessionId, slotId: entry.slotId, batchId: batch.id, retryOfId: plan.old?.id, logicalModel: "scene-main", createdById: userId, input: { ...entry.prepared.input, selectedCandidate:JSON.parse(JSON.stringify(plan.candidate)), batchRequestKey: requestKey }, reservedUsd: entry.prepared.estimate });
     return batch.id;
   }, { timeout: 30000 });
 }

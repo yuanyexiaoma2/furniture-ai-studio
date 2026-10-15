@@ -1,0 +1,6 @@
+ALTER TABLE "AgentSession" ADD COLUMN "settings" JSONB NOT NULL DEFAULT '{}';
+CREATE TABLE "StudioModel" ("id" TEXT PRIMARY KEY,"name" TEXT NOT NULL,"kind" TEXT NOT NULL,"candidate" JSONB NOT NULL,"visible" BOOLEAN NOT NULL DEFAULT false,"enabled" BOOLEAN NOT NULL DEFAULT true,"probe" JSONB NOT NULL DEFAULT '{}',"updatedAt" TIMESTAMP(3) NOT NULL);
+CREATE TABLE "StudioLibraryEntry" ("id" TEXT PRIMARY KEY,"kind" TEXT NOT NULL,"name" TEXT NOT NULL,"data" JSONB NOT NULL,"updatedAt" TIMESTAMP(3) NOT NULL);
+CREATE INDEX "StudioLibraryEntry_kind_idx" ON "StudioLibraryEntry"("kind");
+CREATE TABLE "SearchCall" ("id" TEXT PRIMARY KEY,"sessionId" TEXT NOT NULL,"createdById" TEXT NOT NULL,"query" TEXT NOT NULL,"resultCount" INTEGER NOT NULL DEFAULT 0,"sources" JSONB NOT NULL DEFAULT '[]',"costUsd" DECIMAL(12,6) NOT NULL,"costEstimated" BOOLEAN NOT NULL DEFAULT true,"status" TEXT NOT NULL DEFAULT 'running',"durationMs" INTEGER,"error" TEXT,"createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX "SearchCall_sessionId_createdAt_idx" ON "SearchCall"("sessionId","createdAt");

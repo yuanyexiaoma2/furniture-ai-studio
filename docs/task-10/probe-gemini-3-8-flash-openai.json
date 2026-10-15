@@ -1,0 +1,689 @@
+{
+  "model": "gemini-3-8-flash-openai",
+  "provider": "kie",
+  "updatedAt": "2026-10-15T08:34:48.013Z",
+  "rows": [
+    {
+      "phase": "tools",
+      "index": 0,
+      "logId": "cmv9a4u0v0001g0v8s47rxf54",
+      "durationMs": 5156,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"category\":\"边桌\"}",
+            "name": "pick_category"
+          },
+          "id": "call_b854c58cad2f4c329b75f054",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 1,
+      "logId": "cmv9a4y0x0005g0v844p0beqy",
+      "durationMs": 4830,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"count\":3}",
+            "name": "set_count"
+          },
+          "id": "call_4a84eff78cfb4b9984621311",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 2,
+      "logId": "cmv9a51rf000ag0v8u46bj989",
+      "durationMs": 4967,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"source\":\"I2\"}",
+            "name": "select_source"
+          },
+          "id": "call_3a634fe967104948a9113a00",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 3,
+      "logId": "cmv9a55lp000fg0v8vioimfxp",
+      "durationMs": 3607,
+      "costUsd": 0.000699,
+      "costEstimated": true,
+      "error": "KIE：服务请求失败（524）：上游服务异常，请稍后重试或联系管理员核对网关记录",
+      "text": "",
+      "toolCalls": [],
+      "formatCorrect": false,
+      "parametersCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 4,
+      "logId": "cmv9a58e2000ig0v8hiwvu0ry",
+      "durationMs": 5259,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"slots\":[\"S1\",\"S3\"]}",
+            "name": "choose_slots"
+          },
+          "id": "call_e47b15d63e67436f95f7c8fe",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 5,
+      "logId": "cmv9a5cgg000pg0v8b1zm3w3u",
+      "durationMs": 4977,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"category\":\"边桌\"}",
+            "name": "pick_category"
+          },
+          "id": "call_ed9aca9a4da545e6a3c7a866",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 6,
+      "logId": "cmv9a5ggd000ug0v8zxthl2jp",
+      "durationMs": 4980,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"count\":3}",
+            "name": "set_count"
+          },
+          "id": "call_390e3184bbec43d88bdb77a4",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 7,
+      "logId": "cmv9a5kd00010g0v85dncoip8",
+      "durationMs": 4974,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"source\":\"I2\"}",
+            "name": "select_source"
+          },
+          "id": "call_90b36bf9efbe4974a669a8ab",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 8,
+      "logId": "cmv9a5o7g0015g0v862jt9xo5",
+      "durationMs": 4797,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"color\":\"米白\"}",
+            "name": "set_color"
+          },
+          "id": "call_ea9855c4540a41b68b4023b5",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 9,
+      "logId": "cmv9a5rwx001ag0v8smadumia",
+      "durationMs": 3472,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"slots\":[\"S1\",\"S3\"]}",
+            "name": "choose_slots"
+          },
+          "id": "call_1963d241dbb24c818a72caf8",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 10,
+      "logId": "cmv9a5ulm001eg0v843t8z2fw",
+      "durationMs": 5159,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"category\":\"边桌\"}",
+            "name": "pick_category"
+          },
+          "id": "call_483c5f78d5a94106887f7776",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 11,
+      "logId": "cmv9a5yl6001jg0v81z2n5vxp",
+      "durationMs": 5555,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"count\":3}",
+            "name": "set_count"
+          },
+          "id": "call_922a61e30cdd46dfa416e12e",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 12,
+      "logId": "cmv9a62vr001lg0v8703d1vj5",
+      "durationMs": 3326,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"source\":\"I2\"}",
+            "name": "select_source"
+          },
+          "id": "call_98726bfbd081400197645ebb",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 13,
+      "logId": "cmv9a65gh001mg0v8n3zta6yf",
+      "durationMs": 3470,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"color\":\"米白\"}",
+            "name": "set_color"
+          },
+          "id": "call_aebca8f694f4464a9fc1222e",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 14,
+      "logId": "cmv9a6856001ng0v8sd1u5lty",
+      "durationMs": 3914,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"slots\":[\"S1\",\"S3\"]}",
+            "name": "choose_slots"
+          },
+          "id": "call_d7096ab1236949f0858b5211",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 15,
+      "logId": "cmv9a6b69001og0v826spcheh",
+      "durationMs": 4512,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"category\":\"边桌\"}",
+            "name": "pick_category"
+          },
+          "id": "call_dfc5902fae944fa09a09e085",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 16,
+      "logId": "cmv9a6enz001pg0v8alenw892",
+      "durationMs": 5140,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"count\":3}",
+            "name": "set_count"
+          },
+          "id": "call_2a1cd810ab5c49d6843b399d",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 17,
+      "logId": "cmv9a6in1001rg0v8t0kiz3ht",
+      "durationMs": 3362,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"source\":\"I2\"}",
+            "name": "select_source"
+          },
+          "id": "call_889051a3937349dc965a07b3",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 18,
+      "logId": "cmv9a6l8p001sg0v8mijjtn3k",
+      "durationMs": 4210,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"color\":\"米白\"}",
+            "name": "set_color"
+          },
+          "id": "call_a8094a1ac585444d80f8ab31",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 19,
+      "logId": "cmv9a6ohz001tg0v89bp35hh7",
+      "durationMs": 4589,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "",
+      "toolCalls": [
+        {
+          "function": {
+            "arguments": "{\"slots\":[\"S1\",\"S3\"]}",
+            "name": "choose_slots"
+          },
+          "id": "call_1fe98be9b4a34cdaa86943a3",
+          "type": "function"
+        }
+      ],
+      "formatCorrect": true,
+      "parametersCorrect": true
+    },
+    {
+      "phase": "context",
+      "index": 0,
+      "logId": "cmv9a6s1r001ug0v8flni3ohz",
+      "durationMs": 4726,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":1,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 1,
+      "logId": "cmv9a6vpa001wg0v8w3w08xvi",
+      "durationMs": 4692,
+      "costUsd": 0.00015,
+      "credits": 0.03,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":2,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 2,
+      "logId": "cmv9a6zbv001yg0v8clkvdyyz",
+      "durationMs": 4829,
+      "costUsd": 0.0002,
+      "credits": 0.04,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":3,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 3,
+      "logId": "cmv9a732c001zg0v804snkfjm",
+      "durationMs": 4318,
+      "costUsd": 0.00025,
+      "credits": 0.05,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":4,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 4,
+      "logId": "cmv9a76eq0020g0v81gflbult",
+      "durationMs": 5540,
+      "costUsd": 0.0003,
+      "credits": 0.06,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":5,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 5,
+      "logId": "cmv9a7ap00021g0v893n2wgl2",
+      "durationMs": 5575,
+      "costUsd": 0.00035,
+      "credits": 0.07,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":6,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 6,
+      "logId": "cmv9a7f080023g0v8pc4vpyus",
+      "durationMs": 22595,
+      "costUsd": 0.0004,
+      "credits": 0.08,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":7,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 7,
+      "logId": "cmv9a7wg70026g0v85octd7ai",
+      "durationMs": 5161,
+      "costUsd": 0.00045,
+      "credits": 0.09,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":8,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 8,
+      "logId": "cmv9a80fu0027g0v86aimmbas",
+      "durationMs": 3412,
+      "costUsd": 0.0005,
+      "credits": 0.1,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":9,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 9,
+      "logId": "cmv9a832x0028g0v8kib9aerq",
+      "durationMs": 4370,
+      "costUsd": 0.00055,
+      "credits": 0.11,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":10,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 10,
+      "logId": "cmv9a86gp0029g0v8jx4lesmh",
+      "durationMs": 5634,
+      "costUsd": 0.0006,
+      "credits": 0.12,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":11,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 11,
+      "logId": "cmv9a8ath002bg0v8qlzm3udd",
+      "durationMs": 4983,
+      "costUsd": 0.00065,
+      "credits": 0.13,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":12,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 12,
+      "logId": "cmv9a8eo6002dg0v8s18ke83u",
+      "durationMs": 3599,
+      "costUsd": 0.0007,
+      "credits": 0.14,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":13,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 13,
+      "logId": "cmv9a8hkf002eg0v8mkodyhsg",
+      "durationMs": 5851,
+      "costUsd": 0.00075,
+      "credits": 0.15,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":14,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 14,
+      "logId": "cmv9a8m39002fg0v8mjghodnl",
+      "durationMs": 5055,
+      "costUsd": 0.00085,
+      "credits": 0.17,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":15,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 15,
+      "logId": "cmv9a8pzz002gg0v8le9v8jfq",
+      "durationMs": 3862,
+      "costUsd": 0.0009,
+      "credits": 0.18,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":16,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 16,
+      "logId": "cmv9a8szj002hg0v8ox7k7mdm",
+      "durationMs": 3890,
+      "costUsd": 0.00095,
+      "credits": 0.19,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":17,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 17,
+      "logId": "cmv9a8vzw002ig0v8lk83lf0k",
+      "durationMs": 3268,
+      "costUsd": 0.001,
+      "credits": 0.2,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":18,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 18,
+      "logId": "cmv9a8yiz002jg0v8rg0dm2r4",
+      "durationMs": 4766,
+      "costUsd": 0.00105,
+      "credits": 0.21,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":19,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 19,
+      "logId": "cmv9a927q002kg0v8asokzrqw",
+      "durationMs": 4452,
+      "costUsd": 0.0011,
+      "credits": 0.22,
+      "costEstimated": false,
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":20,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "native",
+      "index": 0,
+      "logId": "cmv9a95np002lg0v82i0n9p7p",
+      "durationMs": 6500,
+      "costUsd": 0.0001,
+      "credits": 0.02,
+      "costEstimated": false,
+      "text": "我无法提供今日（2026年10月15日）欧洲央行公布的欧元兑美元参考汇率。\n\n**原因如下：**\n1. 我当前无法联网获取实时或未来的外部信息。\n2. 我的知识库更新截至2026年1月，无法获取2026年10月的数据。",
+      "toolCalls": []
+    }
+  ]
+}

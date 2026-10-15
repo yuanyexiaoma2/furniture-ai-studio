@@ -1,0 +1,20 @@
+import "server-only";
+import {db} from "./db";
+import {StudioError} from "./studio-error";
+import {gatewayConfigured} from "./gateway-router";
+import type {ModelCandidate} from "./models.config";
+import type {MockModel} from "@/design-preview/mock/models";
+export type StudioSettings={agentId?:string;imageId?:string;imageIds?:string[];auto?:boolean;webEnabled?:boolean;resolution?:"auto"|"1K"|"2K"|"4K";shootingMode?:"quick"|"strict";categoryConfirmed?:boolean;categoryId?:string;photoAngles?:Record<string,string>;strictSkipped?:boolean;quickHintSeen?:boolean;planRecipes?:Record<string,unknown>};
+export function settingsOf(value:unknown):StudioSettings{return(value&&typeof value==="object"?value:{}) as StudioSettings;}
+export {passedProbe} from "./studio-rules";
+import {passedProbe} from "./studio-rules";
+export async function studioCatalog(admin=false){
+ const rows=await db.studioModel.findMany({orderBy:{id:"asc"}});
+ return rows.filter(m=>admin||m.enabled&&m.visible&&(m.kind!=="agent"||passedProbe(m.probe))&&gatewayConfigured((m.candidate as ModelCandidate).provider)).map(m=>{const c=m.candidate as ModelCandidate;const brand=m.name.startsWith("GPT")?"openai":m.name.startsWith("Claude")?"anthropic":"google";return {...(admin?{probe:m.probe,configured:gatewayConfigured(c.provider)}:{}),id:m.id,kind:m.kind,name:m.name,brandIcon:"/design-preview/brands/"+brand+".svg",color:"#888888",description:m.kind==="agent"?"理解产品、规划图包与对话":"保持产品外观，支持多图参考",seconds:m.kind==="agent"?8:35,price:m.kind==="agent"?.003:(c.pricing.images?.["2K"]??6)*.005,pricesByResolution:m.kind==="image"?Object.fromEntries(Object.entries(c.pricing.images??{}).map(([key,value])=>[key,value*(c.pricing.currency==="credits"?.005:1)])):undefined,failureRate:0,enabled:m.enabled,visible:m.visible,isDefault:m.id==="agent-sol"||m.id==="image-banana"} as MockModel;});
+}
+export async function selectedCandidate(kind:"agent"|"image",settings:StudioSettings):Promise<ModelCandidate>{
+ const visible=await studioCatalog(),requested=kind==="agent"?settings.agentId:(settings.auto!==false?settings.imageIds?.[0]??settings.imageId:settings.imageId);
+ const model=visible.find(m=>m.kind===kind&&m.id===requested)??(!requested?visible.find(m=>m.kind===kind):undefined);
+ if(!model)throw new StudioError(kind==="agent"?"所选智能体尚未通过能力验证或已下线，请在模型面板重选":"所选生图模型已下线，请在模型面板重选",409);
+ return(await db.studioModel.findUniqueOrThrow({where:{id:model.id}})).candidate as ModelCandidate;
+}

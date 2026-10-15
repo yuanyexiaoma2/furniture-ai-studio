@@ -1,4 +1,5 @@
 import "server-only";
+import {ZodError} from "zod";
 import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 import { StudioError } from "@/lib/studio-error";
@@ -13,5 +14,6 @@ export async function studioUser(request: Request, write = false) {
   return session.user;
 }
 export function studioError(error: unknown, fallback: string) {
+  if(error instanceof ZodError)return NextResponse.json({error:"提交的选项或资料格式不正确，请刷新后重新选择；原有数据已保留"},{status:400});
   return NextResponse.json({ error: error instanceof StudioError || error instanceof GatewayError ? error.message : fallback }, { status: error instanceof StudioError || error instanceof GatewayError ? Math.min(599, Math.max(400, error.status)) : 500 });
 }

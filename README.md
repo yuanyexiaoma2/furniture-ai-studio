@@ -2,9 +2,19 @@
 
 公司内部创意工作空间。已实现账号密码登录、管理员用户管理、商品实拍管理、双网关场景生成和指令二次编辑、AI 提炼产品身份特征及网关状态后台。任务 2 已由用户验收；任务 3 验证记录见 [双网关验收记录](docs/task-3-progress.md)。
 
+## 2026-10-15 · 任务 10 阶段版本（已暂停，未验收完成）
+
+本次在任务 9 审阅版本 `3eca139` 上接入核心流程，保留既定 UI。新版首页、工作台、产品卡及模型管理已接真实接口；新增数据库迁移、模型探测报告、库种子/CSV、Tavily 搜索工具及费用记录。详细暂停点见 [任务 10 状态](docs/task-10/STATUS.md)，探测结果见 [模型能力报告](docs/task-10/model-probe.md)。
+
+**用户决定：今天停止开发，真实生图验证由用户操作；不得自动续跑任何付费验证。** 本次为可追溯的开发快照，不代表任务 10 验收完成。保存前 lint、typecheck、60 项单元测试通过；最新改动尚待最终生产构建与浏览器验收。
+
+运行：沿用现有 PostgreSQL、MinIO 和本地 `.env`。安装依赖后执行 `npx prisma generate`、`npx prisma migrate deploy`，新环境再执行 `npm run seed:task10` 导入三类品类及库种子。网页使用 `npm run dev`，worker 使用 `npm run worker`。访问 `/design-preview`；本机已有预览端口为 3001，避免重复启动。搜索需要服务端 `TAVILY_API_KEY`；缺少时可以关闭联网继续制作。模型开放状态存数据库，未通过探测的智能体不会向美工开放；当前仅推荐 GPT-6.1 Sol。不要为了初始化环境自动运行探测或真实生图脚本。
+
+本地检查：`npm run lint`、`npm run typecheck`、`npm run test:task10:units`。真实端到端验收尚未完成。`docs/task-10/recordings/` 原始录屏及 `docs/task-10/*.zip` 保留本机，不纳入此代码快照。
+
 ## 如何运行
 
-任务 7 第三轮修订：登录后访问 <http://localhost:3001/design-preview>。保留五页结构，新增共享智能体 / 生图模型选择器、Auto 与手动质量档、后台模型可见联动；全面更新首页和画布视觉。全为静态假数据，不调用业务接口。模型配置结构、后台替换说明、20 张亮暗截图、约 24 秒操作录屏与逐条自查见 [第三轮交付](docs/design-preview/round3/README.md)。根路径仍是原业务首页；完成后停在第一阶段等待审阅。
+历史静态阶段（任务 7 第三轮修订）：登录后访问 <http://localhost:3001/design-preview>。保留五页结构，新增共享智能体 / 生图模型选择器、Auto 与手动质量档、后台模型可见联动；全面更新首页和画布视觉。全为静态假数据，不调用业务接口。模型配置结构、后台替换说明、20 张亮暗截图、约 24 秒操作录屏与逐条自查见 [第三轮交付](docs/design-preview/round3/README.md)。根路径仍是原业务首页；完成后停在第一阶段等待审阅。
 
 目前只配置 KIE，ZenMux Key 为空时自动跳过。两家生图 / LLM 代码均已接入，无需未来改代码。协议和模型核实记录见 [docs/gateways.md](docs/gateways.md)。
 

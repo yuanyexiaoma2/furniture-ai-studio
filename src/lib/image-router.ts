@@ -1,4 +1,5 @@
 import "server-only";
+import {imageRetryAllowed} from "./studio-rules";
 import { db } from "./db";
 import { routeCall, candidatesFor, gatewayConfigured } from "./gateway-router";
 import { databaseCircuit } from "./gateway-circuit";
@@ -27,8 +28,8 @@ async function generate(id: string, factory: (candidate: ModelCandidate) => Imag
   try {
     const routed = await routeCall<ImageGeneration>({ logical: job.logicalModel as LogicalModel, circuit: databaseCircuit, alreadyFallback, probe: typeof input.testProvider === "string", isSuccessful: result => result.kind === "done",
       previousErrors: job.attempts.filter(a => a.status === "failed" && a.error).map(a => a.error!), previousProvider: job.provider === "zenmux" ? "zenmux" : "kie",
-      candidates: typeof input.testProvider === "string" ? candidatesFor("scene-main").filter(c => c.provider === input.testProvider) : undefined,
-      excluded: job.attempts.map(a => `${a.provider}:${a.model}`), configured: gatewayConfigured,
+      candidates: input.selectedCandidate ? [input.selectedCandidate as ModelCandidate] : typeof input.testProvider === "string" ? candidatesFor("scene-main").filter(c => c.provider === input.testProvider) : undefined,
+      excluded: Number(input.autoRetryCount??0)===1&&job.attempts.length===1?[]:job.attempts.map(a => `${a.provider}:${a.model}`), configured: gatewayConfigured,
       async call(candidate) {
         try { return await factory(candidate).generate(request); }
         catch (error) {
@@ -67,8 +68,16 @@ async function generate(id: string, factory: (candidate: ModelCandidate) => Imag
     if (routed.fallback && routed.warnings.length) await db.generationJob.update({ where: { id }, data: { error: `已自动切换备用线路：${routed.warnings.join('；')}` } });
   } catch (error) {
     if (activeAttempt) await db.generationAttempt.updateMany({ where: { id: activeAttempt, status: "running" }, data: { status: "failed", completedAt: new Date(), error: "调用或结果转存失败，请核对网关记录" } });
+    const failure=gatewayException(job.provider==="zenmux"?"zenmux":"kie",error);
+    if(failure.retryable&&!failure.uncertain&&await retryOnce(id,factory))return;
     await failGatewayJob(id, error);
   }
+}
+async function retryOnce(id:string,factory:(candidate:ModelCandidate)=>ImageProvider){
+ const current=await db.generationJob.findUniqueOrThrow({where:{id}}),input=current.input as Record<string,unknown>;
+ if(!imageRetryAllowed(input,true,false))return false;
+ await db.generationJob.update({where:{id},data:{input:{...input,autoRetryCount:1,uncertainCharge:false} as Prisma.InputJsonValue,externalTaskId:null,error:"生成失败，正在自动重试1次"}});
+ await generate(id,factory);return true;
 }
 async function complete(jobId: string, attemptId: string, result: ImageGeneration, duration: number) {
   if (result.kind === "pending") {
@@ -85,7 +94,7 @@ async function complete(jobId: string, attemptId: string, result: ImageGeneratio
 export async function pollGatewayJob(id: string, factory = imageProvider) {
   const job = await db.generationJob.findUnique({ where: { id }, include: { attempts: { orderBy: { createdAt: "desc" }, take: 1 } } });
   if (!job || job.status !== "running" || !job.externalTaskId) return;
-  const candidate = candidatesFor(job.logicalModel as LogicalModel).find(c => c.provider === job.provider && c.model === job.model);
+  const candidate = ((job.input as Record<string,unknown>).selectedCandidate as ModelCandidate|undefined) ?? candidatesFor(job.logicalModel as LogicalModel).find(c => c.provider === job.provider && c.model === job.model);
   if (!candidate) { await failGatewayJob(id, new Error("任务使用的模型配置已移除")); return; }
   const attempt = job.attempts[0];
   let result: ImageGeneration;
@@ -114,7 +123,7 @@ export async function pollGatewayJob(id: string, factory = imageProvider) {
     if (failure.uncertain || !(error instanceof ImageTaskFailure) && !(error instanceof KieError && error.businessFailure) && failure.retryable) { await scheduleRetry(id, "查询或下载暂时失败，正在重试原任务；10 分钟后停止等待"); return; }
     await finishFailedAttempt(attempt.id, error);
     await databaseCircuit.failure(candidate.provider);
-    if (failure.retryable) await generate(id, factory, true);
+    if (failure.retryable) {if(!await retryOnce(id,factory))await failGatewayJob(id,failure);}
     else await failGatewayJob(id, new GatewayError(candidate.provider, `${failure.message}；未自动切换`, failure.status, false));
     return;
   }

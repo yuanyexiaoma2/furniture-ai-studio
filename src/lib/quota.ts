@@ -16,6 +16,8 @@ export async function monthlySpendUsd(client: Prisma.TransactionClient | typeof 
     SELECT CASE WHEN status IN ('pending','running') THEN GREATEST(COALESCE("costUsd",0),"reservedUsd") ELSE COALESCE("costUsd","reservedUsd") END AS amount FROM "GenerationJob" WHERE "createdById"=${userId} AND "createdAt">=${month.start} AND "createdAt"<${month.end} AND id<>${exclude?.jobId ?? ''}
     UNION ALL
     SELECT CASE WHEN status='running' THEN GREATEST(COALESCE("costUsd",0),"reservedUsd") ELSE COALESCE("costUsd","reservedUsd") END FROM "LlmCall" WHERE "createdById"=${userId} AND "createdAt">=${month.start} AND "createdAt"<${month.end} AND id<>${exclude?.callId ?? ''}
+  UNION ALL
+    SELECT "costUsd" FROM "SearchCall" WHERE "createdById"=${userId} AND "createdAt">=${month.start} AND "createdAt"<${month.end}
   ) totals`;
   return Number(row.amount);
 }
