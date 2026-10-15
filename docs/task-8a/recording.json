@@ -1,0 +1,22 @@
+{
+  "sourceDurationMs": 20348,
+  "width": 1440,
+  "height": 900,
+  "sourceFrames": 64,
+  "format": "WebM VP9 / 实际浏览器操作帧",
+  "operations": [
+    "快速档真实拖入2张实拍",
+    "直接规划并生成本地候选",
+    "选中图片显示工具条",
+    "设为终稿触发沉淀建议",
+    "保存个人场景模板",
+    "模板库交集搜索命中",
+    "当前任务升级严格档后的缺失提醒",
+    "先跳过后继续规划",
+    "切换暗色"
+  ],
+  "pageErrors": [],
+  "businessApiRequests": [],
+  "encodedDurationSeconds": 20.664794,
+  "playbackVerified": true
+}

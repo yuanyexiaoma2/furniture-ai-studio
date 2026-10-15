@@ -240,3 +240,10 @@ Agent测试：test:agent使用随机隔离PostgreSQL、真实MinIO和本地mock�
 真实资料兼容性：Next代理请求体允许102MB（业务上传仍为单次100MB/单文件30MB），Excel空值与富文本直接读取，不求值未缓存公式。Agent图片分析使用llm-agent的KIE Responses流式协议与现有图片上传缓存；确认后的作图阶段使用实时图位/任务状态，避免反复重读全文。
 
 KIE费用记录读取Responses完成事件外层credits_consumed，完成后立即释放SSE连接；失败或早期缺少积分的请求保留“预估”标记，不把估算当实际费用。来源短编号映射到本SKU真实ID后严格校验，对话编号新增消息后保持稳定；新图位不得编造已有ID。真实图片仍需人工核对木色、五金、尺寸适配及隐藏部件，身份冻结和多实拍参考不等于零漂移保证。
+
+
+### 任务 8A · 模板库、道具库与双档拍摄（2026-10-15）
+
+新增结构化资料库、快速/严格拍摄、配方拼装和终稿沉淀静态原型，沿用任务 7 第三轮 UI。入口 `/design-preview/library`，后台新增品类设置与待审核条目；首页改为 Bento + 16:10 场景轮播。数据结构、迁移草案、接口替换说明、截图和录屏见 [任务 8A 交付说明](docs/task-8a/README.md)。当前仅本地 mock，不运行迁移、不调用模型，完成后等待审阅。
+
+测试：`npm run test:prompt-composer`、`npm run lint`、`npm run typecheck`、`npm run build`；浏览器验收 `node scripts/verify-task8a.mjs`，录屏 `node scripts/record-task8a.mjs`。开发仍用 `npm run dev -- --port 3001`，无需启动 worker。任务 7 截图和交互记录保留在 `docs/design-preview/round3/`。

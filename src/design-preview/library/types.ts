@@ -1,0 +1,27 @@
+/** 任务 8A 领域类型。仅原型和迁移草案使用，不接真实工具。 */
+export type Visibility="private"|"pending"|"public";
+export type ShootingMode="quick"|"strict";
+export type ShotAngle="front"|"quarter"|"side"|"back"|"top"|"material"|"hardware"|"legs"|"inside"|"joint";
+export const shotLabels:Record<ShotAngle,string>={front:"正面",quarter:"45°",side:"正侧",back:"背面",top:"俯视",material:"细节-材质",hardware:"细节-五金",legs:"细节-腿脚",inside:"收纳内部",joint:"安装连接"};
+export type Actor={id:string;name:string;role:"admin"|"template_editor"|"designer"|"viewer"};
+export type Stats={used:number;liked:number};
+export type EntryBase={id:string;name:string;owner:string;visibility:Visibility;tags:string[];categoryIds:string[];createdAt:string;stats:Stats};
+export type ShotRequirement={angle:ShotAngle;required:boolean;hint:string};
+export type Category=Omit<EntryBase,"categoryIds">&{defaultShootingMode:ShootingMode;quickHint:string;strictChecklist:ShotRequirement[]};
+export type LockedFeature={key:string;value:string;locked:boolean};
+export type ProductPhoto={id:string;image:string;name:string;angle:ShotAngle;original:true;angleSource:"mock"|"manual";source:"upload"|"fixture"};
+export type Product=EntryBase&{sku:string;categoryId:string;shootingMode:ShootingMode;photos:ProductPhoto[];features:LockedFeature[];dimensions:{width:number;depth:number;height:number;unit:"cm"}};
+export type SceneVariable={key:string;label:string;options:{value:string;label:string}[]};
+export type SceneTemplate=EntryBase&{kind:"scene";skeleton:string;fixed:string[];variables:SceneVariable[];defaultPropSetIds:string[];coverImage:string;sourceRecipeId?:string};
+export type Prop=EntryBase&{kind:"prop";keywordsEn:string;shape:string;color:string;material:string;size:"小"|"中"|"大";sceneTags:string[];categoryTags:string[];refImages:string[]};
+export type PropSet=EntryBase&{kind:"set";propIds:string[];maxPick:number};
+export type ReferenceImage=EntryBase&{kind:"reference";image:string;source:string;spaceTag:string;styleTag:string;lightingTag:string;categoryTags:string[];usedBy:string[];score:number};
+export type PromptSnippet=EntryBase&{kind:"snippet";text:string;usageCount:number};
+export type LibraryEntry=SceneTemplate|Prop|PropSet|ReferenceImage|PromptSnippet;
+export type LibraryKind=LibraryEntry["kind"];
+export type GenerationRecipe=EntryBase&{sku:string;categoryId:string;templateId:string;propIds:string[];variables:Record<string,string>;refIds:string[];model:string;finalPrompt:string;combinationKey:string;originalPhotoIds:string[];imageId:string;image:string;productSnapshot:{features:LockedFeature[];dimensions:Product["dimensions"]};templateSnapshot:{skeleton:string;fixed:string[]};parentRecipeId?:string};
+export type CaptureKind="scene"|"reference"|"prop"|"snippet";
+export type Suggestion={id:string;kind:CaptureKind;imageId?:string;image?:string;recipeId?:string;name:string;text?:string;tags:string[];status:"suggested"|"saved"|"dismissed";entryId?:string;extracted?:{name:string;keywordsEn:string;shape:string;color:string;material:string;tags:string[]}; crop?:{x:number;y:number;width:number;height:number}};
+export type TaskMessage={id:string;role:"user"|"assistant"|"system";text:string};
+export type PrototypeTask={id:string;product:Product;documentNames:string[];stage:"ready"|"planned"|"generated";templateId:string;variables:Record<string,string>;recipeIds:string[];messages:TaskMessage[];suggestions:Suggestion[];shootingPrompted:boolean;quickHintSeen:boolean;strictSkipped:boolean;singlePhotoAcknowledged:boolean;descriptionCounts:Record<string,number>;estimatedCost:number;feeConfirmed:boolean;createdAt:string};
+export type LibraryData={categories:Category[];products:Product[];scenes:SceneTemplate[];props:Prop[];propSets:PropSet[];references:ReferenceImage[];snippets:PromptSnippet[];recipes:GenerationRecipe[]};

@@ -1,0 +1,465 @@
+{
+  "passed": true,
+  "screenshots": 46,
+  "pageErrors": [],
+  "businessApiRequests": [],
+  "externalRequests": [],
+  "diagnostics": [],
+  "checks": [
+    "快速2张直接规划",
+    "严格5/7缺项与先跳过",
+    "终稿沉淀/个人保存/搜索命中",
+    "道具框选/语义确认/裁切保存",
+    "参考图保存",
+    "描述二次片段",
+    "五类库与详情",
+    "品类清单编辑",
+    "管理员审核",
+    "1张允许/费用确认",
+    "刷新恢复画布和任务",
+    "手动修图同时传原始实拍",
+    "双主题/响应式/字号/无折行"
+  ],
+  "audits": [
+    {
+      "name": "01-home-bento-carousel-light",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "02-quick-workspace-light",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "03-recipe-plan-light",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "04-canvas-toolbar-light",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "05-capture-scene-light",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "06-prop-crop-light",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "07-saved-template-search-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "08-scene-detail-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "09-library-scene-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "10-library-prop-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "11-prop-detail-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "12-library-set-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "13-library-reference-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "14-library-snippet-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "15-product-quick-light",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "16-product-strict-light",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "17-strict-reminder-light",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "18-category-settings-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "19-category-checklist-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "20-pending-reviews-light",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "01-home-bento-carousel-dark",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "02-quick-workspace-dark",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "03-recipe-plan-dark",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "04-canvas-toolbar-dark",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "05-capture-scene-dark",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "06-prop-crop-dark",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "07-saved-template-search-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "08-scene-detail-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "09-library-scene-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "10-library-prop-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "11-prop-detail-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "12-library-set-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "13-library-reference-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "14-library-snippet-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "15-product-quick-dark",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "16-product-strict-dark",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "17-strict-reminder-dark",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "18-category-settings-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "19-category-checklist-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "20-pending-reviews-dark",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "responsive-home-1100",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "responsive-library-1100",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "responsive-home-768",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "responsive-library-768",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "responsive-home-390",
+      "small": [],
+      "bars": [
+        {
+          "nowrap": true,
+          "inside": true
+        }
+      ],
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "name": "responsive-library-390",
+      "small": [],
+      "bars": [],
+      "overflow": false,
+      "broken": []
+    }
+  ],
+  "finalBuildSmoke": {
+    "passed": true,
+    "toolbarInsideCanvas": true,
+    "modelSelectionSurvivesWorkspaceReload": true,
+    "manualEditRecipe": {
+      "model": "GPT Image 2",
+      "originalPhotoCount": 1,
+      "parent": "E325A98879D32",
+      "image": "/design-preview/r3-05.webp"
+    },
+    "pageErrors": [],
+    "businessApiRequests": []
+  }
+}

@@ -1,3 +1,7 @@
+# 最新：任务 8A 完成，等待审阅（2026-10-15）
+
+工作区 C:/Users/Administrator/Projects/furniture-ai-studio。沿用任务 7 第三轮前端，新增模板库五类条目、快速/严格拍摄、PromptComposer、配方去重与三类沉淀、个人/待审/公共审核。数据类型/20 个工具契约在 src/design-preview/library，mock/library.ts 各类至少10（道具20、组10）。SQL 仅 docs/task-8a/migration-draft.sql 草案，没改 Prisma/没执行迁移/没接模型。19项单测和lint/typecheck/build通过；40张双主题+6张窄屏PNG、约20秒WebM及零接口浏览器验收在 docs/task-8a/。录屏真实拖入2张、规划/生成、终稿/保存/搜索、严格档缺失与跳过。预览 localhost:3001/design-preview，库 /design-preview/library；需现有登录。已生成任务可再规划；Bento产品卡沿用当前任务，不覆盖进度。连续编辑每轮同时保留全部原始实拍、冻结父配方和实际所选模型。停止8A，不进入8B；不推送远程（先前自动审批要求显式远程授权）。本机命令仍需 require_escalated，正常sandbox/node_repl初始化失败。
+
 # 最新：任务7第三轮完成，等待审阅（2026-10-15）
 
 已按负责人第三轮要求完成首页/工作台共享 ModelPicker、统一 src/design-preview/mock/models.ts、zustand持久化和会话独立、管理员可见/启用/默认联动，及五页亮暗视觉升级。30张不同家具样图，20张PNG与约24秒WebM在docs/design-preview/round3/。lint/typecheck/build、模型状态/报价/4种宽度/实际字号检查及蒙版PNG、扩图、多选回归通过，页面错误/诊断/业务接口/外部资源请求均0。预览http://localhost:3001/design-preview，根路径是旧业务首页。停在第一阶段等待审阅，不接后端，不修四个业务bug，不推送远程（此前自动审批明确要求用户授权远程main更新）。
