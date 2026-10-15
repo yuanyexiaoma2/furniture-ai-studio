@@ -3,9 +3,9 @@ import assert from "node:assert/strict";
 import {useLibraryStore,libraryEntries} from "../../src/components/design-preview/library/library-store";
 import {administrator,designer,librarian} from "../../src/design-preview/mock/library";
 import {coverage} from "../../src/design-preview/library/rules";
-test("快速档两张实拍直接规划，配方逐张冻结且不重复",()=>{
+test("快速档两张实拍确认品类后直接规划，配方逐张冻结且不重复",()=>{
  const s=useLibraryStore;s.getState().reset();const photos=s.getState().data.products[0].photos.slice(0,2);
- s.getState().ingest(photos,["规格.pdf"]);s.getState().startTask();s.getState().preparePlan(4,.124);
+ s.getState().ingest(photos,["规格.pdf"]);s.getState().startTask();s.getState().confirmCategory();s.getState().preparePlan(4,.124);
  assert.equal(s.getState().planned.length,4);assert.equal(new Set(s.getState().planned.map(p=>p.combinationKey)).size,4);
  s.getState().finishGeneration([1,2,3,4].map(i=>({id:"test-"+i,image:"/mock-"+i+".webp"})),"mock-model");
  const task=s.getState().task!;assert.equal(task.stage,"generated");assert.equal(task.strictSkipped,false);
@@ -62,4 +62,32 @@ test("连续手动修图每轮都携带全部原始实拍，完整图片路径�
  const result=s.getState().data.recipes.at(-1)!;assert.equal(result.originalPhotoIds.length,5);assert(result.parentRecipeId);assert.equal(result.image,"/design-preview/r3-25.webp");assert.notEqual(result.model,"mock-model");
  }
  s.getState().startTask();await assert.rejects(()=>usePreviewStore.getState().simulate("EDITBASE","erase"),/原始实拍/);s.getState().reset();usePreviewStore.getState().reset();
+});
+
+test("新任务先确认品类，文字未知时不猜测，补充文字或实拍后更新建议",()=>{
+ const s=useLibraryStore;s.getState().reset();s.getState().startTask("想做一套商品图");
+ assert.equal(s.getState().task!.categorySuggestionId,null);assert.equal(s.getState().task!.categoryConfirmed,false);
+ assert.throws(()=>s.getState().preparePlan(1,.03),/先确认.*品类/);
+ s.getState().appendMessage("是浴室柜");assert.equal(s.getState().task!.categorySuggestionId,"C03");
+ s.getState().startTask("帮我做图");s.getState().ingest(s.getState().data.products[0].photos.slice(0,2),[],true);
+ assert.equal(s.getState().task!.categorySuggestionId,"C01");s.getState().confirmCategory();assert.equal(s.getState().task!.product.shootingMode,"quick");
+ assert.equal(s.getState().task!.shootingChoicePending,false);s.getState().preparePlan(1,.03);assert.equal(s.getState().task!.stage,"planned");
+});
+test("品类默认严格只在确认后建议，用户可选严格或本次快速",()=>{
+ const s=useLibraryStore;s.getState().reset();s.getState().ingest(s.getState().data.products[1].photos.slice(0,2),[]);
+ s.getState().startTask("给马桶架制作场景图");assert.equal(s.getState().task!.categorySuggestionId,"C02");
+ assert.equal(s.getState().task!.product.shootingMode,"quick");assert.equal(s.getState().task!.shootingChoicePending,false);
+ s.getState().confirmCategory();assert.equal(s.getState().task!.shootingChoicePending,true);
+ assert.throws(()=>s.getState().preparePlan(1,.03),/拍摄标准/);
+ s.getState().chooseShootingMode("quick");assert.equal(s.getState().task!.shootingChoicePending,false);assert.equal(s.getState().task!.product.shootingMode,"quick");s.getState().preparePlan(1,.03);
+ s.getState().startTask("马桶架");s.getState().confirmCategory();s.getState().chooseShootingMode("strict");
+ assert.equal(s.getState().task!.product.shootingMode,"strict");assert.equal(s.getState().task!.shootingChoicePending,false);
+ s.getState().skipStrict();s.getState().preparePlan(1,.03);assert.equal(s.getState().task!.stage,"planned");
+});
+test("产品卡修改品类保留实拍、SKU与锁定特征，更新适用模板",()=>{
+ const s=useLibraryStore;s.getState().reset();s.getState().startDemo();const product=structuredClone(s.getState().task!.product);
+ s.getState().confirmCategory("C03");const task=s.getState().task!;
+ assert.equal(task.product.categoryId,"C03");assert.equal(task.product.sku,product.sku);assert.deepEqual(task.product.photos,product.photos);assert.deepEqual(task.product.features,product.features);
+ assert(s.getState().data.scenes.find(t=>t.id===task.templateId)!.categoryIds.includes("C03"));
+ assert.equal(task.shootingChoicePending,true);s.getState().chooseShootingMode("quick");s.getState().preparePlan(1,.03);s.getState().reset();
 });

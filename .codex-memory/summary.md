@@ -1,3 +1,7 @@
+# 最新：任务 7 第一阶段第 4 轮完成，等待审阅（2026-10-15）
+
+沿用任务8A与第三轮原型。首页移除品类/拍摄档位，改为56px可删除图片/文件+三行文字/单行模型工具行，两位费用仅有内容显示，黑白40px发送空态40%透明。新任务默认quick，startTask(description)本地识别品类并等待categoryConfirmed；确认到默认strict类别后shootingChoicePending提供严格/本次快速。产品卡头部CategoryPicker复用shadcn Command（cmdk），可搜索修改；档位只留产品卡，弹层间距已修复。category-recognition.ts模拟文字/文件名，没有线索图片用边桌样例，无图片未知则询问，没接真实模型。22项测试、lint/typecheck/build及16张双主题浏览器检查通过；docs/design-preview/round4/README.md与verification.json。预览localhost:3001/design-preview。旧任务的optional确认字段保持兼容；不要重置旧任务。第四轮Python测试用.local/round4-test-env/Scripts/python.exe scripts/verify-design-preview-round4.py（系统Chrome，现有.local/task8a-storage.json登录态）。停第一阶段等待审阅，不进8B，不push远程。
+
 # 最新：任务 8A 完成，等待审阅（2026-10-15）
 
 工作区 C:/Users/Administrator/Projects/furniture-ai-studio。沿用任务 7 第三轮前端，新增模板库五类条目、快速/严格拍摄、PromptComposer、配方去重与三类沉淀、个人/待审/公共审核。数据类型/20 个工具契约在 src/design-preview/library，mock/library.ts 各类至少10（道具20、组10）。SQL 仅 docs/task-8a/migration-draft.sql 草案，没改 Prisma/没执行迁移/没接模型。19项单测和lint/typecheck/build通过；40张双主题+6张窄屏PNG、约20秒WebM及零接口浏览器验收在 docs/task-8a/。录屏真实拖入2张、规划/生成、终稿/保存/搜索、严格档缺失与跳过。预览 localhost:3001/design-preview，库 /design-preview/library；需现有登录。已生成任务可再规划；Bento产品卡沿用当前任务，不覆盖进度。连续编辑每轮同时保留全部原始实拍、冻结父配方和实际所选模型。停止8A，不进入8B；不推送远程（先前自动审批要求显式远程授权）。本机命令仍需 require_escalated，正常sandbox/node_repl初始化失败。

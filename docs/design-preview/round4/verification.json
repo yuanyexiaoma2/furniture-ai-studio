@@ -1,0 +1,276 @@
+{
+  "passed": true,
+  "screenshots": 16,
+  "pageErrors": [],
+  "consoleDiagnostics": [],
+  "businessApiRequests": [],
+  "externalRequests": [],
+  "checks": [
+    "首页完全移除品类和档位控件",
+    "输入框仅两层与三行文字",
+    "56px图片和文件附件可删除",
+    "有内容才显示两位小数报价",
+    "40px黑白圆形发送按钮空态40%透明",
+    "Auto胶囊无异常字符且图标对齐",
+    "实拍模拟识别和是/换一个确认",
+    "shadcn Command搜索/空结果/键盘选择",
+    "纯文字识别与未知追问",
+    "产品卡品类可修改",
+    "后台严格默认的两种回应",
+    "升级严格与拍摄弹层无重叠",
+    "刷新保持品类与本次档位",
+    "三种窄屏工具行保持单行"
+  ],
+  "audits": [
+    {
+      "name": "01-home-empty-light",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "02-home-text-light",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "03-home-two-photos-light",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "04-workspace-category-confirm-light",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "06-category-command-light",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "05-product-header-light",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "08-shooting-options-spacing-light",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "07-strict-default-choice-light",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "01-home-empty-dark",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "02-home-text-dark",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "03-home-two-photos-dark",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "04-workspace-category-confirm-dark",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "06-category-command-dark",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "05-product-header-dark",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "08-shooting-options-spacing-dark",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "07-strict-default-choice-dark",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "home-empty-width-1100",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "home-text-width-1100",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "home-photos-width-1100",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "home-empty-width-768",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "home-text-width-768",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "home-photos-width-768",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "home-empty-width-390",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "home-text-width-390",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    },
+    {
+      "name": "home-photos-width-390",
+      "overflow": false,
+      "small": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      },
+      "broken": []
+    }
+  ]
+}

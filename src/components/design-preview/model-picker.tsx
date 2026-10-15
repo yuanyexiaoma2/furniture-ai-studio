@@ -20,7 +20,7 @@ export function ModelPicker({kind,scope,menu=false}:{kind:ModelKind;scope:string
   else if(selected.auto){if(id===defaultImage)return;const imageIds=selected.imageIds.includes(id)?selected.imageIds.filter(n=>n!==id):[...selected.imageIds,id];state.updateSelection(scope,{imageIds},`自动出图范围已更新 · ${imageIds.length} 个模型`);}
   else {if(id!==selected.imageId)state.updateSelection(scope,{imageId:id},`已切换生图模型为 ${m.name}`);}
  }
- return <Popover open={open} onOpenChange={setOpen}><PopoverTrigger asChild><Button variant="ghost" className={`p-model-capsule ${menu?"p-model-menu-trigger":""} ${kind==="image"&&!selected.auto?"is-manual":""}`} aria-label={label}>{kind==="agent"?<Bot size={16}/>:<ImageIcon size={16}/>}<span>{kind==="image"&&selected.auto?`Auto · ${selected.imageIds.length} 个`:current?.name??"暂无可用模型"}</span><ChevronDown size={14}/></Button></PopoverTrigger><PopoverContent side={kind==="image"?"right":"top"} align={kind==="image"?"center":"start"} sideOffset={12} collisionPadding={16} className={`p-portal p-model-panel p-model-${kind}`}><div>
+ return <Popover open={open} onOpenChange={setOpen}><PopoverTrigger asChild><Button variant="ghost" className={`p-model-capsule ${menu?"p-model-menu-trigger":""} ${kind==="image"&&!selected.auto?"is-manual":""}`} aria-label={label}>{kind==="agent"?<Bot size={16}/>:<ImageIcon size={16}/>}<span className="p-model-label">{kind==="image"&&selected.auto?["Auto",selected.imageIds.length+" 个"].join(" \u00b7 "):current?.name??"暂无可用模型"}</span><ChevronDown size={14}/></Button></PopoverTrigger><PopoverContent side={kind==="image"?"right":"top"} align={kind==="image"?"center":"start"} sideOffset={12} collisionPadding={16} className={`p-portal p-model-panel p-model-${kind}`}><div>
  {kind==="agent"?<header><h3>智能体</h3><p>负责理解产品、规划图包、和你对话</p></header>:<><div className="p-model-segments"><Button className="active" variant="ghost"><ImageIcon size={16}/>图片</Button><Button disabled variant="ghost">视频<span>即将开放</span></Button></div><div className="p-auto-line"><div><strong><Sparkles size={15}/>Auto</strong><p>{selected.auto?"在已选模型中，按任务自动挑选":"选择一个模型，按你的指定创作"}</p></div><Switch aria-label="自动挑选生图模型" checked={selected.auto} onCheckedChange={auto=>state.updateSelection(scope,{auto},auto?"生图模型已切换为自动挑选":"生图模型已改为手动指定")}/></div></>}
  <div className="p-model-list" role={kind==="agent"||!selected.auto?"radiogroup":"group"} aria-label={label+"列表"}>{list.map(m=>{
   const checked=kind==="agent"?m.id===selected.agentId:selected.auto?selected.imageIds.includes(m.id):m.id===selected.imageId;
@@ -33,7 +33,7 @@ export function ModelPicker({kind,scope,menu=false}:{kind:ModelKind;scope:string
  <footer>{kind==="agent"?"管理员可以在后台调整可用模型":selected.auto?"默认模型始终保留，其余模型可自由组合":"已手动指定 · 本次创作使用所选模型"}</footer>
  </div></PopoverContent></Popover>;
 }
-export function ComposerToolbar({scope,count=4,ratio="1:1",onCount,onRatio,onAdd,onSend,disabled,extra}:{scope:string;count?:number;ratio?:string;onCount?:(n:number)=>void;onRatio?:(n:string)=>void;onAdd:()=>void;onSend:()=>void;disabled:boolean;extra?:React.ReactNode}){
+export function ComposerToolbar({scope,count=4,ratio="1:1",onCount,onRatio,onAdd,onSend,disabled,extra,showCost=true}:{scope:string;count?:number;ratio?:string;onCount?:(n:number)=>void;onRatio?:(n:string)=>void;onAdd:()=>void;onSend:()=>void;disabled:boolean;showCost?:boolean;extra?:React.ReactNode}){
  const state=useModelStore(),selection=resolveSelection(state,scope);const bar=useRef<HTMLDivElement>(null);const [compact,setCompact]=useState(scope!=="home");
  useEffect(()=>{const observer=new ResizeObserver(entries=>setCompact(entries[0].contentRect.width<650));if(bar.current)observer.observe(bar.current);return()=>observer.disconnect();},[]);
  const canSend=!!selection.agentId&&!!selection.imageId&&!disabled;
@@ -44,7 +44,7 @@ export function ComposerToolbar({scope,count=4,ratio="1:1",onCount,onRatio,onAdd
  {!compact&&<ModelPicker kind="image" scope={scope}/>}
  {!compact&&scope!=="home"&&parameters}
  {(compact||extra)&&<Popover><PopoverTrigger asChild><Button variant="ghost" className="p-composer-more" size="icon" aria-label="更多创作选项"><MoreHorizontal size={18}/></Button></PopoverTrigger><PopoverContent className="p-portal p-composer-menu" side="top" align="start"><div><h3>创作选项</h3>{compact&&<ModelPicker menu kind="image" scope={scope}/>} {compact&&scope!=="home"&&parameters}{extra}</div></PopoverContent></Popover>}
- <span className="p-cost-estimate" aria-live="polite"><span>预计 </span>${estimateCost(state,scope,count).toFixed(3)}</span>
+ <span className="p-composer-spacer" aria-hidden="true"/>{showCost&&<span className="p-cost-estimate" aria-live="polite"><span>预计 </span>${estimateCost(state,scope,count).toFixed(scope==="home"?2:3)}</span>}
  <Button className="p-send-circle" size="icon" aria-label={scope==="home"?"发送并进入工作台":"发送创作要求"} disabled={!canSend} onClick={onSend}><ArrowUp size={20}/></Button>
  </div>;
 }

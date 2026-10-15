@@ -247,3 +247,8 @@ KIE费用记录读取Responses完成事件外层credits_consumed，完成后立�
 新增结构化资料库、快速/严格拍摄、配方拼装和终稿沉淀静态原型，沿用任务 7 第三轮 UI。入口 `/design-preview/library`，后台新增品类设置与待审核条目；首页改为 Bento + 16:10 场景轮播。数据结构、迁移草案、接口替换说明、截图和录屏见 [任务 8A 交付说明](docs/task-8a/README.md)。当前仅本地 mock，不运行迁移、不调用模型，完成后等待审阅。
 
 测试：`npm run test:prompt-composer`、`npm run lint`、`npm run typecheck`、`npm run build`；浏览器验收 `node scripts/verify-task8a.mjs`，录屏 `node scripts/record-task8a.mjs`。开发仍用 `npm run dev -- --port 3001`，无需启动 worker。任务 7 截图和交互记录保留在 `docs/design-preview/round3/`。
+
+
+### 任务 7 · 第四轮：首页输入框减负（2026-10-15）
+
+首页收回到附件/文字与单行工具两层，移除品类和拍摄标准；品类由 Agent 确认卡及可搜索选择器处理，严格档按后台默认给出本次选择，修改入口移到产品卡。16 张双主题截图、交互说明和验证命令见 [第四轮交付](docs/design-preview/round4/README.md)。22 项单测、lint/typecheck/build及浏览器验收通过，仍为静态 mock，停下等待审阅。运行方式仍为 `npm run dev -- --port 3001`。
