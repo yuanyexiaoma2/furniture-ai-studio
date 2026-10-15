@@ -17,7 +17,7 @@ type PreviewStore={nodes:StudioNode[];selected:string[];contextId:string|null;ta
 export const usePreviewStore=create<PreviewStore>((set,get)=>({
  nodes:initialNodes(),selected:[],contextId:null,target:"客厅场景",theme:"system",tool:"select",referencePicking:false,references:[],editor:null,messages:[],history:["14:32 · 调整客厅光线","14:20 · 生成 30 张候选","14:08 · 确认产品与图包"],pending:0,
  setTheme:theme=>set({theme}),changeNodes:changes=>set(s=>({nodes:applyNodeChanges(changes,s.nodes)})),
- select:ids=>{const node=get().nodes.find(n=>n.id===ids[0]&&n.type==="picture");set({selected:ids,...(node?{contextId:node.id,target:node.data.slot}:{})});},
+ select:ids=>{const node=get().nodes.find(n=>ids.includes(n.id)&&n.type==="picture")??get().nodes.find(n=>ids.includes(n.id)&&n.type==="frame");set({selected:ids,...(node?{contextId:node.type==="picture"?node.id:null,target:node.data.slot}:{})});},
  clearContext:()=>set({contextId:null}),setTarget:target=>set({target}),setTool:tool=>set({tool}),setPicking:referencePicking=>set({referencePicking}),
  addReference:id=>set(s=>({references:s.references.includes(id)?s.references:[...s.references,id],referencePicking:false})),setEditor:editor=>set({editor}),
  setFinal:id=>set(s=>{const node=s.nodes.find(n=>n.id===id);return{nodes:s.nodes.map(n=>n.type==="frame"&&n.data.slot===node?.data.slot?{...n,data:{...n.data,final:true}}:n.type==="picture"&&n.data.slot===node?.data.slot?{...n,data:{...n.data,final:n.id===id}}:n)}}),
