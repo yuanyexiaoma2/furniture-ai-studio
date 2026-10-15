@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "onlyIconImport": "src/components/icons/concept-icons.ts",
+  "iconLibraries": [
+    "lucide-react"
+  ],
+  "officialSvgCount": 5,
+  "sourceManifest": "public/design-preview/brands/sources.json",
+  "taskCatalog": "src/design-preview/mock/tasks.ts",
+  "runtimeSizesVerified": [
+    16,
+    18,
+    20
+  ],
+  "runtimeStrokeWidth": 1.5
+}

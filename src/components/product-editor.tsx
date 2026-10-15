@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, type FormEvent, type ReactNode } from "react";
-import { Save, Sparkles, LoaderCircle } from "lucide-react";
+import { Save, Sparkles, LoaderCircle } from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { ProductFields, productFormValues } from "@/components/product-fields";
 import type { ProductSnapshot } from "@/lib/product-data";

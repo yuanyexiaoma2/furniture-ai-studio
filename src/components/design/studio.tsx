@@ -3,7 +3,7 @@
 import { useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUp, Bell, BookOpen, Check, CheckCheck, ChevronRight, CircleHelp, Clock3, Download, FileText, FolderOpen, History, Images, LayoutGrid, Layers3, MessageCircle, MoreHorizontal, PanelLeftClose, PanelLeftOpen, Plus, Ruler, Scan, Search, Settings2, ShieldCheck, SlidersHorizontal, Sofa, Sparkles, Trash2, Users, WandSparkles, X, Zap } from "lucide-react";
+import { ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUp, Bell, BookOpen, Check, CheckCheck, ChevronRight, CircleHelp, Clock3, Download, FileText, FolderOpen, History, Images, LayoutGrid, Layers3, MessageCircle, MoreHorizontal, PanelLeftClose, PanelLeftOpen, Plus, Ruler, Scan, Search, Settings2, ShieldCheck, SlidersHorizontal, Sofa, Sparkles, Trash2, Users, WandSparkles, X, Zap } from "@/components/icons/concept-icons";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

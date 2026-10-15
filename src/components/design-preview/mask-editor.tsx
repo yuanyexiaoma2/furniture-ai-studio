@@ -3,7 +3,7 @@ import {forwardRef,useRef,useState,useImperativeHandle} from "react";
 import Konva from "konva";
 import {Stage,Layer,Line} from "react-konva";
 import {NodeToolbar,Position} from "@xyflow/react";
-import {Brush,Eraser,Undo2,Trash2} from "lucide-react";
+import {Brush,Eraser,Undo2,Trash2} from "@/components/icons/concept-icons";
 import {demoSession,estimateCost,useModelStore} from "./model-store";
 import {Button} from "./ui/button";
 import {Slider} from "./ui/slider";

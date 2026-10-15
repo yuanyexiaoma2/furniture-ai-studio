@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import {Command as CommandPrimitive} from "cmdk";
-import {Search} from "lucide-react";
+import {Search} from "@/components/icons/concept-icons";
 import {cn} from "@/lib/utils";
 // shadcn Command 组合：保留 cmdk 的搜索、方向键与 Enter 选择语义。
 export const Command=React.forwardRef<React.ElementRef<typeof CommandPrimitive>,React.ComponentPropsWithoutRef<typeof CommandPrimitive>>(({className,...props},ref)=><CommandPrimitive ref={ref} className={cn("p-command",className)} {...props}/>);

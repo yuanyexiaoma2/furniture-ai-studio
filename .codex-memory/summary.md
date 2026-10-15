@@ -1,3 +1,7 @@
+## 2026-10-15 · 最新：任务 9 审阅第 1 轮完成，等待审阅
+
+项目 `C:/Users/Administrator/Projects/furniture-ai-studio`，承接 c76ae83。已交付三张首页图片任务卡、统一任务目录、全站概念图标映射与官方模型 SVG、`/design-preview/icons` 规范页、空画布拖放、常驻生图与联网文字胶囊、单行变体/材质实拍校验、终稿 Frame 数量及外置图位标签。上一轮模型/发送/费用规则继续有效。新交付 `docs/task-9/round1/index.html`，20 张亮暗 PNG、自查及浏览器检查 JSON；30 测试、lint/typecheck/build 通过。额外检查保留旧品牌迁移后的图包/输出、源图包刷新、附件费用、两张画布实拍与品类确认。图标统一入口 `src/components/icons/concept-icons.ts`；不要把非图标组件的 size 归一，React Flow Background 必须 size=1。预览 localhost:3001，PID 37504 停前核实。用户明确完成后停止等待审阅，仍纯静态，不接 8B、真实模型或后台接口，不 push。
+
 ## 2026-10-15 · 最新：生图模型胶囊与面板小修完成，等待审阅
 
 项目仍在 `C:/Users/Administrator/Projects/furniture-ai-studio`，沿用任务 9（5bd707c）。当前选择器已移除视频分段；Auto 单选显示模型名，多选显示“自动 · N 个模型”和名单 Tooltip，手动指定主色描边。预览价格全部两位小数，源数据精度不变。交付 `docs/design-preview/model-picker-refinement/index.html`：14 张亮暗截图及验收记录，字体实际渲染、Unicode、对齐、价格、持久化和窄屏均通过；lint/typecheck/build 通过。此前任务 9 全部保留，继续纯静态，不接真实模型，等待用户审阅。最新本地预览 localhost:3001，PID 16148 停止前先核实。

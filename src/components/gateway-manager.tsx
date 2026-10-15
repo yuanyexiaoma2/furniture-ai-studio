@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { RefreshCw, Radio, LoaderCircle } from "lucide-react";
+import { RefreshCw, Radio, LoaderCircle } from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import type { GatewayStatus } from "@/lib/gateway-status";
 type Provider = "kie" | "zenmux";

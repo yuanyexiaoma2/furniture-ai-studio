@@ -1,0 +1,41 @@
+{
+  "retrievedAt": "2026-10-15",
+  "purpose": "Official provider marks used to identify mock model choices in the static design preview.",
+  "assets": [
+    {
+      "file": "openai.svg",
+      "brand": "OpenAI",
+      "page": "https://developers.openai.com/",
+      "source": "https://developers.openai.com/",
+      "extraction": "First inline SVG (Blossom mark); removed CSS classes and set standalone black fill. Geometry unchanged."
+    },
+    {
+      "file": "google.svg",
+      "brand": "Google Gemini (also identifies Nano Banana models)",
+      "page": "https://gemini.google/about/",
+      "source": "https://storage.googleapis.com/gweb-gemini-cdn/gemini/uploads/c546a20243c57b297546630cf76e417a2483acb8.svg",
+      "extraction": "Official monochrome Gemini sparkle SVG downloaded unchanged."
+    },
+    {
+      "file": "anthropic.svg",
+      "brand": "Claude / Anthropic",
+      "page": "https://www.claude.com/",
+      "source": "https://www.claude.com/",
+      "extraction": "Isolated the independently colored #D97757 starburst path from the official inline Claude wordmark; path and fill unchanged, viewBox cropped to the symbol (0 0 125 125)."
+    },
+    {
+      "file": "bytedance.svg",
+      "brand": "ByteDance (Seedream provider)",
+      "page": "https://www.bytedance.com/en/",
+      "source": "https://www.bytedance.com/en/",
+      "extraction": "Decoded the official header logo's data:image/svg+xml;base64, isolated its four bar paths, and cropped viewBox to 0 0 54 44. Official white fills unchanged. Display on a dark circular container. Seed's current site supplies its header wordmark only as PNG, so this uses the official parent-company symbol rather than tracing or inventing a Seedream icon."
+    },
+    {
+      "file": "bfl.svg",
+      "brand": "Black Forest Labs / FLUX",
+      "page": "https://bfl.ai/",
+      "source": "https://bfl.ai/icon0.svg?7e050ff634b43f18",
+      "extraction": "Retained the official favicon's path and white backdrop. Flattened redundant nested SVG and removed an unresolved clip-path wrapper plus nonessential media CSS; geometry/fill unchanged."
+    }
+  ]
+}

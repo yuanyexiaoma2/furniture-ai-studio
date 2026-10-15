@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, type DragEvent } from "react";
 import Image from "next/image";
-import { Upload, LoaderCircle, Trash2, GripVertical, ChevronLeft, ChevronRight } from "lucide-react";
+import { Upload, LoaderCircle, Trash2, GripVertical, ChevronLeft, ChevronRight } from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import type { ProductSnapshot } from "@/lib/product-data";
 

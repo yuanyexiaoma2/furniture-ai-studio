@@ -2,9 +2,9 @@ import type {BrandStyle,FinalPack,Glossary,ProductVariant,Site} from "./types";
 export const sites:{id:Site;language:string}[]=[{id:"US",language:"英语（美国）"},{id:"UK",language:"英语（英国）"},{id:"DE",language:"德语"},{id:"FR",language:"法语"},{id:"JP",language:"日语"}];
 export function swatchReference(color:string){return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240"><rect width="320" height="240" fill="'+color+'"/><path d="M0 60H320M0 120H320M0 180H320M80 0V240M160 0V240M240 0V240" stroke="white" opacity=".12"/></svg>');}
 export const seedBrands:BrandStyle[]=[
-{id:"B01",name:"MORI · 栖木",logo:"M",primaryColor:"#B69772",lighting:"自然窗光",style:"自然简约",tone:"暖白与原木",defaultSceneTemplateIds:["S10","S01"],negativeElements:["不出现宠物","不用深色背景","不出现第三方 Logo"]},
-{id:"B02",name:"LINEA · 序间",logo:"L",primaryColor:"#76877D",lighting:"均匀漫射光",style:"现代、干净",tone:"浅灰与低饱和绿",defaultSceneTemplateIds:["S04","S03"],negativeElements:["不用花纹地毯","不堆叠杂物"]},
-{id:"B03",name:"SAND · 留白",logo:"S",primaryColor:"#CBBBA3",lighting:"午后侧光",style:"温暖、细腻质感",tone:"沙色与奶油色",defaultSceneTemplateIds:["S01","S10"],negativeElements:["不用高饱和色","不出现宠物"]}];
+{id:"B01",name:"MORI · 栖木",logo:"/design-preview/brands/studio-mori.svg",primaryColor:"#B69772",lighting:"自然窗光",style:"自然简约",tone:"暖白与原木",defaultSceneTemplateIds:["S10","S01"],negativeElements:["不出现宠物","不用深色背景","不出现第三方 Logo"]},
+{id:"B02",name:"LINEA · 序间",logo:"/design-preview/brands/studio-linea.svg",primaryColor:"#76877D",lighting:"均匀漫射光",style:"现代、干净",tone:"浅灰与低饱和绿",defaultSceneTemplateIds:["S04","S03"],negativeElements:["不用花纹地毯","不堆叠杂物"]},
+{id:"B03",name:"SAND · 留白",logo:"/design-preview/brands/studio-sand.svg",primaryColor:"#CBBBA3",lighting:"午后侧光",style:"温暖、细腻质感",tone:"沙色与奶油色",defaultSceneTemplateIds:["S01","S10"],negativeElements:["不用高饱和色","不出现宠物"]}];
 export const presetVariants:ProductVariant[]=[["米白","#E8DECC","亚麻混纺"],["雾灰","#919D9A","亚麻混纺"],["焦糖","#B37F58","磨砂绒面"]].map(([name,color,material],i)=>({id:"V0"+i,name,color,material,referenceImage:swatchReference(color),referenceSource:"swatch"}));
 export const seedGlossaries:Glossary[]=[{id:"G01",name:"家具 · 材质与功能",visibility:"public",terms:[
 {source:"天然亚麻",translations:{US:"Natural linen",UK:"Natural linen",DE:"Natürliches Leinen",FR:"Lin naturel",JP:"天然リネン"}},

@@ -6,7 +6,7 @@ import {models} from "@/design-preview/mock/models";
 import {originalPhotoReferences,useLibraryStore} from "./library/library-store";
 import type {ImageAction,OnImageAction} from "./contracts";
 import type {CopyLayout} from "@/design-preview/workflows/types";
-export type ImageData = {variantColor?:string;copy?:CopyLayout;label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
+export type ImageData = {hideFinalBadge?:boolean;variantColor?:string;copy?:CopyLayout;label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
 export type StudioNode = Node<ImageData>;
 export const frameNames=["产品主图","客厅场景","空间搭配","材质细节","核心卖点","尺寸说明","安装说明"];
 export const imagePath=(name:string)=>/^(\/|data:|blob:)/.test(name)?name:`/design-preview/${name}.webp`;
@@ -30,7 +30,7 @@ export const usePreviewStore=create<PreviewStore>((set,get)=>({
  addReference:id=>set(s=>({references:s.references.includes(id)?s.references:[...s.references,id],referencePicking:false})),setEditor:editor=>set({editor}),
  setFinal:id=>set(s=>{const node=s.nodes.find(n=>n.id===id);return{nodes:s.nodes.map(n=>n.type==="frame"&&n.data.slot===node?.data.slot?{...n,data:{...n.data,final:true}}:n.type==="picture"&&n.data.slot===node?.data.slot&&n.parentId===node?.parentId?{...n,data:{...n.data,final:n.id===id}}:n)}}),
  update:(id,data)=>set(s=>({nodes:s.nodes.map(n=>n.id===id?{...n,data:{...n.data,...data}}:n)})),
- addImage:(image,position)=>set(s=>({nodes:[...s.nodes,{id:`reference-${Date.now()}`,type:"picture",position:position??{x:60,y:-260},data:{image,label:"参考实拍",slot:"参考资料"},style:{width:224,height:180}}]})),
+ addImage:(image,position)=>set(s=>({nodes:[...s.nodes,{id:"reference-"+crypto.randomUUID(),type:"picture",position:position??{x:60,y:-260},data:{image,label:"参考实拍",slot:"参考资料"},style:{width:224,height:180}}]})),
  addNote:()=>set(s=>({nodes:[...s.nodes,{id:`note-${Date.now()}`,type:"note",position:{x:70,y:-170},data:{image:"",slot:"便签",label:"保留产品木色与扶手轮廓。"}}]})),
  removeSelected:()=>set(s=>({nodes:s.nodes.filter(n=>!s.selected.includes(n.id)&&!s.selected.includes(n.parentId??"")),selected:[],contextId:null})),
  send:message=>set(s=>({messages:[...s.messages,message]})),

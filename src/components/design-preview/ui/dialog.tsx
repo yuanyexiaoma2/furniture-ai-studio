@@ -3,7 +3,7 @@
 import * as React from "react"
 import {motion} from "motion/react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { X } from "lucide-react"
+import { X } from "@/components/icons/concept-icons"
 
 import { cn } from "@/lib/utils"
 

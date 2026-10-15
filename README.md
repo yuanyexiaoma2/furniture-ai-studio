@@ -262,3 +262,8 @@ KIE费用记录读取Responses完成事件外层credits_consumed，完成后立�
 ### 生图模型胶囊与面板小修（2026-10-15）
 
 移除视频分段，Auto 单选显示模型名、多选显示数量与 Tooltip 名单；手动指定保留主色描边。预览价格统一两位小数，保留原始计算精度。14 张亮暗截图、字体/对齐/持久化检查见 [本轮交付](docs/design-preview/model-picker-refinement/README.md)。运行仍用 `npm run dev -- --port 3001`，当前为静态 mock，等待审阅。
+
+
+### 任务 9 · 审阅修改第 1 轮（2026-10-15）
+
+首页改为三张图片任务卡并与对话入口共用文案；集中图标映射与官方品牌 SVG，新增 `/design-preview/icons`；空画布改拖放区，模型常驻工具行，联网带开关文字；变体压成单行并校验材质实拍，终稿计数和图片外侧标签已调整。运行仍为 `npm run dev -- --port 3001`。本轮亮暗截图、自查及命令见 [第 1 轮交付](docs/task-9/round1/README.md)，仍为静态 mock，等待审阅。

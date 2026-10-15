@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Boxes, Layers3 } from "lucide-react";
+import { Boxes, Layers3 } from "@/components/icons/concept-icons";
 import { db } from "@/lib/db";
 import { ProductCreate } from "@/components/product-create";
 import { Badge } from "@/components/ui/badge";

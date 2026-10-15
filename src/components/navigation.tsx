@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { Boxes, LayoutTemplate, Settings2, LogOut } from "lucide-react";
+import { Boxes, LayoutTemplate, Settings2, LogOut } from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { roleLabels } from "@/lib/roles";
 

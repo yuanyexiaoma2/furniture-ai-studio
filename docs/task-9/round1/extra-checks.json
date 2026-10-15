@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "attachmentOnlyQuoteVisible": true,
+  "attachmentRemovedQuoteHidden": true,
+  "brandMigrationPreservesPackAndOutputs": true,
+  "sourcePackRestoredBeforeGeneration": true,
+  "canvasDropPreservesTwoOriginalPhotos": true,
+  "referenceIdsUnique": true,
+  "categoryConfirmationAfterCanvasUpload": true,
+  "pageErrors": []
+}

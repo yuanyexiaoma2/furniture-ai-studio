@@ -1,6 +1,6 @@
 "use client";
 import { useState, type FormEvent } from "react";
-import { UsersRound, Plus, Check, LoaderCircle } from "lucide-react";
+import { UsersRound, Plus, Check, LoaderCircle } from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

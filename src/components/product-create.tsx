@@ -1,7 +1,7 @@
 "use client";
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { Plus, LoaderCircle } from "lucide-react";
+import { Plus, LoaderCircle } from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { ProductFields, productFormValues } from "@/components/product-fields";
 

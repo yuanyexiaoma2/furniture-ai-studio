@@ -1,7 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import Image from "next/image";
-import { ArrowUpRight, LoaderCircle, Sparkles, RefreshCw, Download, Pencil } from "lucide-react";
+import { ArrowUpRight, LoaderCircle, Sparkles, RefreshCw, Download, Pencil } from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { ProductEditor } from "@/components/product-editor";
 import { modelLabel, type SceneResolution, type SceneAspectRatio } from "@/lib/models.config";

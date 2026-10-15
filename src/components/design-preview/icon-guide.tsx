@@ -1,0 +1,7 @@
+"use client";
+import {conceptIcons,conceptLabels,type IconConcept} from "@/components/icons/concept-icons";
+import {IconBadge} from "@/components/icons/icon-badge";
+import {models} from "@/design-preview/mock/models";
+import {BrandIcon} from "./model-picker";
+import {Button} from "./ui/button";
+export function IconGuide(){return <main className="r1-icon-guide"><h1>图标规范</h1><p>全站使用 lucide-react，笔画 1.5。概念图标从同一份映射表引用。</p><section className="r1-icon-sizes">{[16,18,20].map((size,i)=>{const Icon=conceptIcons.pack;return <div key={size}><Icon size={size}/><strong>{size}px</strong><span>{["按钮 / 胶囊","列表行","任务卡片"][i]}</span></div>;})}</section><section><h2>概念映射</h2><div className="r1-icon-grid">{(Object.keys(conceptIcons) as IconConcept[]).map(key=><div key={key}><IconBadge concept={key}/><strong>{conceptLabels[key]}</strong><span>{key}</span></div>)}</div></section><section className="r1-icon-examples"><h2>使用示例</h2><div><Button><conceptIcons.pack size={16}/>做一套图包</Button><span className="r1-example-row"><conceptIcons.scene size={18}/>场景列表 · 18px</span><span className="r1-example-card"><IconBadge concept="variants"/><strong>批量换色</strong></span></div></section><section><h2>官方模型品牌图形</h2><p>20px 圆形容器，SVG 在本地加载。</p><div className="r1-model-brands">{models.filter((m,i,all)=>all.findIndex(n=>n.brandIcon===m.brandIcon)===i).map(m=><div key={m.id}><BrandIcon model={m}/><span>{m.name}</span></div>)}</div></section></main>;}

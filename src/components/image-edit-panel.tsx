@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Image from "next/image";
-import { Pencil, X, LoaderCircle } from "lucide-react";
+import { Pencil, X, LoaderCircle } from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { GenerationOptions, generationBlockReason } from "@/components/generation-options";
 import { modelLabel, sceneAspectRatios, type SceneResolution, type SceneAspectRatio } from "@/lib/models.config";

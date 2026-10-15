@@ -1,0 +1,4982 @@
+{
+  "passed": true,
+  "screenshots": 20,
+  "checks": [
+    "旧模型胶囊规则和官方SVG",
+    "黑白发送按钮空态40%",
+    "费用按内容显示两位小数",
+    "首页3张4:3任务卡",
+    "悬停无布局位移",
+    "mock库数量和Tab链接",
+    "统一图标16/18/20与stroke1.5",
+    "对话栏唯一任务入口",
+    "空画布拖放区和隐藏小地图",
+    "五秒提示与问号入口",
+    "产品卡未建档无环",
+    "生图胶囊常驻和联网开关文字",
+    "56px单行变体与32px色块",
+    "换材质必须上传面料实拍",
+    "三色Frame与终稿计数",
+    "图位标签在文字图外侧",
+    "导出检查和多语言Frame",
+    "窄屏单行工具条"
+  ],
+  "pageErrors": [],
+  "consoleDiagnostics": [],
+  "businessApiRequests": [],
+  "externalRequests": [],
+  "audits": [
+    {
+      "name": "01-home-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "01-home-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "02-home-hover-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "02-home-hover-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "03-icons-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 18,
+          "height": 18,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 18,
+          "height": 18,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": true
+    },
+    {
+      "name": "03-icons-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 18,
+          "height": 18,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 18,
+          "height": 18,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": true
+    },
+    {
+      "name": "04-workspace-empty-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "04-workspace-empty-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "05-model-panel-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "05-model-panel-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "06-variants-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "06-variants-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "07-material-required-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "07-material-required-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "08-color-frames-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "08-color-frames-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "09-export-check-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "09-export-check-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "10-language-frames-light",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "10-language-frames-dark",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "narrow-1280",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "narrow-1100",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "narrow-760",
+      "overflow": false,
+      "broken": [],
+      "icons": [
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "stroke": "1.5px"
+        }
+      ],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    }
+  ]
+}

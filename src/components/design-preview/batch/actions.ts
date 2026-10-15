@@ -10,10 +10,10 @@ export function loadPack(pack:FinalPack){
  useLibraryStore.setState({task:{...task,product:structuredClone(pack.product),categoryConfirmed:true,messages:[],recipeIds:[],stage:"ready"}});
  usePreviewStore.setState({nodes:packNodes(pack),selected:[],contextId:null});
 }
-function packNodes(pack:FinalPack):StudioNode[]{return[{id:"pack-"+pack.id,type:"frame",position:{x:0,y:0},style:{width:760,height:240},dragHandle:".p-frame-title",data:{label:pack.sku+" · 已定稿图包",slot:"源图包",image:"",final:true,candidateCount:pack.images.length}},...pack.images.map((image,i)=>({id:image.id,type:"picture",parentId:"pack-"+pack.id,position:{x:24+236*i,y:30},style:{width:224,height:180},data:{label:image.slot,slot:image.slot,image:image.image,final:true,copy:image.copy}}))];}
+function packNodes(pack:FinalPack):StudioNode[]{return[{id:"pack-"+pack.id,type:"frame",position:{x:0,y:0},style:{width:760,height:260},dragHandle:".p-frame-title",data:{label:pack.sku+" · 已定稿图包",slot:"源图包",image:"",final:true,candidateCount:pack.images.length}},...pack.images.map((image,i)=>({id:image.id,type:"picture",parentId:"pack-"+pack.id,position:{x:24+236*i,y:30},style:{width:224,height:180},data:{label:image.slot,slot:image.slot,image:image.image,final:true,hideFinalBadge:true,copy:image.copy}}))];}
 export function syncFrames(pack:FinalPack,frames:OutputFrame[],loading=false){
  const nodes:StudioNode[]=[...packNodes(pack)];
- frames.forEach((frame,index)=>{nodes.push({id:frame.id,type:"frame",position:{x:0,y:320*(index+1)},style:{width:Math.max(288,24+236*frame.jobs.length),height:240},dragHandle:".p-frame-title",data:{label:frame.name,slot:frame.name,image:"",candidateCount:frame.jobs.length,loading}});
+ frames.forEach((frame,index)=>{nodes.push({id:frame.id,type:"frame",position:{x:0,y:320*(index+1)},style:{width:Math.max(288,24+236*frame.jobs.length),height:260},dragHandle:".p-frame-title",data:{label:frame.name,slot:frame.name,image:"",candidateCount:frame.jobs.length,loading}});
  frame.jobs.forEach((job,i)=>nodes.push({id:job.id,type:"picture",parentId:frame.id,position:{x:24+236*i,y:30},style:{width:224,height:180},data:{label:job.variant?.name??job.site??"",slot:pack.images.find(x=>x.id===job.sourceImageId)?.slot??"",image:job.sourceImage,loading,variantColor:job.variant?.color,copy:job.copy}}));});
  usePreviewStore.setState({nodes,selected:[],contextId:null,editor:null});
 }
