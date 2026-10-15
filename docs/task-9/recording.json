@@ -1,0 +1,17 @@
+{
+  "sourceDurationMs": 17692,
+  "width": 1600,
+  "height": 1000,
+  "sourceFrames": 67,
+  "format": "WebM VP9 / 实际浏览器操作帧",
+  "operations": [
+    "空对话任务入口",
+    "选择已定稿图包",
+    "三个变体与色卡参考",
+    "选择图位与费用确认",
+    "模拟生成三组颜色Frame",
+    "切换暗色"
+  ],
+  "pageErrors": [],
+  "businessApiRequests": []
+}

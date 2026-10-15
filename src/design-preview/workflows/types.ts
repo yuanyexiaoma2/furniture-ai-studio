@@ -1,0 +1,12 @@
+import type {Product} from "../library/types";
+export type WorkflowKind="pack"|"variants"|"translate"|"edit"|"check";
+export type Site="US"|"UK"|"DE"|"FR"|"JP";
+export type BrandStyle={id:string;name:string;logo:string;primaryColor:string;lighting:string;style:string;tone:string;defaultSceneTemplateIds:string[];negativeElements:string[]};
+export type ProductVariant={id:string;name:string;color:string;material:string;referenceImage:string;referenceSource:"swatch"|"photo"};
+export type CopyLayout={text:string;fontSize:number;maxCharacters:number};
+export type PackImage={id:string;slot:string;image:string;copy?:CopyLayout;white:boolean;occupancy:number;width:number;height:number;ipWarning?:string};
+export type FinalPack={id:string;sku:string;name:string;product:Product;images:PackImage[]};
+export type GlossaryTerm={source:string;translations:Record<Site,string>};
+export type Glossary={id:string;name:string;terms:GlossaryTerm[];visibility:"private"|"pending"|"public"};
+export type BatchJob={id:string;sourceImageId:string;sourceImage:string;originalPhotoReferences:string[];variantReference?:string;variant?:ProductVariant;site?:Site;copy?:CopyLayout;glossarySnapshot?:Glossary;model:string;finalPrompt:string;brandSnapshot?:BrandStyle};
+export type OutputFrame={id:string;name:string;kind:"variants"|"translate";jobs:BatchJob[]};

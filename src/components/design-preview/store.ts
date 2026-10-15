@@ -5,7 +5,8 @@ import {demoSession,estimateCost,resolveSelection,useModelStore} from "./model-s
 import {models} from "@/design-preview/mock/models";
 import {originalPhotoReferences,useLibraryStore} from "./library/library-store";
 import type {ImageAction,OnImageAction} from "./contracts";
-export type ImageData = {label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
+import type {CopyLayout} from "@/design-preview/workflows/types";
+export type ImageData = {variantColor?:string;copy?:CopyLayout;label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
 export type StudioNode = Node<ImageData>;
 export const frameNames=["产品主图","客厅场景","空间搭配","材质细节","核心卖点","尺寸说明","安装说明"];
 export const imagePath=(name:string)=>/^(\/|data:|blob:)/.test(name)?name:`/design-preview/${name}.webp`;
@@ -19,7 +20,7 @@ type PreviewStore={nodes:StudioNode[];selected:string[];contextId:string|null;ta
  restoreTask:(images:{id:string;image:string}[])=>void;clearTask:()=>void;addBatch:(images:string[])=>{id:string;image:string}[];setTheme:(theme:string)=>void;changeNodes:(changes:NodeChange<StudioNode>[])=>void;select:(ids:string[])=>void;clearContext:()=>void;setTarget:(target:string)=>void;setTool:(tool:"select"|"pan")=>void;setPicking:(value:boolean)=>void;addReference:(id:string)=>void;setEditor:(editor:PreviewStore["editor"])=>void;setFinal:(id:string)=>void;update:(id:string,data:Partial<ImageData>)=>void;addImage:(image:string,position?:{x:number;y:number})=>void;addNote:()=>void;removeSelected:()=>void;send:(message:string)=>void;simulate:(id:string,action:ImageAction,onAction?:OnImageAction,mask?:Blob,count?:number)=>Promise<void>;reset:()=>void;
 };
 export const usePreviewStore=create<PreviewStore>((set,get)=>({
- nodes:initialNodes(),selected:[],contextId:null,target:"客厅场景",theme:"system",tool:"select",referencePicking:false,references:[],editor:null,messages:[],history:["14:32 · 调整客厅光线","14:20 · 生成 30 张候选","14:08 · 确认产品与图包"],pending:0,
+ nodes:[],selected:[],contextId:null,target:"客厅场景",theme:"system",tool:"select",referencePicking:false,references:[],editor:null,messages:[],history:["14:32 · 调整客厅光线","14:20 · 生成 30 张候选","14:08 · 确认产品与图包"],pending:0,
  restoreTask:images=>{get().clearTask();get().addBatch(images.map(i=>i.image));const ids=images.map(i=>i.id);set(s=>({nodes:s.nodes.map(n=>n.type==="picture"?{...n,id:ids.shift()!}:n)}));},
  clearTask:()=>set({nodes:[{id:"frame-0",type:"frame",position:{x:0,y:0},style:{width:1215,height:240},dragHandle:".p-frame-title",data:{label:"01 场景候选",slot:"场景候选",image:"",effect:"empty",candidateCount:0}}],selected:[],contextId:null,editor:null,messages:[],pending:0,references:[]}),
  addBatch:images=>{const results=images.map(image=>({id:"candidate-"+crypto.randomUUID(),image}));set(s=>({nodes:[...s.nodes.map(n=>n.id==="frame-0"?{...n,style:{...n.style,width:Math.max(1215,24+(s.nodes.filter(n=>n.parentId==="frame-0").length+images.length)*236)},data:{...n.data,effect:"",candidateCount:s.nodes.filter(n=>n.parentId==="frame-0").length+images.length}}:n),...results.map((r,i)=>({id:r.id,type:"picture",parentId:"frame-0",position:{x:24+(s.nodes.filter(n=>n.parentId==="frame-0").length+i)*236,y:30},style:{width:224,height:180},data:{image:r.image,label:"候选 0"+(i+1),slot:"场景候选"}}))]}));return results;},
@@ -27,7 +28,7 @@ export const usePreviewStore=create<PreviewStore>((set,get)=>({
  select:ids=>{const node=get().nodes.find(n=>ids.includes(n.id)&&n.type==="picture")??get().nodes.find(n=>ids.includes(n.id)&&n.type==="frame");set({selected:ids,...(node?{contextId:node.type==="picture"?node.id:null,target:node.data.slot}:{})});},
  clearContext:()=>set({contextId:null}),setTarget:target=>set({target}),setTool:tool=>set({tool}),setPicking:referencePicking=>set({referencePicking}),
  addReference:id=>set(s=>({references:s.references.includes(id)?s.references:[...s.references,id],referencePicking:false})),setEditor:editor=>set({editor}),
- setFinal:id=>set(s=>{const node=s.nodes.find(n=>n.id===id);return{nodes:s.nodes.map(n=>n.type==="frame"&&n.data.slot===node?.data.slot?{...n,data:{...n.data,final:true}}:n.type==="picture"&&n.data.slot===node?.data.slot?{...n,data:{...n.data,final:n.id===id}}:n)}}),
+ setFinal:id=>set(s=>{const node=s.nodes.find(n=>n.id===id);return{nodes:s.nodes.map(n=>n.type==="frame"&&n.data.slot===node?.data.slot?{...n,data:{...n.data,final:true}}:n.type==="picture"&&n.data.slot===node?.data.slot&&n.parentId===node?.parentId?{...n,data:{...n.data,final:n.id===id}}:n)}}),
  update:(id,data)=>set(s=>({nodes:s.nodes.map(n=>n.id===id?{...n,data:{...n.data,...data}}:n)})),
  addImage:(image,position)=>set(s=>({nodes:[...s.nodes,{id:`reference-${Date.now()}`,type:"picture",position:position??{x:60,y:-260},data:{image,label:"参考实拍",slot:"参考资料"},style:{width:224,height:180}}]})),
  addNote:()=>set(s=>({nodes:[...s.nodes,{id:`note-${Date.now()}`,type:"note",position:{x:70,y:-170},data:{image:"",slot:"便签",label:"保留产品木色与扶手轮廓。"}}]})),

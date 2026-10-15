@@ -1,6 +1,8 @@
 import type {Actor,GenerationRecipe,Product,Prop,PropSet,ReferenceImage,SceneTemplate} from "./types";
 import {canView,recentRecipes} from "./rules";
-export type ComposeInput={template:SceneTemplate;product:Product;propSets:PropSet[];props:Prop[];variables:Record<string,string>;references?:ReferenceImage[];selectedPropIds?:string[];actor:Actor};
+import type {BrandStyle} from "../workflows/types";
+import {brandConstraints} from "../workflows/rules";
+export type ComposeInput={brand?:BrandStyle;template:SceneTemplate;product:Product;propSets:PropSet[];props:Prop[];variables:Record<string,string>;references?:ReferenceImage[];selectedPropIds?:string[];actor:Actor};
 export type ComposedPrompt={finalPrompt:string;propIds:string[];variables:Record<string,string>;refIds:string[];originalPhotoIds:string[];referenceInputs:{id:string;image:string;kind:"original"|"style"|"previous"}[];combinationKey:string};
 export class PromptError extends Error{constructor(public code:string,message:string){super(message);this.name="PromptError";}}
 function fail(code:string,message:string):never{throw new PromptError(code,message);}
@@ -27,7 +29,7 @@ export class PromptComposer {
   const description=`${product.name}; ${features.map(f=>f.key+": "+f.value).join("; ")}; dimensions: ${dimensions.width} × ${dimensions.depth} × ${dimensions.height} ${dimensions.unit}`;
   const propText=selectedProps.length?selectedProps.map(p=>`${p.keywordsEn} (${p.shape}, ${p.color}, ${p.material}, ${p.size})`).join("; "):"no additional props",values:Record<string,string>={...variables,product:description,props:propText};
   const text=template.skeleton.replace(/\{([^{}]+)\}/g,(_,key:string)=>values[key]),originalPhotoIds=unique(product.photos.map(p=>p.id)),locked=features.filter(f=>f.locked).map(f=>f.key+": "+f.value).join("; ");
-  const finalPrompt=[text,...template.fixed,"Locked product features: "+(locked||"follow the original product photographs")+".","Original identity references: "+originalPhotoIds.join(", ")+".",...(refs.length?["Environment references only: "+refs.map(r=>r.id).join(", ")+"."]:[])].map(s=>s.trim()).filter(Boolean).join("\n");
+  const finalPrompt=[text,...template.fixed,brandConstraints(input.brand),"Locked product features: "+(locked||"follow the original product photographs")+".","Original identity references: "+originalPhotoIds.join(", ")+".",...(refs.length?["Environment references only: "+refs.map(r=>r.id).join(", ")+"."]:[])].map(s=>s.trim()).filter(Boolean).join("\n");
   return{finalPrompt,propIds,variables,refIds:unique(refs.map(r=>r.id)),originalPhotoIds,referenceInputs:[...[...product.photos].sort((a,b)=>a.id.localeCompare(b.id,"en")).map(p=>({id:p.id,image:p.image,kind:"original" as const})),...refs.map(r=>({id:r.id,image:r.image,kind:"style" as const}))],combinationKey:combinationKey(template.id,propIds,variables,refs.map(r=>r.id))};
  }
  static edit(input:ComposeInput,previous:{id:string;image:string},instruction:string):ComposedPrompt{

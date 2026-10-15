@@ -3,7 +3,7 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import {models,modelRate,type ModelKind,type Quality} from "@/design-preview/mock/models";
 export const demoSession="demo-sofa";
-export type ModelSelection={agentId:string;auto:boolean;imageIds:string[];imageId:string;qualities:Record<string,Quality>};
+export type ModelSelection={webEnabled?:boolean;resolution?:"auto"|"1K"|"2K"|"4K";agentId:string;auto:boolean;imageIds:string[];imageId:string;qualities:Record<string,Quality>};
 type Availability={enabled:boolean;visible:boolean};
 type ModelState={
  availability:Record<string,Availability>;defaults:Record<ModelKind,string>;home:ModelSelection;
@@ -25,7 +25,7 @@ export function resolveSelection(state:Pick<ModelState,"availability"|"defaults"
  const defaultImage=images.find(m=>m.id===state.defaults.image)?.id??images[0]?.id??"";
  const agentId=agents.some(m=>m.id===raw.agentId)?raw.agentId:agents.find(m=>m.id===state.defaults.agent)?.id??agents[0]?.id??"";
  const imageIds=[...new Set([defaultImage,...raw.imageIds.filter(id=>images.some(m=>m.id===id))])].filter(Boolean);
- return {...raw,agentId,imageIds,imageId:images.some(m=>m.id===raw.imageId)?raw.imageId:defaultImage};
+ return {...raw,webEnabled:raw.webEnabled??true,resolution:raw.resolution??"auto",agentId,imageIds,imageId:images.some(m=>m.id===raw.imageId)?raw.imageId:defaultImage};
 }
 export const useModelStore=create<ModelState>()(persist((set,get)=>({
  ...initial(),

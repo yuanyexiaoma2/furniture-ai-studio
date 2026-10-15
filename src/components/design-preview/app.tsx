@@ -4,9 +4,8 @@ import {useState,useEffect,useSyncExternalStore} from "react";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 import {useTheme} from "next-themes";
-import {ArrowLeft,ChevronDown,Download,Layers3,Monitor,Moon,Plus,Settings2,Sun,UserRound} from "lucide-react";
+import {ArrowLeft,Download,Layers3,Monitor,Moon,Plus,Settings2,Sun,UserRound} from "lucide-react";
 import {motion} from "motion/react";
-import {toast} from "sonner";
 import {Button} from "./ui/button";
 import {Input} from "./ui/input";
 import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue} from "./ui/select";
@@ -19,6 +18,8 @@ import {ProductCard} from "./product-card";
 import {Home} from "./home";
 import {Admin} from "./admin";
 import {LibraryBrowser} from "./library/browser";
+import {BrandPicker} from "./batch/brand";
+import {ExportCheckDialog} from "./batch/workflow";
 import {useLibraryStore} from "./library/library-store";
 export type PreviewPage="home"|"skus"|"workspace"|"product"|"admin"|"library";
 const emptySubscribe=()=>()=>{};
@@ -27,18 +28,18 @@ export function TipButton({label,children,onClick,className=""}:{label:string;ch
 }
 export function Pick({label,value,values,onChange}:{label:string;value:string;values:string[];onChange:(v:string)=>void}){return <Select value={value} onValueChange={onChange}><SelectTrigger aria-label={label}><SelectValue /></SelectTrigger><SelectContent className="p-portal">{values.map(v=><SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent></Select>;}
 export function PreviewApp({page}:{page:PreviewPage}) {
- const router=useRouter();const {theme,setTheme,resolvedTheme}=useTheme();const syncTheme=usePreviewStore(s=>s.setTheme);
+ const router=useRouter();const {theme,setTheme}=useTheme();const syncTheme=usePreviewStore(s=>s.setTheme);
  const mounted=useSyncExternalStore(emptySubscribe,()=>true,()=>false);
  const [assetsOpen,setAssetsOpen]=useState(false),[productOpen,setProductOpen]=useState(page==="product"),[settings,setSettings]=useState(false),[exportOpen,setExportOpen]=useState(false);
- const task=useLibraryStore(s=>s.task),finalCount=usePreviewStore(s=>s.nodes.filter(n=>n.type==="picture"&&n.data.final).length);
+ const task=useLibraryStore(s=>s.task);
  const workspace=page==="workspace"||page==="product";
  const requestedExport=mounted&&new URLSearchParams(window.location.search).get("export")==="1";
  useEffect(()=>{syncTheme(theme??"system");},[theme,syncTheme]);
  return <div className="p-app"><header className="p-topbar">
    {workspace?<TipButton label="返回 SKU" onClick={()=>router.push('/design-preview/skus')}><ArrowLeft size={18}/></TipButton>:<Link className="p-logo" href="/design-preview"><Layers3 strokeWidth={1.7}/><span>家具创作室</span></Link>}
    {!workspace&&<nav className="p-product-nav" aria-label="产品导航"><Link className={page==="home"?"active":""} href="/design-preview">首页</Link><Link className={page==="skus"?"active":""} href="/design-preview/skus">SKU</Link><Link className={page==="library"?"active":""} href="/design-preview/library">模板库</Link></nav>}
-   {workspace&&<><div className="p-topbar-title"><img src={task?.product.photos[0]?.image??imagePath('sofa')} alt="SKU 缩略图"/><strong>{task?.product.name??"云屿 · 三人布艺沙发"}</strong></div><Button variant="outline" className="p-top-product-button" onClick={()=>setProductOpen(true)} aria-label="产品卡，理解度 71%"><span className="p-mini-ring" aria-hidden="true"/><span>产品卡</span></Button></>}
-   <div className="p-topbar-end"><DropdownMenu><DropdownMenuTrigger asChild><Button variant="ghost" aria-label="主题切换">{mounted&&resolvedTheme==="dark"?<Moon size={17}/>:<Sun size={17}/>}<span className="p-theme-label">{!mounted?"外观":theme==="system"?"跟随系统":theme==="dark"?"暗色":"亮色"}</span><ChevronDown size={13}/></Button></DropdownMenuTrigger><ThemeMenu theme={theme} setTheme={setTheme}/></DropdownMenu>
+   {workspace&&<><div className="p-topbar-title"><img src={task?.product.photos[0]?.image??imagePath('sofa')} alt="SKU 缩略图"/><strong>{task?.product.name??"云屿 · 三人布艺沙发"}</strong></div><BrandPicker/><Button variant="outline" className="p-top-product-button" onClick={()=>setProductOpen(true)} aria-label="产品卡，理解度 71%"><span className="p-mini-ring" aria-hidden="true"/><span>产品卡</span></Button></>}
+   <div className="p-topbar-end"><div className="w-theme-segments" role="group" aria-label="主题切换">{[{value:"system",label:"跟随系统",Icon:Monitor},{value:"light",label:"亮色",Icon:Sun},{value:"dark",label:"暗色",Icon:Moon}].map(t=><button key={t.value} aria-label={t.label+"主题"} title={t.label} aria-pressed={mounted&&theme===t.value} onClick={()=>setTheme(t.value)}><t.Icon size={16}/></button>)}</div>
    <TipButton label="设置" onClick={()=>setSettings(true)}><Settings2 size={17}/></TipButton>
    {workspace&&<Button onClick={()=>setExportOpen(true)}><Download size={16}/>导出图包</Button>}
    <DropdownMenu><DropdownMenuTrigger asChild><Button variant="ghost" size="icon" className="p-icon-button" aria-label="头像菜单"><span className="p-avatar">悦</span></Button></DropdownMenuTrigger><DropdownMenuContent className="p-portal" align="end"><DropdownMenuLabel>林悦 · 设计预览</DropdownMenuLabel><DropdownMenuSeparator/><DropdownMenuRadioGroup value={theme} onValueChange={setTheme}><DropdownMenuRadioItem value="light"><Sun size={14} className="mr-2"/>亮色</DropdownMenuRadioItem><DropdownMenuRadioItem value="dark"><Moon size={14} className="mr-2"/>暗色</DropdownMenuRadioItem><DropdownMenuRadioItem value="system"><Monitor size={14} className="mr-2"/>跟随系统</DropdownMenuRadioItem></DropdownMenuRadioGroup><DropdownMenuSeparator/><DropdownMenuItem onClick={()=>router.push('/design-preview/admin')}><UserRound size={14} className="mr-2"/>管理后台</DropdownMenuItem></DropdownMenuContent></DropdownMenu></div>
@@ -47,10 +48,9 @@ export function PreviewApp({page}:{page:PreviewPage}) {
  <Dialog open={assetsOpen} onOpenChange={setAssetsOpen}><DialogContent className="p-portal p-template-dialog"><DialogHeader><DialogTitle>素材库</DialogTitle><DialogDescription>收集灵感，让下一次创作更轻松。</DialogDescription></DialogHeader><div className="p-assets-grid">{["sofa","living","chair","room","interior","dining"].map(n=><img key={n} src={imagePath(n)} alt="家具灵感素材"/>)}</div></DialogContent></Dialog>
  <ProductCard open={productOpen} onOpenChange={setProductOpen}/>
  <Dialog open={settings} onOpenChange={setSettings}><DialogContent className="p-portal"><DialogHeader><DialogTitle>设置</DialogTitle><DialogDescription>按你的创作习惯调整工作空间。</DialogDescription></DialogHeader><div className="p-settings"><strong>外观</strong><div>{[{value:"light",label:"亮色",Icon:Sun},{value:"dark",label:"暗色",Icon:Moon},{value:"system",label:"跟随系统",Icon:Monitor}].map(t=><Button key={t.value} variant={theme===t.value?"default":"outline"} onClick={()=>setTheme(t.value)}><t.Icon size={16}/>{t.label}</Button>)}</div><small>主题会保存在这台设备。当前原型中的图片、费用与成员均为样例。</small></div></DialogContent></Dialog>
- <Dialog open={exportOpen||requestedExport} onOpenChange={v=>{setExportOpen(v);if(!v&&requestedExport)router.replace("/design-preview/workspace");}}><DialogContent className="p-portal"><DialogHeader><DialogTitle>导出图包</DialogTitle><DialogDescription>将当前选好的终稿保存为独立图片。</DialogDescription></DialogHeader><p>{finalCount?finalCount+" 张终稿已选好，可以下载。":"还没有终稿，先在画布上挑一张喜欢的作品。"}</p><Button disabled={!finalCount} onClick={()=>{downloadImages(usePreviewStore.getState().nodes.filter(n=>n.type==="picture"&&n.data.final).map(n=>({src:source(n.data.image),name:n.data.slot})));toast.success("已下载设计样图，不包含业务数据");setExportOpen(false);if(requestedExport)router.replace("/design-preview/workspace");}}><Download size={16}/>下载终稿</Button></DialogContent></Dialog>
+ <ExportCheckDialog open={exportOpen||requestedExport} onOpenChange={v=>{setExportOpen(v);if(!v&&requestedExport)router.replace("/design-preview/workspace");}}/>
  </div>;
 }
-function ThemeMenu({theme,setTheme}:{theme:string|undefined;setTheme:(v:string)=>void}){return <DropdownMenuContent className="p-portal" align="end"><DropdownMenuLabel>工作空间外观</DropdownMenuLabel><DropdownMenuRadioGroup value={theme} onValueChange={setTheme}><DropdownMenuRadioItem value="light">亮色</DropdownMenuRadioItem><DropdownMenuRadioItem value="dark">暗色</DropdownMenuRadioItem><DropdownMenuRadioItem value="system">跟随系统</DropdownMenuRadioItem></DropdownMenuRadioGroup></DropdownMenuContent>;}
 export const source=(image:string)=>image.startsWith('/')||image.startsWith('blob:')||image.startsWith('data:')?image:imagePath(image);
 export function downloadImages(images:{src:string;name:string}[]){images.forEach(({src,name})=>{const a=document.createElement('a');a.href=src;a.download=`${name}.webp`;a.click();});}
 const skuData=[{sku:"SF-2401",name:"云屿 · 三人布艺沙发",image:"sofa",progress:"5/7 图位",time:"12 分钟前",notice:"等你回答",state:"进行中"},{sku:"LV-2406",name:"栖木 · 客厅组合",image:"living",progress:"3/7 图位",time:"38 分钟前",notice:"待挑选 3 张",state:"进行中"},{sku:"CH-2403",name:"弧线 · 休闲单椅",image:"chair",progress:"7/7 图位",time:"今天 10:24",notice:"",state:"已完成"},{sku:"RM-2408",name:"暖境 · 空间系列",image:"room",progress:"2/7 图位",time:"今天 09:42",notice:"待挑选 2 张",state:"进行中"},{sku:"IN-2412",name:"留白 · 软装组合",image:"interior",progress:"7/7 图位",time:"昨天 17:30",notice:"",state:"已完成"},{sku:"DN-2402",name:"共席 · 餐厅组合",image:"dining",progress:"4/7 图位",time:"昨天 15:16",notice:"",state:"进行中"}];

@@ -1,0 +1,17 @@
+import type {BatchJob,BrandStyle,FinalPack,Glossary,OutputFrame,ProductVariant,Site} from "./types";
+import {sites} from "./mock";
+export function brandConstraints(brand?:BrandStyle){return brand?["Brand: "+brand.name,"Preferred lighting: "+brand.lighting,"Preferred style: "+brand.style,"Preferred palette: "+brand.tone,"Negative constraints: "+brand.negativeElements.join("; ")].join("\n"):"";}
+export function validateBatch(pack:FinalPack,ids:string[],variants:ProductVariant[]){if(!pack.product.photos.length)throw new Error("请补充原始实拍");if(!ids.length||ids.some(id=>!pack.images.some(i=>i.id===id)))throw new Error("请选择有效的终稿图位");if(!variants.length||variants.some(v=>!v.name.trim()||!v.referenceImage))throw new Error("每个变体都需要名称和色卡或面料实拍");if(new Set(variants.map(v=>v.name.trim())).size!==variants.length)throw new Error("变体名称不能重复");}
+export function translatedCopy(text:string,site:Site,glossary:Glossary){return glossary.terms.find(t=>t.source===text)?.translations[site]??text;}
+export function longTranslations(pack:FinalPack,ids:string[],targets:Site[],glossary:Glossary){return pack.images.filter(i=>ids.includes(i.id)&&i.copy).flatMap(i=>targets.filter(s=>translatedCopy(i.copy!.text,s,glossary).length>i.copy!.maxCharacters).map(s=>s+" · "+i.slot));}
+export function makeFrames(input:{pack:FinalPack;ids:string[];variants:ProductVariant[];targets:Site[];kind:"variants"|"translate";glossary:Glossary;model:string;brand?:BrandStyle;stamp:string}):OutputFrame[]{
+ const {pack,ids,variants,targets,kind,glossary,model,brand,stamp}=input;
+ if(kind==="variants")validateBatch(pack,ids,variants);
+ else if(!targets.length||!ids.length||ids.some(id=>!pack.images.find(i=>i.id===id)?.copy)||!pack.product.photos.length)throw new Error("请选择带文字的图位、目标站点，并保留原始实拍");
+ return (kind==="variants"?variants:targets).map((choice,index)=>{
+ const variant=typeof choice==="string"?undefined:choice,site=typeof choice==="string"?choice:undefined;
+ const jobs:BatchJob[]=pack.images.filter(i=>ids.includes(i.id)).map(image=>({id:stamp+"-"+index+"-"+image.id,sourceImageId:image.id,sourceImage:image.image,originalPhotoReferences:pack.product.photos.map(p=>p.image),variantReference:variant?.referenceImage,variant:variant?{...variant}:undefined,site,copy:site&&image.copy?{...image.copy,text:translatedCopy(image.copy.text,site,glossary)}:image.copy,glossarySnapshot:site?structuredClone(glossary):undefined,model,brandSnapshot:brand?structuredClone(brand):undefined,finalPrompt:[kind==="variants"?"Replace only product color/material with "+variant!.name+" / "+variant!.material+". Keep scene, camera, composition, props and all text unchanged. Use source image AND variant reference AND original product photographs.":"Translate text only to "+sites.find(s=>s.id===site)?.language+". Preserve font family, font size and layout. Glossary: "+JSON.stringify(glossary.terms),brandConstraints(brand)].filter(Boolean).join("\n")}));
+ return{id:stamp+"-frame-"+index,name:pack.sku+"-"+(variant?.name??site),kind,jobs};
+ });
+}
+export function checkPack(pack:FinalPack){return pack.images.map(image=>({image,issues:[...(image.ipWarning?[image.ipWarning]:[]),...(image.slot==="主图"&&!image.white?["主图背景需要纯白"]:[]),...(image.slot==="主图"&&image.occupancy<85?["主图产品占比不足 85%"]:[]),...(Math.max(image.width,image.height)<2000?["长边小于 2000px，建议补充高清图"]:[]),...(image.slot==="主图"&&image.copy?["主图含文字，需人工核对"]:[])]}));}

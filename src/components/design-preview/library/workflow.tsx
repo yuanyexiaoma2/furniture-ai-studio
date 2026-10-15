@@ -18,6 +18,8 @@ import {designer} from "@/design-preview/mock/library";
 import type {Suggestion} from "@/design-preview/library/types";
 import {readMockFiles,useLibraryStore} from "./library-store";
 import {CategoryConfirmation} from "./category-confirmation";
+import {BrandSummary} from "../batch/brand";
+import {launchWorkflow,workflowIntent} from "../batch/workflow";
 import {StrictNotice} from "./shooting";
 export function LibraryChat({onCollapse,onFocus}:{onCollapse:()=>void;onFocus:(id:string)=>void}){
  const state=useLibraryStore(),task=state.task!,modelState=useModelStore();
@@ -41,10 +43,10 @@ export function LibraryChat({onCollapse,onFocus}:{onCollapse:()=>void;onFocus:(i
   useLibraryStore.getState().finishGeneration(images.map(i=>({...i,image:"/design-preview/"+i.image+".webp"})),model.name);
   usePreviewStore.getState().update("frame-0",{loading:false});setBusy(false);
  }
- function send(){if(!text.trim())return;const instruction=text.trim();state.appendMessage(instruction);setText("");if(ready&&/改|消除|换色|重绘|不对/.test(instruction)&&selected){usePreviewStore.getState().setEditor({id:selected,action:/消除/.test(instruction)?"erase":"paint"});onFocus(selected);toast.info("请涂出需要调整的区域，原始实拍将一并保留");}else if(ready&&task.product.photos.length&&(task.stage==="ready"||/生成|再来|场景|一套图|规划/.test(instruction)))plan();}
+ function send(){if(!text.trim())return;const instruction=text.trim();state.appendMessage(instruction);setText("");const intent=workflowIntent(instruction);if(intent){launchWorkflow(intent,instruction);return;}if(ready&&/改|消除|换色|重绘|不对/.test(instruction)&&selected){usePreviewStore.getState().setEditor({id:selected,action:/消除/.test(instruction)?"erase":"paint"});onFocus(selected);toast.info("请涂出需要调整的区域，原始实拍将一并保留");}else if(ready&&task.product.photos.length&&(task.stage==="ready"||/生成|再来|场景|一套图|规划/.test(instruction)))plan();}
  const scene=state.data.scenes.find(s=>s.id===task.templateId),groups=state.data.propSets.filter(g=>scene?.defaultPropSetIds.includes(g.id));
  return <aside className="p-chat l-chat"><div className="p-chat-header"><h2><span className="p-agent-avatar"><Sparkles size={15}/></span>创作搭档</h2><Button variant="ghost" size="icon" aria-label="收起对话" onClick={onCollapse}><PanelLeftClose size={18}/></Button></div><div className="p-chat-body" ref={body}><p className="p-chat-date">今天 · {task.product.name}</p>{task.messages.map(m=><div key={m.id} className={m.role==="user"?"p-chat-bubble":"p-agent-message"}>{m.role==="assistant"&&<span><span className="p-agent-avatar"><Sparkles size={14}/></span>创作搭档</span>}<p>{m.text}</p></div>)}
- <CategoryConfirmation/>
+ <BrandSummary/><div className="w-chat-quick-actions"><Button variant="ghost" onClick={()=>launchWorkflow("variants")}>批量换色</Button><Button variant="ghost" onClick={()=>launchWorkflow("translate")}>多语言</Button><Button variant="ghost" onClick={()=>launchWorkflow("check")}>导出检查</Button></div><CategoryConfirmation/>
  <StrictNotice onUpload={drop.open}/>
  {ready&&!task.product.photos.length&&<div className="l-shooting-card"><Camera size={22}/><h3>先放一张产品实拍</h3><p>一张也能开始，后续随时补充。</p><Button variant="outline" onClick={drop.open}><Upload size={14}/>添加资料</Button></div>}
  {ready&&task.stage==="ready"&&task.product.photos.length>0&&<div className="l-plan-card"><span className="l-card-eyebrow">为这件产品，选一个好场景</span><h3>{scene?.name??"选择场景"}</h3><p>保留颜色、结构与尺寸，用现有实拍直接规划。</p><div className="l-scene-choices">{state.data.scenes.filter(s=>s.categoryIds.includes(task.product.categoryId)&&canView(s,designer)).slice(0,3).map(s=><button key={s.id} className={s.id===task.templateId?"active":""} onClick={()=>state.setTemplate(s.id)}><img src={s.coverImage} alt=""/><span>{s.name.split("·").slice(0,2).join("·")}</span>{s.id===task.templateId&&<Check size={13}/>}</button>)}</div><Button onClick={plan}>规划图包<ArrowRight size={14}/></Button></div>}

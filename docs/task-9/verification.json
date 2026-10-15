@@ -1,0 +1,305 @@
+{
+  "passed": true,
+  "screenshots": 30,
+  "pageErrors": [],
+  "consoleDiagnostics": [],
+  "businessApiRequests": [],
+  "externalRequests": [],
+  "audits": [
+    {
+      "name": "01-home-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "01-home-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "02-workspace-empty-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "02-workspace-empty-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "03-variant-source-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "03-variant-source-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "04-brand-picker-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "04-brand-picker-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "05-variant-input-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "05-variant-input-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "06-variant-frames-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "06-variant-frames-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "07-product-variants-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "07-product-variants-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "08-translation-review-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "08-translation-review-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "09-translation-frames-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "09-translation-frames-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "10-export-check-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "10-export-check-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "11-resolution-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "11-resolution-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "12-brand-admin-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": true
+    },
+    {
+      "name": "12-brand-admin-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": true
+    },
+    {
+      "name": "13-brand-editor-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": true
+    },
+    {
+      "name": "13-brand-editor-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": true
+    },
+    {
+      "name": "14-glossary-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": true
+    },
+    {
+      "name": "14-glossary-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": true
+    },
+    {
+      "name": "15-edit-confirmation-light",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "15-edit-confirmation-dark",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "narrow-1280",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "narrow-1100",
+      "overflow": false,
+      "broken": [],
+      "toolbar": {
+        "nowrap": true,
+        "inside": true
+      }
+    }
+  ],
+  "checks": [
+    "五种任务入口不跳转",
+    "四个画布空态入口",
+    "批量3颜色9张图及参考冻结",
+    "按图位选择",
+    "多语言长文确认和站点Frame",
+    "刷新恢复6个输出Frame",
+    "产品卡多变体",
+    "品牌选择与后台编辑持久化",
+    "术语表编辑持久化",
+    "导出检查与仍然导出",
+    "分辨率持久化",
+    "联网开关默认与持久化",
+    "新任务不覆盖旧任务画布",
+    "亮暗主题完整可用"
+  ],
+  "brandDrawerPolish": {
+    "headerPadding": true,
+    "scrollableEditor": true,
+    "saveAfterScrolling": true,
+    "themes": [
+      "light",
+      "dark"
+    ]
+  }
+}

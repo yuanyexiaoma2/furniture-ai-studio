@@ -1,6 +1,6 @@
 "use client";
 import {useEffect,useRef,useState} from "react";
-import {ArrowUp,Bot,Check,ChevronDown,ImageIcon,LockKeyhole,MoreHorizontal,Plus,SlidersHorizontal,Sparkles} from "lucide-react";
+import {Globe2,ArrowUp,Bot,Check,ChevronDown,ImageIcon,LockKeyhole,MoreHorizontal,Plus,SlidersHorizontal,Sparkles} from "lucide-react";
 import {models,modelRate,type MockModel,type ModelKind} from "@/design-preview/mock/models";
 import {availableModels,estimateCost,resolveSelection,useModelStore} from "./model-store";
 import {Button} from "./ui/button";
@@ -34,17 +34,18 @@ export function ModelPicker({kind,scope,menu=false}:{kind:ModelKind;scope:string
  </div></PopoverContent></Popover>;
 }
 export function ComposerToolbar({scope,count=4,ratio="1:1",onCount,onRatio,onAdd,onSend,disabled,extra,showCost=true}:{scope:string;count?:number;ratio?:string;onCount?:(n:number)=>void;onRatio?:(n:string)=>void;onAdd:()=>void;onSend:()=>void;disabled:boolean;showCost?:boolean;extra?:React.ReactNode}){
- const state=useModelStore(),selection=resolveSelection(state,scope);const bar=useRef<HTMLDivElement>(null);const [compact,setCompact]=useState(scope!=="home");
- useEffect(()=>{const observer=new ResizeObserver(entries=>setCompact(entries[0].contentRect.width<650));if(bar.current)observer.observe(bar.current);return()=>observer.disconnect();},[]);
+ const state=useModelStore(),selection=resolveSelection(state,scope);const bar=useRef<HTMLDivElement>(null);const [compact,setCompact]=useState(scope!=="home"),[narrow,setNarrow]=useState(false);
+ useEffect(()=>{const observer=new ResizeObserver(entries=>{setCompact(entries[0].contentRect.width<650);setNarrow(entries[0].contentRect.width<380);});if(bar.current)observer.observe(bar.current);return()=>observer.disconnect();},[]);
  const canSend=!!selection.agentId&&!!selection.imageId&&!disabled;
- const parameters=<Popover><PopoverTrigger asChild><Button variant="ghost" className="p-model-capsule" aria-label="图片参数"><SlidersHorizontal size={16}/><span>{ratio} · {count} 张</span></Button></PopoverTrigger><PopoverContent className="p-portal p-parameter-panel" side="top"><div><h3>图片参数</h3><label>图片比例<Select value={ratio} onValueChange={onRatio}><SelectTrigger aria-label="图片比例"><SelectValue/></SelectTrigger><SelectContent className="p-portal">{["1:1","4:3","3:4","16:9","9:16"].map(v=><SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent></Select></label><label>生成张数<Select value={String(count)} onValueChange={v=>onCount?.(Number(v))}><SelectTrigger aria-label="生成张数"><SelectValue/></SelectTrigger><SelectContent className="p-portal">{[1,2,3,4].map(n=><SelectItem key={n} value={String(n)}>{n}</SelectItem>)}</SelectContent></Select></label></div></PopoverContent></Popover>;
+ const web=<Button variant="ghost" role="switch" aria-label="联网" aria-checked={selection.webEnabled??true} className={`p-model-capsule w-web-toggle ${selection.webEnabled?"is-on":""}`} onClick={()=>state.updateSelection(scope,{webEnabled:!selection.webEnabled})}><Globe2 size={16}/>{!compact&&<span>联网</span>}<i/></Button>;
+ const parameters=<Popover><PopoverTrigger asChild><Button variant="ghost" className="p-model-capsule" aria-label="图片参数"><SlidersHorizontal size={16}/><span>{ratio} · {count} 张 · {selection.resolution==="auto"?"自适应":selection.resolution}</span></Button></PopoverTrigger><PopoverContent className="p-portal p-parameter-panel" side="top"><div><h3>图片参数</h3><label>分辨率<Select value={selection.resolution??"auto"} onValueChange={v=>state.updateSelection(scope,{resolution:v as "auto"|"1K"|"2K"|"4K"})}><SelectTrigger aria-label="分辨率"><SelectValue/></SelectTrigger><SelectContent className="p-portal">{["auto","1K","2K","4K"].map(v=><SelectItem key={v} value={v}>{v==="auto"?"自适应":v}</SelectItem>)}</SelectContent></Select></label><label>图片比例<Select value={ratio} onValueChange={onRatio}><SelectTrigger aria-label="图片比例"><SelectValue/></SelectTrigger><SelectContent className="p-portal">{["1:1","4:3","3:4","16:9","9:16"].map(v=><SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent></Select></label><label>生成张数<Select value={String(count)} onValueChange={v=>onCount?.(Number(v))}><SelectTrigger aria-label="生成张数"><SelectValue/></SelectTrigger><SelectContent className="p-portal">{[1,2,3,4].map(n=><SelectItem key={n} value={String(n)}>{n}</SelectItem>)}</SelectContent></Select></label></div></PopoverContent></Popover>;
  return <div className={`p-composer-toolbar ${compact?"is-compact":""}`} ref={bar} data-composer-scope={scope}>
  <Button variant="ghost" className="p-composer-add" aria-label="添加实拍" onClick={onAdd}><Plus size={18}/><span>添加</span></Button>
  <ModelPicker kind="agent" scope={scope}/>
  {!compact&&<ModelPicker kind="image" scope={scope}/>}
  {!compact&&scope!=="home"&&parameters}
- {(compact||extra)&&<Popover><PopoverTrigger asChild><Button variant="ghost" className="p-composer-more" size="icon" aria-label="更多创作选项"><MoreHorizontal size={18}/></Button></PopoverTrigger><PopoverContent className="p-portal p-composer-menu" side="top" align="start"><div><h3>创作选项</h3>{compact&&<ModelPicker menu kind="image" scope={scope}/>} {compact&&scope!=="home"&&parameters}{extra}</div></PopoverContent></Popover>}
- <span className="p-composer-spacer" aria-hidden="true"/>{showCost&&<span className="p-cost-estimate" aria-live="polite"><span>预计 </span>${estimateCost(state,scope,count).toFixed(scope==="home"?2:3)}</span>}
+ {(compact||extra)&&<Popover><PopoverTrigger asChild><Button variant="ghost" className="p-composer-more" size="icon" aria-label="更多创作选项"><MoreHorizontal size={18}/></Button></PopoverTrigger><PopoverContent className="p-portal p-composer-menu" side="top" align="start"><div><h3>创作选项</h3>{compact&&<ModelPicker menu kind="image" scope={scope}/>} {compact&&scope!=="home"&&parameters}{narrow&&web}{extra}</div></PopoverContent></Popover>}
+ {!narrow&&web}<span className="p-composer-spacer" aria-hidden="true"/>{showCost&&<span className="p-cost-estimate" aria-live="polite"><span>预计 </span>${estimateCost(state,scope,count).toFixed(scope==="home"?2:3)}</span>}
  <Button className="p-send-circle" size="icon" aria-label={scope==="home"?"发送并进入工作台":"发送创作要求"} disabled={!canSend} onClick={onSend}><ArrowUp size={20}/></Button>
  </div>;
 }

@@ -1,3 +1,7 @@
+## 2026-10-15 · 当前进度：任务 9 已交付，等待审阅
+
+项目：`C:/Users/Administrator/Projects/furniture-ai-studio`。在任务 7 第四轮（729245e）与任务 8A 基础上完成任务 9 静态原型：批量三颜色 Frame、多语言/术语表、导出检查、品牌风格与后台维护、联网/分辨率/三段主题。交付：`docs/task-9/index.html`，30 张亮暗截图，18.134 秒录屏；29 测试、lint/typecheck/build、浏览器验收通过。代码及说明均已保存到本地 Git。当前仍是前端 mock，没有接真实工具，用户明确要求完成后停下等待审阅。下一次先读取 `docs/task-9/README.md` 与最近 Git 提交，不要重建或丢弃先前 UI。生产预览 `http://localhost:3001/design-preview/workspace`，PID 35260 需先核实再停止；Windows exec 用审批 escalated，原生 Python Playwright 环境位于 `.local/round4-test-env`。
+
 # 最新：任务 7 第一阶段第 4 轮完成，等待审阅（2026-10-15）
 
 沿用任务8A与第三轮原型。首页移除品类/拍摄档位，改为56px可删除图片/文件+三行文字/单行模型工具行，两位费用仅有内容显示，黑白40px发送空态40%透明。新任务默认quick，startTask(description)本地识别品类并等待categoryConfirmed；确认到默认strict类别后shootingChoicePending提供严格/本次快速。产品卡头部CategoryPicker复用shadcn Command（cmdk），可搜索修改；档位只留产品卡，弹层间距已修复。category-recognition.ts模拟文字/文件名，没有线索图片用边桌样例，无图片未知则询问，没接真实模型。22项测试、lint/typecheck/build及16张双主题浏览器检查通过；docs/design-preview/round4/README.md与verification.json。预览localhost:3001/design-preview。旧任务的optional确认字段保持兼容；不要重置旧任务。第四轮Python测试用.local/round4-test-env/Scripts/python.exe scripts/verify-design-preview-round4.py（系统Chrome，现有.local/task8a-storage.json登录态）。停第一阶段等待审阅，不进8B，不push远程。
