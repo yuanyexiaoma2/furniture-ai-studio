@@ -1,3 +1,7 @@
+## 2026-10-15 · 最新：生图模型胶囊与面板小修完成，等待审阅
+
+项目仍在 `C:/Users/Administrator/Projects/furniture-ai-studio`，沿用任务 9（5bd707c）。当前选择器已移除视频分段；Auto 单选显示模型名，多选显示“自动 · N 个模型”和名单 Tooltip，手动指定主色描边。预览价格全部两位小数，源数据精度不变。交付 `docs/design-preview/model-picker-refinement/index.html`：14 张亮暗截图及验收记录，字体实际渲染、Unicode、对齐、价格、持久化和窄屏均通过；lint/typecheck/build 通过。此前任务 9 全部保留，继续纯静态，不接真实模型，等待用户审阅。最新本地预览 localhost:3001，PID 16148 停止前先核实。
+
 ## 2026-10-15 · 当前进度：任务 9 已交付，等待审阅
 
 项目：`C:/Users/Administrator/Projects/furniture-ai-studio`。在任务 7 第四轮（729245e）与任务 8A 基础上完成任务 9 静态原型：批量三颜色 Frame、多语言/术语表、导出检查、品牌风格与后台维护、联网/分辨率/三段主题。交付：`docs/task-9/index.html`，30 张亮暗截图，18.134 秒录屏；29 测试、lint/typecheck/build、浏览器验收通过。代码及说明均已保存到本地 Git。当前仍是前端 mock，没有接真实工具，用户明确要求完成后停下等待审阅。下一次先读取 `docs/task-9/README.md` 与最近 Git 提交，不要重建或丢弃先前 UI。生产预览 `http://localhost:3001/design-preview/workspace`，PID 35260 需先核实再停止；Windows exec 用审批 escalated，原生 Python Playwright 环境位于 `.local/round4-test-env`。

@@ -113,10 +113,6 @@
 .is-checked .p-model-check { background:var(--primary); border-color:var(--primary); }
 .p-model-check.is-square { border-radius:4px; }
 .p-model-panel footer { margin:10px 9px 2px; padding-top:11px; border-top:1px solid var(--border); font-size:12px; color:var(--p-subtle); }
-.p-model-segments { display:flex; background:var(--secondary); border-radius:10px; padding:3px; margin-bottom:8px; }
-.p-model-segments button { flex:1; height:32px !important; font-size:13px !important; }
-.p-model-segments .active { background:var(--p-panel); box-shadow:0 1px 3px var(--p-shadow); }
-.p-model-segments button > span { font-size:12px; }
 .p-auto-line { display:flex; justify-content:space-between; align-items:center; padding:12px 9px; }
 .p-auto-line strong { display:flex; gap:6px; align-items:center; font-size:14px; font-weight:600; }
 .p-auto-line p { margin:4px 0 0; font-size:13px; color:var(--p-subtle); }
@@ -200,3 +196,14 @@
 
 .p-model-panel { max-height:min(750px,var(--radix-popover-content-available-height,85vh)); }
 .p-image-node .p-effect-main { object-fit:contain; background:var(--p-panel); }
+
+/* 生图模型面板：纯图片能力，数量使用普通空格与统一字体。 */
+.p-model-image header{padding-bottom:4px}
+.p-auto-line{gap:16px;align-items:flex-start}
+.p-auto-line>div{flex:1;min-width:0}
+.p-auto-line>button{flex-shrink:0;margin-top:3px}
+.p-auto-line p{line-height:1.7;overflow-wrap:break-word}
+.p-model-capsule .p-model-label{font-family:inherit;font-variant-numeric:tabular-nums;letter-spacing:normal}
+.p-model-capsule>svg{flex-shrink:0;vertical-align:middle}
+.p-model-tooltip{display:grid;gap:5px;max-width:320px;background:var(--p-floating);color:var(--foreground);border:1px solid var(--border);border-radius:12px;padding:12px 14px;box-shadow:0 6px 24px var(--p-shadow);font-size:13px;line-height:1.6}
+.p-model-tooltip strong{font-size:12px;color:var(--p-subtle);font-weight:500;margin-bottom:2px}

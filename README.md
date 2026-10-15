@@ -257,3 +257,8 @@ KIE费用记录读取Responses完成事件外层credits_consumed，完成后立�
 ### 任务 9 · 批量工作流与品牌风格（2026-10-15）
 
 工作台新增五种任务入口、批量颜色变体、多语言与术语表、导出前检查和品牌设置；后台支持品牌维护，产品卡显示变体，加入联网开关、分辨率与三段主题选择。仍为静态 mock，未接真实工具。运行 `npm run dev -- --port 3001`，打开 `/design-preview/workspace`，无需 worker 或迁移。亮暗截图、批量录屏、数据说明及验证命令见 [任务 9 交付](docs/task-9/README.md)。完成后停下等待审阅。
+
+
+### 生图模型胶囊与面板小修（2026-10-15）
+
+移除视频分段，Auto 单选显示模型名、多选显示数量与 Tooltip 名单；手动指定保留主色描边。预览价格统一两位小数，保留原始计算精度。14 张亮暗截图、字体/对齐/持久化检查见 [本轮交付](docs/design-preview/model-picker-refinement/README.md)。运行仍用 `npm run dev -- --port 3001`，当前为静态 mock，等待审阅。

@@ -38,7 +38,7 @@ export const usePreviewStore=create<PreviewStore>((set,get)=>({
   const node=get().nodes.find(n=>n.id===id);if(!node)return;
   const isFrame=node.type==='frame';const seed=isFrame?{...node,type:'picture',style:{width:224,height:180},dragHandle:undefined,data:{...node.data,image:'sofa',label:'新候选',effect:'',final:false}}:node;
   if(!originalPhotoReferences().length)throw new Error("修图必须同时保留原始实拍");
-  const quote=estimateCost(useModelStore.getState(),demoSession,count);if(quote>.20&&typeof window!=="undefined"&&!window.confirm("本次预计 $"+quote.toFixed(3)+"，超过单次 $0.20 的确认额度。是否继续？"))return;
+  const quote=estimateCost(useModelStore.getState(),demoSession,count);if(quote>.20&&typeof window!=="undefined"&&!window.confirm("本次预计 $"+quote.toFixed(2)+"，超过单次 $0.20 的确认额度。是否继续？"))return;
   const beforeIds=new Set(get().nodes.map(n=>n.id));
   const original=/^(blob:|data:|\/)/.test(seed.data.image)?seed.data.image:imagePath(seed.data.image);
   await onAction?.({action,imageId:id,originalImage:original,originalPhotoReferences:originalPhotoReferences(),productReferences:[...originalPhotoReferences(),...get().references.map(ref=>{const image=get().nodes.find(n=>n.id===ref)?.data.image??ref;return image.startsWith('blob:')?image:imagePath(image);})],mask,editCount:node.data.editCount??0});
