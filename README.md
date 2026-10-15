@@ -4,7 +4,7 @@
 
 ## 如何运行
 
-任务 7 修订版：登录后访问 <http://localhost:3000/design-preview>，顶部可组合切换五页与亮 / 暗 / 跟随系统主题。已实现真实无限画布、节点拖动、涂抹蒙版、扩图拖框与对话联动，全部为假数据，不调用业务接口。正式审阅版本也可在 <http://localhost:3001/design-preview> 查看。启动命令、所有新增依赖的精确版本和许可证、十张截图、操作 GIF、验证与已知问题集中在 [docs/design-preview/README.md](docs/design-preview/README.md)。原 `/design` 保留为被否决的历史稿；本阶段不修业务 bug，不进入第二阶段。
+任务 7 第三轮修订：登录后访问 <http://localhost:3001/design-preview>。保留五页结构，新增共享智能体 / 生图模型选择器、Auto 与手动质量档、后台模型可见联动；全面更新首页和画布视觉。全为静态假数据，不调用业务接口。模型配置结构、后台替换说明、20 张亮暗截图、约 24 秒操作录屏与逐条自查见 [第三轮交付](docs/design-preview/round3/README.md)。根路径仍是原业务首页；完成后停在第一阶段等待审阅。
 
 目前只配置 KIE，ZenMux Key 为空时自动跳过。两家生图 / LLM 代码均已接入，无需未来改代码。协议和模型核实记录见 [docs/gateways.md](docs/gateways.md)。
 
@@ -169,6 +169,8 @@ SKU 页“AI 提炼”读取已保存资料及排序最前的 2～3 张实拍图
 本机 GitHub 登录及 Docker 引擎检查通过。Docker Hub 连接超时已通过复用缓存的 PostgreSQL 镜像和官方 Quay MinIO 镜像完成本地启动；新电脑仍需可以下载这些镜像。
 
 ## 本次完成内容
+
+- 2026-10-15 任务 7 第三轮修订：完成首页与工作台共用 ModelPicker、模型统一配置与持久化、会话独立选择、后台可见 / 启用 / 默认联动、视觉质感升级、30 张不同家具样图、20 张亮暗截图和 45 秒内录屏。验证与自查见 [round3](docs/design-preview/round3/README.md)。
 
 - 2026-10-15 任务 7 第一阶段收尾：修复选中图位时的对话作用对象与旧图片引用，补充空图位生成归属回归；lint、typecheck、正式构建及完整浏览器交互通过，十张截图和 12.97 秒操作 GIF 已核对。正式预览入口为 <http://localhost:3001/design-preview>，等待设计审阅。
 

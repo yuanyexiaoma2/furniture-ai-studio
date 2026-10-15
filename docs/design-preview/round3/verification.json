@@ -1,0 +1,347 @@
+{
+  "passed": true,
+  "screenshots": 20,
+  "uniqueFurnitureImages": 30,
+  "pageErrors": [],
+  "businessApiRequests": [],
+  "externalRequests": [],
+  "diagnostics": [],
+  "checks": [
+    "模型名仅来自统一配置",
+    "Auto多选与默认锁定",
+    "手动单选与质量档费用",
+    "localStorage刷新保持",
+    "首页到工作台继承",
+    "会话单独修改与系统消息",
+    "后台可见及启用联动",
+    "后台切换默认模型",
+    "四种宽度工具行单行",
+    "字体实际显示不小于12px",
+    "30张独立样图URL和文件哈希",
+    "双主题20张截图",
+    "真实工具条与Konva涂抹",
+    "保留蒙版PNG导出、扩图角点和多选对比"
+  ],
+  "audits": [
+    {
+      "name": "01-home-light",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "02-skus-light",
+      "horizontalOverflow": false,
+      "toolbar": null,
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "03-workspace-light",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "04-product-light",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "05-admin-light",
+      "horizontalOverflow": false,
+      "toolbar": null,
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "06-agent-panel-light",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "07-image-auto-light",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "08-image-manual-light",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "09-canvas-toolbar-light",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "10-paint-state-light",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "01-home-dark",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "02-skus-dark",
+      "horizontalOverflow": false,
+      "toolbar": null,
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "03-workspace-dark",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "04-product-dark",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "05-admin-dark",
+      "horizontalOverflow": false,
+      "toolbar": null,
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "06-agent-panel-dark",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "07-image-auto-dark",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "08-image-manual-dark",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "09-canvas-toolbar-dark",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "10-paint-state-dark",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "home-width-1600",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "workspace-width-1600",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "home-width-1100",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "workspace-width-1100",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "home-width-768",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "workspace-width-768",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "home-width-390",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    },
+    {
+      "name": "workspace-width-390",
+      "horizontalOverflow": false,
+      "toolbar": {
+        "nowrap": true,
+        "inside": true,
+        "aligned": true
+      },
+      "smallText": [],
+      "brokenImages": [],
+      "previewSwitcher": false
+    }
+  ]
+}

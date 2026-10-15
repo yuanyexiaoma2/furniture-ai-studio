@@ -1,3 +1,7 @@
+# 最新：任务7第三轮完成，等待审阅（2026-10-15）
+
+已按负责人第三轮要求完成首页/工作台共享 ModelPicker、统一 src/design-preview/mock/models.ts、zustand持久化和会话独立、管理员可见/启用/默认联动，及五页亮暗视觉升级。30张不同家具样图，20张PNG与约24秒WebM在docs/design-preview/round3/。lint/typecheck/build、模型状态/报价/4种宽度/实际字号检查及蒙版PNG、扩图、多选回归通过，页面错误/诊断/业务接口/外部资源请求均0。预览http://localhost:3001/design-preview，根路径是旧业务首页。停在第一阶段等待审阅，不接后端，不修四个业务bug，不推送远程（此前自动审批明确要求用户授权远程main更新）。
+
 # 最新：任务7第一阶段修订版收尾完成（2026-10-15）
 
 家具AI工作台 `/design-preview` 五页双主题原型等待负责人审阅。修复选择图位同步对话作用对象并清除旧图片引用；空图位假生成归属及原候选保留回归通过。lint/typecheck/build、完整浏览器验证通过，页面错误/业务请求/控制台诊断0。十张截图与12.97秒41帧GIF已核对。正式预览 localhost:3001/design-preview，现有账号登录，不启动worker，不调用收费模型。第二阶段后端接入与四个业务bug等待用户确认。详见docs/task-7-progress.md、docs/design-preview/README.md。

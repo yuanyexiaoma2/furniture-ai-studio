@@ -6,9 +6,10 @@ export type ImageData = {label:string;slot:string;image:string;final?:boolean;lo
 export type StudioNode = Node<ImageData>;
 export const frameNames=["产品主图","客厅场景","空间搭配","材质细节","核心卖点","尺寸说明","安装说明"];
 export const imagePath=(name:string)=>`/design-preview/${name}.webp`;
+const frameImages=[[16,21,24,25,8],[5,10,12,13,15],[3,4,11,17,18],[2,7,9,14,29],[1,19,20,22,23],[6,26,27,28,30]];
 export function initialNodes():StudioNode[]{
  const frames:StudioNode[]=frameNames.map((slot,i)=>({id:`frame-${i}`,type:"frame",position:{x:(i%2)*1270,y:Math.floor(i/2)*320},style:{width:1215,height:240},data:{label:`0${i+1} ${slot}`,slot,image:"",final:i<6&&i!==1,effect:i===6?"empty":""},dragHandle:".p-frame-title"}));
- const images:StudioNode[]=frameNames.slice(0,6).flatMap((slot,i)=>Array.from({length:5},(_,j)=>({id:`image-${i}-${j}`,type:"picture",parentId:`frame-${i}`,position:{x:24+j*236,y:30},data:{label:`候选 0${j+1}`,slot,image:i===2?["living","room","interior","dining","living"][j]:"sofa",final:j===0&&i!==1,effect:i===3?"detail":"",editCount:0},style:{width:224,height:180}})));
+ const images:StudioNode[]=frameNames.slice(0,6).flatMap((slot,i)=>Array.from({length:5},(_,j)=>({id:`image-${i}-${j}`,type:"picture",parentId:`frame-${i}`,position:{x:24+j*236,y:30},data:{label:`候选 0${j+1}`,slot,image:`r3-${String(frameImages[i][j]).padStart(2,"0")}`,final:j===0&&i!==1,effect:i===0?"main":i===3?"detail":i===5?"dimensions":"",editCount:0},style:{width:224,height:180}})));
  return [...frames,...images];
 }
 type PreviewStore={nodes:StudioNode[];selected:string[];contextId:string|null;target:string;theme:string;tool:"select"|"pan";referencePicking:boolean;references:string[];editor:{id:string;action:ImageAction}|null;messages:string[];history:string[];pending:number;
