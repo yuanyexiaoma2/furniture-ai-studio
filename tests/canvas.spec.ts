@@ -3,7 +3,6 @@ import {test,expect,type Page} from "@playwright/test";
 import {randomUUID} from "node:crypto";
 import bcrypt from "bcrypt";
 import sharp from "sharp";
-import {mkdir} from "node:fs/promises";
 import {PrismaClient} from "../src/generated/prisma/client";
 import {PrismaPg} from "@prisma/adapter-pg";
 import {S3Client,PutObjectCommand,DeleteObjectCommand} from "@aws-sdk/client-s3";
@@ -23,11 +22,11 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
   const pendingJob=await db.generationJob.create({data:{productId,slotId:slot.id,sessionId:session.id,createdById:userId,logicalModel:"scene-main",provider:"simulation",model:"本地模拟",status:"pending",input:{}}});
   await db.agentToolCall.create({data:{sessionId:session.id,callId:run,name:"view_images",arguments:{},result:{analysis:"已核对实拍；产品木色保持不变。"},status:"success",completedAt:new Date()}});
   await db.agentToolCall.create({data:{sessionId:session.id,callId:run+"-failed",name:"web_search",arguments:{},status:"failed",error:"联网暂未配置，可以关闭联网继续"}});
-  async function login(p:Page){await p.goto("/login");await p.getByLabel("公司邮箱").fill(email);await p.getByLabel("密码",{exact:true}).fill(password);await p.getByRole("button",{name:"进入工作台"}).click();await expect(p).toHaveURL(/\/design-preview$/);}
+  async function login(p:Page){await p.goto("/login");await p.getByLabel("公司邮箱").fill(email);await p.getByLabel("密码",{exact:true}).fill(password);await p.getByRole("button",{name:"进入工作台"}).click();await expect(p).toHaveURL(/\/$/);}
   await login(page);const endpoint=`/api/studio/${productId}/canvas`,origin="http://localhost:3000";
   const layout={version:1,nodes:[{id:"slot-"+slot.id,x:420,y:180},{id:"job-"+pendingJob.id,x:130,y:60}],notes:[{id:"note-browser",text:"保留产品木色与五金",x:460,y:100,width:220,height:160}],hiddenIds:[],viewport:{x:100,y:80,zoom:.7}};
   expect((await page.request.put(endpoint,{headers:{Origin:origin},data:{revision:0,layout}})).status()).toBe(200);
-  await page.goto(`/design-preview/workspace?sku=${productId}`);
+  await page.goto(`/workspace?sku=${productId}`);
   await expect(page.getByText("布局已保存",{exact:true})).toBeAttached();await expect(page.getByLabel("画布便签")).toHaveValue("保留产品木色与五金");await expect(page.locator(".p-zoom-label")).toHaveText("70%");
   const picture=page.locator(`[data-picture="${assets[1]}"]`);await picture.click();await expect(page.getByLabel("本次引用图片")).toContainText("本次引用 1 张");
   // 预览读取已保存原图，不触发生图；关闭后仍保留画布选中与引用。
@@ -45,7 +44,7 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
   await page.keyboard.press("Delete");await expect(picture).toBeVisible();
   await preview.getByRole("button",{name:"适应窗口",exact:true}).click();
   await expect.poll(()=>stage.evaluate(e=>e.scrollWidth<=e.clientWidth+1&&e.scrollHeight<=e.clientHeight+1)).toBe(true);
-  await mkdir(".local/verification",{recursive:true});await page.screenshot({path:".local/verification/image-preview.png",fullPage:true});
+
   await page.keyboard.press("Escape");await expect(preview).toHaveCount(0);await expect(page.getByLabel("本次引用图片")).toContainText("本次引用 1 张");
   await picture.dblclick();await expect(preview).toBeVisible();await preview.getByRole("button",{name:"关闭",exact:true}).click();await expect(preview).toHaveCount(0);
   await expect(page.locator(".p-zoom-label")).toHaveText("70%");
@@ -78,12 +77,12 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
   await expect.poll(async()=>((await (await page.request.get(endpoint)).json()).layout.notes.length)).toBe(2);
   const savedNotes=(await (await page.request.get(endpoint)).json()).layout.notes;const addedNoteId=savedNotes.find((n:{id:string})=>n.id!=="note-browser").id;
   const notes=page.getByTestId("rf__node-"+addedNoteId).getByLabel("画布便签");await expect(notes).toHaveValue("记录这次创作的要求…");
-  await notes.fill("切换页面前的最后修改");await page.getByRole("button",{name:"返回 SKU",exact:true}).click();await expect(page).toHaveURL(/\/design-preview\/skus$/);
-  await page.goto(`/design-preview/workspace?sku=${productId}`);await expect(page.getByTestId("rf__node-"+addedNoteId).getByLabel("画布便签")).toHaveValue("切换页面前的最后修改");
-  await mkdir(".local/verification",{recursive:true});await page.screenshot({path:".local/verification/canvas-ready.png",fullPage:true});
+  await notes.fill("切换页面前的最后修改");await page.getByRole("button",{name:"返回 SKU",exact:true}).click();await expect(page).toHaveURL(/\/skus$/);
+  await page.goto(`/workspace?sku=${productId}`);await expect(page.getByTestId("rf__node-"+addedNoteId).getByLabel("画布便签")).toHaveValue("切换页面前的最后修改");
+
   const remote=await (await page.request.get(endpoint)).json();expect((await page.request.put(endpoint,{headers:{Origin:origin},data:{revision:remote.revision,layout:{...remote.layout,notes:[]}}})).status()).toBe(200);
   await page.getByLabel("画布便签").first().fill("本窗口修改");await expect(page.getByText("其他窗口修改待处理",{exact:true})).toBeVisible();expect((await (await page.request.get(endpoint)).json()).layout.notes).toEqual([]);
-  await mkdir(".local/verification",{recursive:true});await page.screenshot({path:".local/verification/canvas-integration.png",fullPage:true});
+
   expect(errors).toEqual([]);expect(await db.llmCall.count({where:{productId}})).toBe(0);
  }finally{
   if(productId){await db.generationJob.deleteMany({where:{productId}});await db.imagePack.deleteMany({where:{productId}});await db.asset.deleteMany({where:{productId}});await db.product.delete({where:{id:productId}});}if(userId)await db.user.delete({where:{id:userId}});for(const key of keys)await s3.send(new DeleteObjectCommand({Bucket:"assets",Key:key}));s3.destroy();await db.$disconnect();

@@ -3,13 +3,12 @@ import { test, expect } from "@playwright/test";
 import { randomUUID } from "node:crypto";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { mkdir } from "node:fs/promises";
 import sharp from "sharp";
 let db: PrismaClient, productId = "";
-test.beforeAll(async () => { db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) }); await mkdir(".local/verification", { recursive: true }); });
+test.beforeAll(async () => { db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });  });
 test.afterAll(async () => { if (productId) { await db.asset.deleteMany({ where: { productId } }); await db.product.delete({ where: { id: productId } }); } await db.$disconnect(); });
 test("网关后台与 AI 提炼：确认付费、空 Key、结构化填入且手动保存（不产生真实调用）", async ({ page }) => {
-  await page.goto("/login"); await page.getByLabel("公司邮箱").fill(process.env.ADMIN_EMAIL!); await page.getByLabel("密码", { exact: true }).fill(process.env.ADMIN_PASSWORD!); await page.getByRole("button", { name: "进入工作台" }).click(); await expect(page).toHaveURL("http://localhost:3000/design-preview");
+  await page.goto("/login"); await page.getByLabel("公司邮箱").fill(process.env.ADMIN_EMAIL!); await page.getByLabel("密码", { exact: true }).fill(process.env.ADMIN_PASSWORD!); await page.getByRole("button", { name: "进入工作台" }).click(); await expect(page).toHaveURL("http://localhost:3000/");
   await page.goto("/admin/gateways"); await expect(page.getByRole("heading", { name: "网关状态." })).toBeVisible();
   const kie = page.locator(".gateway-card").filter({ has: page.getByRole("heading", { name: "KIE", exact: true }) });
   const zenmux = page.locator(".gateway-card").filter({ has: page.getByRole("heading", { name: "ZenMux", exact: true }) });
@@ -23,8 +22,8 @@ test("网关后台与 AI 提炼：确认付费、空 Key、结构化填入且手
   const dialog = page.getByRole("dialog"); await expect(dialog).toContainText("产生真实网关费用"); await dialog.getByRole("button", { name: "取消", exact: true }).click(); expect(requests).toBe(0);
   await kie.getByRole("button", { name: "连通性测试 · LLM" }).click(); await dialog.getByRole("button", { name: "确认并测试" }).click(); await expect(page.getByRole("status")).toContainText("模拟连通性测试成功"); expect(requests).toBe(1);
   await expect(kie.getByRole("button", { name: "连通性测试 · LLM" })).toBeEnabled();
-  await page.screenshot({ path: ".local/verification/gateways-desktop.png", fullPage: true, animations: "disabled" });
-  await page.setViewportSize({ width: 390, height: 844 }); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true); await kie.getByRole("button", { name: "连通性测试 · LLM" }).scrollIntoViewIfNeeded(); await expect(kie.getByRole("button", { name: "连通性测试 · LLM" })).toBeVisible(); await page.screenshot({ path: ".local/verification/gateways-mobile.png", fullPage: true, animations: "disabled" }); await page.setViewportSize({ width: 1440, height: 1100 });
+
+  await page.setViewportSize({ width: 390, height: 844 }); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true); await kie.getByRole("button", { name: "连通性测试 · LLM" }).scrollIntoViewIfNeeded(); await expect(kie.getByRole("button", { name: "连通性测试 · LLM" })).toBeVisible();  await page.setViewportSize({ width: 1440, height: 1100 });
   const admin = await db.user.findUniqueOrThrow({ where: { email: process.env.ADMIN_EMAIL } });
   const product = await db.product.create({ data: { sku: `E2E-GATEWAY-${randomUUID()}`, name: "身份提炼模拟商品", category: "柜", dimensions: "80cm", colors: "木色", sellingPoints: "模拟收纳", materials: "木", identityTraits: "原有人工确认内容", createdById: admin.id } }); productId = product.id;
   const photo = await sharp({ create: { width: 64, height: 64, channels: 3, background: "#eeeeee" } }).png().toBuffer();

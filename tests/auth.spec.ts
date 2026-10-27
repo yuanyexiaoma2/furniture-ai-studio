@@ -1,7 +1,6 @@
 import "dotenv/config";
 import { test, expect, type Page, type BrowserContext } from "@playwright/test";
 import { randomBytes } from "node:crypto";
-import { mkdir } from "node:fs/promises";
 import bcrypt from "bcrypt";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
@@ -20,7 +19,7 @@ async function login(page: Page, email: string, password: string) {
   await page.getByLabel("公司邮箱").fill(email);
   await page.getByLabel("密码", { exact: true }).fill(password);
   await page.getByRole("button", { name: "进入工作台" }).click();
-  await expect(page).toHaveURL("http://localhost:3000/design-preview");
+  await expect(page).toHaveURL("http://localhost:3000/");
   await expect(page.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
 }
 
@@ -45,7 +44,7 @@ test.beforeAll(async () => {
   const hostname = new URL(process.env.DATABASE_URL).hostname;
   if (!["localhost", "127.0.0.1"].includes(hostname)) throw new Error("此验收脚本仅允许本地数据库");
   db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
-  await mkdir(".local/verification", { recursive: true });
+
 });
 
 test.afterAll(async () => {
@@ -66,20 +65,26 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   }
   const unauthenticated = await adminContext.request.post("/api/admin/users", { data: {} });
   expect(unauthenticated.status()).toBe(401);
-  await admin.screenshot({ path: ".local/verification/login-desktop.png", fullPage: true, animations: "disabled" });
+
   await admin.getByLabel("公司邮箱").fill(`unknown-${runId}@example.invalid`);
   await admin.getByLabel("密码", { exact: true }).fill(password);
   await admin.getByRole("button", { name: "进入工作台" }).click();
   await expect(admin.getByRole("main").getByRole("alert")).toContainText("邮箱或密码不正确");
   await login(admin, process.env.ADMIN_EMAIL!, process.env.ADMIN_PASSWORD!);
   await expect(admin.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
-  await admin.screenshot({ path: ".local/verification/projects-desktop.png", fullPage: true, animations: "disabled" });
+  await admin.goto("/admin/models");
+  await expect(admin.getByRole("heading", { name: "模型管理", exact: true })).toBeVisible();
+  await expect(admin.getByRole("button", { name: "新增配置", exact: true })).toHaveCount(0);
+  await expect(admin.getByRole("button", { name: "品牌管理", exact: true })).toHaveCount(0);
+  await expect(admin.getByRole("button", { name: "清理测试数据", exact: true })).toHaveCount(0);
+  await expect(admin.getByRole("link", { name: "用户管理", exact: true })).toBeVisible();
+
   await admin.goto("/templates");
   await expect(admin.getByRole("heading", { name: "即将开放" })).toBeVisible();
   await admin.goto("/admin/users");
   await createUser(admin, "验收设计师", designerEmail, "designer");
   await createUser(admin, "验收只读成员", viewerEmail, "viewer");
-  await admin.screenshot({ path: ".local/verification/users-desktop.png", fullPage: true, animations: "disabled" });
+
   const designerRecord = await db.user.findUniqueOrThrow({ where: { email: designerEmail } });
   expect(await bcrypt.compare(password, designerRecord.passwordHash)).toBe(true);
   expect(Number(designerRecord.monthlyQuota)).toBe(0.5);
@@ -136,7 +141,7 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   await admin.goto("/");
   await expect(admin.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
   expect(await admin.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await admin.screenshot({ path: ".local/verification/projects-mobile.png", fullPage: true, animations: "disabled" });
+
 });
 
 async function loginAfterLogout(page: Page, email: string, password: string) {

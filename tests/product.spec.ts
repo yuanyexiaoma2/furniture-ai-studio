@@ -1,7 +1,6 @@
 import "dotenv/config";
 import { test, expect, type BrowserContext, type Page } from "@playwright/test";
 import { randomBytes } from "node:crypto";
-import { mkdir } from "node:fs/promises";
 import bcrypt from "bcrypt";
 import sharp from "sharp";
 import { PrismaPg } from "@prisma/adapter-pg";
@@ -22,7 +21,7 @@ async function login(page: Page, email: string, secret: string) {
   await page.getByLabel("公司邮箱").fill(email);
   await page.getByLabel("密码", { exact: true }).fill(secret);
   await page.getByRole("button", { name: "进入工作台" }).click();
-  await expect(page).toHaveURL(`${origin}/design-preview`);
+  await expect(page).toHaveURL(`${origin}/`);
   await expect(page.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
 }
 
@@ -32,7 +31,7 @@ test.beforeAll(async () => {
   const viewer = await db.user.create({ data: { name: "商品验收只读成员", email: viewerEmail, passwordHash: await bcrypt.hash(password, 12), role: "viewer" } });
   viewerId = viewer.id;
   editorId=(await db.user.create({data:{name:"商品验收临时设计师",email:editorEmail,passwordHash:await bcrypt.hash(password,12),role:"designer",monthlyQuota:5}})).id;
-  await mkdir(".local/verification", { recursive: true });
+
 });
 test.afterAll(async () => {
   for (const context of contexts) await context.close();
@@ -165,13 +164,13 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   await editPanel.getByRole("button", { name: "生成编辑版本" }).click();
   await expect(editPanel.getByRole("status")).toContainText("编辑任务已加入队列");
   expect(editingPayload).toMatchObject({ sourceJobId: job.id, sourceAssetId: generated.id, editIntent: "保留产品，将墙面改为暖白色", resolution: "4K", aspectRatio: "auto" });
-  await page.screenshot({ path: ".local/verification/product-desktop.png", fullPage: true, animations: "disabled" });
+
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.locator(".generation-history").scrollIntoViewIfNeeded();
   await expect(page.getByTestId(`generation-${job.id}`)).toBeVisible();
   await expect.poll(() => page.locator(".generation-history").evaluate((element) => getComputedStyle(element).opacity)).toBe("1");
-  await page.screenshot({ path: ".local/verification/product-mobile.png", fullPage: true, animations: "disabled" });
+
   expect(errors).toEqual([]);
 
   const viewerContext = await browser.newContext(); contexts.push(viewerContext);

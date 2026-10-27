@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { loginDestination } from "@/lib/login-destination";
+import { legacyStudioPath } from "@/lib/studio-paths";
 
 export default auth((request) => {
   const path = request.nextUrl.pathname;
+  const destination = legacyStudioPath(path);
+  if (destination) {
+    const target = request.nextUrl.clone();
+    target.pathname = destination;
+    return NextResponse.redirect(target, 301);
+  }
   if (!request.auth && path !== "/login") {
     if (path.startsWith("/api/")) return NextResponse.json({ error: "请先登录" }, { status: 401 });
     const login = new URL("/login", request.url);

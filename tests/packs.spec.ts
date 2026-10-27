@@ -24,7 +24,7 @@ test.afterAll(async () => {
 });
 test("图包：默认草稿→意图→确认6张→候选→终稿持久化→ZIP（模拟结果，不调用付费网关）", async ({ page }) => {
   const errors: string[] = []; page.on("pageerror", e => errors.push(e.message));
-  await page.goto("/login"); await page.getByLabel("公司邮箱").fill(email); await page.getByLabel("密码", { exact: true }).fill(password); await page.getByRole("button", { name: "进入工作台" }).click(); await page.waitForURL("http://localhost:3000/design-preview");
+  await page.goto("/login"); await page.getByLabel("公司邮箱").fill(email); await page.getByLabel("密码", { exact: true }).fill(password); await page.getByRole("button", { name: "进入工作台" }).click(); await page.waitForURL("http://localhost:3000/");
   // 浏览器交互使用真实CRUD/估价/终稿/导出，只有收费提交响应替换为fixture；真实事务生成由隔离集成测试覆盖。
   await page.route(`**/api/products/${productId}/pack`, async route => {
     const request = route.request(); if (request.method() !== "POST" || request.postDataJSON().action !== "generate") return route.continue();
@@ -48,5 +48,5 @@ test("图包：默认草稿→意图→确认6张→候选→终稿持久化→Z
   await page.getByRole("button", { name: "导出终稿", exact: true }).click(); await expect(page.getByRole("dialog")).toContainText("尚无终稿");
   const downloaded = page.waitForEvent("download"); await page.getByRole("link", { name: "仅导出已完成部分" }).click(); const download = await downloaded; expect(await download.failure()).toBeNull(); expect(download.suggestedFilename()).toContain("_finals.zip");
   await page.getByRole("button", { name: "放大预览 主图", exact: true }).first().click(); await expect(page.getByRole("dialog")).toContainText("候选图预览"); await page.getByRole("button", { name: "关闭弹窗" }).click();
-  await page.setViewportSize({ width: 390, height: 844 }); await expect(page.locator(".pack-slot-editor").first()).toHaveCSS("display", "grid"); await page.screenshot({ path: ".local/verification/task4-mobile.png", fullPage: true }); expect(errors).toEqual([]);
+  await page.setViewportSize({ width: 390, height: 844 }); await expect(page.locator(".pack-slot-editor").first()).toHaveCSS("display", "grid");  expect(errors).toEqual([]);
 });

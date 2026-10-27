@@ -5,10 +5,11 @@ import { signOut } from "next-auth/react";
 import { Boxes, LayoutTemplate, Settings2, LogOut } from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { roleLabels } from "@/lib/roles";
+import { SHOW_UNCONNECTED_FEATURES } from "@/lib/ui-features";
 
 export function Navigation({ name, role }: { name: string; role: keyof typeof roleLabels }) {
   const pathname = usePathname();
-  const items = [{ href: "/", label: "SKU 项目", icon: Boxes }, { href: "/templates", label: "模板库", icon: LayoutTemplate }, { href: "/admin", label: "管理后台", icon: Settings2 }];
+  const items = [{ href: "/skus", label: "SKU 项目", icon: Boxes }, ...(SHOW_UNCONNECTED_FEATURES ? [{ href: "/library", label: "模板库", icon: LayoutTemplate }] : []), { href: "/admin", label: "管理后台", icon: Settings2 }];
   return <header className="studio-header"><div className="studio-header-inner">
     <Link href="/" className="wordmark" aria-label="家具工作台首页"><span className="brand-symbol">F</span><span>家具<span className="wordmark-light">工作台</span></span></Link>
     <nav aria-label="主导航" className="main-nav">{items.map(({ href, label, icon: Icon }) => {
