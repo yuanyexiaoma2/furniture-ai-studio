@@ -3,11 +3,12 @@ import { z } from "zod";
 import { studioUser, studioError, StudioError } from "@/lib/studio-api";
 import { db } from "@/lib/db";
 import { agentSession, agentSnapshot, json } from "@/lib/agent-state";
+import {canvasSelectionSchema} from "@/lib/canvas-rules";
 import { runAgentTurn } from "@/lib/planning-agent";
 import { approveAgentCard } from "@/lib/agent-actions";
 export const runtime = "nodejs";
 export const maxDuration = 300;
-const messageSchema = z.object({ text: z.string().trim().min(1).max(20000), requestKey: z.string().uuid(), referenceAssetId: z.string().optional() });
+const messageSchema = z.object({ text: z.string().trim().min(1).max(20000), requestKey: z.string().uuid(), referenceAssetId: z.string().optional(),canvas:canvasSelectionSchema.optional() });
 export async function GET(request: Request, context: { params: Promise<{ id: string }> }) {
   try { const user = await studioUser(request); return NextResponse.json(await agentSnapshot((await context.params).id, user.id)); } catch (error) { return studioError(error, "读取 Agent 会话失败"); }
 }
@@ -18,7 +19,7 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
     const encoder = new TextEncoder();
     const stream = new ReadableStream({ start(controller) {
       const emit = (event: unknown) => { try { controller.enqueue(encoder.encode(`data: ${JSON.stringify(event)}\n\n`)); } catch {} };
-      void runAgentTurn(id, user.id, parsed.data.text, parsed.data.requestKey, emit, parsed.data.referenceAssetId).catch(error => emit({ type: "error", text: error instanceof Error ? error.message : "请求失败" })).finally(() => { try { controller.close(); } catch {} });
+      void runAgentTurn(id, user.id, parsed.data.text, parsed.data.requestKey, emit, parsed.data.referenceAssetId,undefined,parsed.data.canvas).catch(error => emit({ type: "error", text: error instanceof Error ? error.message : "请求失败" })).finally(() => { try { controller.close(); } catch {} });
     } });
     return new Response(stream, { headers: { "Content-Type": "text/event-stream; charset=utf-8", "Cache-Control": "no-cache, no-transform", "X-Accel-Buffering": "no" } });
   } catch (error) { return studioError(error, "Agent 请求失败"); }

@@ -9,7 +9,7 @@ let db: PrismaClient, productId = "";
 test.beforeAll(async () => { db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) }); await mkdir(".local/verification", { recursive: true }); });
 test.afterAll(async () => { if (productId) { await db.asset.deleteMany({ where: { productId } }); await db.product.delete({ where: { id: productId } }); } await db.$disconnect(); });
 test("网关后台与 AI 提炼：确认付费、空 Key、结构化填入且手动保存（不产生真实调用）", async ({ page }) => {
-  await page.goto("/login"); await page.getByLabel("公司邮箱").fill(process.env.ADMIN_EMAIL!); await page.getByLabel("密码", { exact: true }).fill(process.env.ADMIN_PASSWORD!); await page.getByRole("button", { name: "进入工作台" }).click(); await expect(page).toHaveURL("http://localhost:3000/");
+  await page.goto("/login"); await page.getByLabel("公司邮箱").fill(process.env.ADMIN_EMAIL!); await page.getByLabel("密码", { exact: true }).fill(process.env.ADMIN_PASSWORD!); await page.getByRole("button", { name: "进入工作台" }).click(); await expect(page).toHaveURL("http://localhost:3000/design-preview");
   await page.goto("/admin/gateways"); await expect(page.getByRole("heading", { name: "网关状态." })).toBeVisible();
   const kie = page.locator(".gateway-card").filter({ has: page.getByRole("heading", { name: "KIE", exact: true }) });
   const zenmux = page.locator(".gateway-card").filter({ has: page.getByRole("heading", { name: "ZenMux", exact: true }) });

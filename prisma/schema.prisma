@@ -414,6 +414,8 @@ model AgentSession {
   createdById String
   mode String @default("quick")
   settings Json @default("{}")
+  canvasLayout Json @default("{}")
+  canvasRevision Int @default(0)
   autoConfirm Boolean @default(false)
   firstGenerationConfirmed Boolean @default(false)
   stopQuestions Boolean @default(false)
@@ -444,6 +446,7 @@ model AgentToolCall {
   result Json?
   status String @default("running")
   error String?
+  completedAt DateTime?
   createdAt DateTime @default(now())
   session AgentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
   @@unique([sessionId, callId])

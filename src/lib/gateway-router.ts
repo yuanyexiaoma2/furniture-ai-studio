@@ -11,7 +11,8 @@ export function circuitFailure(state: CircuitState, now: number): CircuitState {
 export interface CircuitStore { isOpen(provider: GatewayName): Promise<boolean>; success(provider: GatewayName): Promise<void>; failure(provider: GatewayName): Promise<void> }
 export function gatewayPreference() { const value = process.env.GATEWAY_PREFERENCE; return value === "kie" || value === "zenmux" ? value : "auto"; }
 export function candidatesFor(logical: LogicalModel, preference = gatewayPreference()): readonly ModelCandidate[] {
-  return [...models[logical]].sort((a, b) => Number(b.provider === preference) - Number(a.provider === preference));
+  const preferred=preference==="auto"?(logical==="scene-main"||logical==="edit"?"kie":"zenmux"):preference;
+  return [...models[logical]].sort((a, b) => Number(b.provider === preferred) - Number(a.provider === preferred));
 }
 export function gatewayConfigured(provider: GatewayName) { return Boolean(process.env[provider === "kie" ? "KIE_API_KEY" : "ZENMUX_API_KEY"]?.trim()); }
 export type RouteHooks<T> = {

@@ -29,7 +29,7 @@ export function resolveSelection(state:Pick<ModelState,"availability"|"defaults"
  return {auto:raw.auto??true,qualities:raw.qualities??{},webEnabled:raw.webEnabled??true,resolution:raw.resolution??"auto",agentId,imageIds,imageId:images.some(m=>m.id===raw.imageId)?raw.imageId:defaultImage};
 }
 export const useModelStore=create<ModelState>()(persist((set,get)=>({
- ...initial(),setCatalog:catalog=>set({catalog,availability:Object.fromEntries(catalog.map(m=>[m.id,{enabled:m.enabled,visible:m.visible}]))}),
+ ...initial(),setCatalog:catalog=>set(s=>({catalog,availability:Object.fromEntries(catalog.map(m=>[m.id,{enabled:m.enabled,visible:m.visible}])),defaults:{agent:catalog.find(m=>m.kind==="agent"&&m.isDefault)?.id??s.defaults.agent,image:catalog.find(m=>m.kind==="image"&&m.isDefault)?.id??s.defaults.image}})),
  startSession:(id,fresh=false)=>{if(!fresh&&get().sessions[id])return;const selected=resolveSelection(get(),"home");set(s=>({sessions:{...s.sessions,[id]:{...selected,imageIds:[...selected.imageIds],qualities:{...selected.qualities}}},...(fresh?{events:{...s.events,[id]:[]}}:{})}));},
  updateSelection:(scope,patch,message)=>set(s=>{
   const next={...resolveSelection(s,scope),...patch};
@@ -38,10 +38,14 @@ export const useModelStore=create<ModelState>()(persist((set,get)=>({
  configure:(id,patch)=>set(s=>({availability:{...s.availability,[id]:{...s.availability[id],...patch}}})),
  setDefault:id=>{const model=models.find(m=>m.id===id);if(model)set(s=>({defaults:{...s.defaults,[model.kind]:id},availability:{...s.availability,[id]:{enabled:true,visible:true}}}));},
  reset:()=>set(initial()),
-}),{name:"furniture-preview-models-v3",version:1,skipHydration:true}));
+}),{name:"furniture-preview-models-v3",version:2,skipHydration:true,migrate:value=>{
+ // 更新旧浏览器的首页默认值，已有会话保留原来的模型选择。
+ const previous=value as Partial<ModelState>;
+ return {...previous,defaults:{...defaults,...previous.defaults,agent:defaults.agent},home:{...initialSelection,...previous.home,agentId:defaults.agent}};
+}}));
 export function estimateCost(state:ModelState,scope:string,count:number){
  const selected=resolveSelection(state,scope);const agent=(state.catalog??models).find(m=>m.id===selected.agentId);
  const imageModels=(state.catalog??models).filter(m=>selected.auto?selected.imageIds.includes(m.id):m.id===selected.imageId);
- const imagePrice=Math.max(0,...imageModels.map(m=>(m.pricesByResolution?.[selected.resolution==="4K"?"4K":selected.resolution==="1K"?"1K":"2K"]??modelRate(m,selected.qualities[m.id]).price)));
+ const imagePrice=Math.max(0,...imageModels.map(m=>(m.pricesByResolution?.[selected.resolution==="4K"?"4K":selected.resolution==="1K"?"1K":"2K"]??modelRate(m,selected.qualities[m.id]).price)+(m.referenceImagePrice??0)*3));
  return (agent?.price??0)+imagePrice*count;
 }

@@ -126,12 +126,12 @@ export async function studioEdit(productId:string,userId:string,assetId:string,i
  return db.$transaction(async tx=>{
  await tx.$queryRaw`SELECT id FROM "User" WHERE id=${userId} FOR UPDATE`;
  const existing=options.requestKey?await tx.generationJob.findFirst({where:{productId,sessionId:session.id,input:{path:["requestKey"],equals:options.requestKey}}}):null;if(existing)return {jobId:existing.id,estimatedCostUsd:Number(existing.reservedUsd),warning:null};
- const prepared=await prepareEditInput(tx,productId,instruction,source.slot!.aspectRatio as "1:1",settingsOf(session.settings).resolution==="4K"?"4K":settingsOf(session.settings).resolution==="1K"?"1K":"2K",{sourceJobId:source.id,sourceAssetId:assetId},candidate);
+ const prepared=await prepareEditInput(tx,productId,instruction,source.slot!.aspectRatio as "1:1",settingsOf(session.settings).resolution==="4K"?"4K":settingsOf(session.settings).resolution==="1K"?"1K":"2K",{sourceJobId:source.id,sourceAssetId:assetId},candidate,options.maskAssetId?[options.maskAssetId]:[]);
  if(options.fingerprint&&options.fingerprint!==editFingerprint(prepared.input,candidate,options))throw new StudioError("产品档案、模型或费用已变化，请重新确认修改费用",409);
  if(options.maskAssetId){const mask=await tx.asset.findFirst({where:{id:options.maskAssetId,productId,type:"mask",createdById:userId}});if(!mask)throw new StudioError("蒙版不属于当前SKU，请重新涂抹",404);}
  await assertUsdQuota(tx,userId,prepared.estimate);
  const editCount=Number((source.input as Record<string,unknown>).editCount??0)+1;
- const id=await enqueueImageJob(tx,{productId,sessionId:session.id,slotId:source.slotId,logicalModel:"edit",createdById:userId,reservedUsd:prepared.estimate,input:json({...prepared.input,...options,referenceAssetIds:[...prepared.input.referenceAssetIds,...(options.maskAssetId?[options.maskAssetId]:[])],editCount,selectedCandidate:candidate})});
+ const id=await enqueueImageJob(tx,{productId,sessionId:session.id,slotId:source.slotId,logicalModel:"edit",createdById:userId,reservedUsd:prepared.estimate,input:json({...prepared.input,...options,referenceAssetIds:prepared.input.referenceAssetIds,editCount,selectedCandidate:candidate})});
  return{jobId:id,estimatedCostUsd:prepared.estimate,warning:editCount>3?"建议回到原图重做":null};
  },{timeout:30000});
 }
@@ -144,6 +144,6 @@ export async function quoteStudioEdit(productId:string,userId:string,assetId:str
  const source=await db.generationJob.findFirst({where:{productId,status:"success",resultAssetIds:{array_contains:[assetId]}},include:{slot:true}});
  if(!source?.slot||source.slot.deletedAt)throw new StudioError("请选择当前图包的已完成候选图",404);
  const candidate=await selectedCandidate("image",settings);
- const prepared=await db.$transaction(tx=>prepareEditInput(tx,productId,instruction,source.slot!.aspectRatio as "1:1",settings.resolution==="4K"?"4K":settings.resolution==="1K"?"1K":"2K",{sourceJobId:source.id,sourceAssetId:assetId},candidate),{timeout:30000});
+ const prepared=await db.$transaction(tx=>prepareEditInput(tx,productId,instruction,source.slot!.aspectRatio as "1:1",settings.resolution==="4K"?"4K":settings.resolution==="1K"?"1K":"2K",{sourceJobId:source.id,sourceAssetId:assetId},candidate,options.maskAssetId?[options.maskAssetId]:[]),{timeout:30000});
  return{estimatedCostUsd:prepared.estimate,estimated:true,fingerprint:editFingerprint(prepared.input,candidate,options),warning:Number((source.input as Record<string,unknown>).editCount??0)>=3?"建议回到原图重做":null};
 }

@@ -8,7 +8,7 @@ export function imageInputTokens(photos: { width: number; height: number }[]) {
 // 文本按字符、图片按瓦片粗估；不是网关实际 token 计数。
 export function estimateImageUsd(candidate: ModelCandidate, resolution: ImageResolution, prompt = "", photos: { width: number; height: number }[] = []) {
   const pricing = candidate.pricing;
-  if (pricing.images?.[resolution] !== undefined) return roundUsd(pricing.images[resolution]! * (pricing.currency === "credits" ? KIE_USD_PER_CREDIT : 1));
+  if (pricing.images?.[resolution] !== undefined) return roundUsd((pricing.images[resolution]! + photos.length*(pricing.inputImage??0)) * (pricing.currency === "credits" ? KIE_USD_PER_CREDIT : 1));
   if (pricing.imageTokens?.[resolution] === undefined || pricing.imageOutputPerMillion === undefined) throw new Error("生图模型未配置可核实的预估单价");
   return roundUsd((pricing.imageTokens[resolution]! * pricing.imageOutputPerMillion + (prompt.length + imageInputTokens(photos)) * (pricing.inputPerMillion ?? 0) + IMAGE_TEXT_OUTPUT_BUDGET * (pricing.outputPerMillion ?? 0)) / 1_000_000);
 }

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export function LoginForm() {
+export function LoginForm({ destination }: { destination: string }) {
   const router = useRouter();
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
@@ -17,7 +17,7 @@ export function LoginForm() {
     try {
       const result = await signIn("credentials", { email: data.get("email"), password: data.get("password"), redirect: false });
       if (result?.error) { setError("邮箱或密码不正确，请重新输入"); return; }
-      router.replace("/"); router.refresh();
+      router.replace(destination); router.refresh();
     } catch { setError("暂时无法登录，请稍后重试"); }
     finally { setPending(false); }
   }

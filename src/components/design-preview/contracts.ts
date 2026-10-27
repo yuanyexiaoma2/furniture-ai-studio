@@ -7,5 +7,5 @@ export type ActionRequest = {
   parameters?:{count:number;ratio:string;quality:"标准"|"精细"};
   editCount:number;
 };
-export type OnImageAction = (request:ActionRequest)=>void|Promise<void>;
+export type OnImageAction = (request:ActionRequest)=>void|false|Promise<void|false>;
 export interface MaskExportHandle { exportMask:()=>Promise<Blob>; }

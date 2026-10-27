@@ -12,19 +12,24 @@ import { createCostCard } from "./agent-actions";
 import { StudioError } from "./studio-error";
 import type { LLMInput, LLMMessage } from "./llm-provider";
 import { defaultSlots } from "./pack-rules";
-export type AgentEvent = { type: "delta" | "tool" | "done" | "error"; text?: string; name?: string; snapshot?: unknown };
+import {canvasContext,canvasRegistry} from "./canvas-state";
+import type {CanvasSelection} from "./canvas-rules";
+import {progressLabel,progressSummary} from "./agent-progress";
+export type AgentEvent = { type: "delta" | "tool" | "done" | "error"; text?: string; name?: string; snapshot?: unknown; callId?:string; status?:"running"|"success"|"failed"; summary?:string };
 export type AgentChat = (input: LLMInput, context: { userId: string; productId: string; sessionId: string }) => ReturnType<typeof chatWithGateway>;
 const liveChat: AgentChat = async (input, context) => {const s=await db.agentSession.findUniqueOrThrow({where:{id:context.sessionId}});const settings=settingsOf(s.settings);return chatWithGateway("llm-agent",input,{...context,...(settings.agentId?{candidate:await selectedCandidate("agent",settings)}:{})});};
-export async function runAgentTurn(productId: string, userId: string, text: string, requestKey: string, emit: (event: AgentEvent) => void = () => {}, referenceAssetId?: string, chat: AgentChat = liveChat) {
+export async function runAgentTurn(productId: string, userId: string, text: string, requestKey: string, emit: (event: AgentEvent) => void = () => {}, referenceAssetId?: string, chat: AgentChat = liveChat, canvasSelection:Partial<CanvasSelection>={}) {
   const session = await agentSession(productId, userId);
   const existing = await db.chatMessage.findUnique({ where: { requestKey } });
   if (existing) { if (existing.sessionId !== session.id) throw new StudioError("消息编号冲突", 409); emit({ type: "done", snapshot: await agentSnapshot(productId, userId) }); return; }
   if (referenceAssetId && !await db.asset.findFirst({ where: { id: referenceAssetId, productId, type: "generated", deletedAt: null } })) throw new StudioError("引用图片不属于当前 SKU", 404);
+  const canvas=await canvasContext(productId,userId,{...canvasSelection,referenceAssetIds:[...new Set([...(canvasSelection.referenceAssetIds??[]),...(referenceAssetId?[referenceAssetId]:[])])]});
+  const activeTools=new Set<string>();
   const lock = await db.agentSession.updateMany({ where: { id: session.id, OR: [{ runningAt: null }, { runningAt: { lt: new Date(Date.now() - 5 * 60000) } }] }, data: { runningAt: new Date() } });
   if (!lock.count) throw new StudioError("Agent 正在处理本 SKU，请等待当前消息完成", 409);
   try {
     if (stopsQuestions(text)) { await db.agentSession.update({ where: { id: session.id }, data: { stopQuestions: true } }); await db.agentCard.updateMany({ where: { sessionId: session.id, kind: "questions", status: "pending" }, data: { status: "cancelled" } }); }
-    await db.chatMessage.create({ data: { productId, sessionId: session.id, role: "user", requestKey, content: json({ text, ...(referenceAssetId ? { referenceAssetId } : {}) }) } });
+    await db.chatMessage.create({ data: { productId, sessionId: session.id, role: "user", requestKey, content: json({ text, ...(referenceAssetId ? { referenceAssetId } : {}),referenceAssetIds:canvas.referenceAssetIds,canvasSelection:canvas.selection }) } });
     const saved = await db.chatMessage.findMany({ where: { sessionId: session.id }, orderBy: [{ createdAt: "asc" }, { id: "asc" }] });
     const prior = saved.map(m => {
       const c = m.content as Record<string, unknown>;
@@ -35,7 +40,7 @@ export async function runAgentTurn(productId: string, userId: string, text: stri
     const state = await db.agentSession.findUniqueOrThrow({ where: { id: session.id } });
     const currentSlots = await db.imageSlot.findMany({ where: { deletedAt: null, pack: { productId, isCurrent: true } }, orderBy: { order: "asc" }, select: { id: true, name: true, method: true, goal: true, candidateCount: true, finalAssetId: true } });
     const recentJobs = await db.generationJob.findMany({ where: { productId, sessionId: session.id }, orderBy: { createdAt: "desc" }, take: 10, select: { id: true, status: true, logicalModel: true, slotId: true, resultAssetIds: true } });
-    const messages: LLMMessage[] = [{ role: "system", content: AGENT_SYSTEM_PROMPT + `\n当前状态：${JSON.stringify({ mode: state.mode, autoConfirm: state.autoConfirm, stopQuestions: state.stopQuestions, confirmedProfileId: state.confirmedProfileId, confirmedPack: state.confirmedPack, currentSlots, recentJobs })}` }, ...prior.slice(start)];
+    const messages: LLMMessage[] = [{ role: "system", content: AGENT_SYSTEM_PROMPT + `\n当前状态：${JSON.stringify({ mode: state.mode, autoConfirm: state.autoConfirm, stopQuestions: state.stopQuestions, confirmedProfileId: state.confirmedProfileId, confirmedPack: state.confirmedPack, currentSlots, recentJobs,canvas:canvas.summary,referenceAssetIds:canvas.referenceAssetIds })}` }, ...prior.slice(start)];
     let materialsRead = false, materialImages: string[] = [];
     const viewed = new Set<string>();
     const previousViews = await db.agentToolCall.findMany({ where: { sessionId: session.id, name: "view_images", status: "success" } });
@@ -43,7 +48,7 @@ export async function runAgentTurn(productId: string, userId: string, text: stri
     const seenCalls = new Set<string>(); const toolFailures = new Map<string, number>();
     for (let step = 0; step < 12; step++) {
       await db.agentSession.update({ where: { id: session.id }, data: { runningAt: new Date() } });
-      const response = await chat({ messages, tools: llmAgentTools(settingsOf(state.settings).webEnabled!==false), maxOutputTokens: 6000, onDelta: delta => emit({ type: "delta", text: delta }) }, { userId, productId, sessionId: session.id });
+      const response = await chat({ messages, ...(step===0&&canvas.referenceAssetIds.length?{images:canvas.referenceAssetIds.map(id=>({id}))}:{}), tools: llmAgentTools(settingsOf(state.settings).webEnabled!==false), maxOutputTokens: 6000, onDelta: delta => emit({ type: "delta", text: delta }) }, { userId, productId, sessionId: session.id });
       const reply = response.result;
       const assistant = { role: "assistant" as const, content: reply.text, ...(reply.toolCalls?.length ? { tool_calls: reply.toolCalls } : {}) };
       messages.push(assistant);
@@ -52,7 +57,9 @@ export async function runAgentTurn(productId: string, userId: string, text: stri
       let waiting = false; let stopAfterFailure = false;
       for (const call of reply.toolCalls) {
         let args: unknown = {}; let result: unknown; let errorText: string | undefined;
-        emit({ type: "tool", name: call.function.name, text: `正在${toolProgress(call.function.name)}……` });
+        activeTools.add(call.id);
+        await db.agentToolCall.upsert({where:{sessionId_callId:{sessionId:session.id,callId:call.id}},create:{sessionId:session.id,callId:call.id,name:call.function.name,arguments:{},status:"running"},update:{}});
+        emit({ type:"tool",name:call.function.name,callId:call.id,status:"running",text:"正在"+progressLabel(call.function.name)+"…" });
         try {
           args = JSON.parse(call.function.arguments);
           const name = call.function.name as AgentToolName;
@@ -70,7 +77,9 @@ export async function runAgentTurn(productId: string, userId: string, text: stri
           if (name === "view_images") for (const imageId of (result as { images: string[] }).images) viewed.add(imageId);
           if ((result as { waitForUser?: boolean })?.waitForUser) waiting = true;
         } catch (error) { errorText = error instanceof Error ? error.message : "工具执行失败"; const failures = (toolFailures.get(call.function.name) ?? 0) + 1; toolFailures.set(call.function.name, failures); if (failures >= 2) stopAfterFailure = true; result = { error: errorText, correction: "核对工具 schema 和当前材料，只纠正一次；收费工具不得直接重复提交。" }; }
-        await db.agentToolCall.upsert({ where: { sessionId_callId: { sessionId: session.id, callId: call.id } }, create: { sessionId: session.id, callId: call.id, name: call.function.name, arguments: json(args), result: json(result), status: errorText ? "failed" : "success", error: errorText }, update: {} });
+        await db.agentToolCall.update({where:{sessionId_callId:{sessionId:session.id,callId:call.id}},data:{arguments:json(args),result:json(result),status:errorText?"failed":"success",error:errorText,completedAt:new Date()}});
+        activeTools.delete(call.id);
+        emit({type:"tool",name:call.function.name,callId:call.id,status:errorText?"failed":"success",summary:progressSummary(result)});
         messages.push({ role: "tool", tool_call_id: call.id, content: JSON.stringify(result) });
         await db.chatMessage.create({ data: { productId, sessionId: session.id, role: "tool", content: json({ callId: call.id, name: call.function.name, result }) } });
       }
@@ -81,13 +90,14 @@ export async function runAgentTurn(productId: string, userId: string, text: stri
     const message = error instanceof StudioError || error instanceof Error ? error.message : "Agent 请求失败";
     await db.chatMessage.create({ data: { productId, sessionId: session.id, role: "system", content: { text: `本轮未完成：${message}。已执行操作和收费记录保留，请核对后继续。` } } });
     emit({ type: "error", text: message });
-  } finally { await db.agentSession.update({ where: { id: session.id }, data: { runningAt: null } }); }
+  } finally { if(activeTools.size)await db.agentToolCall.updateMany({where:{sessionId:session.id,callId:{in:[...activeTools]},status:"running"},data:{status:"failed",error:"处理被中断，请核对已保存结果后继续；未自动重试",completedAt:new Date()}});await db.agentSession.update({ where: { id: session.id }, data: { runningAt: null } }); }
   emit({ type: "done", snapshot: await agentSnapshot(productId, userId) });
 }
 export async function executeAgentTool(sessionId: string, name: AgentToolName, raw: unknown) {
   const session = await db.agentSession.findUniqueOrThrow({ where: { id: sessionId } });
   const productId = session.productId;
   const args = agentToolSchemas[name].parse(await resolveSourceAliases(sessionId, name, raw));
+  if(name==="inspect_canvas"){const latest=await db.chatMessage.findFirst({where:{sessionId,role:"user"},orderBy:{createdAt:"desc"}});const selected=(latest?.content as {canvasSelection?:CanvasSelection}|null)?.canvasSelection;const canvas=await canvasContext(productId,session.createdById,selected);const a=agentToolSchemas.inspect_canvas.parse(args);const matched=canvas.elements.filter(e=>(!a.elementId||e.id===a.elementId||e.alias===a.elementId)&&(!a.region||e.x+e.width>=a.region.x&&e.x<=a.region.x+a.region.width&&e.y+e.height>=a.region.y&&e.y<=a.region.y+a.region.height));return {...canvas.summary,matchedCount:matched.length,elements:matched.slice(0,60)};}
   if(name==="web_search"){if(settingsOf(session.settings).webEnabled===false)throw new StudioError("本会话已关闭联网，不能搜索网页",403);const a=agentToolSchemas.web_search.parse(args);return webSearch(sessionId,session.createdById,a.query,a.max_results);}
   if (name === "read_product_materials") {
     const product = await db.product.findUniqueOrThrow({ where: { id: productId } });
@@ -140,7 +150,6 @@ export async function executeAgentTool(sessionId: string, name: AgentToolName, r
   const card = old ?? await db.agentCard.create({ data: { sessionId, kind, data: json(data) } });
   return { cardId: card.id, waitForUser: true, kind };
 }
-function toolProgress(name: string) { return ({ read_product_materials: "读取全部资料", view_images: "查看图片", update_profile_draft: "更新产品理解", ask_user: "准备核对问题", request_profile_confirmation: "准备理解确认卡", propose_image_pack: "策划图包", generate_slot: "核算单图位费用", generate_batch: "核算整套费用", edit_image: "核算图片调整费用", set_final: "请求终稿确认" } as Record<string, string>)[name] ?? "调用工具"; }
 
 async function sourceAliasMap(sessionId: string) {
   const session = await db.agentSession.findUniqueOrThrow({ where: { id: sessionId } });
@@ -152,10 +161,13 @@ async function sourceAliasMap(sessionId: string) {
   return [{ alias: "P", kind: "product", id: session.productId }, ...docs.map((d, i) => ({ alias: "D" + (i + 1), kind: "document", ...d })), ...images.map((a, i) => ({ alias: "I" + (i + 1), kind: "image", id: a.id })), ...messages.map((m, i) => ({ alias: "M" + (i + 1), kind: "message", id: m.id, content: m.content })).slice(-30)];
 }
 async function resolveSourceAliases(sessionId: string, name: AgentToolName, raw: unknown) {
-  if (!["view_images", "update_profile_draft"].includes(name) || !raw || typeof raw !== "object") return raw;
+  if (!["view_images", "update_profile_draft","edit_image","set_final"].includes(name) || !raw || typeof raw !== "object") return raw;
   const references = await sourceAliasMap(sessionId);
+  const session=await db.agentSession.findUniqueOrThrow({where:{id:sessionId}});
+  references.push(...(await canvasRegistry(session.productId)).filter(e=>e.assetId).map(e=>({alias:e.alias!,kind:"image",id:e.assetId!})));
   const resolve = (id: unknown, kind: string) => references.find(r => r.kind === kind && r.alias === String(id).toUpperCase())?.id ?? id;
   const copy = JSON.parse(JSON.stringify(raw));
+  if(name==="edit_image"||name==="set_final")copy.assetId=resolve(copy.assetId,"image");
   if (name === "view_images") { copy.imageIds = copy.imageIds?.map((id: string) => resolve(id, "image")); for (const c of copy.classifications ?? []) c.documentId = resolve(c.documentId, "document"); }
   if (name === "update_profile_draft") for (const f of copy.fields ?? []) { for (const source of [...(f.data?.sources ?? []), ...(f.data?.conflicts ?? []).map((c: { source: unknown }) => c.source)]) if (source) source.id = resolve(source.id, source.kind); }
   return copy;

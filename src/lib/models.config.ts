@@ -1,3 +1,5 @@
+import {DEFAULT_AGENT} from "./agent-default";
+import {imageCandidate,kieImageModels} from "./image-models";
 // 模型值已由官方 createTask 示例核实，详见 docs/kie-notes.md。
 export const KIE_USD_PER_CREDIT = 0.005;
 export const IMAGE_DEFAULTS = { resolution: "2K", output_format: "png", aspect_ratio: "1:1" } as const;
@@ -20,11 +22,11 @@ export type ModelCandidate = {
   endpoint?: string;
   protocol?: "chat" | "responses";
   supportsTools: boolean;
-  pricing: { currency: "credits" | "USD"; images?: Partial<Record<"1K" | "2K" | "4K", number>>; inputPerMillion?: number; outputPerMillion?: number; imageTokens?: Partial<Record<"1K" | "2K" | "4K", number>>; imageOutputPerMillion?: number; longContextInputPerMillion?: number; longContextOutputPerMillion?: number; estimateSource?: string };
+  pricing: { currency: "credits" | "USD"; images?: Partial<Record<"1K" | "2K" | "4K", number>>; inputImage?: number; inputPerMillion?: number; outputPerMillion?: number; imageTokens?: Partial<Record<"1K" | "2K" | "4K", number>>; imageOutputPerMillion?: number; longContextInputPerMillion?: number; longContextOutputPerMillion?: number; estimateSource?: string };
 };
 const imageCandidates: readonly ModelCandidate[] = [
+  imageCandidate(kieImageModels[0]),
   { provider: "zenmux", model: "google/gemini-nano-banana-2.1", supportsTools: false, pricing: { currency: "USD", inputPerMillion: 1.5, outputPerMillion: 7.5, imageOutputPerMillion: 30, imageTokens: { "1K": 1120, "2K": 1680, "4K": 3780 }, estimateSource: "Google 上游价格与图像 token，仅供预估，ZenMux 账单回填为准" } },
-  { provider: "kie", model: KIE_IMAGE_MODEL.model, supportsTools: false, pricing: { currency: "credits", images: KIE_IMAGE_MODEL.prices } },
 ];
 export const models = {
   "scene-main": imageCandidates,
@@ -35,7 +37,7 @@ export const models = {
   ],
   // KIE Responses 工具模型；单价来源 kie.ai/gpt-6-1-sol（2026-10-14）。
   "llm-agent": [
-    { provider: "zenmux", model: "google/gemini-2.5-pro", supportsTools: true, pricing: { currency: "USD", inputPerMillion: 1.25, outputPerMillion: 10, longContextInputPerMillion: 2.5, longContextOutputPerMillion: 15 } },
+    DEFAULT_AGENT.candidate,
     { provider: "kie", model: "gpt-6-1-sol", endpoint: "https://api.kie.ai/codex/v1/responses", protocol: "responses", supportsTools: true, pricing: { currency: "credits", inputPerMillion: 120, outputPerMillion: 600 } },
   ],
 } satisfies Record<string, readonly ModelCandidate[]>;

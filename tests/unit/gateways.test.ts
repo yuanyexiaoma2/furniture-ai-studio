@@ -8,6 +8,7 @@ import { kieRequest } from "../../src/lib/kie-http";
 import { GatewayError } from "../../src/lib/gateway-error";
 import { circuitFailure, emptyCircuit, routeCall, type CircuitStore } from "../../src/lib/gateway-router";
 import type { ModelCandidate } from "../../src/lib/models.config";
+import {DEFAULT_AGENT} from "../../src/lib/agent-default";
 import type { ImageRequest } from "../../src/lib/image-provider";
 import { identityPrompt, identitySchema, identityText } from "../../src/prompts/identity";
 import { db } from "../../src/lib/db";
@@ -62,6 +63,16 @@ test("ZenMux LLM：5xx / 429 / 超时和拒绝可切换，422 不切换", async 
   for (const status of [500, 429, 422]) await assert.rejects(new ZenMuxLLMProvider(undefined, async () => { throw { status }; }, read).chat({ messages: [] }), e => e instanceof GatewayError && e.retryable === (status !== 422));
   await assert.rejects(new ZenMuxLLMProvider(undefined, async () => { throw new DOMException("timeout", "TimeoutError"); }, read).chat({ messages: [] }), e => e instanceof GatewayError && e.uncertain);
   await assert.rejects(new ZenMuxLLMProvider(undefined, async () => ({ choices: [{ finish_reason: "content_filter" }] }), read).chat({ messages: [] }), /拦截/);
+});
+test("默认Flash Agent通过ZenMux发送读图与工具请求并解析工具调用",async()=>{
+ const tools=[{type:"function" as const,function:{name:"choose_recipe",parameters:{type:"object"}}}];
+ const provider=new ZenMuxLLMProvider(DEFAULT_AGENT.candidate.model,async body=>{
+  assert.equal(body.model,"google/gemini-3.8-flash");assert.deepEqual(body.tools,tools);
+  assert.match(JSON.stringify(body.messages),/data:image\/png;base64,/);
+  return {choices:[{message:{content:null,tool_calls:[{id:"flash-call",type:"function",function:{name:"choose_recipe",arguments:'{"templateId":"S01"}'}}]}}],usage:{prompt_tokens:100,completion_tokens:20,total_tokens:120}};
+ },read);
+ const reply=await provider.chat({messages:[{role:"user",content:"根据实拍规划"}],images:[{id:"photo"}],tools});
+ assert.equal(reply.toolCalls?.[0].id,"flash-call");assert.equal(reply.toolCalls?.[0].function.arguments,'{"templateId":"S01"}');assert.equal(reply.usage.totalTokens,120);
 });
 test("未配置网关自动跳过，不标记备用；优先 ZenMux 为空仍走 KIE", async () => {
   const s = setup();

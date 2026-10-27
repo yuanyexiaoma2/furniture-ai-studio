@@ -6,6 +6,8 @@ import { KieError, kieRequest, kieFailure, ReferenceImageFailure, referenceImage
 import { models } from "./models.config";
 import { kieCreditCost } from "./gateway-cost";
 import type { ImageInput, ImageProvider, ImageResult, ImageRequest, ImageGeneration } from "@/lib/image-provider";
+import {buildKieImageInput,validateImageSelection} from "./image-model-input";
+import {kieImageSpec} from "./image-models";
 import { ImageTaskFailure } from "@/lib/gateway-error";
 import { downloadResultImage } from "@/lib/remote-image";
 
@@ -13,9 +15,10 @@ export class KieProvider implements ImageProvider {
   constructor(private model = models["scene-main"].find(c => c.provider === "kie")!.model, private download: (url: string) => Promise<Buffer> = downloadResultImage) {}
   isConfigured() { return Boolean(process.env.KIE_API_KEY?.trim()); }
   async generate(input: ImageRequest): Promise<ImageGeneration> {
+    validateImageSelection({provider:"kie",model:this.model,supportsTools:false,pricing:{currency:"credits"}},input.resolution,input.aspectRatio,input.prompt,input.referenceImages.length);
     const urls: string[] = [];
-    for (const asset of input.referenceImages) urls.push(await this.uploadFile(asset.id, input.forceReferenceUpload));
-    const requestInput: ImageInput = { prompt: input.prompt, image_input: urls, aspect_ratio: input.aspectRatio, resolution: input.resolution, output_format: input.outputFormat };
+    for (const asset of input.referenceImages) urls.push(await this.uploadFile(asset.id, input.forceReferenceUpload,kieImageSpec(this.model)?.maxReferenceBytes));
+    const requestInput=buildKieImageInput(this.model,input,urls);
     const taskId = await this.submit(this.model, requestInput);
     return { kind: "pending", taskId, requestInput };
   }
@@ -28,11 +31,12 @@ export class KieProvider implements ImageProvider {
   private baseUrl = process.env.KIE_BASE_URL?.trim() || "https://api.kie.ai";
   private uploadBaseUrl = process.env.KIE_UPLOAD_BASE_URL?.trim() || "https://kieai.redpandaai.co";
 
-  async uploadFile(assetId: string, force = false) {
+  async uploadFile(assetId: string, force = false,maxBytes=30*1024*1024) {
     const key = process.env.KIE_API_KEY?.trim();
     if (!key) throw new KieError("尚未配置 KIE_API_KEY，请联系管理员", 401);
     const asset = await db.asset.findUniqueOrThrow({ where: { id: assetId } });
     const { bytes } = await readObject(asset.storageKey);
+    if(bytes.length>maxBytes)throw new KieError(`${kieImageSpec(this.model)?.name??"所选模型"}的参考图每张不能超过${maxBytes/1024/1024}MB，请压缩后重新上传`,400);
     const photo = await inspectPhoto(bytes);
     const contentHash = createHash("sha256").update(bytes).digest("hex");
     const account = createHash("sha256").update(key + this.uploadBaseUrl).digest("hex");
@@ -56,7 +60,7 @@ export class KieProvider implements ImageProvider {
     }, { timeout: 180000, maxWait: 180000 });
   }
 
-  async submit(model: string, input: ImageInput) {
+  async submit(model: string, input: ImageInput|Record<string,unknown>) {
     const callBackUrl = process.env.KIE_CALLBACK_URL?.trim();
     const response = await kieRequest(`${this.baseUrl}/api/v1/jobs/createTask`, {
       method: "POST", headers: { "Content-Type": "application/json" },

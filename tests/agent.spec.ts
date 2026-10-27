@@ -12,7 +12,7 @@ async function control(phase:string,extra:Record<string,unknown>={}) {const resp
 for(const mode of ["quick","manual"] as const) test(`Agent ${mode==="quick"?"快速整套":"手动逐张"}：上传→问题→档案修改→方案→费用→候选→引用调整→终稿`,async({page})=>{
   const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
   const product=await db.product.create({data:{sku:`E2E-AGENT-${mode}-${randomUUID()}`,name:"Agent浏览器模拟边柜",category:"边柜",dimensions:"80x40x90cm",materials:"橡木",colors:"木色",sellingPoints:[],createdById:process.env.AGENT_TEST_USER!}});
-  await page.goto("/login");await page.getByLabel("公司邮箱").fill("agent-test@example.invalid");await page.getByLabel("密码",{exact:true}).fill("agent-test-password-123");await page.getByRole("button",{name:"进入工作台"}).click();await page.waitForURL(url=>url.pathname==="/");
+  await page.goto("/login");await page.getByLabel("公司邮箱").fill("agent-test@example.invalid");await page.getByLabel("密码",{exact:true}).fill("agent-test-password-123");await page.getByRole("button",{name:"进入工作台"}).click();await page.waitForURL(url=>url.pathname==="/design-preview");
   await page.goto(`/products/${product.id}/pack`);await page.waitForLoadState("networkidle");
   await page.getByLabel("上传产品资料").setInputFiles([0,1,2].map(i=>({name:`photo-${i}.png`,mimeType:"image/png",buffer:readFileSync(".local/agent-photo.png")})).concat([{name:"manual.docx",mimeType:"application/vnd.openxmlformats-officedocument.wordprocessingml.document",buffer:readFileSync(".local/agent-manual.docx")},{name:"spec.csv",mimeType:"text/csv",buffer:Buffer.from("参数,值\n宽度,80cm\n材质,橡木")}]) );
   await expect(page.locator(".agent-document")).toHaveCount(5);await expect(page.locator(".agent-document").filter({hasText:"文字已解析"})).toHaveCount(2);

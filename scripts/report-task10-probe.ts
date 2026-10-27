@@ -2,7 +2,7 @@ import "dotenv/config";
 import {readFileSync,writeFileSync} from "node:fs";
 import {db} from "../src/lib/db";
 import {json} from "../src/lib/agent-state";
-import {passedProbe} from "../src/lib/studio-models";
+import {passedProbe} from "../src/lib/studio-rules";
 const mapping=[["agent-sol","gpt-6-1-sol"],["agent-flash","gemini-3-8-flash-openai"],["agent-haiku","claude-haiku-5-5"]];
 let report="# 任务10 · 模型能力实测\n\n测试时间："+new Date().toISOString()+"。真实 KIE 请求，无模拟返回。\n\n## 方法\n\n5个工具（品类枚举、候选数量、实拍短码、颜色+布尔锁定、图位数组），各4次独立请求，共20次，不强制 tool_choice。格式正确要求只有一个函数调用且参数能解析为JSON；参数正确要求函数名、必填字段、值和额外字段均与测试目标一致。20轮中文对话每轮追加约300字材料，检查SKU、品类、锁定特征及轮次；这是20轮历史稳定性测试，不代表模型标称最大上下文窗口。失败与限流计入端到端失败，不补跑覆盖原始结果。\n\n费用采用响应 credits_consumed × $0.005；缺少实际账单时保留估算并标注。均记录在 LlmCall；本次探测不关联生产SKU。\n\n|模型|格式正确|参数正确|平均耗时/次|单次平均USD|20轮稳定|开放建议|\n|---|---:|---:|---:|---:|---:|---|\n";
 const details:string[]=[];

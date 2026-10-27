@@ -6,11 +6,18 @@ import { StudioError } from "./studio-error";
 export function json(value: unknown): Prisma.InputJsonValue { return JSON.parse(JSON.stringify(value)); }
 export async function agentSession(productId: string, userId: string) {
   if (!await db.product.findUnique({ where: { id: productId } })) throw new StudioError("商品不存在", 404);
-  return db.agentSession.upsert({ where: { productId_createdById: { productId, createdById: userId } }, create: { productId, createdById: userId, profileDraft: emptyProfile() }, update: {} });
+  const where={productId_createdById:{productId,createdById:userId}};
+  try{return await db.agentSession.upsert({where,create:{productId,createdById:userId,profileDraft:emptyProfile()},update:{}});}
+  catch(error){
+    // 首次进入时画布、对话和商品快照会并发读取同一会话；复用已创建的记录。
+    if((error as {code?:string}).code==="P2002"){const existing=await db.agentSession.findUnique({where});if(existing)return existing;}
+    throw error;
+  }
 }
 export async function agentSnapshot(productId: string, userId: string) {
   const session = await agentSession(productId, userId);
   await recoverAgentCards(session.id);
+  if(!session.runningAt||Date.now()-session.runningAt.getTime()>300000)await db.agentToolCall.updateMany({where:{sessionId:session.id,status:"running",createdAt:{lt:new Date(Date.now()-300000)}},data:{status:"failed",error:"上次处理已中断，请核对已保存结果后继续；没有自动重试",completedAt:new Date()}});
   const [messages, cards, documents, calls, jobs, tools] = await Promise.all([
     db.chatMessage.findMany({ where: { sessionId: session.id }, orderBy: [{ createdAt: "asc" }, { id: "asc" }] }),
     db.agentCard.findMany({ where: { sessionId: session.id }, orderBy: { createdAt: "asc" } }),

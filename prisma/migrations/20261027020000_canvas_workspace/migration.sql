@@ -1,0 +1,2 @@
+ALTER TABLE "AgentSession" ADD COLUMN "canvasLayout" JSONB NOT NULL DEFAULT '{}', ADD COLUMN "canvasRevision" INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE "AgentToolCall" ADD COLUMN "completedAt" TIMESTAMP(3);

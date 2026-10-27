@@ -20,9 +20,13 @@
     "test:gateways": "node --conditions=react-server --import tsx --test tests/unit/agent.test.ts tests/unit/audit.test.ts tests/unit/gateways.test.ts tests/unit/packs.test.ts tests/unit/studio-main.test.ts",
     "test:agent": "node --conditions=react-server --import tsx scripts/verify-agent.ts",
     "test:agent:browser": "node --conditions=react-server --import tsx scripts/verify-agent.ts --browser",
-    "test:prompt-composer": "node --import tsx --test tests/unit/prompt-composer.test.ts tests/unit/library-store.test.ts",
+    "test:prompt-composer": "node --import tsx --test tests/unit/prompt-composer.test.ts tests/unit/library-store.test.ts tests/unit/model-selection.test.ts tests/unit/login-destination.test.ts",
     "test:task10:units": "npm run test:gateways && npm run test:prompt-composer",
-    "seed:task10": "node --conditions=react-server --import tsx scripts/import-task10-seeds.ts --templates"
+    "seed:task10": "node --conditions=react-server --import tsx scripts/import-task10-seeds.ts --templates",
+    "configure:models": "node --conditions=react-server --import tsx scripts/configure-studio-models.ts",
+    "configure:agent": "node --conditions=react-server --import tsx scripts/configure-default-agent.ts",
+    "test:image-models": "node --conditions=react-server --import tsx --test tests/unit/image-models.test.ts && node --conditions=react-server --import tsx --test tests/integration/image-models.test.ts",
+    "test:canvas": "node --import tsx --test tests/unit/canvas.test.ts && node --conditions=react-server --import tsx --test tests/integration/canvas.test.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.0.0",

@@ -10,9 +10,10 @@ import { S3Client, DeleteObjectCommand, PutObjectCommand } from "@aws-sdk/client
 
 const runId = randomBytes(8).toString("hex");
 const viewerEmail = `e2e-product-viewer-${runId}@example.invalid`;
+const editorEmail = `e2e-product-editor-${runId}@example.invalid`;
 const password = randomBytes(24).toString("base64url");
 let db: PrismaClient;
-let productId = "", viewerId = "";
+let productId = "", viewerId = "", editorId = "";
 const contexts: BrowserContext[] = [];
 const origin = "http://localhost:3000";
 
@@ -21,8 +22,8 @@ async function login(page: Page, email: string, secret: string) {
   await page.getByLabel("公司邮箱").fill(email);
   await page.getByLabel("密码", { exact: true }).fill(secret);
   await page.getByRole("button", { name: "进入工作台" }).click();
-  await expect(page).toHaveURL(`${origin}/`);
-  await expect(page.getByRole("heading", { name: "全部项目" })).toBeVisible();
+  await expect(page).toHaveURL(`${origin}/design-preview`);
+  await expect(page.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
 }
 
 test.beforeAll(async () => {
@@ -30,6 +31,7 @@ test.beforeAll(async () => {
   db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
   const viewer = await db.user.create({ data: { name: "商品验收只读成员", email: viewerEmail, passwordHash: await bcrypt.hash(password, 12), role: "viewer" } });
   viewerId = viewer.id;
+  editorId=(await db.user.create({data:{name:"商品验收临时设计师",email:editorEmail,passwordHash:await bcrypt.hash(password,12),role:"designer",monthlyQuota:5}})).id;
   await mkdir(".local/verification", { recursive: true });
 });
 test.afterAll(async () => {
@@ -46,6 +48,7 @@ test.afterAll(async () => {
       await db.product.delete({ where: { id: productId } });
     }
     if (viewerId) await db.user.delete({ where: { id: viewerId } });
+    if (editorId) await db.user.delete({ where: { id: editorId } });
   } finally { await db.$disconnect(); }
 });
 
@@ -54,19 +57,14 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   const page = await adminContext.newPage();
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await login(page, process.env.ADMIN_EMAIL!, process.env.ADMIN_PASSWORD!);
-  await page.getByText("新建商品", { exact: true }).click();
-  await page.getByLabel("SKU", { exact: true }).fill(`E2E-${runId}`);
-  await page.getByLabel("商品名称").fill("验收测试商品（模拟数据）");
-  await page.getByLabel("品类", { exact: true }).fill("测试收纳柜");
-  await page.getByLabel("尺寸", { exact: true }).fill("80 × 40 × 100 cm");
-  await page.getByLabel("颜色", { exact: true }).fill("模拟橡木色");
-  await page.getByLabel("卖点", { exact: true }).fill("仅用于自动验收，不作为实拍或真实生成验收");
-  await page.getByLabel("产品身份特征", { exact: true }).fill("模拟身份：双门，四脚，两个黑色把手");
-  const created = page.waitForResponse((response) => response.url().endsWith("/api/products") && response.request().method() === "POST");
-  await page.getByRole("button", { name: "创建商品", exact: true }).click();
-  const response = await created; expect(response.status()).toBe(201);
-  productId = (await response.json()).product.id;
+  await login(page, editorEmail, password);
+  // 旧首页创建表单已由新版创作入口替代；通过真实API准备商品，继续覆盖商品编辑链路。
+  const response = await adminContext.request.post("/api/products", {headers:{Origin:origin},data:{
+    sku:`E2E-${runId}`,name:"验收测试商品（模拟数据）",category:"测试收纳柜",dimensions:"80 × 40 × 100 cm",colors:"模拟橡木色",materials:"",complexity:"simple",
+    sellingPoints:"仅用于自动验收，不作为实拍或真实生成验收",identityTraits:"模拟身份：双门，四脚，两个黑色把手",
+  }});
+  expect(response.status()).toBe(201);productId=(await response.json()).product.id;
+  await page.goto(`/products/${productId}`);
   await expect(page).toHaveURL(`${origin}/products/${productId}`);
   await expect(page.getByRole("heading", { name: "03 / 场景创作" })).toBeVisible();
   await expect(page.locator(".photo-dropzone")).toHaveCSS("display", "flex");
@@ -117,7 +115,9 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   await expect(scene.locator('input[name="scene-aspectRatio"]')).toHaveCount(15);
   await scene.getByRole("radio", { name: "4K", exact: true }).check();
   await expect(scene.locator(".generation-spec")).toContainText("4K");
-  await expect(scene.locator(".generation-spec")).toContainText("$0.045000");
+  const availability=(await (await adminContext.request.get(`/api/products/${productId}/generations`)).json()).availability;
+  expect(availability.estimates["4K"]).toBeGreaterThan(0);
+  await expect(scene.locator(".generation-spec")).toContainText("$"+availability.estimates["4K"].toFixed(6));
   await scene.getByRole("radio", { name: "21:9", exact: true }).check();
   await scene.getByLabel("想把产品放进怎样的空间？").fill("模拟 4K 宽幅场景，仅用于参数验收");
   let scenePayload: Record<string, unknown> | undefined;

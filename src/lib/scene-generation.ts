@@ -3,6 +3,7 @@ import { fromPrisma } from "pg-boss";
 import { db } from "@/lib/db";
 import { getBoss, SUBMIT_QUEUE, workerIsReady, expireOverdueJobs, MAX_JOB_MS } from "@/lib/generation-queue";
 import { IMAGE_DEFAULTS, sceneAspectRatios, sceneResolutions, type SceneAspectRatio, type SceneResolution } from "@/lib/models.config";
+import {fitImageReferences,validateImageSelection} from "./image-model-input";
 import { estimateImageUsd } from "./gateway-cost";
 import { configuredCandidate, assertUsdQuota, monthlySpendUsd } from "./quota";
 export { quotaMonth } from "./quota";
@@ -22,6 +23,7 @@ export async function prepareSceneInput(tx: Prisma.TransactionClient, productId:
   if (product.assets.length < 1) throw new StudioError("没有原始实拍，无法保持产品外观；请先上传至少1张实拍");
   const prompt = buildScenePrompt(product.identityTraits, intent);
   if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
+  validateImageSelection(candidate,resolution,aspectRatio,prompt,product.assets.length);
   const version = await tx.productIdentityVersion.findFirst({ where: { productId }, orderBy: [{ savedAt: "desc" }, { id: "desc" }] });
   return { estimate: estimateImageUsd(candidate, resolution, prompt, product.assets), input: { prompt, sceneIntent: intent, identityTraits: product.identityTraits, identityVersionId: version?.id ?? null, identitySavedById: version?.savedById ?? null, identitySavedAt: version && !version.historical ? version.savedAt.toISOString() : null, referenceAssetIds: product.assets.map(a => a.id), image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false } };
 }
@@ -75,7 +77,7 @@ async function createImageJob(userId: string, productId: string, intent: string,
   }, { timeout: 15000 });
 }
 
-export async function prepareEditInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution, source: EditSource, candidate: ModelCandidate) {
+export async function prepareEditInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution, source: EditSource, candidate: ModelCandidate,additionalReferenceIds:string[] = []) {
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${productId}, 0))`;
     const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], take: 3 } } });
     if (!product) throw new StudioError("商品不存在", 404);
@@ -89,9 +91,13 @@ export async function prepareEditInput(tx: Prisma.TransactionClient, productId: 
       if (!originalJob || originalJob.productId !== productId || originalJob.status !== "success" || !Array.isArray(originalJob.resultAssetIds) || !originalJob.resultAssetIds.includes(source.sourceAssetId) || !originalAsset || originalAsset.productId !== productId || originalAsset.type !== "generated" || originalAsset.deletedAt) throw new StudioError("请选择当前商品已完成的生成图片进行编辑", 400);
     }
 
-    const prompt = buildEditPrompt(product.identityTraits, intent);
+    const prompt = buildEditPrompt(product.identityTraits, intent,additionalReferenceIds.length>0);
     if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
     const originalAsset = await tx.asset.findUniqueOrThrow({ where: { id: source.sourceAssetId } });
+    const extra=additionalReferenceIds.length?await tx.asset.findMany({where:{id:{in:additionalReferenceIds},productId,type:"mask",deletedAt:null}}):[];
+    if(extra.length!==new Set(additionalReferenceIds).size)throw new StudioError("蒙版不属于当前SKU或已删除");
+    const references=fitImageReferences(candidate,[originalAsset,...extra,...product.assets]);
+    validateImageSelection(candidate,resolution,aspectRatio,prompt,references.length);
     const version = await tx.productIdentityVersion.findFirst({ where: { productId }, orderBy: [{ savedAt: "desc" }, { id: "desc" }] });
-    return { estimate: estimateImageUsd(candidate, resolution, prompt, [originalAsset, ...product.assets]), input: { prompt, ...source, editIntent: intent, identityTraits: product.identityTraits, identityVersionId: version?.id ?? null, identitySavedById: version?.savedById ?? null, identitySavedAt: version && !version.historical ? version.savedAt.toISOString() : null, referenceAssetIds: [source.sourceAssetId, ...product.assets.map(a => a.id)], image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false } };
+    return { estimate: estimateImageUsd(candidate, resolution, prompt, references), input: { prompt, ...source, editIntent: intent, identityTraits: product.identityTraits, identityVersionId: version?.id ?? null, identitySavedById: version?.savedById ?? null, identitySavedAt: version && !version.historical ? version.savedAt.toISOString() : null, referenceAssetIds: references.map(a=>a.id), image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false } };
 }

@@ -1,4 +1,5 @@
 import "server-only";
+import {fitImageReferences,validateImageSelection} from "./image-model-input";
 import {selectedCandidate,settingsOf} from "./studio-models";
 import { createHash } from "node:crypto";
 import { db } from "./db";
@@ -81,9 +82,11 @@ async function planBatch(tx: Prisma.TransactionClient, productId: string, select
     const old = await tx.generationJob.findUnique({ where: { id: selection.retryJobId }, include: { retriedBy: true } });
     if (!old || old.productId !== productId || !old.batchId || !old.slotId || !pack.slots.some(s => s.id === old.slotId) || old.status !== "failed" || old.retriedBy) throw new StudioError("只能重试当前图包尚未重试的失败候选图", 409);
     const raw = old.input as Record<string, Prisma.InputJsonValue>;
-    const refs = await tx.asset.findMany({ where: { id: { in: raw.referenceAssetIds as string[] } } });
-    const input = { ...raw, selectedCandidate:JSON.parse(JSON.stringify(candidate)), autoRetryCount:0, submissionAttempted: false, uncertainCharge: false, referenceRetryCount: 0, image_input: [] };
-    return { pack, candidate, skipped: [] as string[], entries: [{ slotId: old.slotId, count: 1, prepared: { input, estimate: estimateImageUsd(candidate, "2K", String(raw.prompt), refs) } }], old };
+    const assets = await tx.asset.findMany({ where: { id: { in: raw.referenceAssetIds as string[] },productId,deletedAt:null } });
+    const refs=fitImageReferences(candidate,(raw.referenceAssetIds as string[]).flatMap(id=>assets.filter(a=>a.id===id)));
+    validateImageSelection(candidate,String(raw.resolution??"2K"),String(raw.aspect_ratio),String(raw.prompt),refs.length);
+    const input = { ...raw, referenceAssetIds:refs.map(a=>a.id), selectedCandidate:JSON.parse(JSON.stringify(candidate)), autoRetryCount:0, submissionAttempted: false, uncertainCharge: false, referenceRetryCount: 0, image_input: [] };
+    return { pack, candidate, skipped: [] as string[], entries: [{ slotId: old.slotId, count: 1, prepared: { input, estimate: estimateImageUsd(candidate,(raw.resolution??"2K") as "1K"|"2K"|"4K", String(raw.prompt), refs) } }], old };
   }
   const selected = selection.slotId ? pack.slots.filter(s => s.id === selection.slotId) : pack.slots;
   if (selection.slotId && !selected.length) throw new StudioError("图位不存在", 404);
