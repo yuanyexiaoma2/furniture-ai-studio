@@ -29,6 +29,8 @@ export async function routeCall<T>(options: {
   const failures: string[] = [...(options.previousErrors ?? [])];
   let lastProvider: GatewayName = options.previousProvider ?? "kie";
   let fallback = options.alreadyFallback ?? false;
+  // 汇总线路错误时保留任何一次扣费不确定，不能让上层把断网当作可安全重发。
+  let uncertain = false;
   for (const candidate of options.candidates ?? candidatesFor(options.logical)) {
     if (!candidate.model || !(options.configured ?? gatewayConfigured)(candidate.provider) || options.excluded?.includes(`${candidate.provider}:${candidate.model}`)) continue;
     lastProvider = candidate.provider;
@@ -39,10 +41,11 @@ export async function routeCall<T>(options: {
     try { result = await options.call(candidate); }
     catch (error) {
       const failure = gatewayException(candidate.provider, error);
+      uncertain ||= failure.uncertain;
       await options.hooks.failure(id, failure, now() - start);
       await options.circuit.failure(candidate.provider);
       failures.push(failure.message);
-      if (!failure.retryable) throw new GatewayError(candidate.provider, `${failure.message}；该错误未自动切换${fallback ? '（本次已尝试备用线路）' : ''}`, failure.status, false, failure.uncertain);
+      if (!failure.retryable) throw new GatewayError(candidate.provider, `${failure.message}；该错误未自动切换${fallback ? '（本次已尝试备用线路）' : ''}`, failure.status, false, uncertain);
       fallback = true; continue;
     }
     // 本地保存 / 记录失败不能再次发起付费生成。
@@ -50,5 +53,5 @@ export async function routeCall<T>(options: {
     if (!options.isSuccessful || options.isSuccessful(result)) await options.circuit.success(candidate.provider);
     return { result, candidate, fallback, attemptId: id, warnings: failures };
   }
-  throw new GatewayError(lastProvider, failures.length ? `${failures.join('；')}；已检查可用备用线路，仍未成功，请稍后重试` : "没有可用网关，请配置 API Key 后重启服务", 503, true);
+  throw new GatewayError(lastProvider, failures.length ? `${failures.join('；')}；已检查可用备用线路，仍未成功，请稍后重试` : "没有可用网关，请配置 API Key 后重启服务", 503, true, uncertain);
 }

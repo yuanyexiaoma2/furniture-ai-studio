@@ -21,11 +21,11 @@ test("正式入口与旧路径301：保留登录回跳和查询参数，默认�
   await expect(page).toHaveURL(/\/skus$/);await expect(page.getByRole("heading",{name:"全部 SKU",exact:true})).toBeVisible();
   await page.goto("/");await expect(page).toHaveURL(/\/$/);await expect(page.getByRole("heading",{name:"制作产品图片",exact:true})).toBeVisible();
   await expect(page.getByRole("button",{name:/批量.*颜色|多语言|导出前检查/})).toHaveCount(0);
-  await expect(page.getByRole("link",{name:"模板库",exact:true})).toHaveCount(0);
+  await expect(page.getByRole("link",{name:"模板库",exact:true})).toBeVisible();
   await expect(page.getByRole("heading",{name:"场景模板",exact:true})).toHaveCount(0);
   await page.goto("/login");await expect(page).toHaveURL(/\/$/);
   await page.goto("/login?callbackUrl=%2Fdesign-preview%2Flibrary");await expect(page).toHaveURL(/\/library$/);
-  await expect(page.getByText("模板库尚未接入真实任务。",{exact:true})).toBeVisible();
+  await expect(page.getByRole("heading",{name:"模板库",exact:true})).toBeVisible();
   expect((await page.request.get("/design")).status()).toBe(404);
   expect((await page.request.get("/admin/models")).status()).toBe(403);
   await page.context().clearCookies();await page.goto("/login");

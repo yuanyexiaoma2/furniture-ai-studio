@@ -1,0 +1,11 @@
+{
+  "width": 2048,
+  "height": 2048,
+  "maskWidth": 2048,
+  "maskHeight": 2048,
+  "outsidePixels": 4081891,
+  "changedOutsidePixels": 0,
+  "insidePixels": 112413,
+  "changedInsidePixels": 111703,
+  "pass": true
+}

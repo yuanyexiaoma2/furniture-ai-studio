@@ -5,7 +5,7 @@ import { ArrowUpRight, LoaderCircle, Sparkles, RefreshCw, Download, Pencil } fro
 import { Button } from "@/components/ui/button";
 import { ProductEditor } from "@/components/product-editor";
 import { modelLabel, type SceneResolution, type SceneAspectRatio } from "@/lib/models.config";
-import { GenerationOptions, generationBlockReason } from "@/components/generation-options";
+import { GenerationOptions } from "@/components/generation-options";
 import { ImageEditPanel } from "@/components/image-edit-panel";
 import type { ProductSnapshot } from "@/lib/product-data";
 import type { GenerationAvailability } from "@/lib/scene-generation";
@@ -46,7 +46,7 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
     return () => { controller.abort(); clearInterval(timer); };
   }, [refresh]);
   const usd = availability.estimates[resolution];
-  const unavailable = generationBlockReason(product, availability, readonly, usd);
+  const unavailable = readonly?"只读成员不能规划生成":!product.photos.length?"请先上传产品实拍":!product.identityTraits?.trim()?"请先保存产品身份特征":"";
   async function generate(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setPending(true); setError(""); setNotice("");
     const form = new FormData(event.currentTarget);
@@ -57,7 +57,8 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
       } catch { throw new Error("提交结果未确认，请先刷新生成记录，核对任务后再重试"); }
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "任务创建失败");
-      setNotice("任务已加入队列，生成完成后自动保存；可以离开页面，稍后回来查看。");
+      if(result.workspaceUrl){window.location.assign(result.workspaceUrl);return;}
+      setNotice("视觉方案已准备好，请前往工作台确认后生成。");
       try { await refresh(); } catch { setRefreshError("任务已提交，记录更新暂时失败，请刷新查看。"); }
     } catch (error) { setError(error instanceof Error ? error.message : "任务创建失败"); }
     finally { setPending(false); }
@@ -72,7 +73,7 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
           <p className="field-hint">自动使用已保存的产品身份特征和全部实拍参考。修改资料后请先保存。</p>
           <GenerationOptions prefix="scene" resolution={resolution} aspectRatio={aspectRatio} disabled={readonly || pending} onResolution={setResolution} onAspectRatio={setAspectRatio} />
           <div className="generation-spec"><span>{modelLabel()} · {resolution} · PNG</span><strong>预估 ${usd.toFixed(6)} 起 <small>提交时按参考图与实际线路校验</small></strong></div>
-          <div className="scene-action"><Button type="submit" disabled={pending || Boolean(unavailable)}>{pending ? <LoaderCircle size={16} className="animate-spin" /> : <ArrowUpRight size={16} />}生成一张场景图</Button><span>本月剩余 ${availability.remaining.toFixed(6)} / ${availability.quota.toFixed(6)}</span></div>
+          <div className="scene-action"><Button type="submit" disabled={pending || Boolean(unavailable)}>{pending ? <LoaderCircle size={16} className="animate-spin" /> : <ArrowUpRight size={16} />}规划一张场景图</Button><span>本月剩余 ${availability.remaining.toFixed(6)} / ${availability.quota.toFixed(6)}</span></div>
           {unavailable && <p className="field-hint">{unavailable}</p>}
           <p className={error ? "form-notice error-notice" : "form-notice"} role={error ? "alert" : "status"}>{error || notice}</p>
         </form>

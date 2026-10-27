@@ -7,7 +7,9 @@ import { prepareEditInput, enqueueImageJob } from "./scene-generation";
 import { getBoss, workerIsReady } from "./generation-queue";
 import { StudioError } from "./studio-error";
 import { json } from "./agent-state";
-import { autoApproval, profileSchema, understanding } from "./profile-rules";
+import { autoApproval, profileSchema, understanding,emptyProfile } from "./profile-rules";
+import {confirmVisualPlan,planToProposal} from "./visual-planning";
+import {visualPlanSchema,patternSchema,composeIdentityLock} from "./visual-plan-rules";
 import { confirmProfile } from "./product-profile";
 import { proposalSchema, agentToolSchemas } from "./agent-tool-schemas";
 import { slotSchema } from "./pack-rules";
@@ -50,21 +52,22 @@ export async function createCostCard(sessionId: string, action: PaidAction) {
   if (automatic && quote.shortage <= 0) { const result = await approveAgentCard(sessionId, card.id, { acceptRisk: false }, true); return { cardId: card.id, automatic: true, result }; }
   return { cardId: card.id, waitForUser: true, quote };
 }
-async function applyProposal(tx: Prisma.TransactionClient, productId: string, raw: unknown) {
+async function applyProposal(tx: Prisma.TransactionClient, productId: string, raw: unknown,cardId:string) {
   const proposal = proposalSchema.parse(raw);
+  const visualPlan=proposal.visualPlan?await confirmVisualPlan(tx,productId,proposal.visualPlan):null;
   await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${productId}, 0))`;
   const pack = await tx.imagePack.findFirst({ where: { productId, isCurrent: true } }) ?? await tx.imagePack.create({ data: { productId } });
   const old = await tx.imageSlot.findMany({ where: { packId: pack.id }, orderBy: { order: "asc" } }); let order = Math.max(0, ...old.map(s => s.order)) + 1;
   const seen = new Set<string>();
-  for (const slot of proposal.slots) {
+  for (const [index,slot] of proposal.slots.entries()) {
     const match = slot.id ? old.find(s => s.id === slot.id && !s.deletedAt) : old.find(s => !s.deletedAt && s.name === slot.name && s.slotType === slot.slotType);
     if (slot.id && !match) throw new StudioError("方案图位不属于当前图包，请刷新方案", 409);
-    const data = slotSchema.parse(slot);
+    const data = {...slotSchema.parse(slot),...(visualPlan?{visualPlan:json({plan:visualPlan,slot:visualPlan.slots[index],confirmationCardId:cardId})}:{})};
     if (match) { if (seen.has(match.id)) throw new StudioError("方案重复引用同一图位"); seen.add(match.id); await tx.imageSlot.update({ where: { id: match.id }, data }); }
     else await tx.imageSlot.create({ data: { ...data, packId: pack.id, order: order++ } });
   }
   // 不删除、归档或覆盖终稿字段；未列出的既有图位继续保留。
-  await tx.imagePack.update({ where: { id: pack.id }, data: { status: "confirmed", version: { increment: 1 } } });
+  await tx.imagePack.update({ where: { id: pack.id }, data: { status: "confirmed", version: { increment: 1 },...(visualPlan?{confirmedPlanId:cardId}:{}) } });
   return { packId: pack.id };
 }
 export async function approveAgentCard(sessionId: string, cardId: string, changes: Record<string, unknown>, automatic = false) {
@@ -108,7 +111,23 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
       const profile = profileSchema.parse(submitted), saved = await confirmProfile(tx, session.productId, session.createdById, profile);
       await tx.agentSession.update({ where: { id: sessionId }, data: { profileDraft: profile, confirmedProfileId: saved.id, confirmedPack: false } });
       await tx.agentCard.updateMany({ where: { sessionId, kind: { in: ["pack", "cost"] }, status: "pending" }, data: { status: "cancelled" } }); result = { profileId: saved.id, version: saved.version, identityVersionId: saved.identityVersionId };
-    } else if (card.kind === "pack") { result = await applyProposal(tx, session.productId, changes.proposal ?? raw); await tx.agentSession.update({ where: { id: sessionId }, data: { confirmedPack: true } }); }
+    } else if (card.kind === "pack") {
+      let proposal:unknown=changes.proposal??raw;
+      if(raw.visualPlan){
+        const saved=visualPlanSchema.parse(raw.visualPlan);
+        const edited=changes.visualPlan?visualPlanSchema.parse(changes.visualPlan):saved;
+        // 美工只能改画面选择，不能通过确认请求替换身份、来源或产品归属。
+        const plan=await confirmVisualPlan(tx,session.productId,{...saved,slots:edited.slots});
+        proposal=planToProposal(plan);
+        if(!session.confirmedProfileId){
+          const profile=emptyProfile(),identity=plan.identityLock;
+          for(const [key,value] of Object.entries({structureAndParts:composeIdentityLock(identity),colorsAndTextures:identity.colors+"；"+identity.materials,sellingPoints:identity.sellingPoints.map(s=>s.name).join("；")}))profile[key as keyof typeof profile]={value,status:"confirmed",sources:[{kind:"image",id:identity.referenceAssetIds[0],quote:"美工在视觉方案卡确认本次分析"}],conflicts:[]};
+          const confirmed=await confirmProfile(tx,session.productId,session.createdById,profile);
+          await tx.agentSession.update({where:{id:sessionId},data:{profileDraft:profile,confirmedProfileId:confirmed.id}});
+        }
+      }
+      result = await applyProposal(tx, session.productId,proposal,card.id); await tx.agentSession.update({ where: { id: sessionId }, data: { confirmedPack: true } });
+    }
     else if (card.kind === "questions") {
       const questions = (raw.questions ?? []) as { question: string; options: string[]; allowFreeText: boolean }[];
       const answers = zAnswers(changes.answers, questions);
@@ -119,6 +138,14 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
       const slot = await tx.imageSlot.findFirst({ where: { id: selection.slotId, deletedAt: null, pack: { productId: session.productId, isCurrent: true } } });
       if (!asset || !job || !slot) throw new StudioError("候选图或图位已失效，请重新选择", 409);
       await tx.imageSlot.update({ where: { id: selection.slotId }, data: { finalAssetId: selection.assetId } }); result = { finalAssetId: selection.assetId };
+    } else if(card.kind==="library_case"){
+      const entries=(raw.entries as unknown[]).map(e=>patternSchema.parse(e));
+      for(const entry of entries.filter(e=>e.type==="case")){
+        const assetId=String(entry.content.originalImageRef??"");
+        if(!await tx.asset.findFirst({where:{id:assetId,productId:session.productId,type:"generated",deletedAt:null}})||!await tx.imageSlot.findFirst({where:{finalAssetId:assetId,deletedAt:null,pack:{productId:session.productId,isCurrent:true}}}))throw new StudioError("原案例已不再是有效终稿，请重新选择后提炼",409);
+      }
+      for(const e of entries)await tx.studioLibraryEntry.create({data:{id:e.id,kind:e.type,name:e.name,data:json(e)}});
+      result={entryIds:entries.map(e=>e.id)};
     } else throw new StudioError("未知确认卡");
     await tx.agentCard.update({ where: { id: cardId }, data: { status: "executed", result: json(result) } });
     await tx.chatMessage.create({ data: { productId: session.productId, sessionId, role: "system", content: json({ text: `美工确认 ${card.kind}：${JSON.stringify(result)}` }) } }); return json(result);

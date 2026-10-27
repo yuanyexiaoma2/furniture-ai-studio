@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element -- 通过鉴权接口读取私有图片。 */
 "use client";
+import {VersionHistory} from "./version-history";
+import {VisualPlanCard} from "./visual-plan-card";
+import type {VisualPlan} from "@/lib/visual-plan-rules";
 import {SHOW_UNCONNECTED_FEATURES} from "@/lib/ui-features";
 import {Suspense,useEffect,useRef,useState} from "react";
 import Link from "next/link";
@@ -42,6 +45,7 @@ function RealWorkspaceInner(){
  try{
  const slot=s.pack.slots.find(slot=>slot.jobs.some(j=>j.assets.some(a=>a.id===request.imageId)));
  if(request.action==="final"){if(!slot)throw Error("请选择已生成的候选图");await studioFetch("/api/products/"+id+"/pack",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"final",slotId:slot.id,assetId:request.imageId})});await live.load(id);toast.success("已设为终稿");return;}
+ if(request.action==="excellent"){await live.act("excellent",{assetId:request.imageId});toast.success("请核对优秀案例卡，确认后入库");return;}
  if(request.action==="download")return;
  if(request.action==="reference"){usePreviewStore.getState().addReference(request.imageId);toast.success("已加入本次对话引用");return;}
  if(["prop","recolor"].includes(request.action)){toast.info("即将开放");return;}
@@ -94,6 +98,7 @@ function RealChat({onUpload}:{onUpload:(files:File[])=>Promise<void>}){
  {snapshot?.settings.categoryConfirmed&&!snapshot.agent.session.confirmedProfileId&&!pending.some(c=>c.kind==="profile"||c.kind==="shooting")&&<Button disabled={live.busy} onClick={()=>void act("profile")}>核对产品档案</Button>}
  {snapshot?.agent.session.confirmedProfileId&&!snapshot.agent.session.confirmedPack&&!pending.some(c=>c.kind==="pack")&&<Button disabled={live.busy} onClick={()=>void act("plan")}>规划图包</Button>}
  {snapshot?.agent.session.confirmedPack&&!pending.some(c=>c.kind==="cost")&&<Button disabled={live.busy} onClick={()=>void act("generate")}>生成候选 · 先查看费用</Button>}
+ <VersionHistory/>
  {snapshot?.searches.map(s=><details key={s.id} className="p-subtle"><summary>查了 {s.resultCount} 个网页</summary>{(s.sources as {url:string;title:string}[]).map(r=><a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer">{r.title}</a>)}</details>)}
  {stream&&<div className="p-agent-message"><p>{stream}</p></div>}{(live.busy||sending)&&<div className="p-subtle" role="status">正在处理，请稍候…</div>}{live.error&&<div role="alert" className="l-shooting-card"><p>{live.error.replace(/KIE|ZenMux/gi,"模型服务")}</p><Button variant="outline" onClick={()=>{if(snapshot)void live.load(snapshot.product.id).catch(notify);}}>刷新进度</Button></div>}
  </div><div {...drop.getRootProps()} className="p-chat-input">{references.length>0&&<div className="t11-references" aria-label="本次引用图片"><span>本次引用 {references.length} 张</span>{references.map(n=><button key={n.id} type="button" className="t11-reference" aria-label={"取消引用 "+n.data.label} title={n.data.slot+" · "+n.data.label} onClick={()=>{usePreviewStore.setState(s=>({references:s.references.filter(id=>id!==n.id),selected:s.selected.filter(id=>id!==n.id),nodes:s.nodes.map(node=>node.id===n.id?{...node,selected:false}:node)}));}}><img src={n.data.image} alt={n.data.label}/><span>{n.data.label}</span><span aria-hidden="true">×</span></button>)}</div>}{tooManyReferences&&<p role="alert">一次最多引用6张图片，请减少选择。</p>}<input {...drop.getInputProps()} aria-label="工作台上传实拍"/><Textarea rows={3} aria-label="工作台创作要求" placeholder="说说需要调整哪里，或拖入补充资料…" value={text} onChange={e=>setText(e.target.value)}/><ComposerToolbar scope={demoSession} count={1} onAdd={drop.open} onSend={()=>void send()} disabled={!text.trim()||live.busy||sending||tooManyReferences||!!snapshot?.agent.session.running||!!snapshot&&!canvasReady} showCost={!!text.trim()}/></div></aside>;
@@ -104,9 +109,12 @@ function RealCard({card,act}:{card:Card;act:(action:string,data?:Record<string,u
  if(card.kind==="category")return <div className="r4-category-confirm l-shooting-card"><span className="l-card-eyebrow"><IconBadge concept="product"/>确认产品</span><h3>{d.name?"看起来是"+String(d.name)+"，对吗？":"还没看出产品品类，可以确认一下吗？"}</h3><div>{!!d.categoryId&&<Button disabled={live.busy} onClick={()=>void act("category",{categoryId:d.categoryId})}>是</Button>}<CategorySelect/></div></div>;
  if(card.kind==="shooting")return <div className="r4-shooting-choice l-shooting-card"><h3>这个品类默认采用严格拍摄标准。</h3><p>按清单核对资料，还是这次先快速开始？</p><Button disabled={live.busy} onClick={()=>void act("shooting",{mode:"strict"})}>按严格来</Button><Button variant="outline" disabled={live.busy} onClick={()=>void act("shooting",{mode:"quick"})}>这次先快速</Button></div>;
  if(card.kind==="profile")return <ProfileForm profile={d.profile as Profile} onSave={profile=>act("approve",{cardId:card.id,changes:{profile}})}/>;
+ if(card.kind==="pack"&&d.visualPlan)return <VisualPlanCard cardId={card.id} initial={d.visualPlan as VisualPlan} busy={live.busy} act={act}/>;
  if(card.kind==="pack")return <div className="l-shooting-card"><h3>图包方案</h3><p>{String(d.reason??"")}</p>{(d.slots as {name:string;candidateCount:number}[]).map((slot,i)=><p key={i}>{i+1}. {slot.name} · {slot.candidateCount} 张候选</p>)}<Button disabled={live.busy} onClick={()=>void act("approve",{cardId:card.id})}>确认图包方案</Button></div>;
  if(card.kind==="cost"){const q=d.quote as {estimatedCostUsd:number;totalCount:number;risk?:{ready:boolean};shortage?:number};return <div className="l-shooting-card"><h3>确认生成费用</h3><p>预计 $ {Number(q.estimatedCostUsd).toFixed(2)} · 估 · {q.totalCount??1} 张</p>{q.risk&&!q.risk.ready&&<p className="p-subtle">部分信息缺失，生成将遵循可见实拍，不编造尺寸。确认后继续。</p>}<Button disabled={live.busy||!!q.shortage} onClick={()=>void act("approve",{cardId:card.id,changes:{acceptRisk:true}})}>确认并生成</Button></div>;}
  if(card.kind==="questions"){const questions=d.questions as {question:string;options:string[]}[];return <div className="l-shooting-card"><h3>{questions[0]?.question}</h3>{questions[0]?.options.map(option=><Button key={option} variant="outline" onClick={()=>void act("approve",{cardId:card.id,changes:{answers:[option]}})}>{option}</Button>)}</div>;}
+ if(card.kind==="library_case")return <div className="l-shooting-card"><h3>确认沉淀优秀案例</h3><p>{String(d.note)}</p><pre className="whitespace-pre-wrap text-xs">{JSON.stringify(d.entries,null,2)}</pre><Button disabled={live.busy} onClick={()=>void act("approve",{cardId:card.id})}>确认入库</Button></div>;
+ if(card.kind==="mask_request")return <div className="l-shooting-card"><h3>请在画布选择修改区域</h3><p>{String(d.instruction)}</p><Button onClick={()=>{usePreviewStore.getState().select([String(d.assetId)]);usePreviewStore.getState().setEditor({id:String(d.assetId),action:"paint"});}}>框选或涂抹</Button></div>;
  if(card.kind==="final")return <div className="l-shooting-card"><h3>设为这个图位的终稿？</h3><Button onClick={()=>void act("approve",{cardId:card.id})}><Check size={16}/>确认终稿</Button></div>;
  return <div className="p-subtle">待确认：{s.product.name}</div>;
 }

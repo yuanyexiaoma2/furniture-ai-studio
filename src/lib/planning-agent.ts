@@ -1,4 +1,5 @@
 ﻿import "server-only";
+import {proposeVisualPlan} from "./visual-planning";
 import {settingsOf,selectedCandidate} from "./studio-models";
 import {webSearch} from "./web-search";
 import { db } from "./db";
@@ -140,11 +141,23 @@ export async function executeAgentTool(sessionId: string, name: AgentToolName, r
   if (name === "ask_user" && session.stopQuestions) return { stopped: true, instruction: "美工要求停止提问。列出未知项后请求理解确认卡，矛盾在卡上人工解决。" };
   if (["generate_slot", "generate_batch", "edit_image"].includes(name)) {
     if (name === "generate_slot") { const a = agentToolSchemas.generate_slot.parse(args); return createCostCard(sessionId, { operation: name, ...a }); }
-    if (name === "edit_image") { const a = agentToolSchemas.edit_image.parse(args); return createCostCard(sessionId, { operation: name, ...a }); }
+    if (name === "edit_image") {
+      const a = agentToolSchemas.edit_image.parse(args);
+      if(a.mode==="local"){
+        if(!await db.asset.findFirst({where:{id:a.assetId,productId,type:"generated",deletedAt:null}}))throw new StudioError("请选择本产品的候选图",404);
+        const card=await db.agentCard.create({data:{sessionId,kind:"mask_request",data:json({...a,productId})}});
+        return {cardId:card.id,waitForUser:true,instruction:"在画布选定修改区域后，按本卡要求提交局部修改"};
+      }
+      return createCostCard(sessionId, { operation: name, assetId:a.assetId,instruction:a.instruction });
+    }
     return createCostCard(sessionId, { operation: "generate_batch" });
   }
-  if (name === "propose_image_pack") { const proposal = agentToolSchemas.propose_image_pack.parse(args); for (const slot of proposal.slots) if (slot.id && !await db.imageSlot.findFirst({ where: { id: slot.id, deletedAt: null, pack: { productId, isCurrent: true } } })) throw new StudioError("方案已有图位必须用读取的真实id；新增图位请省略id，不可自行编造"); }
-  const kind = name === "ask_user" ? "questions" : name === "request_profile_confirmation" ? "profile" : name === "propose_image_pack" ? "pack" : "final";
+  if(name==="propose_image_pack"){
+    const proposal=agentToolSchemas.propose_image_pack.parse(args);
+    for(const slot of proposal.slots??[])if(slot.id&&!await db.imageSlot.findFirst({where:{id:slot.id,deletedAt:null,pack:{productId,isCurrent:true}}}))throw new StudioError("新增图位请省略id，不能使用编造的图位",409);
+    return proposeVisualPlan(productId,session.createdById,{feedback:JSON.stringify(proposal),...(/单[张图]|一张|一个图位/.test(proposal.reason)?{singleIntent:proposal.reason}:{})});
+  }
+  const kind = name === "ask_user" ? "questions" : name === "request_profile_confirmation" ? "profile" : "final";
   const data = kind === "profile" ? { profile: session.profileDraft, revision: session.draftRevision, understanding: understanding(profileSchema.parse(session.profileDraft)) } : args;
   const old = await db.agentCard.findFirst({ where: { sessionId, kind, status: "pending", data: { equals: json(data) } } });
   const card = old ?? await db.agentCard.create({ data: { sessionId, kind, data: json(data) } });

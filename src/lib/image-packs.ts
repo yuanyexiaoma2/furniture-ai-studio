@@ -42,6 +42,7 @@ export async function mutatePack(productId: string, action: Record<string, unkno
     const slot = slots.find(s => s.id === action.slotId);
     if (!slot) throw new StudioError("图位不存在或已删除", 404);
     if (action.action === "save") {
+      if(slot.visualPlan)throw new StudioError("该图位已冻结视觉方案，请在 Agent 方案卡中修改并重新确认",409);
       const parsed = slotSchema.safeParse(action.slot);
       if (!parsed.success) throw new StudioError("图位参数无效，请检查名称、比例和候选数量");
       await tx.imageSlot.update({ where: { id: slot.id }, data: parsed.data });
@@ -88,11 +89,12 @@ async function planBatch(tx: Prisma.TransactionClient, productId: string, select
     const input = { ...raw, referenceAssetIds:refs.map(a=>a.id), selectedCandidate:JSON.parse(JSON.stringify(candidate)), autoRetryCount:0, submissionAttempted: false, uncertainCharge: false, referenceRetryCount: 0, image_input: [] };
     return { pack, candidate, skipped: [] as string[], entries: [{ slotId: old.slotId, count: 1, prepared: { input, estimate: estimateImageUsd(candidate,(raw.resolution??"2K") as "1K"|"2K"|"4K", String(raw.prompt), refs) } }], old };
   }
-  const selected = selection.slotId ? pack.slots.filter(s => s.id === selection.slotId) : pack.slots;
+  const activeSlots=pack.confirmedPlanId?pack.slots.filter(s=>(s.visualPlan as {confirmationCardId?:string}|null)?.confirmationCardId===pack.confirmedPlanId):pack.slots;
+  const selected = selection.slotId ? activeSlots.filter(s => s.id === selection.slotId) : activeSlots;
   if (selection.slotId && !selected.length) throw new StudioError("图位不存在", 404);
   const skipped = selected.filter(s => s.method === "ai_scene" && !s.goal.trim()).map(s => s.name);
   const entries = [];
-  for (const s of eligibleSlots(selected)) entries.push({ slotId: s.id, count: selection.count ?? s.candidateCount, prepared: await prepareSceneInput(tx, productId, s.goal, s.aspectRatio as SceneAspectRatio, candidate,resolution) });
+  for (const s of eligibleSlots(selected)) entries.push({ slotId: s.id, count: selection.count ?? s.candidateCount, prepared: await prepareSceneInput(tx, productId, s.goal, s.aspectRatio as SceneAspectRatio, candidate,resolution,s.visualPlan) });
   if (!entries.length) throw new StudioError(`没有可生成的图位${skipped.length ? `，以下图位 goal 为空，已跳过：${skipped.join("、")}` : "；人工上传图位本阶段暂不自动生成"}`);
   return { pack, candidate, skipped, entries, old: null };
 }

@@ -1,0 +1,94 @@
+{
+  "category": "shoe_rack_vertical",
+  "sku_identity": {
+    "structure": "单列竖向鞋架，2根白色立柱加中间一条白色背板，7块原木色层板加1块原木色底板，共8个放鞋位，所有层板统一朝同一侧伸出",
+    "top": "原木色托盘，三面围边高5cm，前面开口",
+    "hooks": "两侧立柱顶部各1个白色双头挂钩，共4个挂点",
+    "dimensions": {
+      "height_cm": 132,
+      "footprint_cm": "28x28",
+      "upper_gap_cm": 13,
+      "lower_two_gap_cm": 19,
+      "boot_gap_after_removal_cm": 32.5
+    },
+    "features": ["层板可拆，可放长靴", "表面防水可擦", "附防倾倒墙固件"],
+    "must_not_change": ["层数", "层间距比例（上6层窄、下2层高）", "立柱和背板颜色", "层板木色", "挂钩数量和位置"]
+  },
+
+  "global_rules": [
+    "AI不生成任何文字、数字、图标、标注线和线稿",
+    "不改变产品层数、层间距比例和结构",
+    "产品完整入画，不裁切"
+  ],
+
+  "scene_global_rules": [
+    "方图，产品高度约占画面80%，靠墙或靠墙角摆放",
+    "画面一侧露出一件被裁切的大家具，用来交代空间类型",
+    "侧窗自然光，柔和，墙上有淡淡树叶影子",
+    "暖白、米色、原木色为主，只加一个低饱和点缀色",
+    "木地板，前景露出一角地毯",
+    "顶部托盘必须有绿植或花"
+  ],
+
+  "placement_rules": {
+    "shoes_light_to_heavy": "每层一双，鞋头朝外，从上到下依次为轻便单鞋、乐福鞋/平底鞋、运动鞋、高帮鞋，最下面两层（19cm层高）放高帮鞋和短靴",
+    "decor_small_to_large": "层板上不放鞋，每层一组小物件，从上到下物件逐渐变大，最下层放棉绳收纳筐"
+  },
+
+  "variables": {
+    "top_decor": ["白盆绿萝", "条纹陶盆镜面草", "绿植加木碗加钥匙", "相框加干花花瓶", "绿植加小雕塑加书"],
+    "hooks": ["空着", "挂一个托特包", "左挂长柄伞右挂托特包", "挂耳机", "左挂伞右挂钥匙"],
+    "shoe_palette": ["多色混搭（橄榄绿、粉、灰、驼色）", "浅色为主加一双浅蓝点缀", "全女款奶白粉色系"],
+    "camera": ["正面略偏左", "侧前方45°稍高机位"],
+    "accent_color": ["粉色", "浅蓝", "橄榄绿", "锈橙色"]
+  },
+
+  "scene_templates": [
+    {
+      "key": "entryway",
+      "name": "门厅",
+      "props": ["左侧被裁切的米色长凳和针织毯", "右侧法式白框玻璃门，门外绿植", "条纹地毯一角"],
+      "placement_rule": "shoes_light_to_heavy",
+      "defaults": {"hooks": "左挂长柄伞右挂托特包", "top_decor": "绿植加木碗加钥匙", "shoe_palette": "多色混搭（橄榄绿、粉、灰、驼色）", "camera": "正面略偏左"},
+      "locked_vars": []
+    },
+    {
+      "key": "staircase",
+      "name": "楼梯口",
+      "props": ["左侧原木踏步白色踢面的楼梯和原木扶手", "右侧白框窗户", "墙上一幅原木框植物版画", "深色木地板", "黄麻地毯"],
+      "placement_rule": "shoes_light_to_heavy",
+      "defaults": {"hooks": "空着", "top_decor": "条纹陶盆镜面草", "shoe_palette": "浅色为主加一双浅蓝点缀", "camera": "侧前方45°稍高机位"},
+      "locked_vars": []
+    },
+    {
+      "key": "closet",
+      "name": "衣帽间",
+      "props": ["右侧开放式原木衣柜，挂针织衣物，下层收纳盒和藤编筐", "左侧金色拉手原木斗柜，上面放首饰盒", "米色地毯一角"],
+      "placement_rule": "shoes_light_to_heavy",
+      "defaults": {"hooks": "挂一个托特包", "top_decor": "白盆绿萝", "shoe_palette": "全女款奶白粉色系", "camera": "正面略偏左"},
+      "locked_vars": ["shoe_palette"]
+    },
+    {
+      "key": "living_multiuse",
+      "name": "客厅一物多用",
+      "props": ["粉色墙面配白色护墙板", "墙上几何抽象画", "原木落地灯", "右侧被裁切的米色沙发和锈橙色抱枕", "纱帘"],
+      "placement_rule": "decor_small_to_large",
+      "shelf_items": ["小盆多肉", "陶瓷动物摆件", "一叠书", "木纹电子闹钟", "陶瓷浅碗", "香薰蜡烛", "条纹陶罐", "棉绳收纳筐"],
+      "defaults": {"hooks": "挂耳机", "top_decor": "相框加干花花瓶", "accent_color": "锈橙色", "camera": "正面略偏左"},
+      "locked_vars": [],
+      "no_shoes": true
+    }
+  ],
+
+  "slots": [
+    {"no": 1, "key": "main_white", "bg": "纯白", "content": "空架，3/4侧角度，无任何配饰", "generate": "prefer_real_photo"},
+    {"no": 2, "key": "loaded_white", "bg": "纯白", "placement_rule": "shoes_light_to_heavy", "vars": ["shoe_palette", "hooks", "top_decor"], "note": "无任何背景家具和场景道具"},
+    {"no": 3, "key": "dimension", "bg": "纯白", "base_from_slot": 1, "overlay": "尺寸标注，后期添加"},
+    {"no": 4, "key": "entryway", "scene_template_key": "entryway", "vars": ["hooks", "top_decor", "shoe_palette", "camera", "accent_color"], "overlay": "左侧图标卖点卡，后期添加，画面左侧留出空间"},
+    {"no": 5, "key": "staircase", "scene_template_key": "staircase", "vars": ["hooks", "top_decor", "shoe_palette", "camera", "accent_color"]},
+    {"no": 6, "key": "closet", "scene_template_key": "closet", "vars": ["hooks", "top_decor", "camera", "accent_color"]},
+    {"no": 7, "key": "living_multiuse", "scene_template_key": "living_multiuse", "vars": ["hooks", "top_decor", "camera", "accent_color"], "no_shoes": true},
+    {"no": 8, "key": "adjustable_compare", "layout": "左右双图特写，只拍下面3层，浅灰墙面，人字纹木地板", "left": "常规层高，从上到下放平底鞋、白色皮鞋、高跟凉鞋、高帮鞋", "right": "抽掉一块层板，放一双米色长靴，被抽掉的层板画成半透明", "overlay": "尺寸标注，后期添加"},
+    {"no": 9, "key": "detail_collage", "layout": "4格拼图，分别生成4张特写", "shots": ["托盘围边特写，放玻璃花瓶和小物", "手拿毛巾擦拭台面水渍，展示防水", "L形防倾倒墙固件特写", "挂钩挂钥匙特写"], "overlay": "防倾倒安装示意线稿，后期添加"}
+  ]
+}

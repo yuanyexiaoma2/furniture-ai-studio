@@ -94,6 +94,7 @@ model Product {
   sellingPoints  Json
   complexity     Complexity   @default(simple)
   identityTraits String?      @db.Text
+  visualResearch Json?
   createdById    String
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
@@ -135,6 +136,7 @@ model Asset {
 
 model ImagePack {
   id        String      @id @default(cuid())
+  confirmedPlanId String?
   productId String
   status    PackStatus  @default(draft)
   createdAt DateTime    @default(now())
@@ -160,6 +162,7 @@ model ImageSlot {
   aspectRatio  String          @default("1:1")
   deletedAt    DateTime?
   finalAssetId String?
+  visualPlan Json?
   pack         ImagePack       @relation(fields: [packId], references: [id], onDelete: Cascade)
   finalAsset   Asset?          @relation("FinalAsset", fields: [finalAssetId], references: [id], onDelete: SetNull)
   jobs         GenerationJob[]

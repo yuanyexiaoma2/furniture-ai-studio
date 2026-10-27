@@ -1,7 +1,8 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
 import { db } from "@/lib/db";
-import { inspectPhoto, putObject, deleteObject } from "@/lib/storage";
+import { inspectPhoto, putObject, deleteObject,readObject } from "@/lib/storage";
+import {compositeMaskedEdit} from "./masked-edit";
 import type { GatewayCost, TokenUsage } from "./image-provider";
 import { costFields } from "./gateway-cost";
 
@@ -11,7 +12,14 @@ export async function saveGenerationResult(jobId: string, images: Buffer[], meta
   const job = await db.generationJob.findUniqueOrThrow({ where: { id: jobId } });
   const stored: { key: string; width: number; height: number }[] = [];
   try {
-    for (const bytes of images) {
+    for (const image of images) {
+      let bytes=image;
+      const input=job.input as Record<string,unknown>;
+      if(input.editMode==="masked"){
+        const original=await db.asset.findFirstOrThrow({where:{id:String(input.sourceAssetId),productId:job.productId}});
+        const mask=await db.asset.findFirstOrThrow({where:{id:String(input.maskAssetId),productId:job.productId,type:"mask"}});
+        bytes=await compositeMaskedEdit((await readObject(original.storageKey)).bytes,bytes,(await readObject(mask.storageKey)).bytes);
+      }
       const photo = await inspectPhoto(bytes);
       const key = `products/${job.productId ?? "gateway-tests"}/generated/${jobId}-${randomUUID()}.${photo.extension}`;
       await putObject(key, bytes, photo.mime); stored.push({ key, width: photo.width, height: photo.height });

@@ -1,4 +1,5 @@
 import "dotenv/config";
+import {fixture} from "../tests/fixtures/visual-plan";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { createServer } from "node:http";
@@ -44,13 +45,18 @@ await new Promise<void>((resolve) => mock.listen(0, "127.0.0.1", resolve));
 const address = mock.address();
 if (!address || typeof address === "string") throw new Error("模拟服务启动失败");
 process.env.KIE_BASE_URL = process.env.KIE_UPLOAD_BASE_URL = `http://127.0.0.1:${address.port}`;
-let cleanup: (() => Promise<void>) | undefined;
+let cleanup: (() => Promise<void>) | undefined, testHeartbeat:NodeJS.Timeout|undefined;
 try {
   const migration = spawnSync(process.execPath, ["node_modules/prisma/build/index.js", "migrate", "deploy"], { env: process.env, encoding: "utf8" });
   if (migration.status !== 0) throw new Error("隔离验收数据库迁移失败");
   const { db } = await import("../src/lib/db");
   const { getBoss, SUBMIT_QUEUE, WORKER_ID, expireOverdueJobs } = await import("../src/lib/generation-queue");
-  const { createSceneJob, createEditJob, generationAvailability, quotaMonth } = await import("../src/lib/scene-generation");
+  const { createSceneJob:submitSceneWithSnapshot, createEditJob, generationAvailability, quotaMonth } = await import("../src/lib/scene-generation");
+  async function frozenScene(productId:string,intent:string){
+    const p=await db.product.findUniqueOrThrow({where:{id:productId}}),photos=await db.asset.findMany({where:{productId,type:"photo",deletedAt:null},orderBy:[{sortOrder:"asc"},{createdAt:"asc"},{id:"asc"}],take:3}),version=await db.productIdentityVersion.findFirst({where:{productId},orderBy:[{savedAt:"desc"},{id:"desc"}]});
+    const plan={...fixture,productId,identityLock:{...fixture.identityLock,traits:p.identityTraits??"未知",referenceAssetIds:photos.map(a=>a.id),identityVersionId:version?.id??null},slots:[{...fixture.slots[0],display:intent}]};return {plan,slot:plan.slots[0]};
+  }
+  const createSceneJob=async(userId:string,productId:string,intent:string,ratio:Parameters<typeof submitSceneWithSnapshot>[3],resolution:Parameters<typeof submitSceneWithSnapshot>[4]="2K")=>submitSceneWithSnapshot(userId,productId,intent,ratio,resolution,await frozenScene(productId,intent));
   const { reorderProductPhotos, removeProductPhoto } = await import("../src/lib/product-photos");
   const { productSnapshot } = await import("../src/lib/product-data");
   const { sceneSchema } = await import("../src/lib/product-validation");
@@ -61,7 +67,7 @@ try {
   const { inspectPhoto, putObject, readObject, deleteObject } = await import("../src/lib/storage");
   const boss = await getBoss();
   const keys: string[] = [];
-  cleanup = async () => { for (const asset of await db.asset.findMany()) keys.push(asset.storageKey); for (const key of new Set(keys)) await deleteObject(key); await boss.stop(); await db.$disconnect(); };
+  cleanup = async () => { if(testHeartbeat)clearInterval(testHeartbeat); for (const asset of await db.asset.findMany()) keys.push(asset.storageKey); for (const key of new Set(keys)) await deleteObject(key); await boss.stop(); await db.$disconnect(); };
   const user = await db.user.create({ data: { name: "隔离验收", email: "test@example.invalid", passwordHash: "never-login", monthlyQuota: 0.03 } });
   const product = await db.product.create({ data: { sku: "SIMULATION-ONLY", name: "模拟测试商品", category: "测试", dimensions: "测试", colors: "测试", materials: "测试", sellingPoints: [], identityTraits: "模拟身份特征，仅自动测试", createdById: user.id } });
   for (let i = 0; i < 2; i++) {
@@ -72,6 +78,7 @@ try {
   }
   await assert.rejects(createSceneJob(user.id, product.id, "测试", "1:1"), /worker/);
   await db.workerHeartbeat.create({ data: { id: WORKER_ID, instanceId: "isolated-test" } });
+  testHeartbeat=setInterval(()=>{void db.workerHeartbeat.update({where:{id:WORKER_ID},data:{updatedAt:new Date()}}).catch(()=>undefined);},5000);
   const currentKey = process.env.KIE_API_KEY; delete process.env.KIE_API_KEY;
   await assert.rejects(createSceneJob(user.id, product.id, "测试", "1:1"), /API Key/); process.env.KIE_API_KEY = currentKey;
   const results = await Promise.allSettled(Array.from({ length: 3 }, () => createSceneJob(user.id, product.id, "隔离场景意图", "3:4")));
@@ -148,7 +155,8 @@ try {
   const edit = await db.generationJob.findUniqueOrThrow({ where: { id: editId } });
   assert.equal(Number(edit.reservedUsd), 0.045); assert.equal(edit.logicalModel, "edit");
   const editInput = edit.input as Record<string, unknown>;
-  assert.deepEqual(editInput.referenceAssetIds, [asset.id, ...reverse]);
+  const sourceSnapshot=await db.generationJob.findUniqueOrThrow({where:{id:restored}});
+  assert.deepEqual(editInput.referenceAssetIds, [asset.id, ...(sourceSnapshot.input as {referenceAssetIds:string[]}).referenceAssetIds]);
   assert.equal(editInput.sourceJobId, restored); assert.equal(editInput.sourceAssetId, asset.id); assert.match(String(editInput.prompt), /第一张参考图/);
   const used = (await generationAvailability(user.id)).used;
   await db.user.update({ where: { id: user.id }, data: { monthlyQuota: used + 0.04 } });
@@ -181,7 +189,8 @@ try {
   const { databaseCircuit, gatewayCircuitState } = await import("../src/lib/gateway-circuit");
   const { chatWithGateway } = await import("../src/lib/llm-router");
   await db.user.update({ where: { id: user.id }, data: { monthlyQuota: 5 } });
-  process.env.ZENMUX_API_KEY = "local-test-zenmux"; process.env.GATEWAY_PREFERENCE = "auto";
+  process.env.ZENMUX_API_KEY = "local-test-zenmux"; process.env.GATEWAY_PREFERENCE = "zenmux";
+  // 当前默认生图走KIE；同步主线路回归显式指定ZenMux，避免依赖旧auto顺序。
   const syncFactory = (candidate: import("../src/lib/models.config").ModelCandidate) => candidate.provider === "zenmux" ? { isConfigured: () => true, generate: async () => ({ kind: "done" as const, images: [resultBytes, resultBytes], cost: { amount: 0.02, currency: "USD" as const }, usage: { inputTokens: 2, outputTokens: 3, totalTokens: 5 } }) } : new KieProvider(undefined, async () => resultBytes);
   const syncId = await createSceneJob(user.id, product.id, "同步网关模拟", "1:1"); await submitGatewayJob(syncId, syncFactory);
   const syncJob = await db.generationJob.findUniqueOrThrow({ where: { id: syncId } }); assert.equal(syncJob.status, "success"); assert.equal(syncJob.provider, "zenmux"); assert.equal(syncJob.costEstimated, false); assert.equal(Number(syncJob.costUsd), 0.02); assert.equal((syncJob.resultAssetIds as string[]).length, 2); assert.equal(Number(syncJob.reservedUsd), 0);
@@ -190,10 +199,13 @@ try {
   mode = "success"; await pollGatewayJob(backupId, backupFactory); const backupJob = await db.generationJob.findUniqueOrThrow({ where: { id: backupId } }); assert.equal(backupJob.status, "success"); assert.equal(backupJob.provider, "kie"); assert.equal(backupJob.fallback, true);
   const backupAttempts = await db.generationAttempt.findMany({ where: { jobId: backupId }, orderBy: { createdAt: "asc" } }); assert.deepEqual(backupAttempts.map(a => [a.provider, a.status, a.fallback]), [["zenmux", "failed", false], ["kie", "success", true]]);
   process.env.GATEWAY_PREFERENCE = "kie";
-  const blockedId = await createSceneJob(user.id, product.id, "异步内容拦截转同步备用", "1:1"); mode = "pending"; await submitGatewayJob(blockedId, syncFactory); mode = "fail"; await pollGatewayJob(blockedId, syncFactory);
-  const blockedJob = await db.generationJob.findUniqueOrThrow({ where: { id: blockedId } }); assert.equal(blockedJob.status, "success"); assert.equal(blockedJob.provider, "zenmux"); assert.equal(blockedJob.fallback, true);
+  const blockedId = await createSceneJob(user.id, product.id, "异步已知失败按既有策略重试一次", "1:1"); mode = "pending"; await submitGatewayJob(blockedId, syncFactory); mode = "fail"; await pollGatewayJob(blockedId, syncFactory);
+  // 本轮不改异步双网关策略：既有实现同线路重试一次后结束，不假称已实现失败后跨网关补交。
+  if((await db.generationJob.findUniqueOrThrow({where:{id:blockedId}})).status==="running")await pollGatewayJob(blockedId,syncFactory);
+  const blockedJob = await db.generationJob.findUniqueOrThrow({ where: { id: blockedId } }); assert.equal(blockedJob.status, "failed"); assert.equal(blockedJob.provider, "kie");
+  const blockedAttempts=await db.generationAttempt.findMany({where:{jobId:blockedId}});assert.equal(blockedAttempts.length,2);assert(blockedAttempts.every(a=>a.provider==="kie"&&a.status==="failed"));
   // 本地存储失败不能触发下一家重复付费；保留已经生成的费用预留。
-  process.env.GATEWAY_PREFERENCE = "auto"; let secondProviderCalls = 0;
+  process.env.GATEWAY_PREFERENCE = "zenmux"; let secondProviderCalls = 0;
   const storageFailureId = await createSceneJob(user.id, product.id, "同步保存失败", "1:1");
   await submitGatewayJob(storageFailureId, candidate => { if (candidate.provider === "kie") secondProviderCalls++; return { isConfigured: () => true, generate: async () => ({ kind: "done", images: [Buffer.from("invalid-image")] }) }; });
   const storageFailure = await db.generationJob.findUniqueOrThrow({ where: { id: storageFailureId } }); assert.equal(storageFailure.status, "failed"); assert.ok(Number(storageFailure.reservedUsd) > 0); assert.equal(secondProviderCalls, 0);
@@ -226,7 +238,9 @@ try {
   failureEndpoint = "createTask"; const rejectedJob = await createSceneJob(user.id, product.id, "模拟业务余额错误", "1:1"); await submitGatewayJob(rejectedJob, provider); assert.equal((await db.generationJob.findUniqueOrThrow({ where: { id: rejectedJob } })).status, "failed");
   failureEndpoint = ""; await databaseCircuit.success("kie"); mode = "pending";
   const queryFailureJob = await createSceneJob(user.id, product.id, "模拟查询业务错误", "1:1"); await submitGatewayJob(queryFailureJob, provider); failureEndpoint = "recordInfo"; failureCode = 500; failureMessage = "Upstream task error";
-  await pollGatewayJob(queryFailureJob, provider); assert.equal((await db.generationJob.findUniqueOrThrow({ where: { id: queryFailureJob } })).status, "failed");
+  await pollGatewayJob(queryFailureJob, provider);
+  const queryRetry=await db.generationJob.findUniqueOrThrow({where:{id:queryFailureJob}});assert.equal(queryRetry.status,"running");assert.equal((queryRetry.input as Record<string,unknown>).autoRetryCount,1);
+  await pollGatewayJob(queryFailureJob,provider);assert.equal((await db.generationJob.findUniqueOrThrow({where:{id:queryFailureJob}})).status,"failed");
   failureEndpoint = "chat/completions"; failureCode = 400; failureMessage = "Invalid parameter"; await databaseCircuit.success("kie"); await assert.rejects(chatWithGateway("llm-vision", { messages: [{ role: "user", content: "模拟业务错误" }] }, { userId: user.id }), /参数/); failureEndpoint = "";
   const { saveProduct } = await import("../src/lib/product-save");
   const { productSchema } = await import("../src/lib/product-validation");
@@ -236,7 +250,7 @@ try {
   const versionJob = await createSceneJob(user.id, product.id, "按新版特征生成", "1:1");
   await saveProduct({ ...savedData, identityTraits: "再次修改后的身份" }, user.id, product.id);
   const frozen = (await db.generationJob.findUniqueOrThrow({ where: { id: versionJob } })).input as Record<string, unknown>;
-  assert.equal(frozen.identityTraits, savedData.identityTraits); assert.equal(frozen.identityVersionId, savedVersion.id); assert.equal(frozen.identitySavedById, user.id); assert.equal(frozen.identitySavedAt, savedVersion.savedAt.toISOString());
+  assert.ok(String(frozen.identityTraits).startsWith(savedData.identityTraits+"\n结构与部件：")); assert.equal(frozen.identityVersionId, savedVersion.id); assert.equal(frozen.identitySavedById, user.id); assert.equal(frozen.identitySavedAt, savedVersion.savedAt.toISOString());
   assert.equal(await db.productIdentityVersion.count({ where: { productId: product.id } }), 2);
   // 重启恢复：异步旧任务不再提交；同步中断立刻失败；遗漏的pending重新入队。
   const { recoverInterruptedJobs } = await import("../src/lib/worker-recovery");
@@ -263,6 +277,7 @@ try {
   await mutatePack(product.id, { action: "defaults" });
   let board = await packSnapshot(product.id); assert.equal(board.slots.length, 7);
   for (const slot of board.slots.slice(0, 3)) await mutatePack(product.id, { action: "save", slotId: slot.id, slot: { ...slot, goal: `测试${slot.name}空间` } });
+  for(const slot of board.slots.slice(0,3))await db.imageSlot.update({where:{id:slot.id},data:{visualPlan:JSON.parse(JSON.stringify(await frozenScene(product.id,slot.goal)))}});
   const quote = await quoteBatch(user.id, product.id, {}); assert.equal(quote.totalCount, 6); assert.equal(quote.estimatedCostUsd, 0.18); assert.deepEqual(quote.skipped, ["其他空间场景"]);
   const jobsBeforeQuota = await db.generationJob.count();
   await assert.rejects(submitBatch(tiny.id, product.id, {}, quote.fingerprint, randomUUID()), /还差/); assert.equal(await db.generationJob.count(), jobsBeforeQuota);

@@ -16,6 +16,8 @@ npx prisma migrate deploy
 
 新环境再执行 `npm run seed`、`npm run seed:task10` 和 `npm run configure:models` 初始化账号、品类和模型目录。已有环境升级不需要重复导入种子，也不要重置数据库。
 
+本轮品类经验初始化执行 `node --conditions=react-server --import tsx scripts/import-visual-patterns.ts`：保留原示例并标记为示例，导入用户提供的鞋架视觉经验；9条案例图片引用保持待上传。竞品研究需配置 `TAVILY_API_KEY`；未配置或联网失败会在方案中注明并跳过。
+
 3. 网页和worker分别在两个终端常驻运行：
 
 ```powershell
@@ -28,16 +30,20 @@ npm run worker
 
 打开 http://localhost:3000 使用已配置账号登录。MinIO控制台为 http://localhost:9001。已运行的服务不要重复启动；修改.env后重启网页和worker。生产环境先执行 `npm run build`，再分别运行 `npm run start` 和 `npm run worker`。
 
-本地验证：`npm run lint`、`npm run typecheck`、`npm run build`、`npm run test:task10:units`、`npm run test:canvas`、`npm run test:image-models`、`node --import tsx --test tests/unit/workflow-prototype.test.ts`。浏览器回归执行 `npm run test:e2e`，需先启动网页和本地依赖；常规回归不截图或录屏。自动测试使用本地模拟模型，不验证付费出图效果。
+如果本机访问模型服务需要代理，在启动网页、worker和真实验收进程前设置 `NODE_USE_ENV_PROXY=1`、`HTTPS_PROXY`、`HTTP_PROXY` 为本机实际可用地址，`NO_PROXY=localhost,127.0.0.1,::1` 保持数据库和MinIO直连。不要把代理端口或凭据写进业务代码。
+
+本地验证：`npm run lint`、`npm run typecheck`、`npm run build`、`npm run test:units`（完整94项纯单元测试）、`npm run test:visual-plan`、`npm run test:canvas`、`npm run test:image-models`。浏览器回归执行 `npm run test:e2e`，两个隔离Agent流程另用 `npm run test:agent:browser`；需先启动网页和本地依赖，不截图或录屏。自动回归使用本地模拟模型；真实验收另需明确授权。
 
 ## 当前功能
 
 - 正式入口：`/`创作首页、`/skus`项目列表、`/workspace?sku=产品ID`工作台。原/design-preview对应页面保留301跳转及登录回跳。
 - 账号密码登录、角色权限、账号管理和私有素材访问。管理员入口为 `/admin`，模型管理为 `/admin/models`，另有用户及网关管理。
-- 实拍/文档上传、产品理解、档案确认、图包策划、费用确认、候选生成、选终稿和ZIP导出。
+- 实拍/文档上传、产品理解、档案确认；Agent分析本产品卖点、研究竞品、检索品类经验，再提出逐图位可编辑的视觉方案。确认后冻结选择，报价、提交和生成读取同一份快照。
+- 方案支持替换场景、调整道具/陈列/机位/光线、备注与按意见重写；场景及配饰去重，联网失败明确注明。对话提案、规划图包及旧单张入口共用同一流程。
 - 画布选图引用、便签与布局保存、生成进度、大图预览、候选修改和下载；手机可切换对话与画布。
+- 对话按整图或局部范围推进修改；画布支持矩形/画笔蒙版和修改要求，服务端合成保证蒙版外像素不变。每次修改保留新旧版本，可对比、切换终稿；优秀定稿提炼为案例和经验，另经人工确认入库。
 - 智能体默认 Gemini 3.8 Flash，经ZenMux调用；生图默认KIE Nano Banana 2.1，另可手动选择GPT Image 2.5、Nano Banana 2、Nano Banana Pro、Qwen3。Auto目前优先默认候选。
-- `/products/[id]`保留为“产品资料”，支持身份全文、实拍管理、单张生成与独立历史；新版产品卡可进入。旧图包工作页 `/products/[id]/pack`继续保留。
-- 未接通的原型入口由 `src/lib/ui-features.ts` 的 `SHOW_UNCONNECTED_FEATURES=false` 统一隐藏，包括本地模板库操作、颜色变体、多语言/术语表、品牌和导出前检查。`/library`目前仅保留未接通说明。
+- `/products/[id]`保留为“产品资料”，支持身份全文、实拍管理、单张方案与独立历史；新版产品卡可进入。旧图包工作页 `/products/[id]/pack`继续保留。
+- `/library`展示真实品类经验：场景、卖点表达、配饰池、常见图位顺序、案例；示例和未上传案例不参与检索。未接通的原型操作、颜色变体、多语言/术语表、品牌和导出前检查继续由统一开关隐藏。
 
-所有模型请求仅在服务端执行，费用、配额、任务及实际模型留痕。真实出图需要本人确认并执行；不会自动运行付费验证。开发记录与待办见[CHANGELOG](docs/CHANGELOG.md)，第三方参考授权见[THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md)。
+所有模型请求仅在服务端执行，费用、配额、任务及实际模型留痕。真实出图验证仅按用户明确授权执行。开发记录与待办见[CHANGELOG](docs/CHANGELOG.md)，第三方参考授权见[THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md)。

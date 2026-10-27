@@ -1,0 +1,231 @@
+{
+  "productId": "cmvqffv200000bcv8bnmu03xt",
+  "inputPath": "F:/鞋架-WN81XJ01G2-马计委/1-主图.jpg",
+  "authorization": "用户本轮授权真实验收并同意本地月度配额调到$1.50；确认操作由Codex代执行，实际画布框选后提交局部修改。",
+  "research": {
+    "status": "skipped",
+    "note": "竞品检索已跳过：联网搜索尚未配置，管理员需填写 TAVILY_API_KEY 并重启服务；可以关闭联网继续制作",
+    "commonScenes": [],
+    "commonExpressions": [],
+    "homogeneity": [],
+    "opportunities": [],
+    "sources": [],
+    "cachedAt": "2026-10-27T08:56:20.449Z"
+  },
+  "jobs": [
+    {
+      "id": "cmvqgfmk0000faov8b4vsxnzb",
+      "status": "success",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "logicalModel": "scene-main",
+      "costUsd": 0.025,
+      "costEstimated": false,
+      "assetIds": [
+        "cmvqgh20q0005nwv8x144mqhx"
+      ],
+      "editMode": null,
+      "sourceJobId": null,
+      "maskAssetId": null,
+      "identityLockPreserved": true
+    },
+    {
+      "id": "cmvqgfmn2000haov8z2typhyz",
+      "status": "success",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "logicalModel": "scene-main",
+      "costUsd": 0.025,
+      "costEstimated": false,
+      "assetIds": [
+        "cmvqggurf0004nwv8j9u1wzcc"
+      ],
+      "editMode": null,
+      "sourceJobId": null,
+      "maskAssetId": null,
+      "identityLockPreserved": true
+    },
+    {
+      "id": "cmvqgfmp4000jaov8n5qyww4c",
+      "status": "success",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "logicalModel": "scene-main",
+      "costUsd": 0.025,
+      "costEstimated": false,
+      "assetIds": [
+        "cmvqgh33t0006nwv85br7luop"
+      ],
+      "editMode": null,
+      "sourceJobId": null,
+      "maskAssetId": null,
+      "identityLockPreserved": true
+    },
+    {
+      "id": "cmvqgfmrb000laov83ms9yt8g",
+      "status": "success",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "logicalModel": "scene-main",
+      "costUsd": 0.025,
+      "costEstimated": false,
+      "assetIds": [
+        "cmvqgh4l70007nwv8uzv7yy4y"
+      ],
+      "editMode": null,
+      "sourceJobId": null,
+      "maskAssetId": null,
+      "identityLockPreserved": true
+    },
+    {
+      "id": "cmvqgjnbt0006vwv8x6qsvgjh",
+      "status": "success",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "logicalModel": "edit",
+      "costUsd": 0.025,
+      "costEstimated": false,
+      "assetIds": [
+        "cmvqglbnq0009nwv8lmet5xov"
+      ],
+      "editMode": "whole",
+      "sourceJobId": "cmvqgfmk0000faov8b4vsxnzb",
+      "maskAssetId": null,
+      "identityLockPreserved": true
+    },
+    {
+      "id": "cmvqgn0dj000fnov8sc1lu31p",
+      "status": "success",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "logicalModel": "edit",
+      "costUsd": 0.025,
+      "costEstimated": false,
+      "assetIds": [
+        "cmvqgpv2a000bnwv8s453fjib"
+      ],
+      "editMode": "masked",
+      "sourceJobId": "cmvqgfmp4000jaov8n5qyww4c",
+      "maskAssetId": "cmvqgn02f000dnov8oovdqkwu",
+      "identityLockPreserved": true
+    }
+  ],
+  "llmCalls": [
+    {
+      "id": "cmvqffv7l0005bcv89wuadzkp",
+      "provider": "zenmux",
+      "model": "google/gemini-3.8-flash",
+      "status": "failed",
+      "costUsd": 0.027941,
+      "estimated": true
+    },
+    {
+      "id": "cmvqg3dvk0000xcv8urqxsmqq",
+      "provider": "zenmux",
+      "model": "google/gemini-3.8-flash",
+      "status": "failed",
+      "costUsd": 0.027941,
+      "estimated": true
+    },
+    {
+      "id": "cmvqgaveh0000a0v88v0u7dcm",
+      "provider": "zenmux",
+      "model": "google/gemini-3.8-flash",
+      "status": "success",
+      "costUsd": 0.009777,
+      "estimated": true
+    },
+    {
+      "id": "cmvqgb7za0001a0v8t0w0mmky",
+      "provider": "zenmux",
+      "model": "google/gemini-3.8-flash",
+      "status": "success",
+      "costUsd": 0.029594,
+      "estimated": true
+    },
+    {
+      "id": "cmvqgj64m0001vwv8iwxs15mb",
+      "provider": "zenmux",
+      "model": "google/gemini-3.8-flash",
+      "status": "success",
+      "costUsd": 0.017669,
+      "estimated": true
+    }
+  ],
+  "recordedImageUsd": 0.15,
+  "recordedLlmUsd": 0.112922,
+  "files": {
+    "canvas-after.png": {
+      "bytes": 9137195,
+      "sha256": "acf44c1b2db4d56af42792fe23535c3163a6b4a9520b3414ed39bdcb6d565011"
+    },
+    "canvas-before.png": {
+      "bytes": 7845302,
+      "sha256": "73359c15fd32179085d2c035129c93ea1b4c82fa7c3f249b1b49953267c80642"
+    },
+    "canvas-edit-prompt.txt": {
+      "bytes": 1695,
+      "sha256": "15b85d50f955115f63b152ca67099b56d83849612577ac2d48fee563345d52bd"
+    },
+    "canvas-mask.png": {
+      "bytes": 88824,
+      "sha256": "f02959c22e327b6d7a1410c997ac1a609e26d866d9e3ce59feb3973b928dc96a"
+    },
+    "canvas-pixel-check.json": {
+      "bytes": 212,
+      "sha256": "54242499c3cfab0bf76026349cc4d3d5a8d5f2c36e77e0bd90ce1c60da4bc9b1"
+    },
+    "conversation-after.png": {
+      "bytes": 7127765,
+      "sha256": "697c8fad702dd94f2f4fb3f884b12d9999c4f79224a149a4493021f56e4bc492"
+    },
+    "conversation-before.png": {
+      "bytes": 7146946,
+      "sha256": "b7ae92a81edce3a72859bbf19d4df7639992f1f85c3e1ff134ca222ccc690afa"
+    },
+    "conversation-edit-prompt.txt": {
+      "bytes": 2029,
+      "sha256": "f7a922192fbb570e633ed5fd00e954ae1f20a2affb18b14560ea21cf9fe30cc2"
+    },
+    "input-main.jpg": {
+      "bytes": 182764,
+      "sha256": "36255d2027c75d3868b464e53fdabdc4ba84a5637da38741a977e37c440db66f"
+    },
+    "plan.json": {
+      "bytes": 18336,
+      "sha256": "5b2e4cc61d104ff06452bcec5c36b07379a2ebc1d2fe7845412ca86835bf6e1b"
+    },
+    "slot-4-prompt.txt": {
+      "bytes": 2201,
+      "sha256": "0624b39867bb8d8f36c4d46394dd4d669728aee14572a09ba6f426db9e6f15ee"
+    },
+    "slot-4.png": {
+      "bytes": 7146946,
+      "sha256": "b7ae92a81edce3a72859bbf19d4df7639992f1f85c3e1ff134ca222ccc690afa"
+    },
+    "slot-5-prompt.txt": {
+      "bytes": 2155,
+      "sha256": "5772dc88699b02831d4fccf0e06d1934d13051d7e125d9b17443e0fcfda587bf"
+    },
+    "slot-5.png": {
+      "bytes": 6563058,
+      "sha256": "f926e716f65fb7e36515de43260952a38dfac0c13cabf4d7469fbc4215637750"
+    },
+    "slot-6-prompt.txt": {
+      "bytes": 2194,
+      "sha256": "1bbcf8a6827b8553722be6b67fb736b8157f017da4e9d408fe17d326f68f9bef"
+    },
+    "slot-6.png": {
+      "bytes": 7845302,
+      "sha256": "73359c15fd32179085d2c035129c93ea1b4c82fa7c3f249b1b49953267c80642"
+    },
+    "slot-7-prompt.txt": {
+      "bytes": 2310,
+      "sha256": "55e22aa499d46a01ae1e8fbcf41e81a3fa6227f74f09ada61db63123ae931d46"
+    },
+    "slot-7.png": {
+      "bytes": 7074182,
+      "sha256": "8f4e8c75cdc747a6b1ab970c24f8ca8d836c51a1d00c9b824a6b67382334cb8c"
+    }
+  }
+}

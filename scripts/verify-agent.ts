@@ -14,12 +14,12 @@ if (!originalUrl || !["localhost", "127.0.0.1"].includes(new URL(originalUrl).ho
 const databaseName = `verify_agent_${randomUUID().replaceAll("-", "")}`, pool = new Pool({ connectionString: originalUrl });
 await pool.query(`CREATE DATABASE "${databaseName}"`);
 const isolated = new URL(originalUrl); isolated.pathname = `/${databaseName}`; process.env.DATABASE_URL = isolated.href;
-process.env.KIE_API_KEY = "agent-local-test-key"; process.env.ZENMUX_API_KEY = ""; process.env.GATEWAY_PREFERENCE = "kie"; process.env.PG_BOSS_SCHEMA = "pgboss";
+process.env.TAVILY_API_KEY=""; process.env.KIE_API_KEY = "agent-local-test-key"; process.env.ZENMUX_API_KEY = ""; process.env.GATEWAY_PREFERENCE = "kie"; process.env.PG_BOSS_SCHEMA = "pgboss";
 type Step = { name: string; args: unknown } | ((materials: Materials) => { name: string; args: unknown });
 type Materials = { product: { id: string }; documents: { id: string; type: string; assetId: string }[]; images: { id: string }[]; conversation: { id: string }[]; pack?: { slots: { id: string; finalAssetId: string | null; method: string }[] } };
 let refreshHeartbeat: (() => Promise<unknown>) | undefined;
 let completeBrowser: ((productId: string) => Promise<void>) | undefined;
-let steps: Step[] = [], calls = 0, submitted = 0, latestMaterials: Materials;
+let steps: Step[] = [], calls = 0, submitted = 0, visualRevision=0, latestMaterials: Materials;
 const values = ["储物边柜", "2扇门、4条腿、2个把手", "80 × 40 × 90 cm", "橡木木纹、黑色五金", "2个黑色竖直把手位于门正面", "无外露 Logo", "锁定双门和四脚，木纹不可改为纯色", "1.封闭储物 2.小户型适用", "小户型家庭", "客厅与卧室，自然现代风格"];
 function profileFieldsArgs(materials: Materials, conflict: boolean) {
   const source = { kind: "document", id: materials.documents.find(d => d.type === "csv")!.id, quote: "参数表" };
@@ -49,7 +49,11 @@ const mock = createServer(async (request, response) => {
   calls++;
   for (const item of (body.input ?? []) as { type?: string; output?: string }[]) { if (item.type === "function_call_output") { try { const data = JSON.parse(item.output ?? "{}"); if (data.product && data.documents) latestMaterials = data; } catch {} } }
   const step = Array.isArray(body.tools) && body.tools.length ? steps.shift() : undefined, tool = typeof step === "function" ? step(latestMaterials) : step;
-  const output = tool ? [{ type: "function_call", call_id: `mock-call-${calls}`, name: tool.name, arguments: JSON.stringify(tool.args) }] : [{ type: "message", role: "assistant", content: [{ type: "output_text", text: "当前操作已经记录，请查看确认卡或候选看板。" }] }];
+  const inputText=JSON.stringify(body.input??[]);
+  let structured:unknown;
+  if(inputText.includes("分析本产品实拍和参数"))structured={traits:"双门四脚木纹边柜，两个黑色把手",structure:"两扇门、四条腿、两个竖直把手",materials:"木质",colors:"橡木色和黑色五金",functions:["封闭储物"],sellingPoints:[{name:"封闭储物",evidence:"实拍和已确认档案",priority:1}]};
+  if(inputText.includes("为本次新产品制定视觉方案")){visualRevision++;structured={reason:"按本产品检索并规划的模拟视觉方案",slots:["主图","客厅场景","卧室场景","其他空间场景","卖点图","细节图","安装示意图"].map((name,i)=>({key:"mock-"+i,name,slotType:i===0?"main":i<4?"scene":i===4?"selling_point":i===5?"detail":"installation",method:i<4?"ai_scene":"manual_upload",sellingPoint:"封闭储物",scene:i===0?"纯白背景":name,props:i<4&&i>0?["模拟环境配饰"+i]:[],display:"保持完整产品真实比例",camera:"模拟取景版本"+visualRevision,light:"柔和自然光",palette:"中性环境",composition:"完整产品入画",needs_post:i>=4,postNotes:i>=4?"后期人工排版":"",evidence:["identityLock"],notes:"",combinationKey:""}))};}
+  const output = tool ? [{ type: "function_call", call_id: `mock-call-${calls}`, name: tool.name, arguments: JSON.stringify(tool.args) }] : [{ type: "message", role: "assistant", content: [{ type: "output_text", text: structured?JSON.stringify(structured):"当前操作已经记录，请查看确认卡或候选看板。" }] }];
   const result = { status: "completed", output, usage: { input_tokens: 500, output_tokens: 150, total_tokens: 650 }, credits_consumed: 0.1 };
   if (body.stream) { response.setHeader("Content-Type", "text/event-stream"); if (!tool) response.write(`data: ${JSON.stringify({ type: "response.output_text.delta", delta: "当前操作已经记录，请查看确认卡或候选看板。" })}\n\n`); response.end(`data: ${JSON.stringify({ type: "response.completed", response: result })}\n\n`); }
   else response.end(JSON.stringify(result));
@@ -64,6 +68,8 @@ try {
   const boss = await getBoss();
   const tick = () => db.workerHeartbeat.upsert({ where: { id: WORKER_ID }, create: { id: WORKER_ID, instanceId: "agent-mock" }, update: { instanceId: "agent-mock", updatedAt: new Date() } }); refreshHeartbeat = tick; await tick(); heartbeat = setInterval(() => { void tick(); }, 5000);
   cleanup = async () => { if (heartbeat) clearInterval(heartbeat); for (const asset of await db.asset.findMany()) await deleteObject(asset.storageKey).catch(() => undefined); for (const doc of await db.productDocument.findMany({ where: { assetId: null } })) await deleteObject(doc.storageKey).catch(() => undefined); await boss.stop(); await db.$disconnect(); };
+  const {models:mockModels}=await import("../src/lib/models.config");
+  await db.studioModel.create({data:{id:"mock-agent",name:"隔离模拟Agent",kind:"agent",visible:true,candidate:JSON.parse(JSON.stringify(mockModels["llm-agent"].find(c=>c.provider==="kie"))),probe:{toolCalls:20,parameterCorrect:20,formatCorrect:20,contextStable:20}}});
   const user = await db.user.create({ data: { name: "Agent隔离验收", email: "agent-test@example.invalid", passwordHash: await bcrypt.hash("agent-test-password-123",12), monthlyQuota: 20 } });
   const product = await db.product.create({ data: { sku: "MOCK-AGENT-5", name: "模拟边柜", category: "储物柜", dimensions: "80x40x90cm", colors: "木色", materials: "橡木", sellingPoints: [], createdById: user.id } });
   const png = await sharp({ create: { width: 64, height: 64, channels: 3, background: "#d8c8b2" } }).png().toBuffer();
@@ -86,7 +92,7 @@ try {
   await approveAgentCard(session.id,(await card("questions")).id,{answers:["参数表80cm","没有","小户型家庭"]}); await run("profile");
   const profileCard=await card("profile"), profile=(profileCard.data as unknown as {profile:ReturnType<typeof emptyProfile>}).profile; profile.driftWarnings.value += "，美工确认门缝不能加宽"; await approveAgentCard(session.id,profileCard.id,{profile}); assert.equal(await db.productIdentityVersion.count({where:{productId:product.id}}),1);
   await assert.rejects(executeAgentTool(session.id,"propose_image_pack",{reason:"校验新增图位",slots:[{id:"fabricated-new-slot",name:"新增场景",slotType:"scene",method:"ai_scene",goal:"新的空间意图",aspectRatio:"1:1",candidateCount:1,reason:"新增"}]}),/新增图位请省略id/);
-  await run("pack"); const packCard=await card("pack"), proposal=packCard.data as {slots:{goal:string}[]}; proposal.slots[1].goal="温暖的客厅中展现封闭收纳，浅色木地板"; await approveAgentCard(session.id,packCard.id,{proposal});
+  await run("pack"); const packCard=await card("pack"), proposal=packCard.data as {visualPlan:{slots:{display:string}[]}}; proposal.visualPlan.slots[1].display="温暖的客厅中展现封闭收纳，浅色木地板"; await approveAgentCard(session.id,packCard.id,{visualPlan:proposal.visualPlan});
   await db.agentSession.update({where:{id:session.id},data:{autoConfirm:true}}); await run("generate"); const firstCost=await card("cost"); assert.equal(await db.generationJob.count({where:{productId:product.id}}),0); await approveAgentCard(session.id,firstCost.id,{}); await approveAgentCard(session.id,firstCost.id,{}); assert.equal(await db.generationJob.count({where:{productId:product.id}}),4);
   await db.agentCard.update({ where: { id: firstCost.id }, data: { status: "executing", data: { ...(firstCost.data as Record<string,unknown>), startedAt: new Date(Date.now()-180000).toISOString() } } });
   await agentSnapshot(product.id,user.id); assert.equal((await db.agentCard.findUniqueOrThrow({where:{id:firstCost.id}})).status,"executed"); assert.equal(await db.generationJob.count({where:{productId:product.id}}),4);
@@ -101,7 +107,8 @@ try {
   const later=await db.imageSlot.findMany({where:{packId:slot.packId,method:"ai_scene",finalAssetId:null},orderBy:{order:"asc"}}); await assert.rejects(createCostCard(session.id,{operation:"generate_slot",slotId:later[1].id,count:1}),/先挑好/); assert.equal(nextSlot.id,later[0].id);
   await run("none","够了，开始吧"); const stopped=await executeAgentTool(session.id,"ask_user",{questions:[{question:"不应再问",options:[],allowFreeText:true}]}); assert.equal((stopped as {stopped:boolean}).stopped,true);
   await db.agentSession.update({where:{id:session.id},data:{mode:"quick",autoConfirm:true}});
-  for(let i=0;i<10;i++) await db.imageSlot.create({data:{packId:slot.packId,order:8+i,name:`多图${i}`,slotType:"scene",method:"ai_scene",goal:"测试费用门槛",candidateCount:4,aspectRatio:"1:1"}});
+  const currentSlot=await db.imageSlot.findUniqueOrThrow({where:{id:slot.id}});
+  for(let i=0;i<10;i++) await db.imageSlot.create({data:{packId:slot.packId,order:8+i,name:`多图${i}`,visualPlan:currentSlot.visualPlan??undefined,slotType:"scene",method:"ai_scene",goal:"测试费用门槛",candidateCount:4,aspectRatio:"1:1"}});
   const expensive=await createCostCard(session.id,{operation:"generate_batch"}); assert.equal((expensive as {waitForUser:boolean}).waitForUser,true); assert.ok((expensive as {quote:{estimatedCostUsd:number}}).quote.estimatedCostUsd>1);
   state=await agentSnapshot(product.id,user.id); assert.ok(state.costs.llmUsd>0&&state.costs.imagesUsd>0); assert.equal(await db.llmCall.count({where:{productId:product.id,sessionId:null}}),0);
   console.log(`通过：上传/解析失败隔离 → 3问题与尺寸冲突 → 回答 → 修改并确认身份版本 → 7图位方案 → 首批手动确认幂等 → 4张mock生成 → 原图+3实拍调整 → 终稿 → 方案保留 → 手动图位限制 → 停止提问 → 超$1确认。mock费用 LLM $${state.costs.llmUsd.toFixed(6)}，生图 $${state.costs.imagesUsd.toFixed(6)}；未调用付费外网。`);

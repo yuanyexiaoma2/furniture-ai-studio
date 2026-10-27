@@ -1,5 +1,5 @@
 // 第二阶段接入时使用此边界，当前仅由本地模拟器消费。
-export type ImageAction = "final"|"paint"|"erase"|"expand"|"cutout"|"background"|"regenerate"|"download"|"recolor"|"reference"|"prop";
+export type ImageAction = "excellent"|"final"|"paint"|"erase"|"expand"|"cutout"|"background"|"regenerate"|"download"|"recolor"|"reference"|"prop";
 export type ActionRequest = {
   action:ImageAction; imageId:string; originalImage:string;
   originalPhotoReferences:string[]; productReferences:string[]; mask?:Blob; instruction?:string;

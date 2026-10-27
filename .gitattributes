@@ -1,0 +1,5 @@
+# 验收文本保持实际提交时的换行，避免Windows检出后文件哈希变化。
+docs/task11b-samples/*.txt text eol=lf
+docs/task11b-samples/*.json text eol=lf
+docs/task11b-samples/*.png binary
+docs/task11b-samples/*.jpg binary

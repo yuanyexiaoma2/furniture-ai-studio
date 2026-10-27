@@ -9,6 +9,7 @@ import { GatewayError } from "../../src/lib/gateway-error";
 import { circuitFailure, emptyCircuit, routeCall, type CircuitStore } from "../../src/lib/gateway-router";
 import type { ModelCandidate } from "../../src/lib/models.config";
 import {DEFAULT_AGENT} from "../../src/lib/agent-default";
+import {imageRetryAllowed} from "../../src/lib/studio-rules";
 import type { ImageRequest } from "../../src/lib/image-provider";
 import { identityPrompt, identitySchema, identityText } from "../../src/prompts/identity";
 import { db } from "../../src/lib/db";
@@ -17,6 +18,16 @@ process.env.ZENMUX_API_KEY = "unit-test-not-real";
 after(async () => { if (oldKey === undefined) delete process.env.ZENMUX_API_KEY; else process.env.ZENMUX_API_KEY = oldKey; await db.$disconnect(); });
 const read = async () => ({ bytes: Buffer.from("reference"), mime: "image/png" as const });
 const imageInput: ImageRequest = { prompt: "测试图片", referenceImages: [{ id: "asset" }], aspectRatio: "3:4", resolution: "4K", outputFormat: "png" };
+test("线路耗尽仍保留扣费不确定标记，上层不能自动重发",async()=>{
+ const s=setup();let attempts=0;
+ await assert.rejects(routeCall({logical:"scene-main",candidates:[candidates[1]],circuit:s.circuit,configured:()=>true,hooks:s.hooks,call:async()=>{attempts++;throw new GatewayError("kie","模拟提交后断网",500,true,true);}}),error=>{assert.ok(error instanceof GatewayError);assert.equal(error.uncertain,true);assert.equal(imageRetryAllowed({},error.retryable,error.uncertain),false);return true;});
+ assert.equal(attempts,1);
+});
+test("备用线路的已知错误不能抹掉前一线路的扣费不确定状态",async()=>{
+ for(const status of [400,500]){
+  const s=setup();await assert.rejects(routeCall({logical:"scene-main",candidates,circuit:s.circuit,configured:()=>true,hooks:s.hooks,call:async c=>{throw c.provider==="zenmux"?new GatewayError("zenmux","模拟断网",500,true,true):new GatewayError("kie","模拟备用失败",status,status>=500,false);}}),error=>error instanceof GatewayError&&error.uncertain===true);
+ }
+});
 const candidates: ModelCandidate[] = [{ provider: "zenmux", model: "google/gemini-nano-banana-2.1", supportsTools: false, pricing: { currency: "USD" } }, { provider: "kie", model: "nano-banana-2-1", supportsTools: false, pricing: { currency: "credits" } }];
 function setup() {
   let now = 1_000_000;

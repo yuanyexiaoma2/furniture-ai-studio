@@ -9,6 +9,9 @@ import {approveAgentCard,createCostCard} from "@/lib/agent-actions";
 import {inspectPhoto,putObject} from "@/lib/storage";
 import {quoteBatch,submitBatch} from "@/lib/image-packs";
 import {logStudioReadError} from "@/lib/server-read-error";
+import {proposeVisualPlan} from "@/lib/visual-planning";
+import {visualPlanSchema} from "@/lib/visual-plan-rules";
+import {proposeExcellentCase} from "@/lib/visual-case";
 export const runtime="nodejs";export const maxDuration=300;
 type Ctx={params:Promise<{id:string}>};
 export async function GET(request:Request,context:Ctx){try{const user=await studioUser(request);return NextResponse.json(await studioSnapshot((await context.params).id,user.id));}catch(e){logStudioReadError(request,e);return studioError(e,"读取工作台失败，请检查服务后刷新");}}
@@ -29,6 +32,13 @@ export async function POST(request:Request,context:Ctx){
  else if(body.action==="shooting")await studioShooting(productId,user.id,z.enum(["quick","strict"]).parse(data.mode),data.skip===true);
  else if(body.action==="profile")await studioProfileCard(productId,user.id);
  else if(body.action==="plan")await lockedOperation(session.id,"plan_image_pack",()=>planStudioTask(productId,user.id));
+ else if(body.action==="rewrite_plan"){
+  const card=await db.agentCard.findFirst({where:{id:z.string().parse(data.cardId),sessionId:session.id,kind:"pack",status:"pending"}});
+  if(!card)throw new StudioError("方案已失效，请刷新",409);
+  const previousPlan=visualPlanSchema.parse((card.data as {visualPlan:unknown}).visualPlan);
+  await lockedOperation(session.id,"plan_image_pack",()=>proposeVisualPlan(productId,user.id,{previousPlan,feedback:z.string().min(1).max(8000).parse(data.feedback)}));
+ }
+ else if(body.action==="excellent")await proposeExcellentCase(productId,user.id,z.string().parse(data.assetId));
  else if(body.action==="generate")await createCostCard(session.id,{operation:"generate_batch"});
  else if(body.action==="approve")await approveAgentCard(session.id,z.string().parse(data.cardId),(data.changes??{}) as Record<string,unknown>);
  else if(body.action==="edit_quote"){const a=z.object({assetId:z.string(),instruction:z.string().trim().min(1).max(8000),maskAssetId:z.string().optional(),expansion:z.object({width:z.number(),height:z.number(),offsetX:z.number(),offsetY:z.number()}).optional()}).strict().parse(data);const quote=await quoteStudioEdit(productId,user.id,a.assetId,a.instruction,a);await db.chatMessage.create({data:{sessionId:session.id,productId,role:"system",content:{text:"本次修改预计 $"+quote.estimatedCostUsd.toFixed(2)+"（估），确认后开始。"+(quote.warning??"")}}});return NextResponse.json(quote);}

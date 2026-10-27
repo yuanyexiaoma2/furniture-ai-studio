@@ -68,7 +68,7 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   await expect(page.getByRole("heading", { name: "03 / 场景创作" })).toBeVisible();
   await expect(page.locator(".photo-dropzone")).toHaveCSS("display", "flex");
   await expect(page.locator(".scene-panel .resolution-options")).toHaveCSS("display", "grid");
-  await expect(page.getByRole("button", { name: "生成一张场景图" })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "规划一张场景图" })).toBeDisabled();
   await page.getByLabel("产品身份特征", { exact: true }).fill("模拟身份已确认：双门四脚，两个黑色把手，纹理一致");
   await page.getByRole("button", { name: "保存产品资料" }).click();
   await expect(page.getByText("产品资料与身份特征已保存", { exact: true })).toBeVisible();
@@ -121,9 +121,9 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   await scene.getByLabel("想把产品放进怎样的空间？").fill("模拟 4K 宽幅场景，仅用于参数验收");
   let scenePayload: Record<string, unknown> | undefined;
   const scenePath = `**/api/products/${productId}/generations`;
-  await page.route(scenePath, async (route) => { if (route.request().method() !== "POST") { await route.continue(); return; } scenePayload = route.request().postDataJSON(); await route.fulfill({ status: 202, contentType: "application/json", body: JSON.stringify({ jobId: "ui-scene-simulation" }) }); });
-  await scene.getByRole("button", { name: "生成一张场景图" }).click();
-  await expect(scene.getByRole("status")).toContainText("任务已加入队列");
+  await page.route(scenePath, async (route) => { if (route.request().method() !== "POST") { await route.continue(); return; } scenePayload = route.request().postDataJSON(); await route.fulfill({ status: 202, contentType: "application/json", body: JSON.stringify({ cardId: "ui-plan-simulation", waitForUser:true }) }); });
+  await scene.getByRole("button", { name: "规划一张场景图" }).click();
+  await expect(scene.getByRole("status")).toContainText("视觉方案已准备好");
   expect(scenePayload).toMatchObject({ resolution: "4K", aspectRatio: "21:9" });
   await page.unroute(scenePath);
   const invalidScene = await api.post(`/api/products/${productId}/generations`, { headers: { Origin: origin }, data: { sceneIntent: "测试", aspectRatio: "7:5" } });
@@ -176,7 +176,7 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   const viewerContext = await browser.newContext(); contexts.push(viewerContext);
   const viewer = await viewerContext.newPage(); await login(viewer, viewerEmail, password);
   await viewer.goto(`/products/${productId}`);
-  await expect(viewer.getByRole("button", { name: "生成一张场景图" })).toBeDisabled();
+  await expect(viewer.getByRole("button", { name: "规划一张场景图" })).toBeDisabled();
   await expect(viewer.getByLabel("产品身份特征", { exact: true })).toBeDisabled();
   for (const path of ["", "/photos", "/generations", "/identity"]) {
     const denied = path ? await viewerContext.request.post(`/api/products/${productId}${path}`, { headers: { Origin: origin }, data: {} }) : await viewerContext.request.patch(`/api/products/${productId}`, { headers: { Origin: origin }, data: {} });

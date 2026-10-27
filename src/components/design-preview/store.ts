@@ -17,7 +17,7 @@ export function initialNodes():StudioNode[]{
  return [...frames,...images];
 }
 type PreviewStore={hiddenIds:string[];liveMode:boolean;nodes:StudioNode[];selected:string[];contextId:string|null;target:string;theme:string;tool:"select"|"pan";referencePicking:boolean;references:string[];editor:{id:string;action:ImageAction}|null;messages:string[];history:string[];pending:number;
- restoreTask:(images:{id:string;image:string}[])=>void;clearTask:()=>void;addBatch:(images:string[])=>{id:string;image:string}[];setTheme:(theme:string)=>void;changeNodes:(changes:NodeChange<StudioNode>[])=>void;select:(ids:string[])=>void;clearContext:()=>void;setTarget:(target:string)=>void;setTool:(tool:"select"|"pan")=>void;setPicking:(value:boolean)=>void;addReference:(id:string)=>void;setEditor:(editor:PreviewStore["editor"])=>void;setFinal:(id:string)=>void;update:(id:string,data:Partial<ImageData>)=>void;addImage:(image:string,position?:{x:number;y:number})=>void;addNote:()=>void;removeSelected:()=>void;send:(message:string)=>void;simulate:(id:string,action:ImageAction,onAction?:OnImageAction,mask?:Blob,count?:number)=>Promise<boolean>;reset:()=>void;
+ restoreTask:(images:{id:string;image:string}[])=>void;clearTask:()=>void;addBatch:(images:string[])=>{id:string;image:string}[];setTheme:(theme:string)=>void;changeNodes:(changes:NodeChange<StudioNode>[])=>void;select:(ids:string[])=>void;clearContext:()=>void;setTarget:(target:string)=>void;setTool:(tool:"select"|"pan")=>void;setPicking:(value:boolean)=>void;addReference:(id:string)=>void;setEditor:(editor:PreviewStore["editor"])=>void;setFinal:(id:string)=>void;update:(id:string,data:Partial<ImageData>)=>void;addImage:(image:string,position?:{x:number;y:number})=>void;addNote:()=>void;removeSelected:()=>void;send:(message:string)=>void;simulate:(id:string,action:ImageAction,onAction?:OnImageAction,mask?:Blob,count?:number,instruction?:string)=>Promise<boolean>;reset:()=>void;
 };
 export const usePreviewStore=create<PreviewStore>((set,get)=>({
  hiddenIds:[],liveMode:false,nodes:[],selected:[],contextId:null,target:"客厅场景",theme:"system",tool:"select",referencePicking:false,references:[],editor:null,messages:[],history:["14:32 · 调整客厅光线","14:20 · 生成 30 张候选","14:08 · 确认产品与图包"],pending:0,
@@ -34,9 +34,9 @@ export const usePreviewStore=create<PreviewStore>((set,get)=>({
  addNote:()=>set(s=>({nodes:[...s.nodes,{id:`note-${crypto.randomUUID()}`,type:"note",position:{x:70,y:-170},data:{image:"",slot:"便签",label:get().liveMode?"记录这次创作的要求…":"保留产品木色与扶手轮廓。"}}]})),
  removeSelected:()=>set(s=>({hiddenIds:[...new Set([...s.hiddenIds,...s.nodes.filter(n=>n.type!=="note"&&(s.selected.includes(n.id)||s.selected.includes(n.parentId??""))).map(n=>n.id)])],nodes:s.nodes.filter(n=>!s.selected.includes(n.id)&&!s.selected.includes(n.parentId??"")),selected:[],contextId:null})),
  send:message=>set(s=>({messages:[...s.messages,message]})),
- simulate:async(id,action,onAction,mask,count=1)=>{
+ simulate:async(id,action,onAction,mask,count=1,instruction)=>{
   const node=get().nodes.find(n=>n.id===id);if(!node)return false;
-  if(get().liveMode&&onAction){const accepted=await onAction({action,imageId:id,originalImage:node.data.image,originalPhotoReferences:[],productReferences:[],mask,editCount:node.data.editCount??0});if(accepted===false)return false;set({editor:null});return true;}
+  if(get().liveMode&&onAction){const accepted=await onAction({action,imageId:id,originalImage:node.data.image,originalPhotoReferences:[],productReferences:[],mask,instruction,editCount:node.data.editCount??0});if(accepted===false)return false;set({editor:null});return true;}
   const isFrame=node.type==='frame';const seed=isFrame?{...node,type:'picture',style:{width:224,height:180},dragHandle:undefined,data:{...node.data,image:'sofa',label:'新候选',effect:'',final:false}}:node;
   if(!originalPhotoReferences().length)throw new Error("修图必须同时保留原始实拍");
   const quote=estimateCost(useModelStore.getState(),demoSession,count);if(quote>.20&&typeof window!=="undefined"&&!window.confirm("本次预计 $"+quote.toFixed(2)+"，超过单次 $0.20 的确认额度。是否继续？"))return false;
