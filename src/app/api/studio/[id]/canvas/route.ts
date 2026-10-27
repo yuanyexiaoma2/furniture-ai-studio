@@ -2,9 +2,10 @@ import {NextResponse} from "next/server";
 import {z} from "zod";
 import {studioUser,studioError,StudioError} from "@/lib/studio-api";
 import {loadCanvasState,saveCanvasState} from "@/lib/canvas-state";
+import {logStudioReadError} from "@/lib/server-read-error";
 export const runtime="nodejs";
 type Context={params:Promise<{id:string}>};
-export async function GET(request:Request,context:Context){try{const user=await studioUser(request);return NextResponse.json({...await loadCanvasState((await context.params).id,user.id),canWrite:user.role!=="viewer"});}catch(e){return studioError(e,"读取画布布局失败");}}
+export async function GET(request:Request,context:Context){try{const user=await studioUser(request);return NextResponse.json({...await loadCanvasState((await context.params).id,user.id),canWrite:user.role!=="viewer"});}catch(e){logStudioReadError(request,e);return studioError(e,"读取画布布局失败");}}
 export async function PUT(request:Request,context:Context){try{
  const user=await studioUser(request,true);if(Number(request.headers.get("content-length")??0)>160000)throw new StudioError("画布内容过大，请精简便签");
  const body=z.object({revision:z.number().int().min(0),layout:z.unknown()}).strict().parse(await request.json());

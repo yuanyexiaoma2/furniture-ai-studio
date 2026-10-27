@@ -1,5 +1,20 @@
 # 开发记录
 
+## 2026-10-27 · 任务11-A推送前确认与读取错误日志
+
+- 核对 `before-task11` 与当前 `tests/agent.spec.ts`，两者都在没有 `AGENT_TEST_DATABASE` 时跳过整个文件。跳过的两项分别是“Agent 快速整套：上传→问题→档案修改→方案→费用→候选→引用调整→终稿”和“Agent 手动逐张：上传→问题→档案修改→方案→费用→候选→引用调整→终稿”。这是原有隔离测试设计，与路由迁移无关；当前登录路径断言已改为 `/`。
+- 单独执行方式为 `npm run test:agent:browser`：脚本创建随机隔离数据库、本地 mock 网关和独立测试网页，设置 `AGENT_TEST_DATABASE`、`AGENT_MOCK_URL`、`AGENT_TEST_USER` 等参数后运行两个场景。普通 `npm run test:e2e` 不具备这些隔离条件，不将两项跳过表述为已通过。本次按用户要求说明跳过原因，不补跑专用场景，不调用真实付费模型。
+- 给 `GET /api/studio/[id]` 和 `GET /api/studio/[id]/canvas` 的错误捕获补充服务端结构化日志：`studio_read_error`、请求方法、接口 pathname、错误类型/代码和调用栈帧。省略 URL 查询、请求头/正文、错误正文、cause/meta，过滤凭据和 data URL；不将内部日志返回前端。不改变会话创建、唯一键冲突恢复、业务读取、状态码或重试逻辑。
+- 新增两项日志回归，验证关键调用栈位置保留、类型/代码记录，以及凭据、图片、查询参数和非Error对象不被输出；纳入现有 `test:gateways` 命令。
+- 推送前检查：lint、typecheck、生产build通过；`test:task10:units`共67项通过（包含新增两项日志测试），导航浏览器测试通过；上述两个Agent场景仍按原设计跳过。未运行付费验证或制作截图/录屏。
+
+### 待办：首次并发读取仍偶发500（尚未修复）
+
+- 之前巡检修复的是 `AgentSession` 首次创建时的 P2002 唯一键冲突：失败后读取已创建会话。此次仍出现500，尚无证据确认是同一原因或该修复的回归，不能沿用“已修复”的结论。
+- 复现条件：本地网页 `http://localhost:3000`、PostgreSQL/MinIO运行，执行完整 `npm run test:e2e`。巡检测试创建全新临时账号、SKU、图位和模拟成功任务，登录后用 `Promise.all` 同时发送12次读取，交替请求 `/api/studio/新SKU` 和 `/api/studio/新SKU/canvas`。两次完整批次曾出现快照接口1～2个500，其余200；不是每次都能复现。
+- 对照情况：同一巡检单项连续3次通过，直接业务读取240次通过，最终完整批次也通过。此前没有保留底层错误堆栈，因此根因未确认。本次只增加上述日志，下次失败时结合 `path`、`errorType`、`errorCode` 和 `stack` 定位，不放宽12个请求必须全部200的断言。
+- 无需真实模型请求即可复现，不启动付费验证，不制作截图/录屏。
+
 ## 2026-10-27 · 任务11-A：收敛清理
 
 - 正式页面迁到 /、/skus、/workspace、/library；旧四个入口在鉴权前返回301，保留查询参数。模型管理迁到 /admin/models，旧 /design-preview/admin 也返回301；旧产品卡别名 /design-preview/product 跳到 /workspace。静态资源 public/design-preview 保留原地址。

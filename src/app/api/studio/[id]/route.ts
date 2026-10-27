@@ -8,9 +8,10 @@ import {agentSession,json} from "@/lib/agent-state";
 import {approveAgentCard,createCostCard} from "@/lib/agent-actions";
 import {inspectPhoto,putObject} from "@/lib/storage";
 import {quoteBatch,submitBatch} from "@/lib/image-packs";
+import {logStudioReadError} from "@/lib/server-read-error";
 export const runtime="nodejs";export const maxDuration=300;
 type Ctx={params:Promise<{id:string}>};
-export async function GET(request:Request,context:Ctx){try{const user=await studioUser(request);return NextResponse.json(await studioSnapshot((await context.params).id,user.id));}catch(e){return studioError(e,"读取工作台失败，请检查服务后刷新");}}
+export async function GET(request:Request,context:Ctx){try{const user=await studioUser(request);return NextResponse.json(await studioSnapshot((await context.params).id,user.id));}catch(e){logStudioReadError(request,e);return studioError(e,"读取工作台失败，请检查服务后刷新");}}
 export async function POST(request:Request,context:Ctx){
  try{
  const user=await studioUser(request,true),productId=(await context.params).id;
