@@ -1,0 +1,234 @@
+/* 创作空间 · canvas。保持原有层叠结果；阶段 1 不修改视觉值。 */
+.p-canvas-wrap { flex: 1; min-width: 0; position: relative; background: var(--p-canvas); }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-frame { width: 100%; height: 100%; position: relative; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-frame-empty { border-style: dashed; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-frame-title { position: absolute; left: 0; width: 100%; display: flex; align-items: center; gap: 8px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-frame-title>span:last-child { margin-left: auto; color: var(--p-subtle); }
+.p-frame-empty>p { position: absolute; inset: 0; display: grid; place-items: center; color: var(--p-subtle); font-size: 14px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-image-node { width: 224px; height: 180px; border-radius: 12px; overflow: visible; background: var(--p-panel); position: relative; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-image-node>img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block; pointer-events: none; }
+.react-flow__node.selected .p-image-node { outline: 2px solid var(--p-selection); outline-offset: 3px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-image-tag { position: absolute; padding: 3px 7px; border-radius: 5px; color: var(--foreground); background: var(--p-glass); backdrop-filter: blur(8px); display: flex; align-items: center; gap: 5px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-final-tag { position: absolute; display: flex; gap: 5px; align-items: center; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-toolbar { display: flex; align-items: center; border: 1px solid var(--border); }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-toolbar button { padding: 6px 9px; }
+.p-toolbar svg { width: 15px; height: 15px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-canvas-tools { display: flex; flex-direction: column; background: var(--p-glass); backdrop-filter: blur(12px); border: 1px solid var(--border); box-shadow: 0 4px 14px var(--p-shadow); }
+.p-canvas-tools .active { background: var(--p-hover); color: var(--foreground); }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-canvas-tools button { padding: 0; }
+.p-bottom-tools { display: flex; align-items: center; gap: 8px; padding: 5px; background: var(--p-glass); border: 1px solid var(--border); backdrop-filter: blur(12px); border-radius: 10px; }
+.p-bottom-tools button { font-size: 13px; }
+.p-canvas-wrap .react-flow__controls { bottom: 16px; left: auto; right: 18px; display: flex; margin: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px var(--p-shadow); flex-direction: row; }
+.p-mask-preview { width: 100%; height: 260px; object-fit: contain; border-radius: 12px; background: var(--p-mask-empty); }
+.p-fake-effect { position: relative; background: repeating-conic-gradient(var(--p-check-a) 0% 25%,var(--p-check-b) 0% 50%) 50% / 20px 20px; border-radius: 12px; }
+.p-fake-effect img { clip-path: polygon(12% 28%,26% 28%,26% 25%,50% 25%,51% 28%,76% 28%,76% 35%,88% 35%,88% 79%,78% 79%,78% 88%,75% 88%,74% 79%,25% 79%,24% 88%,21% 88%,20% 79%,12% 79%); }
+.p-fake-background { background-image: url('/design-preview/room.webp'); background-size: cover; }
+.p-effect-cutout { clip-path: polygon(12% 28%,26% 28%,26% 25%,50% 25%,51% 28%,76% 28%,76% 35%,88% 35%,88% 79%,78% 79%,78% 88%,75% 88%,74% 79%,25% 79%,24% 88%,21% 88%,20% 79%,12% 79%); }
+.p-image-node:has(.p-effect-cutout) { background: repeating-conic-gradient(var(--p-check-a) 0% 25%,var(--p-check-b) 0% 50%) 50% / 12px 12px; }
+.p-effect-background { filter: brightness(1.08); }
+.p-canvas-wrap .react-flow__controls button { width: 34px; height: 34px; border-right: 1px solid var(--border); border-bottom: 0; }
+.p-canvas-wrap .react-flow__minimap { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; bottom: 68px; right: 16px; width: 150px; height: 100px; margin: 0; }
+.p-zoom-label { font-size: 13px; padding: 5px 10px; display: grid; place-items: center; background: var(--p-floating); color: var(--p-text); }
+.p-canvas-guide { font-size: 13px; color: var(--p-subtle); background: var(--p-glass); backdrop-filter: blur(8px); padding: 7px 10px; border-radius: 8px; }
+.p-layer-panel { position: absolute; bottom: 65px; left: 16px; width: 270px; max-height: 380px; overflow-y: auto; background: var(--p-floating); backdrop-filter: blur(14px); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 30px var(--p-shadow); padding: 14px; z-index: 10; }
+.p-layer-panel h3 { font-size: 14px; margin-bottom: 10px; }
+.p-layer-panel button { width: 100%; justify-content: flex-start; text-align: left; font-size: 13px; }
+.p-note-node { width: 220px; padding: 16px; background: var(--p-note); color: var(--p-note-text); border-radius: 9px; box-shadow: 0 4px 12px var(--p-shadow); }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-note-node textarea { border: 0; outline: none; width: 100%; min-height: 60px; resize: none; background: transparent; color: inherit; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-loading { position: absolute; inset: 0; border-radius: 12px; display: grid; place-items: center; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-loading svg { animation: p-spin 1s linear infinite; width: 26px; height: 26px; color: var(--foreground); }
+.p-highlight { animation: p-highlight 1s; }
+.p-mask-editor { position: absolute; inset: 0; z-index: 5; overflow: hidden; border-radius: 12px; touch-action: none; }
+.p-mask-tools { display: flex; gap: 8px; align-items: center; padding: 9px 12px; border-radius: 12px; background: var(--p-floating); box-shadow: 0 5px 25px var(--p-shadow); width: 550px; border: 1px solid var(--border); }
+.p-mask-tools [role=slider] { min-width: 100px; }
+.p-mask-tools>span { font-size: 13px; white-space: nowrap; }
+.p-editor-footer { display: flex; gap: 8px; padding: 6px; background: var(--p-glass); border-radius: 12px; border: 1px solid var(--border); }
+.p-edit-popup { position: absolute; inset: 0; z-index: 45; background: var(--p-overlay); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-expand-modal { background: var(--p-panel); border-radius: 16px; padding: 20px; box-shadow: 0 20px 100px var(--p-shadow-strong); }
+.p-portal.p-expand-dialog { width: 720px; max-width: 95vw; padding: 0; border-radius: 16px; }
+.p-expand-dialog>button { display: none; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-expand-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.p-expand-heading h3 { font-size: 16px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-expand-stage { display: flex; align-items: center; justify-content: center; background: var(--p-canvas); border-radius: 12px; overflow: hidden; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-expand-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+.p-compare-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+.p-compare-grid img { width: 100%; height: 230px; object-fit: cover; border-radius: 12px; }
+@keyframes p-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes p-highlight {
+  0%,100% { box-shadow: 0 0 0 0 var(--p-highlight); }
+  50% { box-shadow: 0 0 0 14px var(--p-highlight); }
+}
+@media (max-width:760px) {
+  .p-canvas-guide { display: none; }
+}
+.p-frame { background: color-mix(in srgb,var(--p-panel) 65%,var(--p-canvas)); border: 0; border-radius: 16px; }
+.p-frame-title { font-size: 15px; font-weight: 600; top: -31px; color: var(--foreground); white-space: nowrap; }
+.p-frame-title>span:last-child { font-size: 13px; font-weight: 400; }
+.p-frame-empty { border: 1px dashed var(--border); }
+.p-image-node { box-shadow: 0 2px 6px var(--p-shadow); transition: box-shadow .2s ease-out; }
+.p-image-node:hover { box-shadow: 0 8px 22px var(--p-shadow-strong); }
+.p-image-node>img { transition: translate .2s ease-out; }
+.p-image-node.is-final { outline: 2px solid var(--p-selection); outline-offset: 0; }
+.p-final-tag { left: 8px; right: auto; top: 8px; font-size: 12px; background: var(--primary); color: var(--primary-foreground); border-radius: 5px; z-index: 3; padding: 2px 6px; }
+.p-final-tag .p-dot { display: none; }
+.p-image-tag { font-size: 13px; bottom: 7px; left: 8px; z-index: 2; }
+.p-image-more { position: absolute; top: 7px; right: 7px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 7px; background: var(--p-glass); border: 1px solid var(--border); color: var(--foreground); opacity: 0; z-index: 4; }
+.p-image-node:hover .p-image-more, .p-image-more:focus-visible { opacity: 1; }
+.p-toolbar { background: var(--p-glass); backdrop-filter: blur(20px); border-radius: 14px; padding: 6px; gap: 2px; box-shadow: 0 1px 2px var(--p-shadow),0 12px 32px var(--p-shadow-strong); }
+.p-toolbar button { font-size: 13px; height: 34px; padding-inline: 9px; white-space: nowrap; }
+.p-toolbar .p-tool-separator { border-left: 1px solid var(--border); border-radius: 0; margin-left: 4px; padding-left: 13px; }
+.p-canvas-tools button { width: 40px; height: 40px; }
+.p-canvas-tools svg { width: 20px; height: 20px; }
+.p-canvas-tools { gap: 5px; padding: 6px; border-radius: 14px; }
+.p-loading { overflow: hidden; background: var(--secondary); backdrop-filter: none; }
+.p-shimmer { position: absolute; inset: 0; background: linear-gradient(90deg,transparent,color-mix(in srgb,var(--foreground) 9%,transparent),transparent); }
+.p-loading svg { display: none; }
+.p-image-node .p-effect-detail { object-position: 65% 60%; object-fit: cover; scale: 1.0; }
+.p-dimension-overlay { position: absolute; inset: 14% 10% 22%; pointer-events: none; border-bottom: 1px solid var(--foreground); border-right: 1px solid var(--foreground); }
+.p-dimension-overlay::before { content: "210 cm"; position: absolute; bottom: -10px; left: 40%; background: var(--p-glass); color: var(--foreground); padding: 0 4px; font-size: inherit; }
+.p-dimension-overlay::after { content: "82 cm"; position: absolute; top: 35%; right: -14px; writing-mode: vertical-rl; background: var(--p-glass); padding: 4px 0; font-size: inherit; color: var(--foreground); }
+.p-image-node:hover>img { translate: none; }
+.p-image-node .p-effect-main { object-fit: contain; background: var(--p-panel); }
+.l-toolbar-menu { display: flex; flex-direction: column; width: 180px; padding: 8px; }
+.l-toolbar-menu button { font-size: 13px; justify-content: flex-start; }
+.l-prop-capture { max-width: 650px !important; }
+.l-crop-area { position: relative; overflow: hidden; border-radius: 12px; cursor: crosshair; touch-action: none; user-select: none; max-height: 330px; }
+.l-crop-area img { width: 100%; max-height: 330px; object-fit: fill; pointer-events: none; }
+.l-crop-area>span { position: absolute; border: 2px solid #fff; background: #ffffff15; box-shadow: 0 0 0 999px #0006; pointer-events: none; }
+.l-crop-area i { position: absolute; bottom: 12px; left: 12px; display: flex; gap: 6px; align-items: center; background: #0008; color: white; border-radius: 6px; padding: 6px 10px; font-size: 12px; font-style: normal; }
+.l-capture-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.l-capture-fields label { font-size: 13px; }
+.l-capture-fields input { margin-top: 5px; font-size: 13px; }
+.p-fake-recolor img { filter: hue-rotate(25deg) saturate(.8); }
+.w-canvas-empty { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px; pointer-events: none; }
+.w-empty-mark { width: 70px; height: 70px; display: grid; place-items: center; border-radius: 22px; border: 1px solid var(--border); background: var(--p-panel); box-shadow: 0 6px 24px #00000005; color: var(--p-subtle); margin-bottom: 26px; }
+.w-canvas-empty h2 { font-size: 28px; font-weight: 600; letter-spacing: -.6px; margin-bottom: 12px; }
+.w-canvas-empty>p { font-size: 14px; color: var(--p-subtle); }
+.w-canvas-empty>div { display: grid; grid-template-columns: repeat(4,minmax(130px,1fr)); gap: 12px; margin-top: 38px; max-width: 790px; width: 100%; pointer-events: auto; }
+.w-canvas-empty button { display: flex; flex-direction: column; align-items: flex-start; padding: 22px 18px; background: var(--p-panel); border: 1px solid var(--border); border-radius: 16px; cursor: pointer; text-align: left; box-shadow: 0 2px 6px #00000002; }
+.w-canvas-empty button:hover { background: var(--secondary); }
+.w-canvas-empty button svg { margin-bottom: 30px; color: var(--p-subtle); }
+.w-canvas-empty strong { font-size: 15px; font-weight: 500; }
+.w-canvas-empty button span { font-size: 13px; color: var(--p-subtle); margin-top: 6px; line-height: 1.6; }
+.w-variant-overlay { position: absolute; inset: 0; background: #e5d8c4; mix-blend-mode: color; opacity: .85; clip-path: polygon(3% 47%,14% 45%,16% 37%,49% 38%,52% 36%,85% 38%,87% 46%,97% 48%,97% 75%,4% 75%); pointer-events: none; }
+.w-copy-overlay { position: absolute; left: 12px; top: 12px; max-width: 170px; min-height: 30px; padding: 5px 8px; background: #ffffffdc; color: #272525; border-radius: 4px; font-family: "Segoe UI",sans-serif; font-weight: 500; white-space: normal; line-height: 1.3; pointer-events: none; }
+@media (max-width:1200px) {
+  .w-canvas-empty { padding: 50px; }
+}
+@media (max-width:1200px) {
+  .w-canvas-empty>div { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width:1200px) {
+  .w-canvas-empty h2 { font-size: 24px; }
+}
+@media (max-width:760px) {
+  .w-canvas-empty { padding: 30px; }
+}
+@media (max-width:760px) {
+  .w-canvas-empty h2 { font-size: 22px; }
+}
+.r1-canvas-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 18px; pointer-events: none; padding: 70px; }
+.r1-drop-target { width: min(580px,100%); height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; border: 1px dashed var(--border); border-radius: 20px; background: color-mix(in srgb,var(--p-panel) 45%,transparent); pointer-events: auto; cursor: pointer; }
+.r1-drop-target strong { font-size: 20px; font-weight: 600; }
+.r1-drop-target>span:last-child { font-size: 13px; color: var(--p-subtle); }
+.r1-template-link { display: flex; align-items: center; gap: 6px; color: var(--p-subtle); font-size: 13px; pointer-events: auto; cursor: pointer; }
+.r1-template-link:hover { color: var(--foreground); }
+.r1-canvas-help { display: flex; align-items: center; gap: 8px; }
+.r1-canvas-help>button { width: 32px; height: 32px; border-radius: 50%; background: var(--p-panel); color: var(--p-subtle); border: 1px solid var(--border); }
+.r1-canvas-controls { display: flex; align-items: center; background: var(--p-panel); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px #0001; }
+.r1-canvas-controls button { border-radius: 0; width: 36px; height: 36px; }
+.r1-external-label { top: calc(100% + 8px) !important; bottom: auto !important; left: 0 !important; transform-origin: left top !important; background: none !important; box-shadow: none; backdrop-filter: none; padding: 0 !important; color: var(--p-subtle); white-space: nowrap; }
+@media (max-width:760px) {
+  .r1-canvas-empty { padding: 30px; }
+}
+.t10-job-error { position: absolute; inset: 40% 20px auto; white-space: nowrap; }
+.p-image-node:has(.t10-job-error) { background: var(--p-surface); border: 1px solid var(--border); }
+.p-image-node>.r1-external-label { background: var(--p-panel); color: var(--p-text); }
+.t11-save-status { display: flex; align-items: center; gap: 8px; width: max-content; max-width: 340px; border: 1px solid var(--border); border-radius: 9px; background: var(--p-panel); padding: 5px 9px; font-size: 11px; color: var(--p-subtle); margin-bottom: 6px; box-shadow: 0 2px 8px var(--p-shadow); }
+.t11-save-status.error, .t11-save-status.conflict { color: var(--destructive); }
+.t11-save-message { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.t11-save-status button { height: 23px; font-size: 11px; padding-inline: 5px; }
+.p-note-node textarea { max-height: 100%; overflow: auto; }
+@media (max-width:760px) {
+  .t11-save-status { max-width: 260px; }
+}
+@media (max-width:760px) {
+  .t11-save-message { display: none; }
+}
+.t11-canvas-history>div { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+.t11-canvas-history small { font-size: 10px; color: var(--p-subtle); white-space: nowrap; }
+.p-frame[data-overview=true] .p-frame-title>span:last-child { display: none; }
+.p-live-image-toolbar>.p-toolbar { flex-wrap: wrap; justify-content: center; width: 100%; max-height: 260px; overflow: auto; }
+.p-expand-modal { width: 100%; max-width: 100%; min-width: 0; }
+.p-expand-dialog { display: block; max-height: calc(100dvh - 32px); overflow: auto; }
+.p-expand-stage { height: auto; min-height: 0; min-width: 0; width: 100%; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-expand-heading, .p-expand-footer { gap: 12px; flex-wrap: wrap; }
+@media (max-width:760px) {
+  .p-workspace .p-canvas-wrap { min-width: 0; }
+}
+@media (max-width:760px) {
+  .p-mask-tools { width: calc(100vw - 24px); max-width: 550px; flex-wrap: wrap; justify-content: center; }
+}
+@media (max-width:760px) {
+  .p-expand-modal { padding: 14px; }
+}
+.p-image-actions { position: absolute; z-index: 4; display: flex; gap: 4px; opacity: 0; pointer-events: none; transition: opacity .14s ease; }
+.p-image-actions>button { width: 24px; height: 24px; display: grid; place-items: center; border: 1px solid color-mix(in srgb,var(--border) 65%,transparent); border-radius: 6px; background: color-mix(in srgb,var(--p-panel) 90%,transparent); color: var(--foreground); backdrop-filter: blur(8px); box-shadow: 0 1px 4px #0000000d; cursor: pointer; transition: background .14s,color .14s; }
+.p-image-node:hover .p-image-actions, .p-image-node:focus-within .p-image-actions, .react-flow__node.selected .p-image-actions { opacity: 1; pointer-events: auto; }
+.p-image-actions>button:hover { background: var(--foreground); color: var(--background); }
+.p-image-actions>button:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.p-image-node[data-overview=true]:hover .p-image-actions { opacity: 0; pointer-events: none; }
+.react-flow__node.selected .p-image-node[data-overview=true] .p-image-actions, .p-image-node[data-overview=true]:focus-within .p-image-actions { opacity: 1; pointer-events: auto; }
+@media (hover:none) {
+  .p-image-actions { opacity: 1; pointer-events: auto; }
+}
+@media (hover:none) {
+  .p-image-actions>button { width: 28px; height: 28px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .p-image-actions, .p-image-actions>button { transition: none; }
+}
+.p-image-preview-dialog { width: calc(100vw - 48px); max-width: 1600px; height: calc(100dvh - 48px); max-height: 1100px; grid-template-rows: auto minmax(0,1fr) auto; padding: 20px; gap: 16px; border-radius: 16px; }
+.p-image-preview-dialog [data-slot=dialog-description] { overflow-wrap: anywhere; }
+.p-image-preview-dialog>div:first-child { padding-right: 24px; min-width: 0; }
+.p-image-preview-stage { min-height: 0; overflow: auto; overscroll-behavior: contain; border: 1px solid var(--border); border-radius: 10px; background: var(--p-panel); }
+.p-image-preview-surface { display: grid; place-items: center; width: max-content; height: max-content; min-width: 100%; min-height: 100%; padding: 24px; }
+.p-image-preview-surface img { display: block; max-width: none; max-height: none; object-fit: contain; flex: none; }
+.p-image-preview-stage>p { padding: 32px; text-align: center; }
+.p-image-preview-footer>div { display: flex; align-items: center; gap: 8px; }
+.p-image-preview-footer { display: flex; align-items: center; gap: 8px; justify-content: space-between; flex-wrap: wrap; font-size: 12px; color: var(--muted-foreground); }
+.p-image-preview-footer output { min-width: 42px; text-align: center; color: var(--foreground); font-variant-numeric: tabular-nums; }
+@media (max-width:700px) {
+  .p-image-preview-dialog { width: calc(100vw - 16px); height: calc(100dvh - 16px); padding: 14px; gap: 12px; }
+}
+@media (max-width:700px) {
+  .p-image-preview-hint { display: none; }
+}
+@media (max-width:700px) {
+  .p-image-preview-footer>div { gap: 2px; }
+}
+@media (max-width:700px) {
+  .p-image-preview-footer { justify-content: center; }
+}

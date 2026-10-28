@@ -1,0 +1,95 @@
+{
+  "beforeFiles": 8,
+  "beforeBytes": 105175,
+  "afterFiles": 9,
+  "afterBytes": 122239,
+  "removedDeclarations": 184,
+  "mergedBlocks": 8,
+  "todoBlocks": 217,
+  "sourceRules": 1254,
+  "remainingRules": 1216,
+  "classification": {
+    "tokens": 5,
+    "base": 212,
+    "layout": 90,
+    "home": 178,
+    "gallery": 25,
+    "chat": 242,
+    "canvas": 177,
+    "library": 217,
+    "admin": 70
+  },
+  "globalBytes": 38937,
+  "allSrcBeforeBytes": 144112,
+  "allSrcAfterBytes": 161176,
+  "classesBefore": 408,
+  "classesAfter": 408,
+  "missingClasses": [],
+  "addedClasses": [],
+  "declarationChanges": [
+    {
+      "key": "[\".p-topbar-title strong\",[],\"font-weight\"]",
+      "before": {
+        "value": "550",
+        "important": false
+      },
+      "after": null
+    },
+    {
+      "key": "[\".p-admin-nav h2\",[],\"font-size\"]",
+      "before": {
+        "value": "16px",
+        "important": false
+      },
+      "after": null
+    }
+  ],
+  "addedDeclarationKeys": [],
+  "files": [
+    {
+      "path": "src/styles/creative/admin.css",
+      "bytes": 6374,
+      "lines": 97
+    },
+    {
+      "path": "src/styles/creative/base.css",
+      "bytes": 19515,
+      "lines": 233
+    },
+    {
+      "path": "src/styles/creative/canvas.css",
+      "bytes": 21274,
+      "lines": 234
+    },
+    {
+      "path": "src/styles/creative/chat.css",
+      "bytes": 23202,
+      "lines": 282
+    },
+    {
+      "path": "src/styles/creative/gallery.css",
+      "bytes": 2273,
+      "lines": 40
+    },
+    {
+      "path": "src/styles/creative/home.css",
+      "bytes": 17354,
+      "lines": 244
+    },
+    {
+      "path": "src/styles/creative/layout.css",
+      "bytes": 9004,
+      "lines": 151
+    },
+    {
+      "path": "src/styles/creative/library.css",
+      "bytes": 20418,
+      "lines": 263
+    },
+    {
+      "path": "src/styles/creative/tokens.css",
+      "bytes": 2825,
+      "lines": 5
+    }
+  ]
+}

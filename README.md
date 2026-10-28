@@ -36,6 +36,8 @@ npm run worker
 
 本地验证：`npm run lint`、`npm run typecheck`、`npm run build`、`npm run test:units`（完整106项纯单元测试）、`npm run test:visual-plan`、`npm run test:canvas`、`npm run test:image-models`。浏览器回归执行 `npm run test:e2e`，两个隔离Agent流程另用 `npm run test:agent:browser`；需先启动网页和本地依赖，不截图或录屏。自动回归使用本地模拟模型；真实验收另需明确授权。
 
+UI 截图验收单独执行 `node --import tsx scripts/ui-snapshots.ts --mode=compare`，需先启动网页，使用本地管理员登录配置；以固定浏览器夹具覆盖44种页面/主题/宽度组合，不调用模型或写入商品。原始基线在 `docs/ui-audit/baseline/`，阶段1结果在 `docs/ui-audit/phase1/`；后续可用 `--baseline=<已有截图目录> --output=<新结果目录>` 复用。已知验收问题见 [known-issues](docs/ui-audit/known-issues.md)。
+
 ## 当前功能
 
 - 正式入口：`/`创作首页、`/skus`项目列表、`/workspace?sku=产品ID`工作台。原/design-preview对应页面保留301跳转及登录回跳。

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "workspace-mask-light-1440",
+    "changedPixels": 1925,
+    "percent": 0.13368055555555555,
+    "bounds": {
+      "minX": 814,
+      "minY": 327,
+      "maxX": 1439,
+      "maxY": 670
+    },
+    "channelDeltas": {
+      "1": 1925
+    }
+  },
+  {
+    "name": "workspace-mask-dark-1440",
+    "changedPixels": 1008,
+    "percent": 0.06999999999999999,
+    "bounds": {
+      "minX": 820,
+      "minY": 330,
+      "maxX": 1439,
+      "maxY": 667
+    },
+    "channelDeltas": {
+      "1": 1008
+    }
+  }
+]

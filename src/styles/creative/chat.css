@@ -1,0 +1,282 @@
+/* 创作空间 · chat。保持原有层叠结果；阶段 1 不修改视觉值。 */
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-chat { flex-shrink: 0; background: var(--p-panel); display: flex; flex-direction: column; border-right: 1px solid var(--border); min-height: 0; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-chat-header { display: flex; align-items: center; justify-content: space-between; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-chat-header h2 { display: flex; gap: 8px; align-items: center; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-chat-body { flex: 1; padding: 8px 20px 18px; min-height: 0; overflow-y: auto; scrollbar-width: thin; }
+.p-chat-date { text-align: center; color: var(--p-subtle); font-size: 13px; margin-bottom: 20px !important; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-chat-bubble { padding: 12px 14px; margin: 0 0 20px 36px !important; font-size: 14px; line-height: 1.8; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-agent-message { font-size: 14px; line-height: 1.9; margin-bottom: 18px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-agent-message>span { display: flex; align-items: center; color: var(--p-subtle); font-size: 13px; margin-bottom: 7px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-question { padding: 15px; margin-bottom: 18px; }
+.p-question-options { display: flex; gap: 6px; margin: 13px 0; }
+.p-question-options button { flex: 1; font-size: 13px; padding: 7px; height: 35px; }
+.p-question-options button.active { outline: 1px solid var(--p-selection); }
+.p-question>button { width: 100%; }
+.p-chat-image { display: flex; align-items: center; gap: 10px; background: var(--secondary); border-radius: 10px; padding: 9px; margin: 12px 0; width: 100%; text-align: left; }
+.p-chat-image img { width: 60px; height: 46px; border-radius: 6px; object-fit: cover; }
+.p-chat-image span { font-size: 13px; color: var(--p-text); }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-chat-receipt { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--p-text); margin-bottom: 18px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-adjust-receipt { padding: 14px; margin-bottom: 18px; }
+.p-adjust-receipt p { font-size: 13px; color: var(--p-text); margin: 9px 0; }
+.p-adjust-receipt>div { display: flex; justify-content: space-between; align-items: center; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-console { border-top: 1px solid var(--border); background: var(--p-panel); }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-context-tag { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--p-text); margin: 0 0 9px; }
+.p-context-tag button { width: 22px; height: 22px; margin-left: auto; padding: 0; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-console-input { border: 1px solid var(--input); background: var(--background); }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-console-input textarea { resize: none; border: 0; box-shadow: none; background: transparent; }
+.p-console-input textarea:focus-visible { box-shadow: none; outline: none; }
+.p-console-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 6px; }
+.p-console-bottom button:last-child { font-size: 13px; }
+.p-capsules { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.p-capsules button { height: 27px; font-size: 13px; padding: 3px 8px; border-radius: 20px; background: var(--secondary); color: var(--p-text); }
+.p-capsules button svg { width: 12px; height: 12px; }
+@media (max-width:1100px) {
+  .p-chat { width: 340px; }
+}
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+@media (max-width:760px) {
+  .p-chat { position: absolute; inset: 62px auto 0 0; z-index: 25; box-shadow: 4px 0 20px var(--p-shadow); }
+}
+.p-chat-header { padding: 21px 24px 16px; }
+.p-chat-header h2 { font-size: 18px; font-weight: 600; }
+.p-agent-avatar { display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border: 1px solid var(--border); border-radius: 8px; color: var(--foreground); background: var(--secondary); flex: none; }
+.p-chat-bubble { margin-left: 48px !important; background: var(--secondary); color: var(--foreground); border-radius: 12px 12px 4px 12px; }
+.p-agent-message { background: none; }
+.p-agent-message>span { gap: 8px; }
+.p-agent-message>p { padding-left: 33px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-question, .p-adjust-receipt { border: 1px solid var(--border); border-radius: 12px; background: var(--p-panel); }
+.p-chat-receipt { border: 1px solid var(--border); border-radius: 12px; background: var(--p-panel); padding: 11px 13px; }
+.p-question strong, .p-adjust-receipt strong { font-size: 15px; font-weight: 500; }
+.p-system-message { font-size: 13px; text-align: center; color: var(--p-subtle); padding: 8px 4px; margin-bottom: 10px !important; }
+.p-console { padding: 14px 16px 10px; }
+.p-console-input { padding: 12px; border-radius: 20px; box-shadow: 0 2px 8px var(--p-shadow); }
+.p-console-input:focus-within { border-color: var(--p-selection); box-shadow: 0 0 0 2px var(--p-highlight); }
+.p-console-input textarea { min-height: 74px; font-size: 14px; line-height: 1.8; padding: 2px; margin-bottom: 8px; }
+.p-composer-context { display: flex; gap: 8px; justify-content: space-between; padding: 8px 3px 0; font-size: 13px; color: var(--p-subtle); }
+.p-context-tag { line-height: 1.6; }
+.p-context-tag>span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.l-chat .p-chat-body { padding-bottom: 24px; }
+.l-chat .p-chat-bubble p { margin: 0; }
+.l-chat .p-agent-message { margin: 18px 0; }
+.l-card-eyebrow { font-size: 12px; color: var(--p-muted); display: flex; gap: 7px; align-items: center; line-height: 1.5; }
+.l-shooting-card, .l-plan-card, .l-capture-card { border: 1px solid var(--p-line); border-radius: 12px; padding: 16px; margin: 18px 0; background: var(--p-panel); }
+.l-shooting-card>strong { display: block; font-size: 14px; line-height: 1.8; margin-top: 8px; }
+.l-shooting-card p, .l-plan-card p { font-size: 13px; line-height: 1.7; color: var(--p-muted); margin: 8px 0 12px; }
+.l-shooting-card>div:last-child { display: flex; gap: 8px; }
+.l-plan-card h3 { font-size: 15px; font-weight: 500; line-height: 1.6; margin-top: 8px; }
+.l-scene-choices { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin: 14px 0; }
+.l-scene-choices button { position: relative; border-radius: 9px; overflow: hidden; border: 2px solid transparent; text-align: left; }
+.l-scene-choices img { width: 100%; aspect-ratio: 1.25; object-fit: cover; border-radius: 6px; }
+.l-scene-choices span { font-size: 12px; display: block; padding: 7px 3px; line-height: 1.6; }
+.l-scene-choices .active { border-color: var(--p-accent); }
+.l-scene-choices svg { position: absolute; right: 4px; top: 4px; background: var(--p-panel); border-radius: 50%; }
+.l-plan-variants { padding: 3px 0; }
+.l-plan-variants>div { display: flex; gap: 10px; align-items: center; border-top: 1px solid var(--p-line); }
+.l-plan-variants span { font-size: 12px; color: var(--p-muted); }
+.l-plan-variants p { margin: 9px 0; font-size: 12px; }
+.l-plan-fee { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: 13px; }
+.l-single-notice { display: flex; gap: 8px; align-items: center; font-size: 13px; background: var(--p-soft); padding: 10px 12px; border-radius: 8px; }
+.l-single-notice button { flex-shrink: 0; width: 28px; height: 28px; }
+.l-generation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+.l-generation-grid>div { aspect-ratio: 1.2; border-radius: 10px; background: linear-gradient(110deg,var(--p-soft) 30%,var(--p-panel) 45%,var(--p-soft) 60%); background-size: 250% 100%; animation: l-shimmer 1.4s linear infinite; }
+.l-chat-candidate { display: flex; align-items: center; text-align: left; gap: 12px; width: 100%; background: var(--p-soft); padding: 10px; border-radius: 12px; }
+.l-chat-candidate img { width: 72px; height: 65px; object-fit: cover; border-radius: 8px; }
+.l-chat-candidate strong { display: block; font-size: 14px; }
+.l-chat-candidate span { display: flex; gap: 5px; align-items: center; font-size: 12px; color: var(--p-muted); margin-top: 7px; }
+.l-console-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.l-console-meta>span { font-size: 12px; color: var(--p-muted); }
+.l-capture-heading { display: flex; align-items: center; gap: 7px; }
+.l-capture-heading strong { font-size: 14px; font-weight: 500; flex: 1; line-height: 1.5; }
+.l-capture-heading button { width: 24px; height: 24px; }
+.l-capture-card>p, .l-capture-preview p { font-size: 12px; color: var(--p-muted); margin: 8px 0; }
+.l-capture-preview { display: flex; gap: 10px; align-items: center; margin: 14px 0; }
+.l-capture-preview img { width: 62px; height: 62px; object-fit: cover; border-radius: 8px; }
+.l-capture-preview>div { flex: 1; min-width: 0; }
+.l-capture-preview input { font-size: 13px; height: 34px; }
+.l-capture-card>div:last-child { display: flex; justify-content: space-between; gap: 5px; }
+.l-capture-card>div:last-child button { font-size: 12px; }
+.l-replan-button { margin: 12px 0 6px; font-size: 13px; }
+.r4-shooting-choice h3 { font-size: 15px; font-weight: 500; line-height: 1.7; margin: 10px 0 6px; }
+.w-web-toggle { padding-inline: 7px !important; flex-shrink: 0; }
+.w-web-toggle i { display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--p-subtle); }
+.w-web-toggle.is-on { color: var(--foreground); }
+.w-web-toggle.is-on i { background: currentColor; }
+.w-chat .p-chat-body { padding-top: 16px; }
+.w-eyebrow { display: block; font-size: 12px; letter-spacing: 1.8px; color: var(--p-subtle); margin: 12px 0 14px; }
+.w-chat-title { font-size: 28px; font-weight: 600; letter-spacing: -.6px; margin: 0 0 10px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-task-entries { display: flex; flex-direction: column; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-task-entries button { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 14px; text-align: left; cursor: pointer; transition: background .2s,transform .2s; }
+.w-task-entries button:hover { background: var(--secondary); transform: translateY(-2px); }
+.w-task-entries button>svg:first-child { color: var(--p-subtle); }
+.w-task-entries button>svg:last-child { margin-left: auto; color: var(--p-subtle); }
+.w-task-entries strong { display: block; font-size: 15px; font-weight: 500; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-task-entries small { display: block; font-size: 13px; color: var(--p-subtle); margin-top: 5px; }
+.w-task-switch { display: flex; align-items: center; justify-content: space-between; color: var(--p-subtle); font-size: 13px; }
+.w-task-switch button { font-size: 13px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-card { border: 1px solid var(--border); border-radius: 12px; background: var(--p-panel); font-size: 14px; }
+.w-card h3 { font-size: 15px; font-weight: 600; margin: 0; display: flex; align-items: center; gap: 8px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-card>p { font-size: 13px; color: var(--p-subtle); line-height: 1.8; }
+.w-card>button { margin-right: 5px; margin-top: 8px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-card-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.w-card-heading>span { color: var(--p-subtle); font-size: 13px; }
+.w-card-heading>strong { font-size: 15px; font-weight: 600; }
+.w-pack-selected { display: flex; align-items: center; gap: 12px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-pack-selected img { border-radius: 8px; object-fit: cover; }
+.w-pack-options img { width: 58px; height: 52px; border-radius: 8px; object-fit: cover; }
+.w-pack-selected div { flex: 1; }
+.w-pack-selected strong, .w-pack-options strong { font-size: 14px; font-weight: 500; display: block; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-pack-selected small { font-size: 12px; color: var(--p-subtle); display: block; }
+.w-pack-options small { font-size: 12px; color: var(--p-subtle); display: block; margin-top: 5px; }
+.w-pack-options { display: flex; flex-direction: column; gap: 8px; }
+.w-pack-options>button { display: flex; align-items: center; gap: 12px; text-align: left; padding: 10px; border-radius: 10px; cursor: pointer; background: var(--secondary); }
+.w-pack-options>button>span { flex: 1; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-variant-list { display: flex; flex-direction: column; }
+.w-swatch { position: relative; display: block; width: 56px; height: 64px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border); }
+.w-swatch img { width: 100%; height: 100%; object-fit: cover; }
+.w-swatch input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.w-variant-row>div { flex: 1; min-width: 0; }
+.w-variant-row input:not([type=file]) { height: 30px; padding: 3px 6px; font-size: 13px; background: transparent; border-color: transparent; box-shadow: none; }
+.w-variant-row input:focus { border-color: var(--border); }
+.w-upload-ref { display: flex; align-items: center; gap: 5px; color: var(--p-subtle); font-size: 12px; cursor: pointer; margin: 3px 6px; }
+.w-upload-ref input { display: none; }
+.w-variant-row>button { width: 25px; height: 28px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-slot-list { display: flex; gap: 8px; }
+.w-slot-list button { position: relative; border: 1px solid var(--border); border-radius: 9px; overflow: hidden; flex: 1; min-width: 0; cursor: pointer; text-align: left; }
+.w-slot-list button[aria-pressed=true] { border-color: var(--foreground); box-shadow: 0 0 0 1px var(--foreground); }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-slot-list img { width: 100%; object-fit: cover; }
+.w-slot-list span { display: block; padding: 6px 8px; font-size: 13px; }
+.w-slot-list svg { position: absolute; top: 6px; right: 6px; background: var(--foreground); color: var(--background); border-radius: 50%; padding: 2px; width: 18px; height: 18px; }
+/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.w-generate-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.w-generate-row>span { font-size: 14px; font-variant-numeric: tabular-nums; }
+.w-generate-row small { display: block; font-size: 12px; color: var(--p-subtle); margin-top: 3px; }
+.w-success { display: flex; align-items: flex-start; gap: 10px; padding: 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--secondary); font-size: 14px; margin: 16px 0; }
+.w-success p { font-size: 13px; margin-top: 6px; color: var(--p-subtle); line-height: 1.6; }
+.w-site-list { display: flex; flex-direction: column; gap: 6px; margin: 12px 0; }
+.w-site-list button { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; text-align: left; }
+.w-site-list button[aria-pressed=true] { background: var(--secondary); border-color: color-mix(in srgb,var(--foreground) 35%,var(--border)); }
+.w-site-list strong { font-size: 14px; font-weight: 500; }
+.w-site-list span { font-size: 13px; color: var(--p-subtle); flex: 1; }
+.w-attention { margin-top: 14px; padding: 12px; border-radius: 9px; background: #C3972310; border: 1px solid #C3972330; font-size: 13px; line-height: 1.8; }
+.w-attention p { margin: 5px 0; color: var(--p-subtle); overflow-wrap: anywhere; }
+.w-attention button { font-size: 12px; white-space: normal; height: auto; }
+.w-check-row { display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid var(--border); }
+.w-check-thumb { position: relative; width: 75px; height: 68px; flex-shrink: 0; }
+.w-check-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 7px; }
+.w-check-thumb i { position: absolute; left: 15%; top: 10%; width: 60%; height: 30%; border: 2px solid #C89C3F; border-radius: 3px; }
+.w-check-row strong { font-size: 14px; font-weight: 500; }
+.w-check-row p { font-size: 13px; line-height: 1.6; color: var(--p-subtle); margin: 5px 0; }
+.w-check-card .w-warning-label { color: #AC842F; }
+.w-export-dialog .w-card { margin-bottom: 0; }
+.w-chat-quick-actions { display: flex; gap: 0; justify-content: space-between; }
+.w-chat-quick-actions button { font-size: 13px; padding-inline: 8px; }
+.w-card .bg-primary:disabled { background: #000; color: #fff; opacity: .4; }
+.dark .w-card .bg-primary:disabled { background: #fff; color: #000; }
+.p-chat { width: 600px; }
+.p-chat-body { padding-inline: 24px; }
+.w-task-entries { gap: 8px; margin-top: 22px; }
+.w-task-entries button { padding: 14px; gap: 13px; }
+.w-task-entries button>span:nth-child(2) { flex: 1; min-width: 0; }
+.w-task-entries small { line-height: 1.65; }
+.w-card { margin: 12px 0; padding: 14px; }
+.w-card-heading { margin-bottom: 8px; }
+.w-pack-selected img { width: 44px; height: 40px; }
+.w-pack-selected small { margin-top: 3px; }
+.w-card .w-pack-selected+button { margin-top: 2px; height: 24px; }
+.p-composer-toolbar .w-web-toggle { max-width: none; min-width: 82px; flex-shrink: 0 !important; color: var(--foreground); }
+.p-composer-toolbar .w-web-toggle:not(.is-on) { color: var(--p-subtle); background: var(--secondary); opacity: .7; }
+.r1-variant-card .w-card-heading { align-items: center; }
+.w-variant-list { gap: 0; }
+.w-variant-row { display: flex; align-items: center; gap: 8px; height: 56px; border-bottom: 1px solid var(--border); }
+.w-variant-row:last-child { border-bottom: 0; }
+.w-variant-row .w-swatch { width: 32px; height: 32px; border-radius: 7px; }
+.w-variant-row>input { width: 80px; min-width: 0; flex: 1; height: 32px; padding: 4px 6px; font-size: 13px; border-color: transparent; background: transparent; box-shadow: none; }
+.w-variant-row>input:focus { border-color: var(--border); }
+.w-variant-row .w-upload-ref { white-space: nowrap; font-size: 12px; gap: 4px; margin: 0; flex-shrink: 0; }
+.w-variant-row>.w-upload-ref+button { width: 28px; height: 28px; flex-shrink: 0; }
+.w-slot-list { margin-top: 10px; }
+.w-slot-list img { height: 56px; }
+.w-generate-row { margin-top: 12px; }
+.w-card>p { margin: 6px 0 10px; }
+.w-check-card h3 .concept-icon-box { width: 36px; height: 36px; }
+@media (max-width:1200px) {
+  .p-chat { width: 560px; }
+}
+@media (max-width:760px) {
+  .p-chat { width: min(600px,100vw); }
+}
+@media (max-width:760px) {
+  .p-composer-toolbar .w-web-toggle { min-width: 70px; }
+}
+@media (min-width:1201px) {
+  .p-chat { width: 640px; }
+}
+.p-chat-input { padding: 16px; border-top: 1px solid var(--border); background: var(--p-panel); border-radius: 20px; }
+.p-chat-input textarea { resize: none; border: 0; box-shadow: none; padding: 8px; background: transparent; }
+.p-chat-body details a { display: block; margin: 8px 0; }
+.p-chat-body .l-shooting-card { flex-shrink: 0; }
+.p-chat-body .w-task-entry { display: flex; text-align: left; gap: 12px; padding: 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--p-panel); width: 100%; }
+.p-chat-body .w-task-entry small { display: block; font-size: 13px; margin-top: 4px; color: var(--p-subtle); }
+.p-chat-body .w-task-entries { display: grid; gap: 12px; }
+.p-product-content .l-shooting-card { padding: 0; border: 0; }
+.t11-references { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; font-size: 11px; color: var(--p-subtle); }
+.t11-references>span { width: 100%; font-size: 11px; letter-spacing: .03em; }
+.t11-reference { display: flex; align-items: center; gap: 6px; max-width: 180px; border: 1px solid var(--border); border-radius: 8px; padding: 4px 7px 4px 4px; background: var(--p-panel); color: var(--foreground); text-align: left; }
+.t11-reference img { width: 28px; height: 28px; border-radius: 5px; object-fit: cover; }
+.t11-reference>span:first-of-type { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.t11-reference>span:last-child { color: var(--p-subtle); font-size: 15px; }
+.t11-progress { border: 1px solid var(--border); border-radius: 12px; background: var(--p-panel); padding: 12px 14px; margin: 12px 0; font-size: 12px; }
+.t11-progress-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 9px; font-weight: 600; }
+.t11-progress-heading small { color: var(--p-subtle); font-size: 10px; font-weight: 400; }
+.t11-progress-step { border-top: 1px solid var(--border); }
+.t11-progress-step summary { display: flex; align-items: center; gap: 8px; list-style: none; padding: 9px 0; cursor: pointer; }
+.t11-progress-step summary::-webkit-details-marker { display: none; }
+.t11-progress-step summary>span:not(.t11-step-error) { flex: 1; }
+.t11-progress-step small { color: var(--p-subtle); font-size: 10px; }
+.t11-progress-step.success summary>svg:first-child { color: #4b8266; }
+.t11-progress-step.running summary>svg:first-child { color: var(--primary); }
+.t11-step-error { width: 14px; text-align: center; color: var(--destructive); font-weight: 700; }
+.t11-progress-step>p { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.7; margin: 0 0 10px 22px; color: var(--p-subtle); }
+.t11-progress-step[open] summary>svg:last-child { transform: rotate(180deg); }
+.t11-generation-progress { border-top: 1px solid var(--border); padding-top: 7px; }
+.t11-generation-progress>div { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+.t11-generation-progress>div>span:nth-child(2) { flex: 1; }
+.t11-generation-progress small { font-size: 10px; color: var(--p-subtle); }
+.t11-awaiting { border-top: 1px solid var(--border); padding-top: 9px; margin-top: 6px; color: var(--p-subtle); font-size: 11px; }
+@media (max-width:760px) {
+  .t11-progress-heading small { display: none; }
+}
+@media (max-width:760px) {
+  .t11-reference { max-width: 140px; }
+}
+.t11-message-references { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.t11-message-references img { width: 44px; height: 44px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); }
+@media (max-width:760px) {
+  .p-workspace .p-chat { inset: 44px 0 0; width: 100%; }
+}

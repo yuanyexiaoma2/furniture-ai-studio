@@ -1,5 +1,13 @@
 # 开发记录
 
+## 2026-10-28 · UI 阶段 1：样式结构重组
+
+- 在 `a1e3f51` 上先完成常规浏览器回归（10通过、2项专用Agent按设计跳过），再建立11种页面/状态×亮暗主题×1440/390的44张基线。统一截图脚本为 `scripts/ui-snapshots.ts`，固定浏览器数据并阻断业务写请求，无付费模型调用。
+- 原8个creative CSS移入 `src/styles/creative/` 的tokens、base、layout、home、gallery、chat、canvas、library、admin九个文件；删除182条可确认被后续同选择器覆盖的声明和2条被通用排版覆盖的声明。保留互补声明的必要先后次序并加TODO，不清理色值、小字号或图标规则。
+- 完整验收、CSS文件数/体积和逐图像素差异见 [阶段1报告](ui-audit/phase1.md)。全局CSS、组件功能、开关、API、数据库、计费、队列和模型逻辑均未改动。
+- 超时预留断言继续记为 [KI-001](ui-audit/known-issues.md)。本轮原样复跑两次均通过、未复现；未修改实现或断言，不宣称修复。
+- 阶段2继续采用用户补充的“基线白名单+禁止新增”方式，小于12px字号提升到12px而不删除；本阶段不提前实施。
+
 ## 2026-10-28 · Task 12：盲测评分与私有备份
 
 - 先将原远程仓库由公开改为私有，核实PRIVATE后推送全部本地main提交；备份远程为https://github.com/yuanyexiaoma2/furniture-ai-studio，备份头为a4bb8d027a4ac1b78ab8257eb4f321ae8b1044af。

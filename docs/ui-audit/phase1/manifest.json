@@ -1,0 +1,407 @@
+{
+  "mode": "compare",
+  "commit": "a1e3f51e98c45fd7dd3b3134175ba02fa99efec9",
+  "referenceCommit": "a1e3f51e98c45fd7dd3b3134175ba02fa99efec9",
+  "capturedAt": "2026-10-28T08:02:13.607Z",
+  "fixedTime": "2026-10-28T06:00:00.000Z",
+  "normalization": "独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",
+  "results": [
+    {
+      "name": "home-light-1440",
+      "width": 1440,
+      "height": 1227,
+      "changedPixels": 0,
+      "totalPixels": 1766880,
+      "differencePercent": 0,
+      "sha256": "c183e40fe4fed380f596d72b6becd820c7fe009c1c5a93c7d1e406cc5e9a3959"
+    },
+    {
+      "name": "skus-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "6e89961dc6104b2e2e63118a91d20f33ad18a294627943f0f5b6a73d00dd9ac8"
+    },
+    {
+      "name": "workspace-empty-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "dbd79a3d2a62b27d845570b85767dcfdb1c2009017f90e8daad1fe7ac676a396"
+    },
+    {
+      "name": "workspace-images-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "8d6253146569fd64c71e429a7fbc60b185308f7e07ae46bf9257c9d16a7a4344"
+    },
+    {
+      "name": "workspace-single-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "b7f5d5d7ae6066f7f61d4e8c03e8264e024e37a15b8f6de13b82b2b860127a20"
+    },
+    {
+      "name": "workspace-multi-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "ba354a9611a5b08f88b0eccf3b6a451e79ddf4bdcfcebc13a3482ef05e983a13"
+    },
+    {
+      "name": "workspace-mask-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 1925,
+      "totalPixels": 1440000,
+      "differencePercent": 0.13368055555555555,
+      "sha256": "d37d293dfab0b8b3c8c126b0d6f4275406725147044102de0de5b87e902b0c62"
+    },
+    {
+      "name": "workspace-expand-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "ee163d81bc0f37400505e3547dc984f87e33d463d8a2a8308ae4e598c2bd0f7b"
+    },
+    {
+      "name": "workspace-product-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "7e86e836665243d3719d5e9d7af6a22c2006e4a89afd4f52d641c570b08b462b"
+    },
+    {
+      "name": "library-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "d4bcee1ba436fca7adb489740baa6183f13c027bdf95ae5307d9fc37530fb2e8"
+    },
+    {
+      "name": "admin-light-1440",
+      "width": 1440,
+      "height": 1273,
+      "changedPixels": 0,
+      "totalPixels": 1833120,
+      "differencePercent": 0,
+      "sha256": "02a9a92e53a9ab3d37e27aec419d1697607abd3dde8dfad2b361f52865febd9b"
+    },
+    {
+      "name": "home-dark-1440",
+      "width": 1440,
+      "height": 1227,
+      "changedPixels": 0,
+      "totalPixels": 1766880,
+      "differencePercent": 0,
+      "sha256": "89c99f3265be722925f072ee804791557a5b7e7bc40ce64dbfc5549114328229"
+    },
+    {
+      "name": "skus-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "be594612a192bcc44ff2403ed07d2743c6fe61252c955ba1ad8869fe87b3e207"
+    },
+    {
+      "name": "workspace-empty-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "2f345ca678c7287e557d433c0d4429483aef315283edf278fdaa38f2575456e7"
+    },
+    {
+      "name": "workspace-images-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "a9d44de92af5e67ca418059667f418ffb0172e7e6381041a9fdd9e131d0f070a"
+    },
+    {
+      "name": "workspace-single-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "b459e457a5d937d6f8c565e369245d439799c32d3a366440b63c7eafc75f6fee"
+    },
+    {
+      "name": "workspace-multi-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "583964c26956b45ac95c5ec37a1b9c84793bbe9014e976c5e30b67a0b5a0d326"
+    },
+    {
+      "name": "workspace-mask-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 1008,
+      "totalPixels": 1440000,
+      "differencePercent": 0.06999999999999999,
+      "sha256": "70a04a3122dd160063fcb46646bccc584d7948f859386f24859a191c7e64ecf8"
+    },
+    {
+      "name": "workspace-expand-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "c19cc04b8614639f2375c1bcbd93c613c4a3001937f79bed102e050d284dfc8f"
+    },
+    {
+      "name": "workspace-product-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "442febb10fdd33b90d30a0f378bce8b364ab5f630719a554cdb42924b974f6c0"
+    },
+    {
+      "name": "library-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "695fbcf65f4e38eb016ef0de43c4c57b450720fe58cfe663e94f58fdb04a6ad4"
+    },
+    {
+      "name": "admin-dark-1440",
+      "width": 1440,
+      "height": 1273,
+      "changedPixels": 0,
+      "totalPixels": 1833120,
+      "differencePercent": 0,
+      "sha256": "de0dd941d59aa03b61ce307171909a0d5e891c4de3c424ea6ff24dcd7cb4bdb9"
+    },
+    {
+      "name": "home-light-390",
+      "width": 390,
+      "height": 1488,
+      "changedPixels": 0,
+      "totalPixels": 580320,
+      "differencePercent": 0,
+      "sha256": "1f56350b461f409a7b7f5a081819f333d27dd7368e61b6942db54b4628cecea3"
+    },
+    {
+      "name": "skus-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "71f938cf130e7c4ab28193ab310b1b7d9acc867b2bd7af9c18fa9083d60c996f"
+    },
+    {
+      "name": "workspace-empty-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "9635d1740874a230ca1b85af05294a5ab1b2e2cffaab486d59429f24dc075048"
+    },
+    {
+      "name": "workspace-images-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "cfb198930b0cf0839835fd65ae6b0e915f9ee26295ed1bfae927de783b3657bc"
+    },
+    {
+      "name": "workspace-single-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "0607680cbf2a20d2a992d96a636ae31326cd29e4ee65ed2e4819238bde1ddea3"
+    },
+    {
+      "name": "workspace-multi-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "56a1eac99ed119bbc5d954937d7ff701d099fd7b4e1c1daef7dbc974e6db17f4"
+    },
+    {
+      "name": "workspace-mask-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "5f69ad2861feeabffbe896ec6268f32e421826b785cb1209b8030b5d0af00468"
+    },
+    {
+      "name": "workspace-expand-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "caa02492326ad438725eee47662f9179208b3854ba3261fe526daf92e1b92ff9"
+    },
+    {
+      "name": "workspace-product-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "93dd95b9bb03c294af933ec2314ca18fcb51e97f9901d506f9ab275386502d31"
+    },
+    {
+      "name": "library-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "0e4afd7ee2c84b8ed44fb702db26dbd5c4cd232a6eb0c70f7a3825825b9022ad"
+    },
+    {
+      "name": "admin-light-390",
+      "width": 390,
+      "height": 1148,
+      "changedPixels": 0,
+      "totalPixels": 447720,
+      "differencePercent": 0,
+      "sha256": "dd745326eb33df95a60123a3a0c08f4e0d36db839cded1857ec89d1f2ca91523"
+    },
+    {
+      "name": "home-dark-390",
+      "width": 390,
+      "height": 1488,
+      "changedPixels": 0,
+      "totalPixels": 580320,
+      "differencePercent": 0,
+      "sha256": "5dca8fd203190384fa879307de54b51f8d63f5bcba17efd543f3f4e16c880a3d"
+    },
+    {
+      "name": "skus-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "4cda26d23a998b8a1b162ae59399e996e86db7fe47a69848714faf95f23744d9"
+    },
+    {
+      "name": "workspace-empty-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "9a10653e126bc2ba5b4945582cf39087323e74bbb9d7ff18a8fa1307dfe18260"
+    },
+    {
+      "name": "workspace-images-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "3fcae71e0e798dd5400c2440a07caab9ec9ef6d91ac6ced35a879a22edb9b78b"
+    },
+    {
+      "name": "workspace-single-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "89ede68e4a3f90afcb39855e384d5b9f7c070881cfba5a863e41dc32c8dfb8e5"
+    },
+    {
+      "name": "workspace-multi-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "b83d504d4a7a54f4928a4db51a266044f956b6d42f24f09b28f3a77ada44fce6"
+    },
+    {
+      "name": "workspace-mask-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "210a38062ca120d2ac62fce50b4e15b6190aa610b72c9f43a09e0bc667ea0798"
+    },
+    {
+      "name": "workspace-expand-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "e584f347b77d9112cb97c95609a386ba81cad0f1b0a89d7d0100b8421778336f"
+    },
+    {
+      "name": "workspace-product-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "f8356cc551535e268288ca1a7439930e90d70f861b14d32d632bc1716e0552a8"
+    },
+    {
+      "name": "library-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "e8c6780877197ea10fbc51b2d0a8cac4e61fb67a13e455a33689f31164dd8aae"
+    },
+    {
+      "name": "admin-dark-390",
+      "width": 390,
+      "height": 1148,
+      "changedPixels": 0,
+      "totalPixels": 447720,
+      "differencePercent": 0,
+      "sha256": "6307f2191296ae7d61850805f542b052be4a79bad097afcc026d2b8d1cbf0546"
+    }
+  ],
+  "failures": []
+}
