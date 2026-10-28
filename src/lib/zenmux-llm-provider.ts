@@ -16,6 +16,7 @@ export class ZenMuxLLMProvider implements LLMProvider {
     try {
       const urls = await Promise.all((input.images ?? []).map(async ({ id }) => { const { bytes, mime } = await this.read(id); return `data:${mime};base64,${bytes.toString("base64")}`; }));
       const body: Body = { model: this.model, messages: withImages(input, urls) as Body["messages"], stream: false, max_completion_tokens: input.maxOutputTokens ?? LLM_OUTPUT_BUDGET, ...(input.responseFormat ? { response_format: input.responseFormat as Body["response_format"] } : {}), ...(input.tools?.length ? { tools: input.tools, tool_choice: "auto" } : {}) };
+      if(input.webSearch)body.web_search_options={search_context_size:"low"};
       if (input.onDelta && !this.complete) {
         const stream = await new OpenAI({ apiKey: process.env.ZENMUX_API_KEY!.trim(), baseURL: process.env.ZENMUX_BASE_URL?.trim() || "https://zenmux.ai/api/v1", timeout: 90000, maxRetries: 0 }).chat.completions.create({ ...body, stream: true, stream_options: { include_usage: true } });
         const calls = new Map<number, { id: string; type: "function"; function: { name: string; arguments: string } }>(); let text = ""; let usage; let id;

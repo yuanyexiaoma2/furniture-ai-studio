@@ -1,0 +1,13 @@
+{
+  "verifiedAt": "2026-10-28T01:43:49.834Z",
+  "protocol": "Chat Completions / web_search_options",
+  "supported": null,
+  "note": "ZenMux：网络超时或连接失败；已检查可用备用线路，仍未成功，请稍后重试；未验证支持性，默认关闭联网补充。",
+  "verified": false,
+  "documentation": "https://zenmux.ai/docs/guide/advanced/web-search.html",
+  "model": "google/gemini-3.8-flash",
+  "provider": "zenmux",
+  "requestStatus": "failed",
+  "attemptCount": 1,
+  "sourceCount": 0
+}

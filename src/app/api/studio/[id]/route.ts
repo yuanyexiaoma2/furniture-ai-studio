@@ -36,7 +36,7 @@ export async function POST(request:Request,context:Ctx){
   const card=await db.agentCard.findFirst({where:{id:z.string().parse(data.cardId),sessionId:session.id,kind:"pack",status:"pending"}});
   if(!card)throw new StudioError("方案已失效，请刷新",409);
   const previousPlan=visualPlanSchema.parse((card.data as {visualPlan:unknown}).visualPlan);
-  await lockedOperation(session.id,"plan_image_pack",()=>proposeVisualPlan(productId,user.id,{previousPlan,feedback:z.string().min(1).max(8000).parse(data.feedback)}));
+  await lockedOperation(session.id,"plan_image_pack",()=>proposeVisualPlan(productId,user.id,{previousPlan,originalPlan:visualPlanSchema.parse((card.data as {originalVisualPlan?:unknown}).originalVisualPlan??previousPlan),feedback:z.string().min(1).max(8000).parse(data.feedback)}));
  }
  else if(body.action==="excellent")await proposeExcellentCase(productId,user.id,z.string().parse(data.assetId));
  else if(body.action==="generate")await createCostCard(session.id,{operation:"generate_batch"});

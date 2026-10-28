@@ -1,4 +1,5 @@
 import "dotenv/config";
+process.env.VISUAL_REVIEW_TEST_MODE="true";
 import {test} from "node:test";
 import assert from "node:assert/strict";
 import {randomUUID} from "node:crypto";

@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { inspectPhoto, putObject, deleteObject,readObject } from "@/lib/storage";
 import {compositeMaskedEdit} from "./masked-edit";
 import type { GatewayCost, TokenUsage } from "./image-provider";
+import {writeProductReviewSafely} from "./visual-review";
 import { costFields } from "./gateway-cost";
 
 // 同步 / 异步网关共享：先保存文件，再在同一事务写 Asset 和成功状态。
@@ -43,6 +44,7 @@ export async function saveGenerationResult(jobId: string, images: Buffer[], meta
       return ids;
     });
     stored.length = 0;
+    if(job.productId)await writeProductReviewSafely(job.productId);
     return ids;
   } finally { for (const file of stored) await deleteObject(file.key).catch(() => undefined); }
 }

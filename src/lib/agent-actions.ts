@@ -9,7 +9,8 @@ import { StudioError } from "./studio-error";
 import { json } from "./agent-state";
 import { autoApproval, profileSchema, understanding,emptyProfile } from "./profile-rules";
 import {confirmVisualPlan,planToProposal} from "./visual-planning";
-import {visualPlanSchema,patternSchema,composeIdentityLock} from "./visual-plan-rules";
+import {visualPlanSchema,patternSchema,composeIdentityLock,visualPlanDiff} from "./visual-plan-rules";
+import {writeProductReviewSafely} from "./visual-review";
 import { confirmProfile } from "./product-profile";
 import { proposalSchema, agentToolSchemas } from "./agent-tool-schemas";
 import { slotSchema } from "./pack-rules";
@@ -98,7 +99,7 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
     } catch (error) { await db.agentCard.update({ where: { id: cardId }, data: { status: "pending" } }); throw error; }
   }
   if (automatic) throw new StudioError("该卡片必须人工确认", 403);
-  return db.$transaction(async tx => {
+  const confirmedResult=await db.$transaction(async tx => {
     await tx.$queryRaw`SELECT id FROM "AgentSession" WHERE id=${sessionId} FOR UPDATE`;
     const current = await tx.agentCard.findUniqueOrThrow({ where: { id: cardId } }); if (current.status === "executed") return current.result;
     if (current.status !== "pending") throw new StudioError("确认卡已取消", 409);
@@ -116,8 +117,11 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
       if(raw.visualPlan){
         const saved=visualPlanSchema.parse(raw.visualPlan);
         const edited=changes.visualPlan?visualPlanSchema.parse(changes.visualPlan):saved;
+        if(edited.slots.length!==saved.slots.length||edited.slots.some(s=>!saved.slots.some(p=>p.key===s.key)))throw new StudioError("图位列表已变化，请重新规划或刷新",409);
         // 美工只能改画面选择，不能通过确认请求替换身份、来源或产品归属。
-        const plan=await confirmVisualPlan(tx,session.productId,{...saved,slots:edited.slots});
+        const plan=await confirmVisualPlan(tx,session.productId,{...saved,slots:edited.slots.map(s=>({...s,directions:saved.slots.find(p=>p.key===s.key)?.directions}))});
+        const original=visualPlanSchema.parse(raw.originalVisualPlan??saved);
+        await tx.agentCard.update({where:{id:cardId},data:{data:json({...raw,originalVisualPlan:original,confirmedVisualPlan:plan,planDiff:visualPlanDiff(original,plan),confirmedAt:new Date().toISOString(),confirmedById:session.createdById})}});
         proposal=planToProposal(plan);
         if(!session.confirmedProfileId){
           const profile=emptyProfile(),identity=plan.identityLock;
@@ -150,6 +154,8 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
     await tx.agentCard.update({ where: { id: cardId }, data: { status: "executed", result: json(result) } });
     await tx.chatMessage.create({ data: { productId: session.productId, sessionId, role: "system", content: json({ text: `美工确认 ${card.kind}：${JSON.stringify(result)}` }) } }); return json(result);
   }, { timeout: 20000 });
+  if(card.kind==="pack")await writeProductReviewSafely(session.productId);
+  return confirmedResult;
 }
 function zAnswers(raw: unknown, questions: { options: string[]; allowFreeText: boolean }[]) {
   if (!Array.isArray(raw) || raw.length !== questions.length || raw.some((a, i) => typeof a !== "string" || !a.trim() || a.length > 2000 || (!questions[i].allowFreeText && !questions[i].options.includes(a)))) throw new StudioError("请回答全部问题，或点击停止提问继续策划");
