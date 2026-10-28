@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, type DragEvent } from "react";
 import Image from "next/image";
-import { Upload, LoaderCircle, Trash2, GripVertical, ChevronLeft, ChevronRight } from "@/components/icons/concept-icons";
+import {Upload,LoaderCircle,Trash2,GripVertical,ChevronLeft,ChevronRight} from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import type { ProductSnapshot } from "@/lib/product-data";
 
@@ -63,8 +63,8 @@ export function PhotoManager({ product, readonly, onUpdate }: { product: Product
         <figcaption>{!readonly && <GripVertical size={13} aria-hidden="true" />}参考 {String(index + 1).padStart(2, "0")}</figcaption>
         {!readonly && <div className="reference-move"><Button variant="ghost" size="icon" aria-label={`向前移动参考 ${index + 1}`} disabled={pending || index === 0} onClick={() => reorder(index, index - 1)}><ChevronLeft size={14} /></Button><Button variant="ghost" size="icon" aria-label={`向后移动参考 ${index + 1}`} disabled={pending || index === photos.length - 1} onClick={() => reorder(index, index + 1)}><ChevronRight size={14} /></Button></div>}
       </figure>)}</div>
-      {!readonly && <><label htmlFor="photos" className="sr-only">实拍参考图</label><input ref={input} id="photos" className="sr-only" type="file" accept="image/jpeg,image/png,image/webp" multiple disabled={pending} onChange={(event) => void upload(Array.from(event.target.files ?? []))} /><button type="button" className="photo-dropzone" disabled={pending || product.photos.length >= 3} onClick={() => input.current?.click()}>{pending ? <LoaderCircle size={22} className="animate-spin" /> : <Upload size={22} />}<strong>{pending ? "正在保存图片…" : product.photos.length >= 3 ? "参考图已满，可删除后更换" : "拖入图片即上传，或点击选择图片"}</strong><span>已有图片可拖动排序，也可使用图片下方的左右按钮</span></button></>}
-      {readonly && !photos.length && <div className="reference-empty"><Upload size={24} /><p>尚未上传实拍参考</p></div>}
+      {!readonly && <><label htmlFor="photos" className="sr-only">实拍参考图</label><input ref={input} id="photos" className="sr-only" type="file" accept="image/jpeg,image/png,image/webp" multiple disabled={pending} onChange={(event) => void upload(Array.from(event.target.files ?? []))} /><button type="button" className="photo-dropzone" disabled={pending || product.photos.length >= 3} onClick={() => input.current?.click()}>{pending ? <LoaderCircle size="md" className="animate-spin" /> : <Upload size="md" />}<strong>{pending ? "正在保存图片…" : product.photos.length >= 3 ? "参考图已满，可删除后更换" : "拖入图片即上传，或点击选择图片"}</strong><span>已有图片可拖动排序，也可使用图片下方的左右按钮</span></button></>}
+      {readonly && !photos.length && <div className="reference-empty"><Upload size="md" /><p>尚未上传实拍参考</p></div>}
       <p aria-live="polite" role={error ? "alert" : "status"} className={error ? "form-notice error-notice" : "form-notice"}>{error || notice}</p>
     </div>
   </section>;

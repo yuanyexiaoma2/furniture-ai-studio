@@ -1,0 +1,231 @@
+[
+  {
+    "file": "src\\components\\design-preview\\listing-import.tsx",
+    "before": "rounded-2xl",
+    "after": "rounded-[var(--radius-panel)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\listing-import.tsx",
+    "before": "rounded-xl",
+    "after": "rounded-[var(--radius-panel)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\mask-editor.tsx",
+    "before": "rounded-lg",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\pattern-library.tsx",
+    "before": "rounded-2xl",
+    "after": "rounded-[var(--radius-panel)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\pattern-library.tsx",
+    "before": "text-2xl",
+    "after": "text-[length:var(--text-xl)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\badge.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\button.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\button.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\button.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\checkbox.tsx",
+    "before": "rounded-sm",
+    "after": "rounded-[var(--radius-tag)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\dialog.tsx",
+    "before": "rounded-lg",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\dialog.tsx",
+    "before": "rounded-sm",
+    "after": "rounded-[var(--radius-tag)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\dialog.tsx",
+    "before": "text-lg",
+    "after": "text-[length:var(--text-section)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\dropdown-menu.tsx",
+    "before": "rounded-sm",
+    "after": "rounded-[var(--radius-tag)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\dropdown-menu.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\dropdown-menu.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\dropdown-menu.tsx",
+    "before": "rounded-sm",
+    "after": "rounded-[var(--radius-tag)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\dropdown-menu.tsx",
+    "before": "rounded-sm",
+    "after": "rounded-[var(--radius-tag)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\dropdown-menu.tsx",
+    "before": "rounded-sm",
+    "after": "rounded-[var(--radius-tag)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\input.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\popover.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\select.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\select.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\select.tsx",
+    "before": "rounded-sm",
+    "after": "rounded-[var(--radius-tag)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\sheet.tsx",
+    "before": "rounded-sm",
+    "after": "rounded-[var(--radius-tag)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\sheet.tsx",
+    "before": "text-lg",
+    "after": "text-[length:var(--text-section)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\skeleton.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\slider.tsx",
+    "before": "rounded-full",
+    "after": "rounded-[var(--radius-pill)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\slider.tsx",
+    "before": "rounded-full",
+    "after": "rounded-[var(--radius-pill)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\switch.tsx",
+    "before": "rounded-full",
+    "after": "rounded-[var(--radius-pill)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\switch.tsx",
+    "before": "rounded-full",
+    "after": "rounded-[var(--radius-pill)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\tabs.tsx",
+    "before": "rounded-lg",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\tabs.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\textarea.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\ui\\tooltip.tsx",
+    "before": "rounded-md",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\version-history.tsx",
+    "before": "rounded-lg",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\visual-plan-card.tsx",
+    "before": "rounded-lg",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\visual-plan-card.tsx",
+    "before": "rounded-xl",
+    "after": "rounded-[var(--radius-panel)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\visual-plan-card.tsx",
+    "before": "rounded-lg",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src/components/design-preview/ui/dialog.tsx",
+    "before": "rounded-[var(--radius-control)]",
+    "after": "rounded-[var(--radius-panel)]",
+    "reason": "浮层根容器16px；小条目tag档位不变"
+  },
+  {
+    "file": "src/components/design-preview/ui/popover.tsx",
+    "before": "rounded-[var(--radius-control)]",
+    "after": "rounded-[var(--radius-panel)]",
+    "reason": "浮层根容器16px；小条目tag档位不变"
+  },
+  {
+    "file": "src/components/design-preview/ui/dropdown-menu.tsx",
+    "before": "rounded-[var(--radius-control)]",
+    "after": "rounded-[var(--radius-panel)]",
+    "reason": "浮层根容器16px；小条目tag档位不变"
+  },
+  {
+    "file": "src/components/design-preview/ui/tooltip.tsx",
+    "before": "rounded-[var(--radius-control)]",
+    "after": "rounded-[var(--radius-panel)]",
+    "reason": "浮层根容器16px；小条目tag档位不变"
+  },
+  {
+    "file": "src\\components\\design-preview\\listing-import.tsx",
+    "before": "rounded（默认档）",
+    "after": "rounded-[var(--radius-control)]"
+  },
+  {
+    "file": "src\\components\\design-preview\\visual-plan-card.tsx",
+    "before": "rounded（默认档）",
+    "after": "rounded-[var(--radius-control)]"
+  }
+]

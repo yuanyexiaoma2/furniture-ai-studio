@@ -1,0 +1,120 @@
+{
+  "mode": "capture",
+  "commit": "99f31870091f4a7270687b1c56440ce08c3be0be",
+  "referenceCommit": null,
+  "capturedAt": "2026-10-28T09:13:29.266Z",
+  "fixedTime": "2026-10-28T06:00:00.000Z",
+  "normalization": "独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",
+  "results": [
+    {
+      "name": "workspace-progress-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "67720acac9c6c032c6a717a010dc3b8f0d859bf2ed0fe4e1805ed32765396711"
+    },
+    {
+      "name": "workspace-history-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "563ab1b6f9e421f66eeb93a33ce0c62730d883921e0e5d8917cbd3dd82dad5f7"
+    },
+    {
+      "name": "workspace-save-status-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "a38a816dc5d4d3956c03e40cc91569ecf294829e980f5cdaa39d0f1bd7d92b04"
+    },
+    {
+      "name": "workspace-progress-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "1c64fc96655dd4f3b35eebb839761ac70275289f8ae7c0b11090c8b611714864"
+    },
+    {
+      "name": "workspace-history-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "e8882768ab3a72314d937b7870f7113dad146dfb9311298cfeaabeb2f949600a"
+    },
+    {
+      "name": "workspace-save-status-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "sha256": "df46a9d7f777aae9090397ebb9f1e60dd962abb4cce9230b7aa82ab287a23f10"
+    },
+    {
+      "name": "workspace-progress-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "6d914c7f0b9ddbcc9feba35e6c8cf191334abdc1a13b8ac22daabf17e693d527"
+    },
+    {
+      "name": "workspace-history-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "4612da00b80ea7a9e7a10e3b4c9a836f13ff86a1ea26451a5ac8beb53149f1b6"
+    },
+    {
+      "name": "workspace-save-status-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "22c08e7aea411ef889d791eb084ab3420eb1d325063fc1553f50fea66a586e3f"
+    },
+    {
+      "name": "workspace-progress-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "08fb8d3456fdbab85a5513286a45a3b18bf6448f8133e04b82a275b7b10bf3e5"
+    },
+    {
+      "name": "workspace-history-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "e2644e08d4588b9560b3590306ef55f0ed0399b9c5018de6563e68c670bd2f4c"
+    },
+    {
+      "name": "workspace-save-status-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "sha256": "52d7efc53f6206a6d841af5ac2f3e9aa236f86a1a39d14ba1cbd4f1687503ca2"
+    }
+  ],
+  "failures": [],
+  "referenceDirectory": null
+}

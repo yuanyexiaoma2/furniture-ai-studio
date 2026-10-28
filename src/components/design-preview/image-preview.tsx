@@ -25,11 +25,11 @@ export function ImagePreview({image,onClose}:{image:PreviewImage;onClose:()=>voi
    {failed?<p role="alert">图片加载失败，请关闭后重试。</p>:<div className="p-image-preview-surface"><img src={image.src} alt={image.label} draggable={false} onLoad={event=>setNatural({width:event.currentTarget.naturalWidth,height:event.currentTarget.naturalHeight})} onError={()=>setFailed(true)} style={{width:natural.width?natural.width*zoom:undefined,height:natural.height?natural.height*zoom:undefined,visibility:natural.width&&bounds.width?"visible":"hidden"}}/></div>}
   </div>
   <div className="p-image-preview-footer"><span>{natural.width?`${natural.width} × ${natural.height} px`:failed?"":"正在加载原图…"}</span><div role="group" aria-label="图片预览缩放">
-   <Button variant="ghost" size="icon" aria-label="缩小图片" disabled={!natural.width||zoom<=.1} onClick={()=>changeZoom(zoom/1.25)}><ZoomOut size={17}/></Button>
+   <Button variant="ghost" size="icon" aria-label="缩小图片" disabled={!natural.width||zoom<=.1} onClick={()=>changeZoom(zoom/1.25)}><ZoomOut size="md"/></Button>
    <output aria-label="图片缩放比例">{Math.round(zoom*100)}%</output>
-   <Button variant="ghost" size="icon" aria-label="放大图片" disabled={!natural.width||zoom>=4} onClick={()=>changeZoom(zoom*1.25)}><ZoomIn size={17}/></Button>
+   <Button variant="ghost" size="icon" aria-label="放大图片" disabled={!natural.width||zoom>=4} onClick={()=>changeZoom(zoom*1.25)}><ZoomIn size="md"/></Button>
    <Button variant="ghost" disabled={!natural.width} aria-pressed={scale===1} onClick={()=>setScale(1)}>原始尺寸</Button>
-   <Button variant="ghost" disabled={!natural.width} aria-pressed={scale===null} onClick={()=>setScale(null)}><Maximize size={16}/>适应窗口</Button>
+   <Button variant="ghost" disabled={!natural.width} aria-pressed={scale===null} onClick={()=>setScale(null)}><Maximize size="md"/>适应窗口</Button>
   </div><span className="p-image-preview-hint">Esc 关闭 · 放大后可滚动查看</span></div>
  </DialogContent></Dialog>;
 }

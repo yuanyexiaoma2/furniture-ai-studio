@@ -1,44 +1,81 @@
-# 任务 7 · 修订版设计规范
+# 家具创作工作台设计规范
 
-状态：第一阶段静态原型，等待审阅。旧规范归档在 [design/legacy-design-system.md](design/legacy-design-system.md)，第三轮增补优先于下文第二轮记录，详见 [第三轮交付与自查](design-preview/round3/README.md)。
+本规范对应UI阶段2a。正式创作页为 `/`、`/skus`、`/workspace`、`/library`；`/admin/models` 使用相同创作组件并继承旧后台外壳。旧视觉迁移留到2b，布局与交互收口留到阶段3。
 
-## 主题与视觉
+## 主题与颜色
 
-全部配色定义在 `src/app/design-preview/preview.css` 的两套 CSS 变量中。亮色由 `:root:has(.p-app)` 生效，暗色由 `.dark` 生效；离开预览即停止覆盖业务变量。
+creative配色唯一来源为 `src/styles/creative/tokens.css`。亮色由 `:root:has(.p-app)` 生效，暗色由 `:root.dark:has(.p-app)` 生效。封面、阴影、遮罩和品牌图形底色也在tokens中定义，数值沿用阶段1。
 
 | 用途 | 亮色 | 暗色 |
 | --- | --- | --- |
-| 页面背景 | #FFFFFF | #0E0E10 |
-| 画布 / 面板 | #F7F7F8 / #FFFFFF | #0E0E10 / #16161A |
-| 浮层 / 悬停 | #FFFFFF / #F0F0F2 | #1E1E23 / #26262C |
-| 标题 | #18181B | #FAFAFA |
-| 正文 | #52525B | #A1A1AA |
-| 次要说明 | #71717A | #71717A |
-| 边框 | #E4E4E7 | 白色 8% |
-| 主按钮 | 墨绿 #1F3A2E / 白字 | 白底 / 黑字 |
+| 主按钮 --primary / foreground | #1f3a2e / #ffffff | #fafafa / #18181b |
+| 聚焦 --ring / 选中 --p-selection | #1f3a2e | #6c907d |
+| 页面背景 / 面板 | #ffffff / #ffffff | #0e0e10 / #16161a |
+| 正文 / 辅助 | #52525b / #71717a | #a1a1aa / #71717a |
 
-墨绿仅用于主操作、选中描边和焦点环；禁止大面积浅绿底。状态只使用小点与小角标：绿为终稿、黄为待处理、蓝为生成中、灰为未开始。图片承担主要色彩，浮层使用轻微毛玻璃。
+墨绿用于**亮色主按钮，以及全主题的选中、聚焦和品牌点缀**；暗色选中和聚焦使用提亮的墨绿#6c907d，主按钮保持白底深字。图片承担主要色彩，禁止大面积浅绿背景。状态色用于终稿、待处理、生成中、未开始的小点和角标。
 
-## 组件、字体与动效
+task-cover.tsx、batch/brand.tsx、batch/workflow.tsx的商品变体或品牌色是数据，不是UI配色，由静态检查的数据白名单登记。旧globals的纸色和小字号作为2b存量白名单，禁止新增。
 
-新原型统一使用 Radix 版 shadcn/ui + Tailwind，放在独立 `src/components/design-preview/ui/`。下拉、复选、开关、弹窗、抽屉、Tooltip、Popover、Slider、Table 都用官方组件；禁止裸露的原生 select / checkbox。业务页面原有 Base UI 组件不替换。
+## 字体、字号与圆角
 
-图标为 lucide-react。字体栈为 Segoe UI + 系统中文字体，不请求外部字体。首页主标题 40px / 600，页面标题 28px / 600，区块标题 18px / 600，卡片标题 15px / 500，正文 14px、辅助 13px，所有文字实际显示至少 12px。数字 tabular-nums。首页输入框圆角 24px，模板与 Frame 16px，模型胶囊 999px。弹层和抽屉 motion 160ms 淡入与 4px 位移；卡片 motion 200ms ease-out。
+字体栈为 `"Segoe UI", "PingFang SC", "Microsoft YaHei UI", system-ui, sans-serif`，不请求外部字体，不保留Inter声明。库摘要和评论使用工作台字体。`.w-brand-logo`属于品牌字体展示，保留Georgia和品牌字号25px，不作为UI排版档位。
 
-## 页面与画布
+| 变量 | 值 | 用途 |
+| --- | --- | --- |
+| --text-xs | 12px | 最小字号、角标 |
+| --text-sm | 13px | 辅助 |
+| --text-body | 14px | 正文、卡片 |
+| --text-section | 16px | 区块标题 |
+| --text-xl | 20px | 弹层标题 |
+| --text-title | 28px | 页面标题 |
+| --text-hero | 36px | 其他大标题 |
+| --text-display | 40px | 首页主标题专用，600字重 |
 
-顶栏始终为一行，不增加第二层重页头。首页用输入框、图片模板与最近 SKU 作为入口；SKU 卡片底部最多两行，待处理事项放在图角。
+数字用tabular-nums。9处旧task11字号从10/11提升到12px；旧globals的49处留到2b。画布14/zoom、12/zoom配合反向缩放，不按静态小字号违规处理。
 
-工作台左栏 440px（中等屏幕 400px）、可收起，右侧为真实无限画布。React Flow 父节点代表图位，子节点代表候选；7 个图位初始网格排布、30 张图横排。支持平移、缩放、MiniMap、自由拖动、框选、多选与便签。图片选中后的浮动工具条跟随节点，多选则切换为对比、下载和删除。
+| 变量 | 值 | 用途 |
+| --- | --- | --- |
+| --radius-tag | 6px | 小标签、角标 |
+| --radius-control | 10px | 按钮、输入、普通卡片、图片节点 |
+| --radius-panel | 16px | 浮层、弹窗、Frame、首页输入框 |
+| --radius-pill | 999px | 胶囊与圆形容器 |
+| --radius-bubble | 12px | 对称消息气泡专用例外 |
 
-蒙版与扩图使用 react-konva + konva。画笔、橡皮、撤销、清空与蒙版 PNG 导出可真实操作；扩展框可拖动和拉伸，提供比例预设。生成仅模拟 1.5 秒，新候选保留原图并加入所属图位。
+结构需要的0和inherit不算视觉档位。逐处前后值见 `docs/ui-audit/phase2a/style-changes.json`，Tailwind映射见class-changes.json。
 
-对话输入上方显示当前图片引用，消息中的图片可以定位并高亮画布节点。输入框底部一行放添加、智能体、生图、工作台比例 / 张数、费用和圆形发送按钮；宽度不足时将次要选项放入“⋯”。选择器在首页和工作台共用。
+## 图标
 
-产品卡在 Sheet 中展示实拍与关键特征锁定；待核对项使用黄色小点并给出确认和修改。撤销仅管理员可见模型品牌的旧规则：管理员设为可见且启用的模型，美工界面展示真实名称；网关、供应商与 API 字段仍只留在后台。模型名唯一来源为 src/design-preview/mock/models.ts。
+全站只从 `@/components/icons/concept-icons` 引入。sm=16px/线宽1.75，md=20px/1.5，lg=24px/1.5，默认sm；数字接口仍接受实际数字尺寸。工具条/侧栏/独立导航按钮使用md，文字旁sm，空状态lg。旧页面原本被fixed压到20px的大号调用显式保持md，避免提前放大旧空状态。
 
-## 技术与阶段边界
+尺寸、线宽由组件控制，不用SVG important或局部SVG宽高覆盖。品牌SVG图片保持自身比例。Library和ContactRound映射到同名图形，Wand2统一WandSparkles，重复别名归并；原13个未使用导出保留。
 
-主题使用 next-themes 并写 localStorage；画布选中态、作用对象、主题与对话上下文放在 zustand。拖入实拍使用 react-dropzone，消息使用 sonner，动效使用 motion。
+| 动作 | 图标 |
+| --- | --- |
+| AI改图、整图再生成 | WandSparkles |
+| 局部重绘 | Brush |
+| 扩图 | Expand |
+| 抠图 | ScanLine |
+| 超清 | ZoomIn |
+| 设为终稿 | Check |
+| 下载 | Download |
+| 对比 | Columns2 |
+| 便签 | StickyNote |
+| 删除 | Trash2 |
+| 更多 | MoreHorizontal |
 
-原型内不调用业务 API，不生成真实图片或费用，不修改数据库，不修复第二阶段的四个 bug。所有新依赖安装前核验 LICENSE；完整版本、许可、截图、录屏、验证及已知问题见 [design-preview/README.md](design-preview/README.md)。
+不因图标统一显示未接通入口，不新增超清功能。画布缩放ZoomIn/ZoomOut是视图操作，与模型超清入口区分。
+
+## 当前布局及后续边界
+
+当前顶栏62px，左栏宽屏640px/中屏560px/窄屏满宽，可收起；2a不调整。creative使用Radix版design-preview/ui，旧页保留Base UI版components/ui。
+
+画布支持平移缩放、引用、布局/便签保存、多选、蒙版、扩图。生成接真实业务API，须确认方案与费用；模型目录来自后台配置。历史消息引用图目前只展示，尚不支持点击定位。加载保留现有shimmer。
+
+阶段3待实施：左栏比较440/520/640三档再确定；将左侧工具和自定义缩放控件合并到底部/右下角；新增消息引用图点击定位；为shimmer叠加真实阶段文字。不存在React Flow默认Controls可删。两套button变体均需覆盖交互状态。
+
+## 检查与验收
+
+执行 `npm run lint:ui`。ui-lint-baseline.json以“签名+数量”保留旧globals及数据色值，常规检查不扩充白名单。新增十六进制色值、小于12px字号、SVG important、绕开入口的Lucide导入均失败；清理后人工收紧白名单。
+
+creative参照docs/ui-audit/phase1，旧页2b参照baseline-studio。KI-001按偶发记录，不要求复现，但不能新增失败类型。2a结束后停止，待审阅才做2b。

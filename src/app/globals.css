@@ -497,6 +497,4 @@ a, button, summary { touch-action: manipulation; }
 @media(max-width:1100px) { .agent-workspace { grid-template-columns:1fr; } .agent-panel { position:static; } .agent-transcript { max-height:60vh; } }
 @media(max-width:600px) { .agent-mode-bar { padding:15px; } .agent-panel { padding:16px; } .agent-board .pack-candidates { grid-template-columns:1fr; } }
 
-/* 概念图标统一尺寸；品牌 SVG 图片保留自身规范。 */
-button svg[data-concept-icon],[role=button] svg[data-concept-icon]{width:16px!important;height:16px!important;stroke-width:1.5!important}
-.concept-icon-box>svg[data-concept-icon]{width:20px!important;height:20px!important}
+/* 概念图标尺寸由统一组件控制；品牌 SVG 图片保留自身规范。 */

@@ -1,0 +1,58 @@
+[
+  {
+    "width": 1440,
+    "dark": false,
+    "primary": "#1f3a2e",
+    "ring": "#1f3a2e",
+    "title": "40px",
+    "titleWeight": "600",
+    "inputRadius": "16px",
+    "imageRadius": "10px",
+    "toolbarRadius": "16px",
+    "bubbleRadius": "12px",
+    "reviewFont": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+    "brandFont": "Georgia, serif"
+  },
+  {
+    "width": 1440,
+    "dark": true,
+    "primary": "#fafafa",
+    "ring": "#6c907d",
+    "title": "40px",
+    "titleWeight": "600",
+    "inputRadius": "16px",
+    "imageRadius": "10px",
+    "toolbarRadius": "16px",
+    "bubbleRadius": "12px",
+    "reviewFont": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+    "brandFont": "Georgia, serif"
+  },
+  {
+    "width": 390,
+    "dark": false,
+    "primary": "#1f3a2e",
+    "ring": "#1f3a2e",
+    "title": "40px",
+    "titleWeight": "600",
+    "inputRadius": "16px",
+    "imageRadius": "10px",
+    "toolbarRadius": "16px",
+    "bubbleRadius": "12px",
+    "reviewFont": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+    "brandFont": "Georgia, serif"
+  },
+  {
+    "width": 390,
+    "dark": true,
+    "primary": "#fafafa",
+    "ring": "#6c907d",
+    "title": "40px",
+    "titleWeight": "600",
+    "inputRadius": "16px",
+    "imageRadius": "10px",
+    "toolbarRadius": "16px",
+    "bubbleRadius": "12px",
+    "reviewFont": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+    "brandFont": "Georgia, serif"
+  }
+]

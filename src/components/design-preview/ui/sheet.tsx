@@ -66,7 +66,7 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       <motion.div initial={{opacity:0,y:4}} animate={{opacity:1,y:0}} transition={{duration:.16}}>
-      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-[var(--radius-tag)] opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
         <X className="h-4 w-4" />
         <span className="sr-only">关闭</span>
       </SheetPrimitive.Close>
@@ -111,7 +111,7 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn("text-lg font-semibold text-foreground", className)}
+    className={cn("text-[length:var(--text-section)] font-semibold text-foreground", className)}
     {...props}
   />
 ))

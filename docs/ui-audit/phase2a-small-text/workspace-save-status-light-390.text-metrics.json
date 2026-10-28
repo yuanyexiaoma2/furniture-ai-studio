@@ -1,0 +1,28 @@
+[
+  {
+    "tag": "DIV",
+    "classes": "t11-save-status conflict",
+    "text": "其他窗口修改待处理\n载入最新",
+    "fontSize": "12px",
+    "clientWidth": 192,
+    "scrollWidth": 192,
+    "left": 15,
+    "right": 209,
+    "viewport": 390,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  },
+  {
+    "tag": "BUTTON",
+    "classes": "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-8 rounded-[var(--radius-control)] px-3 text-xs",
+    "text": "载入最新",
+    "fontSize": "12px",
+    "clientWidth": 58,
+    "scrollWidth": 58,
+    "left": 141,
+    "right": 199,
+    "viewport": 390,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  }
+]

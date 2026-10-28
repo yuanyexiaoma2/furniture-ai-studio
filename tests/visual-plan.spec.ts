@@ -37,6 +37,8 @@ test("视觉方案方向与池子、冻结差异、版本回退、竞品输入�
   await page.getByRole("button",{name:"适应屏幕",exact:true}).click();
   await page.locator(`[data-picture="${edited.id}"]`).click();await page.getByRole("button",{name:"局部重绘",exact:true}).click();await expect(page.getByRole("button",{name:"矩形框选"})).toBeVisible();await expect(page.getByLabel("局部修改要求")).toBeVisible();await page.getByLabel("局部修改要求").fill("只替换选中的环境装饰");await page.getByRole("button",{name:"矩形框选"}).click();await page.getByRole("button",{name:"取消",exact:true}).click();
   await page.goto("/products/"+productId);await expect(page.getByRole("heading",{name:"补充图与参数文件"})).toBeVisible();await expect(page.getByRole("heading",{name:"竞品参考 · 图片优先"})).toBeVisible();
+  // 初始竞品GET会恢复受控输入；等读取结束后再填值，避免测试输入被初始化结果覆盖。
+  await page.waitForLoadState("networkidle");
   await page.getByLabel("竞品链接",{exact:true}).fill("https://example.invalid/competitor");await page.getByLabel("上传竞品截图",{exact:true}).setInputFiles({name:"competitor.png",mimeType:"image/png",buffer:png});await expect(page.getByText("竞品参考已保存；下次规划逐张拆解。",{exact:true})).toBeVisible();
   const research=(await db.product.findUniqueOrThrow({where:{id:productId}})).visualResearch as {inputs:{assetIds:string[];links:string[]}};expect(research.inputs.assetIds.length).toBe(1);expect(research.inputs.links).toEqual(["https://example.invalid/competitor"]);
   const importDir=path.resolve(".local/runtime/ui-listing-"+run);await mkdir(importDir,{recursive:true});await writeFile(path.join(importDir,"1.png"),png);let pendingImport=false,reviewed=false;

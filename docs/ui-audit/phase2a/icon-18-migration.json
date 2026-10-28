@@ -1,0 +1,239 @@
+{
+  "baseline": "99f3187",
+  "callSites": [
+    {
+      "file": "src/components/design-preview/admin.tsx",
+      "line": 22,
+      "column": 484,
+      "icon": "s.Icon",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/app.tsx",
+      "line": 46,
+      "column": 210,
+      "icon": "ArrowLeft",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/app.tsx",
+      "line": 50,
+      "column": 69,
+      "icon": "Settings2",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/batch/workflow.tsx",
+      "line": 52,
+      "column": 238,
+      "icon": "PanelLeftClose",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/canvas.tsx",
+      "line": 109,
+      "column": 170,
+      "icon": "PanelLeftOpen",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/canvas.tsx",
+      "line": 109,
+      "column": 319,
+      "icon": "MousePointer2",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/canvas.tsx",
+      "line": 109,
+      "column": 452,
+      "icon": "Hand",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/canvas.tsx",
+      "line": 109,
+      "column": 913,
+      "icon": "StickyNote",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/home.tsx",
+      "line": 42,
+      "column": 330,
+      "icon": "ChevronLeft",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/home.tsx",
+      "line": 42,
+      "column": 488,
+      "icon": "ChevronRight",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/icon-guide.tsx",
+      "line": 7,
+      "column": 735,
+      "icon": "conceptIcons.scene",
+      "before": 18,
+      "after": "sm",
+      "reason": "文字旁辅助图标，使用16px"
+    },
+    {
+      "file": "src/components/design-preview/library/workflow.tsx",
+      "line": 49,
+      "column": 238,
+      "icon": "PanelLeftClose",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/model-picker.tsx",
+      "line": 48,
+      "column": 93,
+      "icon": "Plus",
+      "before": 18,
+      "after": "sm",
+      "reason": "文字旁辅助图标，使用16px"
+    },
+    {
+      "file": "src/components/design-preview/model-picker.tsx",
+      "line": 52,
+      "column": 136,
+      "icon": "MoreHorizontal",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/product-card.tsx",
+      "line": 18,
+      "column": 931,
+      "icon": "ChevronLeft",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/design-preview/product-card.tsx",
+      "line": 18,
+      "column": 1110,
+      "icon": "ChevronRight",
+      "before": 18,
+      "after": "md",
+      "reason": "独立导航/侧栏或画布工具按钮，使用20px"
+    },
+    {
+      "file": "src/components/gateway-manager.tsx",
+      "line": 23,
+      "column": 49,
+      "icon": "Radio",
+      "before": 18,
+      "after": "sm",
+      "reason": "文字旁辅助图标，使用16px"
+    },
+    {
+      "file": "src/components/login-form.tsx",
+      "line": 28,
+      "column": 181,
+      "icon": "ArrowRight",
+      "before": 18,
+      "after": "sm",
+      "reason": "文字旁辅助图标，使用16px"
+    },
+    {
+      "file": "src/components/product-create.tsx",
+      "line": 22,
+      "column": 74,
+      "icon": "Plus",
+      "before": 18,
+      "after": "sm",
+      "reason": "文字旁辅助图标，使用16px"
+    },
+    {
+      "file": "src/components/user-manager.tsx",
+      "line": 63,
+      "column": 181,
+      "icon": "Plus",
+      "before": 18,
+      "after": "sm",
+      "reason": "文字旁辅助图标，使用16px"
+    },
+    {
+      "file": "src/components/user-manager.tsx",
+      "line": 70,
+      "column": 153,
+      "icon": "UsersRound",
+      "before": 18,
+      "after": "sm",
+      "reason": "文字旁辅助图标，使用16px"
+    }
+  ],
+  "dynamicSample": {
+    "file": "src/components/design-preview/icon-guide.tsx",
+    "before": [
+      16,
+      18,
+      20
+    ],
+    "after": [
+      "sm",
+      "md",
+      "lg"
+    ],
+    "reason": "规范演示改为16/20/24三档；原18px演示项归md"
+  },
+  "aliasResolution": {
+    "CheckIcon": "Check",
+    "XIcon": "X",
+    "ChevronDownIcon": "ChevronDown",
+    "ChevronUpIcon": "ChevronUp",
+    "ChevronRightIcon": "ChevronRight",
+    "Globe2": "Globe",
+    "ImageIcon": "Image",
+    "Layers3": "Layers",
+    "Wand2": "WandSparkles",
+    "Loader2Icon": "LoaderCircle",
+    "CircleCheckIcon": "CircleCheck",
+    "InfoIcon": "Info",
+    "TriangleAlertIcon": "TriangleAlert",
+    "OctagonXIcon": "OctagonX"
+  },
+  "retainedUnused": [
+    "ContactRound",
+    "Library",
+    "ArrowDownToLine",
+    "Bell",
+    "BookOpen",
+    "CheckCheck",
+    "FolderOpen",
+    "LayoutGrid",
+    "MessageCircle",
+    "Ruler",
+    "Sofa",
+    "WandSparkles",
+    "Zap"
+  ]
+}

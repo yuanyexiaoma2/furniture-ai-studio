@@ -1,0 +1,46 @@
+{
+  "sizes": [
+    {
+      "size": "sm",
+      "pixels": 16,
+      "stroke": 1.75,
+      "pass": true
+    },
+    {
+      "size": "md",
+      "pixels": 20,
+      "stroke": 1.5,
+      "pass": true
+    },
+    {
+      "size": "lg",
+      "pixels": 24,
+      "stroke": 1.5,
+      "pass": true
+    },
+    {
+      "size": 18,
+      "pixels": 18,
+      "stroke": 1.5,
+      "pass": true
+    }
+  ],
+  "realLibrary": true,
+  "realContactRound": true,
+  "retainedExports": [
+    "ContactRound",
+    "Library",
+    "ArrowDownToLine",
+    "Bell",
+    "BookOpen",
+    "CheckCheck",
+    "FolderOpen",
+    "LayoutGrid",
+    "MessageCircle",
+    "Ruler",
+    "Sofa",
+    "WandSparkles",
+    "Zap"
+  ],
+  "duplicateExportsRemoved": true
+}

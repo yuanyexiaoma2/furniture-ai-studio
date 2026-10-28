@@ -1,6 +1,6 @@
 "use client";
 import { useState, type FormEvent } from "react";
-import { UsersRound, Plus, Check, LoaderCircle } from "@/components/icons/concept-icons";
+import {UsersRound,Plus,Check,LoaderCircle} from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -60,12 +60,12 @@ export function UserManager({ initialUsers, currentUserId }: { initialUsers: Use
     } catch (error) { setError(error instanceof Error ? error.message : "创建失败"); }
     finally { setPending(false); }
   }
-  return <div className="user-management-grid"><section className="workspace-panel create-user-panel"><div className="panel-heading"><div className="flex items-center gap-2"><Plus size={18} /><h2>新增用户</h2></div></div><form onSubmit={create} className="create-user-form" aria-label="新增用户表单">
+  return <div className="user-management-grid"><section className="workspace-panel create-user-panel"><div className="panel-heading"><div className="flex items-center gap-2"><Plus size="sm" /><h2>新增用户</h2></div></div><form onSubmit={create} className="create-user-form" aria-label="新增用户表单">
     <div className="space-y-2"><Label htmlFor="new-name">姓名</Label><Input id="new-name" name="name" required maxLength={80} placeholder="成员姓名" /></div>
     <div className="space-y-2"><Label htmlFor="new-email">邮箱</Label><Input id="new-email" name="email" type="email" required maxLength={254} autoComplete="off" placeholder="成员的公司邮箱" /></div>
     <div className="space-y-2"><Label htmlFor="new-password">初始密码</Label><Input id="new-password" name="password" type="password" required minLength={12} autoComplete="new-password" placeholder="至少 12 个字符" /></div>
     <div className="form-two-col"><div className="space-y-2"><Label htmlFor="new-role">角色</Label><select id="new-role" name="role" defaultValue="designer" className="studio-select"><RoleOptions /></select></div><div className="space-y-2"><Label htmlFor="new-quota">月度配额（美元）</Label><Input id="new-quota" type="number" name="monthlyQuota" min={0} max={999999.999999} step="0.000001" defaultValue={0.5} required /></div></div>
     <div className="space-y-2"><Label htmlFor="new-department">部门（可选）</Label><Input id="new-department" name="department" maxLength={80} placeholder="如：设计部" /></div>
     <p aria-live="polite" className={error ? "form-notice error-notice" : "form-notice"}>{error || notice}</p><Button type="submit" disabled={pending} className="w-full h-10">{pending ? <LoaderCircle className="animate-spin" /> : <Check size={16} />}{pending ? "正在创建" : "创建用户"}</Button>
-  </form></section><section className="workspace-panel users-panel"><div className="panel-heading"><div className="flex items-center gap-3"><UsersRound size={18} /><h2>团队成员</h2><span className="count-chip">{users.length}</span></div></div><div>{users.map((user) => <UserRow key={user.id} user={user} currentUserId={currentUserId} onUpdate={(updated) => setUsers((current) => current.map((value) => value.id === updated.id ? updated : value))} />)}</div></section></div>;
+  </form></section><section className="workspace-panel users-panel"><div className="panel-heading"><div className="flex items-center gap-3"><UsersRound size="sm" /><h2>团队成员</h2><span className="count-chip">{users.length}</span></div></div><div>{users.map((user) => <UserRow key={user.id} user={user} currentUserId={currentUserId} onUpdate={(updated) => setUsers((current) => current.map((value) => value.id === updated.id ? updated : value))} />)}</div></section></div>;
 }

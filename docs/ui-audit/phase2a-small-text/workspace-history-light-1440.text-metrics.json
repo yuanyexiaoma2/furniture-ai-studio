@@ -1,0 +1,67 @@
+[
+  {
+    "tag": "SMALL",
+    "classes": "",
+    "text": "刷新后可继续查看",
+    "fontSize": "12px",
+    "clientWidth": 96,
+    "scrollWidth": 96,
+    "left": 504,
+    "right": 600,
+    "viewport": 1440,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  },
+  {
+    "tag": "SMALL",
+    "classes": "",
+    "text": "已完成",
+    "fontSize": "12px",
+    "clientWidth": 36,
+    "scrollWidth": 36,
+    "left": 540,
+    "right": 576,
+    "viewport": 1440,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  },
+  {
+    "tag": "SMALL",
+    "classes": "",
+    "text": "候选已就绪",
+    "fontSize": "12px",
+    "clientWidth": 60,
+    "scrollWidth": 60,
+    "left": 540,
+    "right": 600,
+    "viewport": 1440,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  },
+  {
+    "tag": "P",
+    "classes": "t11-awaiting",
+    "text": "下一步等待你确认下方卡片",
+    "fontSize": "12px",
+    "clientWidth": 561,
+    "scrollWidth": 561,
+    "left": 39,
+    "right": 600,
+    "viewport": 1440,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  },
+  {
+    "tag": "SMALL",
+    "classes": "",
+    "text": "已完成",
+    "fontSize": "12px",
+    "clientWidth": 36,
+    "scrollWidth": 36,
+    "left": 875,
+    "right": 911,
+    "viewport": 1440,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  }
+]

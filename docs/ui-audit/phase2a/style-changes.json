@@ -1,0 +1,5290 @@
+{
+  "baseline": "99f3187",
+  "changes": [
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 5,
+      "selector": ".p-admin-nav button",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 7,
+      "selector": ".p-admin-nav>button:last-child",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 11,
+      "selector": ".p-admin-heading p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 13,
+      "selector": ".p-admin-toolbar input",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 17,
+      "selector": ".p-admin-table th",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 19,
+      "selector": ".p-admin-table td",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 20,
+      "selector": ".p-admin-table strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 22,
+      "selector": ".p-admin-table button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 23,
+      "selector": ".p-admin-footer",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 25,
+      "selector": ".p-admin-stat-row>div",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 26,
+      "selector": ".p-admin-stat-row strong",
+      "property": "font-size",
+      "before": "20px",
+      "after": "var(--text-xl)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 38,
+      "selector": ".p-admin-nav button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 50,
+      "selector": ".p-admin-heading h1",
+      "property": "font-size",
+      "before": "28px",
+      "after": "var(--text-title)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 51,
+      "selector": ".p-admin-table",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 57,
+      "selector": ".p-admin-model-name strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 58,
+      "selector": ".p-admin-model-name small",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 66,
+      "selector": ".l-admin-section>p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 67,
+      "selector": ".l-category-table",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 72,
+      "selector": ".l-category-table-head",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 73,
+      "selector": ".l-category-row",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 75,
+      "selector": ".l-category-row>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 77,
+      "selector": ".l-category-row button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 80,
+      "selector": ".l-category-editor label",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 83,
+      "selector": ".l-checklist-editor>div",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 84,
+      "selector": ".l-checklist-editor input",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 86,
+      "selector": ".l-review-heading",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 89,
+      "selector": ".l-review-row>img",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 90,
+      "selector": ".l-review-quote",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 90,
+      "selector": ".l-review-quote",
+      "property": "font-family",
+      "before": "Georgia,serif",
+      "after": "var(--font-creative)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 90,
+      "selector": ".l-review-quote",
+      "property": "font-size",
+      "before": "60px",
+      "after": "var(--text-hero)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 92,
+      "selector": ".l-review-row h3",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 93,
+      "selector": ".l-review-row p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/admin.css",
+      "line": 94,
+      "selector": ".l-review-row button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 15,
+      "selector": ".p-app [data-slot=button], .p-portal [data-slot=button]",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 15,
+      "selector": ".p-app [data-slot=button], .p-portal [data-slot=button]",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 16,
+      "selector": ".p-app input, .p-app textarea, .p-portal input, .p-portal textarea",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 17,
+      "selector": ".p-app small, .p-portal small",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 18,
+      "selector": ".p-theme-label",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 20,
+      "selector": ".p-muted",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 21,
+      "selector": ".p-subtle",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 22,
+      "selector": ".p-dot",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 30,
+      "selector": ".p-attachment-row img",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 31,
+      "selector": ".p-corner-label",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 31,
+      "selector": ".p-corner-label",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 32,
+      "selector": ".p-pill-content",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 33,
+      "selector": ".p-pill-content h3",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 34,
+      "selector": ".p-pill-content label",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 37,
+      "selector": ".p-inline-options button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 38,
+      "selector": ".p-template-dialog",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 39,
+      "selector": ".p-template-dialog img",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 50,
+      "selector": ".p-app",
+      "property": "font-family",
+      "before": "\"Segoe UI\",\"Microsoft YaHei UI\",\"PingFang SC\",sans-serif",
+      "after": "var(--font-creative)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 50,
+      "selector": ".p-app",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 51,
+      "selector": ".p-portal",
+      "property": "font-family",
+      "before": "\"Segoe UI\",\"Microsoft YaHei UI\",\"PingFang SC\",sans-serif",
+      "after": "var(--font-creative)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 51,
+      "selector": ".p-portal",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 53,
+      "selector": ".p-app h1",
+      "property": "font-size",
+      "before": "28px",
+      "after": "var(--text-title)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 55,
+      "selector": ".p-app h2, .p-app h3, .p-portal h3",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 57,
+      "selector": ".p-section-kicker",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 61,
+      "selector": ".p-composer-toolbar [data-slot=button].p-model-capsule",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 61,
+      "selector": ".p-composer-toolbar [data-slot=button].p-model-capsule",
+      "property": "border",
+      "before": "1px solid transparent",
+      "after": "1px solid var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 61,
+      "selector": ".p-composer-toolbar [data-slot=button].p-model-capsule",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 64,
+      "selector": ".p-composer-toolbar .p-model-capsule svg",
+      "property": "width",
+      "before": "16px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 64,
+      "selector": ".p-composer-toolbar .p-model-capsule svg",
+      "property": "height",
+      "before": "16px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 67,
+      "selector": ".p-cost-estimate",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 69,
+      "selector": ".p-composer-toolbar [data-slot=button].p-send-circle",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 74,
+      "selector": ".p-composer-menu",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 75,
+      "selector": ".p-composer-menu h3",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 76,
+      "selector": ".p-composer-menu .p-model-capsule",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 79,
+      "selector": ".p-parameter-panel",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 80,
+      "selector": ".p-parameter-panel h3",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 81,
+      "selector": ".p-parameter-panel label",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 83,
+      "selector": ".p-model-panel",
+      "property": "border-radius",
+      "before": "18px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 87,
+      "selector": ".p-model-panel header h3",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 88,
+      "selector": ".p-model-panel header p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 90,
+      "selector": ".p-model-entry",
+      "property": "border",
+      "before": "1px solid transparent",
+      "after": "1px solid var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 90,
+      "selector": ".p-model-entry",
+      "property": "border-radius",
+      "before": "11px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 92,
+      "selector": ".p-model-row",
+      "property": "border-radius",
+      "before": "11px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 92,
+      "selector": ".p-model-row",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 95,
+      "selector": ".p-brand-icon",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 97,
+      "selector": ".p-model-copy>strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 98,
+      "selector": ".p-model-copy>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 99,
+      "selector": ".p-model-copy small",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 100,
+      "selector": ".p-model-copy small i",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 102,
+      "selector": ".p-model-row-end em",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 102,
+      "selector": ".p-model-row-end em",
+      "property": "border-radius",
+      "before": "5px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 103,
+      "selector": ".p-model-check",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 105,
+      "selector": ".p-model-check.is-square",
+      "property": "border-radius",
+      "before": "4px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 106,
+      "selector": ".p-model-panel footer",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 109,
+      "selector": ".p-auto-line strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 111,
+      "selector": ".p-auto-line p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 113,
+      "selector": ".p-quality-options button",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 113,
+      "selector": ".p-quality-options button",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 116,
+      "selector": ".p-type-tag",
+      "property": "border-radius",
+      "before": "5px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 116,
+      "selector": ".p-type-tag",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 117,
+      "selector": ".p-failure-rate",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 118,
+      "selector": ".p-failure-rate>span:first-child",
+      "property": "border-radius",
+      "before": "3px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 119,
+      "selector": ".p-failure-rate i",
+      "property": "border-radius",
+      "before": "3px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 122,
+      "selector": ".p-portal [role=combobox]",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 124,
+      "selector": ".p-cost-estimate",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 140,
+      "selector": ".p-model-tooltip",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 140,
+      "selector": ".p-model-tooltip",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 141,
+      "selector": ".p-model-tooltip strong",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 143,
+      "selector": ".p-preview-loading",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 146,
+      "selector": ".r4-attachment",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 147,
+      "selector": ".r4-attachment>img",
+      "property": "border-radius",
+      "before": "9px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 148,
+      "selector": ".r4-attachment [data-slot=button]",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 148,
+      "selector": ".r4-attachment [data-slot=button]",
+      "property": "background",
+      "before": "#18181b",
+      "after": "var(--attachment-close-surface)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 148,
+      "selector": ".r4-attachment [data-slot=button]",
+      "property": "color",
+      "before": "white",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 148,
+      "selector": ".r4-attachment [data-slot=button]",
+      "property": "border",
+      "before": "1px solid white",
+      "after": "1px solid var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 148,
+      "selector": ".r4-attachment [data-slot=button]",
+      "property": "box-shadow",
+      "before": "0 1px 4px #0003",
+      "after": "0 1px 4px var(--shadow-ink-20)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 149,
+      "selector": ".r4-attachment [data-slot=button]>svg",
+      "property": "width",
+      "before": "12px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 149,
+      "selector": ".r4-attachment [data-slot=button]>svg",
+      "property": "height",
+      "before": "12px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 151,
+      "selector": ".r4-file>span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 153,
+      "selector": ".p-composer-toolbar [data-slot=button].p-send-circle",
+      "property": "background",
+      "before": "#000",
+      "after": "var(--color-absolute-ink)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 153,
+      "selector": ".p-composer-toolbar [data-slot=button].p-send-circle",
+      "property": "color",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 154,
+      "selector": ".dark .p-composer-toolbar [data-slot=button].p-send-circle",
+      "property": "background",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 154,
+      "selector": ".dark .p-composer-toolbar [data-slot=button].p-send-circle",
+      "property": "color",
+      "before": "#000",
+      "after": "var(--color-absolute-ink)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 156,
+      "selector": ".p-composer-toolbar [data-slot=button].p-send-circle>svg",
+      "property": "width",
+      "before": "20px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 156,
+      "selector": ".p-composer-toolbar [data-slot=button].p-send-circle>svg",
+      "property": "height",
+      "before": "20px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 159,
+      "selector": ".p-model-capsule>svg",
+      "property": "width",
+      "before": "16px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 159,
+      "selector": ".p-model-capsule>svg",
+      "property": "height",
+      "before": "16px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 160,
+      "selector": ".p-model-capsule>svg:last-child",
+      "property": "width",
+      "before": "14px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 160,
+      "selector": ".p-model-capsule>svg:last-child",
+      "property": "height",
+      "before": "14px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 161,
+      "selector": ".p-command",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 163,
+      "selector": ".p-command-input",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 163,
+      "selector": ".p-command-input",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 165,
+      "selector": ".p-command-group [cmdk-group-heading]",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 166,
+      "selector": ".p-command-item",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 168,
+      "selector": ".p-command-empty",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 171,
+      "selector": ".w-template-choices button",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 171,
+      "selector": ".w-template-choices button",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 173,
+      "selector": ".concept-icon-box",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 173,
+      "selector": ".concept-icon-box",
+      "property": "background",
+      "before": "#EDEDEF",
+      "after": "var(--icon-tile-surface-light)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 173,
+      "selector": ".concept-icon-box",
+      "property": "color",
+      "before": "#34343A",
+      "after": "var(--icon-tile-ink-light)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 174,
+      "selector": ".dark .concept-icon-box",
+      "property": "background",
+      "before": "#26262C",
+      "after": "var(--icon-tile-surface-dark)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 174,
+      "selector": ".dark .concept-icon-box",
+      "property": "color",
+      "before": "#E9E9ED",
+      "after": "var(--icon-tile-ink-dark)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 175,
+      "selector": ".p-app button [data-concept-icon], .p-portal button [data-concept-icon], .p-app [data-slot=button] [data-concept-icon]",
+      "property": "width",
+      "before": "16px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 175,
+      "selector": ".p-app button [data-concept-icon], .p-portal button [data-concept-icon], .p-app [data-slot=button] [data-concept-icon]",
+      "property": "height",
+      "before": "16px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 175,
+      "selector": ".p-app button [data-concept-icon], .p-portal button [data-concept-icon], .p-app [data-slot=button] [data-concept-icon]",
+      "property": "stroke-width",
+      "before": "1.5",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 176,
+      "selector": ".p-app .concept-icon-box>[data-concept-icon], .p-portal .concept-icon-box>[data-concept-icon]",
+      "property": "width",
+      "before": "20px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 176,
+      "selector": ".p-app .concept-icon-box>[data-concept-icon], .p-portal .concept-icon-box>[data-concept-icon]",
+      "property": "height",
+      "before": "20px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 179,
+      "selector": ".p-brand-icon, .dark .p-brand-icon",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 179,
+      "selector": ".p-brand-icon, .dark .p-brand-icon",
+      "property": "background",
+      "before": "#F4F4F5",
+      "after": "var(--brand-symbol-surface)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 181,
+      "selector": ".p-brand-icon.is-bytedance, .dark .p-brand-icon.is-bytedance",
+      "property": "background",
+      "before": "#28282E",
+      "after": "var(--brand-symbol-surface-byte)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 187,
+      "selector": ".p-composer-toolbar .p-cost-estimate",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 192,
+      "selector": ".r1-icon-guide>p, .r1-icon-guide section>p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 194,
+      "selector": ".r1-icon-guide h2",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 196,
+      "selector": ".r1-icon-sizes>div",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 197,
+      "selector": ".r1-icon-sizes span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 199,
+      "selector": ".r1-icon-grid>div",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 200,
+      "selector": ".r1-icon-grid strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 201,
+      "selector": ".r1-icon-grid>div>span:last-child",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 203,
+      "selector": ".r1-example-row",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 204,
+      "selector": ".r1-example-card",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 204,
+      "selector": ".r1-example-card",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 206,
+      "selector": ".r1-model-brands>div",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 214,
+      "selector": ".p-composer-toolbar.is-compact .p-model-capsule",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 232,
+      "selector": ".p-portal.p-tooltip-content",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "line": 232,
+      "selector": ".p-portal.p-tooltip-content",
+      "property": "border-radius",
+      "before": "7px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 11,
+      "selector": ".p-frame-empty>p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 13,
+      "selector": ".p-image-node",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 15,
+      "selector": ".p-image-node>img",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 18,
+      "selector": ".p-image-tag",
+      "property": "border-radius",
+      "before": "5px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 25,
+      "selector": ".p-toolbar svg",
+      "property": "width",
+      "before": "15px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 25,
+      "selector": ".p-toolbar svg",
+      "property": "height",
+      "before": "15px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 31,
+      "selector": ".p-bottom-tools",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 32,
+      "selector": ".p-bottom-tools button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 33,
+      "selector": ".p-canvas-wrap .react-flow__controls",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 34,
+      "selector": ".p-mask-preview",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 35,
+      "selector": ".p-fake-effect",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 42,
+      "selector": ".p-canvas-wrap .react-flow__minimap",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 43,
+      "selector": ".p-zoom-label",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 44,
+      "selector": ".p-canvas-guide",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 44,
+      "selector": ".p-canvas-guide",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 45,
+      "selector": ".p-layer-panel",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 46,
+      "selector": ".p-layer-panel h3",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 47,
+      "selector": ".p-layer-panel button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 48,
+      "selector": ".p-note-node",
+      "property": "border-radius",
+      "before": "9px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 50,
+      "selector": ".p-note-node textarea",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 52,
+      "selector": ".p-loading",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 54,
+      "selector": ".p-loading svg",
+      "property": "width",
+      "before": "26px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 54,
+      "selector": ".p-loading svg",
+      "property": "height",
+      "before": "26px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 56,
+      "selector": ".p-mask-editor",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 57,
+      "selector": ".p-mask-tools",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 59,
+      "selector": ".p-mask-tools>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 60,
+      "selector": ".p-editor-footer",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 63,
+      "selector": ".p-expand-modal",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 64,
+      "selector": ".p-portal.p-expand-dialog",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 68,
+      "selector": ".p-expand-heading h3",
+      "property": "font-size",
+      "before": "16px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 70,
+      "selector": ".p-expand-stage",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 74,
+      "selector": ".p-compare-grid img",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 85,
+      "selector": ".p-frame",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 86,
+      "selector": ".p-frame-title",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 87,
+      "selector": ".p-frame-title>span:last-child",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 93,
+      "selector": ".p-final-tag",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 93,
+      "selector": ".p-final-tag",
+      "property": "border-radius",
+      "before": "5px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 95,
+      "selector": ".p-image-tag",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 96,
+      "selector": ".p-image-more",
+      "property": "border-radius",
+      "before": "7px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 98,
+      "selector": ".p-toolbar",
+      "property": "border-radius",
+      "before": "14px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 99,
+      "selector": ".p-toolbar button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 102,
+      "selector": ".p-canvas-tools svg",
+      "property": "width",
+      "before": "20px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 102,
+      "selector": ".p-canvas-tools svg",
+      "property": "height",
+      "before": "20px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 103,
+      "selector": ".p-canvas-tools",
+      "property": "border-radius",
+      "before": "14px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 105,
+      "selector": ".p-shimmer",
+      "property": "background",
+      "before": "linear-gradient(90deg,transparent,color-mix(in srgb,var(--foreground) 9%,transparent),transparent)",
+      "after": "linear-gradient(90deg,var(--color-transparent),color-mix(in srgb,var(--foreground) 9%,var(--color-transparent)),var(--color-transparent))"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 114,
+      "selector": ".l-toolbar-menu button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 116,
+      "selector": ".l-crop-area",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 118,
+      "selector": ".l-crop-area>span",
+      "property": "border",
+      "before": "2px solid #fff",
+      "after": "2px solid var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 118,
+      "selector": ".l-crop-area>span",
+      "property": "background",
+      "before": "#ffffff15",
+      "after": "var(--crop-selection-wash)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 118,
+      "selector": ".l-crop-area>span",
+      "property": "box-shadow",
+      "before": "0 0 0 999px #0006",
+      "after": "0 0 0 999px var(--shadow-ink-40)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 119,
+      "selector": ".l-crop-area i",
+      "property": "background",
+      "before": "#0008",
+      "after": "var(--scrim-ink-53)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 119,
+      "selector": ".l-crop-area i",
+      "property": "color",
+      "before": "white",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 119,
+      "selector": ".l-crop-area i",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 119,
+      "selector": ".l-crop-area i",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 121,
+      "selector": ".l-capture-fields label",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 122,
+      "selector": ".l-capture-fields input",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 125,
+      "selector": ".w-empty-mark",
+      "property": "border-radius",
+      "before": "22px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 125,
+      "selector": ".w-empty-mark",
+      "property": "box-shadow",
+      "before": "0 6px 24px #00000005",
+      "after": "0 6px 24px var(--shadow-ink-2)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 126,
+      "selector": ".w-canvas-empty h2",
+      "property": "font-size",
+      "before": "28px",
+      "after": "var(--text-title)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 127,
+      "selector": ".w-canvas-empty>p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 129,
+      "selector": ".w-canvas-empty button",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 129,
+      "selector": ".w-canvas-empty button",
+      "property": "box-shadow",
+      "before": "0 2px 6px #00000002",
+      "after": "0 2px 6px var(--shadow-ink-1)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 132,
+      "selector": ".w-canvas-empty strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 133,
+      "selector": ".w-canvas-empty button span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 134,
+      "selector": ".w-variant-overlay",
+      "property": "background",
+      "before": "#e5d8c4",
+      "after": "var(--variant-preview-default)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 135,
+      "selector": ".w-copy-overlay",
+      "property": "background",
+      "before": "#ffffffdc",
+      "after": "var(--copy-preview-surface)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 135,
+      "selector": ".w-copy-overlay",
+      "property": "color",
+      "before": "#272525",
+      "after": "var(--copy-preview-ink)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 135,
+      "selector": ".w-copy-overlay",
+      "property": "border-radius",
+      "before": "4px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 135,
+      "selector": ".w-copy-overlay",
+      "property": "font-family",
+      "before": "\"Segoe UI\",sans-serif",
+      "after": "var(--font-creative)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 143,
+      "selector": ".w-canvas-empty h2",
+      "property": "font-size",
+      "before": "24px",
+      "after": "var(--text-xl)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 149,
+      "selector": ".w-canvas-empty h2",
+      "property": "font-size",
+      "before": "22px",
+      "after": "var(--text-xl)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 152,
+      "selector": ".r1-drop-target",
+      "property": "border-radius",
+      "before": "20px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 152,
+      "selector": ".r1-drop-target",
+      "property": "background",
+      "before": "color-mix(in srgb,var(--p-panel) 45%,transparent)",
+      "after": "color-mix(in srgb,var(--p-panel) 45%,var(--color-transparent))"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 153,
+      "selector": ".r1-drop-target strong",
+      "property": "font-size",
+      "before": "20px",
+      "after": "var(--text-xl)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 154,
+      "selector": ".r1-drop-target>span:last-child",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 155,
+      "selector": ".r1-template-link",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 158,
+      "selector": ".r1-canvas-help>button",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 159,
+      "selector": ".r1-canvas-controls",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 159,
+      "selector": ".r1-canvas-controls",
+      "property": "box-shadow",
+      "before": "0 2px 8px #0001",
+      "after": "0 2px 8px var(--shadow-ink-7)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 168,
+      "selector": ".t11-save-status",
+      "property": "border-radius",
+      "before": "9px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 168,
+      "selector": ".t11-save-status",
+      "property": "font-size",
+      "before": "11px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 171,
+      "selector": ".t11-save-status button",
+      "property": "font-size",
+      "before": "11px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 179,
+      "selector": ".t11-canvas-history>div",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 180,
+      "selector": ".t11-canvas-history small",
+      "property": "font-size",
+      "before": "10px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 198,
+      "selector": ".p-image-actions>button",
+      "property": "border",
+      "before": "1px solid color-mix(in srgb,var(--border) 65%,transparent)",
+      "after": "1px solid color-mix(in srgb,var(--border) 65%,var(--color-transparent))"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 198,
+      "selector": ".p-image-actions>button",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 198,
+      "selector": ".p-image-actions>button",
+      "property": "background",
+      "before": "color-mix(in srgb,var(--p-panel) 90%,transparent)",
+      "after": "color-mix(in srgb,var(--p-panel) 90%,var(--color-transparent))"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 198,
+      "selector": ".p-image-actions>button",
+      "property": "box-shadow",
+      "before": "0 1px 4px #0000000d",
+      "after": "0 1px 4px var(--shadow-ink-5)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 213,
+      "selector": ".p-image-preview-dialog",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 216,
+      "selector": ".p-image-preview-stage",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "line": 221,
+      "selector": ".p-image-preview-footer",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 10,
+      "selector": ".p-chat-date",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 12,
+      "selector": ".p-chat-bubble",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 14,
+      "selector": ".p-agent-message",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 16,
+      "selector": ".p-agent-message>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 20,
+      "selector": ".p-question-options button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 23,
+      "selector": ".p-chat-image",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 24,
+      "selector": ".p-chat-image img",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 25,
+      "selector": ".p-chat-image span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 27,
+      "selector": ".p-chat-receipt",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 30,
+      "selector": ".p-adjust-receipt p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 35,
+      "selector": ".p-context-tag",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 40,
+      "selector": ".p-console-input textarea",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 43,
+      "selector": ".p-console-bottom button:last-child",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 45,
+      "selector": ".p-capsules button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 45,
+      "selector": ".p-capsules button",
+      "property": "border-radius",
+      "before": "20px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 46,
+      "selector": ".p-capsules button svg",
+      "property": "width",
+      "before": "12px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 46,
+      "selector": ".p-capsules button svg",
+      "property": "height",
+      "before": "12px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 55,
+      "selector": ".p-chat-header h2",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 56,
+      "selector": ".p-agent-avatar",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 57,
+      "selector": ".p-chat-bubble",
+      "property": "border-radius",
+      "before": "12px 12px 4px 12px",
+      "after": "var(--radius-bubble)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 62,
+      "selector": ".p-question, .p-adjust-receipt",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 63,
+      "selector": ".p-chat-receipt",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 64,
+      "selector": ".p-question strong, .p-adjust-receipt strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 65,
+      "selector": ".p-system-message",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 67,
+      "selector": ".p-console-input",
+      "property": "border-radius",
+      "before": "20px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 69,
+      "selector": ".p-console-input textarea",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 70,
+      "selector": ".p-composer-context",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 76,
+      "selector": ".l-card-eyebrow",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 77,
+      "selector": ".l-shooting-card, .l-plan-card, .l-capture-card",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 78,
+      "selector": ".l-shooting-card>strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 79,
+      "selector": ".l-shooting-card p, .l-plan-card p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 81,
+      "selector": ".l-plan-card h3",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 83,
+      "selector": ".l-scene-choices button",
+      "property": "border-radius",
+      "before": "9px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 83,
+      "selector": ".l-scene-choices button",
+      "property": "border",
+      "before": "2px solid transparent",
+      "after": "2px solid var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 84,
+      "selector": ".l-scene-choices img",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 85,
+      "selector": ".l-scene-choices span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 87,
+      "selector": ".l-scene-choices svg",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 90,
+      "selector": ".l-plan-variants span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 91,
+      "selector": ".l-plan-variants p",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 92,
+      "selector": ".l-plan-fee",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 93,
+      "selector": ".l-single-notice",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 93,
+      "selector": ".l-single-notice",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 96,
+      "selector": ".l-generation-grid>div",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 97,
+      "selector": ".l-chat-candidate",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 98,
+      "selector": ".l-chat-candidate img",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 99,
+      "selector": ".l-chat-candidate strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 100,
+      "selector": ".l-chat-candidate span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 102,
+      "selector": ".l-console-meta>span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 104,
+      "selector": ".l-capture-heading strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 106,
+      "selector": ".l-capture-card>p, .l-capture-preview p",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 108,
+      "selector": ".l-capture-preview img",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 110,
+      "selector": ".l-capture-preview input",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 112,
+      "selector": ".l-capture-card>div:last-child button",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 113,
+      "selector": ".l-replan-button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 114,
+      "selector": ".r4-shooting-choice h3",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 116,
+      "selector": ".w-web-toggle i",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 120,
+      "selector": ".w-eyebrow",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 121,
+      "selector": ".w-chat-title",
+      "property": "font-size",
+      "before": "28px",
+      "after": "var(--text-title)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 125,
+      "selector": ".w-task-entries button",
+      "property": "border-radius",
+      "before": "14px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 129,
+      "selector": ".w-task-entries strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 131,
+      "selector": ".w-task-entries small",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 132,
+      "selector": ".w-task-switch",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 133,
+      "selector": ".w-task-switch button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 135,
+      "selector": ".w-card",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 135,
+      "selector": ".w-card",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 136,
+      "selector": ".w-card h3",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 138,
+      "selector": ".w-card>p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 142,
+      "selector": ".w-card-heading>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 143,
+      "selector": ".w-card-heading>strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 146,
+      "selector": ".w-pack-selected img",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 147,
+      "selector": ".w-pack-options img",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 149,
+      "selector": ".w-pack-selected strong, .w-pack-options strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 151,
+      "selector": ".w-pack-selected small",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 152,
+      "selector": ".w-pack-options small",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 154,
+      "selector": ".w-pack-options>button",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 158,
+      "selector": ".w-swatch",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 162,
+      "selector": ".w-variant-row input:not([type=file])",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 162,
+      "selector": ".w-variant-row input:not([type=file])",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 162,
+      "selector": ".w-variant-row input:not([type=file])",
+      "property": "border-color",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 164,
+      "selector": ".w-upload-ref",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 169,
+      "selector": ".w-slot-list button",
+      "property": "border-radius",
+      "before": "9px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 173,
+      "selector": ".w-slot-list span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 174,
+      "selector": ".w-slot-list svg",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 174,
+      "selector": ".w-slot-list svg",
+      "property": "width",
+      "before": "18px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 174,
+      "selector": ".w-slot-list svg",
+      "property": "height",
+      "before": "18px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 177,
+      "selector": ".w-generate-row>span",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 178,
+      "selector": ".w-generate-row small",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 179,
+      "selector": ".w-success",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 179,
+      "selector": ".w-success",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 180,
+      "selector": ".w-success p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 182,
+      "selector": ".w-site-list button",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 184,
+      "selector": ".w-site-list strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 185,
+      "selector": ".w-site-list span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 186,
+      "selector": ".w-attention",
+      "property": "border-radius",
+      "before": "9px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 186,
+      "selector": ".w-attention",
+      "property": "background",
+      "before": "#C3972310",
+      "after": "var(--notice-wash)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 186,
+      "selector": ".w-attention",
+      "property": "border",
+      "before": "1px solid #C3972330",
+      "after": "1px solid var(--notice-line)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 186,
+      "selector": ".w-attention",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 188,
+      "selector": ".w-attention button",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 191,
+      "selector": ".w-check-thumb img",
+      "property": "border-radius",
+      "before": "7px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 192,
+      "selector": ".w-check-thumb i",
+      "property": "border",
+      "before": "2px solid #C89C3F",
+      "after": "2px solid var(--check-outline-warning)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 192,
+      "selector": ".w-check-thumb i",
+      "property": "border-radius",
+      "before": "3px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 193,
+      "selector": ".w-check-row strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 194,
+      "selector": ".w-check-row p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 195,
+      "selector": ".w-check-card .w-warning-label",
+      "property": "color",
+      "before": "#AC842F",
+      "after": "var(--warning-copy-ink)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 198,
+      "selector": ".w-chat-quick-actions button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 199,
+      "selector": ".w-card .bg-primary:disabled",
+      "property": "background",
+      "before": "#000",
+      "after": "var(--color-absolute-ink)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 199,
+      "selector": ".w-card .bg-primary:disabled",
+      "property": "color",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 200,
+      "selector": ".dark .w-card .bg-primary:disabled",
+      "property": "background",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 200,
+      "selector": ".dark .w-card .bg-primary:disabled",
+      "property": "color",
+      "before": "#000",
+      "after": "var(--color-absolute-ink)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 218,
+      "selector": ".w-variant-row .w-swatch",
+      "property": "border-radius",
+      "before": "7px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 219,
+      "selector": ".w-variant-row>input",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 219,
+      "selector": ".w-variant-row>input",
+      "property": "border-color",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 219,
+      "selector": ".w-variant-row>input",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 221,
+      "selector": ".w-variant-row .w-upload-ref",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 240,
+      "selector": ".p-chat-input",
+      "property": "border-radius",
+      "before": "20px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 241,
+      "selector": ".p-chat-input textarea",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 244,
+      "selector": ".p-chat-body .w-task-entry",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 245,
+      "selector": ".p-chat-body .w-task-entry small",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 248,
+      "selector": ".t11-references",
+      "property": "font-size",
+      "before": "11px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 249,
+      "selector": ".t11-references>span",
+      "property": "font-size",
+      "before": "11px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 250,
+      "selector": ".t11-reference",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 251,
+      "selector": ".t11-reference img",
+      "property": "border-radius",
+      "before": "5px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 253,
+      "selector": ".t11-reference>span:last-child",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 254,
+      "selector": ".t11-progress",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 254,
+      "selector": ".t11-progress",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 256,
+      "selector": ".t11-progress-heading small",
+      "property": "font-size",
+      "before": "10px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 261,
+      "selector": ".t11-progress-step small",
+      "property": "font-size",
+      "before": "10px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 262,
+      "selector": ".t11-progress-step.success summary>svg:first-child",
+      "property": "color",
+      "before": "#4b8266",
+      "after": "var(--progress-success-ink)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 270,
+      "selector": ".t11-generation-progress small",
+      "property": "font-size",
+      "before": "10px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 271,
+      "selector": ".t11-awaiting",
+      "property": "font-size",
+      "before": "11px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "line": 279,
+      "selector": ".t11-message-references img",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/gallery.css",
+      "line": 6,
+      "selector": ".p-filter-group",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/gallery.css",
+      "line": 9,
+      "selector": ".p-gallery-tools input",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/gallery.css",
+      "line": 19,
+      "selector": ".p-sku-card>p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/gallery.css",
+      "line": 33,
+      "selector": ".p-filter-group button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/gallery.css",
+      "line": 36,
+      "selector": ".p-gallery-header h1",
+      "property": "font-size",
+      "before": "28px",
+      "after": "var(--text-title)"
+    },
+    {
+      "file": "src/styles/creative/gallery.css",
+      "line": 37,
+      "selector": ".p-sku-card>strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/gallery.css",
+      "line": 38,
+      "selector": ".p-sku-cover",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 6,
+      "selector": ".p-home-heading>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 10,
+      "selector": ".p-home-input textarea",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 28,
+      "selector": ".p-recent-item img",
+      "property": "border-radius",
+      "before": "7px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 31,
+      "selector": ".p-recent-item span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 43,
+      "selector": ".p-home::before",
+      "property": "background",
+      "before": "radial-gradient(ellipse 70% 90% at 50% 0%,#f4f1ea 0%,#fff 80%)",
+      "after": "radial-gradient(ellipse 70% 90% at 50% 0%,var(--home-hero-glow) 0%,var(--color-on-image) 80%)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 45,
+      "selector": ".dark .p-home::before",
+      "property": "background",
+      "before": "radial-gradient(ellipse 70% 90% at 50% 0%,#1f3a2e40 0%,#0e0e10 80%)",
+      "after": "radial-gradient(ellipse 70% 90% at 50% 0%,var(--home-hero-glow-dark) 0%,var(--home-hero-edge-dark) 80%)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 49,
+      "selector": ".p-home-heading .p-eyebrow",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 50,
+      "selector": ".p-eyebrow>span",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 51,
+      "selector": ".p-home-heading h1",
+      "property": "font-size",
+      "before": "40px",
+      "after": "var(--text-display)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 52,
+      "selector": ".p-home-heading p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 54,
+      "selector": ".p-intent-row [data-slot=button]",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 54,
+      "selector": ".p-intent-row [data-slot=button]",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 57,
+      "selector": ".p-home-input",
+      "property": "border-radius",
+      "before": "24px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 57,
+      "selector": ".p-home-input",
+      "property": "box-shadow",
+      "before": "0 1px 2px #00000008,0 12px 32px #0000000f",
+      "after": "0 1px 2px var(--shadow-ink-3),0 12px 32px var(--shadow-ink-6)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 58,
+      "selector": ".dark .p-home-input",
+      "property": "box-shadow",
+      "before": "0 1px 2px #00000020,0 16px 40px #00000035",
+      "after": "0 1px 2px var(--shadow-ink-13),0 16px 40px var(--shadow-ink-21)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 58,
+      "selector": ".dark .p-home-input",
+      "property": "border-color",
+      "before": "#ffffff16",
+      "after": "var(--home-input-line-dark)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 59,
+      "selector": ".p-home-input:focus-within",
+      "property": "box-shadow",
+      "before": "0 0 0 2px var(--p-highlight),0 1px 2px #00000008,0 12px 32px #0000000f",
+      "after": "0 0 0 2px var(--p-highlight),0 1px 2px var(--shadow-ink-3),0 12px 32px var(--shadow-ink-6)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 61,
+      "selector": ".p-home-input textarea",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 63,
+      "selector": ".p-tab-hint",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 63,
+      "selector": ".p-tab-hint",
+      "property": "border-radius",
+      "before": "5px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 64,
+      "selector": ".p-home-footnote",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 67,
+      "selector": ".p-template-heading h2, .p-recent-heading h2",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 69,
+      "selector": ".p-template-card",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 69,
+      "selector": ".p-template-card",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 70,
+      "selector": ".p-template-image",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 73,
+      "selector": ".p-template-cta",
+      "property": "color",
+      "before": "white",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 73,
+      "selector": ".p-template-cta",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 73,
+      "selector": ".p-template-cta",
+      "property": "background",
+      "before": "linear-gradient(transparent,#00000080)",
+      "after": "linear-gradient(var(--color-transparent),var(--scrim-ink-50))"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 76,
+      "selector": ".p-template-caption>span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 77,
+      "selector": ".p-template-card strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 78,
+      "selector": ".p-template-card p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 81,
+      "selector": ".p-recent-item",
+      "property": "border-radius",
+      "before": "14px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 82,
+      "selector": ".p-recent-item strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 92,
+      "selector": ".p-home-heading h1",
+      "property": "font-size",
+      "before": "40px",
+      "after": "var(--text-display)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 120,
+      "selector": ".p-recent-item strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 125,
+      "selector": ".l-home h2",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 131,
+      "selector": ".l-bento-story",
+      "property": "border-radius",
+      "before": "20px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 131,
+      "selector": ".l-bento-story",
+      "property": "background",
+      "before": "#d9d2c4",
+      "after": "var(--story-card-surface)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 131,
+      "selector": ".l-bento-story",
+      "property": "color",
+      "before": "white",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 132,
+      "selector": ".l-bento-story:after",
+      "property": "background",
+      "before": "linear-gradient(transparent 30%,rgba(0,0,0,.7))",
+      "after": "linear-gradient(var(--color-transparent) 30%,var(--story-scrim))"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 134,
+      "selector": ".l-bento-story h2",
+      "property": "font-size",
+      "before": "26px",
+      "after": "var(--text-title)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 135,
+      "selector": ".l-bento-story p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 135,
+      "selector": ".l-bento-story p",
+      "property": "color",
+      "before": "#e8e8e8",
+      "after": "var(--story-card-copy)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 136,
+      "selector": ".l-bento-story span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 137,
+      "selector": ".l-bento-arrow",
+      "property": "border",
+      "before": "1px solid #ffffff60",
+      "after": "1px solid var(--story-arrow-line)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 137,
+      "selector": ".l-bento-arrow",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 143,
+      "selector": ".l-bento-actions>button",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 143,
+      "selector": ".l-bento-actions>button",
+      "property": "background",
+      "before": "#F4F4F5",
+      "after": "var(--brand-symbol-surface)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 144,
+      "selector": ".l-bento-actions>button:hover",
+      "property": "background",
+      "before": "#ededee",
+      "after": "var(--story-action-hover)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 145,
+      "selector": ".dark .l-bento-actions>button",
+      "property": "background",
+      "before": "#16161a",
+      "after": "var(--story-action-surface-dark)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 146,
+      "selector": ".dark .l-bento-actions>button:hover",
+      "property": "background",
+      "before": "#1e1e23",
+      "after": "var(--story-action-hover-dark)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 147,
+      "selector": ".l-bento-actions strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 148,
+      "selector": ".l-bento-actions p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 152,
+      "selector": ".l-home-last",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 172,
+      "selector": ".p-app .l-bento-story h2",
+      "property": "color",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 176,
+      "selector": ".r1-home-tasks>h2",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 178,
+      "selector": ".r1-task-card",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 178,
+      "selector": ".r1-task-card",
+      "property": "box-shadow",
+      "before": "0 2px 10px #00000006",
+      "after": "0 2px 10px var(--shadow-ink-2-4)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 178,
+      "selector": ".r1-task-card",
+      "property": "background",
+      "before": "#DCD8D1",
+      "after": "var(--task-card-surface)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 178,
+      "selector": ".r1-task-card",
+      "property": "color",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 179,
+      "selector": ".r1-task-card::after",
+      "property": "background",
+      "before": "linear-gradient(transparent,rgba(0,0,0,.6))",
+      "after": "linear-gradient(var(--color-transparent),var(--task-scrim))"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 184,
+      "selector": ".p-app .r1-task-caption h3",
+      "property": "font-size",
+      "before": "20px",
+      "after": "var(--text-xl)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 184,
+      "selector": ".p-app .r1-task-caption h3",
+      "property": "color",
+      "before": "white",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 185,
+      "selector": ".r1-task-caption p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 185,
+      "selector": ".r1-task-caption p",
+      "property": "color",
+      "before": "#FFFFFFE6",
+      "after": "var(--task-caption-copy)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 186,
+      "selector": ".r1-task-start",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 188,
+      "selector": ".r1-pack-art",
+      "property": "background",
+      "before": "#DDD8CE",
+      "after": "var(--task-pack-surface)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 189,
+      "selector": ".r1-pack-original",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 189,
+      "selector": ".r1-pack-original",
+      "property": "background",
+      "before": "#eae5dc",
+      "after": "var(--task-original-surface)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 189,
+      "selector": ".r1-pack-original",
+      "property": "box-shadow",
+      "before": "0 8px 18px #0002",
+      "after": "0 8px 18px var(--shadow-ink-13-3)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 191,
+      "selector": ".r1-pack-original span, .r1-pack-output span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 191,
+      "selector": ".r1-pack-original span, .r1-pack-output span",
+      "property": "color",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 191,
+      "selector": ".r1-pack-original span, .r1-pack-output span",
+      "property": "text-shadow",
+      "before": "0 1px 4px #0009",
+      "after": "0 1px 4px var(--shadow-ink-60)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 192,
+      "selector": ".r1-pack-art>svg",
+      "property": "color",
+      "before": "#5B574F",
+      "after": "var(--task-flow-arrow)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 194,
+      "selector": ".r1-pack-output",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 194,
+      "selector": ".r1-pack-output",
+      "property": "box-shadow",
+      "before": "0 4px 12px #0001",
+      "after": "0 4px 12px var(--shadow-ink-7)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 195,
+      "selector": ".r1-output-0 img",
+      "property": "background",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 197,
+      "selector": ".r1-size-line",
+      "property": "background",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 200,
+      "selector": ".r1-color-art>div",
+      "property": "border-right",
+      "before": "1px solid #ffffff66",
+      "after": "1px solid var(--variant-divider-line)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 204,
+      "selector": ".r1-color-art>div>i",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 204,
+      "selector": ".r1-color-art>div>i",
+      "property": "border",
+      "before": "1px solid #ffffffaa",
+      "after": "1px solid var(--variant-swatch-line)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 208,
+      "selector": ".r1-edit-divider",
+      "property": "background",
+      "before": "#fff9",
+      "after": "var(--edit-split-line)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 210,
+      "selector": ".r1-edit-divider:after",
+      "property": "background",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 210,
+      "selector": ".r1-edit-divider:after",
+      "property": "color",
+      "before": "#333",
+      "after": "var(--edit-split-ink)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 210,
+      "selector": ".r1-edit-divider:after",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 210,
+      "selector": ".r1-edit-divider:after",
+      "property": "font-size",
+      "before": "16px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 211,
+      "selector": ".r1-edit-art>span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 211,
+      "selector": ".r1-edit-art>span",
+      "property": "background",
+      "before": "#0004",
+      "after": "var(--scrim-ink-27)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 211,
+      "selector": ".r1-edit-art>span",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 213,
+      "selector": ".r1-library-links",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 239,
+      "selector": ".r1-edit-divider>svg",
+      "property": "background",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 239,
+      "selector": ".r1-edit-divider>svg",
+      "property": "color",
+      "before": "#333",
+      "after": "var(--edit-split-ink)"
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "line": 239,
+      "selector": ".r1-edit-divider>svg",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 7,
+      "selector": ".p-topbar-title img",
+      "property": "border-radius",
+      "before": "7px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 8,
+      "selector": ".p-topbar-title strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 11,
+      "selector": ".p-page-select",
+      "property": "border-radius",
+      "before": "9px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 11,
+      "selector": ".p-page-select",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 13,
+      "selector": ".p-avatar",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 13,
+      "selector": ".p-avatar",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 18,
+      "selector": ".p-understanding-ring",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 19,
+      "selector": ".p-understanding-ring span",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 19,
+      "selector": ".p-understanding-ring span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 21,
+      "selector": ".p-product-carousel",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 24,
+      "selector": ".p-carousel-controls span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 24,
+      "selector": ".p-carousel-controls span",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 30,
+      "selector": ".p-feature p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 32,
+      "selector": ".p-feature-actions button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 33,
+      "selector": ".p-feature-lock",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 38,
+      "selector": ".p-understanding-badge",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 38,
+      "selector": ".p-understanding-badge",
+      "property": "border-radius",
+      "before": "5px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 56,
+      "selector": ".p-topbar-end>button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 59,
+      "selector": ".p-product-nav a",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 61,
+      "selector": ".p-product-nav button",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 63,
+      "selector": ".p-logo",
+      "property": "font-size",
+      "before": "16px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 64,
+      "selector": ".p-logo svg",
+      "property": "width",
+      "before": "24px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 64,
+      "selector": ".p-logo svg",
+      "property": "height",
+      "before": "24px",
+      "after": "删除局部SVG强制声明"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 67,
+      "selector": ".p-mini-ring",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 68,
+      "selector": ".p-mini-ring::after",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 72,
+      "selector": ".p-product-header h2",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 73,
+      "selector": ".p-feature strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 87,
+      "selector": ".p-product-nav button, .p-product-nav a",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 102,
+      "selector": ".p-topbar-title strong",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 104,
+      "selector": ".r4-category-confirm h3",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 107,
+      "selector": ".r4-product-category",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 107,
+      "selector": ".r4-product-category",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 108,
+      "selector": ".w-theme-segments",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 109,
+      "selector": ".w-theme-segments button",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 110,
+      "selector": ".w-theme-segments button[aria-pressed=true]",
+      "property": "box-shadow",
+      "before": "0 1px 3px #0000000a",
+      "after": "0 1px 3px var(--shadow-ink-4)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 114,
+      "selector": ".t10-profile-field",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 123,
+      "selector": ".p-workspace-view-switch",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 126,
+      "selector": ".p-workspace-view-switch button",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "line": 126,
+      "selector": ".p-workspace-view-switch button",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 2,
+      "selector": ".l-library h2",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 3,
+      "selector": ".l-draft-controls",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 4,
+      "selector": ".l-category-picker",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 4,
+      "selector": ".l-category-picker",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 5,
+      "selector": ".l-shooting-pill",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 5,
+      "selector": ".l-shooting-pill",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 7,
+      "selector": ".l-mode-panel h3",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 20,
+      "selector": ".l-scene-feature",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 20,
+      "selector": ".l-scene-feature",
+      "property": "color",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 23,
+      "selector": ".l-scene-feature>div",
+      "property": "background",
+      "before": "linear-gradient(transparent 30%,rgba(0,0,0,.65))",
+      "after": "linear-gradient(var(--color-transparent) 30%,var(--scene-scrim))"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 24,
+      "selector": ".l-scene-feature h3",
+      "property": "font-size",
+      "before": "24px",
+      "after": "var(--text-xl)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 24,
+      "selector": ".l-scene-feature h3",
+      "property": "text-shadow",
+      "before": "0 1px 8px #0003",
+      "after": "0 1px 8px var(--shadow-ink-20)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 25,
+      "selector": ".l-scene-feature p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 28,
+      "selector": ".l-library-heading h1",
+      "property": "font-size",
+      "before": "28px",
+      "after": "var(--text-title)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 29,
+      "selector": ".l-library-heading p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 30,
+      "selector": ".l-personal-note",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 32,
+      "selector": ".l-filter-sidebar>div",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 33,
+      "selector": ".l-filter-sidebar>div button",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 35,
+      "selector": ".l-filter-sidebar h3",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 36,
+      "selector": ".l-filter-sidebar section button",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 41,
+      "selector": ".l-library-tabs button",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 42,
+      "selector": ".l-library-tabs button span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 46,
+      "selector": ".l-library-search input",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 48,
+      "selector": ".l-scope-row button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 50,
+      "selector": ".l-scope-row>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 52,
+      "selector": ".l-active-filters button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 55,
+      "selector": ".l-entry-cover",
+      "property": "border-radius",
+      "before": "14px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 58,
+      "selector": ".l-card-save",
+      "property": "background",
+      "before": "#0006",
+      "after": "var(--shadow-ink-40)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 58,
+      "selector": ".l-card-save",
+      "property": "color",
+      "before": "white",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 58,
+      "selector": ".l-card-save",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 62,
+      "selector": ".l-entry-caption strong",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 63,
+      "selector": ".l-entry-caption p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 64,
+      "selector": ".l-entry-caption footer",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 66,
+      "selector": ".l-visibility",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 66,
+      "selector": ".l-visibility",
+      "property": "border-radius",
+      "before": "4px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 67,
+      "selector": ".l-set-count",
+      "property": "background",
+      "before": "#0008",
+      "after": "var(--scrim-ink-53)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 67,
+      "selector": ".l-set-count",
+      "property": "border-radius",
+      "before": "6px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 67,
+      "selector": ".l-set-count",
+      "property": "color",
+      "before": "white",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 67,
+      "selector": ".l-set-count",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 68,
+      "selector": ".l-snippet-preview",
+      "property": "border-radius",
+      "before": "14px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 69,
+      "selector": ".l-snippet-preview>span",
+      "property": "font-family",
+      "before": "Georgia,serif",
+      "after": "var(--font-creative)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 69,
+      "selector": ".l-snippet-preview>span",
+      "property": "font-size",
+      "before": "44px",
+      "after": "var(--text-hero)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 70,
+      "selector": ".l-snippet-preview p",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 75,
+      "selector": ".l-library-detail [data-slot=sheet-title], .l-product-card [data-slot=sheet-title]",
+      "property": "font-size",
+      "before": "24px",
+      "after": "var(--text-xl)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 77,
+      "selector": ".l-detail-hero",
+      "property": "border-radius",
+      "before": "14px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 79,
+      "selector": ".l-detail-scroll h3",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 80,
+      "selector": ".l-detail-scroll p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 81,
+      "selector": ".l-skeleton",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 81,
+      "selector": ".l-skeleton",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 82,
+      "selector": ".l-variable-pill",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 82,
+      "selector": ".l-variable-pill",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 83,
+      "selector": ".l-fixed-placeholder",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 83,
+      "selector": ".l-fixed-placeholder",
+      "property": "border-radius",
+      "before": "5px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 85,
+      "selector": ".l-variable-options button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 86,
+      "selector": ".l-prop-group-row",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 87,
+      "selector": ".l-prop-group-row span:last-child",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 89,
+      "selector": ".l-detail-footer>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 90,
+      "selector": ".l-keywords-en",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 91,
+      "selector": ".l-prop-facts",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 95,
+      "selector": ".l-detail-tags>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 95,
+      "selector": ".l-detail-tags>span",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 97,
+      "selector": ".l-used-images img",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 99,
+      "selector": ".l-detail-props img",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 100,
+      "selector": ".l-detail-props strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 101,
+      "selector": ".l-detail-scroll blockquote",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 101,
+      "selector": ".l-detail-scroll blockquote",
+      "property": "font-size",
+      "before": "15px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 107,
+      "selector": ".l-product-mode button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 108,
+      "selector": ".l-product-card h3",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 111,
+      "selector": ".l-quick-hint",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 113,
+      "selector": ".l-photo-grid img",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 114,
+      "selector": ".l-photo-grid button",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 115,
+      "selector": ".l-photo-collection>span",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 118,
+      "selector": ".l-checklist>div>span",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 120,
+      "selector": ".l-checklist strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 121,
+      "selector": ".l-checklist p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 124,
+      "selector": ".l-locked-features strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 125,
+      "selector": ".l-locked-features label",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 126,
+      "selector": ".l-locked-features p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 127,
+      "selector": ".l-locked-features p button",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 129,
+      "selector": ".l-product-foot",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 158,
+      "selector": ".l-library-heading h1",
+      "property": "font-size",
+      "before": "25px",
+      "after": "var(--text-title)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 176,
+      "selector": ".l-entry-caption strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 181,
+      "selector": ".p-app .l-scene-feature h3",
+      "property": "color",
+      "before": "#fff",
+      "after": "var(--color-on-image)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 183,
+      "selector": ".l-coverage-line",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 187,
+      "selector": ".l-mode-panel>button",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 190,
+      "selector": ".l-mode-panel strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 191,
+      "selector": ".l-mode-panel small",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 193,
+      "selector": ".w-brand-pill",
+      "property": "border-radius",
+      "before": "999px",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 195,
+      "selector": ".w-brand-logo",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 195,
+      "selector": ".w-brand-logo",
+      "property": "color",
+      "before": "#171717",
+      "after": "var(--brand-logo-ink)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 195,
+      "selector": ".w-brand-logo",
+      "property": "font-size",
+      "before": "24px",
+      "after": "var(--text-brand-logo)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 197,
+      "selector": ".w-brand-pill .w-brand-logo",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 197,
+      "selector": ".w-brand-pill .w-brand-logo",
+      "property": "border-radius",
+      "before": "5px",
+      "after": "var(--radius-tag)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 199,
+      "selector": ".w-brand-popover h3",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 200,
+      "selector": ".w-brand-popover>p",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 201,
+      "selector": ".w-brand-popover>button",
+      "property": "border-radius",
+      "before": "10px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 204,
+      "selector": ".w-brand-popover strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 205,
+      "selector": ".w-brand-popover small",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 206,
+      "selector": ".w-brand-summary",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 206,
+      "selector": ".w-brand-summary",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 207,
+      "selector": ".w-brand-summary strong",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 209,
+      "selector": ".w-field",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 210,
+      "selector": ".w-field select, .w-glossary-tools select",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 210,
+      "selector": ".w-field select, .w-glossary-tools select",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 213,
+      "selector": ".w-section-heading h2",
+      "property": "font-size",
+      "before": "24px",
+      "after": "var(--text-xl)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 214,
+      "selector": ".w-section-heading p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 216,
+      "selector": ".w-brands-grid>button",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 218,
+      "selector": ".w-brands-grid .w-brand-logo",
+      "property": "font-size",
+      "before": "36px",
+      "after": "var(--text-hero)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 218,
+      "selector": ".w-brands-grid .w-brand-logo",
+      "property": "border-radius",
+      "before": "16px",
+      "after": "var(--radius-panel)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 219,
+      "selector": ".w-brands-grid h3",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 220,
+      "selector": ".w-brands-grid p",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 221,
+      "selector": ".w-palette-chip",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 222,
+      "selector": ".w-palette-chip i",
+      "property": "border-radius",
+      "before": "50%",
+      "after": "var(--radius-pill)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 223,
+      "selector": ".w-brands-grid small",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 224,
+      "selector": ".w-brands-grid>button>span:last-child",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 229,
+      "selector": ".w-template-checks",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 230,
+      "selector": ".w-template-checks label",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 232,
+      "selector": ".w-product-variants h3",
+      "property": "font-size",
+      "before": "18px",
+      "after": "var(--text-section)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 233,
+      "selector": ".w-product-variants>div",
+      "property": "font-size",
+      "before": "14px",
+      "after": "var(--text-body)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 234,
+      "selector": ".w-product-variants img",
+      "property": "border-radius",
+      "before": "7px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 235,
+      "selector": ".w-product-variants span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 239,
+      "selector": ".w-glossary-tools>span",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 240,
+      "selector": ".w-glossary-table",
+      "property": "border-radius",
+      "before": "12px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 242,
+      "selector": ".w-glossary th",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 244,
+      "selector": ".w-glossary td input",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 244,
+      "selector": ".w-glossary td input",
+      "property": "background",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 244,
+      "selector": ".w-glossary td input",
+      "property": "border-color",
+      "before": "transparent",
+      "after": "var(--color-transparent)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 251,
+      "selector": ".w-brand-pill",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 256,
+      "selector": ".r1-variant-types",
+      "property": "border-radius",
+      "before": "8px",
+      "after": "var(--radius-control)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 257,
+      "selector": ".r1-variant-types button",
+      "property": "font-size",
+      "before": "12px",
+      "after": "var(--text-xs)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 258,
+      "selector": ".r1-variant-types button[aria-pressed=true]",
+      "property": "box-shadow",
+      "before": "0 1px 3px #0001",
+      "after": "0 1px 3px var(--shadow-ink-7)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 259,
+      "selector": ".r1-material-required",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 259,
+      "selector": ".r1-material-required",
+      "property": "color",
+      "before": "#AC842F",
+      "after": "var(--warning-copy-ink)"
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "line": 260,
+      "selector": ".r1-variant-card>button",
+      "property": "font-size",
+      "before": "13px",
+      "after": "var(--text-sm)"
+    }
+  ],
+  "colorTokens": {
+    "color-transparent": "transparent",
+    "attachment-close-surface": "#18181b",
+    "color-on-image": "white",
+    "shadow-ink-20": "#0003",
+    "color-absolute-ink": "#000",
+    "icon-tile-surface-light": "#EDEDEF",
+    "icon-tile-ink-light": "#34343A",
+    "icon-tile-surface-dark": "#26262C",
+    "icon-tile-ink-dark": "#E9E9ED",
+    "brand-symbol-surface": "#F4F4F5",
+    "brand-symbol-surface-byte": "#28282E",
+    "crop-selection-wash": "#ffffff15",
+    "shadow-ink-40": "#0006",
+    "scrim-ink-53": "#0008",
+    "shadow-ink-2": "#00000005",
+    "shadow-ink-1": "#00000002",
+    "variant-preview-default": "#e5d8c4",
+    "copy-preview-surface": "#ffffffdc",
+    "copy-preview-ink": "#272525",
+    "shadow-ink-7": "#0001",
+    "shadow-ink-5": "#0000000d",
+    "notice-wash": "#C3972310",
+    "notice-line": "#C3972330",
+    "check-outline-warning": "#C89C3F",
+    "warning-copy-ink": "#AC842F",
+    "progress-success-ink": "#4b8266",
+    "home-hero-glow": "#f4f1ea",
+    "home-hero-glow-dark": "#1f3a2e40",
+    "home-hero-edge-dark": "#0e0e10",
+    "shadow-ink-3": "#00000008",
+    "shadow-ink-6": "#0000000f",
+    "shadow-ink-13": "#00000020",
+    "shadow-ink-21": "#00000035",
+    "home-input-line-dark": "#ffffff16",
+    "scrim-ink-50": "#00000080",
+    "story-card-surface": "#d9d2c4",
+    "story-scrim": "rgba(0,0,0,.7)",
+    "story-card-copy": "#e8e8e8",
+    "story-arrow-line": "#ffffff60",
+    "story-action-hover": "#ededee",
+    "story-action-surface-dark": "#16161a",
+    "story-action-hover-dark": "#1e1e23",
+    "shadow-ink-2-4": "#00000006",
+    "task-card-surface": "#DCD8D1",
+    "task-scrim": "rgba(0,0,0,.6)",
+    "task-caption-copy": "#FFFFFFE6",
+    "task-pack-surface": "#DDD8CE",
+    "task-original-surface": "#eae5dc",
+    "shadow-ink-13-3": "#0002",
+    "shadow-ink-60": "#0009",
+    "task-flow-arrow": "#5B574F",
+    "variant-divider-line": "#ffffff66",
+    "variant-swatch-line": "#ffffffaa",
+    "edit-split-line": "#fff9",
+    "edit-split-ink": "#333",
+    "scrim-ink-27": "#0004",
+    "shadow-ink-4": "#0000000a",
+    "scene-scrim": "rgba(0,0,0,.65)",
+    "brand-logo-ink": "#171717"
+  }
+}

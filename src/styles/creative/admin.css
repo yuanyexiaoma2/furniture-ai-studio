@@ -1,41 +1,37 @@
-/* 创作空间 · admin。保持原有层叠结果；阶段 1 不修改视觉值。 */
+/* 创作空间 · admin。阶段 2a：语义变量与经确认的视觉档位。 */
 .p-admin { display: flex; min-height: calc(100dvh - 62px); }
 .p-admin-nav { width: 205px; padding: 28px 15px; border-right: 1px solid var(--border); background: var(--p-panel); display: flex; flex-direction: column; gap: 7px; }
 .p-admin-nav h2 { margin: 0 12px 25px; }
-.p-admin-nav button { justify-content: flex-start; font-size: 14px; }
+.p-admin-nav button { justify-content: flex-start; font-size: var(--text-body); }
 .p-admin-nav button.active { background: var(--secondary); }
-.p-admin-nav>button:last-child { margin-top: auto; font-size: 13px; color: var(--p-subtle); }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
-.p-admin-main { flex: 1; min-width: 0; }
+.p-admin-nav>button:last-child { margin-top: auto; font-size: var(--text-sm); color: var(--p-subtle); }
 .p-admin-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
-.p-admin-heading p { font-size: 14px; color: var(--p-text); margin-top: 6px; }
+.p-admin-heading p { font-size: var(--text-body); color: var(--p-text); margin-top: 6px; }
 .p-admin-toolbar { display: flex; align-items: center; gap: 12px; margin: 24px 0 18px; }
-.p-admin-toolbar input { max-width: 300px; background: var(--p-panel); border-radius: 10px; }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
-.p-admin-table { border: 1px solid var(--border); overflow: hidden; background: var(--p-panel); }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
-.p-admin-table th { background: var(--muted); font-size: 13px; color: var(--p-subtle); white-space: nowrap; }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
-.p-admin-table td { font-size: 14px; border-bottom-color: var(--border); }
-.p-admin-table strong { display: block; font-size: 14px; font-weight: 500; }
+.p-admin-toolbar input { max-width: 300px; background: var(--p-panel); border-radius: var(--radius-control); }
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
+.p-admin-table th { background: var(--muted); font-size: var(--text-sm); color: var(--p-subtle); white-space: nowrap; }
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
+.p-admin-table td { font-size: var(--text-body); border-bottom-color: var(--border); }
+.p-admin-table strong { display: block; font-size: var(--text-body); font-weight: 500; }
 .p-admin-table small { display: block; margin-top: 4px; }
-.p-admin-table button { font-size: 13px; }
-.p-admin-footer { display: flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 13px; color: var(--p-subtle); }
+.p-admin-table button { font-size: var(--text-sm); }
+.p-admin-footer { display: flex; align-items: center; gap: 8px; margin-top: 18px; font-size: var(--text-sm); color: var(--p-subtle); }
 .p-admin-stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; margin-bottom: 25px; }
-.p-admin-stat-row>div { border: 1px solid var(--border); border-radius: 12px; padding: 20px; background: var(--p-panel); }
-.p-admin-stat-row strong { display: block; font-size: 20px; margin-top: 8px; }
+.p-admin-stat-row>div { border: 1px solid var(--border); border-radius: var(--radius-control); padding: 20px; background: var(--p-panel); }
+.p-admin-stat-row strong { display: block; font-size: var(--text-xl); margin-top: 8px; }
 @media (max-width:1100px) {
   .p-admin-nav { width: 170px; }
 }
 @media (max-width:1100px) {
   .p-admin-main { padding: 24px; }
 }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 @media (max-width:760px) {
   .p-admin-nav { padding-inline: 8px; }
 }
 @media (max-width:760px) {
-  .p-admin-nav button { font-size: 13px; padding: 7px; }
+  .p-admin-nav button { font-size: var(--text-sm); padding: 7px; }
 }
 @media (max-width:760px) {
   .p-admin-table { overflow-x: auto; }
@@ -46,16 +42,16 @@
 @media (max-width:760px) {
   .p-admin-stat-row { grid-template-columns: 1fr; }
 }
-.p-admin-main { max-width: 1344px; margin: 0 auto; padding: 40px 32px; }
-.p-admin-heading h1 { font-size: 28px; font-weight: 600; }
-.p-admin-table { max-width: 1280px; margin: 0 auto; border-radius: 16px; overflow-x: auto; }
+.p-admin-main { flex: 1; min-width: 0; max-width: 1344px; margin: 0 auto; padding: 40px 32px; }
+.p-admin-heading h1 { font-size: var(--text-title); font-weight: 600; }
+.p-admin-table { border: 1px solid var(--border); overflow: hidden; background: var(--p-panel); max-width: 1280px; margin: 0 auto; border-radius: var(--radius-panel); overflow-x: auto; }
 .p-admin-table table { min-width: 980px; }
 .p-admin-table th { height: 46px; padding: 8px 14px; }
 .p-admin-table td { height: 56px; padding: 7px 14px; }
 .p-admin-table tbody tr:hover { background: var(--p-hover); }
 .p-admin-model-name { display: flex; gap: 10px; align-items: center; min-width: 180px; }
-.p-admin-model-name strong { font-size: 14px; font-weight: 500; }
-.p-admin-model-name small { margin-top: 1px; font-size: 12px; line-height: 1.5; white-space: nowrap; }
+.p-admin-model-name strong { font-size: var(--text-body); font-weight: 500; }
+.p-admin-model-name small { margin-top: 1px; font-size: var(--text-xs); line-height: 1.5; white-space: nowrap; }
 @media (max-width:760px) {
   .p-admin-main { padding: 24px 16px; }
 }
@@ -63,35 +59,38 @@
   .p-admin-nav { width: 130px; }
 }
 .l-admin-section { margin: 25px 0; }
-.l-admin-section>p { font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
-.l-category-table { border: 1px solid var(--p-line); border-radius: 12px; overflow: hidden; }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.l-admin-section>p { font-size: var(--text-sm); line-height: 1.7; margin-bottom: 20px; }
+.l-category-table { border: 1px solid var(--p-line); border-radius: var(--radius-control); overflow: hidden; }
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .l-category-table-head { display: grid; grid-template-columns: 100px 160px minmax(180px,1fr) 130px; align-items: center; gap: 24px; padding: 12px 20px; }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .l-category-row { display: grid; grid-template-columns: 100px 160px minmax(180px,1fr) 130px; align-items: center; gap: 24px; padding: 12px 20px; min-height: 64px; }
-.l-category-table-head { background: var(--p-soft); font-size: 13px; color: var(--p-muted); min-height: 44px; }
-.l-category-row { border-top: 1px solid var(--p-line); font-size: 14px; }
+.l-category-table-head { background: var(--p-soft); font-size: var(--text-sm); color: var(--p-muted); min-height: 44px; }
+.l-category-row { border-top: 1px solid var(--p-line); font-size: var(--text-body); }
 .l-category-row:hover { background: var(--p-soft); }
-.l-category-row>span { font-size: 13px; color: var(--p-muted); }
+.l-category-row>span { font-size: var(--text-sm); color: var(--p-muted); }
 .l-category-row strong { font-weight: 500; }
-.l-category-row button { font-size: 13px; }
+.l-category-row button { font-size: var(--text-sm); }
 .l-category-editor { width: 540px !important; max-width: 90vw !important; display: flex !important; flex-direction: column; padding: 0 !important; }
 .l-category-editor>div:first-of-type { padding: 28px; }
-.l-category-editor label { font-size: 14px; display: block; margin-bottom: 24px; }
+.l-category-editor label { font-size: var(--text-body); display: block; margin-bottom: 24px; }
 .l-category-editor textarea { margin-top: 12px; }
 .l-checklist-editor { padding: 15px 0; border-bottom: 1px solid var(--p-line); }
-.l-checklist-editor>div { display: flex; justify-content: space-between; align-items: center; font-size: 14px; margin-bottom: 10px; }
-.l-checklist-editor input { font-size: 13px; }
+.l-checklist-editor>div { display: flex; justify-content: space-between; align-items: center; font-size: var(--text-body); margin-bottom: 10px; }
+.l-checklist-editor input { font-size: var(--text-sm); }
 .l-category-editor .l-detail-scroll>button { margin-top: 24px; width: 100%; }
-.l-review-heading { display: flex; align-items: center; justify-content: space-between; margin: 0 0 24px; font-size: 14px; }
+.l-review-heading { display: flex; align-items: center; justify-content: space-between; margin: 0 0 24px; font-size: var(--text-body); }
 .l-review-heading>button { width: 180px; }
 .l-review-row { display: flex; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--p-line); }
-.l-review-row>img { width: 100px; height: 80px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
-.l-review-quote { width: 100px; height: 80px; object-fit: cover; border-radius: 10px; flex-shrink: 0; font-family: Georgia,serif; display: grid; place-items: center; font-size: 60px; background: var(--p-soft); color: var(--p-muted); }
+.l-review-row>img { width: 100px; height: 80px; object-fit: cover; border-radius: var(--radius-control); flex-shrink: 0; }
+.l-review-quote { width: 100px; height: 80px; object-fit: cover; border-radius: var(--radius-control); flex-shrink: 0; font-family: var(--font-creative); display: grid; place-items: center; font-size: var(--text-hero); background: var(--p-soft); color: var(--p-muted); }
 .l-review-row>div { flex: 1; }
-.l-review-row h3 { font-size: 15px; font-weight: 500; margin: 7px 0; }
-.l-review-row p { font-size: 13px; color: var(--p-muted); }
-.l-review-row button { font-size: 13px; }
+.l-review-row h3 { font-size: var(--text-body); font-weight: 500; margin: 7px 0; }
+.l-review-row p { font-size: var(--text-sm); color: var(--p-muted); }
+.l-review-row button { font-size: var(--text-sm); }
 @media (max-width:1100px) {
-  .l-category-table-head, .l-category-row { grid-template-columns: 70px 115px 1fr 110px; gap: 12px; padding: 12px; }
+  .l-category-table-head { grid-template-columns: 70px 115px 1fr 110px; gap: 12px; padding: 12px; }
+}
+@media (max-width:1100px) {
+  .l-category-row { grid-template-columns: 70px 115px 1fr 110px; gap: 12px; padding: 12px; }
 }

@@ -17,7 +17,7 @@ export function WorkspaceProgress({snapshot,events}:{snapshot:StudioSnapshot;eve
  const tools=[...entries.values()].slice(-6),jobs=snapshot.pack.slots.flatMap(s=>s.jobs.filter(j=>!j.retriedById).map(j=>({id:j.id,name:s.name,status:j.status}))).slice(-6);
  if(!tools.length&&!jobs.length)return null;
  return <section className="t11-progress" aria-label="创作执行进度"><div className="t11-progress-heading"><span>创作进度</span><small>刷新后可继续查看</small></div>
- {tools.map(t=><details key={t.id} className={"t11-progress-step "+t.status}><summary>{t.status==="running"?<LoaderCircle size={14} className="animate-spin"/>:t.status==="failed"?<span className="t11-step-error">!</span>:<Check size={14}/>}<span>{progressLabel(t.name)}</span><small>{t.status==="running"?"进行中":t.status==="failed"?"未完成":"已完成"}</small><ChevronDown size={12}/></summary><p>{t.summary}</p></details>)}
+ {tools.map(t=><details key={t.id} className={"t11-progress-step "+t.status}><summary>{t.status==="running"?<LoaderCircle size="sm" className="animate-spin"/>:t.status==="failed"?<span className="t11-step-error">!</span>:<Check size="sm"/>}<span>{progressLabel(t.name)}</span><small>{t.status==="running"?"进行中":t.status==="failed"?"未完成":"已完成"}</small><ChevronDown size="sm"/></summary><p>{t.summary}</p></details>)}
  {jobs.length>0&&<div className="t11-generation-progress">{jobs.map(j=><div key={j.id}><span className={"p-dot "+(j.status==="success"?"p-dot-success":j.status==="failed"?"p-dot-warning":"p-dot-busy")}/><span>{j.name}</span><small>{({pending:"排队中",running:"生成中",success:"候选已就绪",failed:"生成未完成",cancelled:"已取消"} as Record<string,string>)[j.status]}</small></div>)}</div>}
  {snapshot.agent.cards.some(c=>c.status==="pending")&&<p className="t11-awaiting">下一步等待你确认下方卡片</p>}
  </section>;

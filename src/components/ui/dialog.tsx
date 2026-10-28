@@ -5,7 +5,7 @@ import { Dialog as DialogPrimitive } from "@base-ui/react/dialog"
 import { cn } from "cn"
 
 import { Button } from "@/components/ui/button"
-import { XIcon } from "@/components/icons/concept-icons"
+import {X} from "@/components/icons/concept-icons"
 
 function Dialog({ ...props }: DialogPrimitive.Root.Props) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
@@ -70,7 +70,7 @@ function DialogContent({
               />
             }
           >
-            <XIcon
+            <X
             />
               <span className="sr-only">关闭弹窗</span>
           </DialogPrimitive.Close>

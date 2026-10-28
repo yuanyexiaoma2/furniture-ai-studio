@@ -1,0 +1,1837 @@
+{
+  "mergedComplementaryBlocks": 10,
+  "modules": [
+    {
+      "file": "src/styles/creative/admin.css",
+      "retainedDependencies": [
+        {
+          "selector": ".p-admin-table th",
+          "conditions": [],
+          "properties": [
+            "background",
+            "font-size",
+            "color",
+            "white-space"
+          ],
+          "dependsOn": [
+            ".p-admin-table td",
+            ".p-admin-table strong",
+            ".p-admin-table button",
+            ".p-admin-stat-row>div",
+            ".p-admin-stat-row strong",
+            ".p-admin-nav button",
+            ".p-admin-heading h1"
+          ]
+        },
+        {
+          "selector": ".p-admin-table td",
+          "conditions": [],
+          "properties": [
+            "font-size",
+            "border-bottom-color"
+          ],
+          "dependsOn": [
+            ".p-admin-table strong",
+            ".p-admin-table button",
+            ".p-admin-stat-row>div",
+            ".p-admin-stat-row strong",
+            ".p-admin-nav button",
+            ".p-admin-heading h1"
+          ]
+        },
+        {
+          "selector": ".p-admin-nav",
+          "conditions": [
+            {
+              "name": "media",
+              "params": "(max-width:760px)"
+            }
+          ],
+          "properties": [
+            "padding-inline"
+          ],
+          "dependsOn": [
+            ".p-admin-main"
+          ]
+        },
+        {
+          "selector": ".l-category-table-head",
+          "conditions": [],
+          "properties": [
+            "display",
+            "grid-template-columns",
+            "align-items",
+            "gap",
+            "padding"
+          ],
+          "dependsOn": [
+            ".l-category-row"
+          ]
+        },
+        {
+          "selector": ".l-category-row",
+          "conditions": [],
+          "properties": [
+            "display",
+            "grid-template-columns",
+            "align-items",
+            "gap",
+            "padding",
+            "min-height"
+          ],
+          "dependsOn": [
+            ".l-category-table-head"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/styles/creative/base.css",
+      "retainedDependencies": [
+        {
+          "selector": ".p-app",
+          "conditions": [],
+          "properties": [
+            "line-height"
+          ],
+          "dependsOn": [
+            ".p-portal",
+            ".p-model-tooltip"
+          ]
+        },
+        {
+          "selector": ".p-app",
+          "conditions": [],
+          "properties": [
+            "background",
+            "min-height",
+            "color"
+          ],
+          "dependsOn": [
+            ".p-muted",
+            ".p-subtle",
+            ".p-dot",
+            ".p-dot-success",
+            ".p-dot-warning",
+            ".p-dot-busy",
+            ".p-corner-label",
+            ".p-template-dialog"
+          ]
+        },
+        {
+          "selector": ".p-app",
+          "conditions": [],
+          "properties": [
+            "font-family",
+            "font-size",
+            "-webkit-font-smoothing"
+          ],
+          "dependsOn": [
+            ".p-portal",
+            ".p-section-kicker",
+            ".p-cost-estimate",
+            ".p-brand-icon",
+            ".p-type-tag",
+            ".p-failure-rate",
+            ".p-model-tooltip"
+          ]
+        },
+        {
+          "selector": ".p-portal",
+          "conditions": [],
+          "properties": [
+            "line-height",
+            "color"
+          ],
+          "dependsOn": [
+            ".p-app",
+            ".p-muted",
+            ".p-subtle",
+            ".p-corner-label",
+            ".p-toast"
+          ]
+        },
+        {
+          "selector": ".p-app h1",
+          "conditions": [],
+          "properties": [
+            "margin"
+          ],
+          "dependsOn": [
+            ".p-app h2",
+            ".p-app h3",
+            ".p-app p",
+            ".p-input-actions>small",
+            ".p-pill-content h3",
+            ".p-pill-content label"
+          ]
+        },
+        {
+          "selector": ".p-app h1",
+          "conditions": [],
+          "properties": [
+            "line-height",
+            "color"
+          ],
+          "dependsOn": [
+            ".p-app h2",
+            ".p-app h3",
+            ".p-app strong",
+            ".p-app small",
+            ".p-portal small",
+            ".p-pill-content label"
+          ]
+        },
+        {
+          "selector": ".p-app h2",
+          "conditions": [],
+          "properties": [
+            "margin"
+          ],
+          "dependsOn": [
+            ".p-app h3",
+            ".p-app p",
+            ".p-input-actions>small",
+            ".p-pill-content h3",
+            ".p-pill-content label"
+          ]
+        },
+        {
+          "selector": ".p-app h2",
+          "conditions": [],
+          "properties": [
+            "line-height",
+            "color"
+          ],
+          "dependsOn": [
+            ".p-app h3",
+            ".p-app strong",
+            ".p-app small",
+            ".p-portal small",
+            ".p-pill-content label"
+          ]
+        },
+        {
+          "selector": ".p-app h3",
+          "conditions": [],
+          "properties": [
+            "margin"
+          ],
+          "dependsOn": [
+            ".p-app p",
+            ".p-input-actions>small",
+            ".p-pill-content h3",
+            ".p-pill-content label"
+          ]
+        },
+        {
+          "selector": ".p-app h3",
+          "conditions": [],
+          "properties": [
+            "line-height",
+            "color"
+          ],
+          "dependsOn": [
+            ".p-app strong",
+            ".p-app small",
+            ".p-portal small",
+            ".p-pill-content label"
+          ]
+        },
+        {
+          "selector": ".p-app strong",
+          "conditions": [],
+          "properties": [
+            "color"
+          ],
+          "dependsOn": [
+            ".p-app small",
+            ".p-portal small",
+            ".p-pill-content label"
+          ]
+        },
+        {
+          "selector": ".p-app button",
+          "conditions": [],
+          "properties": [
+            "cursor"
+          ],
+          "dependsOn": [
+            ".p-portal button",
+            ".w-template-choices button"
+          ]
+        },
+        {
+          "selector": ".p-portal button",
+          "conditions": [],
+          "properties": [
+            "cursor"
+          ],
+          "dependsOn": [
+            ".w-template-choices button"
+          ]
+        },
+        {
+          "selector": ".p-composer-toolbar",
+          "conditions": [],
+          "properties": [
+            "width",
+            "min-width",
+            "display",
+            "align-items",
+            "flex-wrap",
+            "white-space"
+          ],
+          "dependsOn": [
+            ".p-composer-menu",
+            ".p-extra-options",
+            ".p-parameter-panel",
+            ".p-model-agent",
+            ".p-model-image",
+            ".p-model-list",
+            ".p-model-row",
+            ".p-brand-icon"
+          ]
+        },
+        {
+          "selector": ".p-composer-toolbar [data-slot=button].p-send-circle",
+          "conditions": [],
+          "properties": [
+            "width",
+            "height",
+            "min-width",
+            "padding",
+            "border-radius",
+            "box-shadow"
+          ],
+          "dependsOn": [
+            ".p-composer-toolbar.is-compact .p-composer-add"
+          ]
+        },
+        {
+          "selector": ".p-model-panel",
+          "conditions": [],
+          "properties": [
+            "border-radius",
+            "padding",
+            "box-shadow",
+            "background",
+            "max-width",
+            "overflow-y",
+            "scrollbar-width"
+          ],
+          "dependsOn": [
+            ".p-model-entry",
+            ".p-model-row",
+            ".p-model-check",
+            ".p-auto-line",
+            ".p-quality-options",
+            ".p-model-empty",
+            ".p-type-tag"
+          ]
+        },
+        {
+          "selector": ".p-brand-icon",
+          "conditions": [],
+          "properties": [
+            "font-size",
+            "font-weight",
+            "flex"
+          ],
+          "dependsOn": [
+            ".p-model-copy",
+            ".p-type-tag",
+            ".p-failure-rate",
+            ".p-cost-estimate",
+            ".p-model-tooltip",
+            ".p-preview-loading",
+            ".r4-file",
+            ".p-composer-spacer"
+          ]
+        },
+        {
+          "selector": ".p-auto-line",
+          "conditions": [],
+          "properties": [
+            "display",
+            "justify-content",
+            "padding"
+          ],
+          "dependsOn": [
+            ".p-quality-options",
+            ".p-model-empty",
+            ".p-type-tag",
+            ".p-failure-rate"
+          ]
+        },
+        {
+          "selector": ".p-auto-line p",
+          "conditions": [],
+          "properties": [
+            "margin",
+            "font-size",
+            "color"
+          ],
+          "dependsOn": [
+            ".p-quality-options button",
+            ".p-auto-line>button"
+          ]
+        },
+        {
+          "selector": ".p-composer-toolbar.is-compact .p-model-capsule",
+          "conditions": [
+            {
+              "name": "media",
+              "params": "(max-width:760px)"
+            }
+          ],
+          "properties": [
+            "max-width"
+          ],
+          "dependsOn": [
+            ".p-composer-toolbar.is-compact .p-model-capsule"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/styles/creative/canvas.css",
+      "retainedDependencies": [
+        {
+          "selector": ".p-frame",
+          "conditions": [],
+          "properties": [
+            "width",
+            "height",
+            "position"
+          ],
+          "dependsOn": [
+            ".p-frame-title",
+            ".p-image-node",
+            ".p-image-tag",
+            ".p-final-tag",
+            ".p-mask-preview",
+            ".p-fake-effect",
+            ".p-layer-panel",
+            ".p-note-node"
+          ]
+        },
+        {
+          "selector": ".p-frame-empty",
+          "conditions": [],
+          "properties": [
+            "border-style"
+          ],
+          "dependsOn": [
+            ".p-toolbar",
+            ".p-canvas-tools",
+            ".p-bottom-tools",
+            ".p-layer-panel",
+            ".p-mask-tools",
+            ".p-editor-footer",
+            ".p-frame"
+          ]
+        },
+        {
+          "selector": ".p-frame-title",
+          "conditions": [],
+          "properties": [
+            "position",
+            "left",
+            "width",
+            "display",
+            "align-items",
+            "gap"
+          ],
+          "dependsOn": [
+            ".p-image-node",
+            ".p-image-tag",
+            ".p-final-tag",
+            ".p-toolbar",
+            ".p-canvas-tools",
+            ".p-bottom-tools",
+            ".p-mask-preview",
+            ".p-fake-effect"
+          ]
+        },
+        {
+          "selector": ".p-image-node",
+          "conditions": [],
+          "properties": [
+            "width",
+            "height",
+            "border-radius",
+            "overflow",
+            "background",
+            "position"
+          ],
+          "dependsOn": [
+            ".p-image-tag",
+            ".p-final-tag",
+            ".p-toolbar",
+            ".p-canvas-tools",
+            ".p-bottom-tools",
+            ".p-mask-preview",
+            ".p-fake-effect",
+            ".p-fake-background"
+          ]
+        },
+        {
+          "selector": ".p-image-node>img",
+          "conditions": [],
+          "properties": [
+            "width",
+            "height",
+            "object-fit",
+            "border-radius",
+            "display",
+            "pointer-events"
+          ],
+          "dependsOn": [
+            ".p-layer-panel button",
+            ".p-note-node textarea",
+            ".p-expand-dialog>button",
+            ".p-compare-grid img"
+          ]
+        },
+        {
+          "selector": ".p-image-tag",
+          "conditions": [],
+          "properties": [
+            "position",
+            "padding",
+            "border-radius",
+            "color",
+            "background",
+            "backdrop-filter",
+            "display",
+            "align-items",
+            "gap"
+          ],
+          "dependsOn": [
+            ".p-final-tag",
+            ".p-toolbar",
+            ".p-canvas-tools",
+            ".p-bottom-tools",
+            ".p-mask-preview",
+            ".p-fake-effect",
+            ".p-fake-background",
+            ".p-image-node:has(.p-effect-cutout)"
+          ]
+        },
+        {
+          "selector": ".p-final-tag",
+          "conditions": [],
+          "properties": [
+            "position",
+            "display",
+            "gap",
+            "align-items"
+          ],
+          "dependsOn": [
+            ".p-toolbar",
+            ".p-canvas-tools",
+            ".p-bottom-tools",
+            ".p-fake-effect",
+            ".p-zoom-label",
+            ".p-layer-panel",
+            ".p-loading",
+            ".p-mask-editor"
+          ]
+        },
+        {
+          "selector": ".p-toolbar",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "border"
+          ],
+          "dependsOn": [
+            ".p-canvas-tools",
+            ".p-bottom-tools",
+            ".p-mask-preview",
+            ".p-fake-effect",
+            ".p-zoom-label",
+            ".p-canvas-guide",
+            ".p-layer-panel",
+            ".p-note-node"
+          ]
+        },
+        {
+          "selector": ".p-toolbar button",
+          "conditions": [],
+          "properties": [
+            "padding"
+          ],
+          "dependsOn": [
+            ".p-canvas-tools button"
+          ]
+        },
+        {
+          "selector": ".p-canvas-tools",
+          "conditions": [],
+          "properties": [
+            "display",
+            "flex-direction",
+            "background",
+            "backdrop-filter",
+            "border",
+            "box-shadow"
+          ],
+          "dependsOn": [
+            ".p-bottom-tools",
+            ".p-mask-preview",
+            ".p-fake-effect",
+            ".p-fake-background",
+            ".p-image-node:has(.p-effect-cutout)",
+            ".p-zoom-label",
+            ".p-canvas-guide",
+            ".p-layer-panel"
+          ]
+        },
+        {
+          "selector": ".p-canvas-tools button",
+          "conditions": [],
+          "properties": [
+            "padding"
+          ],
+          "dependsOn": [
+            ".p-toolbar button"
+          ]
+        },
+        {
+          "selector": ".p-note-node textarea",
+          "conditions": [],
+          "properties": [
+            "border",
+            "outline",
+            "width",
+            "min-height",
+            "resize",
+            "background",
+            "color"
+          ],
+          "dependsOn": [
+            ".p-loading svg",
+            ".p-compare-grid img",
+            ".p-canvas-tools button",
+            ".p-dimension-overlay::before",
+            ".p-dimension-overlay::after",
+            ".l-crop-area img",
+            ".l-crop-area>span",
+            ".l-crop-area i"
+          ]
+        },
+        {
+          "selector": ".p-loading",
+          "conditions": [],
+          "properties": [
+            "position",
+            "inset",
+            "border-radius",
+            "display",
+            "place-items"
+          ],
+          "dependsOn": [
+            ".p-mask-editor",
+            ".p-mask-tools",
+            ".p-editor-footer",
+            ".p-edit-popup",
+            ".p-expand-modal",
+            ".p-expand-heading",
+            ".p-expand-stage",
+            ".p-expand-footer"
+          ]
+        },
+        {
+          "selector": ".p-expand-modal",
+          "conditions": [],
+          "properties": [
+            "background",
+            "border-radius",
+            "padding",
+            "box-shadow"
+          ],
+          "dependsOn": [
+            ".p-expand-stage",
+            ".p-frame",
+            ".p-frame-empty",
+            ".p-image-node",
+            ".p-final-tag",
+            ".p-image-more",
+            ".p-toolbar",
+            ".p-canvas-tools"
+          ]
+        },
+        {
+          "selector": ".p-expand-heading",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "justify-content",
+            "margin-bottom"
+          ],
+          "dependsOn": [
+            ".p-expand-stage",
+            ".p-expand-footer",
+            ".p-compare-grid",
+            ".p-canvas-guide",
+            ".p-image-more",
+            ".l-toolbar-menu",
+            ".l-capture-fields",
+            ".w-canvas-empty"
+          ]
+        },
+        {
+          "selector": ".p-expand-stage",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "justify-content",
+            "background",
+            "border-radius",
+            "overflow"
+          ],
+          "dependsOn": [
+            ".p-expand-footer",
+            ".p-compare-grid",
+            ".p-canvas-guide",
+            ".p-frame",
+            ".p-frame-empty",
+            ".p-final-tag",
+            ".p-image-more",
+            ".p-toolbar"
+          ]
+        },
+        {
+          "selector": ".p-expand-footer",
+          "conditions": [],
+          "properties": [
+            "display",
+            "justify-content",
+            "align-items",
+            "margin-top"
+          ],
+          "dependsOn": [
+            ".p-compare-grid",
+            ".p-canvas-guide",
+            ".p-image-more",
+            ".l-toolbar-menu",
+            ".l-capture-fields",
+            ".w-canvas-empty",
+            ".w-empty-mark",
+            ".r1-canvas-empty"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/styles/creative/chat.css",
+      "retainedDependencies": [
+        {
+          "selector": ".p-chat",
+          "conditions": [],
+          "properties": [
+            "flex-shrink",
+            "background",
+            "display",
+            "flex-direction",
+            "border-right",
+            "min-height"
+          ],
+          "dependsOn": [
+            ".p-chat-header",
+            ".p-chat-body",
+            ".p-question-options",
+            ".p-chat-image",
+            ".p-chat-receipt",
+            ".p-console",
+            ".p-context-tag",
+            ".p-console-input"
+          ]
+        },
+        {
+          "selector": ".p-chat-header",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "justify-content"
+          ],
+          "dependsOn": [
+            ".p-question-options",
+            ".p-chat-image",
+            ".p-chat-receipt",
+            ".p-context-tag",
+            ".p-console-bottom",
+            ".p-capsules"
+          ]
+        },
+        {
+          "selector": ".p-chat-header h2",
+          "conditions": [],
+          "properties": [
+            "display",
+            "gap",
+            "align-items"
+          ],
+          "dependsOn": [
+            ".p-agent-message>span",
+            ".p-adjust-receipt>div"
+          ]
+        },
+        {
+          "selector": ".p-chat-body",
+          "conditions": [],
+          "properties": [
+            "flex",
+            "padding",
+            "min-height",
+            "overflow-y",
+            "scrollbar-width"
+          ],
+          "dependsOn": [
+            ".p-chat-bubble",
+            ".p-question",
+            ".p-chat-image",
+            ".p-adjust-receipt",
+            ".p-console-bottom",
+            ".p-capsules",
+            ".p-chat-header",
+            ".p-agent-avatar"
+          ]
+        },
+        {
+          "selector": ".p-chat-bubble",
+          "conditions": [],
+          "properties": [
+            "padding",
+            "margin",
+            "font-size",
+            "line-height"
+          ],
+          "dependsOn": [
+            ".p-agent-message",
+            ".p-question",
+            ".p-question-options",
+            ".p-chat-image",
+            ".p-chat-receipt",
+            ".p-adjust-receipt",
+            ".p-context-tag",
+            ".p-console-bottom"
+          ]
+        },
+        {
+          "selector": ".p-agent-message",
+          "conditions": [],
+          "properties": [
+            "font-size",
+            "line-height",
+            "margin-bottom"
+          ],
+          "dependsOn": [
+            ".p-question",
+            ".p-question-options",
+            ".p-chat-image",
+            ".p-chat-receipt",
+            ".p-adjust-receipt",
+            ".p-context-tag"
+          ]
+        },
+        {
+          "selector": ".p-agent-message>span",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "color",
+            "font-size",
+            "margin-bottom"
+          ],
+          "dependsOn": [
+            ".p-question-options button",
+            ".p-chat-image span",
+            ".p-adjust-receipt p",
+            ".p-adjust-receipt>div",
+            ".p-capsules button",
+            ".p-chat-header h2"
+          ]
+        },
+        {
+          "selector": ".p-question",
+          "conditions": [],
+          "properties": [
+            "padding",
+            "margin-bottom"
+          ],
+          "dependsOn": [
+            ".p-question-options",
+            ".p-chat-image",
+            ".p-chat-receipt",
+            ".p-adjust-receipt",
+            ".p-context-tag",
+            ".p-console-bottom",
+            ".p-chat-header"
+          ]
+        },
+        {
+          "selector": ".p-chat-receipt",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "gap",
+            "font-size",
+            "color",
+            "margin-bottom"
+          ],
+          "dependsOn": [
+            ".p-adjust-receipt",
+            ".p-context-tag",
+            ".p-console-bottom",
+            ".p-capsules",
+            ".p-agent-avatar",
+            ".p-chat-bubble"
+          ]
+        },
+        {
+          "selector": ".p-adjust-receipt",
+          "conditions": [],
+          "properties": [
+            "padding",
+            "margin-bottom"
+          ],
+          "dependsOn": [
+            ".p-context-tag",
+            ".p-console-bottom",
+            ".p-chat-header"
+          ]
+        },
+        {
+          "selector": ".p-console",
+          "conditions": [],
+          "properties": [
+            "border-top",
+            "background"
+          ],
+          "dependsOn": [
+            ".p-console-input",
+            ".p-agent-avatar",
+            ".p-chat-bubble",
+            ".p-agent-message",
+            ".p-question",
+            ".p-adjust-receipt",
+            ".p-chat-receipt"
+          ]
+        },
+        {
+          "selector": ".p-context-tag",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "gap",
+            "font-size",
+            "color",
+            "margin"
+          ],
+          "dependsOn": [
+            ".p-console-bottom",
+            ".p-capsules",
+            ".p-agent-avatar",
+            ".p-chat-bubble",
+            ".p-system-message",
+            ".p-composer-context"
+          ]
+        },
+        {
+          "selector": ".p-console-input",
+          "conditions": [],
+          "properties": [
+            "border",
+            "background"
+          ],
+          "dependsOn": [
+            ".p-agent-avatar",
+            ".p-chat-bubble",
+            ".p-agent-message",
+            ".p-question",
+            ".p-adjust-receipt",
+            ".p-chat-receipt"
+          ]
+        },
+        {
+          "selector": ".p-console-input textarea",
+          "conditions": [],
+          "properties": [
+            "resize",
+            "border",
+            "box-shadow",
+            "background"
+          ],
+          "dependsOn": [
+            ".p-capsules button"
+          ]
+        },
+        {
+          "selector": ".p-chat",
+          "conditions": [
+            {
+              "name": "media",
+              "params": "(max-width:760px)"
+            }
+          ],
+          "properties": [
+            "position",
+            "inset",
+            "z-index",
+            "box-shadow"
+          ],
+          "dependsOn": [
+            ".p-console-input",
+            ".w-swatch",
+            ".w-variant-row input:not([type=file])",
+            ".w-check-thumb"
+          ]
+        },
+        {
+          "selector": ".w-task-entries",
+          "conditions": [],
+          "properties": [
+            "display",
+            "flex-direction"
+          ],
+          "dependsOn": [
+            ".w-task-switch",
+            ".w-card-heading",
+            ".w-pack-selected",
+            ".w-pack-options",
+            ".w-variant-list",
+            ".w-swatch",
+            ".w-upload-ref",
+            ".w-slot-list"
+          ]
+        },
+        {
+          "selector": ".w-task-entries button",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "border",
+            "border-radius",
+            "text-align",
+            "cursor",
+            "transition"
+          ],
+          "dependsOn": [
+            ".w-task-entries strong",
+            ".w-task-entries small",
+            ".w-card h3",
+            ".w-pack-selected img",
+            ".w-pack-options img",
+            ".w-pack-selected strong",
+            ".w-pack-options strong",
+            ".w-pack-selected small"
+          ]
+        },
+        {
+          "selector": ".w-task-entries small",
+          "conditions": [],
+          "properties": [
+            "display",
+            "font-size",
+            "color",
+            "margin-top"
+          ],
+          "dependsOn": [
+            ".w-task-switch button",
+            ".w-card h3",
+            ".w-card>p",
+            ".w-card>button",
+            ".w-card-heading>span",
+            ".w-card-heading>strong",
+            ".w-pack-selected strong",
+            ".w-pack-options strong"
+          ]
+        },
+        {
+          "selector": ".w-card",
+          "conditions": [],
+          "properties": [
+            "border",
+            "border-radius",
+            "background",
+            "font-size"
+          ],
+          "dependsOn": [
+            ".w-swatch",
+            ".w-variant-row input:not([type=file])",
+            ".w-upload-ref",
+            ".w-success",
+            ".w-attention",
+            ".w-check-row"
+          ]
+        },
+        {
+          "selector": ".w-card>p",
+          "conditions": [],
+          "properties": [
+            "font-size",
+            "color",
+            "line-height"
+          ],
+          "dependsOn": [
+            ".w-card-heading>span",
+            ".w-card-heading>strong",
+            ".w-pack-selected strong",
+            ".w-pack-options strong",
+            ".w-pack-selected small",
+            ".w-pack-options small",
+            ".w-variant-row input:not([type=file])",
+            ".w-slot-list span"
+          ]
+        },
+        {
+          "selector": ".w-card-heading",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "justify-content",
+            "gap"
+          ],
+          "dependsOn": [
+            ".w-pack-selected",
+            ".w-pack-options",
+            ".w-variant-list",
+            ".w-swatch",
+            ".w-upload-ref",
+            ".w-slot-list",
+            ".w-generate-row",
+            ".w-success"
+          ]
+        },
+        {
+          "selector": ".w-pack-selected img",
+          "conditions": [],
+          "properties": [
+            "border-radius",
+            "object-fit"
+          ],
+          "dependsOn": [
+            ".w-pack-options img",
+            ".w-pack-options>button",
+            ".w-swatch img",
+            ".w-slot-list button",
+            ".w-slot-list img",
+            ".w-slot-list svg",
+            ".w-site-list button",
+            ".w-check-thumb img"
+          ]
+        },
+        {
+          "selector": ".w-pack-selected small",
+          "conditions": [],
+          "properties": [
+            "font-size",
+            "color",
+            "display"
+          ],
+          "dependsOn": [
+            ".w-pack-options small",
+            ".w-pack-options>button",
+            ".w-variant-row input:not([type=file])",
+            ".w-upload-ref input",
+            ".w-slot-list span",
+            ".w-slot-list svg",
+            ".w-generate-row>span",
+            ".w-generate-row small"
+          ]
+        },
+        {
+          "selector": ".w-variant-list",
+          "conditions": [],
+          "properties": [
+            "display",
+            "flex-direction"
+          ],
+          "dependsOn": [
+            ".w-swatch",
+            ".w-upload-ref",
+            ".w-slot-list",
+            ".w-generate-row",
+            ".w-success",
+            ".w-site-list",
+            ".w-check-row",
+            ".w-chat-quick-actions"
+          ]
+        },
+        {
+          "selector": ".w-slot-list",
+          "conditions": [],
+          "properties": [
+            "display",
+            "gap"
+          ],
+          "dependsOn": [
+            ".w-generate-row",
+            ".w-success",
+            ".w-site-list",
+            ".w-check-row",
+            ".w-chat-quick-actions",
+            ".w-task-entries",
+            ".w-variant-list",
+            ".w-variant-row"
+          ]
+        },
+        {
+          "selector": ".w-slot-list img",
+          "conditions": [],
+          "properties": [
+            "width",
+            "object-fit"
+          ],
+          "dependsOn": [
+            ".w-check-thumb img",
+            ".w-check-thumb i",
+            ".w-pack-selected img",
+            ".w-variant-row>input"
+          ]
+        },
+        {
+          "selector": ".w-generate-row",
+          "conditions": [],
+          "properties": [
+            "display",
+            "justify-content",
+            "align-items",
+            "gap"
+          ],
+          "dependsOn": [
+            ".w-success",
+            ".w-site-list",
+            ".w-check-row",
+            ".w-chat-quick-actions",
+            ".w-task-entries",
+            ".w-variant-list",
+            ".w-variant-row"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/styles/creative/gallery.css",
+      "retainedDependencies": [
+        {
+          "selector": ".p-gallery",
+          "conditions": [],
+          "properties": [
+            "margin",
+            "padding"
+          ],
+          "dependsOn": [
+            ".p-gallery-header",
+            ".p-gallery-toolbar",
+            ".p-filter-group",
+            ".p-gallery"
+          ]
+        },
+        {
+          "selector": ".p-sku-card>strong",
+          "conditions": [],
+          "properties": [
+            "display",
+            "margin-top"
+          ],
+          "dependsOn": [
+            ".p-sku-card>p"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/styles/creative/home.css",
+      "retainedDependencies": [
+        {
+          "selector": ".p-home",
+          "conditions": [],
+          "properties": [
+            "margin"
+          ],
+          "dependsOn": [
+            ".p-home-input",
+            ".p-recent-heading"
+          ]
+        },
+        {
+          "selector": ".p-home-heading",
+          "conditions": [],
+          "properties": [
+            "text-align"
+          ],
+          "dependsOn": [
+            ".p-template-card"
+          ]
+        },
+        {
+          "selector": ".p-home-input",
+          "conditions": [],
+          "properties": [
+            "margin",
+            "border"
+          ],
+          "dependsOn": [
+            ".p-recent-heading",
+            ".p-template-card",
+            ".p-recent-item",
+            ".p-home-heading",
+            ".p-intent-row",
+            ".p-home-input",
+            ".p-tab-hint",
+            ".p-home-footnote"
+          ]
+        },
+        {
+          "selector": ".p-home-input",
+          "conditions": [],
+          "properties": [
+            "width",
+            "max-width",
+            "border-radius",
+            "padding",
+            "background",
+            "box-shadow",
+            "transition"
+          ],
+          "dependsOn": [
+            ".p-tab-hint",
+            ".p-template-card",
+            ".p-template-image",
+            ".p-template-cta",
+            ".p-template-caption",
+            ".p-recent-item",
+            ".p-home",
+            ".p-home-hero"
+          ]
+        },
+        {
+          "selector": ".p-home-input textarea",
+          "conditions": [],
+          "properties": [
+            "width",
+            "resize",
+            "background",
+            "border",
+            "box-shadow"
+          ],
+          "dependsOn": [
+            ".p-template-card img",
+            ".p-recent-item img",
+            ".p-home::before",
+            ".p-home::after",
+            ".p-eyebrow>span"
+          ]
+        },
+        {
+          "selector": ".p-template-heading",
+          "conditions": [],
+          "properties": [
+            "display",
+            "justify-content"
+          ],
+          "dependsOn": [
+            ".p-recent-heading",
+            ".p-template-grid",
+            ".p-recent-row",
+            ".p-recent-item",
+            ".p-home-hero",
+            ".p-intent-row",
+            ".p-home-footnote"
+          ]
+        },
+        {
+          "selector": ".p-recent-heading",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "justify-content",
+            "margin"
+          ],
+          "dependsOn": [
+            ".p-template-grid",
+            ".p-recent-row",
+            ".p-recent-item",
+            ".p-home-hero",
+            ".p-home-heading",
+            ".p-intent-row",
+            ".p-home-footnote",
+            ".p-template-heading"
+          ]
+        },
+        {
+          "selector": ".p-template-grid",
+          "conditions": [],
+          "properties": [
+            "display",
+            "grid-template-columns"
+          ],
+          "dependsOn": [
+            ".p-recent-row",
+            ".p-recent-item",
+            ".p-template-grid",
+            ".p-home-hero",
+            ".p-intent-row",
+            ".p-home-footnote"
+          ]
+        },
+        {
+          "selector": ".p-template-card",
+          "conditions": [],
+          "properties": [
+            "border",
+            "text-align",
+            "padding"
+          ],
+          "dependsOn": [
+            ".p-recent-item",
+            ".p-home",
+            ".p-home-hero",
+            ".p-home-input",
+            ".p-tab-hint"
+          ]
+        },
+        {
+          "selector": ".p-template-card p",
+          "conditions": [],
+          "properties": [
+            "color",
+            "margin-top"
+          ],
+          "dependsOn": [
+            ".p-recent-item span",
+            ".p-home-heading h1",
+            ".p-home-heading p",
+            ".p-home-footnote>span",
+            ".p-template-caption>span",
+            ".p-template-card strong"
+          ]
+        },
+        {
+          "selector": ".p-recent-row",
+          "conditions": [],
+          "properties": [
+            "display",
+            "grid-template-columns"
+          ],
+          "dependsOn": [
+            ".p-recent-item",
+            ".p-template-grid",
+            ".p-recent-row",
+            ".p-home-hero",
+            ".p-intent-row",
+            ".p-home-footnote",
+            ".p-template-cta"
+          ]
+        },
+        {
+          "selector": ".p-recent-item",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "gap",
+            "border"
+          ],
+          "dependsOn": [
+            ".p-home-hero",
+            ".p-intent-row",
+            ".p-home-input",
+            ".p-tab-hint",
+            ".p-home-footnote",
+            ".p-template-heading",
+            ".p-template-grid",
+            ".p-template-card"
+          ]
+        },
+        {
+          "selector": ".p-recent-item strong",
+          "conditions": [],
+          "properties": [
+            "display",
+            "font-weight"
+          ],
+          "dependsOn": [
+            ".p-home-heading h1",
+            ".p-template-heading h2",
+            ".p-recent-heading h2",
+            ".p-template-card strong"
+          ]
+        },
+        {
+          "selector": ".p-template-grid",
+          "conditions": [
+            {
+              "name": "media",
+              "params": "(max-width:760px)"
+            }
+          ],
+          "properties": [
+            "grid-template-columns"
+          ],
+          "dependsOn": [
+            ".p-recent-row"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/styles/creative/layout.css",
+      "retainedDependencies": [
+        {
+          "selector": ".p-topbar",
+          "conditions": [],
+          "properties": [
+            "height",
+            "padding",
+            "display",
+            "align-items",
+            "gap",
+            "border-bottom",
+            "position",
+            "z-index"
+          ],
+          "dependsOn": [
+            ".p-logo",
+            ".p-topbar-title",
+            ".p-topbar-end",
+            ".p-page-select",
+            ".p-avatar",
+            ".p-workspace",
+            ".p-product-sheet",
+            ".p-product-header"
+          ]
+        },
+        {
+          "selector": ".p-logo",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "gap",
+            "font-weight",
+            "margin-right",
+            "white-space"
+          ],
+          "dependsOn": [
+            ".p-topbar-title",
+            ".p-topbar-end",
+            ".p-avatar",
+            ".p-workspace",
+            ".p-product-sheet",
+            ".p-product-understanding",
+            ".p-understanding-ring",
+            ".p-carousel-controls"
+          ]
+        },
+        {
+          "selector": ".p-topbar-end",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "margin-left"
+          ],
+          "dependsOn": [
+            ".p-avatar",
+            ".p-workspace",
+            ".p-product-sheet",
+            ".p-product-understanding",
+            ".p-understanding-ring",
+            ".p-carousel-controls",
+            ".p-feature-lock",
+            ".p-feature-input"
+          ]
+        },
+        {
+          "selector": ".p-avatar",
+          "conditions": [],
+          "properties": [
+            "width",
+            "height",
+            "border-radius",
+            "color",
+            "display",
+            "place-items",
+            "font-size"
+          ],
+          "dependsOn": [
+            ".p-workspace",
+            ".p-product-sheet",
+            ".p-product-understanding",
+            ".p-understanding-ring",
+            ".p-product-carousel",
+            ".p-carousel-controls",
+            ".p-feature-lock",
+            ".p-feature-input"
+          ]
+        },
+        {
+          "selector": ".p-feature strong",
+          "conditions": [],
+          "properties": [
+            "display",
+            "align-items",
+            "gap",
+            "font-weight"
+          ],
+          "dependsOn": [
+            ".p-logo span",
+            ".p-topbar-title img"
+          ]
+        },
+        {
+          "selector": ".p-top-product-button",
+          "conditions": [],
+          "properties": [
+            "position"
+          ],
+          "dependsOn": [
+            ".p-understanding-badge",
+            ".p-mini-ring"
+          ]
+        },
+        {
+          "selector": ".p-topbar-end>button",
+          "conditions": [
+            {
+              "name": "media",
+              "params": "(max-width:760px)"
+            }
+          ],
+          "properties": [
+            "padding",
+            "font-size"
+          ],
+          "dependsOn": [
+            ".p-product-nav a",
+            ".p-product-nav button",
+            ".p-product-header h2",
+            ".p-feature strong"
+          ]
+        },
+        {
+          "selector": ".p-topbar-end",
+          "conditions": [
+            {
+              "name": "media",
+              "params": "(max-width:760px)"
+            }
+          ],
+          "properties": [
+            "gap"
+          ],
+          "dependsOn": [
+            ".r4-product-header-controls",
+            ".r4-product-category",
+            ".w-theme-segments",
+            ".t10-product-heading",
+            ".p-workspace-view-switch"
+          ]
+        },
+        {
+          "selector": ".p-topbar-title",
+          "conditions": [
+            {
+              "name": "media",
+              "params": "(max-width:760px)"
+            }
+          ],
+          "properties": [
+            "max-width"
+          ],
+          "dependsOn": [
+            ".r4-category-picker"
+          ]
+        },
+        {
+          "selector": ".p-topbar-title strong",
+          "conditions": [
+            {
+              "name": "media",
+              "params": "(max-width:760px)"
+            }
+          ],
+          "properties": [
+            "font-size"
+          ],
+          "dependsOn": [
+            ".r4-category-confirm h3",
+            ".p-workspace-view-switch button"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/styles/creative/library.css",
+      "retainedDependencies": [
+        {
+          "selector": ".l-mode-panel h3",
+          "conditions": [],
+          "properties": [
+            "font-size",
+            "font-weight",
+            "margin-bottom"
+          ],
+          "dependsOn": [
+            ".l-mode-panel small",
+            ".l-scene-feature h3",
+            ".l-scene-feature p",
+            ".l-library-heading h1",
+            ".l-library-heading p",
+            ".l-filter-sidebar>div",
+            ".l-filter-sidebar section",
+            ".l-filter-sidebar h3"
+          ]
+        },
+        {
+          "selector": ".l-mode-panel>button",
+          "conditions": [],
+          "properties": [
+            "display",
+            "justify-content",
+            "width",
+            "text-align",
+            "padding"
+          ],
+          "dependsOn": [
+            ".l-mode-panel strong",
+            ".l-mode-panel small",
+            ".l-scene-feature>img",
+            ".l-scene-feature>div",
+            ".l-scene-feature p",
+            ".l-filter-sidebar>div",
+            ".l-library-tabs button",
+            ".l-library-search input"
+          ]
+        },
+        {
+          "selector": ".l-mode-panel strong",
+          "conditions": [],
+          "properties": [
+            "display"
+          ],
+          "dependsOn": [
+            ".l-mode-panel small",
+            ".l-scene-feature>div",
+            ".l-scene-feature p",
+            ".l-filter-sidebar>div",
+            ".l-entry-caption>div",
+            ".l-entry-caption footer",
+            ".l-variable-options button",
+            ".l-prop-facts>div"
+          ]
+        },
+        {
+          "selector": ".l-mode-panel small",
+          "conditions": [],
+          "properties": [
+            "display"
+          ],
+          "dependsOn": [
+            ".l-scene-feature>div",
+            ".l-scene-feature p",
+            ".l-filter-sidebar>div",
+            ".l-entry-caption>div",
+            ".l-entry-caption footer",
+            ".l-variable-options button",
+            ".l-prop-facts>div",
+            ".l-photo-collection>span"
+          ]
+        },
+        {
+          "selector": ".l-mode-panel small",
+          "conditions": [],
+          "properties": [
+            "font-weight",
+            "color",
+            "margin-top"
+          ],
+          "dependsOn": [
+            ".l-section-heading h2",
+            ".l-scene-feature h3",
+            ".l-scene-feature p",
+            ".l-library-heading h1",
+            ".l-library-heading p",
+            ".l-filter-sidebar h3",
+            ".l-library-search>svg",
+            ".l-scope-row button"
+          ]
+        },
+        {
+          "selector": ".l-scene-feature",
+          "conditions": [],
+          "properties": [
+            "position",
+            "flex",
+            "aspect-ratio",
+            "border-radius",
+            "overflow",
+            "min-width",
+            "scroll-snap-align",
+            "text-align",
+            "color"
+          ],
+          "dependsOn": [
+            ".l-personal-note",
+            ".l-library-search",
+            ".l-entry-card",
+            ".l-entry-cover",
+            ".l-card-save",
+            ".l-visibility",
+            ".l-set-count",
+            ".l-snippet-preview"
+          ]
+        },
+        {
+          "selector": ".l-library-tabs",
+          "conditions": [],
+          "properties": [
+            "display",
+            "gap"
+          ],
+          "dependsOn": [
+            ".l-scope-row",
+            ".l-active-filters",
+            ".l-entry-grid",
+            ".l-card-save",
+            ".l-set-count",
+            ".l-empty-state",
+            ".l-library-detail",
+            ".l-product-card"
+          ]
+        },
+        {
+          "selector": ".l-coverage-line",
+          "conditions": [],
+          "properties": [
+            "color",
+            "line-height"
+          ],
+          "dependsOn": [
+            ".l-quick-hint",
+            ".l-product-foot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/styles/creative/tokens.css",
+      "retainedDependencies": []
+    }
+  ]
+}

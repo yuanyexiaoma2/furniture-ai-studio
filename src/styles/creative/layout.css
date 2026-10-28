@@ -1,41 +1,41 @@
-/* 创作空间 · layout。保持原有层叠结果；阶段 1 不修改视觉值。 */
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+/* 创作空间 · layout。阶段 2a：语义变量与经确认的视觉档位。 */
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-topbar { height: 62px; padding: 0 20px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--border); position: relative; z-index: 20; }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-logo { display: flex; align-items: center; gap: 10px; font-weight: 650; margin-right: 12px; white-space: nowrap; }
 .p-topbar-title { display: flex; align-items: center; gap: 9px; min-width: 0; }
-.p-topbar-title img { width: 32px; height: 32px; object-fit: cover; border-radius: 7px; }
-.p-topbar-title strong { font-size: 14px; white-space: nowrap; }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+.p-topbar-title img { width: 32px; height: 32px; object-fit: cover; border-radius: var(--radius-control); }
+.p-topbar-title strong { font-size: var(--text-body); white-space: nowrap; }
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-topbar-end { display: flex; align-items: center; margin-left: auto; }
-.p-page-select { width: 140px; height: 33px; background: var(--p-panel); border-color: var(--border); border-radius: 9px; font-size: 13px; }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
-.p-avatar { width: 30px; height: 30px; border-radius: 50%; color: var(--p-text); display: grid; place-items: center; font-size: 13px; }
+.p-page-select { width: 140px; height: 33px; background: var(--p-panel); border-color: var(--border); border-radius: var(--radius-control); font-size: var(--text-sm); }
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
+.p-avatar { width: 30px; height: 30px; border-radius: var(--radius-pill); color: var(--p-text); display: grid; place-items: center; font-size: var(--text-sm); }
 .p-workspace { height: calc(100dvh - 62px); display: flex; min-height: 650px; }
 .p-product-sheet { width: 450px !important; max-width: 95vw !important; padding: 0 !important; display: flex; flex-direction: column; gap: 0; background: var(--p-panel); }
 .p-product-header { padding: 23px 26px 18px; border-bottom: 1px solid var(--border); }
 .p-product-understanding { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
-.p-understanding-ring { width: 47px; height: 47px; display: grid; place-items: center; border-radius: 50%; background: conic-gradient(var(--p-selection) 71%,var(--border) 0); }
-.p-understanding-ring span { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 50%; background: var(--p-panel); font-size: 13px; }
+.p-understanding-ring { width: 47px; height: 47px; display: grid; place-items: center; border-radius: var(--radius-pill); background: conic-gradient(var(--p-selection) 71%,var(--border) 0); }
+.p-understanding-ring span { display: grid; place-items: center; width: 39px; height: 39px; border-radius: var(--radius-pill); background: var(--p-panel); font-size: var(--text-sm); }
 .p-product-content { padding: 22px 26px; overflow-y: auto; flex: 1; }
-.p-product-carousel { position: relative; border-radius: 12px; overflow: hidden; height: 230px; }
+.p-product-carousel { position: relative; border-radius: var(--radius-control); overflow: hidden; height: 230px; }
 .p-product-carousel>img { height: 100%; width: 100%; object-fit: cover; }
 .p-carousel-controls { position: absolute; left: 10px; right: 10px; bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
-.p-carousel-controls span { font-size: 13px; background: var(--p-glass); border-radius: 6px; padding: 3px 8px; }
+.p-carousel-controls span { font-size: var(--text-sm); background: var(--p-glass); border-radius: var(--radius-tag); padding: 3px 8px; }
 .p-carousel-controls button { background: var(--p-glass); color: var(--foreground); }
 .p-feature { border-bottom: 1px solid var(--border); padding: 17px 0; }
 .p-feature>div { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-feature strong { display: flex; align-items: center; gap: 7px; font-weight: 500; }
-.p-feature p { color: var(--p-text); font-size: 14px; margin: 6px 0; }
+.p-feature p { color: var(--p-text); font-size: var(--text-body); margin: 6px 0; }
 .p-feature .p-feature-actions { justify-content: flex-start; gap: 8px; margin-top: 8px; }
-.p-feature-actions button { height: 29px; font-size: 13px; }
-.p-feature-lock { display: flex; gap: 7px; align-items: center; color: var(--p-subtle); font-size: 13px; }
+.p-feature-actions button { height: 29px; font-size: var(--text-sm); }
+.p-feature-lock { display: flex; gap: 7px; align-items: center; color: var(--p-subtle); font-size: var(--text-sm); }
 .p-feature-input { margin-top: 8px; display: flex; gap: 6px; }
 .p-sheet-footer { padding: 18px 26px; border-top: 1px solid var(--border); background: var(--p-panel); }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-top-product-button { position: relative; }
-.p-understanding-badge { position: absolute; top: -6px; right: -7px; font-size: 13px; padding: 0 4px; border-radius: 5px; background: var(--secondary); color: var(--p-text); }
+.p-understanding-badge { position: absolute; top: -6px; right: -7px; font-size: var(--text-sm); padding: 0 4px; border-radius: var(--radius-tag); background: var(--secondary); color: var(--p-text); }
 @media (max-width:1100px) {
   .p-topbar { gap: 10px; padding-inline: 14px; }
 }
@@ -46,31 +46,33 @@
   .p-logo span { display: none; }
 }
 @media (max-width:760px) {
-  .p-topbar-title img, .p-logo { display: none; }
+  .p-topbar-title img { display: none; }
+}
+@media (max-width:760px) {
+  .p-logo { display: none; }
 }
 @media (max-width:760px) {
   .p-page-select { width: 110px; }
 }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 @media (max-width:760px) {
-  .p-topbar-end>button { padding: 5px 7px; font-size: 13px; }
+  .p-topbar-end>button { padding: 5px 7px; font-size: var(--text-sm); }
 }
 .p-product-nav { display: flex; align-items: center; gap: 30px; height: 100%; margin-left: 28px; }
-.p-product-nav a { font-size: 14px; color: var(--p-text); }
+.p-product-nav a { font-size: var(--text-body); color: var(--p-text); }
 .p-product-nav a.active { color: var(--foreground); font-weight: 600; }
-.p-product-nav button { font-size: 14px; color: var(--p-text); padding: 0; }
+.p-product-nav button { font-size: var(--text-body); color: var(--p-text); padding: 0; }
 .p-topbar { padding-inline: 32px; background: var(--background); }
-.p-logo { font-size: 16px; letter-spacing: -.3px; color: var(--foreground); }
-.p-logo svg { width: 24px; height: 24px; }
+.p-logo { font-size: var(--text-section); letter-spacing: -.3px; color: var(--foreground); }
 .p-topbar-end { gap: 14px; }
 .p-avatar { background: var(--secondary); border: 1px solid var(--border); }
-.p-mini-ring { width: 20px; height: 20px; border-radius: 50%; background: conic-gradient(var(--p-selection) 71%,var(--border) 0); position: relative; flex: none; }
-.p-mini-ring::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--p-panel); }
+.p-mini-ring { width: 20px; height: 20px; border-radius: var(--radius-pill); background: conic-gradient(var(--p-selection) 71%,var(--border) 0); position: relative; flex: none; }
+.p-mini-ring::after { content: ""; position: absolute; inset: 3px; border-radius: var(--radius-pill); background: var(--p-panel); }
 .p-top-product-button { gap: 8px !important; }
 .p-assets-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
 .p-assets-grid img { height: 150px; }
-.p-product-header h2 { font-size: 18px; }
-.p-feature strong { font-size: 15px; }
+.p-product-header h2 { font-size: var(--text-section); }
+.p-feature strong { font-size: var(--text-body); }
 @media (max-width:1200px) {
   .p-topbar { padding-inline: 20px; }
 }
@@ -84,34 +86,37 @@
   .p-product-nav { gap: 16px; margin-left: 0; }
 }
 @media (max-width:760px) {
-  .p-product-nav button, .p-product-nav a { font-size: 13px; }
+  .p-product-nav button { font-size: var(--text-sm); }
 }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+@media (max-width:760px) {
+  .p-product-nav a { font-size: var(--text-sm); }
+}
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 @media (max-width:760px) {
   .p-topbar-end { gap: 6px; }
 }
 @media (max-width:760px) {
   .p-topbar-end>button { display: none; }
 }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 @media (max-width:760px) {
   .p-topbar-title { max-width: 150px; }
 }
-/* TODO 待确认：此选择器的互补声明保留分段及层叠位置。 */
+/* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 @media (max-width:760px) {
-  .p-topbar-title strong { font-size: 13px; }
+  .p-topbar-title strong { font-size: var(--text-sm); }
 }
-.r4-category-confirm h3 { font-size: 15px; font-weight: 500; line-height: 1.7; margin: 10px 0 6px; }
+.r4-category-confirm h3 { font-size: var(--text-body); font-weight: 500; line-height: 1.7; margin: 10px 0 6px; }
 .r4-category-picker { padding: 0; width: 300px; max-width: calc(100vw - 32px); overflow: hidden; }
 .r4-product-header-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
-.r4-product-category { font-size: 13px; height: 32px; border-radius: 999px; gap: 6px; padding: 0 10px; }
-.w-theme-segments { display: flex; gap: 3px; padding: 3px; border: 1px solid var(--border); border-radius: 999px; background: var(--p-panel); }
-.w-theme-segments button { display: grid; place-items: center; width: 30px; height: 28px; border-radius: 999px; color: var(--p-subtle); cursor: pointer; }
-.w-theme-segments button[aria-pressed=true] { color: var(--foreground); background: var(--secondary); box-shadow: 0 1px 3px #0000000a; }
+.r4-product-category { font-size: var(--text-sm); height: 32px; border-radius: var(--radius-pill); gap: 6px; padding: 0 10px; }
+.w-theme-segments { display: flex; gap: 3px; padding: 3px; border: 1px solid var(--border); border-radius: var(--radius-pill); background: var(--p-panel); }
+.w-theme-segments button { display: grid; place-items: center; width: 30px; height: 28px; border-radius: var(--radius-pill); color: var(--p-subtle); cursor: pointer; }
+.w-theme-segments button[aria-pressed=true] { color: var(--foreground); background: var(--secondary); box-shadow: 0 1px 3px var(--shadow-ink-4); }
 @media (max-width:760px) {
   .w-theme-segments button { width: 25px; }
 }
-.t10-profile-field { display: block; margin: 12px 0; font-size: 13px; }
+.t10-profile-field { display: block; margin: 12px 0; font-size: var(--text-sm); }
 .t10-profile-field>span { display: block; margin-bottom: 6px; color: var(--p-subtle); }
 .t10-product-heading { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
 .p-workspace-chat { display: contents; }
@@ -120,16 +125,19 @@
   .p-workspace { position: relative; padding-top: 44px; min-height: 0; }
 }
 @media (max-width:760px) {
-  .p-workspace-view-switch { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); z-index: 35; display: flex; gap: 3px; padding: 3px; border: 1px solid var(--border); border-radius: 999px; background: var(--p-panel); }
+  .p-workspace-view-switch { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); z-index: 35; display: flex; gap: 3px; padding: 3px; border: 1px solid var(--border); border-radius: var(--radius-pill); background: var(--p-panel); }
 }
 @media (max-width:760px) {
-  .p-workspace-view-switch button { padding: 3px 20px; border-radius: 999px; font-size: 12px; color: var(--p-subtle); }
+  .p-workspace-view-switch button { padding: 3px 20px; border-radius: var(--radius-pill); font-size: var(--text-xs); color: var(--p-subtle); }
 }
 @media (max-width:760px) {
   .p-workspace-view-switch button[aria-selected=true] { background: var(--secondary); color: var(--foreground); }
 }
 @media (max-width:760px) {
-  .p-topbar .w-theme-segments, .p-topbar .p-coming-brand { display: none; }
+  .p-topbar .w-theme-segments { display: none; }
+}
+@media (max-width:760px) {
+  .p-topbar .p-coming-brand { display: none; }
 }
 @media (max-width:760px) {
   .p-topbar-title { flex: 1; min-width: 0; }

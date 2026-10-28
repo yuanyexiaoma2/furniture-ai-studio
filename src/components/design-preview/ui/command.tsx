@@ -6,7 +6,7 @@ import {cn} from "@/lib/utils";
 // shadcn Command 组合：保留 cmdk 的搜索、方向键与 Enter 选择语义。
 export const Command=React.forwardRef<React.ElementRef<typeof CommandPrimitive>,React.ComponentPropsWithoutRef<typeof CommandPrimitive>>(({className,...props},ref)=><CommandPrimitive ref={ref} className={cn("p-command",className)} {...props}/>);
 Command.displayName="Command";
-export const CommandInput=React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>,React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>>(({className,...props},ref)=><div className="p-command-input-wrap"><Search size={16}/><CommandPrimitive.Input ref={ref} className={cn("p-command-input",className)} {...props}/></div>);
+export const CommandInput=React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>,React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>>(({className,...props},ref)=><div className="p-command-input-wrap"><Search size="sm"/><CommandPrimitive.Input ref={ref} className={cn("p-command-input",className)} {...props}/></div>);
 CommandInput.displayName="CommandInput";
 export const CommandList=React.forwardRef<React.ElementRef<typeof CommandPrimitive.List>,React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>>(({className,...props},ref)=><CommandPrimitive.List ref={ref} className={cn("p-command-list",className)} {...props}/>);
 CommandList.displayName="CommandList";

@@ -1,0 +1,2008 @@
+{
+  "baselineCommit": "99f3187",
+  "policy": "仅允许已登记签名及数量；常规lint:ui不会更新白名单。清理后应收紧对应条目。",
+  "allowances": [
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-badge\",\"background\",\"#ecece6\"]|#ecece6",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-badge\",\"color\",\"#6b7067\"]|#6b7067",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-badge.healthy\",\"background\",\"#e5eddf\"]|#e5eddf",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-badge.healthy\",\"color\",\"#355139\"]|#355139",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-stats span, .gateway-cost small\",\"color\",\"#777d72\"]|#777d72",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-cost\",\"border-top\",\"1px solid #e5e7dd\"]|#e5e7dd",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-cost\",\"border-bottom\",\"1px solid #e5e7dd\"]|#e5e7dd",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-route-list > div\",\"border-bottom\",\"1px solid #e5e7dd\"]|#e5e7dd",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-route-list li span\",\"color\",\"#6a7466\"]|#6a7466",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-route-list li small\",\"color\",\"#777d72\"]|#777d72",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-dialog-backdrop\",\"background\",\"#18211980\"]|#18211980",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".gateway-dialog\",\"background\",\"#fffef9\"]|#fffef9",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".fallback-label\",\"color\",\"#977139\"]|#977139",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".resolution-warning\",\"background\",\"#fff3cf\"]|#fff3cf",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".resolution-warning\",\"color\",\"#926717\"]|#926717",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".identity-snapshot\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".identity-snapshot summary\",\"color\",\"#586d4b\"]|#586d4b",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--background\",\"#f6f5f1\"]|#f6f5f1",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--foreground\",\"#292b27\"]|#292b27",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--card\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--card-foreground\",\"#292b27\"]|#292b27",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--popover\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--popover-foreground\",\"#292b27\"]|#292b27",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--primary\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--primary-foreground\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--secondary\",\"#eeeee7\"]|#eeeee7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--secondary-foreground\",\"#484e42\"]|#484e42",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--muted\",\"#efeee8\"]|#efeee8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--muted-foreground\",\"#7a7c72\"]|#7a7c72",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--accent\",\"#e9ece4\"]|#e9ece4",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--accent-foreground\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--destructive\",\"#b44932\"]|#b44932",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--border\",\"#e0e1d8\"]|#e0e1d8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--input\",\"#dedfd5\"]|#dedfd5",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\":root\",\"--ring\",\"#839678\"]|#839678",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\"[data-slot=\\\"input\\\"]\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".studio-header\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".brand-symbol\",\"background\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".brand-symbol\",\"color\",\"#f3f1e7\"]|#f3f1e7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".nav-link\",\"color\",\"#787b70\"]|#787b70",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".nav-link:hover\",\"color\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".nav-link:hover\",\"background\",\"#f6f7f1\"]|#f6f7f1",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".nav-link.active\",\"color\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".nav-link.active\",\"border-bottom-color\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".account-label span\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".account-label span\",\"color\",\"#84877a\"]|#84877a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".eyebrow\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".eyebrow\",\"color\",\"#7c8771\"]|#7c8771",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".title-dot\",\"color\",\"#98a585\"]|#98a585",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".intro-copy\",\"color\",\"#7a7c72\"]|#7a7c72",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".stage-badge\",\"background\",\"#edf0e6\"]|#edf0e6",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".stage-badge\",\"border-color\",\"#d8dfcc\"]|#d8dfcc",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".stage-badge\",\"color\",\"#5d6c4e\"]|#5d6c4e",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".status-dot\",\"background\",\"#7a8e64\"]|#7a8e64",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".panel-heading\",\"color\",\"#5f6756\"]|#5f6756",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".panel-heading h2\",\"color\",\"#343b2f\"]|#343b2f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".count-chip\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".count-chip\",\"background\",\"#eeeee7\"]|#eeeee7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".count-chip\",\"color\",\"#72786b\"]|#72786b",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".outline-square\",\"border\",\"1px solid #c2cdb7\"]|#c2cdb7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".square-back\",\"background\",\"#eff2e8\"]|#eff2e8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".square-front\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".square-front\",\"color\",\"#78866a\"]|#78866a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".illustration-dot\",\"background\",\"#b6c397\"]|#b6c397",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".empty-projects .eyebrow\",\"font-size\",\"9px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".empty-projects > p:not(.eyebrow)\",\"color\",\"#848679\"]|#848679",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".coming-note\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".coming-note\",\"color\",\"#8f9584\"]|#8f9584",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".workspace-note\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".workspace-note\",\"color\",\"#8b8f81\"]|#8b8f81",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".note-number\",\"color\",\"#b2b7a7\"]|#b2b7a7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".studio-footer\",\"color\",\"#a1a493\"]|#a1a493",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".studio-footer\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".login-story\",\"background\",\"#e5e7db\"]|#e5e7db",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".login-story-center h1 span\",\"color\",\"#92a279\"]|#92a279",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".login-story-center > p:not(.eyebrow)\",\"color\",\"#858b77\"]|#858b77",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".story-footer\",\"font-size\",\"9px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".story-footer\",\"color\",\"#929984\"]|#929984",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".art-wall\",\"border\",\"1px solid #bac5a7\"]|#bac5a7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".art-plinth\",\"background\",\"#c9d0b9\"]|#c9d0b9",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".art-plinth\",\"border-top\",\"6px solid #d6ddc8\"]|#d6ddc8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".art-chair i\",\"background\",\"#6d795d\"]|#6d795d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".art-chair i\",\"box-shadow\",\"inset -10px 0 #647151\"]|#647151",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".art-chair b\",\"background\",\"#778565\"]|#778565",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".art-chair span\",\"background\",\"#8d7e63\"]|#8d7e63",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".art-chair span\",\"box-shadow\",\"75px 0 #8d7e63\"]|#8d7e63",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".art-floor\",\"background\",\"#bdc7ac\"]|#bdc7ac",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".login-form-panel\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".login-description\",\"color\",\"#888c7d\"]|#888c7d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".login-help\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".login-help\",\"color\",\"#979b8b\"]|#979b8b",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".login-version\",\"font-size\",\"9px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".login-version\",\"color\",\"#a6ab9a\"]|#a6ab9a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".placeholder-panel\",\"color\",\"#6d795e\"]|#6d795e",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".placeholder-panel h1, .placeholder-panel h2\",\"color\",\"#353d2f\"]|#353d2f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".placeholder-panel p\",\"color\",\"#969b8a\"]|#969b8a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".admin-overview-card\",\"color\",\"#6e7a5e\"]|#6e7a5e",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".admin-overview-card h2\",\"color\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".admin-overview-card p\",\"color\",\"#898f7d\"]|#898f7d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".muted-card\",\"background\",\"#f0f1e9\"]|#f0f1e9",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".studio-select\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".studio-select\",\"color\",\"#536048\"]|#536048",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".user-avatar\",\"background\",\"#e8ece0\"]|#e8ece0",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".user-avatar\",\"color\",\"#6c7b58\"]|#6c7b58",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".user-info span\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".user-info span\",\"color\",\"#8b927f\"]|#8b927f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".user-meta\",\"font-size\",\"9px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".user-meta\",\"color\",\"#9b9f91\"]|#9b9f91",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".user-row-actions > .studio-select\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".password-details\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".password-details summary\",\"color\",\"#748465\"]|#748465",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".form-notice, .row-notice\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".form-notice, .row-notice\",\"color\",\"#647b4f\"]|#647b4f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".field-hint\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".field-hint\",\"color\",\"#808777\"]|#808777",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".studio-textarea\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".new-product > summary\",\"color\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".product-list-item:hover\",\"background\",\"#f1f3e9\"]|#f1f3e9",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".product-symbol\",\"background\",\"#e9eddf\"]|#e9eddf",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".product-symbol\",\"color\",\"#768365\"]|#768365",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".product-sku\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".product-sku\",\"color\",\"#859175\"]|#859175",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".product-open\",\"color\",\"#69795a\"]|#69795a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".back-link\",\"color\",\"#7b856e\"]|#7b856e",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-grid img\",\"background\",\"#f0f0e9\"]|#f0f0e9",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-grid figcaption\",\"color\",\"#838e74\"]|#838e74",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-grid figcaption\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-empty\",\"border\",\"1px dashed #cbd4be\"]|#cbd4be",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-empty\",\"color\",\"#91a07d\"]|#91a07d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".upload-form input\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".upload-form input::file-selector-button\",\"border\",\"1px solid #d2dac6\"]|#d2dac6",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".upload-form input::file-selector-button\",\"background\",\"#edf1e5\"]|#edf1e5",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".upload-form input::file-selector-button\",\"color\",\"#5c6b4b\"]|#5c6b4b",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".scene-form > label, .aspect-options legend\",\"color\",\"#414d3a\"]|#414d3a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".scene-form textarea\",\"background\",\"#fafaf5\"]|#fafaf5",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".scene-form textarea::placeholder\",\"color\",\"#9b9e90\"]|#9b9e90",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".aspect-options span\",\"color\",\"#7a8271\"]|#7a8271",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".aspect-options input:checked + span\",\"background\",\"#eaf0e2\"]|#eaf0e2",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".aspect-options input:checked + span\",\"border-color\",\"#8e9f79\"]|#8e9f79",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".aspect-options input:checked + span\",\"color\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-spec\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-spec\",\"color\",\"#7b856f\"]|#7b856f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-spec strong\",\"color\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-spec small\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-spec small\",\"color\",\"#929a87\"]|#929a87",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".scene-action > span\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".scene-action > span\",\"color\",\"#869078\"]|#869078",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".history-count\",\"color\",\"#99a18c\"]|#99a18c",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".history-empty\",\"color\",\"#839274\"]|#839274",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".history-empty p\",\"color\",\"#637355\"]|#637355",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".history-empty span, .history-footnote\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".history-empty span, .history-footnote\",\"color\",\"#959d8b\"]|#959d8b",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".history-warning\",\"color\",\"#b44932\"]|#b44932",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-preview\",\"background\",\"#eff1e8\"]|#eff1e8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-placeholder\",\"color\",\"#8b9a79\"]|#8b9a79",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".job-status\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".job-status\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".job-status\",\"color\",\"#717a65\"]|#717a65",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".job-success\",\"color\",\"#3b6443\"]|#3b6443",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".job-success\",\"background\",\"#eaf0e2\"]|#eaf0e2",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".job-failed\",\"color\",\"#b44932\"]|#b44932",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".job-failed\",\"background\",\"#fbede7\"]|#fbede7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-details\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-details\",\"color\",\"#89917e\"]|#89917e",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-intent\",\"color\",\"#414d3a\"]|#414d3a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".job-error\",\"color\",\"#b44932\"]|#b44932",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".generation-download\",\"color\",\"#4f6940\"]|#4f6940",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".photo-drop-active\",\"border-color\",\"#839c6d\"]|#839c6d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".photo-drop-active\",\"box-shadow\",\"0 0 0 3px #dfe9d3\"]|#dfe9d3",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".photo-dropzone\",\"border\",\"1px dashed #c2cfb3\"]|#c2cfb3",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".photo-dropzone\",\"background\",\"#f3f6ed\"]|#f3f6ed",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".photo-dropzone\",\"color\",\"#81916f\"]|#81916f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".photo-dropzone strong\",\"color\",\"#5d704d\"]|#5d704d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".photo-dropzone span\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".photo-dropzone span\",\"color\",\"#98a18c\"]|#98a18c",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".photo-dropzone:not(:disabled):hover\",\"background\",\"#edf2e4\"]|#edf2e4",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-drag-target\",\"border-color\",\"#90a37a\"]|#90a37a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-drag-target\",\"background\",\"#eaf0df\"]|#eaf0df",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-delete\",\"border\",\"1px solid #e2e5d9\"]|#e2e5d9",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-delete\",\"background\",\"#fffefae8\"]|#fffefae8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-delete\",\"color\",\"#69785b\"]|#69785b",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-delete:hover\",\"background\",\"#fbede7\"]|#fbede7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-delete:hover\",\"color\",\"#b44932\"]|#b44932",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".reference-move button\",\"color\",\"#81916f\"]|#81916f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".resolution-options legend\",\"color\",\"#414d3a\"]|#414d3a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".resolution-options span\",\"color\",\"#7a8271\"]|#7a8271",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".resolution-options small\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".resolution-options input:checked + span\",\"background\",\"#eaf0e2\"]|#eaf0e2",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".resolution-options input:checked + span\",\"border-color\",\"#8e9f79\"]|#8e9f79",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".resolution-options input:checked + span\",\"color\",\"#3b493d\"]|#3b493d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".edit-panel\",\"border-color\",\"#c3d0b7\"]|#c3d0b7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".edit-panel .panel-heading\",\"background\",\"#f0f4e9\"]|#f0f4e9",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".edit-source img\",\"background\",\"#eff1e8\"]|#eff1e8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".edit-source strong\",\"color\",\"#516541\"]|#516541",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".edit-source p\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".edit-source p\",\"color\",\"#879679\"]|#879679",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".edit-version-label\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".edit-version-label\",\"color\",\"#6d8758\"]|#6d8758",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".not-found > p\",\"color\",\"#898f7d\"]|#898f7d",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".intro-copy\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".stage-badge\",\"font-size\",\"9px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".studio-footer\",\"font-size\",\"8px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".workspace-note\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-slot-heading > span:last-child\",\"color\",\"#69746b\"]|#69746b",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-number\",\"color\",\"#718473\"]|#718473",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-slot-editor label\",\"color\",\"#5c685e\"]|#5c685e",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-slot-editor input,.pack-slot-editor select,.pack-slot-editor textarea\",\"border\",\"1px solid #d8ded7\"]|#d8ded7",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-slot-editor input,.pack-slot-editor select,.pack-slot-editor textarea\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-slot-editor input,.pack-slot-editor select,.pack-slot-editor textarea\",\"color\",\"#233528\"]|#233528",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-slot-generate\",\"color\",\"#69746b\"]|#69746b",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-placeholder\",\"border\",\"1px dashed #ccd4c9\"]|#ccd4c9",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-placeholder\",\"color\",\"#75806f\"]|#75806f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-progress\",\"background\",\"#ecf0e8\"]|#ecf0e8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-progress span\",\"color\",\"#67735f\"]|#67735f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-progress progress\",\"accent-color\",\"#52674a\"]|#52674a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-final\",\"border\",\"2px solid #49734c\"]|#49734c",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-image\",\"background\",\"#edf0e8\"]|#edf0e8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-dialog\",\"border\",\"1px solid #d9ded3\"]|#d9ded3",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-dialog\",\"background\",\"#fffef8\"]|#fffef8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-dialog\",\"color\",\"#243627\"]|#243627",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-dialog\",\"box-shadow\",\"0 28px 100px #182a2433\"]|#182a2433",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".pack-dialog::backdrop\",\"background\",\"#14241dc0\"]|#14241dc0",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-mode-bar\",\"background\",\"#e9ede3\"]|#e9ede3",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-mode-bar\",\"border\",\"1px solid #d6ddcf\"]|#d6ddcf",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-mode-toggle button[aria-pressed=true]\",\"background\",\"#243b2e\"]|#243b2e",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-mode-toggle button[aria-pressed=true]\",\"color\",\"#fffdf5\"]|#fffdf5",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-mode-bar small, .agent-session-cost small\",\"color\",\"#66735f\"]|#66735f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-mode-bar small, .agent-session-cost small\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-heading strong\",\"color\",\"#405d39\"]|#405d39",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-heading small\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-panel>progress\",\"accent-color\",\"#567344\"]|#567344",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-uncertainty\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-uncertainty\",\"color\",\"#797361\"]|#797361",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-materials\",\"border\",\"1px dashed #b8c2ac\"]|#b8c2ac",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-materials\",\"background\",\"#f4f5ec\"]|#f4f5ec",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-upload-label input\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-upload-label small\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-upload-label small\",\"color\",\"#7a806f\"]|#7a806f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-document\",\"border-top\",\"1px solid #dde2d3\"]|#dde2d3",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-document\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-document small\",\"color\",\"#7b826f\"]|#7b826f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-document small\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-document select\",\"background\",\"#fffdf4\"]|#fffdf4",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-welcome\",\"color\",\"#72816b\"]|#72816b",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-message\",\"border-left\",\"2px solid #d2daca\"]|#d2daca",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-message\",\"background\",\"#f6f6ef\"]|#f6f6ef",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-message>span\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-message>span\",\"color\",\"#79836c\"]|#79836c",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-user\",\"background\",\"#eaf0e3\"]|#eaf0e3",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-user\",\"border-left-color\",\"#70865c\"]|#70865c",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-system\",\"color\",\"#8a8a78\"]|#8a8a78",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-system p\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card\",\"border\",\"1px solid #a6b596\"]|#a6b596",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card\",\"background\",\"#fffdf6\"]|#fffdf6",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card\",\"box-shadow\",\"0 3px 0 #dce4d0\"]|#dce4d0",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card .panel-heading span\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card .panel-heading span\",\"color\",\"#637b50\"]|#637b50",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card-receipt\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card-receipt\",\"border-bottom\",\"1px solid #e0e6d8\"]|#e0e6d8",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card-receipt\",\"color\",\"#6a7c5e\"]|#6a7c5e",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card input:not([type=checkbox]), .agent-card textarea, .agent-card select\",\"border\",\"1px solid #d8dfce\"]|#d8dfce",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-card input:not([type=checkbox]), .agent-card textarea, .agent-card select\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-profile-fields small\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-profile-fields small\",\"color\",\"#7b806f\"]|#7b806f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-proposal-slot\",\"border-top\",\"1px solid #e0e4d6\"]|#e0e4d6",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-proposal-slot small\",\"color\",\"#77816c\"]|#77816c",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-proposal-slot small\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-question-options button\",\"border\",\"1px solid #ccd6bf\"]|#ccd6bf",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-question-options button\",\"background\",\"#f5f7f0\"]|#f5f7f0",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-question-options .selected\",\"background\",\"#dce6d1\"]|#dce6d1",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-question-options .selected\",\"border-color\",\"#6f875a\"]|#6f875a",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-cost\",\"color\",\"#395332\"]|#395332",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-composer\",\"border-top\",\"1px solid #dbe1d2\"]|#dbe1d2",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-composer textarea\",\"background\",\"#fffefa\"]|#fffefa",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-composer textarea\",\"border\",\"1px solid #c8d2bc\"]|#c8d2bc",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-composer button\",\"font-size\",\"11px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-reference\",\"background\",\"#edf2e6\"]|#edf2e6",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-progress\",\"color\",\"#5d7c43\"]|#5d7c43",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "small-font",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-tool-history\",\"font-size\",\"10px\"]",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-tool-history\",\"color\",\"#7d846f\"]|#7d846f",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/app/globals.css",
+      "signature": "[\".agent-parent\",\"color\",\"#638146\"]|#638146",
+      "count": 1,
+      "reason": "旧视觉存量，2b迁移；禁止同签名新增次数"
+    },
+    {
+      "rule": "hex",
+      "file": "src/components/design-preview/batch/brand.tsx",
+      "signature": "#B69772",
+      "count": 1,
+      "reason": "商品或品牌数据，不是界面样式；保留原数据色值"
+    },
+    {
+      "rule": "hex",
+      "file": "src/components/design-preview/batch/workflow.tsx",
+      "signature": "#d8cbbb",
+      "count": 2,
+      "reason": "商品或品牌数据，不是界面样式；保留原数据色值"
+    },
+    {
+      "rule": "hex",
+      "file": "src/components/design-preview/task-cover.tsx",
+      "signature": "#E8DECC",
+      "count": 1,
+      "reason": "商品或品牌数据，不是界面样式；保留原数据色值"
+    },
+    {
+      "rule": "hex",
+      "file": "src/components/design-preview/task-cover.tsx",
+      "signature": "#919D9A",
+      "count": 1,
+      "reason": "商品或品牌数据，不是界面样式；保留原数据色值"
+    },
+    {
+      "rule": "hex",
+      "file": "src/components/design-preview/task-cover.tsx",
+      "signature": "#B37F58",
+      "count": 1,
+      "reason": "商品或品牌数据，不是界面样式；保留原数据色值"
+    }
+  ]
+}

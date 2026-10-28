@@ -1,7 +1,7 @@
 "use client";
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { Plus, LoaderCircle } from "@/components/icons/concept-icons";
+import {Plus,LoaderCircle} from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { ProductFields, productFormValues } from "@/components/product-fields";
 
@@ -19,5 +19,5 @@ export function ProductCreate() {
     } catch (error) { setError(error instanceof Error ? error.message : "创建失败，请重试"); }
     finally { setPending(false); }
   }
-  return <details className="workspace-panel new-product"><summary><Plus size={18} /><span>新建商品</span><span className="field-hint">从真实产品开始</span></summary><form onSubmit={create} className="product-form"><ProductFields disabled={pending} /><p role="alert" className="error-notice form-notice">{error}</p><Button type="submit" disabled={pending}>{pending && <LoaderCircle className="animate-spin" />}{pending ? "正在创建" : "创建商品"}</Button></form></details>;
+  return <details className="workspace-panel new-product"><summary><Plus size="sm" /><span>新建商品</span><span className="field-hint">从真实产品开始</span></summary><form onSubmit={create} className="product-form"><ProductFields disabled={pending} /><p role="alert" className="error-notice form-notice">{error}</p><Button type="submit" disabled={pending}>{pending && <LoaderCircle className="animate-spin" />}{pending ? "正在创建" : "创建商品"}</Button></form></details>;
 }

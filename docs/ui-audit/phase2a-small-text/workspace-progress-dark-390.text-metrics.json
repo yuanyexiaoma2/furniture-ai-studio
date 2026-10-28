@@ -1,0 +1,67 @@
+[
+  {
+    "tag": "SMALL",
+    "classes": "",
+    "text": "已完成",
+    "fontSize": "12px",
+    "clientWidth": 36,
+    "scrollWidth": 36,
+    "left": 290,
+    "right": 326,
+    "viewport": 390,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  },
+  {
+    "tag": "SMALL",
+    "classes": "",
+    "text": "候选已就绪",
+    "fontSize": "12px",
+    "clientWidth": 60,
+    "scrollWidth": 60,
+    "left": 290,
+    "right": 350,
+    "viewport": 390,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  },
+  {
+    "tag": "P",
+    "classes": "t11-awaiting",
+    "text": "下一步等待你确认下方卡片",
+    "fontSize": "12px",
+    "clientWidth": 311,
+    "scrollWidth": 311,
+    "left": 39,
+    "right": 350,
+    "viewport": 390,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  },
+  {
+    "tag": "DIV",
+    "classes": "t11-references",
+    "text": "本次引用 1 张\n候选 1\n×",
+    "fontSize": "12px",
+    "clientWidth": 357,
+    "scrollWidth": 357,
+    "left": 16,
+    "right": 373,
+    "viewport": 390,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  },
+  {
+    "tag": "SPAN",
+    "classes": "",
+    "text": "本次引用 1 张",
+    "fontSize": "12px",
+    "clientWidth": 357,
+    "scrollWidth": 357,
+    "left": 16,
+    "right": 373,
+    "viewport": 390,
+    "horizontalOverflow": false,
+    "outsideViewport": false
+  }
+]

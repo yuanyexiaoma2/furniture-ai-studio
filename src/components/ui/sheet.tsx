@@ -5,7 +5,7 @@ import { Dialog as SheetPrimitive } from "@base-ui/react/dialog"
 import { cn } from "cn"
 
 import { Button } from "@/components/ui/button"
-import { XIcon } from "@/components/icons/concept-icons"
+import {X} from "@/components/icons/concept-icons"
 
 function Sheet({ ...props }: SheetPrimitive.Root.Props) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />
@@ -70,7 +70,7 @@ function SheetContent({
               />
             }
           >
-            <XIcon
+            <X
             />
             <span className="sr-only">关闭抽屉</span>
           </SheetPrimitive.Close>

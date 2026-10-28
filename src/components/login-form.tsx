@@ -2,7 +2,7 @@
 import { useState, type FormEvent } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, LoaderCircle } from "@/components/icons/concept-icons";
+import {ArrowRight,LoaderCircle} from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -25,6 +25,6 @@ export function LoginForm({ destination }: { destination: string }) {
     <div className="space-y-2"><Label htmlFor="email">公司邮箱</Label><Input id="email" name="email" type="email" autoComplete="username" placeholder="你的公司邮箱" required maxLength={254} /></div>
     <div className="space-y-2"><Label htmlFor="password">密码</Label><Input id="password" name="password" type="password" autoComplete="current-password" placeholder="输入账号密码" required /></div>
     <p role="alert" className="text-sm text-destructive min-h-5">{error}</p>
-    <Button type="submit" className="w-full h-12 justify-between" disabled={pending}>{pending ? "正在登录" : "进入工作台"}{pending ? <LoaderCircle className="animate-spin" /> : <ArrowRight size={18} />}</Button>
+    <Button type="submit" className="w-full h-12 justify-between" disabled={pending}>{pending ? "正在登录" : "进入工作台"}{pending ? <LoaderCircle className="animate-spin" /> : <ArrowRight size="sm" />}</Button>
   </form>;
 }

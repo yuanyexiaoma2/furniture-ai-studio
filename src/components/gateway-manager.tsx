@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { RefreshCw, Radio, LoaderCircle } from "@/components/icons/concept-icons";
+import {RefreshCw,Radio,LoaderCircle} from "@/components/icons/concept-icons";
 import { Button } from "@/components/ui/button";
 import type { GatewayStatus } from "@/lib/gateway-status";
 type Provider = "kie" | "zenmux";
@@ -20,7 +20,7 @@ export function GatewayManager({ initial }: { initial: GatewayStatus }) {
   return <>
     <div className="page-intro"><div><p className="eyebrow">AI 服务管理</p><h1>网关状态<span className="title-dot">.</span></h1><p className="intro-copy">查看近 24 小时调用表现与费用，验证备用线路是否可用。</p></div><Button variant="outline" onClick={() => void refresh().catch(() => setError("状态更新失败，请稍后重试"))}><RefreshCw size={15} />刷新状态</Button></div>
     <div className="gateway-grid">{data.gateways.map(gateway => <section className="workspace-panel gateway-card" key={gateway.provider}>
-      <div className="panel-heading"><h2><Radio size={18} />{gateway.provider === "kie" ? "KIE" : "ZenMux"}</h2><span className={`gateway-badge ${gateway.configured && !gateway.open ? 'healthy' : ''}`}>{!gateway.configured ? "未配置" : gateway.open ? "已熔断" : "正常"}</span></div>
+      <div className="panel-heading"><h2><Radio size="sm" />{gateway.provider === "kie" ? "KIE" : "ZenMux"}</h2><span className={`gateway-badge ${gateway.configured && !gateway.open ? 'healthy' : ''}`}>{!gateway.configured ? "未配置" : gateway.open ? "已熔断" : "正常"}</span></div>
       <p className="field-hint">{gateway.provider === "kie" ? "原始积分换算为美元 · 异步生图" : "美元计费 · 同步生图"} · {gateway.configured ? "已配置密钥" : "填写服务端密钥并重启后启用"}</p>
       {gateway.open && <p className="history-warning">暂停至 {new Date(gateway.openUntil!).toLocaleTimeString("zh-CN")}，期间自动使用下一候选线路。</p>}
       <div className="gateway-stats"><div><strong>{gateway.calls}</strong><span>近 24 小时调用</span></div><div><strong>{gateway.successRate === null ? '—' : `${gateway.successRate}%`}</strong><span>已结束调用成功率</span></div><div><strong>{gateway.averageMs === null ? '—' : `${(gateway.averageMs / 1000).toFixed(1)} s`}</strong><span>平均耗时</span></div></div>

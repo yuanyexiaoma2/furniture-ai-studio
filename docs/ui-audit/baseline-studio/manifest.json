@@ -1,0 +1,492 @@
+{
+  "mode": "baseline",
+  "commit": "99f31870091f4a7270687b1c56440ce08c3be0be",
+  "capturedAt": "2026-10-28T08:30:19.644Z",
+  "productId": "cmvqffv200000bcv8bnmu03xt",
+  "sku": "NEW-MVQFFV1P",
+  "results": [
+    {
+      "name": "login-light-1440",
+      "url": "/login",
+      "status": 200,
+      "sha256": "60d3a5a74ee896a3588311842cee852280e66a11c500bd1e7171d76f57a11bb2",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "product-light-1440",
+      "url": "/products/cmvqffv200000bcv8bnmu03xt",
+      "status": 200,
+      "sha256": "e005b52eb13db7929db5df860085f3dce8249565b4ae573970a505258b748ef7",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "agent-light-1440",
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "713948a6d630308c4f79eeda0d426b807f4e05cd40fa8cc9697632e98be8dae8",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "admin-light-1440",
+      "url": "/admin",
+      "status": 200,
+      "sha256": "5c36fe39ed6b3e20b4103f26c8daa832a9b207eaa7bbb70484cbc2b2b5bc99db",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "users-light-1440",
+      "url": "/admin/users",
+      "status": 200,
+      "sha256": "a4681afeb6b0bcc7f83b6bc68a00c0fe441b459a9cd5b1333176cefb6b77aa5f",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "gateways-light-1440",
+      "url": "/admin/gateways",
+      "status": 200,
+      "sha256": "5cec2a9f593bd0a969ae31fe5a44facf6b40fa7eba64abb09f6a69818a06fcca",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "models-light-1440",
+      "url": "/admin/models",
+      "status": 200,
+      "sha256": "02a9a92e53a9ab3d37e27aec419d1697607abd3dde8dfad2b361f52865febd9b",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#fff",
+        "--primary": "#1f3a2e",
+        "--foreground": "#18181b"
+      }
+    },
+    {
+      "name": "templates-light-1440",
+      "url": "/templates",
+      "status": 200,
+      "sha256": "53a702fd74ee11ec4b8af54022ecb5dace2a085e37e13cbbdae20be13768e787",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "forbidden-light-1440",
+      "url": "/forbidden",
+      "status": 200,
+      "sha256": "5c3414a059de7d3b7b4b381cbcc23f280237f7b3040689b7d8f18d7a9d8963c1",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "login-dark-1440",
+      "url": "/login",
+      "status": 200,
+      "sha256": "60d3a5a74ee896a3588311842cee852280e66a11c500bd1e7171d76f57a11bb2",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "product-dark-1440",
+      "url": "/products/cmvqffv200000bcv8bnmu03xt",
+      "status": 200,
+      "sha256": "2d8eee5528dedbd8272a67010e9b355fbd32ab4cea36f0f72c95385ca91f3855",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "agent-dark-1440",
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "7a8eba217f1787a116b9065820d7b071e7219c89da2c30599ef419d2436d02a8",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "admin-dark-1440",
+      "url": "/admin",
+      "status": 200,
+      "sha256": "5c36fe39ed6b3e20b4103f26c8daa832a9b207eaa7bbb70484cbc2b2b5bc99db",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "users-dark-1440",
+      "url": "/admin/users",
+      "status": 200,
+      "sha256": "52357ba2f6817e10badaaef7e5b19e8f87ebf453999df55d596fc026b213a5b5",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "gateways-dark-1440",
+      "url": "/admin/gateways",
+      "status": 200,
+      "sha256": "aba1b5081e39ae3fa88b65e5d84cbeebf5b1a4ba167c7547f7c5fab8ef7f36aa",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "models-dark-1440",
+      "url": "/admin/models",
+      "status": 200,
+      "sha256": "de0dd941d59aa03b61ce307171909a0d5e891c4de3c424ea6ff24dcd7cb4bdb9",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#0e0e10",
+        "--primary": "#fafafa",
+        "--foreground": "#fafafa"
+      }
+    },
+    {
+      "name": "templates-dark-1440",
+      "url": "/templates",
+      "status": 200,
+      "sha256": "53a702fd74ee11ec4b8af54022ecb5dace2a085e37e13cbbdae20be13768e787",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "forbidden-dark-1440",
+      "url": "/forbidden",
+      "status": 200,
+      "sha256": "5c3414a059de7d3b7b4b381cbcc23f280237f7b3040689b7d8f18d7a9d8963c1",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "login-light-390",
+      "url": "/login",
+      "status": 200,
+      "sha256": "84d4b1d752ab5e83e8fe55ab5bbb47948c7482688b657cd8a67d6ea384a42e81",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "product-light-390",
+      "url": "/products/cmvqffv200000bcv8bnmu03xt",
+      "status": 200,
+      "sha256": "2110807ad52df9f2e84bb318fae1a08cf7420f8e6a301bcda5b74a75a6c8e71c",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "agent-light-390",
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "fb4e2e31ec73a4873f07cc49f616fab095528d8d15341291c00a4a8788667254",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "admin-light-390",
+      "url": "/admin",
+      "status": 200,
+      "sha256": "e326b6b1c9163b2ffb69e54479081c54b8dcf452adc0f7e34aa36999a03de538",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "users-light-390",
+      "url": "/admin/users",
+      "status": 200,
+      "sha256": "841d419601082e460f4e0cb13abb83910b61cf98834a8d5d45fe6ab97eb78b8b",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "gateways-light-390",
+      "url": "/admin/gateways",
+      "status": 200,
+      "sha256": "3cde63713054785d35d174cb696852129c39d8491decb39ea9ebc77b57e6d516",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "models-light-390",
+      "url": "/admin/models",
+      "status": 200,
+      "sha256": "dd745326eb33df95a60123a3a0c08f4e0d36db839cded1857ec89d1f2ca91523",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#fff",
+        "--primary": "#1f3a2e",
+        "--foreground": "#18181b"
+      }
+    },
+    {
+      "name": "templates-light-390",
+      "url": "/templates",
+      "status": 200,
+      "sha256": "057ea9c2fd73e096334051dfd19d3987fe52fee863ad03d944af0891a2b0e364",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "forbidden-light-390",
+      "url": "/forbidden",
+      "status": 200,
+      "sha256": "6cc384f75714b648676154e4363fec80fdf224c2f0f5479a3729190199fd2680",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "login-dark-390",
+      "url": "/login",
+      "status": 200,
+      "sha256": "84d4b1d752ab5e83e8fe55ab5bbb47948c7482688b657cd8a67d6ea384a42e81",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "product-dark-390",
+      "url": "/products/cmvqffv200000bcv8bnmu03xt",
+      "status": 200,
+      "sha256": "8d5e00f09675d524a2b0a4a4b9c8294a2cbdadc352871178004d7eedf48fb3ad",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "agent-dark-390",
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "8e049857695130beaadc8b0c0c138dbfdc0c3c39319faf3417c69913e878d9b7",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "admin-dark-390",
+      "url": "/admin",
+      "status": 200,
+      "sha256": "e326b6b1c9163b2ffb69e54479081c54b8dcf452adc0f7e34aa36999a03de538",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "users-dark-390",
+      "url": "/admin/users",
+      "status": 200,
+      "sha256": "65dfd7f22062e986d1b108d411ae9e5693ef0a6d193b211ca7f4061e4625ae63",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "gateways-dark-390",
+      "url": "/admin/gateways",
+      "status": 200,
+      "sha256": "05925cfcef208df93ae8a4ef708e26d05b05ece21a278a64473e5fdb4e62bd9b",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "models-dark-390",
+      "url": "/admin/models",
+      "status": 200,
+      "sha256": "6307f2191296ae7d61850805f542b052be4a79bad097afcc026d2b8d1cbf0546",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#0e0e10",
+        "--primary": "#fafafa",
+        "--foreground": "#fafafa"
+      }
+    },
+    {
+      "name": "templates-dark-390",
+      "url": "/templates",
+      "status": 200,
+      "sha256": "057ea9c2fd73e096334051dfd19d3987fe52fee863ad03d944af0891a2b0e364",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "forbidden-dark-390",
+      "url": "/forbidden",
+      "status": 200,
+      "sha256": "6cc384f75714b648676154e4363fec80fdf224c2f0f5479a3729190199fd2680",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    }
+  ],
+  "failures": [],
+  "excluded": [
+    {
+      "url": "/design-preview/icons",
+      "reason": "SHOW_UNCONNECTED_FEATURES=false，404；不修改开关"
+    },
+    {
+      "url": "/design、旧design-preview业务路径",
+      "reason": "删除或301到正式路由；creative基线已覆盖"
+    },
+    {
+      "url": "/reviews/*",
+      "reason": "独立HTML评审route，非(studio)页面，不参与旧CSS迁移"
+    }
+  ]
+}
