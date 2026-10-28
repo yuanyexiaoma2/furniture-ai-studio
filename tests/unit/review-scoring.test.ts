@@ -1,0 +1,12 @@
+import {test} from "node:test";
+import assert from "node:assert/strict";
+import {reviewActionSchema,ratingCounts,compareFirstTwo,type Rating,type SummaryRow,type ReviewControls} from "../../src/lib/review-scoring-rules";
+import {renderReviewSummary,scoringScript} from "../../src/lib/review-scoring-html";
+import {renderVisualReview} from "../../src/lib/visual-review-html";
+import {fixture} from "../fixtures/visual-plan";
+const rating=(slotKey:string,decision:string):Rating=>({slotKey,decision,reason:"原因",reviewerId:"u",reviewerName:"美工",createdAt:"2026-10-28T04:00:00Z"});
+const round:SummaryRow={id:"r1",number:1,productId:"p",sku:"sku",name:"产品",planVersion:"v1",libraryEntryCount:60,libraryEligibleCount:15,createdByName:"美工",createdAt:"2026-10-28T04:00:00Z",ratings:[rating("a","adopt"),rating("b","redo")],slotKeys:["a","b","c"]};
+test("评分仅允许三档和一句非空原因，不接受伪造评分人",()=>{const base={action:"score",roundId:"r1",slotKey:"a",decision:"adopt",reason:"卖点明确"};assert(reviewActionSchema.safeParse(base).success);for(const change of [{reason:" "},{decision:"pass"},{reason:"一\n二"},{reviewerName:"伪造"}])assert(!reviewActionSchema.safeParse({...base,...change}).success);});
+test("汇总只统计每图位最后一次评分，不重复累计历史",()=>{assert.deepEqual(ratingCounts(["a","b","c"],[rating("a","redo"),rating("a","adopt"),rating("b","minor"),rating("外部图位","adopt")]),{adopt:1,minor:1,redo:0,unrated:1,total:3});});
+test("对比第一二轮数量与差值，缺失第二轮不能冒充零",()=>{assert.equal(compareFirstTwo([round]),null);const second={...round,id:"r2",number:2,ratings:[rating("a","adopt"),rating("b","adopt"),rating("c","minor")]};assert.deepEqual(compareFirstTwo([round,second])?.delta,{adopt:1,minor:1,redo:-1});const html=renderReviewSummary([round,second]);assert.match(html,/2 →|1 → 2/);assert.match(html,/60 条/);assert.match(html,/2026/);});
+test("评分HTML包含版本、库数量、评分人、时间并安全嵌入JSON",()=>{const c:ReviewControls={productId:"p",planVersion:"v1",libraryEntryCount:60,libraryEligibleCount:15,rounds:[round],activeRound:{...round,ratings:[rating(fixture.slots[0].key,"minor")]},nextRound:2,liveUrl:"http://localhost:3000/reviews/p"};const html=renderVisualReview({sku:"sku",name:"产品",plan:fixture,images:[],diff:[],generatedAt:"now",review:c});assert.match(html,/评分原因/);assert.match(html,/采用/);assert.match(html,/小改/);assert.match(html,/重做/);assert.match(html,/经验库 60 条/);assert.match(html,/美工/);const encoded=scoringScript({...c,liveUrl:"</script><script>BAD</script>"});assert(!encoded.includes("</script><script>BAD"));assert(encoded.includes("\\u003c"));assert.match(encoded,/location.protocol==='file:'/);});

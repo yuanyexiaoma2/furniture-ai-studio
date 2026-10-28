@@ -100,6 +100,7 @@ model Product {
   updatedAt      DateTime     @updatedAt
   createdBy      User         @relation(fields: [createdById], references: [id], onDelete: Restrict)
   assets         Asset[]
+  reviewRounds   ReviewRound[]
   imagePacks     ImagePack[]
   chatMessages   ChatMessage[]
   generationJobs GenerationJob[]
@@ -499,4 +500,32 @@ model SearchCall {
  error String?
  createdAt DateTime @default(now())
  @@index([sessionId,createdAt])
+}
+
+model ReviewRound {
+ id String @id @default(cuid())
+ productId String
+ number Int
+ planVersion String
+ libraryEntryCount Int
+ libraryEligibleCount Int
+ snapshot Json
+ createdById String
+ createdByName String
+ createdAt DateTime @default(now())
+ product Product @relation(fields:[productId],references:[id],onDelete:Cascade)
+ ratings ReviewRating[]
+ @@unique([productId,number])
+}
+model ReviewRating {
+ id String @id @default(cuid())
+ roundId String
+ slotKey String
+ decision String
+ reason String
+ reviewerId String
+ reviewerName String
+ createdAt DateTime @default(now())
+ round ReviewRound @relation(fields:[roundId],references:[id],onDelete:Cascade)
+ @@index([roundId,createdAt])
 }

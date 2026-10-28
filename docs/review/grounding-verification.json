@@ -1,13 +1,22 @@
 {
-  "verifiedAt": "2026-10-28T01:43:49.834Z",
+  "verifiedAt": "2026-10-28T03:26:48.740Z",
   "protocol": "Chat Completions / web_search_options",
-  "supported": null,
-  "note": "ZenMux：网络超时或连接失败；已检查可用备用线路，仍未成功，请稍后重试；未验证支持性，默认关闭联网补充。",
-  "verified": false,
-  "documentation": "https://zenmux.ai/docs/guide/advanced/web-search.html",
+  "supported": true,
+  "sources": [
+    {
+      "title": "ikea.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEDYTrsMCK-KTVhy5o24h-K5eufton0bxu1dxaF5hm_oo1HapNjBrSI4patYw-F6QR0KZ-G3KH9065x_fzcpxZAPTVGw5OjWYLuT8pIgOkFEVe0yBKCLPFLMMUhtJ_NrvgmDpdA-bh0eUxo80ecmURgSDs=",
+      "content": "* **品类关键词（Category Keyword）：** `Shoe cabinets`（鞋柜）或 `Shoe racks & stands`（鞋架/鞋展架）\n* **官方来源链接（Official Source Link）：** [IKEA US - Shoe Storage & Cabinets](https://www.ikea.com/us/en/cat/shoe-cabinets-10456/)"
+    }
+  ],
+  "resultCount": 1,
+  "note": "补充参考 · 权重低于竞品参考图",
+  "verified": true,
   "model": "google/gemini-3.8-flash",
   "provider": "zenmux",
-  "requestStatus": "failed",
+  "requestStatus": "success",
   "attemptCount": 1,
-  "sourceCount": 0
+  "sourceCount": 2,
+  "sourceEvidence": "message.annotations.url_citation",
+  "documentation": "https://zenmux.ai/docs/zh/guide/advanced/web-search.html"
 }

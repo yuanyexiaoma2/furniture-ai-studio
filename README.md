@@ -32,7 +32,9 @@ npm run worker
 
 如果本机访问模型服务需要代理，在启动网页、worker和真实验收进程前设置 `NODE_USE_ENV_PROXY=1`、`HTTPS_PROXY`、`HTTP_PROXY` 为本机实际可用地址，`NO_PROXY=localhost,127.0.0.1,::1` 保持数据库和MinIO直连。不要把代理端口或凭据写进业务代码。
 
-本地验证：`npm run lint`、`npm run typecheck`、`npm run build`、`npm run test:units`（完整102项纯单元测试）、`npm run test:visual-plan`、`npm run test:canvas`、`npm run test:image-models`。浏览器回归执行 `npm run test:e2e`，两个隔离Agent流程另用 `npm run test:agent:browser`；需先启动网页和本地依赖，不截图或录屏。自动回归使用本地模拟模型；真实验收另需明确授权。
+评分页升级需要执行上面的Prisma生成和迁移命令；新增评分表独立于经验库。打开 `docs/review/<sku>.html` 可离线查看，点击“打开可保存评分的评审页”后登录评分；实时汇总为 `/reviews/summary`，离线汇总为 `docs/review/summary.html`。
+
+本地验证：`npm run lint`、`npm run typecheck`、`npm run build`、`npm run test:units`（完整106项纯单元测试）、`npm run test:visual-plan`、`npm run test:canvas`、`npm run test:image-models`。浏览器回归执行 `npm run test:e2e`，两个隔离Agent流程另用 `npm run test:agent:browser`；需先启动网页和本地依赖，不截图或录屏。自动回归使用本地模拟模型；真实验收另需明确授权。
 
 ## 当前功能
 
@@ -46,6 +48,7 @@ npm run worker
 - `/products/[id]`保留为“产品资料”，支持身份全文、实拍管理、单张方案与独立历史；新版产品卡可进入。旧图包工作页 `/products/[id]/pack`继续保留。
 - 产品资料支持主图与补充图、参数、卖点、竞品截图和链接；竞品逐图拆解空间/道具/陈列/卖点讲法/机位，再归纳常见套路、同质化与差异化机会。无参考图时方案顶部明确提示；联网文字仅作补充参考。
 - `/library`支持单个历史Listing文件夹导入（1–30张图片+可选TXT/JSON参数），Agent拆解后先待审，人工编辑审核通过才入库。每次方案生成、确认或样图落盘会更新 `docs/review/<sku>.html`，在同一页查看方案和所有样图版本。
+- 盲测评分：每图位“采用 / 小改 / 重做”及一句原因；逐轮冻结方案/样图版本和经验库条目数量，记录登录评分人及北京时间。修改评分保留历史，汇总按产品/轮次列出三档与未评数量，并对比第一、第二轮；评分不计入经验库。验证执行 `npm run test:reviews`。
 - `/library`展示真实品类经验：场景、卖点表达、配饰池、常见图位顺序、案例；示例和未上传案例不参与检索。未接通的原型操作、颜色变体、多语言/术语表、品牌和导出前检查继续由统一开关隐藏。
 
 所有模型请求仅在服务端执行，费用、配额、任务及实际模型留痕。真实出图验证仅按用户明确授权执行。开发记录与待办见[CHANGELOG](docs/CHANGELOG.md)，第三方参考授权见[THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md)。

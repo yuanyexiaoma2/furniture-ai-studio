@@ -1,0 +1,42 @@
+import "dotenv/config";
+process.env.VISUAL_REVIEW_TEST_MODE="true";
+import {test} from "node:test";
+import assert from "node:assert/strict";
+import {randomUUID} from "node:crypto";
+import {readFile} from "node:fs/promises";
+import path from "node:path";
+import {db} from "../../src/lib/db";
+import {json,agentSession} from "../../src/lib/agent-state";
+import {fixture} from "../fixtures/visual-plan";
+import {readReviewSource} from "../../src/lib/review-source";
+import {applyReviewAction,reviewSummaryRows} from "../../src/lib/review-rounds";
+import {writeProductReview,reviewRoot} from "../../src/lib/visual-review";
+import {ratingCounts,reviewSnapshotSchema} from "../../src/lib/review-scoring-rules";
+test("评分真实数据库：轮次并发幂等、版本与库数量冻结、历史留存、跨SKU拒绝、静态汇总（零模型调用）",async()=>{
+ if(!process.env.DATABASE_URL||!["localhost","127.0.0.1"].includes(new URL(process.env.DATABASE_URL).hostname))throw Error("仅本地验证");
+ const run=randomUUID();let userId="",productId="",entryId="";
+ try{
+ const user=await db.user.create({data:{name:"评分测试员",email:run+"@example.invalid",passwordHash:"not-login",monthlyQuota:0}});userId=user.id;
+ const product=await db.product.create({data:{sku:"REVIEW-TEST-"+run,name:"评分测试产品",category:"测试品类",dimensions:[],colors:[],materials:"未知",sellingPoints:[],createdById:userId}});productId=product.id;
+ const session=await agentSession(productId,userId),plan={...fixture,productId,slots:[...fixture.slots,{...fixture.slots[0],key:"b",name:"图位B"},{...fixture.slots[0],key:"c",name:"图位C"}]};
+ const card=await db.agentCard.create({data:{sessionId:session.id,kind:"pack",data:json({visualPlan:plan})}});
+ const source=await readReviewSource(productId),action={action:"start",planVersion:source.planVersion,nextRound:1};
+ const [r1,replay]=await Promise.all([applyReviewAction(productId,user,action),applyReviewAction(productId,user,action)]);assert.equal(r1.id,replay.id);assert.equal(await db.reviewRound.count({where:{productId}}),1);
+ for(const [i,key] of ["entry","b","c"].entries())await applyReviewAction(productId,user,{action:"score",roundId:r1.id,slotKey:key,decision:["adopt","minor","redo"][i],reason:"第一轮原因"});
+ await applyReviewAction(productId,user,{action:"score",roundId:r1.id,slotKey:"c",decision:"redo",reason:"第一轮原因"});assert.equal(await db.reviewRating.count({where:{roundId:r1.id}}),3);
+ await applyReviewAction(productId,user,{action:"score",roundId:r1.id,slotKey:"b",decision:"redo",reason:"重新核对后需要重做"});assert.equal(await db.reviewRating.count({where:{roundId:r1.id}}),4);
+ await assert.rejects(applyReviewAction("other-product",user,{action:"score",roundId:r1.id,slotKey:"b",decision:"minor",reason:"跨产品"}),/不属于/);
+ await assert.rejects(applyReviewAction(productId,user,{action:"score",roundId:r1.id,slotKey:"foreign",decision:"minor",reason:"外部图位"}),/图位不属于/);
+ entryId="review-library-"+run;await db.studioLibraryEntry.create({data:{id:entryId,kind:"test",name:"版本计数测试",data:{}}});
+ await db.agentCard.update({where:{id:card.id},data:{data:json({visualPlan:{...plan,reason:"第二版方案"}})}});
+ await assert.rejects(applyReviewAction(productId,user,{...action,nextRound:2}),/已变化/);
+ const second=await readReviewSource(productId),r2=await applyReviewAction(productId,user,{action:"start",planVersion:second.planVersion,nextRound:2});assert.equal(r2.libraryEntryCount,r1.libraryEntryCount+1);assert.notEqual(r2.planVersion,r1.planVersion);
+ assert.equal((await db.reviewRound.findUniqueOrThrow({where:{id:r1.id}})).libraryEntryCount,r1.libraryEntryCount);
+ assert.equal(reviewSnapshotSchema.parse((await db.reviewRound.findUniqueOrThrow({where:{id:r1.id}})).snapshot).plan.reason,plan.reason);
+ for(const [i,key] of ["entry","b","c"].entries())await applyReviewAction(productId,user,{action:"score",roundId:r2.id,slotKey:key,decision:i<2?"adopt":"minor",reason:"第二轮原因"});
+ const rows=(await reviewSummaryRows()).filter(r=>r.productId===productId);assert.equal(rows.length,2);assert.deepEqual(ratingCounts(rows[0].slotKeys,rows[0].ratings),{adopt:1,minor:0,redo:2,unrated:0,total:3});
+ assert.deepEqual(ratingCounts(rows[1].slotKeys,rows[1].ratings),{adopt:2,minor:1,redo:0,unrated:0,total:3});assert.equal(rows[1].ratings[0].reviewerName,user.name);
+ const file=await writeProductReview(productId);assert.match(await readFile(file,"utf8"),/第 2 轮评分/);assert.match(await readFile(path.join(reviewRoot(),"summary.html"),"utf8"),/1 → 2/);assert.match(await readFile(file.replace(/\.html$/,"-round-1.html"),"utf8"),/第一轮原因/);
+ assert.equal(await db.llmCall.count({where:{createdById:userId}}),0);
+ }finally{if(entryId)await db.studioLibraryEntry.deleteMany({where:{id:entryId}});if(productId)await db.product.delete({where:{id:productId}});if(userId)await db.user.delete({where:{id:userId}});await db.$disconnect();}
+});
