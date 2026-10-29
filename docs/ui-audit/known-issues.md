@@ -11,6 +11,14 @@
 - 阶段 1 实测补充：原样复跑两次均 exit 0，完整模拟验收通过，未复现该断言。`scripts/verify-generation.ts`、费用、队列与提交标记代码均无改动。因此本轮无法证明失败每次都可复现，也不把这两次通过视为问题已修复；继续保留 KI-001，后续仍按原命令复查。阶段 0 的失败证据见 `phase0.md`，阶段 1 结果见 `phase1.md`。
 - 阶段2a原样模拟验收exit0，未复现。日志：`.local/verification/ui-phase2a/generation.log`，结果汇总见phase2a.md；不宣称修复。
 
+## KI-002：视觉方案浏览器用例的初始化竞态
+
+- 位置：`tests/visual-plan.spec.ts`，竞品参考链接输入步骤。
+- 现象：页面初始 GET 在测试填值之后返回，受控输入恢复服务器初始状态，覆盖刚填入的链接，提交时得到空链接数组。阶段 2a 完整回归中曾出现一次。
+- 已做改动：在页面标题出现后、填写竞品链接前增加 `await page.waitForLoadState("networkidle")`，等待初始化读取结束。未修改业务组件或 API。
+- 没有削弱断言：保存后的链接和上传结果仍按原断言检查；完整回归重跑 10 项通过，2 项专用 Agent 按设计另跑。
+- 复现/复查：`npm run test:e2e -- tests/visual-plan.spec.ts`；日志见 `.local/verification/ui-phase2a/e2e-final.log` 与 `e2e-acceptance.log`。
+
 ## 其他基线说明
 
 - `npm run test:e2e` 中 `tests/agent.spec.ts` 的两项用例原本就要求通过 `npm run test:agent:browser` 在隔离数据库与本地 mock 网关下单独运行；常规回归显示 2 skipped 是设计行为。

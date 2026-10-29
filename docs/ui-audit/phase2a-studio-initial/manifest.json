@@ -1,0 +1,2653 @@
+{
+  "mode": "compare",
+  "commit": "23e8fbc1621ac450fa14dafe3c70578f17d7021b",
+  "baseline": "docs\\ui-audit\\baseline-studio",
+  "capturedAt": "2026-10-29T01:45:48.306Z",
+  "productId": "cmvqffv200000bcv8bnmu03xt",
+  "sku": "NEW-MVQFFV1P",
+  "results": [
+    {
+      "name": "login-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 50,
+      "totalPixels": 1440000,
+      "differencePercent": 0.003472222222222222,
+      "alignedDifferencePercent": 0.003472222222222222,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 w-full h-12 justify-between",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/login",
+      "status": 200,
+      "sha256": "a496146d09f2b3abf6753e352ef7fbf94aad74308c28b9e2d1b993c4f8c01fe9",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "product-light-1440",
+      "width": 1440,
+      "height": 4626,
+      "changedPixels": 1099348,
+      "totalPixels": 6662880,
+      "differencePercent": 16.499591768124294,
+      "alignedDifferencePercent": 1.71199241168984,
+      "verticalOffset": -1,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 1440,
+        "height": 4627
+      },
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "reference-delete",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "photo-dropzone",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "panel-heading",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border border-transparent bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt",
+      "status": 200,
+      "sha256": "be4e5e043e1103bf4151eea5b92ea167d0ac4b8e23e7a73c520bd06a348742e0",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "agent-light-1440",
+      "width": 1440,
+      "height": 9825,
+      "changedPixels": 318,
+      "totalPixels": 14148000,
+      "differencePercent": 0.0022476675148430875,
+      "alignedDifferencePercent": 0.0022476675148430875,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "ef8c9064ac40b8eceb299f7f71bfccf03446de90db3ad1cfd17e150cc78a465f",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "admin-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 394,
+      "totalPixels": 1440000,
+      "differencePercent": 0.027361111111111114,
+      "alignedDifferencePercent": 0.027361111111111114,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel admin-overview-card",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel admin-overview-card",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin",
+      "status": 200,
+      "sha256": "a45194e4ac2e463d64a75352af4b9179ec672bde8f22d7cb90faa0c3f05db346",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "users-light-1440",
+      "width": 1440,
+      "height": 1015,
+      "changedPixels": 1730,
+      "totalPixels": 1461600,
+      "differencePercent": 0.11836343732895457,
+      "alignedDifferencePercent": 0.11836343732895457,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "flex items-center gap-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 w-full h-10",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "flex items-center gap-3",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin/users",
+      "status": 200,
+      "sha256": "0828064a156f217a7853373415dd896eae22c1cd815ca8e4d0b05ab3bbfde445",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "gateways-light-1440",
+      "width": 1440,
+      "height": 1604,
+      "changedPixels": 15332,
+      "totalPixels": 2309760,
+      "differencePercent": 0.6637919091160986,
+      "alignedDifferencePercent": 0.6637919091160986,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 15,
+          "height": 15,
+          "size": "15"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin/gateways",
+      "status": 200,
+      "sha256": "7566740589677db8e1d6a8ae6ed81e64de198cdeb4f86adbd2e8683f5f47fcb0",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "models-light-1440",
+      "width": 1440,
+      "height": 1273,
+      "changedPixels": 5225,
+      "totalPixels": 1833120,
+      "differencePercent": 0.28503316749585406,
+      "alignedDifferencePercent": 0.28503316749585406,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "p-logo",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-control)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9 p-icon-button",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-control)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 active",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/admin/models",
+      "status": 200,
+      "sha256": "5e9e788ba6e011cce2aac27582afd399558a8b852de77bde084f71892fdceca2",
+      "theme": "light",
+      "variables": {
+        "--background": "#fff",
+        "--primary": "#1f3a2e",
+        "--foreground": "#18181b"
+      }
+    },
+    {
+      "name": "templates-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 318,
+      "totalPixels": 1440000,
+      "differencePercent": 0.022083333333333333,
+      "alignedDifferencePercent": 0.022083333333333333,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel placeholder-panel",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/templates",
+      "status": 200,
+      "sha256": "7bb52ec9108d4c5e1fbd81d1df9255ea22d3d1b6ae1f2135a98895ff6860024f",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "forbidden-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 318,
+      "totalPixels": 1440000,
+      "differencePercent": 0.022083333333333333,
+      "alignedDifferencePercent": 0.022083333333333333,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel placeholder-panel",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/forbidden",
+      "status": 200,
+      "sha256": "4230c7c2c7e9fe705eec20bb3affce007deb9232dd1a6e8b0fb41b0abec3f962",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "login-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 50,
+      "totalPixels": 1440000,
+      "differencePercent": 0.003472222222222222,
+      "alignedDifferencePercent": 0.003472222222222222,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 w-full h-12 justify-between",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/login",
+      "status": 200,
+      "sha256": "a496146d09f2b3abf6753e352ef7fbf94aad74308c28b9e2d1b993c4f8c01fe9",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "product-dark-1440",
+      "width": 1440,
+      "height": 4626,
+      "changedPixels": 1099334,
+      "totalPixels": 6662880,
+      "differencePercent": 16.499381648776502,
+      "alignedDifferencePercent": 1.7118423264414186,
+      "verticalOffset": -1,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 1440,
+        "height": 4627
+      },
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "reference-delete",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "photo-dropzone",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "panel-heading",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border border-transparent bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt",
+      "status": 200,
+      "sha256": "1c584b50488c449825446b5e3e0a4596206197e21a9b380b50e2b5034c129647",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "agent-dark-1440",
+      "width": 1440,
+      "height": 9825,
+      "changedPixels": 318,
+      "totalPixels": 14148000,
+      "differencePercent": 0.0022476675148430875,
+      "alignedDifferencePercent": 0.0022476675148430875,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "99f09e95a5033350518e3a259119fa63234123da0cf77ff5d09b240245722bec",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "admin-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 394,
+      "totalPixels": 1440000,
+      "differencePercent": 0.027361111111111114,
+      "alignedDifferencePercent": 0.027361111111111114,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel admin-overview-card",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel admin-overview-card",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin",
+      "status": 200,
+      "sha256": "a45194e4ac2e463d64a75352af4b9179ec672bde8f22d7cb90faa0c3f05db346",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "users-dark-1440",
+      "width": 1440,
+      "height": 1015,
+      "changedPixels": 1730,
+      "totalPixels": 1461600,
+      "differencePercent": 0.11836343732895457,
+      "alignedDifferencePercent": 0.11836343732895457,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "flex items-center gap-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 w-full h-10",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "flex items-center gap-3",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin/users",
+      "status": 200,
+      "sha256": "7df322f4700f6201b71cadc8195d4b8d9cbe05af7ec62c11ffa24cf0e6a0550c",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "gateways-dark-1440",
+      "width": 1440,
+      "height": 1604,
+      "changedPixels": 15328,
+      "totalPixels": 2309760,
+      "differencePercent": 0.6636187309504018,
+      "alignedDifferencePercent": 0.6636187309504018,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 15,
+          "height": 15,
+          "size": "15"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin/gateways",
+      "status": 200,
+      "sha256": "4fdf2a927330ced2bc13bdee48d1f1fff799002b4ba72a7a4e7864e9cf525fff",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "models-dark-1440",
+      "width": 1440,
+      "height": 1273,
+      "changedPixels": 5217,
+      "totalPixels": 1833120,
+      "differencePercent": 0.28459675307672166,
+      "alignedDifferencePercent": 0.28459675307672166,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "p-logo",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-control)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9 p-icon-button",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-control)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 active",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/admin/models",
+      "status": 200,
+      "sha256": "4d82ff4ec6cb41f654c103ef4a750d1618e2c56a1ca6bdee4f996c4c20e3a4f5",
+      "theme": "dark",
+      "variables": {
+        "--background": "#0e0e10",
+        "--primary": "#fafafa",
+        "--foreground": "#fafafa"
+      }
+    },
+    {
+      "name": "templates-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 318,
+      "totalPixels": 1440000,
+      "differencePercent": 0.022083333333333333,
+      "alignedDifferencePercent": 0.022083333333333333,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel placeholder-panel",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/templates",
+      "status": 200,
+      "sha256": "7bb52ec9108d4c5e1fbd81d1df9255ea22d3d1b6ae1f2135a98895ff6860024f",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "forbidden-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 318,
+      "totalPixels": 1440000,
+      "differencePercent": 0.022083333333333333,
+      "alignedDifferencePercent": 0.022083333333333333,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel placeholder-panel",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/forbidden",
+      "status": 200,
+      "sha256": "4230c7c2c7e9fe705eec20bb3affce007deb9232dd1a6e8b0fb41b0abec3f962",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "login-light-390",
+      "width": 390,
+      "height": 848,
+      "changedPixels": 50,
+      "totalPixels": 330720,
+      "differencePercent": 0.015118529269472667,
+      "alignedDifferencePercent": 0.015118529269472667,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 w-full h-12 justify-between",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/login",
+      "status": 200,
+      "sha256": "3e675e50f02fc4c4102b2f9dc8ad14327b3194e9433bd7b5124a570b0ee419f8",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "product-light-390",
+      "width": 390,
+      "height": 9273,
+      "changedPixels": 793752,
+      "totalPixels": 3616860,
+      "differencePercent": 21.945886763656873,
+      "alignedDifferencePercent": 2.2437971057768338,
+      "verticalOffset": -1,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 390,
+        "height": 9274
+      },
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "reference-delete",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "photo-dropzone",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "panel-heading",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border border-transparent bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt",
+      "status": 200,
+      "sha256": "d9bb5f6332412a1b8aed908796da83d3d4c93d7b2d1aa1bef3d93c65c894b0a4",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "agent-light-390",
+      "width": 390,
+      "height": 12035,
+      "changedPixels": 320,
+      "totalPixels": 4693650,
+      "differencePercent": 0.00681772181564454,
+      "alignedDifferencePercent": 0.00681772181564454,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "db4d920211d3792ffad341484ff27178e2586f899b41f5c9c63c2ec611044cf0",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "admin-light-390",
+      "width": 390,
+      "height": 865,
+      "changedPixels": 396,
+      "totalPixels": 337350,
+      "differencePercent": 0.11738550466874166,
+      "alignedDifferencePercent": 0.11738550466874166,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel admin-overview-card",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel admin-overview-card",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin",
+      "status": 200,
+      "sha256": "fc271c714400aa2524580677f8f9283e8cbb6eee238fe9857d1064d09e5edc58",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "users-light-390",
+      "width": 390,
+      "height": 1550,
+      "changedPixels": 1728,
+      "totalPixels": 604500,
+      "differencePercent": 0.2858560794044665,
+      "alignedDifferencePercent": 0.2858560794044665,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "flex items-center gap-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 w-full h-10",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "flex items-center gap-3",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin/users",
+      "status": 200,
+      "sha256": "9be8d9d32a457875a70318dc1664c65d5acfffaee2437a708dfffddebafed6e9",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "gateways-light-390",
+      "width": 390,
+      "height": 2307,
+      "changedPixels": 15359,
+      "totalPixels": 899730,
+      "differencePercent": 1.707067675858313,
+      "alignedDifferencePercent": 1.707067675858313,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 15,
+          "height": 15,
+          "size": "15"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin/gateways",
+      "status": 200,
+      "sha256": "a10bb7ce4af5cbd14458cf8dcf6fdec806fb4cbda7abbef663c60ed9d0fa3e7f",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "models-light-390",
+      "width": 390,
+      "height": 1148,
+      "changedPixels": 4250,
+      "totalPixels": 447720,
+      "differencePercent": 0.9492539980344858,
+      "alignedDifferencePercent": 0.9492539980344858,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "p-logo",
+          "width": 0,
+          "height": 0,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 0,
+          "height": 0,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 0,
+          "height": 0,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 0,
+          "height": 0,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-control)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9 p-icon-button",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-control)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 active",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/admin/models",
+      "status": 200,
+      "sha256": "981064c0ec62fa9b123f2af9f21471ef5c7f30d96b8767781ad716f5738f9aa7",
+      "theme": "light",
+      "variables": {
+        "--background": "#fff",
+        "--primary": "#1f3a2e",
+        "--foreground": "#18181b"
+      }
+    },
+    {
+      "name": "templates-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 320,
+      "totalPixels": 329160,
+      "differencePercent": 0.09721715882853323,
+      "alignedDifferencePercent": 0.09721715882853323,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel placeholder-panel",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/templates",
+      "status": 200,
+      "sha256": "74d16c21132d734858fd63ffacc958b2833386b7286126e4438f808262f232da",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "forbidden-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 320,
+      "totalPixels": 329160,
+      "differencePercent": 0.09721715882853323,
+      "alignedDifferencePercent": 0.09721715882853323,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel placeholder-panel",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/forbidden",
+      "status": 200,
+      "sha256": "aee841ee5e540c946f8d7c0bc1d3f70044a6427f8d71d526e29138459508e484",
+      "theme": "light",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "login-dark-390",
+      "width": 390,
+      "height": 848,
+      "changedPixels": 50,
+      "totalPixels": 330720,
+      "differencePercent": 0.015118529269472667,
+      "alignedDifferencePercent": 0.015118529269472667,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 w-full h-12 justify-between",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/login",
+      "status": 200,
+      "sha256": "3e675e50f02fc4c4102b2f9dc8ad14327b3194e9433bd7b5124a570b0ee419f8",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "product-dark-390",
+      "width": 390,
+      "height": 9273,
+      "changedPixels": 793735,
+      "totalPixels": 3616860,
+      "differencePercent": 21.945416742699468,
+      "alignedDifferencePercent": 2.2435206228607134,
+      "verticalOffset": -1,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 390,
+        "height": 9274
+      },
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "reference-delete",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "photo-dropzone",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "panel-heading",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border border-transparent bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        },
+        {
+          "icon": "true",
+          "parent": "generation-download",
+          "width": 14,
+          "height": 14,
+          "size": "14"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center border bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "width": 13,
+          "height": 13,
+          "size": "13"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt",
+      "status": 200,
+      "sha256": "7970f18cb71a7a6d4acb5439159285b9593faa4d822d7a54e5dd1feb989070d4",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "agent-dark-390",
+      "width": 390,
+      "height": 12035,
+      "changedPixels": 320,
+      "totalPixels": 4693650,
+      "differencePercent": 0.00681772181564454,
+      "alignedDifferencePercent": 0.00681772181564454,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "ffb03f00babe4b7c1ae1286f77fcee4f4976960b6043db31e2e5602dc771c074",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "admin-dark-390",
+      "width": 390,
+      "height": 865,
+      "changedPixels": 396,
+      "totalPixels": 337350,
+      "differencePercent": 0.11738550466874166,
+      "alignedDifferencePercent": 0.11738550466874166,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel admin-overview-card",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel admin-overview-card",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin",
+      "status": 200,
+      "sha256": "fc271c714400aa2524580677f8f9283e8cbb6eee238fe9857d1064d09e5edc58",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "users-dark-390",
+      "width": 390,
+      "height": 1550,
+      "changedPixels": 1728,
+      "totalPixels": 604500,
+      "differencePercent": 0.2858560794044665,
+      "alignedDifferencePercent": 0.2858560794044665,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "flex items-center gap-2",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 w-full h-10",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "flex items-center gap-3",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin/users",
+      "status": 200,
+      "sha256": "2e2da7ac06f9c9a591e21d459d4d364bfd21817f9ffc6c0eaa25fa33ae0c6649",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "gateways-dark-390",
+      "width": 390,
+      "height": 2307,
+      "changedPixels": 15355,
+      "totalPixels": 899730,
+      "differencePercent": 1.7066230980405235,
+      "alignedDifferencePercent": 1.7066230980405235,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "width": 15,
+          "height": 15,
+          "size": "15"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        }
+      ],
+      "url": "/admin/gateways",
+      "status": 200,
+      "sha256": "b1fca94f328693dc306ae215fc4ee93e6c7568782c10662ce21704d7c93d55d2",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "models-dark-390",
+      "width": 390,
+      "height": 1148,
+      "changedPixels": 4244,
+      "totalPixels": 447720,
+      "differencePercent": 0.947913874743143,
+      "alignedDifferencePercent": 0.947913874743143,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link active",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "p-logo",
+          "width": 0,
+          "height": 0,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 0,
+          "height": 0,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 0,
+          "height": 0,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "",
+          "width": 0,
+          "height": 0,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-control)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9 p-icon-button",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        },
+        {
+          "icon": "true",
+          "parent": "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-control)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 active",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/admin/models",
+      "status": 200,
+      "sha256": "a2a51f08b6464400de7d91a82e6f9fb65a656c37bf199d84ae2d9193e5fb5acc",
+      "theme": "dark",
+      "variables": {
+        "--background": "#0e0e10",
+        "--primary": "#fafafa",
+        "--foreground": "#fafafa"
+      }
+    },
+    {
+      "name": "templates-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 320,
+      "totalPixels": 329160,
+      "differencePercent": 0.09721715882853323,
+      "alignedDifferencePercent": 0.09721715882853323,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel placeholder-panel",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/templates",
+      "status": 200,
+      "sha256": "74d16c21132d734858fd63ffacc958b2833386b7286126e4438f808262f232da",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    },
+    {
+      "name": "forbidden-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 320,
+      "totalPixels": 329160,
+      "differencePercent": 0.09721715882853323,
+      "alignedDifferencePercent": 0.09721715882853323,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 17,
+          "height": 17,
+          "size": "17"
+        },
+        {
+          "icon": "true",
+          "parent": "workspace-panel placeholder-panel",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/forbidden",
+      "status": 200,
+      "sha256": "aee841ee5e540c946f8d7c0bc1d3f70044a6427f8d71d526e29138459508e484",
+      "theme": "dark",
+      "variables": {
+        "--background": "#f6f5f1",
+        "--primary": "#3b493d",
+        "--foreground": "#292b27"
+      }
+    }
+  ],
+  "failures": [],
+  "excluded": [
+    {
+      "url": "/design-preview/icons",
+      "reason": "SHOW_UNCONNECTED_FEATURES=false，404；不修改开关"
+    },
+    {
+      "url": "/design、旧design-preview业务路径",
+      "reason": "删除或301到正式路由；creative基线已覆盖"
+    },
+    {
+      "url": "/reviews/*",
+      "reason": "独立HTML评审route，非(studio)页面，不参与旧CSS迁移"
+    }
+  ]
+}

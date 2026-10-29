@@ -4,9 +4,12 @@ import {mkdir,readFile,writeFile} from "node:fs/promises";
 import {execFileSync} from "node:child_process";
 import path from "node:path";
 import {createHash} from "node:crypto";
+import {compareScreenshots} from "./ui-image-diff";
 import {chromium,expect} from "@playwright/test";
 const args=process.argv.slice(2),option=(k:string,d:string)=>args.find(a=>a.startsWith(k+"="))?.slice(k.length+1)??d;
 const mode=option("--mode","baseline"),baseURL=option("--base-url","http://localhost:3000"),output=path.resolve(option("--output","docs/ui-audit/baseline-studio"));
+const baseline=path.resolve(option("--baseline","docs/ui-audit/baseline-studio"));
+if(mode==="compare"&&baseline===output)throw Error("对比输出不能覆盖基线");
 if(!["localhost","127.0.0.1"].includes(new URL(baseURL).hostname))throw Error("仅允许本地截图");
 const commit=execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim();
 if(mode==="baseline"&&!commit.startsWith("99f3187"))throw Error("studio基线必须在已审阅的99f3187上生成");
@@ -29,9 +32,11 @@ try{
    await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(async img=>{img.loading="eager";try{await img.decode();}catch{}}));});await page.waitForTimeout(400);
    await expect(page.locator(state.public?".login-shell":".studio-shell")).toBeVisible();
    const image=await page.screenshot({path:path.join(output,name+".png"),fullPage:true,animations:"disabled",caret:"hide"});
-   results.push({name,url:state.url,status:response.status(),sha256:createHash("sha256").update(image).digest("hex"),theme,width,variables:await page.evaluate(()=>{const s=getComputedStyle(document.documentElement);return Object.fromEntries(["--background","--primary","--foreground"].map(k=>[k,s.getPropertyValue(k).trim()]));})});console.log(name+" OK");
+   const comparison=mode==="compare"?await compareScreenshots(path.join(baseline,name+".png"),image,path.join(output,name+".diff.png"),args.includes("--allow-size-change")):{};
+   const icons=await page.locator("svg[data-concept-icon]").evaluateAll(es=>es.map(e=>({icon:e.getAttribute("data-concept-icon"),parent:e.parentElement?.className,width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height,size:e.getAttribute("width")})));
+   results.push({name,...comparison,icons,url:state.url,status:response.status(),sha256:createHash("sha256").update(image).digest("hex"),theme,width,variables:await page.evaluate(()=>{const s=getComputedStyle(document.documentElement);return Object.fromEntries(["--background","--primary","--foreground"].map(k=>[k,s.getPropertyValue(k).trim()]));})});console.log(name+" OK");
   }catch(e){failures.push(name+": "+String(e));console.error(failures.at(-1));}finally{await context.close();}
  }
- await writeFile(path.join(output,"manifest.json"),JSON.stringify({mode,commit,capturedAt:new Date().toISOString(),productId:product.id,sku:product.sku,results,failures,excluded:[{url:"/design-preview/icons",reason:"SHOW_UNCONNECTED_FEATURES=false，404；不修改开关"},{url:"/design、旧design-preview业务路径",reason:"删除或301到正式路由；creative基线已覆盖"},{url:"/reviews/*",reason:"独立HTML评审route，非(studio)页面，不参与旧CSS迁移"}]},null,2));
+ await writeFile(path.join(output,"manifest.json"),JSON.stringify({mode,commit,baseline:mode==="compare"?path.relative(process.cwd(),baseline):null,capturedAt:new Date().toISOString(),productId:product.id,sku:product.sku,results,failures,excluded:[{url:"/design-preview/icons",reason:"SHOW_UNCONNECTED_FEATURES=false，404；不修改开关"},{url:"/design、旧design-preview业务路径",reason:"删除或301到正式路由；creative基线已覆盖"},{url:"/reviews/*",reason:"独立HTML评审route，非(studio)页面，不参与旧CSS迁移"}]},null,2));
 }finally{await browser.close();}
 console.log(JSON.stringify({captured:results.length,failures}));if(failures.length)process.exitCode=1;

@@ -1,11 +1,12 @@
 /** UI 截图基线：仅拦截浏览器测试数据，不写数据库，也不允许业务 POST 发往服务器。 */
 import "dotenv/config";
-import {mkdir,readFile,writeFile,rm} from "node:fs/promises";
+import {mkdir,readFile,writeFile} from "node:fs/promises";
 import path from "node:path";
 import {createHash} from "node:crypto";
 import {execFileSync} from "node:child_process";
 import {chromium,expect,type Page} from "@playwright/test";
 import sharp from "sharp";
+import {compareScreenshots} from "./ui-image-diff";
 import {emptyProfile,profileFields,understanding} from "../src/lib/profile-rules";
 
 const args=process.argv.slice(2),option=(key:string,fallback:string)=>args.find(a=>a.startsWith(key+"="))?.slice(key.length+1)??fallback;
@@ -96,18 +97,9 @@ try{
     const metrics=await page.evaluate(()=>[...document.querySelectorAll<HTMLElement>(".t11-references,.t11-references>span,.t11-progress-heading small,.t11-progress-step small,.t11-generation-progress small,.t11-awaiting,.t11-save-status,.t11-save-status button,.t11-canvas-history small")].filter(e=>e.getClientRects().length).map(e=>{const r=e.getBoundingClientRect();return {tag:e.tagName,classes:e.className,text:e.innerText,fontSize:getComputedStyle(e).fontSize,clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,left:r.left,right:r.right,viewport:innerWidth,horizontalOverflow:e.scrollWidth>e.clientWidth+1,outsideViewport:r.left<0||r.right>innerWidth+1};}));
     await writeFile(path.join(destination,name+".text-metrics.json"),JSON.stringify(metrics,null,2));
    }
-   const meta=await sharp(image).metadata();let changedPixels=0,totalPixels=(meta.width??0)*(meta.height??0);let baselineSize:{width:number;height:number}|undefined;
-   if(mode==="compare"){
-    const before=await sharp(await readFile(path.join(root,name+".png"))).ensureAlpha().raw().toBuffer({resolveWithObject:true}),after=await sharp(image).ensureAlpha().raw().toBuffer({resolveWithObject:true});
-    const resized=before.info.width!==after.info.width||before.info.height!==after.info.height;
-    if(resized&&!args.includes("--allow-size-change"))throw Error(`截图尺寸改变：${before.info.width}x${before.info.height} → ${after.info.width}x${after.info.height}`);
-    if(resized)baselineSize={width:before.info.width,height:before.info.height};
-    const width=Math.max(before.info.width,after.info.width),height=Math.max(before.info.height,after.info.height);totalPixels=width*height;
-    const diff=Buffer.alloc(totalPixels*4);for(let i=0;i<totalPixels;i++){const offset=i*4,x=i%width,y=Math.floor(i/width),a=y<before.info.height&&x<before.info.width?(y*before.info.width+x)*4:-1,b=y<after.info.height&&x<after.info.width?(y*after.info.width+x)*4:-1,changed=a<0||b<0||[0,1,2,3].some(c=>before.data[a+c]!==after.data[b+c]);if(changed){changedPixels++;diff.set([238,55,75,255],offset);}else diff.set([after.data[b],after.data[b+1],after.data[b+2],40],offset);}
-    if(changedPixels)await sharp(diff,{raw:{width,height,channels:4}}).png().toFile(path.join(destination,name+".diff.png"));
-    else await rm(path.join(destination,name+".diff.png"),{force:true});
-   }
-   results.push({name,width:meta.width!,height:meta.height!,changedPixels,totalPixels,differencePercent:changedPixels/totalPixels*100,sha256:createHash("sha256").update(image).digest("hex"),...(baselineSize?{baselineSize}:{})});console.log(name+" "+(changedPixels/totalPixels*100).toFixed(5)+"%");
+   const meta=await sharp(image).metadata();
+   const comparison=mode==="compare"?await compareScreenshots(path.join(root,name+".png"),image,path.join(destination,name+".diff.png"),args.includes("--allow-size-change")):{width:meta.width!,height:meta.height!,changedPixels:0,totalPixels:meta.width!*meta.height!,differencePercent:0};
+   results.push({name,...comparison,sha256:createHash("sha256").update(image).digest("hex")});console.log(name+" "+comparison.differencePercent.toFixed(5)+"%");
    if(args.includes("--diagnose")){
     const originalLayout=execFileSync("git",["show","a1e3f51:src/app/(creative)/layout.tsx"],{encoding:"utf8"}),originalFiles=[...originalLayout.matchAll(/import "\.\/([^";]+\.css)";/g)].map(m=>"src/app/(creative)/"+m[1]);
     const oldCss=await readFile("node_modules/@xyflow/react/dist/style.css","utf8")+"\n"+originalFiles.map(file=>execFileSync("git",["show","a1e3f51:"+file],{encoding:"utf8"})).join("\n");
