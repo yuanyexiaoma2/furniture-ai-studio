@@ -1,0 +1,7 @@
+{
+  "originalRetry": true,
+  "retryActions": [
+    "settings",
+    "retry"
+  ]
+}

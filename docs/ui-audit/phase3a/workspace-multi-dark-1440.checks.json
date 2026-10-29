@@ -1,0 +1,8 @@
+{
+  "multi": {
+    "compare": 2,
+    "downloads": 2,
+    "deleteUndo": true
+  },
+  "retryActions": []
+}

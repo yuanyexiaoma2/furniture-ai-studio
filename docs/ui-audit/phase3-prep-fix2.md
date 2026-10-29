@@ -26,6 +26,6 @@
 
 ## 验证
 
-十张截图的文字栅格审计和axe通过；八张聚焦态位于../phase3-prep-fix2-focus。亮色边框前后3.65:1、暗色3.29:1，环对输入底色最低4.47:1；无位移/裁切，axe serious/critical为0。lint:ui、lint、typecheck、build通过。完整回归随3a再运行一次。
+十张截图的文字栅格审计和axe通过；白字38954个栅格采样点中最低6.01:1。八张聚焦态位于../phase3-prep-fix2-focus。亮色边框前后3.65:1、暗色3.29:1，环对输入底色最低4.47:1；无位移/裁切，axe serious/critical为0。lint:ui、lint、typecheck、build通过。完整回归随3a再运行一次。
 
 该提交先独立存档，按用户要求直接继续3a，不进入3b/3c。

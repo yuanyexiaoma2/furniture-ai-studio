@@ -6,7 +6,7 @@ import {models} from "@/design-preview/mock/models";
 import {originalPhotoReferences,useLibraryStore} from "./library/library-store";
 import type {ImageAction,OnImageAction} from "./contracts";
 import type {CopyLayout} from "@/design-preview/workflows/types";
-export type ImageData = {hideFinalBadge?:boolean;externalLabel?:boolean;error?:string;jobId?:string;variantColor?:string;copy?:CopyLayout;label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
+export type ImageData = {naturalWidth?:number;naturalHeight?:number;generationStage?:string;hideFinalBadge?:boolean;externalLabel?:boolean;error?:string;jobId?:string;variantColor?:string;copy?:CopyLayout;label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
 export type StudioNode = Node<ImageData>;
 export const frameNames=["产品主图","客厅场景","空间搭配","材质细节","核心卖点","尺寸说明","安装说明"];
 export const imagePath=(name:string)=>/^(\/|data:|blob:)/.test(name)?name:`/design-preview/${name}.webp`;

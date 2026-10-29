@@ -1,0 +1,889 @@
+{
+  "variables": {
+    "--background": "#141416",
+    "--foreground": "#ececee",
+    "--card": "#1b1b1e",
+    "--card-foreground": "#ececee",
+    "--popover": "#222226",
+    "--popover-foreground": "#ececee",
+    "--primary": "#fafafa",
+    "--primary-foreground": "#18181b",
+    "--secondary": "#26262c",
+    "--secondary-foreground": "#ececee",
+    "--muted": "#16161a",
+    "--muted-foreground": "#a1a1aa",
+    "--accent": "#26262c",
+    "--accent-foreground": "#ececee",
+    "--destructive": "#e58181",
+    "--border": "#ffffff14",
+    "--input": "#71717a",
+    "--ring": "#6c907d",
+    "--p-subtle": "#a1a1aa",
+    "--p-text": "#a1a1aa",
+    "--p-panel": "#1b1b1e",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#1b1b1e",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "a",
+      "text": "首页",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 26,
+      "scrollWidth": 26,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 12,
+          "y": 21.09375,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "SKU",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 23,
+      "scrollWidth": 23,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 54,
+          "y": 21.09375,
+          "width": 23.390625,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "a.active",
+      "text": "模板库",
+      "fontSize": "13px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 14.564298145963988,
+      "clientWidth": 39,
+      "scrollWidth": 39,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 93.390625,
+          "y": 21.09375,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        38,
+        38,
+        44
+      ],
+      "contrast": 5.869374838533013,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 355.5,
+          "y": 21.09375,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "p.p-subtle",
+      "text": "品类视觉经验",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 354,
+      "scrollWidth": 354,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 103,
+          "width": 78,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "h1.text-[length:var(--text-xl)].font-medium",
+      "text": "模板库",
+      "fontSize": "28px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 15.59443097983516,
+      "clientWidth": 354,
+      "scrollWidth": 354,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 128.796875,
+          "width": 82.203125,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "p.p-subtle",
+      "text": "积累画面表达；具体产品外观由每次实拍分析决定。示例数据已排除检索。",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 354,
+      "scrollWidth": 354,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 177.796875,
+          "width": 351,
+          "height": 17
+        },
+        {
+          "x": 18,
+          "y": 198.59375,
+          "width": 78,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "h2.font-medium",
+      "text": "历史 Listing · 单个文件夹导入",
+      "fontSize": "16px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 14.564298145963988,
+      "clientWidth": 304,
+      "scrollWidth": 304,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 43,
+          "y": 268.390625,
+          "width": 208.890625,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "p.p-subtle",
+      "text": "图片 + 可选 TXT/JSON 参数。按文件名排序拆解，先待审；不创建或绑定 SKU。此操作会调用当前 Agent 模型。",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 304,
+      "scrollWidth": 304,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 43,
+          "y": 292.390625,
+          "width": 301.78125,
+          "height": 17
+        },
+        {
+          "x": 43,
+          "y": 313.1875,
+          "width": 299.109375,
+          "height": 17
+        },
+        {
+          "x": 43,
+          "y": 333.984375,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span.p-import-file-name",
+      "text": "尚未选择文件",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 84,
+      "scrollWidth": 84,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 159,
+          "y": 409.578125,
+          "width": 84,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.bg-secondary.text-secondary-foreground.shadow-sm.hover:bg-secondary/80.h-9.px-4.py-2",
+      "text": "场景经验 · 1",
+      "fontSize": "14px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        38,
+        38,
+        44
+      ],
+      "contrast": 12.74999650362023,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 10,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 34,
+          "y": 506.59375,
+          "width": 56,
+          "height": 19
+        },
+        {
+          "x": 90,
+          "y": 506.59375,
+          "width": 10.71875,
+          "height": 19
+        },
+        {
+          "x": 100.71875,
+          "y": 506.59375,
+          "width": 7.546875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "卖点表达 · 0",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 11,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 148.265625,
+          "y": 506.59375,
+          "width": 56,
+          "height": 19
+        },
+        {
+          "x": 204.265625,
+          "y": 506.59375,
+          "width": 10.71875,
+          "height": 19
+        },
+        {
+          "x": 214.984375,
+          "y": 506.59375,
+          "width": 7.546875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "配饰与陈列 · 0",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 120,
+      "scrollWidth": 120,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 12,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 262.53125,
+          "y": 506.59375,
+          "width": 70,
+          "height": 19
+        },
+        {
+          "x": 332.53125,
+          "y": 506.59375,
+          "width": 10.71875,
+          "height": 19
+        },
+        {
+          "x": 343.25,
+          "y": 506.59375,
+          "width": 7.546875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "图位顺序 · 0",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 13,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 34,
+          "y": 550.59375,
+          "width": 56,
+          "height": 19
+        },
+        {
+          "x": 90,
+          "y": 550.59375,
+          "width": 10.71875,
+          "height": 19
+        },
+        {
+          "x": 100.71875,
+          "y": 550.59375,
+          "width": 7.546875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "优秀案例 · 0",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 14,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 148.265625,
+          "y": 550.59375,
+          "width": 56,
+          "height": 19
+        },
+        {
+          "x": 204.265625,
+          "y": 550.59375,
+          "width": 10.71875,
+          "height": 19
+        },
+        {
+          "x": 214.984375,
+          "y": 550.59375,
+          "width": 7.546875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "p.p-subtle",
+      "text": "客厅家具 · 截图测试夹具",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 15,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 39,
+          "y": 624.78125,
+          "width": 52,
+          "height": 17
+        },
+        {
+          "x": 91,
+          "y": 624.78125,
+          "width": 9.953125,
+          "height": 17
+        },
+        {
+          "x": 100.953125,
+          "y": 624.78125,
+          "width": 78,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "h2.my-2.font-medium",
+      "text": "自然简约客厅",
+      "fontSize": "16px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 14.564298145963988,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 16,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 39,
+          "y": 645.578125,
+          "width": 96,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "summary",
+      "text": "查看内容",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 17,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 61,
+          "y": 674.375,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "pre.mt-3.whitespace-pre-wrap.break-words.text-xs.leading-6",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "break-word",
+      "raster": false,
+      "index": 18,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 39,
+          "y": 717.578125,
+          "width": 7.03125,
+          "height": 14
+        },
+        {
+          "x": 46.03125,
+          "y": 717.578125,
+          "width": 0,
+          "height": 14
+        },
+        {
+          "x": 39,
+          "y": 741.578125,
+          "width": 14.0625,
+          "height": 14
+        },
+        {
+          "x": 53.0625,
+          "y": 741.578125,
+          "width": 129.46875,
+          "height": 14
+        },
+        {
+          "x": 182.53125,
+          "y": 741.578125,
+          "width": 0,
+          "height": 14
+        },
+        {
+          "x": 39,
+          "y": 765.578125,
+          "width": 14.0625,
+          "height": 14
+        },
+        {
+          "x": 53.0625,
+          "y": 765.578125,
+          "width": 144.375,
+          "height": 14
+        },
+        {
+          "x": 197.4375,
+          "y": 765.578125,
+          "width": 0,
+          "height": 14
+        },
+        {
+          "x": 39,
+          "y": 789.578125,
+          "width": 14.0625,
+          "height": 14
+        },
+        {
+          "x": 53.0625,
+          "y": 789.578125,
+          "width": 139.40625,
+          "height": 14
+        },
+        {
+          "x": 192.46875,
+          "y": 789.578125,
+          "width": 0,
+          "height": 14
+        },
+        {
+          "x": 39,
+          "y": 813.578125,
+          "width": 7.03125,
+          "height": 14
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "INPUT",
+      "label": "导入品类",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.555469570048714,
+      "boundary": {
+        "selector": "INPUT.flex h-9 w-full rounded-[var(--radius-control)] border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 3.555469570048714,
+        "width": "1px",
+        "decorative": false
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 6.704576354553661
+    }
+  ],
+  "whiteSurfaces": [],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [],
+    "passes": [
+      "aria-allowed-attr",
+      "aria-conditional-attr",
+      "aria-deprecated-role",
+      "aria-hidden-body",
+      "aria-hidden-focus",
+      "aria-prohibited-attr",
+      "aria-required-attr",
+      "aria-roles",
+      "aria-valid-attr-value",
+      "aria-valid-attr",
+      "avoid-inline-spacing",
+      "button-name",
+      "bypass",
+      "color-contrast",
+      "document-title",
+      "form-field-multiple-labels",
+      "html-has-lang",
+      "html-lang-valid",
+      "label",
+      "link-name",
+      "meta-viewport",
+      "nested-interactive",
+      "summary-name"
+    ]
+  }
+}

@@ -1,0 +1,714 @@
+{
+  "mode": "compare",
+  "commit": "01c73363651711c9410926cc5d9209040443454c",
+  "referenceCommit": "83765acff0387a0b2d1d39cfcec6dd3c83abf1ce",
+  "referenceDirectory": "docs\\ui-audit\\phase3-prep-fix-creative",
+  "browserVersion": "156.0.8078.49",
+  "renderEnvironment": {
+    "schemaVersion": 1,
+    "chromeVersion": "156.0.8078.49",
+    "os": {
+      "platform": "win32",
+      "release": "10.0.26200",
+      "version": "Windows 11 Pro",
+      "arch": "x64"
+    },
+    "fonts": [
+      {
+        "family": "Segoe UI",
+        "installed": true,
+        "files": [
+          {
+            "path": "C:\\WINDOWS\\Fonts\\SegUIVar.ttf",
+            "sha256": "27ca1ab4bd5ad3b0404ee6a9a03b143408dbd7e5a4c9e4b2054639c03fc0f682"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeui.ttf",
+            "sha256": "704eada12961a27fd271f7d3b09e2066520e758390c1776744eff430fee30f6e"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuib.ttf",
+            "sha256": "b169e636719880976a97e94e3b1cb3dbe5f4a38eabc037bf9f2a9165154c3ad2"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuii.ttf",
+            "sha256": "f9feaeee8b20751c15700b4fb03571b335f52e91edece7fb7aa1ceaa6eeb0db7"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuil.ttf",
+            "sha256": "0dbddf9e20b2dc0facd568c877aa1155b3597c09a7ca41d00ca580af25d1cc51"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuisl.ttf",
+            "sha256": "288a8e3fcd0f6090881dcc469b557f55e0a85864abe1cc24330bb4f08105f69b"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuiz.ttf",
+            "sha256": "f2ecff1a943929f07a7b872c948b1de57fe688ac7d0bab6fc9f624c95a97dbfe"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguibl.ttf",
+            "sha256": "bdf29c9b7484c631f19d6ef436a63d15f8a1a82bc856f1a0f6906c41a097d2b1"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguibli.ttf",
+            "sha256": "6efcb158b0093bdeb6c308a93e10c2240e6510b99b756d9583cb59b7e219aaf9"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguiemj.ttf",
+            "sha256": "451df9bb5546055af625ff86aa72695df43e8e170b4c6c1316fe44e9c7a22f7c"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguihis.ttf",
+            "sha256": "a162ceeaf701b55d11c542daf1c39c52bfaf686496505bff2eb75ca24814c136"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguili.ttf",
+            "sha256": "07bbf002d8dccb6bf7db8e31207076bf357fe92b1e5f82a20d2c941d59ebeb96"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisb.ttf",
+            "sha256": "6c3fd894b19950b10c34bf64069ef821eaf2f58f959146306fee5b367472e501"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisbi.ttf",
+            "sha256": "16847ed882097cd1c0d45c63b6d75c3021f2133c64db03796f57dac198d0b2ad"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisli.ttf",
+            "sha256": "032eb41f836c3d6fd765dc4c287ea87f7f0c392a454ffc58d7e5fbe29d1fee86"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisym.ttf",
+            "sha256": "a4a35dcc62cd30e1a6c97b695ecef83e59d2b149e3af834f6a49f11851d56b37"
+          }
+        ]
+      },
+      {
+        "family": "Microsoft YaHei UI",
+        "installed": true,
+        "files": [
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyh.ttc",
+            "sha256": "d79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyhbd.ttc",
+            "sha256": "4508821b3dffe01f0ef5e5326a3e60df705a44633858811f67b6982dce3f6ee6"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyhl.ttc",
+            "sha256": "7e9bdf90bb5d3fe1b5975fc8ae31944b8fa674122261f92c28d4ec0b9c482fa1"
+          }
+        ]
+      },
+      {
+        "family": "PingFang SC",
+        "installed": false,
+        "files": []
+      }
+    ]
+  },
+  "capturedAt": "2026-10-29T09:16:14.270Z",
+  "fixedTime": "2026-10-28T06:00:00.000Z",
+  "normalization": "独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",
+  "results": [
+    {
+      "name": "home-light-1440",
+      "width": 1440,
+      "height": 1109,
+      "changedPixels": 195685,
+      "totalPixels": 1596960,
+      "differencePercent": 12.253594329225528,
+      "alignedDifferencePercent": 12.253594329225528,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "8623a7ae6e7e08bb5f1797d1b320eb82c6f34b568e4ef546288e18da85b6945a"
+    },
+    {
+      "name": "skus-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "9c28af9a915b82eee79db7cf10d4c659c21b2fd6838b04205cad2e7dcce0901a"
+    },
+    {
+      "name": "workspace-empty-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 79156,
+      "totalPixels": 1440000,
+      "differencePercent": 5.496944444444445,
+      "alignedDifferencePercent": 5.496944444444445,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "a8584e3c1d7b95733727b9d37b1d25f945b1d66db76b676732eee52eab6ecfb4"
+    },
+    {
+      "name": "workspace-images-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 96428,
+      "totalPixels": 1440000,
+      "differencePercent": 6.696388888888889,
+      "alignedDifferencePercent": 6.696388888888889,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3a055d52856dbadb522deae7eb79edb814368e78cfb4376c08c35085ea245189"
+    },
+    {
+      "name": "workspace-single-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 201750,
+      "totalPixels": 1440000,
+      "differencePercent": 14.010416666666666,
+      "alignedDifferencePercent": 14.010416666666666,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "b1aabe82b17b913986b43f8b9e5a4cf9c53456480ffbe0ef705c31bf786258f9"
+    },
+    {
+      "name": "workspace-multi-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 133075,
+      "totalPixels": 1440000,
+      "differencePercent": 9.241319444444445,
+      "alignedDifferencePercent": 9.241319444444445,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "fa07378a6a976985371c77ac600225b5ba1356c34998bd0fe77fb94bf803b8f9"
+    },
+    {
+      "name": "workspace-mask-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 100437,
+      "totalPixels": 1440000,
+      "differencePercent": 6.974791666666667,
+      "alignedDifferencePercent": 6.974791666666667,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "de748739dc333f5e78b346876904c9488e2a2f7a54aeed62f15c485ffa889cda"
+    },
+    {
+      "name": "workspace-expand-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 95402,
+      "totalPixels": 1440000,
+      "differencePercent": 6.6251388888888885,
+      "alignedDifferencePercent": 6.6251388888888885,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "dd8ad5f3811241a8027bf541d84aa4d2518441a4c0d614d11d12e489f6bb57bf"
+    },
+    {
+      "name": "workspace-product-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 47899,
+      "totalPixels": 1440000,
+      "differencePercent": 3.326319444444444,
+      "alignedDifferencePercent": 3.326319444444444,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "4609754c8759f97875238b1013dfa785b33bd762d76c48bca2e6a12468577f07"
+    },
+    {
+      "name": "library-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "77fcdfab817e193bde044ccdc7da64cfd79e779cacb8611f909c98a394e24cdd"
+    },
+    {
+      "name": "admin-light-1440",
+      "width": 1440,
+      "height": 1276,
+      "changedPixels": 0,
+      "totalPixels": 1837440,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3ef5faa09f9c8372e9c700597f4e53ff63c1cc553680f4a693307767b673504b",
+      "creativeRegion": {
+        "width": 1248,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1248000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "crop": {
+          "left": 96,
+          "top": 147,
+          "width": 1248,
+          "height": 1000
+        },
+        "comparison": "同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"
+      }
+    },
+    {
+      "name": "home-dark-1440",
+      "width": 1440,
+      "height": 1109,
+      "changedPixels": 196039,
+      "totalPixels": 1596960,
+      "differencePercent": 12.275761446748824,
+      "alignedDifferencePercent": 12.275761446748824,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "47b28531ee10f0f03560bfb959fc8299fdd9e45bfc8e3a84ee165f81c9a5bcec"
+    },
+    {
+      "name": "skus-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "eebc41200cad8e30800cf5a9880d4d8d3e20798e4203193f52fbb5da4ac75007"
+    },
+    {
+      "name": "workspace-empty-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 79090,
+      "totalPixels": 1440000,
+      "differencePercent": 5.492361111111111,
+      "alignedDifferencePercent": 5.492361111111111,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "ba78c77a9edd653272c4f2986ed4e025f801ca6abcb10f636f427d25a6e577d0"
+    },
+    {
+      "name": "workspace-images-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 97421,
+      "totalPixels": 1440000,
+      "differencePercent": 6.765347222222222,
+      "alignedDifferencePercent": 6.765347222222222,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "c21eece5d58c0211a7ab6c25ff7ed24fab48a1499bec629ba3c3603acde0901f"
+    },
+    {
+      "name": "workspace-single-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 194240,
+      "totalPixels": 1440000,
+      "differencePercent": 13.488888888888889,
+      "alignedDifferencePercent": 13.488888888888889,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "9474446ce17b8377241c439ccc6fa610b0bad6fb9c4528585845bdc6ecf14322"
+    },
+    {
+      "name": "workspace-multi-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 129559,
+      "totalPixels": 1440000,
+      "differencePercent": 8.997152777777778,
+      "alignedDifferencePercent": 8.997152777777778,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "a441a3fda3d42ae88a54291a15247c92135b77398db016191281c43679cfb6a2"
+    },
+    {
+      "name": "workspace-mask-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 100086,
+      "totalPixels": 1440000,
+      "differencePercent": 6.950416666666667,
+      "alignedDifferencePercent": 6.950416666666667,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "5d014543ec110df70e68825471a70d3cb71b0df8cb646d156ae3c54f45616472"
+    },
+    {
+      "name": "workspace-expand-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 97561,
+      "totalPixels": 1440000,
+      "differencePercent": 6.775069444444444,
+      "alignedDifferencePercent": 6.775069444444444,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "462433961ea03792e9aeb880f0d07cf66ea6c0894ffcb39023311a3fc8411ae3"
+    },
+    {
+      "name": "workspace-product-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 49654,
+      "totalPixels": 1440000,
+      "differencePercent": 3.448194444444445,
+      "alignedDifferencePercent": 3.448194444444445,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "48e03d4839f5e32a3231741e808946e21e9c1f5f92fab47065742773c8fa8315"
+    },
+    {
+      "name": "library-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3580f51902c6c332e7fda5c335ef42b1cfbe4e7a6d9dce673dde428fe2e65cb6"
+    },
+    {
+      "name": "admin-dark-1440",
+      "width": 1440,
+      "height": 1276,
+      "changedPixels": 0,
+      "totalPixels": 1837440,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "aa879aafb7dca5363b8be7cf3a7fa0d5cd9eaf1f5e25ebf567e60ba7cf8e6595",
+      "creativeRegion": {
+        "width": 1248,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1248000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "crop": {
+          "left": 96,
+          "top": 147,
+          "width": 1248,
+          "height": 1000
+        },
+        "comparison": "同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"
+      }
+    },
+    {
+      "name": "home-light-390",
+      "width": 390,
+      "height": 1390,
+      "changedPixels": 184853,
+      "totalPixels": 542100,
+      "differencePercent": 34.09942814978786,
+      "alignedDifferencePercent": 34.09942814978786,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1022324f177bd100718ca048283296c4336f112610a23a6ab0354474428801bf"
+    },
+    {
+      "name": "skus-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "4d34e8e2b124e22cca06a2f3c601d3693c0eaaee391a09a94833d3a1b3ff659f"
+    },
+    {
+      "name": "workspace-empty-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 56093,
+      "totalPixels": 329160,
+      "differencePercent": 17.04125653177786,
+      "alignedDifferencePercent": 17.04125653177786,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1169e674479b4162f48b13ea34aa66014c165de65774f5951fc038a5b09b53fc"
+    },
+    {
+      "name": "workspace-images-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 57534,
+      "totalPixels": 329160,
+      "differencePercent": 17.479037550127597,
+      "alignedDifferencePercent": 17.479037550127597,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1e493b6158428154857b6f426b9248247be8a2472283e678f5c17bf0f99c7662"
+    },
+    {
+      "name": "workspace-single-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 115663,
+      "totalPixels": 329160,
+      "differencePercent": 35.138838254952,
+      "alignedDifferencePercent": 35.138838254952,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "27e8e2e8eb9ad24eb7a3cd02c6ee2a7737153b8ed16e5045e83f73121b9fda59"
+    },
+    {
+      "name": "workspace-multi-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 86745,
+      "totalPixels": 329160,
+      "differencePercent": 26.353445133065982,
+      "alignedDifferencePercent": 26.353445133065982,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "0aafd42ae5be9be708523815663fda0eaff6138e51018c777a735d665da0460c"
+    },
+    {
+      "name": "workspace-mask-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 58558,
+      "totalPixels": 329160,
+      "differencePercent": 17.790132458378906,
+      "alignedDifferencePercent": 17.790132458378906,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "af1a893f0aa3855b19930101c7f93aac5719e62104c2dfcc6febe24388ab1502"
+    },
+    {
+      "name": "workspace-expand-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 50854,
+      "totalPixels": 329160,
+      "differencePercent": 15.449629359581966,
+      "alignedDifferencePercent": 15.449629359581966,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "50c069fec74615efd0b03a51ef0e8d9d205b52d4c1e72447780a2629a1b488d8"
+    },
+    {
+      "name": "workspace-product-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 3467,
+      "totalPixels": 329160,
+      "differencePercent": 1.0532871551828897,
+      "alignedDifferencePercent": 1.0532871551828897,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "9c57142c72239fd19e53e6d921c7928c7bfd9c8e299f1fc5766e91a6a2480959"
+    },
+    {
+      "name": "library-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "fadaf257d17408ccb9b264ccd5dacb280f4fe53f729ccc7dd7d0c28598334a15"
+    },
+    {
+      "name": "admin-light-390",
+      "width": 390,
+      "height": 1157,
+      "changedPixels": 0,
+      "totalPixels": 451230,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "8348a6e5739f494f3e0cfd427419f707e8a7c706a68019c90a2ec7fc4beffeb6",
+      "creativeRegion": {
+        "width": 354,
+        "height": 911,
+        "changedPixels": 0,
+        "totalPixels": 322494,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "crop": {
+          "left": 18,
+          "top": 155,
+          "width": 354,
+          "height": 911
+        },
+        "comparison": "同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"
+      }
+    },
+    {
+      "name": "home-dark-390",
+      "width": 390,
+      "height": 1390,
+      "changedPixels": 185194,
+      "totalPixels": 542100,
+      "differencePercent": 34.16233167312304,
+      "alignedDifferencePercent": 34.16233167312304,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1729f9b123c0a385e360852b67d9a9c24481383604e257e75173b5f35dcc95e1"
+    },
+    {
+      "name": "skus-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "e2c52fbfd5877b92b25b8f253c2fa583dc0a24aa13659347d93c0e2d064fdcbd"
+    },
+    {
+      "name": "workspace-empty-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 53475,
+      "totalPixels": 329160,
+      "differencePercent": 16.24589865111192,
+      "alignedDifferencePercent": 16.24589865111192,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "fd550c1012b7c599cbad48665de63198a21836efaaed6de273d002a05b0a8adf"
+    },
+    {
+      "name": "workspace-images-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 58808,
+      "totalPixels": 329160,
+      "differencePercent": 17.866083363713695,
+      "alignedDifferencePercent": 17.866083363713695,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "48f78e738096cea21d3eaaa558617ad791842a0dd1e7c40312e7373d71641e26"
+    },
+    {
+      "name": "workspace-single-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 112434,
+      "totalPixels": 329160,
+      "differencePercent": 34.15785636164783,
+      "alignedDifferencePercent": 34.15785636164783,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "15dcc667fb60c1c2e5b57d8aea461c5711afd309944cbe521e4263a5a24b52bd"
+    },
+    {
+      "name": "workspace-multi-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 82090,
+      "totalPixels": 329160,
+      "differencePercent": 24.939239275732167,
+      "alignedDifferencePercent": 24.939239275732167,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3a0adb217c1e473b378a0516b302f8004d03819e5c9e631fb871196378f2d0c2"
+    },
+    {
+      "name": "workspace-mask-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 56921,
+      "totalPixels": 329160,
+      "differencePercent": 17.292805930246686,
+      "alignedDifferencePercent": 17.292805930246686,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "d4b4151323202f32d451d0f2cd5d10b3672a85f9303090083ffb70f6116be634"
+    },
+    {
+      "name": "workspace-expand-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 52675,
+      "totalPixels": 329160,
+      "differencePercent": 16.00285575404059,
+      "alignedDifferencePercent": 16.00285575404059,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "4756c3386cf522066f12ba7c751edeb5babd0e6c8ee2e305078046a1ceb186b7"
+    },
+    {
+      "name": "workspace-product-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 2592,
+      "totalPixels": 329160,
+      "differencePercent": 0.7874589865111192,
+      "alignedDifferencePercent": 0.7874589865111192,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "81e8e6cc88ad01927eac8589fe91d8eabd0819b32093dae0a466cdac834cdbab"
+    },
+    {
+      "name": "library-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3432704c6affa3a420a195d835510ddae9643d857384086ae510d2fc04e33539"
+    },
+    {
+      "name": "admin-dark-390",
+      "width": 390,
+      "height": 1157,
+      "changedPixels": 0,
+      "totalPixels": 451230,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "7672367104463e7dcd37c6f8215a257da355de107be787f07869e5961207a329",
+      "creativeRegion": {
+        "width": 354,
+        "height": 911,
+        "changedPixels": 0,
+        "totalPixels": 322494,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "crop": {
+          "left": 18,
+          "top": 155,
+          "width": 354,
+          "height": 911
+        },
+        "comparison": "同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"
+      }
+    }
+  ],
+  "failures": []
+}

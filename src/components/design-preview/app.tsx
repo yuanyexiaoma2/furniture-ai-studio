@@ -28,8 +28,8 @@ import {IconGuide} from "./icon-guide";
 
 export type PreviewPage="home"|"skus"|"workspace"|"product"|"admin"|"library"|"icons";
 const emptySubscribe=()=>()=>{};
-export function TipButton({label,children,onClick,className="",side="top"}:{label:string;children:React.ReactNode;onClick?:()=>void;className?:string;side?:"top"|"right"|"bottom"|"left"}) {
- return <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon" className={`p-icon-button ${className}`} aria-label={label} onClick={onClick}>{children}</Button></TooltipTrigger><TooltipContent className="p-portal" side={side} sideOffset={8} collisionPadding={12}>{label}</TooltipContent></Tooltip>;
+export function TipButton({label,children,onClick,className="",side="top",disabled=false}:{label:string;children:React.ReactNode;onClick?:()=>void;className?:string;side?:"top"|"right"|"bottom"|"left";disabled?:boolean}) {
+ return <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon" className={`p-icon-button ${className}`} aria-label={label} onClick={onClick} disabled={disabled}>{children}</Button></TooltipTrigger><TooltipContent className="p-portal" side={side} sideOffset={8} collisionPadding={12}>{label}</TooltipContent></Tooltip>;
 }
 export function Pick({label,value,values,onChange}:{label:string;value:string;values:string[];onChange:(v:string)=>void}){return <Select value={value} onValueChange={onChange}><SelectTrigger aria-label={label}><SelectValue /></SelectTrigger><SelectContent className="p-portal">{values.map(v=><SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent></Select>;}
 export function PreviewApp({page}:{page:PreviewPage}) {

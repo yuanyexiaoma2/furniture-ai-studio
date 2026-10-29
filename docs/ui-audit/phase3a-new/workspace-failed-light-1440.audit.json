@@ -1,0 +1,1625 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#71717a",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#e4e4e7",
+    "--input": "#8b8b94",
+    "--ring": "#1f3a2e",
+    "--p-subtle": "#71717a",
+    "--p-text": "#52525b",
+    "--p-panel": "#fff",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#fff",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "strong",
+      "text": "客厅家具 · 视觉检查",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 123,
+      "scrollWidth": 123,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 123,
+          "y": 20.296875,
+          "width": 123.078125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "产品卡",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 42,
+      "scrollWidth": 42,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 307.078125,
+          "y": 20.3125,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "导出图包",
+      "fontSize": "14px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 56,
+      "scrollWidth": 56,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1288,
+          "y": 20.3125,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1384.5,
+          "y": 21.09375,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "创作搭档",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 97,
+      "scrollWidth": 97,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 57,
+          "y": 84.5,
+          "width": 64,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "span.p-subtle",
+      "text": "本次 $ 0.00",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 64,
+      "scrollWidth": 64,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 551.015625,
+          "y": 86.09375,
+          "width": 40.140625,
+          "height": 17
+        },
+        {
+          "x": 591.15625,
+          "y": 86.09375,
+          "width": 23.84375,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "p",
+      "text": "保留产品外观，规划自然简约的客厅场景。",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 16.118381484528566,
+      "clientWidth": 515,
+      "scrollWidth": 515,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 86,
+          "y": 147,
+          "width": 266,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "p",
+      "text": "已确认产品特征。请在画布中挑选候选图，再进行局部调整。",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 591,
+      "scrollWidth": 591,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 57,
+          "y": 204.1875,
+          "width": 378,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.border.border-input.bg-background.shadow-sm.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "识别实拍与产品资料",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 158,
+      "scrollWidth": 158,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 41,
+          "y": 253.59375,
+          "width": 126,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "创作进度",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 48,
+      "scrollWidth": 48,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 39,
+          "y": 307.78125,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "刷新后可继续查看",
+      "fontSize": "12px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 10,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 504,
+          "y": 307.78125,
+          "width": 96,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "客厅场景",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 479,
+      "scrollWidth": 479,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 11,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 53,
+          "y": 349.96875,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "生成未完成",
+      "fontSize": "12px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 60,
+      "scrollWidth": 60,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 12,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 540,
+          "y": 349.96875,
+          "width": 60,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "客厅场景",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 503,
+      "scrollWidth": 503,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 13,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 53,
+          "y": 381.15625,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "排队中",
+      "fontSize": "12px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 14,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 564,
+          "y": 381.15625,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "客厅场景",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 503,
+      "scrollWidth": 503,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 15,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 53,
+          "y": 412.34375,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "生成中",
+      "fontSize": "12px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 16,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 564,
+          "y": 412.34375,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "p.p-subtle",
+      "text": "只有1张实拍，产品还原度可能不稳定",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 591,
+      "scrollWidth": 591,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 17,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 24,
+          "y": 462.53125,
+          "width": 215.015625,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.bg-primary.text-primary-foreground.shadow.hover:bg-primary/90.h-9.px-4.py-2",
+      "text": "生成候选 · 先查看费用",
+      "fontSize": "14px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 169,
+      "scrollWidth": 169,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 18,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 40,
+          "y": 490.140625,
+          "width": 136.71875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.p-model-label",
+      "text": "Gemini 3.8 Flash",
+      "fontSize": "13px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 11.219105093353505,
+      "clientWidth": 90,
+      "scrollWidth": 94,
+      "overflow": true,
+      "wrap": "normal",
+      "raster": false,
+      "index": 19,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 86,
+          "y": 950,
+          "width": 93.515625,
+          "height": 17
+        },
+        {
+          "x": 86,
+          "y": 950,
+          "width": 74.03125,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span.p-model-label",
+      "text": "Nano Banana 2.1",
+      "fontSize": "13px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 11.219105093353505,
+      "clientWidth": 97,
+      "scrollWidth": 97,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 20,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 244,
+          "y": 950,
+          "width": 97.28125,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "联网 开",
+      "fontSize": "13px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 11.219105093353505,
+      "clientWidth": 43,
+      "scrollWidth": 43,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 21,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 444.28125,
+          "y": 950,
+          "width": 29.5625,
+          "height": 17
+        },
+        {
+          "x": 473.84375,
+          "y": 950,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "产品实拍",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        252,
+        252,
+        253
+      ],
+      "contrast": 17.279431459376696,
+      "clientWidth": 56,
+      "scrollWidth": 56,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 22,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 428.79998779296875,
+          "y": 213.7218780517578,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "1 张实拍",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        252,
+        252,
+        253
+      ],
+      "contrast": 4.713596823761879,
+      "clientWidth": 50,
+      "scrollWidth": 50,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 23,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 811.2218627929688,
+          "y": 214.5187530517578,
+          "width": 49.578125,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "01 客厅场景",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        252,
+        252,
+        253
+      ],
+      "contrast": 17.279431459376696,
+      "clientWidth": 75,
+      "scrollWidth": 75,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 24,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 924.7999877929688,
+          "y": 213.7218780517578,
+          "width": 75.40625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "3 张候选",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        252,
+        252,
+        253
+      ],
+      "contrast": 4.713596823761879,
+      "clientWidth": 50,
+      "scrollWidth": 50,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 25,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1537.612548828125,
+          "y": 214.5187530517578,
+          "width": 49.578125,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span.p-image-tag.r1-external-label",
+      "text": "生成失败",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 26,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 944,
+          "y": 417.4000244140625,
+          "width": 52,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "p",
+      "text": "生成服务暂时不可用，请重试",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 182,
+      "scrollWidth": 182,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 27,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 960.7999877929688,
+          "y": 310.63751220703125,
+          "width": 145.60003662109375,
+          "height": 15.199981689453125
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.bg-primary.text-primary-foreground.shadow.hover:bg-primary/90.h-9.px-4.py-2",
+      "text": "重试",
+      "fontSize": "14px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 60,
+      "scrollWidth": 60,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 28,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1022.4000244140625,
+          "y": 343.6000061035156,
+          "width": 22.4000244140625,
+          "height": 15.199981689453125
+        }
+      ]
+    },
+    {
+      "selector": "span.p-image-tag.r1-external-label",
+      "text": "排队中",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 39,
+      "scrollWidth": 39,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 29,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1152,
+          "y": 417.4000244140625,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span.p-generation-stage",
+      "text": "排队中",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 16.118381484528566,
+      "clientWidth": 42,
+      "scrollWidth": 42,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 30,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1224.800048828125,
+          "y": 329.8374938964844,
+          "width": 33.5999755859375,
+          "height": 15.20001220703125
+        }
+      ]
+    },
+    {
+      "selector": "span.p-image-tag.r1-external-label",
+      "text": "生成中",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 39,
+      "scrollWidth": 39,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 31,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1360,
+          "y": 417.4000244140625,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span.p-generation-stage",
+      "text": "生成中",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 16.118381484528566,
+      "clientWidth": 42,
+      "scrollWidth": 42,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 32,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1432.800048828125,
+          "y": 329.8374938964844,
+          "width": 33.5999755859375,
+          "height": 15.20001220703125
+        }
+      ]
+    },
+    {
+      "selector": "div.p-canvas-guide",
+      "text": "空格拖动画布 · Ctrl / ⌘ 滚轮缩放",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        254.52941176470588,
+        254.52941176470588,
+        254.58823529411765
+      ],
+      "contrast": 4.813770063807531,
+      "clientWidth": 210,
+      "scrollWidth": 210,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 33,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1228.1875,
+          "y": 911.203125,
+          "width": 189.8125,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2.p-zoom-menu",
+      "text": "80%",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 68,
+      "scrollWidth": 68,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 34,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1259.71875,
+          "y": 956.796875,
+          "width": 15.09375,
+          "height": 19
+        },
+        {
+          "x": 1274.8125,
+          "y": 956.796875,
+          "width": 11.46875,
+          "height": 19
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [
+    {
+      "selector": "span.p-model-label",
+      "text": "Gemini 3.8 Flash",
+      "fontSize": "13px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 11.219105093353505,
+      "clientWidth": 90,
+      "scrollWidth": 94,
+      "overflow": true,
+      "wrap": "normal",
+      "raster": false,
+      "index": 19,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 86,
+          "y": 950,
+          "width": 93.515625,
+          "height": 17
+        },
+        {
+          "x": 86,
+          "y": 950,
+          "width": 74.03125,
+          "height": 17
+        }
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "tag": "TEXTAREA",
+      "label": "工作台创作要求",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(82, 82, 91)",
+      "borderWidth": "0px",
+      "contrast": 7.729820868495424,
+      "boundary": {
+        "selector": "DIV.p-chat-input",
+        "color": "rgb(139, 139, 148)",
+        "contrast": 3.37703936171047,
+        "width": "1px",
+        "decorative": false
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 4.832895561154151
+    }
+  ],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "p-topbar"
+    },
+    {
+      "tag": "DIV",
+      "classes": "w-theme-segments"
+    },
+    {
+      "tag": "ASIDE",
+      "classes": "p-chat l-chat"
+    },
+    {
+      "tag": "SPAN",
+      "classes": "p-agent-avatar"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-chat-bubble"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "t11-progress"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-chat-input"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-canvas-wrap "
+    },
+    {
+      "tag": "DIV",
+      "classes": "react-flow light"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-frame "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-frame "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-image-node  "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-generation-error nodrag nopan"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-image-node  "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-loading"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-image-node  "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-loading"
+    },
+    {
+      "tag": "svg",
+      "classes": {}
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-canvas-dock"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-canvas-guide"
+    },
+    {
+      "tag": "DIV",
+      "classes": "r1-canvas-controls"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>1 张实拍</span>",
+            "target": [
+              "div[data-id=\"reference-frame\"] > .p-frame[data-overview=\"false\"] > .p-frame-title > span:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span style=\"\">01 客厅场景</span>",
+            "target": [
+              "div[data-id=\"slot-ui-slot\"] > .p-frame[data-overview=\"false\"] > .p-frame-title > span:nth-child(1)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<p title=\"生成服务暂时不可用，请重试\">生成服务暂时不可用，请重试</p>",
+            "target": [
+              "p[title=\"生成服务暂时不可用，请重试\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".p-generation-error > .bg-primary.text-primary-foreground.shadow"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"p-generation-stage\">排队中</span>",
+            "target": [
+              "div[data-picture=\"job-ui-pending\"] > .p-loading[aria-label=\"正在生成候选\"][role=\"status\"] > .p-generation-stage"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-canvas-guide\">空格拖动画布 · Ctrl / ⌘ 滚轮缩放</div>",
+                    "target": [
+                      ".p-canvas-guide"
+                    ]
+                  },
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<div class=\"p-canvas-guide\">空格拖动画布 · Ctrl / ⌘ 滚轮缩放</div>",
+            "target": [
+              ".p-canvas-guide"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "aria-allowed-attr",
+      "aria-conditional-attr",
+      "aria-deprecated-role",
+      "aria-hidden-body",
+      "aria-hidden-focus",
+      "aria-prohibited-attr",
+      "aria-required-attr",
+      "aria-roles",
+      "aria-valid-attr-value",
+      "aria-valid-attr",
+      "avoid-inline-spacing",
+      "button-name",
+      "color-contrast",
+      "document-title",
+      "duplicate-id-aria",
+      "form-field-multiple-labels",
+      "html-has-lang",
+      "html-lang-valid",
+      "image-alt",
+      "label",
+      "meta-viewport",
+      "nested-interactive"
+    ]
+  }
+}

@@ -1,0 +1,789 @@
+{
+  "variables": {
+    "--background": "#141416",
+    "--foreground": "#ececee",
+    "--card": "#1b1b1e",
+    "--card-foreground": "#ececee",
+    "--popover": "#222226",
+    "--popover-foreground": "#ececee",
+    "--primary": "#fafafa",
+    "--primary-foreground": "#18181b",
+    "--secondary": "#26262c",
+    "--secondary-foreground": "#ececee",
+    "--muted": "#16161a",
+    "--muted-foreground": "#a1a1aa",
+    "--accent": "#26262c",
+    "--accent-foreground": "#ececee",
+    "--destructive": "#e58181",
+    "--border": "#ffffff14",
+    "--input": "#71717a",
+    "--ring": "#6c907d",
+    "--p-subtle": "#a1a1aa",
+    "--p-text": "#a1a1aa",
+    "--p-panel": "#1b1b1e",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#1b1b1e",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "strong",
+      "text": "客厅家具 · 视觉检查",
+      "fontSize": "13px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 14.564298145963988,
+      "clientWidth": 90,
+      "scrollWidth": 114,
+      "overflow": true,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 56,
+          "y": 21.09375,
+          "width": 114.296875,
+          "height": 17
+        },
+        {
+          "x": 56,
+          "y": 21.09375,
+          "width": 75.296875,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "产品卡",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 42,
+      "scrollWidth": 42,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 201,
+          "y": 20.3125,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        38,
+        38,
+        44
+      ],
+      "contrast": 5.869374838533013,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 355.5,
+          "y": 21.09375,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button",
+      "text": "对话",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 64,
+      "scrollWidth": 64,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 149.5,
+          "y": 77,
+          "width": 24,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "button",
+      "text": "画布",
+      "fontSize": "12px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        38,
+        38,
+        44
+      ],
+      "contrast": 12.74999650362023,
+      "clientWidth": 64,
+      "scrollWidth": 64,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 216.5,
+          "y": 77,
+          "width": 24,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "01 客厅场景",
+      "fontSize": "14px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        25,
+        25,
+        27
+      ],
+      "contrast": 14.879757666140305,
+      "clientWidth": 75,
+      "scrollWidth": 75,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": -9.199999809265137,
+          "y": 241.8410186767578,
+          "width": 75.40625,
+          "height": 18.999984741210938
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "1 张终稿",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        25,
+        25,
+        27
+      ],
+      "contrast": 6.849796015576537,
+      "clientWidth": 50,
+      "scrollWidth": 50,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1121.112548828125,
+          "y": 242.6378936767578,
+          "width": 49.578125,
+          "height": 16.999984741210938
+        }
+      ]
+    },
+    {
+      "selector": "span.p-image-tag.r1-external-label",
+      "text": "候选 1",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 37,
+      "scrollWidth": 37,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 24.999996185302734,
+          "y": 587.1500244140625,
+          "width": 36.578125,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "局部重绘 · 画笔 18px",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        34,
+        34,
+        38
+      ],
+      "contrast": 6.184874741659395,
+      "clientWidth": 119,
+      "scrollWidth": 119,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 136.421875,
+          "y": 210.453125,
+          "width": 52,
+          "height": 17
+        },
+        {
+          "x": 188.421875,
+          "y": 210.453125,
+          "width": 39.515625,
+          "height": 17
+        },
+        {
+          "x": 227.9375,
+          "y": 210.453125,
+          "width": 14.015625,
+          "height": 17
+        },
+        {
+          "x": 241.953125,
+          "y": 210.453125,
+          "width": 13.609375,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-8.rounded-[var(--radius-control)].px-3.text-xs",
+      "text": "框选",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        34,
+        34,
+        38
+      ],
+      "contrast": 6.184874741659395,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 140,
+          "y": 260.046875,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.border.border-input.bg-background.shadow-sm.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "取消",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 60,
+      "scrollWidth": 60,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 10,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 185.234375,
+          "y": 662.5625,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.bg-primary.text-primary-foreground.shadow.hover:bg-primary/90.h-9.px-4.py-2",
+      "text": "确认 · 约 $0.03",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        250,
+        250,
+        250
+      ],
+      "contrast": 16.973898642198108,
+      "clientWidth": 122,
+      "scrollWidth": 122,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 11,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 254.234375,
+          "y": 662.5625,
+          "width": 89.765625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "div.p-canvas-guide",
+      "text": "空格拖动画布 · Ctrl / ⌘ 滚轮缩放",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        32.90196078431372,
+        32.90196078431372,
+        36.745098039215684
+      ],
+      "contrast": 6.268246998530409,
+      "clientWidth": 182,
+      "scrollWidth": 182,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 12,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 206,
+          "y": 678.40625,
+          "width": 150.8125,
+          "height": 17
+        },
+        {
+          "x": 206,
+          "y": 699.203125,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2.p-zoom-menu",
+      "text": "143%",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 68,
+      "scrollWidth": 68,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 13,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 205.9375,
+          "y": 800.796875,
+          "width": 22.640625,
+          "height": 19
+        },
+        {
+          "x": 228.578125,
+          "y": 800.796875,
+          "width": 11.46875,
+          "height": 19
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [
+    {
+      "selector": "strong",
+      "text": "客厅家具 · 视觉检查",
+      "fontSize": "13px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 14.564298145963988,
+      "clientWidth": 90,
+      "scrollWidth": 114,
+      "overflow": true,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 56,
+          "y": 21.09375,
+          "width": 114.296875,
+          "height": 17
+        },
+        {
+          "x": 56,
+          "y": 21.09375,
+          "width": 75.296875,
+          "height": 17
+        }
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "tag": "INPUT",
+      "label": "局部修改要求",
+      "background": "rgb(20, 20, 22)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.8069479390871814,
+      "boundary": {
+        "selector": "INPUT.rounded-[var(--radius-control)] border bg-background px-3 py-2 text-sm",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 3.8069479390871814,
+        "width": "1px",
+        "decorative": false
+      },
+      "exempt": false,
+      "textContrast": 7.178791052083453,
+      "placeholderContrast": null
+    }
+  ],
+  "whiteSurfaces": [],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span style=\"\">01 客厅场景</span>",
+            "target": [
+              ".p-frame-title > span:nth-child(1)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"p-image-tag r1-external-label\" style=\"transform: scale(0.701754); transform-origin: left bottom;\">候选 1</span>",
+            "target": [
+              ".p-image-tag"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".p-editor-footer > .border-input.bg-background.shadow-sm"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".p-editor-footer > .text-primary-foreground.hover\\:bg-primary\\/90.bg-primary"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscuring",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it partially overlaps other elements"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<div class=\"p-canvas-guide\">空格拖动画布 · Ctrl / ⌘ 滚轮缩放</div>",
+            "target": [
+              ".p-canvas-guide"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "aria-allowed-attr",
+      "aria-conditional-attr",
+      "aria-deprecated-role",
+      "aria-hidden-body",
+      "aria-hidden-focus",
+      "aria-input-field-name",
+      "aria-prohibited-attr",
+      "aria-required-attr",
+      "aria-required-children",
+      "aria-required-parent",
+      "aria-roles",
+      "aria-valid-attr-value",
+      "aria-valid-attr",
+      "avoid-inline-spacing",
+      "button-name",
+      "color-contrast",
+      "document-title",
+      "duplicate-id-aria",
+      "form-field-multiple-labels",
+      "html-has-lang",
+      "html-lang-valid",
+      "image-alt",
+      "label",
+      "meta-viewport",
+      "nested-interactive"
+    ]
+  }
+}

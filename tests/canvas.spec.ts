@@ -27,7 +27,7 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
   const layout={version:1,nodes:[{id:"slot-"+slot.id,x:420,y:180},{id:"job-"+pendingJob.id,x:130,y:60}],notes:[{id:"note-browser",text:"保留产品木色与五金",x:460,y:100,width:220,height:160}],hiddenIds:[],viewport:{x:100,y:80,zoom:.7}};
   expect((await page.request.put(endpoint,{headers:{Origin:origin},data:{revision:0,layout}})).status()).toBe(200);
   await page.goto(`/workspace?sku=${productId}`);
-  await expect(page.getByText("布局已保存",{exact:true})).toBeAttached();await expect(page.getByLabel("画布便签")).toHaveValue("保留产品木色与五金");await expect(page.locator(".p-zoom-label")).toHaveText("70%");
+  await expect(page.getByText("布局已保存",{exact:true})).toBeAttached();await expect(page.getByLabel("画布便签")).toHaveValue("保留产品木色与五金");await expect(page.getByRole("button",{name:"缩放百分比菜单"})).toHaveText("70%");
   const picture=page.locator(`[data-picture="${assets[1]}"]`);await picture.click();await expect(page.getByLabel("本次引用图片")).toContainText("本次引用 1 张");
   // 预览读取已保存原图，不触发生图；关闭后仍保留画布选中与引用。
   await picture.getByRole("button",{name:"放大查看图片",exact:true}).click();
@@ -47,7 +47,7 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
 
   await page.keyboard.press("Escape");await expect(preview).toHaveCount(0);await expect(page.getByLabel("本次引用图片")).toContainText("本次引用 1 张");
   await picture.dblclick();await expect(preview).toBeVisible();await preview.getByRole("button",{name:"关闭",exact:true}).click();await expect(preview).toHaveCount(0);
-  await expect(page.locator(".p-zoom-label")).toHaveText("70%");
+  await expect(page.getByRole("button",{name:"缩放百分比菜单"})).toHaveText("70%");
   // 暂停前端轮询，模拟正式图片先入库、自动保存仍带旧占位图的竞争时序。
   const snapshotUrl="/api/studio/"+productId,frozen=await (await page.request.get(snapshotUrl)).json();
   await page.route("**"+snapshotUrl,route=>route.fulfill({status:200,json:frozen}));
@@ -67,7 +67,7 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
   await expect.poll(()=>requestBody?.canvas).toEqual({selectedIds:[assets[1]],referenceAssetIds:[assets[1]]});await expect(toolProgress).toContainText("读取画布");
   await page.getByLabel("画布便签").fill("这条便签需要刷新后保留");
   await expect.poll(async()=>((await (await page.request.get(endpoint)).json()).layout.notes[0]?.text)).toBe("这条便签需要刷新后保留");
-  await page.reload();await expect(page.getByLabel("画布便签")).toHaveValue("这条便签需要刷新后保留");await expect(page.locator(".p-zoom-label")).toHaveText("70%");await expect(toolProgress).toContainText("查看引用图片");
+  await page.reload();await expect(page.getByLabel("画布便签")).toHaveValue("这条便签需要刷新后保留");await expect(page.getByRole("button",{name:"缩放百分比菜单"})).toHaveText("70%");await expect(toolProgress).toContainText("查看引用图片");
   const frame=page.locator(`[data-id="slot-${slot.id}"]`);await expect(frame).toHaveAttribute("style",/translate\(420px, 180px\)/);
   // 键盘移除只隐藏当前用户布局，原始资源和其他用户的画布不受影响。
   await picture.click();await page.keyboard.press("Delete");

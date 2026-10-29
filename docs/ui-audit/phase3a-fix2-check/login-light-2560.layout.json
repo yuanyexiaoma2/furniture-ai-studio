@@ -1,0 +1,24 @@
+[
+  {
+    "selector": "login-story-center",
+    "text": "产品 · 空间 · 想象让产品，成为故事的主角.一个属于家具电商团队的创意空间。让协作井然",
+    "x": 96,
+    "y": 405.3125,
+    "width": 1191.21875,
+    "height": 621.375,
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "login-form-wrap",
+    "text": "欢迎回到工作台登录你的账号使用管理员分配的公司账号继续。公司邮箱密码进入工作台还没有账号或",
+    "x": 1758.109375,
+    "y": 496,
+    "width": 355,
+    "height": 448,
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  }
+]

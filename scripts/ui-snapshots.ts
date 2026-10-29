@@ -8,6 +8,7 @@ import {chromium,expect,type Page} from "@playwright/test";
 import sharp from "sharp";
 import {compareScreenshots} from "./ui-image-diff";
 import {collectRenderEnvironment,checkRenderBaseline} from "./ui-render-environment";
+import {verifyCanvasControls} from "./ui-canvas-check";
 import {auditStudioPage} from "./ui-studio-audit";
 import {emptyProfile,profileFields,understanding} from "../src/lib/profile-rules";
 
@@ -26,7 +27,7 @@ if(mode==="baseline"&&!args.includes("--force")){try{await readFile(path.join(ro
 const fixed="2026-10-28T06:00:00.000Z",productId="ui-snapshot-product",photoId="ui-photo",images=["ui-scene-a","ui-scene-b","ui-scene-c"];
 const profile=emptyProfile();for(const [i,k]of profileFields.entries())profile[k]={value:["客厅家具","结构与实拍一致","按实拍比例","织物与木质","浅米色","无外露标识","保留外观与部件","舒适坐感、空间搭配","家庭用户","自然简约客厅"][i]??"按实拍确认",status:"confirmed",sources:[],conflicts:[]};
 const assets=images.map(id=>({id,width:2048,height:1536}));
-const snapshot={product:{id:productId,sku:"UI-SNAPSHOT-01",name:"客厅家具 · 视觉检查",category:"客厅家具",dimensions:"按实拍比例",materials:"织物与木质",colors:"浅米色",sellingPoints:["舒适坐感","空间搭配"],identityTraits:"保留产品完整结构、部件与颜色",assets:[{id:photoId,width:2048,height:1536}],createdAt:fixed,updatedAt:fixed},agent:{session:{id:"ui-session",mode:"quick",autoConfirm:false,stopQuestions:false,confirmedProfileId:"ui-profile",confirmedPack:true,draftRevision:1,running:false},profile,understanding:understanding(profile),messages:[{id:"ui-message-1",role:"user",content:{text:"保留产品外观，规划自然简约的客厅场景。"}},{id:"ui-message-2",role:"assistant",content:{text:"已确认产品特征。请在画布中挑选候选图，再进行局部调整。"}}],cards:[],documents:[],tools:[],costs:{llmUsd:0,imagesUsd:0,searchUsd:0,estimated:false}},settings:{agentId:"agent-zenmux-flash",imageId:"image-banana",imageIds:["image-banana"],auto:false,qualities:{},shootingMode:"quick",categoryConfirmed:true},categories:[],searches:[],pack:{productId,sku:"UI-SNAPSHOT-01",name:"客厅家具 · 视觉检查",photoCount:1,identityVersionId:"ui-identity",packId:"ui-pack",batches:[],slots:[{id:"ui-slot",name:"客厅场景",order:1,slotType:"scene",goal:"自然光线与中性色调",method:"ai_scene",candidateCount:3,aspectRatio:"4:3",finalAssetId:images[0],jobs:[{id:"ui-job",batchId:null,retriedById:null,status:"success",provider:"simulation",model:"截图固定数据",fallback:false,error:null,input:{},costUsd:0,reservedUsd:0,costEstimated:false,credits:0,createdAt:fixed,durationMs:1000,assets}]}]}};
+const snapshot={product:{id:productId,sku:"UI-SNAPSHOT-01",name:"客厅家具 · 视觉检查",category:"客厅家具",dimensions:"按实拍比例",materials:"织物与木质",colors:"浅米色",sellingPoints:["舒适坐感","空间搭配"],identityTraits:"保留产品完整结构、部件与颜色",assets:[{id:photoId,width:2048,height:1536}],createdAt:fixed,updatedAt:fixed},agent:{session:{id:"ui-session",mode:"quick",autoConfirm:false,stopQuestions:false,confirmedProfileId:"ui-profile",confirmedPack:true,draftRevision:1,running:false},profile,understanding:understanding(profile),messages:[{id:"ui-message-1",role:"user",content:{text:"保留产品外观，规划自然简约的客厅场景。"}},{id:"ui-message-2",role:"assistant",content:{text:"已确认产品特征。请在画布中挑选候选图，再进行局部调整。"}}],cards:[],documents:[],tools:[],costs:{llmUsd:0,imagesUsd:0,searchUsd:0,estimated:false}},settings:{agentId:"agent-zenmux-flash",imageId:"image-banana",imageIds:["image-banana"],auto:false,qualities:{},shootingMode:"quick",categoryConfirmed:true},categories:[],searches:[],pack:{productId,sku:"UI-SNAPSHOT-01",name:"客厅家具 · 视觉检查",photoCount:1,identityVersionId:"ui-identity",packId:"ui-pack",batches:[],slots:[{id:"ui-slot",name:"客厅场景",order:1,slotType:"scene",goal:"自然光线与中性色调",method:"ai_scene",candidateCount:3,aspectRatio:"4:3",finalAssetId:images[0],jobs:[{id:"ui-job",batchId:null,retriedById:null,status:"success",provider:"simulation",model:"截图固定数据",fallback:false,error:null as string|null,input:{},costUsd:0,reservedUsd:0,costEstimated:false,credits:0,createdAt:fixed,durationMs:1000,assets}]}]}};
 const library=[{id:"ui-pattern",type:"scene_pattern",name:"自然简约客厅",categories:["客厅家具"],source:"截图测试夹具",is_sample:false,status:"ready",content:{roomType:"客厅",light:"柔和自然光",palette:"中性环境"}}];
 if(args.includes("--small-text")){
  Object.assign(snapshot.agent,{tools:[{id:"ui-tool",callId:"ui-tool",name:"view_images",status:"success",error:null,result:{analysis:"已核对产品实拍"}}],cards:[{id:"ui-question",kind:"questions",status:"pending",data:{questions:[{question:"请选择这个图位的方向",options:["保留当前方案"]}]}}]});
@@ -52,13 +53,17 @@ try{
  const adminCatalog=mode==="baseline"?await(await login.request.get(baseURL+"/api/studio/models?admin=1")).json():JSON.parse(await readFile(path.join(root,"admin-catalog.json"),"utf8"));
  await writeFile(path.join(destination,"admin-catalog.json"),JSON.stringify(adminCatalog,null,2));
  await login.close();
- const states=prepFix2?["home","login"]:prepFix?["home","skus","workspace-empty","workspace-images","library","login"]:args.includes("--small-text")?["workspace-progress","workspace-history","workspace-save-status"]:["home","skus","workspace-empty","workspace-images","workspace-single","workspace-multi","workspace-mask","workspace-expand","workspace-product","library","admin"];
+ const newStates=["workspace-toolbar-flip","workspace-failed","workspace-lowres"];
+ const states=args.includes("--phase3a-new")?newStates:prepFix2?["home","login"]:prepFix?["home","skus","workspace-empty","workspace-images","library","login"]:args.includes("--small-text")?["workspace-progress","workspace-history","workspace-save-status"]:["home","skus","workspace-empty","workspace-images","workspace-single","workspace-multi","workspace-mask","workspace-expand","workspace-product","library","admin"];
  for(const width of prepFix?[1440,2560,390]:[1440,390])for(const theme of ["light","dark"])for(const state of states){
   if(prepFix&&width===2560&&state.startsWith("workspace"))continue;
   if(prepFix2&&width===390&&state==="login")continue;
   if(only&&!state.includes(only))continue;
   const name=`${state}-${theme}-${width}`,context=await browser.newContext({...(state==="login"?{}:{storageState:auth}),viewport:{width,height:width===390?844:prepFix?(width===2560?1440:900):1000},deviceScaleFactor:1,locale:"zh-CN",timezoneId:"Asia/Shanghai",colorScheme:theme==="dark"?"dark":"light",reducedMotion:"reduce"}),page=await context.newPage();
+  const retryActions:string[]=[];
   try{
+   const fixture=structuredClone(snapshot);if(state==="workspace-failed"){const job=fixture.pack.slots[0].jobs[0];fixture.pack.slots[0].jobs=[{...job,id:"ui-failed",status:"failed",error:"生成服务暂时不可用，请重试",assets:[]},{...job,id:"ui-pending",status:"pending",assets:[]},{...job,id:"ui-running",status:"running",assets:[]}];}
+
    const pageErrors:string[]=[];page.on("pageerror",e=>pageErrors.push(e.message));
    await page.clock.setFixedTime(new Date(fixed));
    await context.addInitScript(({theme})=>{
@@ -66,17 +71,18 @@ try{
     // 仅冻结首页80ms打字机在第15次自然更新；其他计时器保持工作。
     const original=window.setInterval.bind(window);window.setInterval=((handler:TimerHandler,delay?:number,...rest:unknown[])=>{if(delay!==80||typeof handler!=="function")return original(handler,delay,...rest);let ticks=0;return original(()=>{if(ticks++<15)handler(...rest);},delay);}) as typeof window.setInterval;
    },{theme});
-   let layout={version:1,nodes:[],notes:[],hiddenIds:[],viewport:null} as unknown;
+   let layout={version:1,nodes:[],notes:[],hiddenIds:[],viewport:state==="workspace-failed"?{x:(width===390?390:width-640)/2-115.2,y:180,zoom:.8}:null} as unknown;
    await context.route("**/api/**",async route=>{
     const req=route.request(),url=new URL(req.url()),p=url.pathname;
     if(p.startsWith("/api/auth/"))return route.continue();
     if(p===`/api/studio/${productId}/canvas`){if(req.method()==="PUT"){if(state==="workspace-save-status")return route.fulfill({status:409,json:{error:"其他窗口已保存布局，请载入最新版本"}});layout=req.postDataJSON().layout;}return route.fulfill({json:{revision:1,layout,canWrite:true}});}
+    if(args.includes("--phase3a-check")&&p===`/api/studio/${productId}`&&req.method()==="POST"){const action=req.postDataJSON().action;if(!["settings","retry"].includes(action))throw Error("未允许的动作");retryActions.push(action);if(action==="retry"){fixture.pack.slots[0].jobs[0].status="pending";fixture.pack.slots[0].jobs[0].error=null;}return route.fulfill({json:{ok:true}});}
     if(req.method()!=="GET")throw Error("截图禁止业务写请求："+p);
     if(p==="/api/studio/models")return route.fulfill({json:url.searchParams.get("admin")==="1"?adminCatalog:catalog});
     if(p==="/api/studio/library")return route.fulfill({json:library});
     if(p==="/api/studio")return route.fulfill({json:gallery??[snapshot.product,{...snapshot.product,id:"ui-product-2",name:"空间搭配 · 对照产品",sku:"UI-SNAPSHOT-02"}]});
-    if(p===`/api/studio/${productId}`)return route.fulfill({json:snapshot});
-    if(p.startsWith("/api/assets/ui-")){const file=p.endsWith(photoId)?"sofa.webp":p.endsWith("b")?"r3-10.webp":"r3-05.webp";return route.fulfill({body:await readFile(path.resolve("public/design-preview",file)),contentType:"image/webp"});}
+    if(p===`/api/studio/${productId}`)return route.fulfill({json:fixture});
+    if(p.startsWith("/api/assets/ui-")){const file=p.endsWith(photoId)?"sofa.webp":p.endsWith("b")?"r3-10.webp":"r3-05.webp";return route.fulfill({body:state==="workspace-lowres"?await sharp(await readFile(path.resolve("public/design-preview",file))).resize(960,720,{fit:"fill"}).webp().toBuffer():await readFile(path.resolve("public/design-preview",file)),contentType:"image/webp"});}
     return route.continue();
    });
    const url=state==="login"?"/login":state==="home"?"/":state==="skus"?"/skus":state==="library"?"/library":state==="admin"?"/admin/models":state==="workspace-empty"?"/workspace":"/workspace?sku="+productId;
@@ -84,12 +90,16 @@ try{
    if(state==="login")await page.evaluate(theme=>document.documentElement.classList.toggle("dark",theme==="dark"),theme);
    await expect(page.locator(state==="login"?".login-shell":".p-app")).toBeVisible();
    if(state.startsWith("workspace-")){
-    if(state!=="workspace-empty")await expect(page.locator(`[data-picture="${images[0]}"]`)).toBeAttached();
+    if(state!=="workspace-empty")await expect(page.locator(`[data-picture="${state==="workspace-failed"?"job-ui-failed":images[0]}"]`)).toBeAttached();
     if(width===390)await page.getByRole("tab",{name:"画布",exact:true}).click();
     if(state!=="workspace-empty"){
-     await page.getByRole("button",{name:"适应屏幕",exact:true}).click();await page.waitForTimeout(350);
-     if(["workspace-single","workspace-multi","workspace-mask","workspace-expand","workspace-progress"].includes(state)){
+     if(state!=="workspace-failed")await page.getByRole("button",{name:"适应屏幕",exact:true}).click();await page.waitForTimeout(350);
+     if(["workspace-single","workspace-multi","workspace-mask","workspace-expand","workspace-progress","workspace-toolbar-flip","workspace-lowres"].includes(state)){
       await page.locator(`[data-picture="${images[0]}"]`).click();await expect(page.locator(".p-live-image-toolbar")).toBeVisible();
+     }
+     if(state==="workspace-toolbar-flip"){
+      const picture=page.locator(`[data-picture="${images[0]}"]`),box=await picture.boundingBox(),canvas=await page.locator("#workspace-canvas").boundingBox();if(!box||!canvas)throw Error("缺少翻转几何");
+      await page.mouse.move(canvas.x+canvas.width-25,canvas.y+canvas.height/2);await page.mouse.down({button:"middle"});await page.mouse.move(canvas.x+canvas.width-25,canvas.y+canvas.height/2+canvas.y+42-box.y,{steps:8});await page.mouse.up({button:"middle"});await expect(page.locator(".p-live-image-toolbar")).toHaveAttribute("data-placement","bottom");
      }
      if(state==="workspace-multi"){await page.locator(`[data-picture="${images[1]}"]`).click({modifiers:["Shift"]});await expect(page.getByRole("button",{name:"批量下载",exact:true})).toBeVisible();}
      if(state==="workspace-mask"){
@@ -112,9 +122,9 @@ try{
    if(prepFix)await writeFile(path.join(destination,name+".layout.json"),JSON.stringify(await page.locator(".p-home-composer-wrap,.r1-home-tasks,.p-gallery,.p-gallery-header,.p-sku-cover,.p-sku-card>strong,.p-pattern-library,.p-pattern-heading,.p-app main.mx-auto,.p-app main.mx-auto>div:first-child,.login-story-center,.login-form-wrap,.p-home-heading,.r1-task-card").evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return {selector:e.className,text:e.textContent?.slice(0,45),x:r.x,y:r.y,width:r.width,height:r.height,fontSize:s.fontSize,fontWeight:s.fontWeight,background:s.backgroundColor};})),null,2));
    if(args.includes("--surface-proof"))await writeFile(path.join(destination,name+".inputs.json"),JSON.stringify(await page.locator("input").evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return {label:e.getAttribute("aria-label"),slot:e.getAttribute("data-slot"),x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height,background:s.backgroundColor};})),null,2));
    if(args.includes("--audit")){
-    const audit=await auditStudioPage(page,prepFix,state==="login"?".login-shell *":".p-app *,.p-portal *");
+    const audit=await auditStudioPage(page,prepFix||args.includes("--phase3a-check"),state==="login"?".login-shell *":".p-app *,.p-portal *");
     await writeFile(path.join(destination,name+".audit.json"),JSON.stringify(audit,null,2));
-    if(mode==="compare"&&!args.includes("--audit-report-only")&&(audit.contrastFailures.length||audit.controlContrastFailures.length||audit.controls.some(c=>!c.exempt&&c.boundary&&!c.boundary.decorative&&c.boundary.contrast<3)||(audit.axe.violations as {impact:string}[]).some(v=>["serious","critical"].includes(v.impact))))throw Error("实际文字/控件对比度未通过，详见audit.json；基线或--audit-report-only仅记录原版缺陷");
+    if((mode==="compare"||args.includes("--phase3a-new"))&&!args.includes("--audit-report-only")&&(audit.contrastFailures.length||audit.controlContrastFailures.length||audit.controls.some(c=>!c.exempt&&c.boundary&&!c.boundary.decorative&&c.boundary.contrast<3)||(audit.axe.violations as {impact:string}[]).some(v=>["serious","critical"].includes(v.impact))))throw Error("实际文字/控件对比度未通过，详见audit.json；基线或--audit-report-only仅记录原版缺陷");
    }
    if(args.includes("--small-text")){
     const metrics=await page.evaluate(()=>[...document.querySelectorAll<HTMLElement>(".t11-references,.t11-references>span,.t11-progress-heading small,.t11-progress-step small,.t11-generation-progress small,.t11-awaiting,.t11-save-status,.t11-save-status button,.t11-canvas-history small")].filter(e=>e.getClientRects().length).map(e=>{const r=e.getBoundingClientRect();return {tag:e.tagName,classes:e.className,text:e.innerText,fontSize:getComputedStyle(e).fontSize,clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,left:r.left,right:r.right,viewport:innerWidth,horizontalOverflow:e.scrollWidth>e.clientWidth+1,outsideViewport:r.left<0||r.right>innerWidth+1};}));
@@ -133,6 +143,7 @@ try{
     const region=await compareScreenshots(oldCrop,current,path.join(destination,name+".creative.diff.png"),false);
     Object.assign(results.at(-1)!,{creativeRegion:{...region,crop,comparison:"同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"}});
    }
+   if(args.includes("--phase3a-check")&&["workspace-single","workspace-multi",...newStates].includes(state)){const checks=await verifyCanvasControls(page,state);if(state==="workspace-failed")expect(retryActions).toEqual(["settings","retry"]);await writeFile(path.join(destination,name+".checks.json"),JSON.stringify({...checks,retryActions},null,2));}
    if(args.includes("--diagnose")){
     const originalLayout=execFileSync("git",["show","a1e3f51:src/app/(creative)/layout.tsx"],{encoding:"utf8"}),originalFiles=[...originalLayout.matchAll(/import "\.\/([^";]+\.css)";/g)].map(m=>"src/app/(creative)/"+m[1]);
     const oldCss=await readFile("node_modules/@xyflow/react/dist/style.css","utf8")+"\n"+originalFiles.map(file=>execFileSync("git",["show","a1e3f51:"+file],{encoding:"utf8"})).join("\n");
@@ -144,7 +155,7 @@ try{
      return elements.flatMap((e,i)=>{const s=getComputedStyle(e),changed=properties.filter(p=>before[i][p]!==s.getPropertyValue(p));return changed.length?[{tag:e.tagName,classes:e.getAttribute("class"),text:e.textContent?.slice(0,45),changes:changed.map(p=>({property:p,current:before[i][p],original:s.getPropertyValue(p)}))}]:[];});
     },oldCss);await writeFile(path.join(destination,name+".styles.json"),JSON.stringify(differences,null,2));
    }
-  }catch(e){failures.push(name+": "+String(e));console.error(failures.at(-1));}finally{await context.close();}
+  }catch(e){await page.screenshot({path:path.join(destination,name+".failure.png"),animations:"disabled"});await writeFile(path.join(destination,name+".failure.json"),JSON.stringify({retryActions,body:await page.locator("body").innerText()},null,2));failures.push(name+": "+String(e));console.error(failures.at(-1));}finally{await context.close();}
  }
 }finally{await browser.close();}
 // 新基线尚未提交时git log没有记录；以已核实的基线manifest源提交为准。

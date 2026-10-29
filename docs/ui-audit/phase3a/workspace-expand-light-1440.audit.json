@@ -1,0 +1,1034 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#71717a",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#e4e4e7",
+    "--input": "#8b8b94",
+    "--ring": "#1f3a2e",
+    "--p-subtle": "#71717a",
+    "--p-text": "#52525b",
+    "--p-panel": "#fff",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#fff",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "h2.text-[length:var(--text-section)].font-semibold.leading-none.tracking-tight",
+      "text": "扩展画面",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 62,
+      "scrollWidth": 62,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 381,
+          "y": 265.5625,
+          "width": 62.40625,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "1:1",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 50,
+      "scrollWidth": 50,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 783.03125,
+          "y": 266.375,
+          "width": 18.140625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "4:3",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 50,
+      "scrollWidth": 50,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 839.171875,
+          "y": 266.375,
+          "width": 18.140625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "16:9",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 58,
+      "scrollWidth": 58,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 895.3125,
+          "y": 266.375,
+          "width": 25.6875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.bg-secondary.text-secondary-foreground.shadow-sm.hover:bg-secondary/80.h-9.px-4.py-2",
+      "text": "自定义",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 16.118381484528566,
+      "clientWidth": 74,
+      "scrollWidth": 74,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 959,
+          "y": 266.375,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.p-subtle",
+      "text": "拖动边框调整范围 · 原图保留",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 166,
+      "scrollWidth": 166,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 381,
+          "y": 714.03125,
+          "width": 165.953125,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.border.border-input.bg-background.shadow-sm.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "取消",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 60,
+      "scrollWidth": 60,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 893.78125,
+          "y": 713.25,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.bg-primary.text-primary-foreground.shadow.hover:bg-primary/90.h-9.px-4.py-2",
+      "text": "确认 · 约 0.03",
+      "fontSize": "14px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 114,
+      "scrollWidth": 114,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 960.78125,
+          "y": 713.25,
+          "width": 82.21875,
+          "height": 19
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "TEXTAREA",
+      "label": "工作台创作要求",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(82, 82, 91)",
+      "borderWidth": "0px",
+      "contrast": 7.729820868495424,
+      "boundary": {
+        "selector": "DIV.p-chat-input",
+        "color": "rgb(139, 139, 148)",
+        "contrast": 3.37703936171047,
+        "width": "1px",
+        "decorative": false
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 4.832895561154151
+    }
+  ],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "p-topbar"
+    },
+    {
+      "tag": "DIV",
+      "classes": "w-theme-segments"
+    },
+    {
+      "tag": "ASIDE",
+      "classes": "p-chat l-chat"
+    },
+    {
+      "tag": "SPAN",
+      "classes": "p-agent-avatar"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-chat-bubble"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "t11-progress"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-chat-input"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-canvas-wrap "
+    },
+    {
+      "tag": "DIV",
+      "classes": "react-flow light"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-frame "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-image-node  "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-frame "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-image-node is-final "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-image-node  "
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-image-node  "
+    },
+    {
+      "tag": "svg",
+      "classes": {}
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-canvas-dock"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-canvas-guide"
+    },
+    {
+      "tag": "DIV",
+      "classes": "r1-canvas-controls"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-expand-modal"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-expand-stage"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-hidden-focus",
+        "impact": "serious",
+        "tags": [
+          "cat.name-role-value",
+          "wcag2a",
+          "wcag412",
+          "TTv5",
+          "TT6.a",
+          "EN-301-549",
+          "EN-9.4.1.2",
+          "RGAAv4",
+          "RGAA-10.8.1"
+        ],
+        "description": "Ensure aria-hidden elements are not focusable nor contain focusable elements",
+        "help": "ARIA hidden element must not be focusable or contain focusable elements",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-hidden-focus?application=axeAPI",
+        "nodes": [
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "focusable-modal-open",
+                "data": null,
+                "relatedNodes": [
+                  {
+                    "html": "<span data-radix-focus-guard=\"\" tabindex=\"0\" style=\"outline: none; opacity: 0; position: fixed; pointer-events: none;\" data-aria-hidden=\"true\" aria-hidden=\"true\"></span>",
+                    "target": [
+                      "span[data-radix-focus-guard=\"\"][data-aria-hidden=\"true\"]:nth-child(1)"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Check that focusable elements are not tabbable in the current state"
+              }
+            ],
+            "none": [],
+            "impact": "serious",
+            "html": "<span data-radix-focus-guard=\"\" tabindex=\"0\" style=\"outline: none; opacity: 0; position: fixed; pointer-events: none;\" data-aria-hidden=\"true\" aria-hidden=\"true\"></span>",
+            "target": [
+              "span[data-radix-focus-guard=\"\"][data-aria-hidden=\"true\"]:nth-child(1)"
+            ],
+            "failureSummary": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state"
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "focusable-modal-open",
+                "data": null,
+                "relatedNodes": [
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"返回 SKU\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"返回 SKU\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"产品卡，理解度 100%\">",
+                    "target": [
+                      ".p-top-product-button"
+                    ]
+                  },
+                  {
+                    "html": "<button aria-label=\"跟随系统主题\" title=\"跟随系统\" aria-pressed=\"false\">",
+                    "target": [
+                      "button[aria-label=\"跟随系统主题\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button aria-label=\"亮色主题\" title=\"亮色\" aria-pressed=\"true\">",
+                    "target": [
+                      "button[aria-label=\"亮色主题\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button aria-label=\"暗色主题\" title=\"暗色\" aria-pressed=\"false\">",
+                    "target": [
+                      "button[aria-label=\"暗色主题\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"设置\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"设置\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"导出图包\">",
+                    "target": [
+                      ".p-top-export-button"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"头像菜单\" type=\"button\" id=\"radix-_r_2_\" aria-haspopup=\"menu\" aria-expanded=\"false\" data-state=\"closed\">",
+                    "target": [
+                      "#radix-_r_2_"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Check that focusable elements are not tabbable in the current state"
+              }
+            ],
+            "none": [],
+            "impact": "serious",
+            "html": "<header class=\"p-topbar\" data-aria-hidden=\"true\" aria-hidden=\"true\">",
+            "target": [
+              "header"
+            ],
+            "failureSummary": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state"
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "focusable-modal-open",
+                "data": null,
+                "relatedNodes": [
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+                    "target": [
+                      ".p-chat-body > .border-input.bg-background.border"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+                    "target": [
+                      ".p-chat-body > .bg-primary.text-primary-foreground.shadow"
+                    ]
+                  },
+                  {
+                    "html": "<div role=\"presentation\" tabindex=\"0\" class=\"p-chat-input\">",
+                    "target": [
+                      ".p-chat-input"
+                    ]
+                  },
+                  {
+                    "html": "<button type=\"button\" class=\"t11-reference\" aria-label=\"取消引用 候选 1\" title=\"客厅场景 · 候选 1\"><img alt=\"候选 1\" src=\"/api/assets/ui-scene-a\"><span>候选 1</span><span aria-hidden=\"true\">×</span></button>",
+                    "target": [
+                      ".t11-reference"
+                    ]
+                  },
+                  {
+                    "html": "<textarea class=\"flex min-h-[60px] w-...\" rows=\"3\" aria-label=\"工作台创作要求\" placeholder=\"说说需要调整哪里，或拖入补充资料…\" style=\"\">",
+                    "target": [
+                      "textarea"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"添加实拍\">",
+                    "target": [
+                      ".p-composer-add"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"智能体模型\" type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"智能体模型\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"生图模型\" type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" data-state=\"closed\">",
+                    "target": [
+                      ".is-manual"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"更多创作选项\" type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" data-state=\"closed\">",
+                    "target": [
+                      ".p-composer-more"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" role=\"switch\" aria-label=\"联网\" aria-checked=\"true\">",
+                    "target": [
+                      ".w-web-toggle"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Check that focusable elements are not tabbable in the current state"
+              }
+            ],
+            "none": [],
+            "impact": "serious",
+            "html": "<div id=\"workspace-chat\" class=\"p-workspace-chat \" aria-hidden=\"true\" data-aria-hidden=\"true\">",
+            "target": [
+              "#workspace-chat"
+            ],
+            "failureSummary": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state"
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "focusable-modal-open",
+                "data": null,
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"react-flow__node rea...\" data-id=\"reference-frame\" data-testid=\"rf__node-reference-f...\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-des...\" style=\"z-index: 0; transfor...\">",
+                    "target": [
+                      "div[data-id=\"reference-frame\"]"
+                    ]
+                  },
+                  {
+                    "html": "<div class=\"react-flow__node rea...\" data-id=\"ui-photo\" data-testid=\"rf__node-ui-photo\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-des...\" style=\"z-index: 1; transfor...\">",
+                    "target": [
+                      "div[data-id=\"ui-photo\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button aria-label=\"图片更多操作\">",
+                    "target": [
+                      "div[data-picture=\"ui-photo\"] > .p-image-actions.nodrag.nopan > button[aria-label=\"图片更多操作\"]"
+                    ]
+                  },
+                  {
+                    "html": "<div class=\"react-flow__node rea...\" data-id=\"slot-ui-slot\" data-testid=\"rf__node-slot-ui-slo...\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-des...\" style=\"z-index: 0; transfor...\">",
+                    "target": [
+                      "div[data-id=\"slot-ui-slot\"]"
+                    ]
+                  },
+                  {
+                    "html": "<div class=\"react-flow__node rea...\" data-id=\"ui-scene-a\" data-testid=\"rf__node-ui-scene-a\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-des...\" style=\"z-index: 1000; trans...\">",
+                    "target": [
+                      ".selected"
+                    ]
+                  },
+                  {
+                    "html": "<button aria-label=\"图片更多操作\">",
+                    "target": [
+                      ".is-final > .p-image-actions.nodrag.nopan > button[aria-label=\"图片更多操作\"]"
+                    ]
+                  },
+                  {
+                    "html": "<div class=\"react-flow__node rea...\" data-id=\"ui-scene-b\" data-testid=\"rf__node-ui-scene-b\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-des...\" style=\"z-index: 1; transfor...\">",
+                    "target": [
+                      "div[data-id=\"ui-scene-b\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button aria-label=\"图片更多操作\">",
+                    "target": [
+                      "div[data-picture=\"ui-scene-b\"] > .p-image-actions.nodrag.nopan > button[aria-label=\"图片更多操作\"]"
+                    ]
+                  },
+                  {
+                    "html": "<div class=\"react-flow__node rea...\" data-id=\"ui-scene-c\" data-testid=\"rf__node-ui-scene-c\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-des...\" style=\"z-index: 1; transfor...\">",
+                    "target": [
+                      "div[data-id=\"ui-scene-c\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button aria-label=\"图片更多操作\">",
+                    "target": [
+                      "div[data-picture=\"ui-scene-c\"] > .p-image-actions.nodrag.nopan > button[aria-label=\"图片更多操作\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Check that focusable elements are not tabbable in the current state"
+              }
+            ],
+            "none": [],
+            "impact": "serious",
+            "html": "<div class=\"react-flow__renderer\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;\" data-aria-hidden=\"true\" aria-hidden=\"true\">",
+            "target": [
+              ".react-flow__renderer"
+            ],
+            "failureSummary": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state"
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "focusable-modal-open",
+                "data": null,
+                "relatedNodes": [
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"选择（V）\" data-state=\"closed\">",
+                    "target": [
+                      ".active"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"平移（H）\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"平移（H）\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"添加便签（N）\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"添加便签（N）\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"添加参考图（Ctrl + O）\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"添加参考图（Ctrl + O）\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"撤销布局（Ctrl + Z）\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"撤销布局（Ctrl + Z）\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"图层\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"图层\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"历史\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"历史\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Check that focusable elements are not tabbable in the current state"
+              }
+            ],
+            "none": [],
+            "impact": "serious",
+            "html": "<div class=\"react-flow__panel p-dock-panel bottom center\" data-aria-hidden=\"true\" aria-hidden=\"true\">",
+            "target": [
+              ".p-dock-panel"
+            ],
+            "failureSummary": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state"
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "focusable-modal-open",
+                "data": null,
+                "relatedNodes": [
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"缩放百分比菜单\" type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" data-state=\"closed\">",
+                    "target": [
+                      ".p-zoom-menu"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"适应屏幕\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"适应屏幕\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"画布操作说明\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"画布操作说明\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\" aria-label=\"切换小地图\" data-state=\"closed\">",
+                    "target": [
+                      "button[aria-label=\"切换小地图\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Check that focusable elements are not tabbable in the current state"
+              }
+            ],
+            "none": [],
+            "impact": "serious",
+            "html": "<div class=\"react-flow__panel p-viewport-panel bottom right\" data-aria-hidden=\"true\" aria-hidden=\"true\">",
+            "target": [
+              ".p-viewport-panel"
+            ],
+            "failureSummary": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state"
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "focusable-modal-open",
+                "data": null,
+                "relatedNodes": [
+                  {
+                    "html": "<span data-radix-focus-guard=\"\" tabindex=\"0\" style=\"outline: none; opacity: 0; position: fixed; pointer-events: none;\" data-aria-hidden=\"true\" aria-hidden=\"true\"></span>",
+                    "target": [
+                      "span[data-radix-focus-guard=\"\"][data-aria-hidden=\"true\"]:nth-child(13)"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Check that focusable elements are not tabbable in the current state"
+              }
+            ],
+            "none": [],
+            "impact": "serious",
+            "html": "<span data-radix-focus-guard=\"\" tabindex=\"0\" style=\"outline: none; opacity: 0; position: fixed; pointer-events: none;\" data-aria-hidden=\"true\" aria-hidden=\"true\"></span>",
+            "target": [
+              "span[data-radix-focus-guard=\"\"][data-aria-hidden=\"true\"]:nth-child(13)"
+            ],
+            "failureSummary": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state"
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\" data-aria-hidden=\"true\" aria-hidden=\"true\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>产品实拍</span>",
+            "target": [
+              "div[data-id=\"reference-frame\"] > .p-frame[data-overview=\"false\"] > .p-frame-title > span:nth-child(1)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\" data-aria-hidden=\"true\" aria-hidden=\"true\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>1 张实拍</span>",
+            "target": [
+              "div[data-id=\"reference-frame\"] > .p-frame[data-overview=\"false\"] > .p-frame-title > span:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\" data-aria-hidden=\"true\" aria-hidden=\"true\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span style=\"\">01 客厅场景</span>",
+            "target": [
+              "div[data-id=\"slot-ui-slot\"] > .p-frame[data-overview=\"false\"] > .p-frame-title > span:nth-child(1)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\" data-aria-hidden=\"true\" aria-hidden=\"true\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>1 张终稿</span>",
+            "target": [
+              "div[data-id=\"slot-ui-slot\"] > .p-frame[data-overview=\"false\"] > .p-frame-title > span:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-canvas-guide\">空格拖动画布 · Ctrl / ⌘ 滚轮缩放</div>",
+                    "target": [
+                      ".p-canvas-guide"
+                    ]
+                  },
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\" data-aria-hidden=\"true\" aria-hidden=\"true\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<div class=\"p-canvas-guide\">空格拖动画布 · Ctrl / ⌘ 滚轮缩放</div>",
+            "target": [
+              ".p-canvas-guide"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "aria-allowed-attr",
+      "aria-conditional-attr",
+      "aria-deprecated-role",
+      "aria-hidden-body",
+      "aria-hidden-focus",
+      "aria-prohibited-attr",
+      "aria-required-attr",
+      "aria-roles",
+      "aria-valid-attr-value",
+      "aria-valid-attr",
+      "avoid-inline-spacing",
+      "button-name",
+      "color-contrast",
+      "document-title",
+      "duplicate-id-aria",
+      "html-has-lang",
+      "html-lang-valid",
+      "meta-viewport",
+      "nested-interactive"
+    ]
+  }
+}

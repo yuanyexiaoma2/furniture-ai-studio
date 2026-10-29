@@ -1,0 +1,8 @@
+{
+  "dockNoOverlap": true,
+  "fixedHeight": 36,
+  "icons": 20,
+  "entryPoints": true,
+  "layoutUndoRedo": true,
+  "retryActions": []
+}
