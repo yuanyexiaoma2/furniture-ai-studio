@@ -5,9 +5,9 @@
 .p-home-heading { text-align: center; }
 .p-home-heading>span { color: var(--p-subtle); font-size: var(--text-sm); }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
-.p-home-input { margin: auto; border: 1px solid var(--input); }
+.p-home-input { outline:0; margin: auto; border: 1px solid var(--input); }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
-.p-home-input textarea { width: 100%; resize: none; background: var(--color-transparent); border: 0; box-shadow: none; }
+.p-home-input textarea { outline:0; width: 100%; resize: none; background: var(--color-transparent); border: 0; box-shadow: none; }
 .p-home-input textarea:focus-visible { outline: 0; box-shadow: none; }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-template-heading { display: flex; justify-content: space-between; }
@@ -50,8 +50,7 @@
 .p-home-heading h1 { font-size: var(--text-display); font-weight: 600; line-height: 1.3; letter-spacing: -1.5px; margin: 14px 0 16px; color: var(--foreground); }
 .p-home-heading p { font-size: var(--text-body); color: var(--p-text); }
 .p-home-composer-wrap { width: 100%; max-width: 760px; }
-.p-home-input { width: 100%; max-width: 760px; border-radius: var(--radius-panel); padding: 20px; background: var(--p-panel); box-shadow: 0 1px 2px var(--shadow-ink-3),0 12px 32px var(--shadow-ink-6); transition: box-shadow .2s,border-color .2s; }
-.dark .p-home-input { box-shadow: 0 1px 2px var(--shadow-ink-13),0 16px 40px var(--shadow-ink-21); border-color: var(--input); }
+.p-home-input { width: 100%; max-width: 760px; border-radius: var(--radius-composer); padding: 20px; background: var(--composer-surface); box-shadow: var(--composer-shadow); }
 .p-home-textarea { position: relative; }
 .p-home-input textarea { min-height: 94px; font-size: var(--text-body); line-height: 1.8; padding: 0 48px 14px 0; }
 .p-home-input textarea::placeholder { color: var(--p-subtle); }
@@ -241,7 +240,7 @@
 .p-home { width:100%; max-width:none; padding:0 var(--content-gutter) 48px; background:var(--background); }
 .p-home-hero { min-height:0; padding:max(48px,calc(18vh - 62px)) 0 0; justify-content:flex-start; }
 .p-home-composer-wrap,.r1-home-tasks,.l-home-last { width:min(100%,clamp(720px,52vw,var(--content-max-home))); max-width:var(--content-max-home); margin-left:auto; margin-right:auto; }
-.p-home-input { width:100%; max-width:none; padding:20px 24px; background:var(--composer-surface); border-color:var(--composer-line); }
+.p-home-input { width:100%; max-width:none; padding:20px 24px; background:var(--composer-surface); border-color:var(--composer-line); box-shadow:var(--composer-shadow); }
 .dark .p-home-input { background:var(--composer-surface); border-color:var(--composer-line); }
 .p-home-input .p-home-textarea textarea { min-height:120px; padding:0; font-size:var(--text-section); line-height:1.75; }
 .p-home-footnote { margin-top:12px !important; white-space:nowrap; }
@@ -261,7 +260,3 @@
 
 /* 55%以上保持图片原亮度；白字标签不再依赖整卡压暗。 */
 .r1-pack-original span,.r1-pack-output span,.r1-edit-art>span { background:var(--task-pill); border-radius:var(--radius-tag); padding:0 6px; }
-.p-home-input { --panel-rest-shadow:0 1px 2px var(--shadow-ink-3),0 12px 32px var(--shadow-ink-6); transition:border-color .15s,box-shadow .15s; }
-.dark .p-home-input { --panel-rest-shadow:0 1px 2px var(--shadow-ink-13),0 16px 40px var(--shadow-ink-21); }
-.p-home-input:focus-within { outline:0; border-color:var(--ring); box-shadow:0 0 0 3px var(--panel-focus-halo),var(--panel-rest-shadow); }
-@media(prefers-reduced-motion:reduce) { .p-home-input { transition:none; } }

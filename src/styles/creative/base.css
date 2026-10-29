@@ -67,7 +67,7 @@
 .p-composer-toolbar>* { flex-shrink: 0; }
 .p-composer-toolbar [data-slot=button].p-model-capsule { height: 32px; border-radius: var(--radius-pill); gap: 6px; padding: 0 10px; background: var(--secondary); border: 1px solid var(--color-transparent); font-size: var(--text-sm); color: var(--primary); }
 .p-model-capsule>span { overflow: hidden; text-overflow: ellipsis; }
-.p-model-capsule.is-manual { border-color: var(--primary) !important; }
+.p-model-capsule.is-manual { border-color: var(--composer-model-line,var(--primary)) !important; }
 .p-composer-toolbar .p-model-capsule svg { flex-shrink: 0; }
 .p-composer-toolbar [data-slot=button].p-composer-add { height: 32px; padding: 0 5px; gap: 3px; color: var(--p-text); }
 .p-composer-toolbar .p-composer-more { width: 30px; height: 32px; padding: 0; }
@@ -230,3 +230,8 @@
 }
 .p-portal.p-tooltip-content { background: var(--foreground); color: var(--background); font-size: var(--text-xs); line-height: 1.5; padding: 6px 10px; border-radius: var(--radius-panel); max-width: min(280px,calc(100vw - 24px)); box-shadow: 0 3px 12px var(--p-shadow); pointer-events: none; }
 .p-portal.p-tooltip-content :where(strong,span,kbd) { color: inherit; }
+
+/* 首页/对话底栏不常驻胶囊底色；其他按钮及聚焦规则不变。 */
+:is(.p-home-input,.p-chat-input) { --composer-model-line:var(--color-transparent); }
+:is(.p-home-input,.p-chat-input) .p-composer-toolbar [data-slot=button].p-model-capsule { background:var(--color-transparent); border-color:var(--color-transparent); }
+:is(.p-home-input,.p-chat-input) .p-composer-toolbar [data-slot=button].p-model-capsule:hover { background:var(--p-hover); }

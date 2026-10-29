@@ -33,11 +33,10 @@
 :root:has(.studio-shell),:root:has(.login-shell) { --p-text:#52525b; }
 :root.dark:has(.studio-shell),:root.dark:has(.login-shell) { --p-text:#a1a1aa; }
 
-/* 准备修正：列表/首页内容上限共用；输入静止边框与聚焦描边分工。 */
-:root { --content-max-list:1200px; --content-max-home:960px; --content-gutter:24px; --composer-surface:var(--card); --composer-line:var(--input); --task-label-scrim:rgba(0,0,0,.72); }
-:root.dark { --composer-surface:#222226; --composer-line:rgba(255,255,255,.10); }
+/* 准备修正：列表/首页内容上限共用；大型输入面板采用轻边框与固定投影，聚焦不变。  */
+:root { --content-max-list:1200px; --content-max-home:960px; --content-gutter:24px; --composer-surface:#fff; --composer-line:#ececee; --composer-shadow:0 4px 24px rgb(0 0 0 / .06); --radius-composer:20px; --task-label-scrim:rgba(0,0,0,.72); }
+:root.dark { --composer-surface:#1f1f22; --composer-line:rgb(255 255 255 / .06); --composer-shadow:none; }
 @media(max-width:760px) { :root { --content-gutter:18px; } }
 
-/* 准备修正2：胶囊标签独立承托，面板聚焦采用单边框与柔和光晕。 */
-:root { --task-pill:rgba(0,0,0,.55); --task-gradient-mid:rgba(0,0,0,.60); --panel-focus-halo:rgb(31 58 46 / .12); }
-:root.dark { --panel-focus-halo:rgb(108 144 125 / .18); }
+/* 准备修正2：胶囊标签独立承托。 */
+:root { --task-pill:rgba(0,0,0,.55); --task-gradient-mid:rgba(0,0,0,.60); }

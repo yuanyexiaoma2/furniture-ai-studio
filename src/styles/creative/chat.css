@@ -235,8 +235,8 @@
 @media (min-width:1201px) {
   .p-chat { width: 640px; }
 }
-.p-chat-input { padding: 16px; border-top: 1px solid var(--input); background: var(--p-panel); border-radius: var(--radius-panel); }
-.p-chat-input textarea { resize: none; border: 0; box-shadow: none; padding: 8px; background: var(--color-transparent); }
+.p-chat-input { outline:0; padding: 16px; border-top: 1px solid var(--input); background: var(--p-panel); border-radius: var(--radius-composer); }
+.p-chat-input textarea { outline:0; resize: none; border: 0; box-shadow: none; padding: 8px; background: var(--color-transparent); }
 .p-chat-body details a { display: block; margin: 8px 0; }
 .p-chat-body .l-shooting-card { flex-shrink: 0; }
 .p-chat-body .w-task-entry { display: flex; text-align: left; gap: 12px; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--p-panel); width: 100%; }
@@ -279,11 +279,9 @@
   .p-workspace .p-chat { inset: 44px 0 0; width: 100%; }
 }
 
-/* 对话输入依靠表面层级识别，静止细线为装饰；焦点仍有实线描边。 */
-.p-chat-input { background:var(--composer-surface); border:1px solid var(--composer-line); }
+/* 大型输入面板聚焦无视觉变化，仅保留文字光标。 */
+.p-chat-input { background:var(--composer-surface); border:1px solid var(--composer-line); box-shadow:var(--composer-shadow); }
 .p-chat-input textarea:focus-visible { outline:0; box-shadow:none; }
 
-/* 常态预留4px容纳3px光晕；聚焦不改变尺寸或位置。 */
-.p-chat-input { margin:4px; transition:border-color .15s,box-shadow .15s; }
-.p-chat-input:focus-within { outline:0; border-color:var(--ring); box-shadow:0 0 0 3px var(--panel-focus-halo); }
-@media(prefers-reduced-motion:reduce) { .p-chat-input { transition:none; } }
+/* 保留既有外间距，聚焦不改变尺寸或位置。 */
+.p-chat-input { margin:4px; }
