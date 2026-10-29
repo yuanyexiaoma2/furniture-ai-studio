@@ -80,6 +80,10 @@ task-cover.tsx、batch/brand.tsx、batch/workflow.tsx的商品变体或品牌色
 
 ## 检查与验收
 
+## 交互状态
+
+小控件使用2px外描边；大型输入面板使用边框变色加光晕。首页与对话输入面板聚焦时保持1px边框原地变为ring，不使用outline或偏移；亮色叠加墨绿12%的3px光晕并保留原投影，暗色使用提亮墨绿18%的3px光晕。内部textarea无outline/ring，border-color和box-shadow过渡150ms，遵守prefers-reduced-motion。聚焦前后实际合成边框颜色对比不低于3:1。
+
 执行 `npm run lint:ui`。ui-lint-baseline.json以“签名+数量”保留6项商品/品牌数据色值，常规检查不扩充白名单。新增十六进制色值、小于12px字号、SVG important、绕开入口的Lucide导入均失败；清理后人工收紧白名单。
 
 阶段3的唯一creative基线为docs/ui-audit/baseline-phase3（已审阅1e6e4bf原版44张）。比较前严格核对Chrome版本、操作系统和字体文件路径/SHA256；不一致时必须重拍原版，不输出差异率。旧页仍保留对phase2b-studio的严格比较；它没有历史字体指纹，显式使用baseline-phase3作本轮环境锚点，不伪造历史字体信息。KI-001按偶发记录；KI-002/003保留初始化竞态待办。准备完成后停止，待审阅才进入3a。
@@ -88,11 +92,11 @@ task-cover.tsx、batch/brand.tsx、batch/workflow.tsx的商品变体或品牌色
 
 旧页/登录页的root按是否包含studio-shell、login-shell启用；嵌套p-app时不覆盖creative核心变量。亮色白底与墨绿主按钮、暗色深底与白色主按钮。阶段3准备删除同值的studio-muted-ink、studio-control-line，分别改读p-text、input，旧页实际色值不变。警告/危险底色、品牌文字色及不同强度的遮罩/阴影继续保留。主题默认声明只作用于:root.dark，避免React Flow内层.dark重置已验证的变量。全局Tailwind语义映射保留原值。
 
-共享Input表面为card；studio-input-surface兼容别名也指向card。对比度按alpha合成后的实际颜色审计，图片/渐变文字另用文字隐藏后的背景采样；不以axe的incomplete代替通过。普通启用文字最低4.5:1，普通输入边界最低3:1。用户已确认的暗色首页/对话复合区，静止线仅为装饰，通过浮层底色、placeholder和发送按钮识别，仍要求实际2px聚焦描边≥3:1；该例外不豁免其他输入。任务卡只用单层满幅渐变，标签在遮罩上方，无矩形文案底衬。原准备证据见phase3-prep.md，本轮当前结果见phase3-prep-fix.md。
+共享Input表面为card；studio-input-surface兼容别名也指向card。对比度按alpha合成后的实际颜色审计，图片/渐变文字另用文字隐藏后的背景采样；不以axe的incomplete代替通过。普通启用文字最低4.5:1，普通输入边界最低3:1。用户已确认的暗色首页/对话复合区，静止线仅为装饰，通过浮层底色、placeholder和发送按钮识别，改用原边框变色及柔和光晕，聚焦前后边框实际颜色≥3:1；该例外不豁免其他输入。任务卡只用单层满幅渐变，标签在遮罩上方，无矩形文案底衬。原准备证据见phase3-prep.md，本轮当前结果见phase3-prep-fix.md。
 
 ## 准备修正的内容轴与表单
 
-content-max-list为1200px（SKU/模板库），content-max-home为960px（首页输入/任务）；内容安全边距桌面24px/手机18px。首页实际宽度min(100%,clamp(720px,52vw,960px))，输入20px 24px内边距、textarea至少120px/16px。标题区顶部18vh，输入到任务标题约64px。Tab角标和快捷标签移除，Tab补全保留。未提前删除打字机或执行3a工具栏改造。
+content-max-list为1200px（SKU/模板库），content-max-home为960px（首页输入/任务）；内容安全边距桌面24px/手机18px。首页实际宽度min(100%,clamp(720px,52vw,960px))，输入20px 24px内边距、textarea至少120px/16px。标题区顶部18vh，输入到任务标题约64px。Tab角标和快捷标签移除，Tab补全保留。placeholder为完整静态文案，Tab补全保留；3a工具栏另行实施。
 
 SKU封面4:3、10px圆角；已选主图优先，白底四角检测命中用contain加muted纯色留白，其余cover；悬停只缩放图片1.02。模板库导入区padding24，标题上下间距4/8，标题字号/字重沿用20px/500。原生目录input、details/summary语义不变，summary图标展开旋转90°。登录左右标题600/foreground，空字段按钮可点击，仅在表单UI层做行内校验，鉴权调用不变。产品名/Logo位置清单见修正报告，等待用户选择。
 

@@ -281,5 +281,9 @@
 
 /* 对话输入依靠表面层级识别，静止细线为装饰；焦点仍有实线描边。 */
 .p-chat-input { background:var(--composer-surface); border:1px solid var(--composer-line); }
-.p-chat-input:focus-within { outline:2px solid var(--ring); outline-offset:-2px; }
-.p-chat-input textarea:focus-visible { outline:none; box-shadow:none; }
+.p-chat-input textarea:focus-visible { outline:0; box-shadow:none; }
+
+/* 常态预留4px容纳3px光晕；聚焦不改变尺寸或位置。 */
+.p-chat-input { margin:4px; transition:border-color .15s,box-shadow .15s; }
+.p-chat-input:focus-within { outline:0; border-color:var(--ring); box-shadow:0 0 0 3px var(--panel-focus-halo); }
+@media(prefers-reduced-motion:reduce) { .p-chat-input { transition:none; } }

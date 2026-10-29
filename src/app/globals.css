@@ -502,3 +502,7 @@ a, button, summary { touch-action: manipulation; }
 .login-shell [data-slot=input]:focus-visible { outline:2px solid var(--ring); outline-offset:2px; box-shadow:none; }
 .login-shell button[type=submit] { opacity:1; background:var(--primary); color:var(--primary-foreground); }
 .login-shell button[type=submit]:disabled { background:var(--muted); color:var(--muted-foreground); }
+
+/* 登录左栏桌面呼吸空间；手机沿用18px安全边距。 */
+.login-story { padding-left:clamp(48px,5vw,96px); }
+@media(max-width:760px) { .login-story { padding-left:18px; } }

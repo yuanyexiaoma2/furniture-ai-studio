@@ -8,7 +8,7 @@
 .p-home-input { margin: auto; border: 1px solid var(--input); }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-home-input textarea { width: 100%; resize: none; background: var(--color-transparent); border: 0; box-shadow: none; }
-.p-home-input textarea:focus-visible { outline: none; box-shadow: none; }
+.p-home-input textarea:focus-visible { outline: 0; box-shadow: none; }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-template-heading { display: flex; justify-content: space-between; }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
@@ -52,7 +52,6 @@
 .p-home-composer-wrap { width: 100%; max-width: 760px; }
 .p-home-input { width: 100%; max-width: 760px; border-radius: var(--radius-panel); padding: 20px; background: var(--p-panel); box-shadow: 0 1px 2px var(--shadow-ink-3),0 12px 32px var(--shadow-ink-6); transition: box-shadow .2s,border-color .2s; }
 .dark .p-home-input { box-shadow: 0 1px 2px var(--shadow-ink-13),0 16px 40px var(--shadow-ink-21); border-color: var(--input); }
-.p-home-input:focus-within { border-color: var(--p-selection); box-shadow: 0 0 0 2px var(--p-highlight),0 1px 2px var(--shadow-ink-3),0 12px 32px var(--shadow-ink-6); }
 .p-home-textarea { position: relative; }
 .p-home-input textarea { min-height: 94px; font-size: var(--text-body); line-height: 1.8; padding: 0 48px 14px 0; }
 .p-home-input textarea::placeholder { color: var(--p-subtle); }
@@ -245,19 +244,24 @@
 .p-home-input { width:100%; max-width:none; padding:20px 24px; background:var(--composer-surface); border-color:var(--composer-line); }
 .dark .p-home-input { background:var(--composer-surface); border-color:var(--composer-line); }
 .p-home-input .p-home-textarea textarea { min-height:120px; padding:0; font-size:var(--text-section); line-height:1.75; }
-.p-home-input:focus-within { outline:2px solid var(--ring); outline-offset:2px; border-color:var(--composer-line); box-shadow:0 12px 32px var(--shadow-ink-6); }
 .p-home-footnote { margin-top:12px !important; white-space:nowrap; }
 .r1-home-tasks { margin-top:32px; margin-bottom:40px; }
 .r1-task-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-.r1-task-card::after { inset:0; background:linear-gradient(to bottom,var(--color-transparent),var(--task-label-scrim) 38%,var(--task-label-scrim)); }
+.r1-task-card::after { inset:0; background:linear-gradient(to bottom,var(--color-transparent) 55%,var(--task-gradient-mid) 68%,var(--task-label-scrim) 100%); }
 .r1-task-caption { bottom:20px; background:var(--color-transparent); }
 .r1-task-caption p { min-height:0; }
-.r1-pack-art { background:var(--color-transparent); }
-.r1-task-art .r1-task-backdrop { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-1; }
+.r1-pack-art { background:var(--p-panel); }
 .r1-task-art,.r1-task-card:hover .r1-task-art { transform:none; }
 .r1-edit-art>span { top:42%; }
-.dark .r1-task-art img { filter:brightness(.88); transition:filter .18s ease-out; }
+.dark .r1-task-art img { filter:brightness(.94); transition:filter .18s ease-out; }
 .dark .r1-task-card:hover .r1-task-art img { filter:brightness(1); }
 .l-home-last { border-top:0; padding-top:0; }
 @media(max-width:760px) { .p-home { padding-left:var(--content-gutter); padding-right:var(--content-gutter); } .r1-task-grid { grid-template-columns:1fr; } .p-home-input { padding:20px 24px; } }
 @media(prefers-reduced-motion:reduce) { .r1-task-art img { transition:none; } }
+
+/* 55%以上保持图片原亮度；白字标签不再依赖整卡压暗。 */
+.r1-pack-original span,.r1-pack-output span,.r1-edit-art>span { background:var(--task-pill); border-radius:var(--radius-tag); padding:0 6px; }
+.p-home-input { --panel-rest-shadow:0 1px 2px var(--shadow-ink-3),0 12px 32px var(--shadow-ink-6); transition:border-color .15s,box-shadow .15s; }
+.dark .p-home-input { --panel-rest-shadow:0 1px 2px var(--shadow-ink-13),0 16px 40px var(--shadow-ink-21); }
+.p-home-input:focus-within { outline:0; border-color:var(--ring); box-shadow:0 0 0 3px var(--panel-focus-halo),var(--panel-rest-shadow); }
+@media(prefers-reduced-motion:reduce) { .p-home-input { transition:none; } }

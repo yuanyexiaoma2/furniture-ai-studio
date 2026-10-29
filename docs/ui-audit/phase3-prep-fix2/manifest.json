@@ -1,0 +1,238 @@
+{
+  "mode": "compare",
+  "commit": "8ee08e2655d98c816213c9661a5b81bd17dd5526",
+  "referenceCommit": "83765acff0387a0b2d1d39cfcec6dd3c83abf1ce",
+  "referenceDirectory": "docs\\ui-audit\\phase3-prep-fix",
+  "browserVersion": "156.0.8078.49",
+  "renderEnvironment": {
+    "schemaVersion": 1,
+    "chromeVersion": "156.0.8078.49",
+    "os": {
+      "platform": "win32",
+      "release": "10.0.26200",
+      "version": "Windows 11 Pro",
+      "arch": "x64"
+    },
+    "fonts": [
+      {
+        "family": "Segoe UI",
+        "installed": true,
+        "files": [
+          {
+            "path": "C:\\WINDOWS\\Fonts\\SegUIVar.ttf",
+            "sha256": "27ca1ab4bd5ad3b0404ee6a9a03b143408dbd7e5a4c9e4b2054639c03fc0f682"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeui.ttf",
+            "sha256": "704eada12961a27fd271f7d3b09e2066520e758390c1776744eff430fee30f6e"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuib.ttf",
+            "sha256": "b169e636719880976a97e94e3b1cb3dbe5f4a38eabc037bf9f2a9165154c3ad2"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuii.ttf",
+            "sha256": "f9feaeee8b20751c15700b4fb03571b335f52e91edece7fb7aa1ceaa6eeb0db7"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuil.ttf",
+            "sha256": "0dbddf9e20b2dc0facd568c877aa1155b3597c09a7ca41d00ca580af25d1cc51"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuisl.ttf",
+            "sha256": "288a8e3fcd0f6090881dcc469b557f55e0a85864abe1cc24330bb4f08105f69b"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuiz.ttf",
+            "sha256": "f2ecff1a943929f07a7b872c948b1de57fe688ac7d0bab6fc9f624c95a97dbfe"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguibl.ttf",
+            "sha256": "bdf29c9b7484c631f19d6ef436a63d15f8a1a82bc856f1a0f6906c41a097d2b1"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguibli.ttf",
+            "sha256": "6efcb158b0093bdeb6c308a93e10c2240e6510b99b756d9583cb59b7e219aaf9"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguiemj.ttf",
+            "sha256": "451df9bb5546055af625ff86aa72695df43e8e170b4c6c1316fe44e9c7a22f7c"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguihis.ttf",
+            "sha256": "a162ceeaf701b55d11c542daf1c39c52bfaf686496505bff2eb75ca24814c136"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguili.ttf",
+            "sha256": "07bbf002d8dccb6bf7db8e31207076bf357fe92b1e5f82a20d2c941d59ebeb96"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisb.ttf",
+            "sha256": "6c3fd894b19950b10c34bf64069ef821eaf2f58f959146306fee5b367472e501"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisbi.ttf",
+            "sha256": "16847ed882097cd1c0d45c63b6d75c3021f2133c64db03796f57dac198d0b2ad"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisli.ttf",
+            "sha256": "032eb41f836c3d6fd765dc4c287ea87f7f0c392a454ffc58d7e5fbe29d1fee86"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisym.ttf",
+            "sha256": "a4a35dcc62cd30e1a6c97b695ecef83e59d2b149e3af834f6a49f11851d56b37"
+          }
+        ]
+      },
+      {
+        "family": "Microsoft YaHei UI",
+        "installed": true,
+        "files": [
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyh.ttc",
+            "sha256": "d79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyhbd.ttc",
+            "sha256": "4508821b3dffe01f0ef5e5326a3e60df705a44633858811f67b6982dce3f6ee6"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyhl.ttc",
+            "sha256": "7e9bdf90bb5d3fe1b5975fc8ae31944b8fa674122261f92c28d4ec0b9c482fa1"
+          }
+        ]
+      },
+      {
+        "family": "PingFang SC",
+        "installed": false,
+        "files": []
+      }
+    ]
+  },
+  "capturedAt": "2026-10-29T08:24:38.755Z",
+  "fixedTime": "2026-10-28T06:00:00.000Z",
+  "normalization": "独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",
+  "results": [
+    {
+      "name": "home-light-1440",
+      "width": 1440,
+      "height": 1091,
+      "changedPixels": 195685,
+      "totalPixels": 1571040,
+      "differencePercent": 12.455761788369488,
+      "alignedDifferencePercent": 12.455761788369488,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1a440283dc1dc0a23114a56d4623ad9813318ba982e4c301dfaca0640e289fde"
+    },
+    {
+      "name": "login-light-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 39675,
+      "totalPixels": 1296000,
+      "differencePercent": 3.0613425925925926,
+      "alignedDifferencePercent": 3.0613425925925926,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "c9cb23655c5b464bd5ec180548fc86061004b23ca25926f9b7181c466a0ac446"
+    },
+    {
+      "name": "home-dark-1440",
+      "width": 1440,
+      "height": 1091,
+      "changedPixels": 196039,
+      "totalPixels": 1571040,
+      "differencePercent": 12.47829463285467,
+      "alignedDifferencePercent": 12.47829463285467,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1c523f5f566f48546b9268d375e3b1d4a22db29fcd0bc34789683868f83024fc"
+    },
+    {
+      "name": "login-dark-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 39883,
+      "totalPixels": 1296000,
+      "differencePercent": 3.077391975308642,
+      "alignedDifferencePercent": 3.077391975308642,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "d1c1c471b7fd3b1d7fa625382a59eac1555ef2517bae6cea1fcf2845b18eb780"
+    },
+    {
+      "name": "home-light-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 328128,
+      "totalPixels": 3686400,
+      "differencePercent": 8.901041666666666,
+      "alignedDifferencePercent": 8.901041666666666,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "bf61ac1a5c26579084179c593e05d417bb22efc8179059ef1e4bcc00519c7b7f"
+    },
+    {
+      "name": "login-light-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 45717,
+      "totalPixels": 3686400,
+      "differencePercent": 1.2401529947916667,
+      "alignedDifferencePercent": 1.2401529947916667,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "c37f6a787d48f0afcebd1be5df8ee0398594f335b6d35ac3985f01b0b09921e6"
+    },
+    {
+      "name": "home-dark-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 329083,
+      "totalPixels": 3686400,
+      "differencePercent": 8.926947699652779,
+      "alignedDifferencePercent": 8.926947699652779,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "fcfeee6cd6f07e69c33aba32ae3a4e943080548a67fb370d2d580e9e61de48f1"
+    },
+    {
+      "name": "login-dark-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 45904,
+      "totalPixels": 3686400,
+      "differencePercent": 1.2452256944444444,
+      "alignedDifferencePercent": 1.2452256944444444,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3477c82060692ef80116e0a790d992b507206ed3a90b8ae8eb4dcd8066ed597d"
+    },
+    {
+      "name": "home-light-390",
+      "width": 390,
+      "height": 1390,
+      "changedPixels": 184853,
+      "totalPixels": 542100,
+      "differencePercent": 34.09942814978786,
+      "alignedDifferencePercent": 34.09942814978786,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1022324f177bd100718ca048283296c4336f112610a23a6ab0354474428801bf"
+    },
+    {
+      "name": "home-dark-390",
+      "width": 390,
+      "height": 1390,
+      "changedPixels": 185200,
+      "totalPixels": 542100,
+      "differencePercent": 34.163438479985246,
+      "alignedDifferencePercent": 34.163438479985246,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1729f9b123c0a385e360852b67d9a9c24481383604e257e75173b5f35dcc95e1"
+    }
+  ],
+  "failures": []
+}

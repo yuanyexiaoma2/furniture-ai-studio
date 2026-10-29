@@ -39,7 +39,7 @@ try{
  const login=await browser.newContext(),loginPage=await login.newPage();
  await loginPage.goto(baseURL+"/login");await loginPage.getByLabel("公司邮箱").fill(process.env.ADMIN_EMAIL??"");await loginPage.getByLabel("密码",{exact:true}).fill(process.env.ADMIN_PASSWORD??"");await loginPage.getByRole("button",{name:"进入工作台"}).click();await loginPage.waitForURL(baseURL+"/");
  const auth=await login.storageState();
- const prepFix=args.includes("--prep-fix");
+ const prepFix2=args.includes("--prep-fix2"),prepFix=args.includes("--prep-fix")||prepFix2;
  let gallery=prepFix?(mode==="compare"?JSON.parse(await readFile(path.join(root,"gallery.json"),"utf8")):await(await login.request.get(baseURL+"/api/studio")).json()):null;
  if(prepFix&&mode==="compare"){
   // 固定原产品/实拍顺序；仅补齐旧截图目录缺少的既有图位类型，验证已选主图封面。
@@ -52,9 +52,10 @@ try{
  const adminCatalog=mode==="baseline"?await(await login.request.get(baseURL+"/api/studio/models?admin=1")).json():JSON.parse(await readFile(path.join(root,"admin-catalog.json"),"utf8"));
  await writeFile(path.join(destination,"admin-catalog.json"),JSON.stringify(adminCatalog,null,2));
  await login.close();
- const states=prepFix?["home","skus","workspace-empty","workspace-images","library","login"]:args.includes("--small-text")?["workspace-progress","workspace-history","workspace-save-status"]:["home","skus","workspace-empty","workspace-images","workspace-single","workspace-multi","workspace-mask","workspace-expand","workspace-product","library","admin"];
+ const states=prepFix2?["home","login"]:prepFix?["home","skus","workspace-empty","workspace-images","library","login"]:args.includes("--small-text")?["workspace-progress","workspace-history","workspace-save-status"]:["home","skus","workspace-empty","workspace-images","workspace-single","workspace-multi","workspace-mask","workspace-expand","workspace-product","library","admin"];
  for(const width of prepFix?[1440,2560,390]:[1440,390])for(const theme of ["light","dark"])for(const state of states){
   if(prepFix&&width===2560&&state.startsWith("workspace"))continue;
+  if(prepFix2&&width===390&&state==="login")continue;
   if(only&&!state.includes(only))continue;
   const name=`${state}-${theme}-${width}`,context=await browser.newContext({...(state==="login"?{}:{storageState:auth}),viewport:{width,height:width===390?844:prepFix?(width===2560?1440:900):1000},deviceScaleFactor:1,locale:"zh-CN",timezoneId:"Asia/Shanghai",colorScheme:theme==="dark"?"dark":"light",reducedMotion:"reduce"}),page=await context.newPage();
   try{

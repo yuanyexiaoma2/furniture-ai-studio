@@ -28,6 +28,14 @@
 - 阶段2b测试改动仅在模板导航后增加 `await page.waitForLoadState("networkidle")`，等待读取结束；退出、重新登录和角色断言均保留。鉴权逻辑没有修改，也不宣称竞态已修复。
 - 复查命令：`npm run test:e2e -- tests/auth.spec.ts`；阶段2b日志：`.local/verification/ui-phase2b/e2e-review-build.log`。需另开业务任务排查，阶段3准备不修改鉴权。
 
+## CR-001：SKU封面只读目录接口改动（用户已追认）
+
+- 来源：`8ee08e2` 的 `ui(phase3-prep-fix)`。为封面显示美工已选主图，修改了 `src/app/api/studio/route.ts` 的 `GET /api/studio`。
+- 内容：当前图包图位增加 `slotType` 字段并按 `order` 排序；实拍按 `sortOrder`、`createdAt` 排序后取首张。没有修改POST、数据库数据、生成、费用、预留或队列。
+- 影响：SKU图库封面优先读取已选 `main`，无主图时回退首张实拍；响应增加字段，原客户端字段保留。界面在 `live-workspace.tsx` 消费。
+- 超出原定“不改API”边界，用户在本轮明确追认。**后续任何接口改动都必须先停下询问，不能自行扩展。** 本轮fix2与3a仅复用现有接口。
+- 验证：上轮106单元、7环境检查、5数据库集成、常规浏览器10通过/2专用跳过、专用Agent2通过；另6组真实图库比例、主图来源、contain/cover、悬停不移位验证通过。证据：`phase3-prep-fix.md` 及 `phase3-prep-fix-interactions/checks.json`。
+
 ## 其他基线说明
 
 - `npm run test:e2e` 中 `tests/agent.spec.ts` 的两项用例原本就要求通过 `npm run test:agent:browser` 在隔离数据库与本地 mock 网关下单独运行；常规回归显示 2 skipped 是设计行为。

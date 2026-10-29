@@ -1,0 +1,446 @@
+{
+  "results": [
+    {
+      "name": "home-light-1440",
+      "panel": true,
+      "before": {
+        "border": "rgb(139, 139, 148)",
+        "borderWidth": "1px",
+        "background": "rgb(255, 255, 255)",
+        "rect": {
+          "x": 345.59375,
+          "y": 314.296875,
+          "width": 748.796875,
+          "height": 234
+        }
+      },
+      "rect": {
+        "x": 345.59375,
+        "y": 314.296875,
+        "width": 748.796875,
+        "height": 234
+      },
+      "borderWidth": "1px",
+      "boxShadow": "rgba(31, 58, 46, 0.12) 0px 0px 0px 3px, rgba(0, 0, 0, 0.03) 0px 1px 2px 0px, rgba(0, 0, 0, 0.06) 0px 12px 32px 0px",
+      "textareaOutline": "0px",
+      "textareaShadow": "none",
+      "borderChangeContrast": 3.651615903061076,
+      "focusBounds": {
+        "left": 342.59375,
+        "right": 1097.390625,
+        "top": 311.296875,
+        "bottom": 551.296875,
+        "viewportWidth": 1440,
+        "viewportHeight": 900
+      },
+      "inputToken": "#8b8b94",
+      "outlineWidth": "0px",
+      "outlineOffset": "0px",
+      "outlineStyle": "none",
+      "ring": "rgb(31, 58, 46)",
+      "ringVsPage": 12.331650638485177,
+      "ringVsInput": 12.331650638485177,
+      "foregroundVsPage": 17.71676507806213,
+      "foregroundVsCard": 17.71676507806213,
+      "foregroundVsPopover": 17.71676507806213,
+      "mutedVsPage": 4.832895561154151,
+      "mutedVsPopover": 4.832895561154151,
+      "placeholder": "rgb(113, 113, 122)",
+      "fontSize": "16px",
+      "minHeight": "120px",
+      "padding": "20px 24px",
+      "tabCompletion": true,
+      "geometry": {
+        "titleTop": 162,
+        "inputToTasks": 64.796875,
+        "cardTop": 661.09375,
+        "cardHeight": 273.28125,
+        "visibleFraction": 0.8742138364779874
+      }
+    },
+    {
+      "name": "workspace-light-1440",
+      "panel": true,
+      "before": {
+        "border": "rgb(139, 139, 148)",
+        "borderWidth": "1px",
+        "background": "rgb(255, 255, 255)",
+        "rect": {
+          "x": 4,
+          "y": 746,
+          "width": 631,
+          "height": 150
+        }
+      },
+      "rect": {
+        "x": 4,
+        "y": 746,
+        "width": 631,
+        "height": 150
+      },
+      "borderWidth": "1px",
+      "boxShadow": "rgba(31, 58, 46, 0.12) 0px 0px 0px 3px",
+      "textareaOutline": "0px",
+      "textareaShadow": "none",
+      "borderChangeContrast": 3.651615903061076,
+      "focusBounds": {
+        "left": 1,
+        "right": 638,
+        "top": 743,
+        "bottom": 899,
+        "viewportWidth": 1440,
+        "viewportHeight": 900
+      },
+      "inputToken": "#8b8b94",
+      "outlineWidth": "0px",
+      "outlineOffset": "0px",
+      "outlineStyle": "none",
+      "ring": "rgb(31, 58, 46)",
+      "ringVsPage": 12.331650638485177,
+      "ringVsInput": 12.331650638485177,
+      "foregroundVsPage": 17.71676507806213,
+      "foregroundVsCard": 17.71676507806213,
+      "foregroundVsPopover": 17.71676507806213,
+      "mutedVsPage": 4.832895561154151,
+      "mutedVsPopover": 4.832895561154151,
+      "placeholder": "rgb(113, 113, 122)",
+      "fontSize": "14px",
+      "minHeight": "60px",
+      "padding": "16px"
+    },
+    {
+      "name": "home-dark-1440",
+      "panel": true,
+      "before": {
+        "border": "rgba(255, 255, 255, 0.1)",
+        "borderWidth": "1px",
+        "background": "rgb(34, 34, 38)",
+        "rect": {
+          "x": 345.59375,
+          "y": 314.296875,
+          "width": 748.796875,
+          "height": 234
+        }
+      },
+      "rect": {
+        "x": 345.59375,
+        "y": 314.296875,
+        "width": 748.796875,
+        "height": 234
+      },
+      "borderWidth": "1px",
+      "boxShadow": "rgba(108, 144, 125, 0.18) 0px 0px 0px 3px, rgba(0, 0, 0, 0.125) 0px 1px 2px 0px, rgba(0, 0, 0, 0.208) 0px 16px 40px 0px",
+      "textareaOutline": "0px",
+      "textareaShadow": "none",
+      "borderChangeContrast": 3.2464563044949766,
+      "focusBounds": {
+        "left": 342.59375,
+        "right": 1097.390625,
+        "top": 311.296875,
+        "bottom": 551.296875,
+        "viewportWidth": 1440,
+        "viewportHeight": 900
+      },
+      "inputToken": "#71717a",
+      "outlineWidth": "0px",
+      "outlineOffset": "0px",
+      "outlineStyle": "none",
+      "ring": "rgb(108, 144, 125)",
+      "ringVsPage": 5.189334247024686,
+      "ringVsInput": 4.470861747833743,
+      "foregroundVsPage": 15.59443097983516,
+      "foregroundVsCard": 14.564298145963988,
+      "foregroundVsPopover": 13.435354445891182,
+      "mutedVsPage": 7.178791052083453,
+      "mutedVsPopover": 6.184874741659395,
+      "placeholder": "rgb(161, 161, 170)",
+      "fontSize": "16px",
+      "minHeight": "120px",
+      "padding": "20px 24px",
+      "tabCompletion": true,
+      "geometry": {
+        "titleTop": 162,
+        "inputToTasks": 64.796875,
+        "cardTop": 661.09375,
+        "cardHeight": 273.28125,
+        "visibleFraction": 0.8742138364779874
+      },
+      "imageFilters": {
+        "rest": "brightness(0.94)",
+        "hover": "brightness(1)"
+      }
+    },
+    {
+      "name": "workspace-dark-1440",
+      "panel": true,
+      "before": {
+        "border": "rgba(255, 255, 255, 0.1)",
+        "borderWidth": "1px",
+        "background": "rgb(34, 34, 38)",
+        "rect": {
+          "x": 4,
+          "y": 746,
+          "width": 631,
+          "height": 150
+        }
+      },
+      "rect": {
+        "x": 4,
+        "y": 746,
+        "width": 631,
+        "height": 150
+      },
+      "borderWidth": "1px",
+      "boxShadow": "rgba(108, 144, 125, 0.18) 0px 0px 0px 3px",
+      "textareaOutline": "0px",
+      "textareaShadow": "none",
+      "borderChangeContrast": 3.2464563044949766,
+      "focusBounds": {
+        "left": 1,
+        "right": 638,
+        "top": 743,
+        "bottom": 899,
+        "viewportWidth": 1440,
+        "viewportHeight": 900
+      },
+      "inputToken": "#71717a",
+      "outlineWidth": "0px",
+      "outlineOffset": "0px",
+      "outlineStyle": "none",
+      "ring": "rgb(108, 144, 125)",
+      "ringVsPage": 5.189334247024686,
+      "ringVsInput": 4.470861747833743,
+      "foregroundVsPage": 15.59443097983516,
+      "foregroundVsCard": 14.564298145963988,
+      "foregroundVsPopover": 13.435354445891182,
+      "mutedVsPage": 7.178791052083453,
+      "mutedVsPopover": 6.184874741659395,
+      "placeholder": "rgb(161, 161, 170)",
+      "fontSize": "14px",
+      "minHeight": "60px",
+      "padding": "16px"
+    },
+    {
+      "name": "home-light-390",
+      "panel": true,
+      "before": {
+        "border": "rgb(139, 139, 148)",
+        "borderWidth": "1px",
+        "background": "rgb(255, 255, 255)",
+        "rect": {
+          "x": 18,
+          "y": 304.203125,
+          "width": 354,
+          "height": 234
+        }
+      },
+      "rect": {
+        "x": 18,
+        "y": 304.203125,
+        "width": 354,
+        "height": 234
+      },
+      "borderWidth": "1px",
+      "boxShadow": "rgba(31, 58, 46, 0.12) 0px 0px 0px 3px, rgba(0, 0, 0, 0.03) 0px 1px 2px 0px, rgba(0, 0, 0, 0.06) 0px 12px 32px 0px",
+      "textareaOutline": "0px",
+      "textareaShadow": "none",
+      "borderChangeContrast": 3.651615903061076,
+      "focusBounds": {
+        "left": 15,
+        "right": 375,
+        "top": 301.203125,
+        "bottom": 541.203125,
+        "viewportWidth": 390,
+        "viewportHeight": 844
+      },
+      "inputToken": "#8b8b94",
+      "outlineWidth": "0px",
+      "outlineOffset": "0px",
+      "outlineStyle": "none",
+      "ring": "rgb(31, 58, 46)",
+      "ringVsPage": 12.331650638485177,
+      "ringVsInput": 12.331650638485177,
+      "foregroundVsPage": 17.71676507806213,
+      "foregroundVsCard": 17.71676507806213,
+      "foregroundVsPopover": 17.71676507806213,
+      "mutedVsPage": 4.832895561154151,
+      "mutedVsPopover": 4.832895561154151,
+      "placeholder": "rgb(113, 113, 122)",
+      "fontSize": "16px",
+      "minHeight": "120px",
+      "padding": "20px 24px",
+      "tabCompletion": true,
+      "geometry": {
+        "titleTop": 151.90625,
+        "inputToTasks": 64.796875,
+        "cardTop": 651,
+        "cardHeight": 265.5,
+        "visibleFraction": 0.7269303201506592
+      }
+    },
+    {
+      "name": "workspace-light-390",
+      "panel": true,
+      "before": {
+        "border": "rgb(139, 139, 148)",
+        "borderWidth": "1px",
+        "background": "rgb(255, 255, 255)",
+        "rect": {
+          "x": 4,
+          "y": 687,
+          "width": 381,
+          "height": 153
+        }
+      },
+      "rect": {
+        "x": 4,
+        "y": 687,
+        "width": 381,
+        "height": 153
+      },
+      "borderWidth": "1px",
+      "boxShadow": "rgba(31, 58, 46, 0.12) 0px 0px 0px 3px",
+      "textareaOutline": "0px",
+      "textareaShadow": "none",
+      "borderChangeContrast": 3.651615903061076,
+      "focusBounds": {
+        "left": 1,
+        "right": 388,
+        "top": 684,
+        "bottom": 843,
+        "viewportWidth": 390,
+        "viewportHeight": 844
+      },
+      "inputToken": "#8b8b94",
+      "outlineWidth": "0px",
+      "outlineOffset": "0px",
+      "outlineStyle": "none",
+      "ring": "rgb(31, 58, 46)",
+      "ringVsPage": 12.331650638485177,
+      "ringVsInput": 12.331650638485177,
+      "foregroundVsPage": 17.71676507806213,
+      "foregroundVsCard": 17.71676507806213,
+      "foregroundVsPopover": 17.71676507806213,
+      "mutedVsPage": 4.832895561154151,
+      "mutedVsPopover": 4.832895561154151,
+      "placeholder": "rgb(113, 113, 122)",
+      "fontSize": "14px",
+      "minHeight": "60px",
+      "padding": "16px"
+    },
+    {
+      "name": "home-dark-390",
+      "panel": true,
+      "before": {
+        "border": "rgba(255, 255, 255, 0.1)",
+        "borderWidth": "1px",
+        "background": "rgb(34, 34, 38)",
+        "rect": {
+          "x": 18,
+          "y": 304.203125,
+          "width": 354,
+          "height": 234
+        }
+      },
+      "rect": {
+        "x": 18,
+        "y": 304.203125,
+        "width": 354,
+        "height": 234
+      },
+      "borderWidth": "1px",
+      "boxShadow": "rgba(108, 144, 125, 0.18) 0px 0px 0px 3px, rgba(0, 0, 0, 0.125) 0px 1px 2px 0px, rgba(0, 0, 0, 0.208) 0px 16px 40px 0px",
+      "textareaOutline": "0px",
+      "textareaShadow": "none",
+      "borderChangeContrast": 3.2464563044949766,
+      "focusBounds": {
+        "left": 15,
+        "right": 375,
+        "top": 301.203125,
+        "bottom": 541.203125,
+        "viewportWidth": 390,
+        "viewportHeight": 844
+      },
+      "inputToken": "#71717a",
+      "outlineWidth": "0px",
+      "outlineOffset": "0px",
+      "outlineStyle": "none",
+      "ring": "rgb(108, 144, 125)",
+      "ringVsPage": 5.189334247024686,
+      "ringVsInput": 4.470861747833743,
+      "foregroundVsPage": 15.59443097983516,
+      "foregroundVsCard": 14.564298145963988,
+      "foregroundVsPopover": 13.435354445891182,
+      "mutedVsPage": 7.178791052083453,
+      "mutedVsPopover": 6.184874741659395,
+      "placeholder": "rgb(161, 161, 170)",
+      "fontSize": "16px",
+      "minHeight": "120px",
+      "padding": "20px 24px",
+      "tabCompletion": true,
+      "geometry": {
+        "titleTop": 151.90625,
+        "inputToTasks": 64.796875,
+        "cardTop": 651,
+        "cardHeight": 265.5,
+        "visibleFraction": 0.7269303201506592
+      },
+      "imageFilters": {
+        "rest": "brightness(0.94)",
+        "hover": "brightness(1)"
+      }
+    },
+    {
+      "name": "workspace-dark-390",
+      "panel": true,
+      "before": {
+        "border": "rgba(255, 255, 255, 0.1)",
+        "borderWidth": "1px",
+        "background": "rgb(34, 34, 38)",
+        "rect": {
+          "x": 4,
+          "y": 687,
+          "width": 381,
+          "height": 153
+        }
+      },
+      "rect": {
+        "x": 4,
+        "y": 687,
+        "width": 381,
+        "height": 153
+      },
+      "borderWidth": "1px",
+      "boxShadow": "rgba(108, 144, 125, 0.18) 0px 0px 0px 3px",
+      "textareaOutline": "0px",
+      "textareaShadow": "none",
+      "borderChangeContrast": 3.2464563044949766,
+      "focusBounds": {
+        "left": 1,
+        "right": 388,
+        "top": 684,
+        "bottom": 843,
+        "viewportWidth": 390,
+        "viewportHeight": 844
+      },
+      "inputToken": "#71717a",
+      "outlineWidth": "0px",
+      "outlineOffset": "0px",
+      "outlineStyle": "none",
+      "ring": "rgb(108, 144, 125)",
+      "ringVsPage": 5.189334247024686,
+      "ringVsInput": 4.470861747833743,
+      "foregroundVsPage": 15.59443097983516,
+      "foregroundVsCard": 14.564298145963988,
+      "foregroundVsPopover": 13.435354445891182,
+      "mutedVsPage": 7.178791052083453,
+      "mutedVsPopover": 6.184874741659395,
+      "placeholder": "rgb(161, 161, 170)",
+      "fontSize": "14px",
+      "minHeight": "60px",
+      "padding": "16px"
+    }
+  ],
+  "failures": [],
+  "network": "仅本地；文件夹POST为拦截响应，其他业务写请求禁止；未调用模型"
+}

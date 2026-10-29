@@ -1,0 +1,57 @@
+[
+  {
+    "selector": "p-home-heading",
+    "text": "家具商品图制作产品图片上传产品实拍，选择任务开始制作。",
+    "x": 604.5,
+    "y": 162,
+    "width": 231,
+    "height": 128.296875,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "p-home-composer-wrap",
+    "text": "添加Gemini 3.8 FlashNano Banana 2.1联网 开",
+    "x": 345.59375,
+    "y": 314.296875,
+    "width": 748.796875,
+    "height": 234,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "r1-home-tasks",
+    "text": "选择任务实拍主图场景卖点尺寸做一套图包拖入实拍，生成主图、场景、卖点、尺寸开始调整前调整后",
+    "x": 345.59375,
+    "y": 613.09375,
+    "width": 748.796875,
+    "height": 321.296875,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "r1-task-card",
+    "text": "实拍主图场景卖点尺寸做一套图包拖入实拍，生成主图、场景、卖点、尺寸开始",
+    "x": 345.59375,
+    "y": 661.09375,
+    "width": 364.390625,
+    "height": 273.28125,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgb(220, 216, 209)"
+  },
+  {
+    "selector": "r1-task-card",
+    "text": "调整前调整后改一张图换背景、去杂物、局部修改开始",
+    "x": 729.984375,
+    "y": 661.09375,
+    "width": 364.40625,
+    "height": 273.296875,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgb(220, 216, 209)"
+  }
+]
