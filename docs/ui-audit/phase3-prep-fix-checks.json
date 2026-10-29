@@ -1,0 +1,1329 @@
+{
+  "scope": "ui(phase3-prep-fix)，两组补充合并交付，未执行3a；不推送",
+  "counts": {
+    "requested": 32,
+    "creativeRegression": 44,
+    "studioRegression": 36,
+    "focusAndKeyboard": 24,
+    "gallery": 6
+  },
+  "minima": {
+    "allVisibleText": 4.5140623711277446,
+    "photoText": 5.772547159514109,
+    "darkForegroundAllSurfaces": 13.435354445891182,
+    "darkAuxiliaryPopover": 6.184874741659395,
+    "focusAllSurfaces": 4.470861747833743
+  },
+  "positions": [
+    {
+      "kind": "home-input",
+      "width": 1440,
+      "theme": "light",
+      "before": 340,
+      "after": 345.59375
+    },
+    {
+      "kind": "home-tasks",
+      "width": 1440,
+      "theme": "light",
+      "before": 120,
+      "after": 345.59375
+    },
+    {
+      "kind": "skus",
+      "width": 1440,
+      "theme": "light",
+      "before": 78,
+      "after": 120
+    },
+    {
+      "kind": "library",
+      "width": 1440,
+      "theme": "light",
+      "before": 176,
+      "after": 120
+    },
+    {
+      "kind": "login-story",
+      "width": 1440,
+      "theme": "light",
+      "before": 55,
+      "after": 24
+    },
+    {
+      "kind": "login-form",
+      "width": 1440,
+      "theme": "light",
+      "before": 911.265625,
+      "after": 911.265625
+    },
+    {
+      "kind": "home-input",
+      "width": 1440,
+      "theme": "dark",
+      "before": 340,
+      "after": 345.59375
+    },
+    {
+      "kind": "home-tasks",
+      "width": 1440,
+      "theme": "dark",
+      "before": 120,
+      "after": 345.59375
+    },
+    {
+      "kind": "skus",
+      "width": 1440,
+      "theme": "dark",
+      "before": 78,
+      "after": 120
+    },
+    {
+      "kind": "library",
+      "width": 1440,
+      "theme": "dark",
+      "before": 176,
+      "after": 120
+    },
+    {
+      "kind": "login-story",
+      "width": 1440,
+      "theme": "dark",
+      "before": 55,
+      "after": 24
+    },
+    {
+      "kind": "login-form",
+      "width": 1440,
+      "theme": "dark",
+      "before": 911.265625,
+      "after": 911.265625
+    },
+    {
+      "kind": "home-input",
+      "width": 2560,
+      "theme": "light",
+      "before": 900,
+      "after": 800
+    },
+    {
+      "kind": "home-tasks",
+      "width": 2560,
+      "theme": "light",
+      "before": 680,
+      "after": 800
+    },
+    {
+      "kind": "skus",
+      "width": 2560,
+      "theme": "light",
+      "before": 638,
+      "after": 680
+    },
+    {
+      "kind": "library",
+      "width": 2560,
+      "theme": "light",
+      "before": 736,
+      "after": 680
+    },
+    {
+      "kind": "login-story",
+      "width": 2560,
+      "theme": "light",
+      "before": 55,
+      "after": 24
+    },
+    {
+      "kind": "login-form",
+      "width": 2560,
+      "theme": "light",
+      "before": 1758.109375,
+      "after": 1758.109375
+    },
+    {
+      "kind": "home-input",
+      "width": 2560,
+      "theme": "dark",
+      "before": 900,
+      "after": 800
+    },
+    {
+      "kind": "home-tasks",
+      "width": 2560,
+      "theme": "dark",
+      "before": 680,
+      "after": 800
+    },
+    {
+      "kind": "skus",
+      "width": 2560,
+      "theme": "dark",
+      "before": 638,
+      "after": 680
+    },
+    {
+      "kind": "library",
+      "width": 2560,
+      "theme": "dark",
+      "before": 736,
+      "after": 680
+    },
+    {
+      "kind": "login-story",
+      "width": 2560,
+      "theme": "dark",
+      "before": 55,
+      "after": 24
+    },
+    {
+      "kind": "login-form",
+      "width": 2560,
+      "theme": "dark",
+      "before": 1758.109375,
+      "after": 1758.109375
+    },
+    {
+      "kind": "home-input",
+      "width": 390,
+      "theme": "light",
+      "before": 18,
+      "after": 18
+    },
+    {
+      "kind": "home-tasks",
+      "width": 390,
+      "theme": "light",
+      "before": 18,
+      "after": 18
+    },
+    {
+      "kind": "skus",
+      "width": 390,
+      "theme": "light",
+      "before": 18,
+      "after": 18
+    },
+    {
+      "kind": "library",
+      "width": 390,
+      "theme": "light",
+      "before": 32,
+      "after": 18
+    },
+    {
+      "kind": "login-story",
+      "width": 390,
+      "theme": "light",
+      "before": 28,
+      "after": 18
+    },
+    {
+      "kind": "login-form",
+      "width": 390,
+      "theme": "light",
+      "before": 26,
+      "after": 18
+    },
+    {
+      "kind": "home-input",
+      "width": 390,
+      "theme": "dark",
+      "before": 18,
+      "after": 18
+    },
+    {
+      "kind": "home-tasks",
+      "width": 390,
+      "theme": "dark",
+      "before": 18,
+      "after": 18
+    },
+    {
+      "kind": "skus",
+      "width": 390,
+      "theme": "dark",
+      "before": 18,
+      "after": 18
+    },
+    {
+      "kind": "library",
+      "width": 390,
+      "theme": "dark",
+      "before": 32,
+      "after": 18
+    },
+    {
+      "kind": "login-story",
+      "width": 390,
+      "theme": "dark",
+      "before": 28,
+      "after": 18
+    },
+    {
+      "kind": "login-form",
+      "width": 390,
+      "theme": "dark",
+      "before": 26,
+      "after": 18
+    }
+  ],
+  "audit": [
+    {
+      "name": "home-light-1440",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [
+        {
+          "text": "实拍",
+          "contrast": 12.774213957980255,
+          "samples": 183
+        },
+        {
+          "text": "主图",
+          "contrast": 8.73538977982416,
+          "samples": 171
+        },
+        {
+          "text": "场景",
+          "contrast": 6.119502096250293,
+          "samples": 211
+        },
+        {
+          "text": "卖点",
+          "contrast": 17.73907789841452,
+          "samples": 198
+        },
+        {
+          "text": "尺寸",
+          "contrast": 12.200643684420012,
+          "samples": 134
+        },
+        {
+          "text": "做一套图包",
+          "contrast": 13.802108552680405,
+          "samples": 1139
+        },
+        {
+          "text": "调整前",
+          "contrast": 17.909630875594143,
+          "samples": 353
+        },
+        {
+          "text": "调整后",
+          "contrast": 18.29867361048648,
+          "samples": 333
+        },
+        {
+          "text": "改一张图",
+          "contrast": 14.007334578477616,
+          "samples": 844
+        }
+      ],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "skus-light-1440",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "workspace-empty-light-1440",
+      "minText": 4.5140623711277446,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": [
+        {
+          "selector": "span.p-model-label",
+          "text": "Gemini 3.8 Flash"
+        }
+      ]
+    },
+    {
+      "name": "workspace-images-light-1440",
+      "minText": 4.713596823761879,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": [
+        {
+          "selector": "span.p-model-label",
+          "text": "Gemini 3.8 Flash"
+        }
+      ]
+    },
+    {
+      "name": "library-light-1440",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "login-light-1440",
+      "minText": 7.219873278143082,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "home-dark-1440",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [
+        {
+          "text": "实拍",
+          "contrast": 13.938228656263309,
+          "samples": 186
+        },
+        {
+          "text": "主图",
+          "contrast": 10.08823712874121,
+          "samples": 171
+        },
+        {
+          "text": "场景",
+          "contrast": 7.355978399218987,
+          "samples": 211
+        },
+        {
+          "text": "卖点",
+          "contrast": 18.228225465942,
+          "samples": 198
+        },
+        {
+          "text": "尺寸",
+          "contrast": 14.302002121848407,
+          "samples": 134
+        },
+        {
+          "text": "做一套图包",
+          "contrast": 14.954778939509236,
+          "samples": 1139
+        },
+        {
+          "text": "调整前",
+          "contrast": 18.377439236425392,
+          "samples": 353
+        },
+        {
+          "text": "调整后",
+          "contrast": 19.113622795397582,
+          "samples": 333
+        },
+        {
+          "text": "改一张图",
+          "contrast": 15.025172541473076,
+          "samples": 844
+        }
+      ],
+      "decorativeBoundaries": [
+        {
+          "label": "首页创作要求",
+          "contrast": 1.368356597943401
+        }
+      ],
+      "existingClips": []
+    },
+    {
+      "name": "skus-dark-1440",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "workspace-empty-dark-1440",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [
+        {
+          "label": "工作台创作要求",
+          "contrast": 1.368356597943401
+        }
+      ],
+      "existingClips": [
+        {
+          "selector": "span.p-model-label",
+          "text": "Gemini 3.8 Flash"
+        }
+      ]
+    },
+    {
+      "name": "workspace-images-dark-1440",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [
+        {
+          "label": "工作台创作要求",
+          "contrast": 1.368356597943401
+        }
+      ],
+      "existingClips": [
+        {
+          "selector": "span.p-model-label",
+          "text": "Gemini 3.8 Flash"
+        }
+      ]
+    },
+    {
+      "name": "library-dark-1440",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "login-dark-1440",
+      "minText": 6.476388788882193,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "home-light-2560",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [
+        {
+          "text": "实拍",
+          "contrast": 12.717620386692793,
+          "samples": 201
+        },
+        {
+          "text": "主图",
+          "contrast": 9.922568533093358,
+          "samples": 171
+        },
+        {
+          "text": "场景",
+          "contrast": 8.292363952079898,
+          "samples": 214
+        },
+        {
+          "text": "卖点",
+          "contrast": 14.18879229601236,
+          "samples": 196
+        },
+        {
+          "text": "尺寸",
+          "contrast": 11.314214311519525,
+          "samples": 132
+        },
+        {
+          "text": "做一套图包",
+          "contrast": 13.01866707762185,
+          "samples": 1118
+        },
+        {
+          "text": "调整前",
+          "contrast": 17.57844751842728,
+          "samples": 360
+        },
+        {
+          "text": "调整后",
+          "contrast": 18.61474034436871,
+          "samples": 330
+        },
+        {
+          "text": "改一张图",
+          "contrast": 13.150532803772439,
+          "samples": 844
+        }
+      ],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "skus-light-2560",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "library-light-2560",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "login-light-2560",
+      "minText": 7.219873278143082,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "home-dark-2560",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [
+        {
+          "text": "实拍",
+          "contrast": 13.890843673417907,
+          "samples": 202
+        },
+        {
+          "text": "主图",
+          "contrast": 11.261838636322787,
+          "samples": 171
+        },
+        {
+          "text": "场景",
+          "contrast": 9.587567970629067,
+          "samples": 214
+        },
+        {
+          "text": "卖点",
+          "contrast": 15.162056866562434,
+          "samples": 197
+        },
+        {
+          "text": "尺寸",
+          "contrast": 13.542585788631598,
+          "samples": 132
+        },
+        {
+          "text": "做一套图包",
+          "contrast": 14.154990276406425,
+          "samples": 1118
+        },
+        {
+          "text": "调整前",
+          "contrast": 18.063728743956567,
+          "samples": 360
+        },
+        {
+          "text": "调整后",
+          "contrast": 19.252235277678388,
+          "samples": 330
+        },
+        {
+          "text": "改一张图",
+          "contrast": 14.201014530873135,
+          "samples": 844
+        }
+      ],
+      "decorativeBoundaries": [
+        {
+          "label": "首页创作要求",
+          "contrast": 1.368356597943401
+        }
+      ],
+      "existingClips": []
+    },
+    {
+      "name": "skus-dark-2560",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "library-dark-2560",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "login-dark-2560",
+      "minText": 6.476388788882193,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "home-light-390",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [
+        {
+          "text": "实拍",
+          "contrast": 12.774213957980255,
+          "samples": 200
+        },
+        {
+          "text": "主图",
+          "contrast": 8.32509102585429,
+          "samples": 172
+        },
+        {
+          "text": "场景",
+          "contrast": 5.772547159514109,
+          "samples": 225
+        },
+        {
+          "text": "卖点",
+          "contrast": 17.883394915465935,
+          "samples": 188
+        },
+        {
+          "text": "尺寸",
+          "contrast": 12.16695587937625,
+          "samples": 153
+        },
+        {
+          "text": "做一套图包",
+          "contrast": 13.949400666138489,
+          "samples": 1118
+        },
+        {
+          "text": "调整前",
+          "contrast": 17.909630875594143,
+          "samples": 351
+        },
+        {
+          "text": "调整后",
+          "contrast": 18.430763773930153,
+          "samples": 337
+        },
+        {
+          "text": "改一张图",
+          "contrast": 14.007334578477616,
+          "samples": 844
+        }
+      ],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "skus-light-390",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "workspace-empty-light-390",
+      "minText": 4.5140623711277446,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "workspace-images-light-390",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": [
+        {
+          "selector": "strong",
+          "text": "客厅家具 · 视觉检查"
+        }
+      ]
+    },
+    {
+      "name": "library-light-390",
+      "minText": 4.832895561154151,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "login-light-390",
+      "minText": 7.219873278143082,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "home-dark-390",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [
+        {
+          "text": "实拍",
+          "contrast": 13.938228656263309,
+          "samples": 202
+        },
+        {
+          "text": "主图",
+          "contrast": 9.662657250183415,
+          "samples": 172
+        },
+        {
+          "text": "场景",
+          "contrast": 6.912183636612833,
+          "samples": 225
+        },
+        {
+          "text": "卖点",
+          "contrast": 18.352395895520193,
+          "samples": 188
+        },
+        {
+          "text": "尺寸",
+          "contrast": 14.32518596418259,
+          "samples": 154
+        },
+        {
+          "text": "做一套图包",
+          "contrast": 14.96726240714969,
+          "samples": 1118
+        },
+        {
+          "text": "调整前",
+          "contrast": 18.377439236425392,
+          "samples": 351
+        },
+        {
+          "text": "调整后",
+          "contrast": 19.219686118813218,
+          "samples": 337
+        },
+        {
+          "text": "改一张图",
+          "contrast": 14.979407176334348,
+          "samples": 844
+        }
+      ],
+      "decorativeBoundaries": [
+        {
+          "label": "首页创作要求",
+          "contrast": 1.368356597943401
+        }
+      ],
+      "existingClips": []
+    },
+    {
+      "name": "skus-dark-390",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "workspace-empty-dark-390",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "workspace-images-dark-390",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": [
+        {
+          "selector": "strong",
+          "text": "客厅家具 · 视觉检查"
+        }
+      ]
+    },
+    {
+      "name": "library-dark-390",
+      "minText": 5.869374838533013,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 0,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    },
+    {
+      "name": "login-dark-390",
+      "minText": 6.476388788882193,
+      "textFailures": 0,
+      "controlFailures": 0,
+      "axeSeriousCritical": 0,
+      "axeIncomplete": 1,
+      "pageOverflow": false,
+      "photo": [],
+      "decorativeBoundaries": [],
+      "existingClips": []
+    }
+  ],
+  "homeGeometry": [
+    {
+      "name": "home-light-1440",
+      "titleTop": 162,
+      "inputToTasks": 64.796875,
+      "cardTop": 661.09375,
+      "cardHeight": 273.28125,
+      "visibleFraction": 0.8742138364779874
+    },
+    {
+      "name": "home-dark-1440",
+      "titleTop": 162,
+      "inputToTasks": 64.796875,
+      "cardTop": 661.09375,
+      "cardHeight": 273.28125,
+      "visibleFraction": 0.8742138364779874
+    },
+    {
+      "name": "home-light-2560",
+      "titleTop": 259.1875,
+      "inputToTasks": 64.796875,
+      "cardTop": 758.28125,
+      "cardHeight": 352.5,
+      "visibleFraction": 1
+    },
+    {
+      "name": "home-dark-2560",
+      "titleTop": 259.1875,
+      "inputToTasks": 64.796875,
+      "cardTop": 758.28125,
+      "cardHeight": 352.5,
+      "visibleFraction": 1
+    },
+    {
+      "name": "home-light-390",
+      "titleTop": 151.90625,
+      "inputToTasks": 64.796875,
+      "cardTop": 651,
+      "cardHeight": 265.5,
+      "visibleFraction": 0.7269303201506592
+    },
+    {
+      "name": "home-dark-390",
+      "titleTop": 151.90625,
+      "inputToTasks": 64.796875,
+      "cardTop": 651,
+      "cardHeight": 265.5,
+      "visibleFraction": 0.7269303201506592
+    }
+  ],
+  "covers": [
+    {
+      "name": "skus-light-1440",
+      "covers": [
+        {
+          "x": 120,
+          "y": 166,
+          "width": 385.328125,
+          "height": 288.984375,
+          "titleY": 466.984375,
+          "radius": "10px",
+          "background": "rgb(247, 247, 248)",
+          "backgroundImage": "none",
+          "fit": "contain",
+          "white": true,
+          "src": "/api/assets/cmvqffv520002bcv8ocnfwnuj"
+        },
+        {
+          "x": 527.328125,
+          "y": 166,
+          "width": 385.328125,
+          "height": 288.984375,
+          "titleY": 466.984375,
+          "radius": "10px",
+          "background": "rgb(247, 247, 248)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv6deevh0009wkv8xgq0j0vo"
+        },
+        {
+          "x": 934.65625,
+          "y": 166,
+          "width": 385.34375,
+          "height": 289,
+          "titleY": 467,
+          "radius": "10px",
+          "background": "rgb(247, 247, 248)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv9bhnp90007k4v8pvlby8k0"
+        }
+      ],
+      "hoverScale": 1.02,
+      "cardUnchanged": true
+    },
+    {
+      "name": "skus-dark-1440",
+      "covers": [
+        {
+          "x": 120,
+          "y": 166,
+          "width": 385.328125,
+          "height": 288.984375,
+          "titleY": 466.984375,
+          "radius": "10px",
+          "background": "rgb(22, 22, 26)",
+          "backgroundImage": "none",
+          "fit": "contain",
+          "white": true,
+          "src": "/api/assets/cmvqffv520002bcv8ocnfwnuj"
+        },
+        {
+          "x": 527.328125,
+          "y": 166,
+          "width": 385.328125,
+          "height": 288.984375,
+          "titleY": 466.984375,
+          "radius": "10px",
+          "background": "rgb(22, 22, 26)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv6deevh0009wkv8xgq0j0vo"
+        },
+        {
+          "x": 934.65625,
+          "y": 166,
+          "width": 385.34375,
+          "height": 289,
+          "titleY": 467,
+          "radius": "10px",
+          "background": "rgb(22, 22, 26)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv9bhnp90007k4v8pvlby8k0"
+        }
+      ],
+      "hoverScale": 1.02,
+      "cardUnchanged": true
+    },
+    {
+      "name": "skus-light-2560",
+      "covers": [
+        {
+          "x": 680,
+          "y": 166,
+          "width": 385.328125,
+          "height": 288.984375,
+          "titleY": 466.984375,
+          "radius": "10px",
+          "background": "rgb(247, 247, 248)",
+          "backgroundImage": "none",
+          "fit": "contain",
+          "white": true,
+          "src": "/api/assets/cmvqffv520002bcv8ocnfwnuj"
+        },
+        {
+          "x": 1087.328125,
+          "y": 166,
+          "width": 385.328125,
+          "height": 288.984375,
+          "titleY": 466.984375,
+          "radius": "10px",
+          "background": "rgb(247, 247, 248)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv6deevh0009wkv8xgq0j0vo"
+        },
+        {
+          "x": 1494.65625,
+          "y": 166,
+          "width": 385.34375,
+          "height": 289,
+          "titleY": 467,
+          "radius": "10px",
+          "background": "rgb(247, 247, 248)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv9bhnp90007k4v8pvlby8k0"
+        }
+      ],
+      "hoverScale": 1.02,
+      "cardUnchanged": true
+    },
+    {
+      "name": "skus-dark-2560",
+      "covers": [
+        {
+          "x": 680,
+          "y": 166,
+          "width": 385.328125,
+          "height": 288.984375,
+          "titleY": 466.984375,
+          "radius": "10px",
+          "background": "rgb(22, 22, 26)",
+          "backgroundImage": "none",
+          "fit": "contain",
+          "white": true,
+          "src": "/api/assets/cmvqffv520002bcv8ocnfwnuj"
+        },
+        {
+          "x": 1087.328125,
+          "y": 166,
+          "width": 385.328125,
+          "height": 288.984375,
+          "titleY": 466.984375,
+          "radius": "10px",
+          "background": "rgb(22, 22, 26)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv6deevh0009wkv8xgq0j0vo"
+        },
+        {
+          "x": 1494.65625,
+          "y": 166,
+          "width": 385.34375,
+          "height": 289,
+          "titleY": 467,
+          "radius": "10px",
+          "background": "rgb(22, 22, 26)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv9bhnp90007k4v8pvlby8k0"
+        }
+      ],
+      "hoverScale": 1.02,
+      "cardUnchanged": true
+    },
+    {
+      "name": "skus-light-390",
+      "covers": [
+        {
+          "x": 18,
+          "y": 166,
+          "width": 171,
+          "height": 128.25,
+          "titleY": 306.25,
+          "radius": "10px",
+          "background": "rgb(247, 247, 248)",
+          "backgroundImage": "none",
+          "fit": "contain",
+          "white": true,
+          "src": "/api/assets/cmvqffv520002bcv8ocnfwnuj"
+        },
+        {
+          "x": 201,
+          "y": 166,
+          "width": 171,
+          "height": 128.25,
+          "titleY": 306.25,
+          "radius": "10px",
+          "background": "rgb(247, 247, 248)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv6deevh0009wkv8xgq0j0vo"
+        },
+        {
+          "x": 18,
+          "y": 372.046875,
+          "width": 171,
+          "height": 128.25,
+          "titleY": 512.296875,
+          "radius": "10px",
+          "background": "rgb(247, 247, 248)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv9bhnp90007k4v8pvlby8k0"
+        }
+      ],
+      "hoverScale": 1.02,
+      "cardUnchanged": true
+    },
+    {
+      "name": "skus-dark-390",
+      "covers": [
+        {
+          "x": 18,
+          "y": 166,
+          "width": 171,
+          "height": 128.25,
+          "titleY": 306.25,
+          "radius": "10px",
+          "background": "rgb(22, 22, 26)",
+          "backgroundImage": "none",
+          "fit": "contain",
+          "white": true,
+          "src": "/api/assets/cmvqffv520002bcv8ocnfwnuj"
+        },
+        {
+          "x": 201,
+          "y": 166,
+          "width": 171,
+          "height": 128.25,
+          "titleY": 306.25,
+          "radius": "10px",
+          "background": "rgb(22, 22, 26)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv6deevh0009wkv8xgq0j0vo"
+        },
+        {
+          "x": 18,
+          "y": 372.046875,
+          "width": 171,
+          "height": 128.25,
+          "titleY": 512.296875,
+          "radius": "10px",
+          "background": "rgb(22, 22, 26)",
+          "backgroundImage": "none",
+          "fit": "cover",
+          "white": false,
+          "src": "/api/assets/cmv9bhnp90007k4v8pvlby8k0"
+        }
+      ],
+      "hoverScale": 1.02,
+      "cardUnchanged": true
+    }
+  ],
+  "validation": {
+    "lintUi": "6项数据白名单，0新增",
+    "lint": "通过",
+    "typecheck": "通过",
+    "build": "通过",
+    "units": 106,
+    "environmentUnits": 7,
+    "integration": 5,
+    "generation": "通过，KI-001未复现；计费断言未修改",
+    "e2e": "10通过，2项专用Agent按设计跳过",
+    "agentBrowser": "2通过"
+  },
+  "pending": "名称和Logo待用户决定，位置清单见报告；3a/3b/3c其余项目未执行"
+}

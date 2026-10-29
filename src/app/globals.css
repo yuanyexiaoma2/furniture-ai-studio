@@ -492,3 +492,13 @@ a, button, summary { touch-action: manipulation; }
 /* 旧页占位文字同样满足正文对比度；只覆盖旧外壳内的输入。 */
 .studio-shell input::placeholder,.studio-shell textarea::placeholder,.login-shell input::placeholder { color:var(--p-text); opacity:1; }
 .studio-shell .p-admin-toolbar input { border-color:var(--input); }
+
+/* 登录表单视觉修正，鉴权与凭证协议不变。 */
+.login-story { padding-left:var(--content-gutter); padding-right:var(--content-gutter); }
+.login-form-panel { padding-left:var(--content-gutter); padding-right:var(--content-gutter); }
+.login-story-center h1,.login-story-center h1 span,.login-form-wrap h2 { color:var(--foreground); font-weight:600; }
+.architectural-art { margin:24px 0 0; }
+.art-wall,.art-chair { left:0; }
+.login-shell [data-slot=input]:focus-visible { outline:2px solid var(--ring); outline-offset:2px; box-shadow:none; }
+.login-shell button[type=submit] { opacity:1; background:var(--primary); color:var(--primary-foreground); }
+.login-shell button[type=submit]:disabled { background:var(--muted); color:var(--muted-foreground); }

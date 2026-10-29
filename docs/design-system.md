@@ -1,19 +1,21 @@
 # 家具创作工作台设计规范
 
-本规范对应UI阶段3准备。正式创作页为 `/`、`/skus`、`/workspace`、`/library`；`/admin/models` 使用相同创作组件并继承旧后台外壳。旧页面已迁移语义颜色与工作台字体；布局与交互收口留到阶段3a–3c，当前未执行。
+本规范对应UI阶段3准备修正。正式创作页为 `/`、`/skus`、`/workspace`、`/library`；`/admin/models` 使用相同创作组件并继承旧后台外壳。仅提前移除用户批准的首页快捷意图标签；3a及3b、3c其余内容尚未执行。
 
 ## 主题与颜色
 
-creative配色唯一来源为 `src/styles/creative/tokens.css`。亮色由 `:root:has(.p-app)` 生效，暗色由 `:root.dark:has(.p-app)` 生效。封面、阴影、遮罩和品牌图形底色也在tokens中定义；阶段3准备仅调整不达标的文字/控件颜色，复用已有图片文字底衬，其余达标值保留。
+creative配色唯一来源为 `src/styles/creative/tokens.css`。亮色由 `:root:has(.p-app)` 生效，暗色由 `:root.dark:has(.p-app)` 生效。封面、阴影、遮罩和品牌图形底色也在tokens中定义；准备修正按用户舒适度要求更新暗色层级、主文字、输入区和任务遮罩，不统一产品名称或Logo。
 
 | 用途 | 亮色 | 暗色 |
 | --- | --- | --- |
 | 主按钮 --primary / foreground | #1f3a2e / #ffffff | #fafafa / #18181b |
 | 聚焦 --ring / 选中 --p-selection | #1f3a2e | #6c907d |
-| 页面背景 / 面板 | #ffffff / #ffffff | #0e0e10 / #16161a |
+| 页面背景 / 面板 | #ffffff / #ffffff | #141416 / #1b1b1e |
+| 浮层 / 主文字 | #ffffff / #18181b | #222226 / #ececee |
 | 正文 / 辅助 | #52525b / #71717a | #a1a1aa / #a1a1aa |
-| 输入边框 --input | #71717a | #71717a |
-| 分隔线 --border（非控件轮廓） | #e4e4e7 | #52525b |
+| 输入边框 --input | #8b8b94 | #71717a |
+| 分隔线 --border（非控件轮廓） | #e4e4e7 | 白色8% |
+| 复合输入表面 / 静止边框 | card / input | #222226 / 白色10% |
 
 墨绿用于**亮色主按钮，以及全主题的选中、聚焦和品牌点缀**；暗色选中和聚焦使用提亮的墨绿#6c907d，主按钮保持白底深字。图片承担主要色彩，禁止大面积浅绿背景。状态色用于终稿、待处理、生成中、未开始的小点和角标。
 
@@ -86,7 +88,13 @@ task-cover.tsx、batch/brand.tsx、batch/workflow.tsx的商品变体或品牌色
 
 旧页/登录页的root按是否包含studio-shell、login-shell启用；嵌套p-app时不覆盖creative核心变量。亮色白底与墨绿主按钮、暗色深底与白色主按钮。阶段3准备删除同值的studio-muted-ink、studio-control-line，分别改读p-text、input，旧页实际色值不变。警告/危险底色、品牌文字色及不同强度的遮罩/阴影继续保留。主题默认声明只作用于:root.dark，避免React Flow内层.dark重置已验证的变量。全局Tailwind语义映射保留原值。
 
-共享Input表面为card；studio-input-surface兼容别名也指向card。对比度按alpha合成后的实际颜色审计，图片/渐变文字另用文字隐藏后的背景采样，并计入压在文字上方的已有渐变；不以axe的incomplete代替通过。普通启用文字最低4.5:1，输入框或包含它的现有输入区域边界最低3:1；装饰分隔线单独说明，不套用文字门槛。首页缩略图标签与任务卡文案使用现有深色底衬，提高图片上的文字可读性；字号、位置和交互不变。逐变量与逐截图变化见docs/ui-audit/phase3-prep.md。
+共享Input表面为card；studio-input-surface兼容别名也指向card。对比度按alpha合成后的实际颜色审计，图片/渐变文字另用文字隐藏后的背景采样；不以axe的incomplete代替通过。普通启用文字最低4.5:1，普通输入边界最低3:1。用户已确认的暗色首页/对话复合区，静止线仅为装饰，通过浮层底色、placeholder和发送按钮识别，仍要求实际2px聚焦描边≥3:1；该例外不豁免其他输入。任务卡只用单层满幅渐变，标签在遮罩上方，无矩形文案底衬。原准备证据见phase3-prep.md，本轮当前结果见phase3-prep-fix.md。
+
+## 准备修正的内容轴与表单
+
+content-max-list为1200px（SKU/模板库），content-max-home为960px（首页输入/任务）；内容安全边距桌面24px/手机18px。首页实际宽度min(100%,clamp(720px,52vw,960px))，输入20px 24px内边距、textarea至少120px/16px。标题区顶部18vh，输入到任务标题约64px。Tab角标和快捷标签移除，Tab补全保留。未提前删除打字机或执行3a工具栏改造。
+
+SKU封面4:3、10px圆角；已选主图优先，白底四角检测命中用contain加muted纯色留白，其余cover；悬停只缩放图片1.02。模板库导入区padding24，标题上下间距4/8，标题字号/字重沿用20px/500。原生目录input、details/summary语义不变，summary图标展开旋转90°。登录左右标题600/foreground，空字段按钮可点击，仅在表单UI层做行内校验，鉴权调用不变。产品名/Logo位置清单见修正报告，等待用户选择。
 
 登录标题保留原clamp(36px,3.8vw,58px)及既有42/34px媒体规则，改为工作台字体/600。旧品牌标记、pack-number、note-number去Georgia/宋体，装饰数字采用tabular-nums；不影响creative品牌原型的Georgia。终稿使用.generation-card.pack-final双类选择器覆盖普通边框，不用important。
 

@@ -1,0 +1,752 @@
+{
+  "variables": {
+    "--background": "#141416",
+    "--foreground": "#ececee",
+    "--card": "#1b1b1e",
+    "--card-foreground": "#ececee",
+    "--popover": "#222226",
+    "--popover-foreground": "#ececee",
+    "--primary": "#fafafa",
+    "--primary-foreground": "#18181b",
+    "--secondary": "#26262c",
+    "--secondary-foreground": "#ececee",
+    "--muted": "#1e1e23",
+    "--muted-foreground": "#a1a1aa",
+    "--accent": "#26262c",
+    "--accent-foreground": "#ececee",
+    "--destructive": "#f1a1a1",
+    "--border": "#ffffff14",
+    "--input": "#71717a",
+    "--ring": "#6c907d",
+    "--p-subtle": "",
+    "--p-text": "#a1a1aa",
+    "--p-panel": "",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#1b1b1e",
+    "--radius": ".75rem",
+    "--font-body": "\"Segoe UI\",\"PingFang SC\",\"Microsoft YaHei UI\",system-ui,sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "span.brand-symbol",
+      "text": "F",
+      "fontSize": "28px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        250,
+        250,
+        250
+      ],
+      "contrast": 16.973898642198108,
+      "clientWidth": 35,
+      "scrollWidth": 35,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 30.90625,
+          "y": 22.5,
+          "width": 13.171875,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "家具工作台",
+      "fontSize": "15px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 14.564298145963988,
+      "clientWidth": 76,
+      "scrollWidth": 76,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 67,
+          "y": 29.75,
+          "width": 29,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "selector": "span.wordmark-light",
+      "text": "工作台",
+      "fontSize": "15px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 14.564298145963988,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 99,
+          "y": 29.75,
+          "width": 43.5,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "selector": "a.nav-link",
+      "text": "SKU 项目",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 175,
+      "scrollWidth": 175,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 95.0625,
+          "y": 91,
+          "width": 48.875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "a.nav-link.active",
+      "text": "管理后台",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 9.729888077185015,
+      "clientWidth": 175,
+      "scrollWidth": 175,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        168,
+        203,
+        183,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 270.5,
+          "y": 91,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 14.564298145963988,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 292,
+          "y": 21,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 9.729888077185015,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        168,
+        203,
+        183,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 292,
+          "y": 43,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "p.eyebrow",
+      "text": "团队管理",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 144,
+      "scrollWidth": 144,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 156,
+          "width": 56,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "h1",
+      "text": "管理后台.",
+      "fontSize": "28px",
+      "color": "rgb(236, 236, 238)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 15.59443097983516,
+      "clientWidth": 144,
+      "scrollWidth": 144,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        236,
+        236,
+        238,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 189,
+          "width": 106,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "span.title-dot",
+      "text": ".",
+      "fontSize": "28px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 10.418083078258753,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        168,
+        203,
+        183,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 127,
+          "y": 189,
+          "width": 5.265625,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "p.intro-copy",
+      "text": "维护团队账号与访问权限。",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 144,
+      "scrollWidth": 144,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 10,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 240.796875,
+          "width": 144,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "用户管理",
+      "fontSize": "20px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 9.729888077185015,
+      "clientWidth": 296,
+      "scrollWidth": 296,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 11,
+      "opacity": 1,
+      "foreground": [
+        168,
+        203,
+        183,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 47,
+          "y": 360.390625,
+          "width": 80,
+          "height": 27
+        }
+      ]
+    },
+    {
+      "selector": "p",
+      "text": "新增团队成员，分配角色或重置密码。",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 296,
+      "scrollWidth": 296,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 12,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 47,
+          "y": 403.390625,
+          "width": 204,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "a.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.border-transparent.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.bg-primary.text-primary-foreground.hover:bg-primary/80.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "管理用户",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        250,
+        250,
+        250
+      ],
+      "contrast": 16.973898642198108,
+      "clientWidth": 98,
+      "scrollWidth": 98,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 13,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 58,
+          "y": 458.984375,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "网关状态",
+      "fontSize": "20px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 9.729888077185015,
+      "clientWidth": 296,
+      "scrollWidth": 296,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 14,
+      "opacity": 1,
+      "foreground": [
+        168,
+        203,
+        183,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 47,
+          "y": 612.984375,
+          "width": 80,
+          "height": 27
+        }
+      ]
+    },
+    {
+      "selector": "p",
+      "text": "查看双网关调用、熔断与费用，测试生图和大语言模型。",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        27,
+        27,
+        30
+      ],
+      "contrast": 6.704576354553661,
+      "clientWidth": 296,
+      "scrollWidth": 296,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 15,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 47,
+          "y": 655.984375,
+          "width": 276,
+          "height": 16
+        },
+        {
+          "x": 47,
+          "y": 677.578125,
+          "width": 24,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "a.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.border-transparent.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.bg-primary.text-primary-foreground.hover:bg-primary/80.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "管理网关",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        250,
+        250,
+        250
+      ],
+      "contrast": 16.973898642198108,
+      "clientWidth": 98,
+      "scrollWidth": 98,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 16,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 58,
+          "y": 733.171875,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "家具电商 · 创意协作空间",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 136,
+      "scrollWidth": 136,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 17,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 20,
+          "y": 842.171875,
+          "width": 135.6875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "公司内部应用",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        20,
+        20,
+        22
+      ],
+      "contrast": 7.178791052083453,
+      "clientWidth": 75,
+      "scrollWidth": 75,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 18,
+      "opacity": 1,
+      "foreground": [
+        161,
+        161,
+        170,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 295,
+          "y": 842.171875,
+          "width": 75,
+          "height": 16
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [],
+  "whiteSurfaces": [],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "21.0pt (28px)",
+                  "fontWeight": "normal",
+                  "messageKey": "shortTextContent",
+                  "expectedContrastRatio": "3:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<span class=\"brand-symbol\">F</span>",
+                    "target": [
+                      ".brand-symbol"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element content is too short to determine if it is actual text content"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"brand-symbol\">F</span>",
+            "target": [
+              ".brand-symbol"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}

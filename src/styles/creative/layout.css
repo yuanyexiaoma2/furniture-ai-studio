@@ -157,3 +157,6 @@
 @media (max-width:760px) {
   .p-topbar .p-topbar-end>button { display: inline-flex; width: 32px; height: 32px; flex-shrink: 0; }
 }
+
+/* 暗色顶栏以面板层级区分，不再加底部分隔线。 */
+.dark .p-topbar { background:var(--card); border-bottom-color:transparent; }

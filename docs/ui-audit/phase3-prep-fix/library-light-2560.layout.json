@@ -1,0 +1,24 @@
+[
+  {
+    "selector": "p-pattern-library",
+    "text": "品类视觉经验模板库积累画面表达；具体产品外观由每次实拍分析决定。示例数据已排除检索。历史 ",
+    "x": 680,
+    "y": 62,
+    "width": 1200,
+    "height": 617.1875,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "p-pattern-heading",
+    "text": "品类视觉经验模板库积累画面表达；具体产品外观由每次实拍分析决定。示例数据已排除检索。",
+    "x": 680,
+    "y": 102,
+    "width": 1200,
+    "height": 95.59375,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  }
+]

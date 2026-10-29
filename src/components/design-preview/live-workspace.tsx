@@ -139,7 +139,14 @@ export function RealExport({open,onOpenChange}:{open:boolean;onOpenChange:(v:boo
  return <Sheet open={open} onOpenChange={onOpenChange}><SheetContent className="p-portal"><SheetHeader><SheetTitle>导出图包</SheetTitle><SheetDescription>按图位命名，将已挑选的终稿打包为 ZIP。</SheetDescription></SheetHeader><div className="p-product-content"><p>{s?.product.sku??"尚未创建SKU"} · {s?.pack.slots.filter(slot=>slot.finalAssetId).length??0} 张终稿</p><div className="t10-product-heading">{(["2K","4K"] as const).map(r=><Button key={r} variant={resolution===r?"default":"outline"} onClick={()=>setResolution(r)}>{r}</Button>)}</div><p className="p-subtle">导出按长边等比缩放；4K不会增加原图的真实细节。</p>{missing.length>0&&<label><Switch checked={partial} onCheckedChange={setPartial}/>仅导出已有终稿（还有 {missing.length} 个图位未完成）</label>}<Button disabled={busy||!s?.pack.slots.some(slot=>slot.finalAssetId)||missing.length>0&&!partial} onClick={()=>void download()}>{busy?"正在打包…":"下载 ZIP"}</Button>{SHOW_UNCONNECTED_FEATURES&&<p className="p-subtle">导出前检查 · 即将开放</p>}</div></SheetContent></Sheet>;
 }
 export function RealSkuGallery(){
- const [rows,setRows]=useState<{id:string;name:string;sku:string;category:string;assets:{id:string}[]}[]>([]),[error,setError]=useState("");
+ const [rows,setRows]=useState<GalleryProduct[]>([]),[error,setError]=useState("");
  useEffect(()=>{studioFetch<typeof rows>("/api/studio").then(setRows).catch(e=>setError(e.message));},[]);
- return <main className="p-gallery"><div className="p-gallery-header"><h1>全部 SKU</h1><Button asChild><Link href="/">新建创作</Link></Button></div>{error&&<p role="alert">{error}</p>}<div className="p-sku-grid">{rows.map(s=><article className="p-sku-card" key={s.id}><Link className="p-sku-cover" href={"/workspace?sku="+s.id}>{s.assets[0]?<img src={"/api/assets/"+s.assets[0].id} alt={s.name}/>:<Upload size="md"/>}</Link><strong>{s.name}</strong><p>{s.sku} · {s.category}</p></article>)}</div></main>;
+ return <main className="p-gallery"><div className="p-gallery-header"><h1>全部 SKU</h1><Button asChild><Link href="/">新建创作</Link></Button></div>{error&&<p role="alert">{error}</p>}<div className="p-sku-grid">{rows.map(s=><article className="p-sku-card" key={s.id}><GalleryCover product={s}/><strong>{s.name}</strong><p>{s.sku} · {s.category}</p></article>)}</div></main>;
+}
+type GalleryProduct={id:string;name:string;sku:string;category:string;assets:{id:string}[];imagePacks?:{slots:{slotType?:string;finalAssetId:string|null}[]}[]};
+function GalleryCover({product}:{product:GalleryProduct}){
+ const [white,setWhite]=useState(false),slots=product.imagePacks?.[0]?.slots??[];
+ // 优先使用美工已选的主图，不从细节拼贴猜测或裁剪产品；没有已选主图时使用排序后的首张实拍。
+ const main=slots.find(s=>s.slotType==="main"),id=main?.finalAssetId??product.assets[0]?.id;
+ return <Link className={"p-sku-cover"+(white?" is-white":"")} href={"/workspace?sku="+product.id}>{id?<img src={"/api/assets/"+id} alt={product.name} onLoad={e=>{try{const canvas=document.createElement("canvas");canvas.width=canvas.height=16;const ctx=canvas.getContext("2d")!;ctx.drawImage(e.currentTarget,0,0,16,16);const p=ctx.getImageData(0,0,16,16).data;let light=0,total=0;for(let y=0;y<16;y++)for(let x=0;x<16;x++){if(!((x<2||x>=14)&&(y<2||y>=14)))continue;const i=(y*16+x)*4;total++;if(p[i+3]<20||p[i]>240&&p[i+1]>240&&p[i+2]>240)light++;}setWhite(light/total>.9);}catch{setWhite(false);}}}/>:<Upload size="md"/>}</Link>;
 }

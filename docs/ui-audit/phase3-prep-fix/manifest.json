@@ -1,0 +1,552 @@
+{
+  "mode": "compare",
+  "commit": "83765acff0387a0b2d1d39cfcec6dd3c83abf1ce",
+  "referenceCommit": "83765acff0387a0b2d1d39cfcec6dd3c83abf1ce",
+  "referenceDirectory": "docs\\ui-audit\\phase3-prep-fix-before",
+  "browserVersion": "156.0.8078.49",
+  "renderEnvironment": {
+    "schemaVersion": 1,
+    "chromeVersion": "156.0.8078.49",
+    "os": {
+      "platform": "win32",
+      "release": "10.0.26200",
+      "version": "Windows 11 Pro",
+      "arch": "x64"
+    },
+    "fonts": [
+      {
+        "family": "Segoe UI",
+        "installed": true,
+        "files": [
+          {
+            "path": "C:\\WINDOWS\\Fonts\\SegUIVar.ttf",
+            "sha256": "27ca1ab4bd5ad3b0404ee6a9a03b143408dbd7e5a4c9e4b2054639c03fc0f682"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeui.ttf",
+            "sha256": "704eada12961a27fd271f7d3b09e2066520e758390c1776744eff430fee30f6e"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuib.ttf",
+            "sha256": "b169e636719880976a97e94e3b1cb3dbe5f4a38eabc037bf9f2a9165154c3ad2"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuii.ttf",
+            "sha256": "f9feaeee8b20751c15700b4fb03571b335f52e91edece7fb7aa1ceaa6eeb0db7"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuil.ttf",
+            "sha256": "0dbddf9e20b2dc0facd568c877aa1155b3597c09a7ca41d00ca580af25d1cc51"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuisl.ttf",
+            "sha256": "288a8e3fcd0f6090881dcc469b557f55e0a85864abe1cc24330bb4f08105f69b"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuiz.ttf",
+            "sha256": "f2ecff1a943929f07a7b872c948b1de57fe688ac7d0bab6fc9f624c95a97dbfe"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguibl.ttf",
+            "sha256": "bdf29c9b7484c631f19d6ef436a63d15f8a1a82bc856f1a0f6906c41a097d2b1"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguibli.ttf",
+            "sha256": "6efcb158b0093bdeb6c308a93e10c2240e6510b99b756d9583cb59b7e219aaf9"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguiemj.ttf",
+            "sha256": "451df9bb5546055af625ff86aa72695df43e8e170b4c6c1316fe44e9c7a22f7c"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguihis.ttf",
+            "sha256": "a162ceeaf701b55d11c542daf1c39c52bfaf686496505bff2eb75ca24814c136"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguili.ttf",
+            "sha256": "07bbf002d8dccb6bf7db8e31207076bf357fe92b1e5f82a20d2c941d59ebeb96"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisb.ttf",
+            "sha256": "6c3fd894b19950b10c34bf64069ef821eaf2f58f959146306fee5b367472e501"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisbi.ttf",
+            "sha256": "16847ed882097cd1c0d45c63b6d75c3021f2133c64db03796f57dac198d0b2ad"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisli.ttf",
+            "sha256": "032eb41f836c3d6fd765dc4c287ea87f7f0c392a454ffc58d7e5fbe29d1fee86"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisym.ttf",
+            "sha256": "a4a35dcc62cd30e1a6c97b695ecef83e59d2b149e3af834f6a49f11851d56b37"
+          }
+        ]
+      },
+      {
+        "family": "Microsoft YaHei UI",
+        "installed": true,
+        "files": [
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyh.ttc",
+            "sha256": "d79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyhbd.ttc",
+            "sha256": "4508821b3dffe01f0ef5e5326a3e60df705a44633858811f67b6982dce3f6ee6"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyhl.ttc",
+            "sha256": "7e9bdf90bb5d3fe1b5975fc8ae31944b8fa674122261f92c28d4ec0b9c482fa1"
+          }
+        ]
+      },
+      {
+        "family": "PingFang SC",
+        "installed": false,
+        "files": []
+      }
+    ]
+  },
+  "capturedAt": "2026-10-29T06:42:49.932Z",
+  "fixedTime": "2026-10-28T06:00:00.000Z",
+  "normalization": "独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",
+  "results": [
+    {
+      "name": "home-light-1440",
+      "width": 1440,
+      "height": 1091,
+      "changedPixels": 1154492,
+      "totalPixels": 1709280,
+      "differencePercent": 67.54259103248151,
+      "alignedDifferencePercent": 67.54259103248151,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 1440,
+        "height": 1187
+      },
+      "sha256": "cb9335a1677f1ef7553c0e8e4f78b5a1224a6b4850f1e084b18cadb8f4a3915d"
+    },
+    {
+      "name": "skus-light-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 347903,
+      "totalPixels": 1296000,
+      "differencePercent": 26.844367283950614,
+      "alignedDifferencePercent": 26.844367283950614,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "c7444be8f446dd1204afa1117bcec7d4ec932e88dd02b0a82d98fceb170dcb93"
+    },
+    {
+      "name": "workspace-empty-light-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 8691,
+      "totalPixels": 1296000,
+      "differencePercent": 0.6706018518518518,
+      "alignedDifferencePercent": 0.6706018518518518,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "29bfccc83a36e305f0c4cd8c669541f5f9ea5520984790d483986e889aafd18a"
+    },
+    {
+      "name": "workspace-images-light-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 9429,
+      "totalPixels": 1296000,
+      "differencePercent": 0.7275462962962963,
+      "alignedDifferencePercent": 0.7275462962962963,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "e5d6f038ecd749ce231faab7d0a58c284278bf70121d8764e5a46f1d97340105"
+    },
+    {
+      "name": "library-light-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 121112,
+      "totalPixels": 1296000,
+      "differencePercent": 9.345061728395061,
+      "alignedDifferencePercent": 9.345061728395061,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "e21f6dfece035ca9ee3ac1f750b9e173541d9521fe9a6c3013ed470cc365f138"
+    },
+    {
+      "name": "login-light-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 47998,
+      "totalPixels": 1296000,
+      "differencePercent": 3.7035493827160497,
+      "alignedDifferencePercent": 3.7035493827160497,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "06a6aaf7df4bf1e0e313522b6e3e6cef8cc5dfc7818d736dffead27c77dd59c2"
+    },
+    {
+      "name": "home-dark-1440",
+      "width": 1440,
+      "height": 1091,
+      "changedPixels": 1702022,
+      "totalPixels": 1709280,
+      "differencePercent": 99.5753767668258,
+      "alignedDifferencePercent": 99.47469109800618,
+      "verticalOffset": 6,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 1440,
+        "height": 1187
+      },
+      "sha256": "2f14799c2ccbc81766054e9dcb1188a030ab682c6474efd6fee1194580ed8959"
+    },
+    {
+      "name": "skus-dark-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 1269278,
+      "totalPixels": 1296000,
+      "differencePercent": 97.93811728395062,
+      "alignedDifferencePercent": 97.93811728395062,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "a77405c95e1d14b1bbb83264f0252bd0850a0164a9a704008f797c12f3c41828"
+    },
+    {
+      "name": "workspace-empty-dark-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 1275313,
+      "totalPixels": 1296000,
+      "differencePercent": 98.40378086419753,
+      "alignedDifferencePercent": 98.40378086419753,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "08f00ef0c06d0842902541fef4d6d68dd4501183016f07f3c1d9b05beefa1482"
+    },
+    {
+      "name": "workspace-images-dark-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 1215329,
+      "totalPixels": 1296000,
+      "differencePercent": 93.77538580246913,
+      "alignedDifferencePercent": 93.77538580246913,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "0fde0ae6f187f1cabb24c5fadf40ead35cdfecf01fbb7b5a1e3ab4b2620b7a34"
+    },
+    {
+      "name": "library-dark-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 1294818,
+      "totalPixels": 1296000,
+      "differencePercent": 99.9087962962963,
+      "alignedDifferencePercent": 99.9087962962963,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3642e5d49ec4480607d8275192472e7e633957f510b838f768b75cb7d6549b47"
+    },
+    {
+      "name": "login-dark-1440",
+      "width": 1440,
+      "height": 900,
+      "changedPixels": 659740,
+      "totalPixels": 1296000,
+      "differencePercent": 50.90586419753086,
+      "alignedDifferencePercent": 50.90586419753086,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "f67d0e7cf0e4e6ca4f50a7ef76b82958fb329431c7f5db0b48911f8f1720d819"
+    },
+    {
+      "name": "home-light-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 2124878,
+      "totalPixels": 3809280,
+      "differencePercent": 55.78161752352151,
+      "alignedDifferencePercent": 55.78161752352151,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 2560,
+        "height": 1488
+      },
+      "sha256": "a2e23842187f21d0a34df97454dcc80f5c2f1fad5d0db8f067330391b1747ba5"
+    },
+    {
+      "name": "skus-light-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 347881,
+      "totalPixels": 3686400,
+      "differencePercent": 9.436876085069445,
+      "alignedDifferencePercent": 9.436876085069445,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "5282bd6d5e553ba5cf572d037f9b373cb766e90b5dad4a13c16b24f0c6d6ab0d"
+    },
+    {
+      "name": "library-light-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 121112,
+      "totalPixels": 3686400,
+      "differencePercent": 3.285373263888889,
+      "alignedDifferencePercent": 3.285373263888889,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "fc1be415781ed935f45f4972e0dd5ee0afdd539616f58c0aea3c06157a4d85f9"
+    },
+    {
+      "name": "login-light-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 49444,
+      "totalPixels": 3686400,
+      "differencePercent": 1.3412543402777777,
+      "alignedDifferencePercent": 1.3412543402777777,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "011fdc620479357a75eac5a13c9dd0e2d79ee0b2a8f6bfbeb53f37feb7c50f6f"
+    },
+    {
+      "name": "home-dark-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 3807924,
+      "totalPixels": 3809280,
+      "differencePercent": 99.96440272177419,
+      "alignedDifferencePercent": 99.96440272177419,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 2560,
+        "height": 1488
+      },
+      "sha256": "91adc37a57f39994c6550a0b4ecd974a43e4261f3d20ccfad7edb7ddc5c8efaf"
+    },
+    {
+      "name": "skus-dark-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 3659704,
+      "totalPixels": 3686400,
+      "differencePercent": 99.27582465277777,
+      "alignedDifferencePercent": 99.27582465277777,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "15fda8d960b62570f2739a03c19fbd51ae2a558e5581d2eddbfb9170a8650e83"
+    },
+    {
+      "name": "library-dark-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 3685218,
+      "totalPixels": 3686400,
+      "differencePercent": 99.96793619791666,
+      "alignedDifferencePercent": 99.96793619791666,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "a887f7e23bdee3ff3e9a24432389ab62404e86e87898160c60f1f0eaf3073264"
+    },
+    {
+      "name": "login-dark-2560",
+      "width": 2560,
+      "height": 1440,
+      "changedPixels": 1828582,
+      "totalPixels": 3686400,
+      "differencePercent": 49.60346137152778,
+      "alignedDifferencePercent": 49.60346137152778,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3a2831b3b8fcc70287dc221a559f99b136ce813f1c23a20e8a1047d213b3df97"
+    },
+    {
+      "name": "home-light-390",
+      "width": 390,
+      "height": 1390,
+      "changedPixels": 436208,
+      "totalPixels": 579150,
+      "differencePercent": 75.31865665199,
+      "alignedDifferencePercent": 75.31865665199,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 390,
+        "height": 1485
+      },
+      "sha256": "0b07b8305aece518200744f17da7066302be2d38ad58a96b57fb0776362c43ff"
+    },
+    {
+      "name": "skus-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 76338,
+      "totalPixels": 329160,
+      "differencePercent": 23.19176084578928,
+      "alignedDifferencePercent": 23.19176084578928,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3600761a483410ec3b1e5cba397356b8f62354919d9cf07d92838e1fb6d64f33"
+    },
+    {
+      "name": "workspace-empty-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 350,
+      "totalPixels": 329160,
+      "differencePercent": 0.10633126746870823,
+      "alignedDifferencePercent": 0.10633126746870823,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "0b221a3f087dbc080cebb941c74e9b501876c3726a7ce4f9e5f789c568207e90"
+    },
+    {
+      "name": "workspace-images-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 300,
+      "totalPixels": 329160,
+      "differencePercent": 0.09114108640174991,
+      "alignedDifferencePercent": 0.09114108640174991,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "d79b6c0dc1548d5fc4b96c63d4e446ece85359be796930a77042bd17d7a1d608"
+    },
+    {
+      "name": "library-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 80369,
+      "totalPixels": 329160,
+      "differencePercent": 24.416393243407462,
+      "alignedDifferencePercent": 24.416393243407462,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "fadaf257d17408ccb9b264ccd5dacb280f4fe53f729ccc7dd7d0c28598334a15"
+    },
+    {
+      "name": "login-light-390",
+      "width": 390,
+      "height": 857,
+      "changedPixels": 23584,
+      "totalPixels": 334230,
+      "differencePercent": 7.056218771504652,
+      "alignedDifferencePercent": 7.056218771504652,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "604760885dc7d5f1e592a652dc6855cdb90a17f9cbc65203749382aecec878dd"
+    },
+    {
+      "name": "home-dark-390",
+      "width": 390,
+      "height": 1390,
+      "changedPixels": 578374,
+      "totalPixels": 579150,
+      "differencePercent": 99.8660105326772,
+      "alignedDifferencePercent": 99.8660105326772,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "baselineSize": {
+        "width": 390,
+        "height": 1485
+      },
+      "sha256": "38a63c521d1f4927ae0bd766869ed12abe8579bda6f2cfaa75ffa6ecf2f63c32"
+    },
+    {
+      "name": "skus-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 322261,
+      "totalPixels": 329160,
+      "differencePercent": 97.9040588163811,
+      "alignedDifferencePercent": 97.9040588163811,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "a4968d48835e599c11ab119b653012a38db095f483ecbafeb5dbde50296c01ed"
+    },
+    {
+      "name": "workspace-empty-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 323148,
+      "totalPixels": 329160,
+      "differencePercent": 98.17353262850894,
+      "alignedDifferencePercent": 98.17353262850894,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "436775e6c7eebde31f9ce993086cee37b8534620c6eb524fd6b3a9aad7be41f6"
+    },
+    {
+      "name": "workspace-images-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 320136,
+      "totalPixels": 329160,
+      "differencePercent": 97.25847612103536,
+      "alignedDifferencePercent": 97.25847612103536,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "b7cfd0ac705807c81f1a11f02c79a41b7789793c1390d2097a839e31fdee6177"
+    },
+    {
+      "name": "library-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 328561,
+      "totalPixels": 329160,
+      "differencePercent": 99.81802163081784,
+      "alignedDifferencePercent": 99.81802163081784,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3432704c6affa3a420a195d835510ddae9643d857384086ae510d2fc04e33539"
+    },
+    {
+      "name": "login-dark-390",
+      "width": 390,
+      "height": 857,
+      "changedPixels": 218091,
+      "totalPixels": 334230,
+      "differencePercent": 65.25177273135266,
+      "alignedDifferencePercent": 65.25177273135266,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "fd01cc728c594d1f8bc77a03530956b7108cb8eb4ac1ff30dd43e0b87fdc84d5"
+    }
+  ],
+  "failures": [],
+  "updates": [
+    {
+      "capturedAt": "2026-10-29T07:14:03.379Z",
+      "states": [
+        "library-light-1440",
+        "library-dark-1440",
+        "library-light-2560",
+        "library-dark-2560",
+        "library-light-390",
+        "library-dark-390"
+      ],
+      "reason": "模板库保留原有20px/500标题，仅调整4px/8px间距，覆盖受影响状态；其余页面源码不变"
+    },
+    {
+      "capturedAt": "2026-10-29T07:28:54.688Z",
+      "states": [
+        "login-light-1440",
+        "login-dark-1440",
+        "login-light-2560",
+        "login-dark-2560",
+        "login-light-390",
+        "login-dark-390"
+      ],
+      "reason": "同步旧页独立亮色input覆盖为8b8b94；暗色普通input仍71717a，重新核验登录与受影响旧页"
+    }
+  ]
+}

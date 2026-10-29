@@ -1,0 +1,140 @@
+[
+  {
+    "id": "cmvqffv200000bcv8bnmu03xt",
+    "sku": "NEW-MVQFFV1P",
+    "name": "竖向鞋架 · Task 11-B 验收",
+    "category": "鞋架",
+    "updatedAt": "2026-10-27T08:59:45.766Z",
+    "assets": [
+      {
+        "id": "cmvqffv520002bcv8ocnfwnuj"
+      }
+    ],
+    "imagePacks": [
+      {
+        "slots": [
+          {
+            "id": "cmvqgfmdd0004aov80qmer3n5",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmvqgfmdk0005aov8v7mrqg7l",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmvqgfmdq0006aov81iowlw2d",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmvqgfmdx0007aov8josvhkdx",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmvqgfme30008aov8aniqktn8",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmvqgfme70009aov88ljx58bl",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmvqgfmed000aaov8t72mnd3g",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmvqgfmeh000baov899ym7dfm",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmvqgfmek000caov8kgybgrtx",
+            "finalAssetId": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cmv61b4md000bb8v84vjjyszb",
+    "sku": "NL27TS01",
+    "name": "原木色拱形储物马桶架",
+    "category": "马桶架",
+    "updatedAt": "2026-10-27T06:58:21.764Z",
+    "assets": [
+      {
+        "id": "cmv61cvbd000cb8v8gmvihdxb"
+      }
+    ],
+    "imagePacks": [
+      {
+        "slots": [
+          {
+            "id": "cmv6dc8wk000dakv8ru036vr8",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmv6dc8wm000eakv81gek486p",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmv6dc8wp000fakv8kckfloom",
+            "finalAssetId": null
+          },
+          {
+            "id": "cmv6dc8we0009akv8hqjrdu69",
+            "finalAssetId": "cmv6deevh0009wkv8xgq0j0vo"
+          },
+          {
+            "id": "cmv6dc8wg000aakv8fn0yrgn0",
+            "finalAssetId": "cmv6dew8000005gv8eajkrxfj"
+          },
+          {
+            "id": "cmv6dc8wi000bakv8ldxl9xi9",
+            "finalAssetId": "cmv6dfdix00015gv8509drvxc"
+          },
+          {
+            "id": "cmv6dc8wj000cakv8ks6umb4d",
+            "finalAssetId": "cmv7niygo000bj8v8iwpilvv3"
+          },
+          {
+            "id": "cmv7n870k004bnsv8t500u10w",
+            "finalAssetId": "cmv7ne4xx0008j8v8jg85a539"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cmv9b8fmb0000o4v8eym7cy21",
+    "sku": "NL27TS01-T10",
+    "name": "原木色拱顶藤编双门马桶架",
+    "category": "马桶架",
+    "updatedAt": "2026-10-15T09:05:07.646Z",
+    "assets": [
+      {
+        "id": "cmv9b8fri0002o4v8ujwfyz1r"
+      }
+    ],
+    "imagePacks": [
+      {
+        "slots": [
+          {
+            "id": "cmv9bey44000lo4v8ed699cwv",
+            "finalAssetId": "cmv9bgmla0005k4v8u5uvymra"
+          },
+          {
+            "id": "cmv9bey47000mo4v8hxgxc3cd",
+            "finalAssetId": "cmv9bglcs0004k4v8jhnedwmv"
+          },
+          {
+            "id": "cmv9bey3v000jo4v8hzehe4cl",
+            "finalAssetId": "cmv9bhnp90007k4v8pvlby8k0"
+          },
+          {
+            "id": "cmv9bey40000ko4v89n4se9hy",
+            "finalAssetId": "cmv9bgxvj0006k4v883myruv9"
+          }
+        ]
+      }
+    ]
+  }
+]

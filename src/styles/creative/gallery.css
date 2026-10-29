@@ -34,3 +34,12 @@
 .p-sku-cover { display: block; aspect-ratio: 1.5; position: relative; overflow: hidden; background: var(--secondary); border-radius: var(--radius-panel); }
 .p-sku-card:hover { transform: translateY(-2px); }
 .p-sku-card { min-width: 0; transition: none; }
+
+/* SKU与模板库共享内容上限，封面只在固定框内缩放。 */
+.p-gallery { width:calc(100% - 2 * var(--content-gutter)); max-width:var(--content-max-list); padding:40px 0 64px; }
+.p-sku-cover { aspect-ratio:4/3; border-radius:var(--radius-control); background:var(--muted); display:grid; place-items:center; }
+.p-sku-cover img { position:absolute; inset:0; display:block; min-width:0; min-height:0; object-fit:cover; }
+.p-sku-cover.is-white img { object-fit:contain; }
+.p-sku-card:hover { transform:none; }
+.p-sku-card:hover .p-sku-cover img { transform:scale(1.02); }
+.p-sku-card>strong { min-height:22px; line-height:22px; }

@@ -1,0 +1,2915 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#52525b",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#d1d1d6",
+    "--input": "#8b8b94",
+    "--ring": "#1f3a2e",
+    "--p-subtle": "",
+    "--p-text": "#52525b",
+    "--p-panel": "",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#fff",
+    "--radius": ".75rem",
+    "--font-body": "\"Segoe UI\",\"PingFang SC\",\"Microsoft YaHei UI\",system-ui,sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "span.brand-symbol",
+      "text": "F",
+      "fontSize": "28px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 35,
+      "scrollWidth": 35,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 58.90625,
+          "y": 26.5,
+          "width": 13.171875,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "家具工作台",
+      "fontSize": "18px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 91,
+      "scrollWidth": 91,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 95,
+          "y": 31.5,
+          "width": 35,
+          "height": 24
+        }
+      ]
+    },
+    {
+      "selector": "span.wordmark-light",
+      "text": "工作台",
+      "fontSize": "18px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 133,
+          "y": 31.5,
+          "width": 52.5,
+          "height": 24
+        }
+      ]
+    },
+    {
+      "selector": "a.nav-link",
+      "text": "SKU 项目",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 109,
+      "scrollWidth": 109,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 269.5,
+          "y": 34.25,
+          "width": 52.953125,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "a.nav-link.active",
+      "text": "管理后台",
+      "fontSize": "13px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 108,
+      "scrollWidth": 108,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 390.453125,
+          "y": 34.25,
+          "width": 52,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1308,
+          "y": 25,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1308,
+          "y": 47,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "p.eyebrow",
+      "text": "AI 服务管理",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 333,
+      "scrollWidth": 333,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 96,
+          "y": 148,
+          "width": 76.859375,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "h1",
+      "text": "网关状态.",
+      "fontSize": "36px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 333,
+      "scrollWidth": 333,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 96,
+          "y": 181,
+          "width": 138,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "selector": "span.title-dot",
+      "text": ".",
+      "fontSize": "36px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 237,
+          "y": 181,
+          "width": 7.1875,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "selector": "p.intro-copy",
+      "text": "查看近 24 小时调用表现与费用，验证备用线路是否可用。",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 333,
+      "scrollWidth": 333,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 10,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 96,
+          "y": 244.59375,
+          "width": 333.140625,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "刷新状态",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 11,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1269,
+          "y": 194.984375,
+          "width": 64,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "ZenMux",
+      "fontSize": "14px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 78,
+      "scrollWidth": 78,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 12,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 179,
+          "y": 358.484375,
+          "width": 51.953125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.gateway-badge.healthy",
+      "text": "正常",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        234,
+        241,
+        237
+      ],
+      "contrast": 6.737270915313651,
+      "clientWidth": 44,
+      "scrollWidth": 44,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 13,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 617,
+          "y": 359.984375,
+          "width": 24,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "p.field-hint",
+      "text": "美元计费 · 同步生图 · 已配置密钥",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 14,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 407.984375,
+          "width": 105.1875,
+          "height": 16
+        },
+        {
+          "x": 230.1875,
+          "y": 407.984375,
+          "width": 9.1875,
+          "height": 16
+        },
+        {
+          "x": 239.375,
+          "y": 407.984375,
+          "width": 60,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "0",
+      "fontSize": "27px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 177,
+      "scrollWidth": 177,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 15,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 457.78125,
+          "width": 14,
+          "height": 36
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "近 24 小时调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 16,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 501.28125,
+          "width": 79.515625,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "—",
+      "fontSize": "27px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 177,
+      "scrollWidth": 177,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 17,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 313.65625,
+          "y": 457.78125,
+          "width": 26,
+          "height": 36
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "已结束调用成功率",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 18,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 313.65625,
+          "y": 501.28125,
+          "width": 96,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "—",
+      "fontSize": "27px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 177,
+      "scrollWidth": 177,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 19,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 502.328125,
+          "y": 457.78125,
+          "width": 26,
+          "height": 36
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "平均耗时",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 20,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 502.328125,
+          "y": 501.28125,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "费用合计（美元）",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 21,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 566.28125,
+          "width": 104,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "—",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 22,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 592.78125,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "实际 $0.000000 · 预估 $0.000000 · 原始 KIE 积分 0",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 23,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 619.28125,
+          "width": 33.765625,
+          "height": 16
+        },
+        {
+          "x": 158.765625,
+          "y": 619.28125,
+          "width": 47.890625,
+          "height": 16
+        },
+        {
+          "x": 206.65625,
+          "y": 619.28125,
+          "width": 42.9375,
+          "height": 16
+        },
+        {
+          "x": 249.59375,
+          "y": 619.28125,
+          "width": 47.890625,
+          "height": 16
+        },
+        {
+          "x": 297.484375,
+          "y": 619.28125,
+          "width": 83.265625,
+          "height": 16
+        },
+        {
+          "x": 380.75,
+          "y": 619.28125,
+          "width": 6.46875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "生图 0 次 · LLM 0 次 · 进行中 0 次 · 待账单回填 0 次 · 保留预估 0 次",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 24,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 644.28125,
+          "width": 27.296875,
+          "height": 16
+        },
+        {
+          "x": 152.296875,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 158.765625,
+          "y": 644.28125,
+          "width": 49.828125,
+          "height": 16
+        },
+        {
+          "x": 208.59375,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 215.0625,
+          "y": 644.28125,
+          "width": 63.75,
+          "height": 16
+        },
+        {
+          "x": 278.8125,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 285.28125,
+          "y": 644.28125,
+          "width": 87.75,
+          "height": 16
+        },
+        {
+          "x": 373.03125,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 379.5,
+          "y": 644.28125,
+          "width": 75.75,
+          "height": 16
+        },
+        {
+          "x": 455.25,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 461.71875,
+          "y": 644.28125,
+          "width": 15.296875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "连通性测试 · LLM",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 142,
+      "scrollWidth": 142,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 25,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 136,
+          "y": 705.28125,
+          "width": 121.671875,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "连通性测试 · 1K 生图",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 167,
+      "scrollWidth": 167,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 26,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 289.671875,
+          "y": 705.28125,
+          "width": 146.53125,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "KIE",
+      "fontSize": "14px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 46,
+      "scrollWidth": 46,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 27,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 815,
+          "y": 358.484375,
+          "width": 19.890625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.gateway-badge.healthy",
+      "text": "正常",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        234,
+        241,
+        237
+      ],
+      "contrast": 6.737270915313651,
+      "clientWidth": 44,
+      "scrollWidth": 44,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 28,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1253,
+          "y": 359.984375,
+          "width": 24,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "p.field-hint",
+      "text": "原始积分换算为美元 · 异步生图 · 已配置密钥",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 29,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 761,
+          "y": 407.984375,
+          "width": 165.1875,
+          "height": 16
+        },
+        {
+          "x": 926.1875,
+          "y": 407.984375,
+          "width": 9.1875,
+          "height": 16
+        },
+        {
+          "x": 935.375,
+          "y": 407.984375,
+          "width": 60,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "0",
+      "fontSize": "27px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 177,
+      "scrollWidth": 177,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 30,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 761,
+          "y": 457.78125,
+          "width": 14,
+          "height": 36
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "近 24 小时调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 31,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 761,
+          "y": 501.28125,
+          "width": 79.515625,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "—",
+      "fontSize": "27px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 177,
+      "scrollWidth": 177,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 32,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 949.65625,
+          "y": 457.78125,
+          "width": 26,
+          "height": 36
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "已结束调用成功率",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 33,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 949.65625,
+          "y": 501.28125,
+          "width": 96,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "—",
+      "fontSize": "27px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 177,
+      "scrollWidth": 177,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 34,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1138.328125,
+          "y": 457.78125,
+          "width": 26,
+          "height": 36
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "平均耗时",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 35,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1138.328125,
+          "y": 501.28125,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "费用合计（美元）",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 36,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 761,
+          "y": 566.28125,
+          "width": 104,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "—",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 37,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 761,
+          "y": 592.78125,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "实际 $0.000000 · 预估 $0.000000 · 原始 KIE 积分 0",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 38,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 761,
+          "y": 619.28125,
+          "width": 33.765625,
+          "height": 16
+        },
+        {
+          "x": 794.765625,
+          "y": 619.28125,
+          "width": 47.890625,
+          "height": 16
+        },
+        {
+          "x": 842.65625,
+          "y": 619.28125,
+          "width": 42.9375,
+          "height": 16
+        },
+        {
+          "x": 885.59375,
+          "y": 619.28125,
+          "width": 47.890625,
+          "height": 16
+        },
+        {
+          "x": 933.484375,
+          "y": 619.28125,
+          "width": 83.265625,
+          "height": 16
+        },
+        {
+          "x": 1016.75,
+          "y": 619.28125,
+          "width": 6.46875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "生图 0 次 · LLM 0 次 · 进行中 0 次 · 待账单回填 0 次 · 保留预估 0 次",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 554,
+      "scrollWidth": 554,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 39,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 761,
+          "y": 644.28125,
+          "width": 27.296875,
+          "height": 16
+        },
+        {
+          "x": 788.296875,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 794.765625,
+          "y": 644.28125,
+          "width": 49.828125,
+          "height": 16
+        },
+        {
+          "x": 844.59375,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 851.0625,
+          "y": 644.28125,
+          "width": 63.75,
+          "height": 16
+        },
+        {
+          "x": 914.8125,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 921.28125,
+          "y": 644.28125,
+          "width": 87.75,
+          "height": 16
+        },
+        {
+          "x": 1009.03125,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 1015.5,
+          "y": 644.28125,
+          "width": 75.75,
+          "height": 16
+        },
+        {
+          "x": 1091.25,
+          "y": 644.28125,
+          "width": 6.46875,
+          "height": 16
+        },
+        {
+          "x": 1097.71875,
+          "y": 644.28125,
+          "width": 15.296875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "连通性测试 · LLM",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 142,
+      "scrollWidth": 142,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 40,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 772,
+          "y": 705.28125,
+          "width": 121.671875,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "连通性测试 · 1K 生图",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 167,
+      "scrollWidth": 167,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 41,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 925.671875,
+          "y": 705.28125,
+          "width": 146.53125,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "逻辑模型路由",
+      "fontSize": "14px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 84,
+      "scrollWidth": 84,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 42,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 153,
+          "y": 840.78125,
+          "width": 84,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.gateway-badge",
+      "text": "GATEWAY_PREFERENCE = auto",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 7.219873278143082,
+      "clientWidth": 183,
+      "scrollWidth": 183,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 43,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1113.84375,
+          "y": 842.28125,
+          "width": 139.15625,
+          "height": 16
+        },
+        {
+          "x": 1253,
+          "y": 842.28125,
+          "width": 24,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "p.field-hint",
+      "text": "按顺序选择，自动跳过未配置网关；实际失败或熔断后改用的线路标记“备用线路”。配置只读，修改环境变量后重启服务。",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1190,
+      "scrollWidth": 1190,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 44,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 890.28125,
+          "width": 645.046875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "scene-main",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 120,
+      "scrollWidth": 120,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 45,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 931.078125,
+          "width": 69.609375,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "kie",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 46,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 936.078125,
+          "width": 16.421875,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "code",
+      "text": "nano-banana-2-1",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 47,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 316.421875,
+          "y": 938.078125,
+          "width": 114.265625,
+          "height": 15
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "不用于工具调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1020,
+      "scrollWidth": 1020,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 48,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 956.578125,
+          "width": 84,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "zenmux",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 49,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 984.578125,
+          "width": 44.5625,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "code",
+      "text": "google/gemini-nano-banana-2.1",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 50,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 344.5625,
+          "y": 986.578125,
+          "width": 220.90625,
+          "height": 15
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "不用于工具调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1020,
+      "scrollWidth": 1020,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 51,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1005.078125,
+          "width": 84,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "edit",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 120,
+      "scrollWidth": 120,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 52,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 1069.078125,
+          "width": 23.84375,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "kie",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 53,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1074.078125,
+          "width": 16.421875,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "code",
+      "text": "nano-banana-2-1",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 54,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 316.421875,
+          "y": 1076.078125,
+          "width": 114.265625,
+          "height": 15
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "不用于工具调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1020,
+      "scrollWidth": 1020,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 55,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1094.578125,
+          "width": 84,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "zenmux",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 56,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1122.578125,
+          "width": 44.5625,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "code",
+      "text": "google/gemini-nano-banana-2.1",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 57,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 344.5625,
+          "y": 1124.578125,
+          "width": 220.90625,
+          "height": 15
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "不用于工具调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1020,
+      "scrollWidth": 1020,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 58,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1143.078125,
+          "width": 84,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "llm-vision",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 120,
+      "scrollWidth": 120,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 59,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 1207.078125,
+          "width": 60.53125,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "zenmux",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 60,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1212.078125,
+          "width": 44.5625,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "code",
+      "text": "google/gemini-2.5-pro",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 61,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 344.5625,
+          "y": 1214.078125,
+          "width": 159.96875,
+          "height": 15
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "支持工具调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1020,
+      "scrollWidth": 1020,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 62,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1232.578125,
+          "width": 72,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "kie",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 63,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1260.578125,
+          "width": 16.421875,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "code",
+      "text": "gemini-3-6-flash-openai",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 64,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 316.421875,
+          "y": 1262.578125,
+          "width": 175.203125,
+          "height": 15
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "不用于工具调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1020,
+      "scrollWidth": 1020,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 65,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1281.078125,
+          "width": 84,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "llm-agent",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 120,
+      "scrollWidth": 120,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 66,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 1345.078125,
+          "width": 59.5625,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "zenmux",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 67,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1350.078125,
+          "width": 44.5625,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "code",
+      "text": "google/gemini-3.8-flash",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 68,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 344.5625,
+          "y": 1352.078125,
+          "width": 175.203125,
+          "height": 15
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "支持工具调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1020,
+      "scrollWidth": 1020,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 69,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1370.578125,
+          "width": 72,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "kie",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 70,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1398.578125,
+          "width": 16.421875,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "code",
+      "text": "gpt-6-1-sol",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 71,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 316.421875,
+          "y": 1400.578125,
+          "width": 83.796875,
+          "height": 15
+        }
+      ]
+    },
+    {
+      "selector": "small",
+      "text": "支持工具调用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1020,
+      "scrollWidth": 1020,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 72,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 290,
+          "y": 1419.078125,
+          "width": 72,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "p.field-hint",
+      "text": "“正常”表示密钥已配置且未熔断，不代表已经实测。费用与配额统一美元；KIE 原始积分另存，ZenMux 账单有延迟，暂时显示预估。",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 1190,
+      "scrollWidth": 1190,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 73,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 125,
+          "y": 1465.078125,
+          "width": 698.84375,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "家具电商 · 创意协作空间",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 136,
+      "scrollWidth": 136,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 74,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 48,
+          "y": 1602.875,
+          "width": 135.6875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "公司内部应用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 75,
+      "scrollWidth": 75,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 75,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1317,
+          "y": 1602.875,
+          "width": 75,
+          "height": 16
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "studio-header"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "workspace-panel gateway-card"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "workspace-panel gateway-card"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "workspace-panel gateway-routes"
+    },
+    {
+      "tag": "SPAN",
+      "classes": "gateway-badge"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "21.0pt (28px)",
+                  "fontWeight": "normal",
+                  "messageKey": "shortTextContent",
+                  "expectedContrastRatio": "3:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<span class=\"brand-symbol\">F</span>",
+                    "target": [
+                      ".brand-symbol"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element content is too short to determine if it is actual text content"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"brand-symbol\">F</span>",
+            "target": [
+              ".brand-symbol"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}

@@ -40,8 +40,11 @@ UI 截图验收需先启动网页并配置本地管理员登录；阶段3使用 
 
 UI静态检查执行 `npm run lint:ui`：仅保留6项商品/品牌数据色白名单，禁止新增违规。旧页对比：`node --import tsx scripts/ui-snapshots.ts --suite=studio --mode=compare --baseline=docs/ui-audit/phase2b-studio --environment-baseline=docs/ui-audit/baseline-phase3 --output=docs/ui-audit/phase3-check-studio --allow-size-change --audit`。该历史旧页基线没有字体记录，显式借用本轮原版环境锚点并保留这一限制，不补造历史数据。截图与逐项说明见`docs/ui-audit/phase3-prep.md`。
 
+准备修正的32个状态用 `node --import tsx scripts/ui-snapshots.ts --prep-fix --mode=compare --baseline=docs/ui-audit/phase3-prep-fix-before --output=docs/ui-audit/prep-fix-check --allow-size-change --audit` 复查；聚焦、键盘及图库悬停用 `node --import tsx scripts/ui-prep-fix-check.ts`，目录上传仅本地拦截。逐项说明见`docs/ui-audit/phase3-prep-fix.md`。
+
 ## 当前功能
 
+- 首页、SKU与模板库使用共享内容宽度和亮暗层级；SKU优先展示已选主图，白底图完整contain。登录支持空字段行内提示，模板库保留原生文件夹选择与键盘展开。
 - 正式入口：`/`创作首页、`/skus`项目列表、`/workspace?sku=产品ID`工作台。原/design-preview对应页面保留301跳转及登录回跳。
 - 账号密码登录、角色权限、账号管理和私有素材访问。管理员入口为 `/admin`，模型管理为 `/admin/models`，另有用户及网关管理。
 - 实拍/文档上传、产品理解、档案确认；Agent分析本产品卖点、研究竞品、检索品类经验，再提出逐图位可编辑的视觉方案。确认后冻结选择，报价、提交和生成读取同一份快照。

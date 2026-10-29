@@ -1,0 +1,24 @@
+[
+  {
+    "selector": "mx-auto w-full max-w-6xl space-y-6 overflow-y-auto p-8",
+    "text": "品类视觉经验模板库积累画面表达；具体产品外观由每次实拍分析决定。示例数据已排除检索。历史 ",
+    "x": 144,
+    "y": 62,
+    "width": 1152,
+    "height": 533.96875,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "",
+    "text": "品类视觉经验模板库积累画面表达；具体产品外观由每次实拍分析决定。示例数据已排除检索。",
+    "x": 176,
+    "y": 94,
+    "width": 1088,
+    "height": 83.59375,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  }
+]

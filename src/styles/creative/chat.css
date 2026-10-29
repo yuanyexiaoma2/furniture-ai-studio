@@ -278,3 +278,8 @@
 @media (max-width:760px) {
   .p-workspace .p-chat { inset: 44px 0 0; width: 100%; }
 }
+
+/* 对话输入依靠表面层级识别，静止细线为装饰；焦点仍有实线描边。 */
+.p-chat-input { background:var(--composer-surface); border:1px solid var(--composer-line); }
+.p-chat-input:focus-within { outline:2px solid var(--ring); outline-offset:-2px; }
+.p-chat-input textarea:focus-visible { outline:none; box-shadow:none; }

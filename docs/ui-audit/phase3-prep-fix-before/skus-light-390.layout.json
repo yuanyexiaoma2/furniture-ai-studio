@@ -1,0 +1,90 @@
+[
+  {
+    "selector": "p-gallery",
+    "text": "全部 SKU新建创作竖向鞋架 · Task 11-B 验收NEW-MVQFFV1P · 鞋",
+    "x": 0,
+    "y": 62,
+    "width": 390,
+    "height": 494.375,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "p-gallery-header",
+    "text": "全部 SKU新建创作",
+    "x": 18,
+    "y": 104,
+    "width": 354,
+    "height": 42,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "p-sku-cover",
+    "text": "",
+    "x": 18,
+    "y": 168,
+    "width": 171,
+    "height": 114,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgb(244, 244, 245)"
+  },
+  {
+    "selector": "",
+    "text": "竖向鞋架 · Task 11-B 验收",
+    "x": 18,
+    "y": 294,
+    "width": 171,
+    "height": 22.390625,
+    "fontSize": "14px",
+    "fontWeight": "500",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "p-sku-cover",
+    "text": "",
+    "x": 201,
+    "y": 168,
+    "width": 171,
+    "height": 114,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgb(244, 244, 245)"
+  },
+  {
+    "selector": "",
+    "text": "原木色拱形储物马桶架",
+    "x": 201,
+    "y": 294,
+    "width": 171,
+    "height": 22.390625,
+    "fontSize": "14px",
+    "fontWeight": "500",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "selector": "p-sku-cover",
+    "text": "",
+    "x": 18,
+    "y": 360.1875,
+    "width": 171,
+    "height": 114,
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "background": "rgb(244, 244, 245)"
+  },
+  {
+    "selector": "",
+    "text": "原木色拱顶藤编双门马桶架",
+    "x": 18,
+    "y": 486.1875,
+    "width": 171,
+    "height": 22.390625,
+    "fontSize": "14px",
+    "fontWeight": "500",
+    "background": "rgba(0, 0, 0, 0)"
+  }
+]

@@ -1,0 +1,2010 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#71717a",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#e4e4e7",
+    "--input": "#8b8b94",
+    "--ring": "#1f3a2e",
+    "--p-subtle": "#71717a",
+    "--p-text": "#52525b",
+    "--p-panel": "#fff",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#fff",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "span",
+      "text": "家具创作室",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 79,
+      "scrollWidth": 79,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 154,
+          "y": 166.703125,
+          "width": 78.515625,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "首页",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 288.515625,
+          "y": 167.296875,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "SKU",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 25,
+      "scrollWidth": 25,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 346.515625,
+          "y": 167.296875,
+          "width": 25.1875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "模板库",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 42,
+      "scrollWidth": 42,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 401.703125,
+          "y": 167.296875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1288.5,
+          "y": 168.09375,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "团队管理",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 150,
+      "scrollWidth": 150,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 123,
+          "y": 238,
+          "width": 64,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2.active",
+      "text": "模型管理",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 174,
+      "scrollWidth": 174,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 154,
+          "y": 300.8125,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "a.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "用户管理",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 174,
+      "scrollWidth": 174,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 170,
+          "y": 344,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "a.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "网关管理",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 174,
+      "scrollWidth": 174,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 170,
+          "y": 387,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "h1",
+      "text": "模型管理",
+      "fontSize": "28px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 448,
+      "scrollWidth": 448,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 333,
+          "y": 251,
+          "width": 109.609375,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "p",
+      "text": "为团队选择合适的创作搭档。开启可见后，模型会出现在美工选择器中。",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 448,
+      "scrollWidth": 448,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 10,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 333,
+          "y": 298,
+          "width": 448,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "模型",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 306,
+      "scrollWidth": 306,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 11,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 348,
+          "y": 411.859375,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "类型",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 12,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 411.859375,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "能力探测",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 13,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 411.859375,
+          "width": 52,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "对美工可见",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 137,
+      "scrollWidth": 137,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 14,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1073.671875,
+          "y": 411.859375,
+          "width": 65,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "可用状态",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 15,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 411.859375,
+          "width": 52,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Gemini 3.8 Flash",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 104,
+      "scrollWidth": 104,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 16,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 462.390625,
+          "width": 103.890625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 17,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 462.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "16/20 参数正确 · 20/20 上下文",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 18,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 462.390625,
+          "width": 187.671875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 19,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 462.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Claude Haiku 5.5",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 107,
+      "scrollWidth": 107,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 20,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 518.390625,
+          "width": 107.109375,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 21,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 518.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "0/20 参数正确 · 0/20 上下文",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 22,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 518.390625,
+          "width": 172.578125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 23,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 518.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "GPT-6.1 Sol",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 74,
+      "scrollWidth": 74,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 24,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 574.390625,
+          "width": 73.71875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 25,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 574.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "20/20 参数正确 · 20/20 上下文",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 26,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 574.390625,
+          "width": 187.671875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 27,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 574.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Gemini 2.5 Pro",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 93,
+      "scrollWidth": 93,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 28,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 630.390625,
+          "width": 93.3125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 29,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 630.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "待验证",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 30,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 630.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 31,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 630.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Gemini 3.8 Flash",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 104,
+      "scrollWidth": 104,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 32,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 686.390625,
+          "width": 103.890625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 33,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 686.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "用户指定默认 · 待验证",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 34,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 686.390625,
+          "width": 136.71875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 35,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 686.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Nano Banana 2.1",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 108,
+      "scrollWidth": 108,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 36,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 742.390625,
+          "width": 107.921875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 37,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 742.390625,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 38,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 742.390625,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 39,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 742.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Nano Banana 2",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 97,
+      "scrollWidth": 97,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 40,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 798.390625,
+          "width": 96.765625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 41,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 798.390625,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 42,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 798.390625,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 43,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 798.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Nano Banana Pro",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 111,
+      "scrollWidth": 111,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 44,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 854.390625,
+          "width": 110.59375,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 45,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 854.390625,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 46,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 854.390625,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 47,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 854.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "GPT Image 2.5",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 92,
+      "scrollWidth": 92,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 48,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 910.390625,
+          "width": 91.953125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 49,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 910.390625,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 50,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 910.390625,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 51,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 910.390625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Qwen3",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 44,
+      "scrollWidth": 44,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 52,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 378,
+          "y": 966.640625,
+          "width": 44.484375,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 53,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 653.75,
+          "y": 966.640625,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 54,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 756.640625,
+          "y": 966.640625,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 55,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1210.375,
+          "y": 966.640625,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "INPUT",
+      "label": "后台搜索",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(139, 139, 148)",
+      "borderWidth": "1px",
+      "contrast": 3.37703936171047,
+      "boundary": {
+        "selector": "INPUT.flex h-9 w-full rounded-[var(--radius-control)] border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "color": "rgb(139, 139, 148)",
+        "contrast": 3.37703936171047,
+        "width": "1px",
+        "decorative": false
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    }
+  ],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "p-topbar"
+    },
+    {
+      "tag": "DIV",
+      "classes": "w-theme-segments"
+    },
+    {
+      "tag": "ASIDE",
+      "classes": "p-admin-nav"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "flex h-9 w-full rounded-[var(--radius-control)] border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-admin-table"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}

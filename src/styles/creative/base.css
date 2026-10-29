@@ -19,6 +19,7 @@
 .p-portal button { cursor: pointer; }
 .p-app [data-slot=button], .p-portal [data-slot=button] { border-radius: var(--radius-control); font-size: var(--text-body); height: 36px; gap: 7px; }
 .p-app input, .p-app textarea, .p-portal input, .p-portal textarea { font-size: var(--text-body); }
+.p-app input:not([type=file]):focus-visible,.p-portal input:not([type=file]):focus-visible { outline:2px solid var(--ring); outline-offset:2px; box-shadow:none; }
 .p-app small, .p-portal small { font-size: var(--text-sm); color: var(--p-subtle); }
 .p-theme-label { font-size: var(--text-sm); }
 .p-icon-button { width: 34px; height: 34px; padding: 0 !important; }

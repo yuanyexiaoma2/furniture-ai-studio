@@ -13,7 +13,7 @@ import {emptyProfile,profileFields,understanding} from "../src/lib/profile-rules
 
 const args=process.argv.slice(2),option=(key:string,fallback:string)=>args.find(a=>a.startsWith(key+"="))?.slice(key.length+1)??fallback;
 if(args.includes("--suite=studio")&&!args.includes("--help")){await import("./ui-snapshots-studio");process.exit(process.exitCode??0);}
-if(args.includes("--help")){console.log("node --import tsx scripts/ui-snapshots.ts --mode=baseline|compare|capture [--baseline=<目录>] [--output=<目录>] [--allow-size-change] [--audit] [--audit-report-only] [--small-text]\n默认44个creative状态；阶段3唯一基线为baseline-phase3（1e6e4bf）。比较前必须核对Chrome/操作系统/字体指纹。--suite=studio补拍旧页36张，历史旧页可显式指定--environment-baseline=<本轮原版基线>，不伪造历史字体记录。capture只拍摄不比较，--small-text补拍12种小字状态。所有业务写请求在浏览器拦截。");process.exit(0);}
+if(args.includes("--help")){console.log("node --import tsx scripts/ui-snapshots.ts --mode=baseline|compare|capture [--baseline=<目录>] [--output=<目录>] [--allow-size-change] [--audit] [--audit-report-only] [--small-text]\n默认44个creative状态；--prep-fix覆盖32个指定状态（含2560及登录）；阶段3唯一基线为baseline-phase3（1e6e4bf）。比较前必须核对Chrome/操作系统/字体指纹。--suite=studio补拍旧页36张，历史旧页可显式指定--environment-baseline=<本轮原版基线>，不伪造历史字体记录。capture只拍摄不比较，--small-text补拍12种小字状态。所有业务写请求在浏览器拦截。");process.exit(0);}
 const mode=option("--mode","compare"),baseURL=option("--base-url","http://localhost:3000"),root=path.resolve(option("--baseline","docs/ui-audit/baseline")),output=path.resolve(option("--output","docs/ui-audit/phase1")),only=option("--only","");
 if(!["baseline","compare","capture"].includes(mode))throw Error("mode仅允许baseline、compare或capture");
 if(mode==="compare"&&root===output)throw Error("对比输出目录不能覆盖基线目录");
@@ -39,15 +39,24 @@ try{
  const login=await browser.newContext(),loginPage=await login.newPage();
  await loginPage.goto(baseURL+"/login");await loginPage.getByLabel("公司邮箱").fill(process.env.ADMIN_EMAIL??"");await loginPage.getByLabel("密码",{exact:true}).fill(process.env.ADMIN_PASSWORD??"");await loginPage.getByRole("button",{name:"进入工作台"}).click();await loginPage.waitForURL(baseURL+"/");
  const auth=await login.storageState();
+ const prepFix=args.includes("--prep-fix");
+ let gallery=prepFix?(mode==="compare"?JSON.parse(await readFile(path.join(root,"gallery.json"),"utf8")):await(await login.request.get(baseURL+"/api/studio")).json()):null;
+ if(prepFix&&mode==="compare"){
+  // 固定原产品/实拍顺序；仅补齐旧截图目录缺少的既有图位类型，验证已选主图封面。
+  const current=await(await login.request.get(baseURL+"/api/studio")).json();
+  gallery=gallery.map((row:{id:string})=>({...row,imagePacks:current.find((r:{id:string})=>r.id===row.id)?.imagePacks??[]}));
+ }
+ if(prepFix)await writeFile(path.join(destination,"gallery.json"),JSON.stringify(gallery,null,2));
  const catalog=mode==="baseline"?await(await login.request.get(baseURL+"/api/studio/models")).json():JSON.parse(await readFile(path.join(root,"catalog.json"),"utf8"));
  await writeFile(path.join(destination,"catalog.json"),JSON.stringify(catalog,null,2));
  const adminCatalog=mode==="baseline"?await(await login.request.get(baseURL+"/api/studio/models?admin=1")).json():JSON.parse(await readFile(path.join(root,"admin-catalog.json"),"utf8"));
  await writeFile(path.join(destination,"admin-catalog.json"),JSON.stringify(adminCatalog,null,2));
  await login.close();
- const states=args.includes("--small-text")?["workspace-progress","workspace-history","workspace-save-status"]:["home","skus","workspace-empty","workspace-images","workspace-single","workspace-multi","workspace-mask","workspace-expand","workspace-product","library","admin"];
- for(const width of [1440,390])for(const theme of ["light","dark"])for(const state of states){
+ const states=prepFix?["home","skus","workspace-empty","workspace-images","library","login"]:args.includes("--small-text")?["workspace-progress","workspace-history","workspace-save-status"]:["home","skus","workspace-empty","workspace-images","workspace-single","workspace-multi","workspace-mask","workspace-expand","workspace-product","library","admin"];
+ for(const width of prepFix?[1440,2560,390]:[1440,390])for(const theme of ["light","dark"])for(const state of states){
+  if(prepFix&&width===2560&&state.startsWith("workspace"))continue;
   if(only&&!state.includes(only))continue;
-  const name=`${state}-${theme}-${width}`,context=await browser.newContext({storageState:auth,viewport:{width,height:width===390?844:1000},deviceScaleFactor:1,locale:"zh-CN",timezoneId:"Asia/Shanghai",colorScheme:theme==="dark"?"dark":"light",reducedMotion:"reduce"}),page=await context.newPage();
+  const name=`${state}-${theme}-${width}`,context=await browser.newContext({...(state==="login"?{}:{storageState:auth}),viewport:{width,height:width===390?844:prepFix?(width===2560?1440:900):1000},deviceScaleFactor:1,locale:"zh-CN",timezoneId:"Asia/Shanghai",colorScheme:theme==="dark"?"dark":"light",reducedMotion:"reduce"}),page=await context.newPage();
   try{
    const pageErrors:string[]=[];page.on("pageerror",e=>pageErrors.push(e.message));
    await page.clock.setFixedTime(new Date(fixed));
@@ -64,13 +73,15 @@ try{
     if(req.method()!=="GET")throw Error("截图禁止业务写请求："+p);
     if(p==="/api/studio/models")return route.fulfill({json:url.searchParams.get("admin")==="1"?adminCatalog:catalog});
     if(p==="/api/studio/library")return route.fulfill({json:library});
-    if(p==="/api/studio")return route.fulfill({json:[snapshot.product,{...snapshot.product,id:"ui-product-2",name:"空间搭配 · 对照产品",sku:"UI-SNAPSHOT-02"}]});
+    if(p==="/api/studio")return route.fulfill({json:gallery??[snapshot.product,{...snapshot.product,id:"ui-product-2",name:"空间搭配 · 对照产品",sku:"UI-SNAPSHOT-02"}]});
     if(p===`/api/studio/${productId}`)return route.fulfill({json:snapshot});
     if(p.startsWith("/api/assets/ui-")){const file=p.endsWith(photoId)?"sofa.webp":p.endsWith("b")?"r3-10.webp":"r3-05.webp";return route.fulfill({body:await readFile(path.resolve("public/design-preview",file)),contentType:"image/webp"});}
     return route.continue();
    });
-   const url=state==="home"?"/":state==="skus"?"/skus":state==="library"?"/library":state==="admin"?"/admin/models":state==="workspace-empty"?"/workspace":"/workspace?sku="+productId;
-   await page.goto(baseURL+url);await page.waitForLoadState("networkidle");await expect(page.locator(".p-app")).toBeVisible();
+   const url=state==="login"?"/login":state==="home"?"/":state==="skus"?"/skus":state==="library"?"/library":state==="admin"?"/admin/models":state==="workspace-empty"?"/workspace":"/workspace?sku="+productId;
+   await page.goto(baseURL+url);await page.waitForLoadState("networkidle");
+   if(state==="login")await page.evaluate(theme=>document.documentElement.classList.toggle("dark",theme==="dark"),theme);
+   await expect(page.locator(state==="login"?".login-shell":".p-app")).toBeVisible();
    if(state.startsWith("workspace-")){
     if(state!=="workspace-empty")await expect(page.locator(`[data-picture="${images[0]}"]`)).toBeAttached();
     if(width===390)await page.getByRole("tab",{name:"画布",exact:true}).click();
@@ -97,11 +108,12 @@ try{
    if(pageErrors.length)throw Error("页面运行错误："+pageErrors.join("；"));
    if(state==="admin")await expect(page.locator(".p-admin-table tbody tr")).toHaveCount(adminCatalog.models.length);
    const image=await page.screenshot({path:path.join(destination,name+".png"),fullPage:!state.startsWith("workspace"),animations:"disabled",caret:"hide"});
+   if(prepFix)await writeFile(path.join(destination,name+".layout.json"),JSON.stringify(await page.locator(".p-home-composer-wrap,.r1-home-tasks,.p-gallery,.p-gallery-header,.p-sku-cover,.p-sku-card>strong,.p-pattern-library,.p-pattern-heading,.p-app main.mx-auto,.p-app main.mx-auto>div:first-child,.login-story-center,.login-form-wrap,.p-home-heading,.r1-task-card").evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return {selector:e.className,text:e.textContent?.slice(0,45),x:r.x,y:r.y,width:r.width,height:r.height,fontSize:s.fontSize,fontWeight:s.fontWeight,background:s.backgroundColor};})),null,2));
    if(args.includes("--surface-proof"))await writeFile(path.join(destination,name+".inputs.json"),JSON.stringify(await page.locator("input").evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return {label:e.getAttribute("aria-label"),slot:e.getAttribute("data-slot"),x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height,background:s.backgroundColor};})),null,2));
    if(args.includes("--audit")){
-    const audit=await auditStudioPage(page,false,".p-app *,.p-portal *");
+    const audit=await auditStudioPage(page,prepFix,state==="login"?".login-shell *":".p-app *,.p-portal *");
     await writeFile(path.join(destination,name+".audit.json"),JSON.stringify(audit,null,2));
-    if(mode==="compare"&&!args.includes("--audit-report-only")&&(audit.contrastFailures.length||audit.controlContrastFailures.length||audit.controls.some(c=>!c.exempt&&c.boundary&&c.boundary.contrast<3)||(audit.axe.violations as {impact:string}[]).some(v=>["serious","critical"].includes(v.impact))))throw Error("实际文字/控件对比度未通过，详见audit.json；基线或--audit-report-only仅记录原版缺陷");
+    if(mode==="compare"&&!args.includes("--audit-report-only")&&(audit.contrastFailures.length||audit.controlContrastFailures.length||audit.controls.some(c=>!c.exempt&&c.boundary&&!c.boundary.decorative&&c.boundary.contrast<3)||(audit.axe.violations as {impact:string}[]).some(v=>["serious","critical"].includes(v.impact))))throw Error("实际文字/控件对比度未通过，详见audit.json；基线或--audit-report-only仅记录原版缺陷");
    }
    if(args.includes("--small-text")){
     const metrics=await page.evaluate(()=>[...document.querySelectorAll<HTMLElement>(".t11-references,.t11-references>span,.t11-progress-heading small,.t11-progress-step small,.t11-generation-progress small,.t11-awaiting,.t11-save-status,.t11-save-status button,.t11-canvas-history small")].filter(e=>e.getClientRects().length).map(e=>{const r=e.getBoundingClientRect();return {tag:e.tagName,classes:e.className,text:e.innerText,fontSize:getComputedStyle(e).fontSize,clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,left:r.left,right:r.right,viewport:innerWidth,horizontalOverflow:e.scrollWidth>e.clientWidth+1,outsideViewport:r.left<0||r.right>innerWidth+1};}));

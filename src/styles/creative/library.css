@@ -262,3 +262,18 @@
 .l-library-main { min-width: 0; }
 .l-library-tabs { min-width: 0; max-width: 100%; overflow-x: auto; scrollbar-width: thin; }
 .l-library-tabs>button { flex-shrink: 0; }
+
+/* 真实经验库：原生文件选择和details键盘语义保留。 */
+.p-pattern-library { width:calc(100% - 2 * var(--content-gutter)); max-width:var(--content-max-list); margin:0 auto; padding:40px 0 64px; display:flex; flex-direction:column; gap:24px; overflow-y:auto; }
+.p-pattern-heading>p:first-child { margin-bottom:4px; }
+.p-pattern-heading h1 { margin-bottom:8px; }
+.p-listing-import { padding:24px; border:1px solid var(--border); border-radius:var(--radius-panel); background:var(--card); }
+.p-import-file-row { display:flex; align-items:center; gap:12px; min-width:0; }
+.p-import-file-name { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--p-text); }
+.p-pattern-card { padding:20px; border:1px solid var(--border); border-radius:var(--radius-panel); background:var(--card); }
+.p-pattern-library summary { list-style:none; display:flex; align-items:center; gap:6px; cursor:pointer; min-height:32px; }
+.p-pattern-library summary::-webkit-details-marker { display:none; }
+.p-pattern-library summary svg { transition:transform .18s ease-out; }
+.p-pattern-library details[open]>summary>svg { transform:rotate(90deg); }
+.p-pattern-library summary:focus-visible { outline:2px solid var(--ring); outline-offset:2px; }
+@media(prefers-reduced-motion:reduce) { .p-pattern-library summary svg { transition:none; } }
