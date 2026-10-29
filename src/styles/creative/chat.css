@@ -35,7 +35,7 @@
 .p-context-tag { display: flex; align-items: center; gap: 6px; font-size: var(--text-sm); color: var(--p-text); margin: 0 0 9px; }
 .p-context-tag button { width: 22px; height: 22px; margin-left: auto; padding: 0; }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
-.p-console-input { border: 1px solid var(--input); background: var(--background); }
+.p-console-input { outline:0; border:1px solid var(--composer-line); background:var(--composer-surface); }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-console-input textarea { resize: none; border: 0; box-shadow: none; background: var(--color-transparent); }
 .p-console-input textarea:focus-visible { box-shadow: none; outline: none; }
@@ -62,8 +62,7 @@
 .p-question strong, .p-adjust-receipt strong { font-size: var(--text-body); font-weight: 500; }
 .p-system-message { font-size: var(--text-sm); text-align: center; color: var(--p-subtle); padding: 8px 4px; margin-bottom: 10px !important; }
 .p-console { padding: 14px 16px 10px; }
-.p-console-input { padding: 12px; border-radius: var(--radius-panel); box-shadow: 0 2px 8px var(--p-shadow); }
-.p-console-input:focus-within { border-color: var(--p-selection); box-shadow: 0 0 0 2px var(--p-highlight); }
+.p-console-input { padding:12px; border-radius:var(--radius-composer); box-shadow:var(--composer-shadow); }
 .p-console-input textarea { min-height: 74px; font-size: var(--text-body); line-height: 1.8; padding: 2px; margin-bottom: 8px; }
 .p-composer-context { display: flex; gap: 8px; justify-content: space-between; padding: 8px 3px 0; font-size: var(--text-sm); color: var(--p-subtle); }
 .p-context-tag { line-height: 1.6; }

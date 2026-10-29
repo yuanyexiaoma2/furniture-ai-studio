@@ -1,5 +1,11 @@
 # 开发记录
 
+## 2026-10-29 · ui(input-style)：补齐输入框焦点清理
+
+- 移除旧p-console-input的focus-within边框/光晕，静止表面、边框、投影、圆角与p-chat-input共用composer变量。
+- 首页dropzone设noKeyboard:true，不再生成外层tabIndex；拖拽和添加按钮的调用不变。首页及真实/工作流对话Textarea调用显式追加无边框、无投影、无focus ring/outline的类，不修改共享Textarea组件。
+- lint和build通过；已重启本地Next.js Web并在Chrome实际点击首页与工作台输入框，目视和computed style均确认边框/投影不变，textarea无border/ring/outline。首页外层tabIndex为null。本次不生成截图文件、不审计、不跑完整回归。生产运行只需重新构建并重启Next.js Web服务，worker/Postgres/MinIO无需重启。
+
 ## 2026-10-29 · ui(input-style)：大型输入面板简化
 
 - 首页/对话输入面板圆角20px；亮色白底、ececee边框和轻投影，暗色1f1f22底、白色6%边框且无投影。取消面板聚焦边框变化和光晕，textarea无outline/ring。
