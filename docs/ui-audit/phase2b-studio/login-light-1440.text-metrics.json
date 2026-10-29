@@ -1,0 +1,418 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#52525b",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#d1d1d6",
+    "--input": "#71717a",
+    "--ring": "#1f3a2e",
+    "--radius": ".75rem",
+    "--font-body": "\"Segoe UI\",\"PingFang SC\",\"Microsoft YaHei UI\",system-ui,sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "span.brand-symbol",
+      "text": "F",
+      "fontSize": "28px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 35,
+      "scrollWidth": 35,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "家具工作台",
+      "fontSize": "18px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 16.547964168688036,
+      "clientWidth": 88,
+      "scrollWidth": 88,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.eyebrow",
+      "text": "产品 · 空间 · 想象",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 7.219873278143082,
+      "clientWidth": 628,
+      "scrollWidth": 628,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h1",
+      "text": "让产品，\n成为故事的主角.",
+      "fontSize": "54.72px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 16.547964168688036,
+      "clientWidth": 628,
+      "scrollWidth": 628,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": ".",
+      "fontSize": "54.72px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 11.518113606366803,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "一个属于家具电商团队的创意空间。\n让协作井然有序，让创意有处安放。",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 7.219873278143082,
+      "clientWidth": 628,
+      "scrollWidth": 628,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "家具电商 AI 生图工作台",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 7.219873278143082,
+      "clientWidth": 126,
+      "scrollWidth": 126,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "公司内部应用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 7.219873278143082,
+      "clientWidth": 72,
+      "scrollWidth": 72,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.eyebrow",
+      "text": "欢迎回到工作台",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 355,
+      "scrollWidth": 355,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2",
+      "text": "登录你的账号",
+      "fontSize": "28px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 355,
+      "scrollWidth": 355,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.login-description",
+      "text": "使用管理员分配的公司账号继续。",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 355,
+      "scrollWidth": 355,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "公司邮箱",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 355,
+      "scrollWidth": 355,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "密码",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 355,
+      "scrollWidth": 355,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.rounded-lg.border.border-transparent.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.bg-primary.text-primary-foreground.hover:bg-primary/80.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2.w-full.h-12.justify-between",
+      "text": "进入工作台",
+      "fontSize": "16px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 353,
+      "scrollWidth": 353,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.login-help",
+      "text": "还没有账号或忘记密码？请联系管理员。",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 355,
+      "scrollWidth": 355,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.login-version",
+      "text": "工作台 · 第一阶段",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "INPUT",
+      "label": "email",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    },
+    {
+      "tag": "INPUT",
+      "label": "password",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    }
+  ],
+  "whiteSurfaces": [
+    {
+      "tag": "SECTION",
+      "classes": "login-story"
+    },
+    {
+      "tag": "DIV",
+      "classes": "art-plinth"
+    },
+    {
+      "tag": "DIV",
+      "classes": "art-floor"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "login-form-panel"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "21.0pt (28px)",
+                  "fontWeight": "normal",
+                  "messageKey": "shortTextContent",
+                  "expectedContrastRatio": "3:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<span class=\"brand-symbol\">F</span>",
+                    "target": [
+                      ".brand-symbol"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element content is too short to determine if it is actual text content"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"brand-symbol\">F</span>",
+            "target": [
+              ".brand-symbol"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "aria-allowed-attr",
+      "aria-conditional-attr",
+      "aria-deprecated-role",
+      "aria-hidden-body",
+      "aria-hidden-focus",
+      "aria-prohibited-attr",
+      "aria-required-attr",
+      "aria-roles",
+      "aria-valid-attr-value",
+      "aria-valid-attr",
+      "autocomplete-valid",
+      "button-name",
+      "color-contrast",
+      "document-title",
+      "duplicate-id-aria",
+      "form-field-multiple-labels",
+      "html-has-lang",
+      "html-lang-valid",
+      "label",
+      "meta-viewport",
+      "nested-interactive"
+    ]
+  }
+}

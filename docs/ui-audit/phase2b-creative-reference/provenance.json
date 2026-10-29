@@ -1,0 +1,7 @@
+{
+  "applicationCommit": "23e8fbc1621ac450fa14dafe3c70578f17d7021b",
+  "verifiedBlobCount": 320,
+  "crlfNormalized": 269,
+  "mismatches": [],
+  "method": "git archive；按Git blob SHA-1核对源码/资源/配置，文本只归一git archive在Windows输出的CRLF。node_modules及Prisma生成客户端以本地junction复用；.env只在忽略目录，不提交。"
+}

@@ -1,0 +1,2638 @@
+{
+  "variables": {
+    "--background": "#0e0e10",
+    "--foreground": "#fafafa",
+    "--card": "#16161a",
+    "--card-foreground": "#fafafa",
+    "--popover": "#1e1e23",
+    "--popover-foreground": "#fafafa",
+    "--primary": "#fafafa",
+    "--primary-foreground": "#18181b",
+    "--secondary": "#26262c",
+    "--secondary-foreground": "#fafafa",
+    "--muted": "#1e1e23",
+    "--muted-foreground": "#a1a1aa",
+    "--accent": "#26262c",
+    "--accent-foreground": "#fafafa",
+    "--destructive": "#f1a1a1",
+    "--border": "#52525b",
+    "--input": "#71717a",
+    "--ring": "#6c907d",
+    "--radius": ".75rem",
+    "--font-body": "\"Segoe UI\",\"PingFang SC\",\"Microsoft YaHei UI\",system-ui,sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "span.brand-symbol",
+      "text": "F",
+      "fontSize": "28px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        250,
+        250,
+        250
+      ],
+      "contrast": 16.973898642198108,
+      "clientWidth": 35,
+      "scrollWidth": 35,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "家具工作台",
+      "fontSize": "15px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 76,
+      "scrollWidth": 76,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.wordmark-light",
+      "text": "工作台",
+      "fontSize": "15px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a.nav-link",
+      "text": "SKU 项目",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 175,
+      "scrollWidth": 175,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a.nav-link",
+      "text": "管理后台",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 175,
+      "scrollWidth": 175,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a.back-link",
+      "text": "← 全部 SKU 项目",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 7.524375494018192,
+      "clientWidth": 90,
+      "scrollWidth": 90,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.eyebrow",
+      "text": "NEW-MVQFFV1P / 竖向鞋架 · Task 11-B 验收",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 7.524375494018192,
+      "clientWidth": 199,
+      "scrollWidth": 199,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h1",
+      "text": "产品资料.",
+      "fontSize": "28px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 18.475690284819883,
+      "clientWidth": 199,
+      "scrollWidth": 199,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.title-dot",
+      "text": ".",
+      "fontSize": "28px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 10.919605883492775,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.intro-copy",
+      "text": "从多角度实拍出发，保留产品身份，探索新的场景。",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 7.524375494018192,
+      "clientWidth": 199,
+      "scrollWidth": 199,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a.pack-entry",
+      "text": "进入图包与批量生成 →",
+      "fontSize": "16px",
+      "color": "rgb(14, 14, 16)",
+      "background": [
+        250,
+        250,
+        250
+      ],
+      "contrast": 18.475690284819883,
+      "clientWidth": 140,
+      "scrollWidth": 140,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2",
+      "text": "01 / 产品资料",
+      "fontSize": "14px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 85,
+      "scrollWidth": 85,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.field-hint",
+      "text": "真实细节 · 生成依据",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 105,
+      "scrollWidth": 105,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "SKU",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 149,
+      "scrollWidth": 149,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "商品名称",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 149,
+      "scrollWidth": 149,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "品类",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 149,
+      "scrollWidth": 149,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "尺寸",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 149,
+      "scrollWidth": 149,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "颜色",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 149,
+      "scrollWidth": 149,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "材质（可选）",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 149,
+      "scrollWidth": 149,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "卖点",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "textarea.studio-textarea",
+      "text": "",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 310,
+      "scrollWidth": 310,
+      "overflow": false,
+      "wrap": "break-word"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "产品复杂度",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "产品身份特征",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 78,
+      "scrollWidth": 78,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "textarea.studio-textarea",
+      "text": "",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 310,
+      "scrollWidth": 310,
+      "overflow": false,
+      "wrap": "break-word"
+    },
+    {
+      "selector": "p.field-hint",
+      "text": "最近保存：管理员 · 2026/10/27 16:59:45",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.field-hint",
+      "text": "这些细节会在生成中锁定。AI 提炼使用已保存的资料和 2～3 张实拍图，请核对修改后手动保存。",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.border-transparent.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.bg-primary.text-primary-foreground.hover:bg-primary/80.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "保存产品资料",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        250,
+        250,
+        250
+      ],
+      "contrast": 16.973898642198108,
+      "clientWidth": 138,
+      "scrollWidth": 138,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2",
+      "text": "02 / 实拍参考",
+      "fontSize": "14px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 85,
+      "scrollWidth": 85,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.count-chip",
+      "text": "1 / 3",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        30,
+        30,
+        35
+      ],
+      "contrast": 9.398735241095569,
+      "clientWidth": 38,
+      "scrollWidth": 38,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.field-hint",
+      "text": "同一件产品的 2～3 张不同角度实拍。JPEG / PNG / WEBP，单张 ≤30MB。图片顺序会用于后续生成。",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "figcaption",
+      "text": "参考 01",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 88,
+      "scrollWidth": 88,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "拖入图片即上传，或点击选择图片",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        30,
+        30,
+        35
+      ],
+      "contrast": 9.398735241095569,
+      "clientWidth": 180,
+      "scrollWidth": 180,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "已有图片可拖动排序，也可使用图片下方的左右按钮",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        30,
+        30,
+        35
+      ],
+      "contrast": 6.476388788882193,
+      "clientWidth": 276,
+      "scrollWidth": 276,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2",
+      "text": "补充图与参数文件",
+      "fontSize": "16px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "主图和主要角度请在实拍管理中排序；细节图、材质图和参数文档放在这里。",
+      "fontSize": "16px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "li",
+      "text": "1-主图.jpg · 已就绪",
+      "fontSize": "16px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2",
+      "text": "竞品参考 · 图片优先",
+      "fontSize": "16px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.text-sm.text-muted-foreground",
+      "text": "建议上传 5–10 张竞品截图，最多 10 张。商品页链接可留作来源；能直接读取的图片链接会用于看图，页面受限时请补截图。联网文字仅作补充参考。",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label.block",
+      "text": "竞品链接（每行一个）",
+      "fontSize": "16px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label",
+      "text": "上传竞品截图",
+      "fontSize": "16px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 17.287815638592388,
+      "clientWidth": 294,
+      "scrollWidth": 294,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.border-transparent.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.bg-primary.text-primary-foreground.hover:bg-primary/80.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "保存竞品参考",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        250,
+        250,
+        250
+      ],
+      "contrast": 16.973898642198108,
+      "clientWidth": 116,
+      "scrollWidth": 116,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2",
+      "text": "03 / 场景创作",
+      "fontSize": "14px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 85,
+      "scrollWidth": 85,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "label",
+      "text": "想把产品放进怎样的空间？",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.field-hint",
+      "text": "自动使用已保存的产品身份特征和全部实拍参考。修改资料后请先保存。",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 312,
+      "scrollWidth": 312,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "legend",
+      "text": "输出分辨率",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 65,
+      "scrollWidth": 65,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "1K",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 16,
+      "scrollWidth": 16,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "small",
+      "text": "KIE 预估 $0.020",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 82,
+      "scrollWidth": 82,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "2K",
+      "fontSize": "14px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        33,
+        52,
+        43
+      ],
+      "contrast": 7.475180763092472,
+      "clientWidth": 16,
+      "scrollWidth": 16,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "small",
+      "text": "KIE 预估 $0.030",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        33,
+        52,
+        43
+      ],
+      "contrast": 7.475180763092472,
+      "clientWidth": 82,
+      "scrollWidth": 82,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "4K",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 16,
+      "scrollWidth": 16,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "small",
+      "text": "KIE 预估 $0.045",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 82,
+      "scrollWidth": 82,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "legend",
+      "text": "画面比例",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "1:1",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        33,
+        52,
+        43
+      ],
+      "contrast": 7.475180763092472,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "2:3",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "3:2",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "3:4",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "4:3",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "4:5",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "5:4",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "9:16",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "16:9",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "21:9",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "1:4",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "4:1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "1:8",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "8:1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "自动",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 96,
+      "scrollWidth": 96,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "Nano Banana 2.1 · 2K · PNG",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 146,
+      "scrollWidth": 146,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "预估 $0.030000 起 提交时按参考图与实际线路校验",
+      "fontSize": "15px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 302,
+      "scrollWidth": 302,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "small",
+      "text": "提交时按参考图与实际线路校验",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.border-transparent.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.bg-primary.text-primary-foreground.hover:bg-primary/80.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "规划一张场景图",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        250,
+        250,
+        250
+      ],
+      "contrast": 16.973898642198108,
+      "clientWidth": 154,
+      "scrollWidth": 154,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "本月剩余 $0.778835 / $1.500000",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 171,
+      "scrollWidth": 171,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2",
+      "text": "04 / 生成记录 6",
+      "fontSize": "14px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.history-count",
+      "text": "6",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.border.border-transparent.bg-clip-padding.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:hover:bg-muted/50.h-7.gap-1.rounded-[min(var(--radius-md),12px)].px-2.5.text-[0.8rem].in-data-[slot=button-group]:rounded-lg.has-data-[icon=inline-end]:pr-1.5.has-data-[icon=inline-start]:pl-1.5.[&_svg:not([class*='size-'])]:size-3.5",
+      "text": "刷新记录",
+      "fontSize": "16px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 104,
+      "scrollWidth": 104,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.job-status.job-success",
+      "text": "生成完成",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        33,
+        52,
+        43
+      ],
+      "contrast": 5.150924634761468,
+      "clientWidth": 66,
+      "scrollWidth": 66,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.edit-version-label",
+      "text": "二次编辑版本 · 查看原图",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a",
+      "text": "查看原图",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.generation-intent",
+      "text": "只把左侧斗柜台面上几只带标签的香水瓶替换成无字、无标签、无品牌的素色陶瓷小摆件；选区内保持原光线和材质，其余区域与产品完全不动。",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "nano-banana-2-1 · kie · 2K · 1:1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "2026/10/27 17:05:30 · 133 秒 · 实际 $0.025000（原始 5 KIE 积分）",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "实际像素：2048 × 2048 px",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "summary",
+      "text": "本次使用的身份特征版本",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p.job-task",
+      "text": "任务编号：ed826f692e2a35b7c253d0e2694700bc",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "a.generation-download",
+      "text": "下载候选图",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 84,
+      "scrollWidth": 84,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.border.bg-clip-padding.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-7.gap-1.rounded-[min(var(--radius-md),12px)].px-2.5.text-[0.8rem].in-data-[slot=button-group]:rounded-lg.has-data-[icon=inline-end]:pr-1.5.has-data-[icon=inline-start]:pl-1.5.[&_svg:not([class*='size-'])]:size-3.5",
+      "text": "二次编辑",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        49.47843137254901,
+        49.47843137254901,
+        55.29019607843137
+      ],
+      "contrast": 5.008193103670286,
+      "clientWidth": 88,
+      "scrollWidth": 88,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.job-status.job-success",
+      "text": "生成完成",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        33,
+        52,
+        43
+      ],
+      "contrast": 5.150924634761468,
+      "clientWidth": 66,
+      "scrollWidth": 66,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.edit-version-label",
+      "text": "二次编辑版本 · 查看原图",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a",
+      "text": "查看原图",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.generation-intent",
+      "text": "将整体画面的自然采光从偏暖黄色日光调整为清透、明亮且色温中性的清晨自然侧光，增强画面的通透感与层次；同时消除右侧挂钩上悬挂的米白色帆布袋表面的微小痕迹与疑似字母印记，保持布袋纯净素色质感。严格锁定鞋架",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "nano-banana-2-1 · kie · 2K · 1:1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "2026/10/27 17:02:53 · 78 秒 · 实际 $0.025000（原始 5 KIE 积分）",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "实际像素：2048 × 2048 px",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "summary",
+      "text": "本次使用的身份特征版本",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p.job-task",
+      "text": "任务编号：f94f4a6a87b90aeddcdee50f27ce2d4d",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "a.generation-download",
+      "text": "下载候选图",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 84,
+      "scrollWidth": 84,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.border.bg-clip-padding.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-7.gap-1.rounded-[min(var(--radius-md),12px)].px-2.5.text-[0.8rem].in-data-[slot=button-group]:rounded-lg.has-data-[icon=inline-end]:pr-1.5.has-data-[icon=inline-start]:pl-1.5.[&_svg:not([class*='size-'])]:size-3.5",
+      "text": "二次编辑",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        49.47843137254901,
+        49.47843137254901,
+        55.29019607843137
+      ],
+      "contrast": 5.008193103670286,
+      "clientWidth": 88,
+      "scrollWidth": 88,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.job-status.job-success",
+      "text": "生成完成",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        33,
+        52,
+        43
+      ],
+      "contrast": 5.150924634761468,
+      "clientWidth": 66,
+      "scrollWidth": 66,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.generation-intent",
+      "text": "画面目标：一物多用开放式多层置物架\n空间：现代温馨客厅休闲角\n环境配饰：粉色墙面配白色护墙板、墙上几何抽象画、原木落地灯、右侧被裁切的米色沙发和锈橙色抱枕、纱帘、小盆多肉、陶瓷动物摆件、一叠书、木纹电",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "nano-banana-2-1 · kie · 2K · 1:1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "2026/10/27 16:59:46 · 70 秒 · 实际 $0.025000（原始 5 KIE 积分）",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "实际像素：2048 × 2048 px",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "summary",
+      "text": "本次使用的身份特征版本",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p.job-task",
+      "text": "任务编号：2b633702f4276cb79f916918d8ef58b1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "a.generation-download",
+      "text": "下载候选图",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 84,
+      "scrollWidth": 84,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.border.bg-clip-padding.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-7.gap-1.rounded-[min(var(--radius-md),12px)].px-2.5.text-[0.8rem].in-data-[slot=button-group]:rounded-lg.has-data-[icon=inline-end]:pr-1.5.has-data-[icon=inline-start]:pl-1.5.[&_svg:not([class*='size-'])]:size-3.5",
+      "text": "二次编辑",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        49.47843137254901,
+        49.47843137254901,
+        55.29019607843137
+      ],
+      "contrast": 5.008193103670286,
+      "clientWidth": 88,
+      "scrollWidth": 88,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.job-status.job-success",
+      "text": "生成完成",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        33,
+        52,
+        43
+      ],
+      "contrast": 5.150924634761468,
+      "clientWidth": 66,
+      "scrollWidth": 66,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.generation-intent",
+      "text": "画面目标：鞋包配饰一站式收纳\n空间：精致女性步入式衣帽间\n环境配饰：右侧开放式原木衣柜，挂针织衣物，下层收纳盒和藤编筐、左侧金色拉手原木斗柜，上面放首饰盒、米色地毯一角、全女款奶白粉色系鞋履、挂一个托",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "nano-banana-2-1 · kie · 2K · 1:1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "2026/10/27 16:59:46 · 68 秒 · 实际 $0.025000（原始 5 KIE 积分）",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "实际像素：2048 × 2048 px",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "summary",
+      "text": "本次使用的身份特征版本",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p.job-task",
+      "text": "任务编号：5f76c81c610290d9d5307e807606936a",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "a.generation-download",
+      "text": "下载候选图",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 84,
+      "scrollWidth": 84,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.border.bg-clip-padding.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-7.gap-1.rounded-[min(var(--radius-md),12px)].px-2.5.text-[0.8rem].in-data-[slot=button-group]:rounded-lg.has-data-[icon=inline-end]:pr-1.5.has-data-[icon=inline-start]:pl-1.5.[&_svg:not([class*='size-'])]:size-3.5",
+      "text": "二次编辑",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        49.47843137254901,
+        49.47843137254901,
+        55.29019607843137
+      ],
+      "contrast": 5.008193103670286,
+      "clientWidth": 88,
+      "scrollWidth": 88,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.job-status.job-success",
+      "text": "生成完成",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        33,
+        52,
+        43
+      ],
+      "contrast": 5.150924634761468,
+      "clientWidth": 66,
+      "scrollWidth": 66,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.generation-intent",
+      "text": "画面目标：垂直纵向空间充分利用\n空间：采光良好的复式楼梯下转角处\n环境配饰：左侧原木踏步白色踢面的楼梯和原木扶手、右侧白框窗户、墙上一幅原木框植物版画、深色木地板、黄麻地毯、浅色为主加一双浅蓝点缀鞋履",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "nano-banana-2-1 · kie · 2K · 1:1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "2026/10/27 16:59:46 · 57 秒 · 实际 $0.025000（原始 5 KIE 积分）",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "实际像素：2048 × 2048 px",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "summary",
+      "text": "本次使用的身份特征版本",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p.job-task",
+      "text": "任务编号：3211219a66849623ad6922da3f614a57",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "a.generation-download",
+      "text": "下载候选图",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 84,
+      "scrollWidth": 84,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.border.bg-clip-padding.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-7.gap-1.rounded-[min(var(--radius-md),12px)].px-2.5.text-[0.8rem].in-data-[slot=button-group]:rounded-lg.has-data-[icon=inline-end]:pr-1.5.has-data-[icon=inline-start]:pl-1.5.[&_svg:not([class*='size-'])]:size-3.5",
+      "text": "二次编辑",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        49.47843137254901,
+        49.47843137254901,
+        55.29019607843137
+      ],
+      "contrast": 5.008193103670286,
+      "clientWidth": 88,
+      "scrollWidth": 88,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.job-status.job-success",
+      "text": "生成完成",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        33,
+        52,
+        43
+      ],
+      "contrast": 5.150924634761468,
+      "clientWidth": 66,
+      "scrollWidth": 66,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.generation-intent",
+      "text": "画面目标：窄空间玄关高效收纳\n空间：现代简约门厅玄关\n环境配饰：左侧被裁切的米色长凳和针织毯、右侧法式白框玻璃门，门外绿植、条纹地毯一角、多色混搭日常鞋靴、绿植加木碗加钥匙、左挂长柄伞右挂托特包\n陈列",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "nano-banana-2-1 · kie · 2K · 1:1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "2026/10/27 16:59:46 · 67 秒 · 实际 $0.025000（原始 5 KIE 积分）",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "实际像素：2048 × 2048 px",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "summary",
+      "text": "本次使用的身份特征版本",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "p.job-task",
+      "text": "任务编号：88b75c62249221c9883e01d1e8b353b1",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 274,
+      "scrollWidth": 274,
+      "overflow": false,
+      "wrap": "anywhere"
+    },
+    {
+      "selector": "a.generation-download",
+      "text": "下载候选图",
+      "fontSize": "12px",
+      "color": "rgb(168, 203, 183)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 10.217541561357269,
+      "clientWidth": 84,
+      "scrollWidth": 84,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.border.bg-clip-padding.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.border-border.bg-background.hover:bg-muted.hover:text-foreground.aria-expanded:bg-muted.aria-expanded:text-foreground.dark:border-input.dark:bg-input/30.dark:hover:bg-input/50.h-7.gap-1.rounded-[min(var(--radius-md),12px)].px-2.5.text-[0.8rem].in-data-[slot=button-group]:rounded-lg.has-data-[icon=inline-end]:pr-1.5.has-data-[icon=inline-start]:pl-1.5.[&_svg:not([class*='size-'])]:size-3.5",
+      "text": "二次编辑",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        49.47843137254901,
+        49.47843137254901,
+        55.29019607843137
+      ],
+      "contrast": 5.008193103670286,
+      "clientWidth": 88,
+      "scrollWidth": 88,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.history-footnote",
+      "text": "生成图为候选图，需美工确认后作为终稿使用。费用和配额统一美元；预估会在获得实际消耗后更新，扣费不确定时请核对账单。",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 7.040603860035812,
+      "clientWidth": 352,
+      "scrollWidth": 352,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "家具电商 · 创意协作空间",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 7.524375494018192,
+      "clientWidth": 136,
+      "scrollWidth": 136,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "公司内部应用",
+      "fontSize": "12px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 7.524375494018192,
+      "clientWidth": 75,
+      "scrollWidth": 75,
+      "overflow": false,
+      "wrap": "normal"
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "INPUT",
+      "label": "sku",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.7336665965662377,
+      "exempt": false,
+      "textContrast": 17.287815638592388,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "name",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.7336665965662377,
+      "exempt": false,
+      "textContrast": 17.287815638592388,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "category",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.7336665965662377,
+      "exempt": false,
+      "textContrast": 17.287815638592388,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "dimensions",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.7336665965662377,
+      "exempt": false,
+      "textContrast": 17.287815638592388,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "colors",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.7336665965662377,
+      "exempt": false,
+      "textContrast": 17.287815638592388,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "materials",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.7336665965662377,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.040603860035812
+    },
+    {
+      "tag": "TEXTAREA",
+      "label": "sellingPoints",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.7336665965662377,
+      "exempt": false,
+      "textContrast": 17.287815638592388,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "SELECT",
+      "label": "complexity",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.7336665965662377,
+      "exempt": false,
+      "textContrast": 7.040603860035812,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "TEXTAREA",
+      "label": "identityTraits",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 3.7336665965662377,
+      "exempt": false,
+      "textContrast": 17.287815638592388,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "上传补充资料",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(82, 82, 91)",
+      "borderWidth": "0px",
+      "contrast": 2.334390541301996,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "TEXTAREA",
+      "label": "竞品链接",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(82, 82, 91)",
+      "borderWidth": "1px",
+      "contrast": 2.334390541301996,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "上传竞品截图",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(82, 82, 91)",
+      "borderWidth": "0px",
+      "contrast": 2.334390541301996,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "TEXTAREA",
+      "label": "scene-intent",
+      "background": "rgb(22, 22, 26)",
+      "border": "rgb(82, 82, 91)",
+      "borderWidth": "1px",
+      "contrast": 2.334390541301996,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.040603860035812
+    }
+  ],
+  "whiteSurfaces": [],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "21.0pt (28px)",
+                  "fontWeight": "normal",
+                  "messageKey": "shortTextContent",
+                  "expectedContrastRatio": "3:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<span class=\"brand-symbol\">F</span>",
+                    "target": [
+                      ".brand-symbol"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element content is too short to determine if it is actual text content"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"brand-symbol\">F</span>",
+            "target": [
+              ".brand-symbol"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}

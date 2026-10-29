@@ -1,6 +1,6 @@
 # 家具创作工作台设计规范
 
-本规范对应UI阶段2a。正式创作页为 `/`、`/skus`、`/workspace`、`/library`；`/admin/models` 使用相同创作组件并继承旧后台外壳。旧视觉迁移留到2b，布局与交互收口留到阶段3。
+本规范对应UI阶段2b。正式创作页为 `/`、`/skus`、`/workspace`、`/library`；`/admin/models` 使用相同创作组件并继承旧后台外壳。旧页面已迁移语义颜色与工作台字体；布局与交互收口留到阶段3。
 
 ## 主题与颜色
 
@@ -15,7 +15,7 @@ creative配色唯一来源为 `src/styles/creative/tokens.css`。亮色由 `:roo
 
 墨绿用于**亮色主按钮，以及全主题的选中、聚焦和品牌点缀**；暗色选中和聚焦使用提亮的墨绿#6c907d，主按钮保持白底深字。图片承担主要色彩，禁止大面积浅绿背景。状态色用于终稿、待处理、生成中、未开始的小点和角标。
 
-task-cover.tsx、batch/brand.tsx、batch/workflow.tsx的商品变体或品牌色是数据，不是UI配色，由静态检查的数据白名单登记。旧globals的纸色和小字号作为2b存量白名单，禁止新增。
+task-cover.tsx、batch/brand.tsx、batch/workflow.tsx的商品变体或品牌色是数据，不是UI配色，由静态检查的数据白名单登记。旧globals的232项HEX与49项小字号白名单在2b已清零；当前只保留6项数据色。
 
 ## 字体、字号与圆角
 
@@ -32,7 +32,7 @@ task-cover.tsx、batch/brand.tsx、batch/workflow.tsx的商品变体或品牌色
 | --text-hero | 36px | 其他大标题 |
 | --text-display | 40px | 首页主标题专用，600字重 |
 
-数字用tabular-nums。9处旧task11字号从10/11提升到12px；旧globals的49处留到2b。画布14/zoom、12/zoom配合反向缩放，不按静态小字号违规处理。
+数字用tabular-nums。9处旧task11字号从10/11提升到12px；旧globals的49处在2b均提升为12px，网关路由small的默认0.8em另显式指定12px。画布14/zoom、12/zoom配合反向缩放，不按静态小字号违规处理。
 
 | 变量 | 值 | 用途 |
 | --- | --- | --- |
@@ -76,6 +76,14 @@ task-cover.tsx、batch/brand.tsx、batch/workflow.tsx的商品变体或品牌色
 
 ## 检查与验收
 
-执行 `npm run lint:ui`。ui-lint-baseline.json以“签名+数量”保留旧globals及数据色值，常规检查不扩充白名单。新增十六进制色值、小于12px字号、SVG important、绕开入口的Lucide导入均失败；清理后人工收紧白名单。
+执行 `npm run lint:ui`。ui-lint-baseline.json以“签名+数量”保留6项商品/品牌数据色值，常规检查不扩充白名单。新增十六进制色值、小于12px字号、SVG important、绕开入口的Lucide导入均失败；清理后人工收紧白名单。
 
-creative参照docs/ui-audit/phase1，旧页2b参照baseline-studio。KI-001按偶发记录，不要求复现，但不能新增失败类型。2a结束后停止，待审阅才做2b。
+creative参照docs/ui-audit/phase2a，旧页2b参照修正后的phase2a-studio。KI-001按偶发记录，不要求复现，但不能新增失败类型。2b结束后停止，待审阅才做阶段3。
+
+## 旧页面视觉（2b）
+
+旧页/登录页的root按是否包含studio-shell、login-shell启用；嵌套p-app时不覆盖creative核心变量。亮色白底与墨绿主按钮、暗色深底与白色主按钮；辅助文字及输入边框用旧页专用的可读性变量。具体前后值见phase2b报告。全局Tailwind语义映射保留原值。
+
+登录标题保留原clamp(36px,3.8vw,58px)及既有42/34px媒体规则，改为工作台字体/600。旧品牌标记、pack-number、note-number去Georgia/宋体，装饰数字采用tabular-nums；不影响creative品牌原型的Georgia。终稿使用.generation-card.pack-final双类选择器覆盖普通边框，不用important。
+
+/admin/models是混合路由，其旧外壳迁移、搜索占位与边框加强、暗色表头由3.73:1提亮至达标，是creative全页对比的明确例外；报告同时保留全页严格差异和.p-app区域差异。其余creative变化需用原2a源码的当日隔离复拍核对，不能以对齐率或“噪声”掩盖代码变化。

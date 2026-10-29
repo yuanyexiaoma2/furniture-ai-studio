@@ -146,6 +146,8 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
 
 async function loginAfterLogout(page: Page, email: string, password: string) {
   await page.goto("/templates");
+  // 等导航后的会话读取完成，再退出，避免在途响应与清除Cookie交错；退出/重登断言保持不变。
+  await page.waitForLoadState("networkidle");
   await page.getByRole("button", { name: "退出登录" }).click();
   await expect(page).toHaveURL(/\/login(?:\?.*)?$/);
   await login(page, email, password);

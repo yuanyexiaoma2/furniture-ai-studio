@@ -1,0 +1,771 @@
+{
+  "referenceApplicationCommit": "23e8fbc1621ac450fa14dafe3c70578f17d7021b",
+  "browserVersion": "156.0.8078.49",
+  "description": "不改变与存档的严格比较；另外在同一当日环境对照原2a应用源码，区分环境和代码影响。",
+  "results": [
+    {
+      "name": "home-light-1440",
+      "archivedStrictPercent": 1.5041190087145968,
+      "referenceArchivedStrictPercent": 1.5041190087145968,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1224,
+        "changedPixels": 0,
+        "totalPixels": 1762560,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "skus-light-1440",
+      "archivedStrictPercent": 0.4264583333333333,
+      "referenceArchivedStrictPercent": 0.4264583333333333,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-empty-light-1440",
+      "archivedStrictPercent": 0.9283333333333332,
+      "referenceArchivedStrictPercent": 0.9283333333333332,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-images-light-1440",
+      "archivedStrictPercent": 1.511111111111111,
+      "referenceArchivedStrictPercent": 1.511111111111111,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-single-light-1440",
+      "archivedStrictPercent": 1.8836805555555554,
+      "referenceArchivedStrictPercent": 1.8836805555555554,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-multi-light-1440",
+      "archivedStrictPercent": 1.657152777777778,
+      "referenceArchivedStrictPercent": 1.657152777777778,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-mask-light-1440",
+      "archivedStrictPercent": 1.890625,
+      "referenceArchivedStrictPercent": 1.8918055555555555,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 17,
+        "totalPixels": 1440000,
+        "differencePercent": 0.0011805555555555556,
+        "alignedDifferencePercent": 0.0011805555555555556,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-expand-light-1440",
+      "archivedStrictPercent": 1.5408333333333333,
+      "referenceArchivedStrictPercent": 1.5408333333333333,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-product-light-1440",
+      "archivedStrictPercent": 2.6599305555555555,
+      "referenceArchivedStrictPercent": 2.6599305555555555,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "library-light-1440",
+      "archivedStrictPercent": 1.4188194444444444,
+      "referenceArchivedStrictPercent": 1.4188194444444444,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "admin-light-1440",
+      "archivedStrictPercent": 8.73644853709509,
+      "referenceArchivedStrictPercent": 1.4865911669721568,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1276,
+        "changedPixels": 133924,
+        "totalPixels": 1837440,
+        "differencePercent": 7.288618948101706,
+        "alignedDifferencePercent": 7.288618948101706,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "baselineSize": {
+          "width": 1440,
+          "height": 1273
+        }
+      },
+      "creativeRegionCodeComparison": {
+        "width": 1248,
+        "height": 1000,
+        "changedPixels": 1373,
+        "totalPixels": 1248000,
+        "differencePercent": 0.11001602564102565,
+        "alignedDifferencePercent": 0.11001602564102565,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      },
+      "referenceCrop": {
+        "left": 96,
+        "top": 147,
+        "width": 1248,
+        "height": 1000
+      },
+      "currentCrop": {
+        "left": 96,
+        "top": 147,
+        "width": 1248,
+        "height": 1000
+      }
+    },
+    {
+      "name": "home-dark-1440",
+      "archivedStrictPercent": 1.5087145969498912,
+      "referenceArchivedStrictPercent": 1.5087145969498912,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1224,
+        "changedPixels": 0,
+        "totalPixels": 1762560,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "skus-dark-1440",
+      "archivedStrictPercent": 0.43027777777777776,
+      "referenceArchivedStrictPercent": 0.43027777777777776,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-empty-dark-1440",
+      "archivedStrictPercent": 0.9297222222222222,
+      "referenceArchivedStrictPercent": 0.9297222222222222,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-images-dark-1440",
+      "archivedStrictPercent": 1.5152083333333333,
+      "referenceArchivedStrictPercent": 1.5152083333333333,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-single-dark-1440",
+      "archivedStrictPercent": 1.8491666666666666,
+      "referenceArchivedStrictPercent": 1.8491666666666666,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-multi-dark-1440",
+      "archivedStrictPercent": 1.651875,
+      "referenceArchivedStrictPercent": 1.651875,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-mask-dark-1440",
+      "archivedStrictPercent": 1.8070833333333334,
+      "referenceArchivedStrictPercent": 2.130763888888889,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 8713,
+        "totalPixels": 1440000,
+        "differencePercent": 0.6050694444444444,
+        "alignedDifferencePercent": 0.6050694444444444,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-expand-dark-1440",
+      "archivedStrictPercent": 1.5434027777777777,
+      "referenceArchivedStrictPercent": 1.5434027777777777,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-product-dark-1440",
+      "archivedStrictPercent": 2.654236111111111,
+      "referenceArchivedStrictPercent": 2.654236111111111,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "library-dark-1440",
+      "archivedStrictPercent": 1.4244444444444444,
+      "referenceArchivedStrictPercent": 1.4244444444444444,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "admin-dark-1440",
+      "archivedStrictPercent": 8.836206896551724,
+      "referenceArchivedStrictPercent": 1.4989744261150388,
+      "codeComparison": {
+        "width": 1440,
+        "height": 1276,
+        "changedPixels": 137074,
+        "totalPixels": 1837440,
+        "differencePercent": 7.460053117380704,
+        "alignedDifferencePercent": 7.460053117380704,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "baselineSize": {
+          "width": 1440,
+          "height": 1273
+        }
+      },
+      "creativeRegionCodeComparison": {
+        "width": 1248,
+        "height": 1000,
+        "changedPixels": 2987,
+        "totalPixels": 1248000,
+        "differencePercent": 0.23934294871794873,
+        "alignedDifferencePercent": 0.23934294871794873,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      },
+      "referenceCrop": {
+        "left": 96,
+        "top": 147,
+        "width": 1248,
+        "height": 1000
+      },
+      "currentCrop": {
+        "left": 96,
+        "top": 147,
+        "width": 1248,
+        "height": 1000
+      }
+    },
+    {
+      "name": "home-light-390",
+      "archivedStrictPercent": 4.189933523266856,
+      "referenceArchivedStrictPercent": 4.189933523266856,
+      "codeComparison": {
+        "width": 390,
+        "height": 1485,
+        "changedPixels": 0,
+        "totalPixels": 579150,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "skus-light-390",
+      "archivedStrictPercent": 1.5618544173046542,
+      "referenceArchivedStrictPercent": 1.5618544173046542,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-empty-light-390",
+      "archivedStrictPercent": 1.438813950662292,
+      "referenceArchivedStrictPercent": 1.438813950662292,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-images-light-390",
+      "archivedStrictPercent": 1.3191153238546602,
+      "referenceArchivedStrictPercent": 1.3191153238546602,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-single-light-390",
+      "archivedStrictPercent": 2.786486814922834,
+      "referenceArchivedStrictPercent": 2.786486814922834,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-multi-light-390",
+      "archivedStrictPercent": 1.7736055413780532,
+      "referenceArchivedStrictPercent": 1.7736055413780532,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-mask-light-390",
+      "archivedStrictPercent": 1.5730951512942033,
+      "referenceArchivedStrictPercent": 1.5730951512942033,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-expand-light-390",
+      "archivedStrictPercent": 1.6150200510390085,
+      "referenceArchivedStrictPercent": 1.6150200510390085,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-product-light-390",
+      "archivedStrictPercent": 5.125470895613075,
+      "referenceArchivedStrictPercent": 5.125470895613075,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "library-light-390",
+      "archivedStrictPercent": 5.906853809697411,
+      "referenceArchivedStrictPercent": 5.906853809697411,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "admin-light-390",
+      "archivedStrictPercent": 19.260022604879996,
+      "referenceArchivedStrictPercent": 2.14643080496739,
+      "codeComparison": {
+        "width": 390,
+        "height": 1157,
+        "changedPixels": 84883,
+        "totalPixels": 451230,
+        "differencePercent": 18.81147086851495,
+        "alignedDifferencePercent": 11.676528599605522,
+        "verticalOffset": 3,
+        "alignmentRange": 8,
+        "baselineSize": {
+          "width": 390,
+          "height": 1148
+        }
+      },
+      "creativeRegionCodeComparison": {
+        "width": 354,
+        "height": 911,
+        "changedPixels": 1182,
+        "totalPixels": 322494,
+        "differencePercent": 0.3665184468548252,
+        "alignedDifferencePercent": 0.3665184468548252,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      },
+      "referenceCrop": {
+        "left": 18,
+        "top": 152,
+        "width": 354,
+        "height": 911
+      },
+      "currentCrop": {
+        "left": 18,
+        "top": 155,
+        "width": 354,
+        "height": 911
+      }
+    },
+    {
+      "name": "home-dark-390",
+      "archivedStrictPercent": 4.203746870413537,
+      "referenceArchivedStrictPercent": 4.203746870413537,
+      "codeComparison": {
+        "width": 390,
+        "height": 1485,
+        "changedPixels": 0,
+        "totalPixels": 579150,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "skus-dark-390",
+      "archivedStrictPercent": 1.5752217766435774,
+      "referenceArchivedStrictPercent": 1.5752217766435774,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-empty-dark-390",
+      "archivedStrictPercent": 1.4470166484384495,
+      "referenceArchivedStrictPercent": 1.4470166484384495,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-images-dark-390",
+      "archivedStrictPercent": 1.3251913962814437,
+      "referenceArchivedStrictPercent": 1.3251913962814437,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-single-dark-390",
+      "archivedStrictPercent": 2.9827439543079355,
+      "referenceArchivedStrictPercent": 2.9827439543079355,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-multi-dark-390",
+      "archivedStrictPercent": 1.7174018714303074,
+      "referenceArchivedStrictPercent": 1.7174018714303074,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-mask-dark-390",
+      "archivedStrictPercent": 1.5806902418276827,
+      "referenceArchivedStrictPercent": 1.5806902418276827,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-expand-dark-390",
+      "archivedStrictPercent": 1.6125896220682951,
+      "referenceArchivedStrictPercent": 1.6125896220682951,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "workspace-product-dark-390",
+      "archivedStrictPercent": 5.093267711751124,
+      "referenceArchivedStrictPercent": 5.093267711751124,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "library-dark-390",
+      "archivedStrictPercent": 5.924474419735083,
+      "referenceArchivedStrictPercent": 5.924474419735083,
+      "codeComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "admin-dark-390",
+      "archivedStrictPercent": 19.351993440152473,
+      "referenceArchivedStrictPercent": 2.1598320378808182,
+      "codeComparison": {
+        "width": 390,
+        "height": 1157,
+        "changedPixels": 85288,
+        "totalPixels": 451230,
+        "differencePercent": 18.901225539082063,
+        "alignedDifferencePercent": 11.866675531325487,
+        "verticalOffset": 3,
+        "alignmentRange": 8,
+        "baselineSize": {
+          "width": 390,
+          "height": 1148
+        }
+      },
+      "creativeRegionCodeComparison": {
+        "width": 354,
+        "height": 911,
+        "changedPixels": 1606,
+        "totalPixels": 322494,
+        "differencePercent": 0.497993761124238,
+        "alignedDifferencePercent": 0.497993761124238,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      },
+      "referenceCrop": {
+        "left": 18,
+        "top": 152,
+        "width": 354,
+        "height": 911
+      },
+      "currentCrop": {
+        "left": 18,
+        "top": 155,
+        "width": 354,
+        "height": 911
+      }
+    }
+  ]
+}

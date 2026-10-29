@@ -1,0 +1,18 @@
+[
+  {
+    "theme": "light",
+    "real": false,
+    "borderWidth": "2px",
+    "borderColor": "rgb(31, 58, 46)",
+    "expectedRing": "#1f3a2e",
+    "fontVariant": "tabular-nums"
+  },
+  {
+    "theme": "dark",
+    "real": false,
+    "borderWidth": "2px",
+    "borderColor": "rgb(108, 144, 125)",
+    "expectedRing": "#6c907d",
+    "fontVariant": "tabular-nums"
+  }
+]

@@ -10,7 +10,7 @@ import {compareScreenshots} from "./ui-image-diff";
 import {emptyProfile,profileFields,understanding} from "../src/lib/profile-rules";
 
 const args=process.argv.slice(2),option=(key:string,fallback:string)=>args.find(a=>a.startsWith(key+"="))?.slice(key.length+1)??fallback;
-if(args.includes("--suite=studio")&&!args.includes("--help")){await import("./ui-snapshots-studio");process.exit(0);}
+if(args.includes("--suite=studio")&&!args.includes("--help")){await import("./ui-snapshots-studio");process.exit(process.exitCode??0);}
 if(args.includes("--help")){console.log("node --import tsx scripts/ui-snapshots.ts --mode=baseline|compare|capture [--baseline=<目录>] [--output=<目录>] [--allow-size-change] [--small-text]\n默认44个creative状态；--suite=studio补拍旧页36张（基线99f3187）。capture只拍摄不比较，--small-text补拍12种小字状态。所有业务写请求在浏览器拦截。");process.exit(0);}
 const mode=option("--mode","compare"),baseURL=option("--base-url","http://localhost:3000"),root=path.resolve(option("--baseline","docs/ui-audit/baseline")),output=path.resolve(option("--output","docs/ui-audit/phase1")),only=option("--only","");
 if(!["baseline","compare","capture"].includes(mode))throw Error("mode仅允许baseline、compare或capture");
@@ -100,6 +100,16 @@ try{
    const meta=await sharp(image).metadata();
    const comparison=mode==="compare"?await compareScreenshots(path.join(root,name+".png"),image,path.join(destination,name+".diff.png"),args.includes("--allow-size-change")):{width:meta.width!,height:meta.height!,changedPixels:0,totalPixels:meta.width!*meta.height!,differencePercent:0};
    results.push({name,...comparison,sha256:createHash("sha256").update(image).digest("hex")});console.log(name+" "+comparison.differencePercent.toFixed(5)+"%");
+   if(mode==="compare"&&state==="admin"){
+    // 混合路由的全页严格差异仍保留；另记录.p-app区域，区分旧外壳与内部变化。
+    const box=await page.locator(".p-app").boundingBox();if(!box)throw Error("缺少creative区域");
+    const oldImage=await readFile(path.join(root,name+".png")),oldMeta=await sharp(oldImage).metadata();
+    const crop={left:Math.round(box.x),top:Math.round(box.y),width:Math.round(box.width),height:Math.min(Math.round(box.height),oldMeta.height!-Math.round(box.y))};
+    const oldCrop=path.resolve(".local/verification/ui-phase2b",name+".reference.png");await mkdir(path.dirname(oldCrop),{recursive:true});await sharp(oldImage).extract(crop).png().toFile(oldCrop);
+    const current=await sharp(image).extract(crop).png().toBuffer();await writeFile(path.join(destination,name+".creative.png"),current);
+    const region=await compareScreenshots(oldCrop,current,path.join(destination,name+".creative.diff.png"),false);
+    Object.assign(results.at(-1)!,{creativeRegion:{...region,crop,comparison:"同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"}});
+   }
    if(args.includes("--diagnose")){
     const originalLayout=execFileSync("git",["show","a1e3f51:src/app/(creative)/layout.tsx"],{encoding:"utf8"}),originalFiles=[...originalLayout.matchAll(/import "\.\/([^";]+\.css)";/g)].map(m=>"src/app/(creative)/"+m[1]);
     const oldCss=await readFile("node_modules/@xyflow/react/dist/style.css","utf8")+"\n"+originalFiles.map(file=>execFileSync("git",["show","a1e3f51:"+file],{encoding:"utf8"})).join("\n");
@@ -115,7 +125,7 @@ try{
  }
 }finally{await browser.close();}
 const referenceCommit=mode==="compare"?execFileSync("git",["log","-1","--format=%H","--",path.relative(process.cwd(),path.join(root,"manifest.json"))],{encoding:"utf8"}).trim():null;
-await writeFile(path.join(destination,"manifest.json"),JSON.stringify({mode,commit,referenceCommit,referenceDirectory:mode==="compare"?path.relative(process.cwd(),root):null,capturedAt:new Date().toISOString(),fixedTime:fixed,normalization:"独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",results,failures},null,2));
+await writeFile(path.join(destination,"manifest.json"),JSON.stringify({mode,commit,referenceCommit,referenceDirectory:mode==="compare"?path.relative(process.cwd(),root):null,browserVersion:browser.version(),capturedAt:new Date().toISOString(),fixedTime:fixed,normalization:"独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",results,failures},null,2));
 console.log(JSON.stringify({captured:results.length,failures,overThreshold:results.filter(r=>r.differencePercent>.1).map(r=>({name:r.name,percent:r.differencePercent}))},null,2));if(failures.length)process.exitCode=1;
 async function settle(page:Page,state:string){
  await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(async img=>{if(img.loading==="lazy")img.loading="eager";try{await img.decode();}catch{if(!img.complete||!img.naturalWidth)throw Error("图片加载失败："+img.getAttribute("src"));}}));});

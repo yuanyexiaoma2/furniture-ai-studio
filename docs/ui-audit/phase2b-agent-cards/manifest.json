@@ -1,0 +1,172 @@
+{
+  "mode": "capture",
+  "commit": "7845094c963e601fc830b3a75ec9dda4c8dc7196",
+  "baseline": null,
+  "referenceCommit": null,
+  "browserVersion": "156.0.8078.49",
+  "capturedAt": "2026-10-29T02:51:33.020Z",
+  "productId": "cmvqffv200000bcv8bnmu03xt",
+  "sku": "NEW-MVQFFV1P",
+  "results": [
+    {
+      "name": "agent-light-1440",
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "27a52af58799c2d40e405d2aa216163f103d16da549a4c5a638b3018d33cae4a",
+      "theme": "light",
+      "width": 1440,
+      "variables": {
+        "--background": "#fff",
+        "--primary": "#1f3a2e",
+        "--foreground": "#18181b"
+      }
+    },
+    {
+      "name": "agent-dark-1440",
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "92982008abf2b17a5648003ddb3fd8be52a0a83e377835084c53aec1991e2d21",
+      "theme": "dark",
+      "width": 1440,
+      "variables": {
+        "--background": "#0e0e10",
+        "--primary": "#fafafa",
+        "--foreground": "#fafafa"
+      }
+    },
+    {
+      "name": "agent-light-390",
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "6cea87ae8c7216315d530614031efd8e81c7adb51295b31e08bffba3d849ab64",
+      "theme": "light",
+      "width": 390,
+      "variables": {
+        "--background": "#fff",
+        "--primary": "#1f3a2e",
+        "--foreground": "#18181b"
+      }
+    },
+    {
+      "name": "agent-dark-390",
+      "icons": [
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "nav-link",
+          "width": 16,
+          "height": 16,
+          "size": "16"
+        },
+        {
+          "icon": "true",
+          "parent": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8",
+          "width": 20,
+          "height": 20,
+          "size": "20"
+        }
+      ],
+      "url": "/products/cmvqffv200000bcv8bnmu03xt/pack",
+      "status": 200,
+      "sha256": "6176609c0078eb6e1c703ce6d3f5bc36e4cdf3012776383b2652f4eb860ea864",
+      "theme": "dark",
+      "width": 390,
+      "variables": {
+        "--background": "#0e0e10",
+        "--primary": "#fafafa",
+        "--foreground": "#fafafa"
+      }
+    }
+  ],
+  "failures": [],
+  "overThreshold": [],
+  "excluded": [
+    {
+      "url": "/design-preview/icons",
+      "reason": "SHOW_UNCONNECTED_FEATURES=false，404；不修改开关"
+    },
+    {
+      "url": "/design、旧design-preview业务路径",
+      "reason": "删除或301到正式路由；creative基线已覆盖"
+    },
+    {
+      "url": "/reviews/*",
+      "reason": "独立HTML评审route，非(studio)页面，不参与旧CSS迁移"
+    }
+  ]
+}

@@ -11,6 +11,8 @@
 - 阶段 1 实测补充：原样复跑两次均 exit 0，完整模拟验收通过，未复现该断言。`scripts/verify-generation.ts`、费用、队列与提交标记代码均无改动。因此本轮无法证明失败每次都可复现，也不把这两次通过视为问题已修复；继续保留 KI-001，后续仍按原命令复查。阶段 0 的失败证据见 `phase0.md`，阶段 1 结果见 `phase1.md`。
 - 阶段2a原样模拟验收exit0，未复现。日志：`.local/verification/ui-phase2a/generation.log`，结果汇总见phase2a.md；不宣称修复。
 
+- 阶段2b：2026-10-29原样test:generation通过，未复现KI-001；日志`.local/verification/ui-phase2b/generation.log`。费用、队列实现及断言未修改。
+
 ## KI-002：视觉方案浏览器用例的初始化竞态
 
 - 位置：`tests/visual-plan.spec.ts`，竞品参考链接输入步骤。

@@ -38,7 +38,7 @@ npm run worker
 
 UI 截图验收单独执行 `node --import tsx scripts/ui-snapshots.ts --mode=compare`，需先启动网页，使用本地管理员登录配置；以固定浏览器夹具覆盖44种页面/主题/宽度组合，不调用模型或写入商品。原始基线在 `docs/ui-audit/baseline/`，阶段1结果在 `docs/ui-audit/phase1/`；后续可用 `--baseline=<已有截图目录> --output=<新结果目录>` 复用。已知验收问题见 [known-issues](docs/ui-audit/known-issues.md)。
 
-UI静态检查执行 `npm run lint:ui`：保留经登记的旧页面和商品/品牌数据白名单，禁止新增违规。2a截图对比命令为 `node --import tsx scripts/ui-snapshots.ts --mode=compare --baseline=docs/ui-audit/phase1 --output=docs/ui-audit/phase2a --allow-size-change`；旧页面36张基线在 `docs/ui-audit/baseline-studio/`，9处小字号的12张补充证据在 `docs/ui-audit/phase2a-small-text/`。各阶段报告见 `docs/ui-audit/`。
+UI静态检查执行 `npm run lint:ui`：仅保留6项商品/品牌数据色白名单，globals旧色值和小字号已清零，禁止新增违规。旧页对比：`node --import tsx scripts/ui-snapshots.ts --suite=studio --mode=compare --baseline=docs/ui-audit/phase2a-studio --output=docs/ui-audit/phase2b-studio --allow-size-change --audit`。creative对比参照`docs/ui-audit/phase2a`；截图、axe、文本边界与逐项说明见`docs/ui-audit/phase2b.md`。
 
 ## 当前功能
 

@@ -1,0 +1,61 @@
+{
+  "mode": "compare",
+  "commit": "7845094c963e601fc830b3a75ec9dda4c8dc7196",
+  "referenceCommit": "",
+  "referenceDirectory": ".local\\verification\\ui-phase2b\\reference-screens",
+  "browserVersion": "156.0.8078.49",
+  "capturedAt": "2026-10-29T02:30:25.870Z",
+  "fixedTime": "2026-10-28T06:00:00.000Z",
+  "normalization": "独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",
+  "results": [
+    {
+      "name": "workspace-mask-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 42,
+      "totalPixels": 1440000,
+      "differencePercent": 0.002916666666666667,
+      "alignedDifferencePercent": 0.002916666666666667,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "bfc22802856b8cf29275c3ec44e5f58f674f24566c9398e8fef3e82c053c37af"
+    },
+    {
+      "name": "workspace-mask-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 8705,
+      "totalPixels": 1440000,
+      "differencePercent": 0.6045138888888889,
+      "alignedDifferencePercent": 0.6045138888888889,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "d564bdd1e55e01516ecd2df4480f2722394c053198ac43ae84858fdabde5db7b"
+    },
+    {
+      "name": "workspace-mask-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "058fee489df82673c054d51cf4564ffd7d6cde47ecba4614decb1bfcb630431b"
+    },
+    {
+      "name": "workspace-mask-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "e859f8cf0473e5708fb72a27b7fc6dcad6d004d8510419ea43baba76cec39321"
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,4374 @@
+{
+  "states": [
+    {
+      "name": "admin-dark-1440",
+      "minTextContrast": 7.040603860035812,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "admin-dark-390",
+      "minTextContrast": 7.040603860035812,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "admin-light-1440",
+      "minTextContrast": 7.729820868495424,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 3,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "admin-light-390",
+      "minTextContrast": 7.729820868495424,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 3,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "agent-dark-1440",
+      "minTextContrast": 5.008193103670286,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "上传产品资料",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "0px",
+          "contrast": 2.1473187571845553,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "1-主图.jpg分类",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "0px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "和策划 Agent 对话",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "白底主图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "白底装载效果图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "尺寸规格底图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "门厅玄关场景图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "楼梯转角空间图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "步入式衣帽间场景图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "客厅多功能置物图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "顶部围栏托盘与双挂钩特写场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "层板材质与稳固底座细节场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        }
+      ]
+    },
+    {
+      "name": "agent-dark-390",
+      "minTextContrast": 5.008193103670286,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "上传产品资料",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "0px",
+          "contrast": 2.1473187571845553,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "1-主图.jpg分类",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "0px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "和策划 Agent 对话",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "白底主图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "白底装载效果图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "尺寸规格底图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "门厅玄关场景图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "楼梯转角空间图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "步入式衣帽间场景图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "客厅多功能置物图场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "顶部围栏托盘与双挂钩特写场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "层板材质与稳固底座细节场景意图",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 10.217541561357269,
+          "placeholderContrast": null
+        }
+      ]
+    },
+    {
+      "name": "agent-light-1440",
+      "minTextContrast": 5.352624481129354,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 75,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "上传产品资料",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "0px",
+          "contrast": 1.4211155026199733,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "1-主图.jpg分类",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "0px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "和策划 Agent 对话",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "白底主图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "白底装载效果图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "尺寸规格底图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "门厅玄关场景图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "楼梯转角空间图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "步入式衣帽间场景图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "客厅多功能置物图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "顶部围栏托盘与双挂钩特写场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "层板材质与稳固底座细节场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        }
+      ]
+    },
+    {
+      "name": "agent-light-390",
+      "minTextContrast": 5.352624481129354,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 75,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "上传产品资料",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "0px",
+          "contrast": 1.4211155026199733,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "1-主图.jpg分类",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "0px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "和策划 Agent 对话",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "白底主图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "白底装载效果图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "尺寸规格底图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "门厅玄关场景图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "楼梯转角空间图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "步入式衣帽间场景图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "客厅多功能置物图场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "顶部围栏托盘与双挂钩特写场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "层板材质与稳固底座细节场景意图",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 12.331650638485177,
+          "placeholderContrast": null
+        }
+      ]
+    },
+    {
+      "name": "forbidden-dark-1440",
+      "minTextContrast": 7.040603860035812,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "forbidden-dark-390",
+      "minTextContrast": 7.040603860035812,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "forbidden-light-1440",
+      "minTextContrast": 7.729820868495424,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 2,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "forbidden-light-390",
+      "minTextContrast": 7.729820868495424,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 2,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "gateways-dark-1440",
+      "minTextContrast": 5.150924634761468,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "gateways-dark-390",
+      "minTextContrast": 5.150924634761468,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "gateways-light-1440",
+      "minTextContrast": 6.737270915313651,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 5,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "gateways-light-390",
+      "minTextContrast": 6.737270915313651,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 5,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "login-dark-1440",
+      "minTextContrast": 6.476388788882193,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "email",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "INPUT",
+          "label": "password",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        }
+      ]
+    },
+    {
+      "name": "login-dark-390",
+      "minTextContrast": 6.476388788882193,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "email",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "INPUT",
+          "label": "password",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        }
+      ]
+    },
+    {
+      "name": "login-light-1440",
+      "minTextContrast": 7.219873278143082,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 6,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "email",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "INPUT",
+          "label": "password",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        }
+      ]
+    },
+    {
+      "name": "login-light-390",
+      "minTextContrast": 7.219873278143082,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 4,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "email",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "INPUT",
+          "label": "password",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        }
+      ]
+    },
+    {
+      "name": "models-dark-1440",
+      "minTextContrast": 5.869374838533013,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "后台搜索",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        }
+      ]
+    },
+    {
+      "name": "models-dark-390",
+      "minTextContrast": 5.869374838533013,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "后台搜索",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        }
+      ]
+    },
+    {
+      "name": "models-light-1440",
+      "minTextContrast": 4.5140623711277446,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 12,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "后台搜索",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        }
+      ]
+    },
+    {
+      "name": "models-light-390",
+      "minTextContrast": 4.5140623711277446,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 11,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "后台搜索",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        }
+      ]
+    },
+    {
+      "name": "product-dark-1440",
+      "minTextContrast": 5.008193103670286,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "sku",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "name",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "category",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "dimensions",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "colors",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "materials",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "sellingPoints",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "complexity",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 7.040603860035812,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "identityTraits",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "上传补充资料",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "0px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "竞品链接",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "1px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "上传竞品截图",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "0px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "scene-intent",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "1px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        }
+      ]
+    },
+    {
+      "name": "product-dark-390",
+      "minTextContrast": 5.008193103670286,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "sku",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "name",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "category",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "dimensions",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "colors",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "materials",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "sellingPoints",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "complexity",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 7.040603860035812,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "identityTraits",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "上传补充资料",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "0px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "竞品链接",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "1px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "上传竞品截图",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "0px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "scene-intent",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(82, 82, 91)",
+          "borderWidth": "1px",
+          "contrast": 2.334390541301996,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        }
+      ]
+    },
+    {
+      "name": "product-light-1440",
+      "minTextContrast": 6.737270915313651,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 25,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "sku",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "name",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "category",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "dimensions",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "colors",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "materials",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "sellingPoints",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "complexity",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 7.729820868495424,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "identityTraits",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "上传补充资料",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "0px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "竞品链接",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "1px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "上传竞品截图",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "0px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "scene-intent",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "1px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        }
+      ]
+    },
+    {
+      "name": "product-light-390",
+      "minTextContrast": 6.737270915313651,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 25,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "sku",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "name",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "category",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "dimensions",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "colors",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "materials",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "sellingPoints",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "SELECT",
+          "label": "complexity",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 7.729820868495424,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "identityTraits",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "上传补充资料",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "0px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "竞品链接",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "1px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "上传竞品截图",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "0px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "label": "scene-intent",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(209, 209, 214)",
+          "borderWidth": "1px",
+          "contrast": 1.5214904535719933,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        }
+      ]
+    },
+    {
+      "name": "templates-dark-1440",
+      "minTextContrast": 7.040603860035812,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "templates-dark-390",
+      "minTextContrast": 7.040603860035812,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "templates-light-1440",
+      "minTextContrast": 7.729820868495424,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 2,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "templates-light-390",
+      "minTextContrast": 7.729820868495424,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 2,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "name": "users-dark-1440",
+      "minTextContrast": 7.040603860035812,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "new-name",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-email",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-password",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "SELECT",
+          "label": "new-role",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 7.040603860035812,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-quota",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-department",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "SELECT",
+          "label": "role-cmv7le2e400004cv8vmliymxv",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 7.040603860035812,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "password-cmv7le2e400004cv8vmliymxv",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "SELECT",
+          "label": "role-cmv4x054o0000ycv8k3n02hfx",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": true,
+          "textContrast": 7.040603860035812,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "password-cmv4x054o0000ycv8k3n02hfx",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        }
+      ]
+    },
+    {
+      "name": "users-dark-390",
+      "minTextContrast": 7.040603860035812,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 0,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "new-name",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-email",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-password",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "SELECT",
+          "label": "new-role",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 7.040603860035812,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-quota",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 17.287815638592388,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-department",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "SELECT",
+          "label": "role-cmv7le2e400004cv8vmliymxv",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": 7.040603860035812,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "password-cmv7le2e400004cv8vmliymxv",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        },
+        {
+          "tag": "SELECT",
+          "label": "role-cmv4x054o0000ycv8k3n02hfx",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": true,
+          "textContrast": 7.040603860035812,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "password-cmv4x054o0000ycv8k3n02hfx",
+          "background": "rgb(22, 22, 26)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 3.7336665965662377,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.040603860035812
+        }
+      ]
+    },
+    {
+      "name": "users-light-1440",
+      "minTextContrast": 7.729820868495424,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 18,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "new-name",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-email",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-password",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "SELECT",
+          "label": "new-role",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 7.729820868495424,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-quota",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-department",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "SELECT",
+          "label": "role-cmv7le2e400004cv8vmliymxv",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 7.729820868495424,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "password-cmv7le2e400004cv8vmliymxv",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "SELECT",
+          "label": "role-cmv4x054o0000ycv8k3n02hfx",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": true,
+          "textContrast": 7.729820868495424,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "password-cmv4x054o0000ycv8k3n02hfx",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        }
+      ]
+    },
+    {
+      "name": "users-light-390",
+      "minTextContrast": 7.729820868495424,
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "whiteSurfaces": 18,
+      "pageOverflow": false,
+      "axeViolations": [],
+      "axeIncomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "new-name",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-email",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-password",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "SELECT",
+          "label": "new-role",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 7.729820868495424,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-quota",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 17.71676507806213,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "new-department",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "SELECT",
+          "label": "role-cmv7le2e400004cv8vmliymxv",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": 7.729820868495424,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "password-cmv7le2e400004cv8vmliymxv",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        },
+        {
+          "tag": "SELECT",
+          "label": "role-cmv4x054o0000ycv8k3n02hfx",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": true,
+          "textContrast": 7.729820868495424,
+          "placeholderContrast": null
+        },
+        {
+          "tag": "INPUT",
+          "label": "password-cmv4x054o0000ycv8k3n02hfx",
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(113, 113, 122)",
+          "borderWidth": "1px",
+          "contrast": 4.832895561154151,
+          "exempt": false,
+          "textContrast": null,
+          "placeholderContrast": 7.729820868495424
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "name": "agent-dark-1440.text-metrics.json",
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "pageOverflow": false
+    },
+    {
+      "name": "agent-dark-390.text-metrics.json",
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "pageOverflow": false
+    },
+    {
+      "name": "agent-light-1440.text-metrics.json",
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "pageOverflow": false
+    },
+    {
+      "name": "agent-light-390.text-metrics.json",
+      "contrastFailures": 0,
+      "controlContrastFailures": 0,
+      "smallFonts": 0,
+      "overflows": 0,
+      "pageOverflow": false
+    }
+  ],
+  "whitelist": {
+    "before": {
+      "globalsHex": 232,
+      "globalsSmallFont": 49,
+      "dataHex": 6,
+      "total": 287
+    },
+    "after": {
+      "globalsHex": 0,
+      "globalsSmallFont": 0,
+      "dataHex": 6,
+      "total": 6
+    }
+  },
+  "notes": [
+    "文字计算对比度要求4.5:1（即使大字也不降低），排除屏幕阅读器隐藏文字、aria-hidden装饰和禁用控件。",
+    "白色主按钮/品牌标识是暗色方案的明确设计，不列为白底残留；真实图片也不算UI白底。",
+    "内部有意滚动容器保留：Agent档案字段、消息和模型表；没有通过缩小字号隐藏溢出。",
+    "axe未决项保留在原始JSON，单字符品牌与裁切交界由计算值和截图人工核查，不当成自动通过。"
+  ],
+  "failures": []
+}

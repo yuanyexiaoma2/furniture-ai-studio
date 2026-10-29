@@ -142,7 +142,8 @@ test("商品创作验收：保存、上传、生成条件、记录留存、下�
   await expect(page.getByTestId(`generation-${job.id}`)).toContainText("实际像素：64 × 64 px");
   await expect(page.getByTestId(`generation-${job.id}`)).toContainText("预估 $0.030000");
   await expect(page.getByTestId(`generation-${job.id}`).getByText("分辨率不足亚马逊建议值", { exact: true })).toBeVisible();
-  await expect(page.getByTestId(`generation-${job.id}`).locator(".resolution-warning")).toHaveCSS("background-color", "rgb(255, 243, 207)");
+  // 2b警告表面迁为语义色fff5dd；仍校验实际颜色，没有取消样式断言。
+  await expect(page.getByTestId(`generation-${job.id}`).locator(".resolution-warning")).toHaveCSS("background-color", "rgb(255, 245, 221)");
   await page.getByTestId(`generation-${job.id}`).getByText("本次使用的身份特征版本", { exact: true }).click(); await expect(page.getByTestId(`generation-${job.id}`)).toContainText("冻结的旧版身份");
   const failedJob = await db.generationJob.create({ data: { productId, createdById: product.createdById, logicalModel: "scene-main", provider: "simulation", model: "模拟业务错误", status: "failed", costUsd: 0, costEstimated: true, input: { sceneIntent: "模拟KIE HTTP200业务失败" }, error: "KIE：内容被安全策略拦截；已停止等待", completedAt: new Date() } });
   await page.getByRole("button", { name: "刷新记录", exact: true }).click(); await expect(page.getByTestId(`generation-${failedJob.id}`)).toContainText("生成失败"); await expect(page.getByTestId(`generation-${failedJob.id}`)).toContainText("内容被安全策略拦截");

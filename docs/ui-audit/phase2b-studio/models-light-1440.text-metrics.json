@@ -1,0 +1,1141 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#71717a",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#e4e4e7",
+    "--input": "#e4e4e7",
+    "--ring": "#1f3a2e",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "span.brand-symbol",
+      "text": "F",
+      "fontSize": "28px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 35,
+      "scrollWidth": 35,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "家具工作台",
+      "fontSize": "18px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 91,
+      "scrollWidth": 91,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.wordmark-light",
+      "text": "工作台",
+      "fontSize": "18px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a.nav-link",
+      "text": "SKU 项目",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 109,
+      "scrollWidth": 109,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a.nav-link.active",
+      "text": "管理后台",
+      "fontSize": "13px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 108,
+      "scrollWidth": 108,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "家具创作室",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 79,
+      "scrollWidth": 79,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a",
+      "text": "首页",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a",
+      "text": "SKU",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 25,
+      "scrollWidth": 25,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a",
+      "text": "模板库",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 42,
+      "scrollWidth": 42,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2",
+      "text": "团队管理",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 150,
+      "scrollWidth": 150,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2.active",
+      "text": "模型管理",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 174,
+      "scrollWidth": 174,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "用户管理",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 174,
+      "scrollWidth": 174,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "网关管理",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 174,
+      "scrollWidth": 174,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h1",
+      "text": "模型管理",
+      "fontSize": "28px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 448,
+      "scrollWidth": 448,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p",
+      "text": "为团队选择合适的创作搭档。开启可见后，模型会出现在美工选择器中。",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 448,
+      "scrollWidth": 448,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "模型",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 306,
+      "scrollWidth": 306,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "类型",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "能力探测",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "对美工可见",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 137,
+      "scrollWidth": 137,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "可用状态",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "Gemini 3.8 Flash",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 104,
+      "scrollWidth": 104,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "16/20 参数正确 · 20/20 上下文",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "Claude Haiku 5.5",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 107,
+      "scrollWidth": 107,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "0/20 参数正确 · 0/20 上下文",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "GPT-6.1 Sol",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 74,
+      "scrollWidth": 74,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "20/20 参数正确 · 20/20 上下文",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "Gemini 2.5 Pro",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 93,
+      "scrollWidth": 93,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "待验证",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "Gemini 3.8 Flash",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 104,
+      "scrollWidth": 104,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "用户指定默认 · 待验证",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "Nano Banana 2.1",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 108,
+      "scrollWidth": 108,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "Nano Banana 2",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 97,
+      "scrollWidth": 97,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "Nano Banana Pro",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 111,
+      "scrollWidth": 111,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "GPT Image 2.5",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 92,
+      "scrollWidth": 92,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "Qwen3",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 44,
+      "scrollWidth": 44,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "家具电商 · 创意协作空间",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 136,
+      "scrollWidth": 136,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "公司内部应用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 75,
+      "scrollWidth": 75,
+      "overflow": false,
+      "wrap": "normal"
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "INPUT",
+      "label": "后台搜索",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    }
+  ],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "studio-header"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-app"
+    },
+    {
+      "tag": "HEADER",
+      "classes": "p-topbar"
+    },
+    {
+      "tag": "DIV",
+      "classes": "w-theme-segments"
+    },
+    {
+      "tag": "ASIDE",
+      "classes": "p-admin-nav"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "flex h-9 w-full rounded-[var(--radius-control)] border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-admin-table"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}
