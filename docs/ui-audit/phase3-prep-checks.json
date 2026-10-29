@@ -1,0 +1,994 @@
+{
+  "baseline": {
+    "commit": "1e6e4bf43e221df9846294cc126c51644e6820e2",
+    "captured": 44,
+    "environment": {
+      "schemaVersion": 1,
+      "chromeVersion": "156.0.8078.49",
+      "os": {
+        "platform": "win32",
+        "release": "10.0.26200",
+        "version": "Windows 11 Pro",
+        "arch": "x64"
+      },
+      "fonts": [
+        {
+          "family": "Segoe UI",
+          "installed": true,
+          "files": [
+            {
+              "path": "C:\\WINDOWS\\Fonts\\SegUIVar.ttf",
+              "sha256": "27ca1ab4bd5ad3b0404ee6a9a03b143408dbd7e5a4c9e4b2054639c03fc0f682"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\segoeui.ttf",
+              "sha256": "704eada12961a27fd271f7d3b09e2066520e758390c1776744eff430fee30f6e"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\segoeuib.ttf",
+              "sha256": "b169e636719880976a97e94e3b1cb3dbe5f4a38eabc037bf9f2a9165154c3ad2"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\segoeuii.ttf",
+              "sha256": "f9feaeee8b20751c15700b4fb03571b335f52e91edece7fb7aa1ceaa6eeb0db7"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\segoeuil.ttf",
+              "sha256": "0dbddf9e20b2dc0facd568c877aa1155b3597c09a7ca41d00ca580af25d1cc51"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\segoeuisl.ttf",
+              "sha256": "288a8e3fcd0f6090881dcc469b557f55e0a85864abe1cc24330bb4f08105f69b"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\segoeuiz.ttf",
+              "sha256": "f2ecff1a943929f07a7b872c948b1de57fe688ac7d0bab6fc9f624c95a97dbfe"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\seguibl.ttf",
+              "sha256": "bdf29c9b7484c631f19d6ef436a63d15f8a1a82bc856f1a0f6906c41a097d2b1"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\seguibli.ttf",
+              "sha256": "6efcb158b0093bdeb6c308a93e10c2240e6510b99b756d9583cb59b7e219aaf9"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\seguiemj.ttf",
+              "sha256": "451df9bb5546055af625ff86aa72695df43e8e170b4c6c1316fe44e9c7a22f7c"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\seguihis.ttf",
+              "sha256": "a162ceeaf701b55d11c542daf1c39c52bfaf686496505bff2eb75ca24814c136"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\seguili.ttf",
+              "sha256": "07bbf002d8dccb6bf7db8e31207076bf357fe92b1e5f82a20d2c941d59ebeb96"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\seguisb.ttf",
+              "sha256": "6c3fd894b19950b10c34bf64069ef821eaf2f58f959146306fee5b367472e501"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\seguisbi.ttf",
+              "sha256": "16847ed882097cd1c0d45c63b6d75c3021f2133c64db03796f57dac198d0b2ad"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\seguisli.ttf",
+              "sha256": "032eb41f836c3d6fd765dc4c287ea87f7f0c392a454ffc58d7e5fbe29d1fee86"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\seguisym.ttf",
+              "sha256": "a4a35dcc62cd30e1a6c97b695ecef83e59d2b149e3af834f6a49f11851d56b37"
+            }
+          ]
+        },
+        {
+          "family": "Microsoft YaHei UI",
+          "installed": true,
+          "files": [
+            {
+              "path": "C:\\WINDOWS\\Fonts\\msyh.ttc",
+              "sha256": "d79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\msyhbd.ttc",
+              "sha256": "4508821b3dffe01f0ef5e5326a3e60df705a44633858811f67b6982dce3f6ee6"
+            },
+            {
+              "path": "C:\\WINDOWS\\Fonts\\msyhl.ttc",
+              "sha256": "7e9bdf90bb5d3fe1b5975fc8ae31944b8fa674122261f92c28d4ec0b9c482fa1"
+            }
+          ]
+        },
+        {
+          "family": "PingFang SC",
+          "installed": false,
+          "files": []
+        }
+      ]
+    }
+  },
+  "creative": {
+    "captured": 44,
+    "failures": [],
+    "minText": 4.5140623711277446,
+    "minBoundary": 3.7336665965662377,
+    "states": [
+      {
+        "name": "home-light-1440",
+        "minText": 4.559116686973566,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "skus-light-1440",
+        "minText": 4.832895561154151,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 0,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-empty-light-1440",
+        "minText": 4.5140623711277446,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-images-light-1440",
+        "minText": 4.713596823761879,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-single-light-1440",
+        "minText": 4.713596823761879,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-multi-light-1440",
+        "minText": 4.713596823761879,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-mask-light-1440",
+        "minText": 4.713596823761879,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-expand-light-1440",
+        "minText": 4.832895561154151,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-product-light-1440",
+        "minText": 4.832895561154151,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "library-light-1440",
+        "minText": 4.832895561154151,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 0,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "admin-light-1440",
+        "minText": 4.5140623711277446,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 0,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "home-dark-1440",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "skus-dark-1440",
+        "minText": 5.869374838533013,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 0,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-empty-dark-1440",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-images-dark-1440",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-single-dark-1440",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-multi-dark-1440",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-mask-dark-1440",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-expand-dark-1440",
+        "minText": 7.040603860035812,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-product-dark-1440",
+        "minText": 7.040603860035812,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "library-dark-1440",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.9902130556588946,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 0,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "admin-dark-1440",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "home-light-390",
+        "minText": 4.581924458672611,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": [
+          {
+            "selector": "span.p-model-label",
+            "text": "Gemini 3.8 Flash",
+            "clientWidth": 0,
+            "classification": "既有移动端模型胶囊裁切到0宽，无可见文字；不算实际可见文字通过，也不算栅格算法已测得"
+          },
+          {
+            "selector": "span.p-model-label",
+            "text": "Nano Banana 2.1",
+            "clientWidth": 0,
+            "classification": "既有移动端模型胶囊裁切到0宽，无可见文字；不算实际可见文字通过，也不算栅格算法已测得"
+          }
+        ]
+      },
+      {
+        "name": "skus-light-390",
+        "minText": 4.832895561154151,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 0,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-empty-light-390",
+        "minText": 4.5140623711277446,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-images-light-390",
+        "minText": 4.832895561154151,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-single-light-390",
+        "minText": 4.832895561154151,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-multi-light-390",
+        "minText": 4.832895561154151,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-mask-light-390",
+        "minText": 4.713596823761879,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-expand-light-390",
+        "minText": 4.832895561154151,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-product-light-390",
+        "minText": 4.832895561154151,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "library-light-390",
+        "minText": 4.832895561154151,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 0,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "admin-light-390",
+        "minText": 4.5140623711277446,
+        "minBoundary": 4.832895561154151,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "home-dark-390",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": [
+          {
+            "selector": "span.p-model-label",
+            "text": "Gemini 3.8 Flash",
+            "clientWidth": 0,
+            "classification": "既有移动端模型胶囊裁切到0宽，无可见文字；不算实际可见文字通过，也不算栅格算法已测得"
+          },
+          {
+            "selector": "span.p-model-label",
+            "text": "Nano Banana 2.1",
+            "clientWidth": 0,
+            "classification": "既有移动端模型胶囊裁切到0宽，无可见文字；不算实际可见文字通过，也不算栅格算法已测得"
+          }
+        ]
+      },
+      {
+        "name": "skus-dark-390",
+        "minText": 5.869374838533013,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 0,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-empty-dark-390",
+        "minText": 5.869374838533013,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-images-dark-390",
+        "minText": 5.869374838533013,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-single-dark-390",
+        "minText": 5.869374838533013,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-multi-dark-390",
+        "minText": 5.869374838533013,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-mask-dark-390",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.9902130556588946,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-expand-dark-390",
+        "minText": 7.040603860035812,
+        "minBoundary": null,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "workspace-product-dark-390",
+        "minText": 7.040603860035812,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "library-dark-390",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.9902130556588946,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 0,
+        "rasterUnresolved": []
+      },
+      {
+        "name": "admin-dark-390",
+        "minText": 5.869374838533013,
+        "minBoundary": 3.7336665965662377,
+        "textFailures": 0,
+        "controlFailures": 0,
+        "borderFailures": 0,
+        "axeViolations": 0,
+        "axeIncomplete": 1,
+        "rasterUnresolved": []
+      }
+    ]
+  },
+  "input": {
+    "states": [
+      {
+        "name": "home-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "skus-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-empty-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-images-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-single-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-multi-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-mask-light-1440",
+        "strict": 0.012986111111111111,
+        "classification": "桌面蒙版笔迹既有栅格波动；其余42张0%"
+      },
+      {
+        "name": "workspace-expand-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-product-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "library-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "admin-light-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "home-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "skus-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-empty-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-images-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-single-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-multi-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-mask-dark-1440",
+        "strict": 0.6048611111111112,
+        "classification": "桌面蒙版笔迹既有栅格波动；其余42张0%"
+      },
+      {
+        "name": "workspace-expand-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-product-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "library-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "admin-dark-1440",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "home-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "skus-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-empty-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-images-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-single-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-multi-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-mask-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-expand-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-product-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "library-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "admin-light-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "home-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "skus-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-empty-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-images-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-single-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-multi-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-mask-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-expand-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "workspace-product-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "library-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      },
+      {
+        "name": "admin-dark-390",
+        "strict": 0,
+        "classification": "0%：44个既有状态没有用到纸色共享Input，实际输入背景不变"
+      }
+    ],
+    "probe": {
+      "method": "复制真实/admin/users共享Input DOM到creative根下，以原2b纸色声明作A/B覆盖；非新增产品入口，不写数据库。",
+      "results": [
+        {
+          "width": 1440,
+          "theme": "light",
+          "beforeStyle": {
+            "color": "rgb(24, 24, 27)",
+            "background": "rgb(255, 254, 250)",
+            "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "lineHeight": "22.4px",
+            "border": "1px solid rgb(113, 113, 122)"
+          },
+          "afterStyle": {
+            "color": "rgb(24, 24, 27)",
+            "background": "rgb(255, 255, 255)",
+            "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "lineHeight": "22.4px",
+            "border": "1px solid rgb(113, 113, 122)"
+          },
+          "changedPixels": 10891,
+          "outsideInput": 0
+        },
+        {
+          "width": 1440,
+          "theme": "dark",
+          "beforeStyle": {
+            "color": "rgb(250, 250, 250)",
+            "background": "rgb(255, 254, 250)",
+            "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "lineHeight": "22.4px",
+            "border": "1px solid rgb(113, 113, 122)"
+          },
+          "afterStyle": {
+            "color": "rgb(250, 250, 250)",
+            "background": "rgb(22, 22, 26)",
+            "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "lineHeight": "22.4px",
+            "border": "1px solid rgb(113, 113, 122)"
+          },
+          "changedPixels": 11064,
+          "outsideInput": 0
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "beforeStyle": {
+            "color": "rgb(24, 24, 27)",
+            "background": "rgb(255, 254, 250)",
+            "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "lineHeight": "22.4px",
+            "border": "1px solid rgb(113, 113, 122)"
+          },
+          "afterStyle": {
+            "color": "rgb(24, 24, 27)",
+            "background": "rgb(255, 255, 255)",
+            "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "lineHeight": "22.4px",
+            "border": "1px solid rgb(113, 113, 122)"
+          },
+          "changedPixels": 10891,
+          "outsideInput": 0
+        },
+        {
+          "width": 390,
+          "theme": "dark",
+          "beforeStyle": {
+            "color": "rgb(250, 250, 250)",
+            "background": "rgb(255, 254, 250)",
+            "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "lineHeight": "22.4px",
+            "border": "1px solid rgb(113, 113, 122)"
+          },
+          "afterStyle": {
+            "color": "rgb(250, 250, 250)",
+            "background": "rgb(22, 22, 26)",
+            "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "lineHeight": "22.4px",
+            "border": "1px solid rgb(113, 113, 122)"
+          },
+          "changedPixels": 11064,
+          "outsideInput": 0
+        }
+      ]
+    }
+  },
+  "studio": {
+    "captured": 36,
+    "failures": [],
+    "exactSourceMatches": 33,
+    "sourceDifferences": [
+      {
+        "name": "models-light-1440",
+        "differencePercent": 0.07836990595611285
+      },
+      {
+        "name": "models-dark-1440",
+        "differencePercent": 1.108879745733194
+      },
+      {
+        "name": "models-dark-390",
+        "differencePercent": 1.2758460208762714
+      }
+    ],
+    "historicalFontFingerprint": "未记录，不能补造；原版重拍也复现历史渲染差异"
+  },
+  "validation": {
+    "lintUi": "通过；6项数据白名单、0新增",
+    "lint": "通过",
+    "typecheck": "通过",
+    "build": "通过",
+    "existingUnits": 106,
+    "environmentUnits": 7,
+    "integration": 5,
+    "generation": "通过；KI-001未复现，不宣称修复",
+    "e2e": {
+      "passed": 10,
+      "skipped": 2,
+      "reason": "Agent两项按设计专用运行"
+    },
+    "agent": {
+      "passed": 2,
+      "initialRun": "Next既有安全提示后3105不可达，原命令重跑2通过"
+    }
+  },
+  "scope": "仅阶段3前置；未执行3a/3b/3c；未改费用、队列、双网关、鉴权；未调用付费模型"
+}

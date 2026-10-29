@@ -58,7 +58,7 @@
 .p-intent-row button:hover { background: var(--p-panel); color: var(--foreground); border-color: var(--p-selection); }
 .p-home-composer-wrap { width: 100%; max-width: 760px; }
 .p-home-input { width: 100%; max-width: 760px; border-radius: var(--radius-panel); padding: 20px; background: var(--p-panel); box-shadow: 0 1px 2px var(--shadow-ink-3),0 12px 32px var(--shadow-ink-6); transition: box-shadow .2s,border-color .2s; }
-.dark .p-home-input { box-shadow: 0 1px 2px var(--shadow-ink-13),0 16px 40px var(--shadow-ink-21); border-color: var(--home-input-line-dark); }
+.dark .p-home-input { box-shadow: 0 1px 2px var(--shadow-ink-13),0 16px 40px var(--shadow-ink-21); border-color: var(--input); }
 .p-home-input:focus-within { border-color: var(--p-selection); box-shadow: 0 0 0 2px var(--p-highlight),0 1px 2px var(--shadow-ink-3),0 12px 32px var(--shadow-ink-6); }
 .p-home-textarea { position: relative; }
 .p-home-input textarea { min-height: 94px; font-size: var(--text-body); line-height: 1.8; padding: 0 48px 14px 0; }
@@ -182,7 +182,7 @@
 .r1-task-card>.concept-icon-box { position: absolute; left: 20px; top: 20px; z-index: 2; }
 .r1-task-art { position: absolute; inset: 0; transition: transform .2s ease-out; }
 .r1-task-card:hover .r1-task-art { transform: scale(1.03); }
-.r1-task-caption { position: absolute; left: 24px; right: 24px; bottom: 44px; z-index: 2; }
+.r1-task-caption { position: absolute; left: 24px; right: 24px; bottom: 44px; z-index: 2; background: var(--story-scrim); }
 .p-app .r1-task-caption h3 { font-size: var(--text-xl); font-weight: 600; color: var(--color-on-image); margin: 0 0 8px; }
 .r1-task-caption p { font-size: var(--text-body); line-height: 1.65; min-height: 46px; color: var(--task-caption-copy); margin: 0; }
 .r1-task-start { position: absolute; bottom: 19px; left: 24px; z-index: 2; display: flex; gap: 6px; align-items: center; font-size: var(--text-sm); opacity: 0; transform: translateY(4px); transition: opacity .2s,transform .2s; }
@@ -190,7 +190,7 @@
 .r1-pack-art { display: flex; align-items: center; gap: 10px; background: var(--task-pack-surface); padding: 38px 22px 115px; }
 .r1-pack-original { position: relative; flex: 0 0 30%; aspect-ratio: 3/4; border-radius: var(--radius-control); overflow: hidden; background: var(--task-original-surface); box-shadow: 0 8px 18px var(--shadow-ink-13-3); }
 .r1-pack-original img, .r1-pack-output img { width: 100%; height: 100%; object-fit: cover; }
-.r1-pack-original span, .r1-pack-output span { position: absolute; left: 6px; bottom: 5px; font-size: var(--text-xs); color: var(--color-on-image); text-shadow: 0 1px 4px var(--shadow-ink-60); }
+.r1-pack-original span, .r1-pack-output span { position: absolute; left: 6px; bottom: 5px; font-size: var(--text-xs); color: var(--color-on-image); background: var(--attachment-close-surface); text-shadow: 0 1px 4px var(--shadow-ink-60); }
 .r1-pack-art>svg { color: var(--task-flow-arrow); flex: none; }
 .r1-pack-results { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; flex: 1; min-width: 0; }
 .r1-pack-output { position: relative; aspect-ratio: 4/3; border-radius: var(--radius-tag); overflow: hidden; box-shadow: 0 4px 12px var(--shadow-ink-7); }
@@ -208,7 +208,7 @@
 .r1-edit-after { position: absolute; inset: 0; clip-path: inset(0 0 0 50%); }
 .r1-edit-after img { filter: brightness(1.2) saturate(.55); }
 .r1-edit-divider { position: absolute; left: 50%; height: 100%; width: 2px; background: var(--edit-split-line); }
-.r1-edit-art>span { position: absolute; top: 26px; left: 22%; font-size: var(--text-xs); background: var(--scrim-ink-27); border-radius: var(--radius-pill); padding: 2px 8px; }
+.r1-edit-art>span { position: absolute; top: 26px; left: 22%; font-size: var(--text-xs); background: var(--story-scrim); border-radius: var(--radius-pill); padding: 2px 8px; }
 .r1-edit-art>span:last-child { left: auto; right: 20%; }
 .r1-library-links { display: flex; gap: 5px; align-items: center; margin-top: 20px; font-size: var(--text-sm); color: var(--p-subtle); }
 .r1-library-links>span { display: flex; gap: 8px; align-items: center; }

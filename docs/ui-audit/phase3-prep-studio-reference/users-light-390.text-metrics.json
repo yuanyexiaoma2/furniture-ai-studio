@@ -1,0 +1,1656 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#52525b",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#d1d1d6",
+    "--input": "#71717a",
+    "--ring": "#1f3a2e",
+    "--p-subtle": "",
+    "--p-text": "",
+    "--p-panel": "",
+    "--studio-muted-ink": "#52525b",
+    "--studio-control-line": "#71717a",
+    "--studio-input-surface": "#fff",
+    "--radius": ".75rem",
+    "--font-body": "\"Segoe UI\",\"PingFang SC\",\"Microsoft YaHei UI\",system-ui,sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "span.brand-symbol",
+      "text": "F",
+      "fontSize": "28px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 35,
+      "scrollWidth": 35,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 30.90625,
+          "y": 22.5,
+          "width": 13.171875,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "家具工作台",
+      "fontSize": "15px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 76,
+      "scrollWidth": 76,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 67,
+          "y": 29.75,
+          "width": 29,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "selector": "span.wordmark-light",
+      "text": "工作台",
+      "fontSize": "15px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 99,
+          "y": 29.75,
+          "width": 43.5,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "selector": "a.nav-link",
+      "text": "SKU 项目",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 175,
+      "scrollWidth": 175,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 95.0625,
+          "y": 91,
+          "width": 48.875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "a.nav-link.active",
+      "text": "管理后台",
+      "fontSize": "12px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 175,
+      "scrollWidth": 175,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 270.5,
+          "y": 91,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 292,
+          "y": 21,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 292,
+          "y": 43,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "p.eyebrow",
+      "text": "管理后台 / 用户管理",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 228,
+      "scrollWidth": 228,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 156,
+          "width": 129.5625,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "h1",
+      "text": "团队成员.",
+      "fontSize": "28px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 228,
+      "scrollWidth": 228,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 189,
+          "width": 106,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "span.title-dot",
+      "text": ".",
+      "fontSize": "28px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 127,
+          "y": 189,
+          "width": 5.265625,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "p.intro-copy",
+      "text": "为每一位协作者分配权限和美元月度配额。",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 228,
+      "scrollWidth": 228,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 10,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 240.796875,
+          "width": 228,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "新增用户",
+      "fontSize": "14px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 56,
+      "scrollWidth": 56,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 11,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 62,
+          "y": 311.390625,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "姓名",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 304,
+      "scrollWidth": 304,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 12,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 43,
+          "y": 378.390625,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "邮箱",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 304,
+      "scrollWidth": 304,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 13,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 43,
+          "y": 460.390625,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "初始密码",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 304,
+      "scrollWidth": 304,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 14,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 43,
+          "y": 542.390625,
+          "width": 52,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "角色",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 145,
+      "scrollWidth": 145,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 15,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 43,
+          "y": 624.390625,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "月度配额（美元）",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 145,
+      "scrollWidth": 145,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 16,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 202.5,
+          "y": 624.390625,
+          "width": 104,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "部门（可选）",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 304,
+      "scrollWidth": 304,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 17,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 43,
+          "y": 706.390625,
+          "width": 78,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.border-transparent.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.bg-primary.text-primary-foreground.hover:bg-primary/80.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2.w-full.h-10",
+      "text": "创建用户",
+      "fontSize": "16px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 302,
+      "scrollWidth": 302,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 18,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 174,
+          "y": 818.390625,
+          "width": 64,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "团队成员",
+      "fontSize": "14px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 56,
+      "scrollWidth": 56,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 19,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 66,
+          "y": 918.390625,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.count-chip",
+      "text": "2",
+      "fontSize": "12px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 11.518113606366803,
+      "clientWidth": 20,
+      "scrollWidth": 20,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 20,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 141,
+          "y": 919.890625,
+          "width": 6.46875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "任务5 NL27TS01真实验收",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 302,
+      "scrollWidth": 302,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 21,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 44,
+          "y": 1033.390625,
+          "width": 148,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "task5-nl27-f76e0ad8-58e5-4bfc-9073-a095495af006@example.invalid",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 302,
+      "scrollWidth": 302,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 22,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 44,
+          "y": 1056.890625,
+          "width": 202.59375,
+          "height": 16
+        },
+        {
+          "x": 44,
+          "y": 1074.890625,
+          "width": 167.140625,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span.group/badge.inline-flex.h-5.w-fit.shrink-0.items-center.justify-center.gap-1.overflow-hidden.rounded-4xl.border.border-transparent.px-2.py-0.5.text-xs.font-medium.whitespace-nowrap.transition-all.focus-visible:border-ring.focus-visible:ring-[3px].focus-visible:ring-ring/50.has-data-[icon=inline-end]:pr-1.5.has-data-[icon=inline-start]:pl-1.5.aria-invalid:border-destructive.aria-invalid:ring-destructive/20.dark:aria-invalid:ring-destructive/40.[&>svg]:pointer-events-none.[&>svg]:size-3!.bg-secondary.text-secondary-foreground.[a]:hover:bg-secondary/80",
+      "text": "设计师",
+      "fontSize": "12px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 16.118381484528566,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 23,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 53,
+          "y": 1105.890625,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span.user-meta",
+      "text": "未分配部门 · 月度配额 $2.000000",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 255,
+      "scrollWidth": 255,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 24,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 91,
+          "y": 1142.890625,
+          "width": 60,
+          "height": 16
+        },
+        {
+          "x": 151,
+          "y": 1142.890625,
+          "width": 66.9375,
+          "height": 16
+        },
+        {
+          "x": 217.9375,
+          "y": 1142.890625,
+          "width": 47.890625,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "summary",
+      "text": "重置密码",
+      "fontSize": "12px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 81,
+      "scrollWidth": 81,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 25,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 67.703125,
+          "y": 1228.890625,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 200,
+      "scrollWidth": 200,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 26,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 44,
+          "y": 1263.890625,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.border-transparent.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.bg-primary.text-primary-foreground.hover:bg-primary/80.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 198,
+      "scrollWidth": 198,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 27,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 120,
+          "y": 1348.890625,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "管理员",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 140,
+      "scrollWidth": 140,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 28,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 91,
+          "y": 1299.890625,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "yuanyexiaoma@163.com",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 140,
+      "scrollWidth": 140,
+      "overflow": false,
+      "wrap": "anywhere",
+      "raster": false,
+      "index": 29,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 91,
+          "y": 1323.390625,
+          "width": 131.953125,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span.group/badge.inline-flex.h-5.w-fit.shrink-0.items-center.justify-center.gap-1.overflow-hidden.rounded-4xl.border.border-transparent.px-2.py-0.5.text-xs.font-medium.whitespace-nowrap.transition-all.focus-visible:border-ring.focus-visible:ring-[3px].focus-visible:ring-ring/50.has-data-[icon=inline-end]:pr-1.5.has-data-[icon=inline-start]:pl-1.5.aria-invalid:border-destructive.aria-invalid:ring-destructive/20.dark:aria-invalid:ring-destructive/40.[&>svg]:pointer-events-none.[&>svg]:size-3!.bg-secondary.text-secondary-foreground.[a]:hover:bg-secondary/80",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 16.118381484528566,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 30,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 252,
+          "y": 1311.640625,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span.user-meta",
+      "text": "未分配部门 · 月度配额 $1.500000",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 255,
+      "scrollWidth": 255,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 31,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 91,
+          "y": 1359.390625,
+          "width": 60,
+          "height": 16
+        },
+        {
+          "x": 151,
+          "y": 1359.390625,
+          "width": 66.9375,
+          "height": 16
+        },
+        {
+          "x": 217.9375,
+          "y": 1359.390625,
+          "width": 47.890625,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "summary",
+      "text": "重置密码",
+      "fontSize": "12px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 81,
+      "scrollWidth": 81,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 32,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 67.703125,
+          "y": 1445.390625,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "label.flex.items-center.gap-2.text-sm.leading-none.font-medium.select-none.group-data-[disabled=true]:pointer-events-none.group-data-[disabled=true]:opacity-50.peer-disabled:cursor-not-allowed.peer-disabled:opacity-50",
+      "text": "",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 200,
+      "scrollWidth": 200,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 33,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 44,
+          "y": 1480.390625,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "button.group/button.inline-flex.shrink-0.items-center.justify-center.rounded-lg.border.border-transparent.bg-clip-padding.text-sm.font-medium.whitespace-nowrap.transition-all.outline-none.select-none.focus-visible:border-ring.focus-visible:ring-3.focus-visible:ring-ring/50.active:not-aria-[haspopup]:translate-y-px.disabled:pointer-events-none.disabled:opacity-50.aria-invalid:border-destructive.aria-invalid:ring-3.aria-invalid:ring-destructive/20.dark:aria-invalid:border-destructive/50.dark:aria-invalid:ring-destructive/40.[&_svg]:pointer-events-none.[&_svg]:shrink-0.[&_svg:not([class*='size-'])]:size-4.bg-primary.text-primary-foreground.hover:bg-primary/80.h-8.gap-1.5.px-2.5.has-data-[icon=inline-end]:pr-2.has-data-[icon=inline-start]:pl-2",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 198,
+      "scrollWidth": 198,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 34,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 120,
+          "y": 1565.390625,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "家具电商 · 创意协作空间",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 136,
+      "scrollWidth": 136,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 35,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 20,
+          "y": 1547.390625,
+          "width": 135.6875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "公司内部应用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 75,
+      "scrollWidth": 75,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 36,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 295,
+          "y": 1547.390625,
+          "width": 75,
+          "height": 16
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "INPUT",
+      "label": "new-name",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "INPUT.h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    },
+    {
+      "tag": "INPUT",
+      "label": "new-email",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "INPUT.h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    },
+    {
+      "tag": "INPUT",
+      "label": "new-password",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "INPUT.h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    },
+    {
+      "tag": "SELECT",
+      "label": "new-role",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "SELECT.studio-select",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": 7.729820868495424,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "new-quota",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "INPUT.h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": 17.71676507806213,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "new-department",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "INPUT.h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    },
+    {
+      "tag": "SELECT",
+      "label": "role-cmv7le2e400004cv8vmliymxv",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "SELECT.studio-select",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": 7.729820868495424,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "password-cmv7le2e400004cv8vmliymxv",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "INPUT.h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    },
+    {
+      "tag": "SELECT",
+      "label": "role-cmv4x054o0000ycv8k3n02hfx",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "SELECT.studio-select",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": true,
+      "textContrast": 7.729820868495424,
+      "placeholderContrast": null
+    },
+    {
+      "tag": "INPUT",
+      "label": "password-cmv4x054o0000ycv8k3n02hfx",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "INPUT.h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    }
+  ],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "studio-header"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "workspace-panel create-user-panel"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+    },
+    {
+      "tag": "SELECT",
+      "classes": "studio-select"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "workspace-panel users-panel"
+    },
+    {
+      "tag": "SPAN",
+      "classes": "count-chip"
+    },
+    {
+      "tag": "DIV",
+      "classes": "user-avatar"
+    },
+    {
+      "tag": "SPAN",
+      "classes": "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3! bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80"
+    },
+    {
+      "tag": "SELECT",
+      "classes": "studio-select"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+    },
+    {
+      "tag": "DIV",
+      "classes": "user-avatar"
+    },
+    {
+      "tag": "SPAN",
+      "classes": "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3! bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80"
+    },
+    {
+      "tag": "SELECT",
+      "classes": "studio-select"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "21.0pt (28px)",
+                  "fontWeight": "normal",
+                  "messageKey": "shortTextContent",
+                  "expectedContrastRatio": "3:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<span class=\"brand-symbol\">F</span>",
+                    "target": [
+                      ".brand-symbol"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element content is too short to determine if it is actual text content"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"brand-symbol\">F</span>",
+            "target": [
+              ".brand-symbol"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "aria-allowed-attr",
+      "aria-conditional-attr",
+      "aria-deprecated-role",
+      "aria-hidden-body",
+      "aria-hidden-focus",
+      "aria-prohibited-attr",
+      "aria-required-attr",
+      "aria-roles",
+      "aria-valid-attr-value",
+      "aria-valid-attr",
+      "autocomplete-valid",
+      "button-name",
+      "bypass",
+      "color-contrast",
+      "document-title",
+      "duplicate-id-aria",
+      "form-field-multiple-labels",
+      "html-has-lang",
+      "html-lang-valid",
+      "label",
+      "link-name",
+      "meta-viewport",
+      "nested-interactive",
+      "select-name",
+      "summary-name"
+    ]
+  }
+}

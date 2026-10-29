@@ -1,0 +1,423 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#71717a",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#e4e4e7",
+    "--input": "#71717a",
+    "--ring": "#1f3a2e",
+    "--p-subtle": "#71717a",
+    "--p-text": "#52525b",
+    "--p-panel": "#fff",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#fff",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "a",
+      "text": "首页",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 26,
+      "scrollWidth": 26,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 12,
+          "y": 21.09375,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "a.active",
+      "text": "SKU",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 54,
+          "y": 21.09375,
+          "width": 24.171875,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "模板库",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 39,
+      "scrollWidth": 39,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 94.171875,
+          "y": 21.09375,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 355.5,
+          "y": 21.09375,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "h1",
+      "text": "全部 SKU",
+      "fontSize": "28px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 112,
+      "scrollWidth": 112,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 106,
+          "width": 112.140625,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "a.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.bg-primary.text-primary-foreground.shadow.hover:bg-primary/90.h-9.px-4.py-2",
+      "text": "新建创作",
+      "fontSize": "14px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 88,
+      "scrollWidth": 88,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 300,
+          "y": 115,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "客厅家具 · 视觉检查",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 171,
+      "scrollWidth": 171,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 295,
+          "width": 123.078125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "p",
+      "text": "UI-SNAPSHOT-01 · 客厅家具",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 171,
+      "scrollWidth": 171,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 18,
+          "y": 320.390625,
+          "width": 101.265625,
+          "height": 17
+        },
+        {
+          "x": 119.265625,
+          "y": 320.390625,
+          "width": 9.953125,
+          "height": 17
+        },
+        {
+          "x": 129.21875,
+          "y": 320.390625,
+          "width": 52,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "空间搭配 · 对照产品",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 171,
+      "scrollWidth": 171,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 201,
+          "y": 295,
+          "width": 123.078125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "p",
+      "text": "UI-SNAPSHOT-02 · 客厅家具",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 171,
+      "scrollWidth": 171,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 201,
+          "y": 320.390625,
+          "width": 101.265625,
+          "height": 17
+        },
+        {
+          "x": 302.265625,
+          "y": 320.390625,
+          "width": 9.953125,
+          "height": 17
+        },
+        {
+          "x": 312.21875,
+          "y": 320.390625,
+          "width": 52,
+          "height": 17
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "p-topbar"
+    },
+    {
+      "tag": "A",
+      "classes": "p-sku-cover"
+    },
+    {
+      "tag": "A",
+      "classes": "p-sku-cover"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}

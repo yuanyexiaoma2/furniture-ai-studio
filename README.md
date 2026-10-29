@@ -36,9 +36,9 @@ npm run worker
 
 本地验证：`npm run lint`、`npm run typecheck`、`npm run build`、`npm run test:units`（完整106项纯单元测试）、`npm run test:visual-plan`、`npm run test:canvas`、`npm run test:image-models`。浏览器回归执行 `npm run test:e2e`，两个隔离Agent流程另用 `npm run test:agent:browser`；需先启动网页和本地依赖，不截图或录屏。自动回归使用本地模拟模型；真实验收另需明确授权。
 
-UI 截图验收单独执行 `node --import tsx scripts/ui-snapshots.ts --mode=compare`，需先启动网页，使用本地管理员登录配置；以固定浏览器夹具覆盖44种页面/主题/宽度组合，不调用模型或写入商品。原始基线在 `docs/ui-audit/baseline/`，阶段1结果在 `docs/ui-audit/phase1/`；后续可用 `--baseline=<已有截图目录> --output=<新结果目录>` 复用。已知验收问题见 [known-issues](docs/ui-audit/known-issues.md)。
+UI 截图验收需先启动网页并配置本地管理员登录；阶段3使用 `node --import tsx scripts/ui-snapshots.ts --mode=compare --baseline=docs/ui-audit/baseline-phase3 --output=docs/ui-audit/phase3-check --audit`。固定夹具覆盖44种页面/主题/宽度组合，不调用模型或写入商品。比较前核对Chrome、操作系统和字体文件指纹；环境变化先在原版提交重拍基线，不直接出差异率。历史阶段1基线仍保留。已知问题见 [known-issues](docs/ui-audit/known-issues.md)。
 
-UI静态检查执行 `npm run lint:ui`：仅保留6项商品/品牌数据色白名单，globals旧色值和小字号已清零，禁止新增违规。旧页对比：`node --import tsx scripts/ui-snapshots.ts --suite=studio --mode=compare --baseline=docs/ui-audit/phase2a-studio --output=docs/ui-audit/phase2b-studio --allow-size-change --audit`。creative对比参照`docs/ui-audit/phase2a`；截图、axe、文本边界与逐项说明见`docs/ui-audit/phase2b.md`。
+UI静态检查执行 `npm run lint:ui`：仅保留6项商品/品牌数据色白名单，禁止新增违规。旧页对比：`node --import tsx scripts/ui-snapshots.ts --suite=studio --mode=compare --baseline=docs/ui-audit/phase2b-studio --environment-baseline=docs/ui-audit/baseline-phase3 --output=docs/ui-audit/phase3-check-studio --allow-size-change --audit`。该历史旧页基线没有字体记录，显式借用本轮原版环境锚点并保留这一限制，不补造历史数据。截图与逐项说明见`docs/ui-audit/phase3-prep.md`。
 
 ## 当前功能
 

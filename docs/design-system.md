@@ -1,17 +1,19 @@
 # 家具创作工作台设计规范
 
-本规范对应UI阶段2b。正式创作页为 `/`、`/skus`、`/workspace`、`/library`；`/admin/models` 使用相同创作组件并继承旧后台外壳。旧页面已迁移语义颜色与工作台字体；布局与交互收口留到阶段3。
+本规范对应UI阶段3准备。正式创作页为 `/`、`/skus`、`/workspace`、`/library`；`/admin/models` 使用相同创作组件并继承旧后台外壳。旧页面已迁移语义颜色与工作台字体；布局与交互收口留到阶段3a–3c，当前未执行。
 
 ## 主题与颜色
 
-creative配色唯一来源为 `src/styles/creative/tokens.css`。亮色由 `:root:has(.p-app)` 生效，暗色由 `:root.dark:has(.p-app)` 生效。封面、阴影、遮罩和品牌图形底色也在tokens中定义，数值沿用阶段1。
+creative配色唯一来源为 `src/styles/creative/tokens.css`。亮色由 `:root:has(.p-app)` 生效，暗色由 `:root.dark:has(.p-app)` 生效。封面、阴影、遮罩和品牌图形底色也在tokens中定义；阶段3准备仅调整不达标的文字/控件颜色，复用已有图片文字底衬，其余达标值保留。
 
 | 用途 | 亮色 | 暗色 |
 | --- | --- | --- |
 | 主按钮 --primary / foreground | #1f3a2e / #ffffff | #fafafa / #18181b |
 | 聚焦 --ring / 选中 --p-selection | #1f3a2e | #6c907d |
 | 页面背景 / 面板 | #ffffff / #ffffff | #0e0e10 / #16161a |
-| 正文 / 辅助 | #52525b / #71717a | #a1a1aa / #71717a |
+| 正文 / 辅助 | #52525b / #71717a | #a1a1aa / #a1a1aa |
+| 输入边框 --input | #71717a | #71717a |
+| 分隔线 --border（非控件轮廓） | #e4e4e7 | #52525b |
 
 墨绿用于**亮色主按钮，以及全主题的选中、聚焦和品牌点缀**；暗色选中和聚焦使用提亮的墨绿#6c907d，主按钮保持白底深字。图片承担主要色彩，禁止大面积浅绿背景。状态色用于终稿、待处理、生成中、未开始的小点和角标。
 
@@ -78,11 +80,13 @@ task-cover.tsx、batch/brand.tsx、batch/workflow.tsx的商品变体或品牌色
 
 执行 `npm run lint:ui`。ui-lint-baseline.json以“签名+数量”保留6项商品/品牌数据色值，常规检查不扩充白名单。新增十六进制色值、小于12px字号、SVG important、绕开入口的Lucide导入均失败；清理后人工收紧白名单。
 
-creative参照docs/ui-audit/phase2a，旧页2b参照修正后的phase2a-studio。KI-001按偶发记录，不要求复现，但不能新增失败类型。2b结束后停止，待审阅才做阶段3。
+阶段3的唯一creative基线为docs/ui-audit/baseline-phase3（已审阅1e6e4bf原版44张）。比较前严格核对Chrome版本、操作系统和字体文件路径/SHA256；不一致时必须重拍原版，不输出差异率。旧页仍保留对phase2b-studio的严格比较；它没有历史字体指纹，显式使用baseline-phase3作本轮环境锚点，不伪造历史字体信息。KI-001按偶发记录；KI-002/003保留初始化竞态待办。准备完成后停止，待审阅才进入3a。
 
 ## 旧页面视觉（2b）
 
-旧页/登录页的root按是否包含studio-shell、login-shell启用；嵌套p-app时不覆盖creative核心变量。亮色白底与墨绿主按钮、暗色深底与白色主按钮；辅助文字及输入边框用旧页专用的可读性变量。具体前后值见phase2b报告。全局Tailwind语义映射保留原值。
+旧页/登录页的root按是否包含studio-shell、login-shell启用；嵌套p-app时不覆盖creative核心变量。亮色白底与墨绿主按钮、暗色深底与白色主按钮。阶段3准备删除同值的studio-muted-ink、studio-control-line，分别改读p-text、input，旧页实际色值不变。警告/危险底色、品牌文字色及不同强度的遮罩/阴影继续保留。主题默认声明只作用于:root.dark，避免React Flow内层.dark重置已验证的变量。全局Tailwind语义映射保留原值。
+
+共享Input表面为card；studio-input-surface兼容别名也指向card。对比度按alpha合成后的实际颜色审计，图片/渐变文字另用文字隐藏后的背景采样，并计入压在文字上方的已有渐变；不以axe的incomplete代替通过。普通启用文字最低4.5:1，输入框或包含它的现有输入区域边界最低3:1；装饰分隔线单独说明，不套用文字门槛。首页缩略图标签与任务卡文案使用现有深色底衬，提高图片上的文字可读性；字号、位置和交互不变。逐变量与逐截图变化见docs/ui-audit/phase3-prep.md。
 
 登录标题保留原clamp(36px,3.8vw,58px)及既有42/34px媒体规则，改为工作台字体/600。旧品牌标记、pack-number、note-number去Georgia/宋体，装饰数字采用tabular-nums；不影响creative品牌原型的Georgia。终稿使用.generation-card.pack-final双类选择器覆盖普通边框，不用important。
 

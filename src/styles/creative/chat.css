@@ -235,7 +235,7 @@
 @media (min-width:1201px) {
   .p-chat { width: 640px; }
 }
-.p-chat-input { padding: 16px; border-top: 1px solid var(--border); background: var(--p-panel); border-radius: var(--radius-panel); }
+.p-chat-input { padding: 16px; border-top: 1px solid var(--input); background: var(--p-panel); border-radius: var(--radius-panel); }
 .p-chat-input textarea { resize: none; border: 0; box-shadow: none; padding: 8px; background: var(--color-transparent); }
 .p-chat-body details a { display: block; margin: 8px 0; }
 .p-chat-body .l-shooting-card { flex-shrink: 0; }

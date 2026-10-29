@@ -1,0 +1,10 @@
+{
+  "case": "仅篡改原版manifest中的一个字体文件SHA256",
+  "exitCode": 1,
+  "filesWritten": [],
+  "comparisonStarted": false,
+  "passed": true,
+  "error": "Error: 截图环境不一致（fonts）；请在当前环境重拍原版提交的基线，不要直接计算差异率。\r",
+  "testCommand": "node --import tsx --test tests/unit/ui-render-environment.test.ts",
+  "unitTests": 7
+}

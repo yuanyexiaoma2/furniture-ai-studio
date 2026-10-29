@@ -1,0 +1,20 @@
+[
+  {
+    "label": "工作台上传实拍",
+    "slot": null,
+    "x": 16,
+    "y": 868,
+    "width": 0,
+    "height": 0,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "画布上传参考图",
+    "slot": null,
+    "x": 640,
+    "y": 62,
+    "width": 0,
+    "height": 0,
+    "background": "rgba(0, 0, 0, 0)"
+  }
+]

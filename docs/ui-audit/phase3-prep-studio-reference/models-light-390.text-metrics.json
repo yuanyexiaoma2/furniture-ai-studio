@@ -1,0 +1,3279 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#71717a",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#e4e4e7",
+    "--input": "#e4e4e7",
+    "--ring": "#1f3a2e",
+    "--p-subtle": "#71717a",
+    "--p-text": "#52525b",
+    "--p-panel": "#fff",
+    "--studio-muted-ink": "#52525b",
+    "--studio-control-line": "#71717a",
+    "--studio-input-surface": "#fffefa",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "span.brand-symbol",
+      "text": "F",
+      "fontSize": "28px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        31,
+        58,
+        46
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 35,
+      "scrollWidth": 35,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 30.3125,
+          "y": 22.5,
+          "width": 14.375,
+          "height": 35
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "家具工作台",
+      "fontSize": "15px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 76,
+      "scrollWidth": 76,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 67,
+          "y": 29.75,
+          "width": 29,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "selector": "span.wordmark-light",
+      "text": "工作台",
+      "fontSize": "15px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 0,
+      "scrollWidth": 0,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 99,
+          "y": 29.75,
+          "width": 43.5,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "selector": "a.nav-link",
+      "text": "SKU 项目",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 175,
+      "scrollWidth": 175,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 95.0625,
+          "y": 91,
+          "width": 48.875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "a.nav-link.active",
+      "text": "管理后台",
+      "fontSize": "12px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 175,
+      "scrollWidth": 175,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 270.5,
+          "y": 91,
+          "width": 48,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 292,
+          "y": 21,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "管理员",
+      "fontSize": "12px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 12.331650638485177,
+      "clientWidth": 36,
+      "scrollWidth": 36,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 292,
+          "y": 43,
+          "width": 36,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "首页",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 26,
+      "scrollWidth": 26,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 30,
+          "y": 176.09375,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "SKU",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 23,
+      "scrollWidth": 23,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 72,
+          "y": 176.09375,
+          "width": 23.390625,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "模板库",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 39,
+      "scrollWidth": 39,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 111.390625,
+          "y": 176.09375,
+          "width": 39,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 10,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 337.5,
+          "y": 176.09375,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "h2",
+      "text": "团队管理",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 89,
+      "scrollWidth": 89,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 11,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 38,
+          "y": 246,
+          "width": 64,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2.active",
+      "text": "模型管理",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 113,
+      "scrollWidth": 113,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 12,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 60,
+          "y": 308.8125,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "a.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "用户管理",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 113,
+      "scrollWidth": 113,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 13,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 54.5,
+          "y": 352,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "a.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "网关管理",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 113,
+      "scrollWidth": 113,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 14,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 54.5,
+          "y": 395,
+          "width": 56,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "h1",
+      "text": "模型管理",
+      "fontSize": "28px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 192,
+      "scrollWidth": 192,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 15,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 164,
+          "y": 243,
+          "width": 109.609375,
+          "height": 37
+        }
+      ]
+    },
+    {
+      "selector": "p",
+      "text": "为团队选择合适的创作搭档。开启可见后，模型会出现在美工选择器中。",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 192,
+      "scrollWidth": 192,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 16,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 164,
+          "y": 290,
+          "width": 182,
+          "height": 19
+        },
+        {
+          "x": 164,
+          "y": 312.390625,
+          "width": 182,
+          "height": 19
+        },
+        {
+          "x": 164,
+          "y": 334.78125,
+          "width": 84,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "模型",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 306,
+      "scrollWidth": 306,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 17,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 179,
+          "y": 448.640625,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "类型",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 18,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 448.640625,
+          "width": 26,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "能力探测",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 19,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 448.640625,
+          "width": 52,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "对美工可见",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 137,
+      "scrollWidth": 137,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 20,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 904.671875,
+          "y": 448.640625,
+          "width": 65,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "th.h-10.px-2.text-left.align-middle.font-medium.text-muted-foreground.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "可用状态",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        247,
+        247,
+        248
+      ],
+      "contrast": 4.5140623711277446,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 21,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 448.640625,
+          "width": 52,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Gemini 3.8 Flash",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 104,
+      "scrollWidth": 104,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 22,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 499.171875,
+          "width": 103.890625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 23,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 499.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "16/20 参数正确 · 20/20 上下文",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 24,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 499.171875,
+          "width": 187.671875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 25,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 499.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Claude Haiku 5.5",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 107,
+      "scrollWidth": 107,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 26,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 555.171875,
+          "width": 107.109375,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 27,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 555.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "0/20 参数正确 · 0/20 上下文",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 28,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 555.171875,
+          "width": 172.578125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 29,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 555.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "GPT-6.1 Sol",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 74,
+      "scrollWidth": 74,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 30,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 611.171875,
+          "width": 73.71875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 31,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 611.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "20/20 参数正确 · 20/20 上下文",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 32,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 611.171875,
+          "width": 187.671875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 33,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 611.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Gemini 2.5 Pro",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 93,
+      "scrollWidth": 93,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 34,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 667.171875,
+          "width": 93.3125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 35,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 667.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "待验证",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 36,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 667.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 37,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 667.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Gemini 3.8 Flash",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 104,
+      "scrollWidth": 104,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 38,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 723.171875,
+          "width": 103.890625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "智能体",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 39,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 723.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "用户指定默认 · 待验证",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 40,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 723.171875,
+          "width": 136.71875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 41,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 723.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Nano Banana 2.1",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 108,
+      "scrollWidth": 108,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 42,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 779.171875,
+          "width": 107.921875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 43,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 779.171875,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 44,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 779.171875,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 45,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 779.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Nano Banana 2",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 97,
+      "scrollWidth": 97,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 46,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 835.171875,
+          "width": 96.765625,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 47,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 835.171875,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 48,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 835.171875,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 49,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 835.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Nano Banana Pro",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 111,
+      "scrollWidth": 111,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 50,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 891.171875,
+          "width": 110.59375,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 51,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 891.171875,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 52,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 891.171875,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 53,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 891.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "GPT Image 2.5",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 92,
+      "scrollWidth": 92,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 54,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 947.171875,
+          "width": 91.953125,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 55,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 947.171875,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 56,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 947.171875,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 57,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 947.171875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "strong",
+      "text": "Qwen3",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 44,
+      "scrollWidth": 44,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 58,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 209,
+          "y": 1003.421875,
+          "width": 44.484375,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "生图",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 103,
+      "scrollWidth": 103,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 59,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 484.75,
+          "y": 1003.421875,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已接通生成队列",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 317,
+      "scrollWidth": 317,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 60,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 587.640625,
+          "y": 1003.421875,
+          "width": 98,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "td.p-2.align-middle.[&:has([role=checkbox])]:pr-0.[&>[role=checkbox]]:translate-y-[2px]",
+      "text": "已配置",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 118,
+      "scrollWidth": 118,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 61,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 1041.375,
+          "y": 1003.421875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "家具电商 · 创意协作空间",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 136,
+      "scrollWidth": 136,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 62,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 20,
+          "y": 1120.171875,
+          "width": 135.6875,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "selector": "span",
+      "text": "公司内部应用",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 75,
+      "scrollWidth": 75,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 63,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "overlays": [],
+      "ranges": [
+        {
+          "x": 295,
+          "y": 1120.171875,
+          "width": 75,
+          "height": 16
+        }
+      ]
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "INPUT",
+      "label": "后台搜索",
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(113, 113, 122)",
+      "borderWidth": "1px",
+      "contrast": 4.832895561154151,
+      "boundary": {
+        "selector": "INPUT.flex h-9 w-full rounded-[var(--radius-control)] border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "color": "rgb(113, 113, 122)",
+        "contrast": 4.832895561154151,
+        "width": "1px"
+      },
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 7.729820868495424
+    }
+  ],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "studio-header"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-app"
+    },
+    {
+      "tag": "HEADER",
+      "classes": "p-topbar"
+    },
+    {
+      "tag": "ASIDE",
+      "classes": "p-admin-nav"
+    },
+    {
+      "tag": "INPUT",
+      "classes": "flex h-9 w-full rounded-[var(--radius-control)] border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-admin-table"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    },
+    {
+      "tag": "TH",
+      "classes": "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">智能体</td>",
+            "target": [
+              "tr:nth-child(1) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">16/20 参数正确 · 20/20 上下文</td>",
+            "target": [
+              "tr:nth-child(1) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(1) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">智能体</td>",
+            "target": [
+              "tr:nth-child(2) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">0/20 参数正确 · 0/20 上下文</td>",
+            "target": [
+              "tr:nth-child(2) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(2) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">智能体</td>",
+            "target": [
+              "tr:nth-child(3) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">20/20 参数正确 · 20/20 上下文</td>",
+            "target": [
+              "tr:nth-child(3) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(3) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">智能体</td>",
+            "target": [
+              "tr:nth-child(4) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">待验证</td>",
+            "target": [
+              "tr:nth-child(4) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(4) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">智能体</td>",
+            "target": [
+              "tr:nth-child(5) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">用户指定默认 · 待验证</td>",
+            "target": [
+              "tr:nth-child(5) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(5) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">生图</td>",
+            "target": [
+              "tr:nth-child(6) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已接通生成队列</td>",
+            "target": [
+              "tr:nth-child(6) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(6) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">生图</td>",
+            "target": [
+              "tr:nth-child(7) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已接通生成队列</td>",
+            "target": [
+              "tr:nth-child(7) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(7) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">生图</td>",
+            "target": [
+              "tr:nth-child(8) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已接通生成队列</td>",
+            "target": [
+              "tr:nth-child(8) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(8) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">生图</td>",
+            "target": [
+              "tr:nth-child(9) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已接通生成队列</td>",
+            "target": [
+              "tr:nth-child(9) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(9) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">生图</td>",
+            "target": [
+              "tr:nth-child(10) > td:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已接通生成队列</td>",
+            "target": [
+              "tr:nth-child(10) > td:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "elmPartiallyObscured",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-admin-table\">",
+                    "target": [
+                      ".p-admin-table"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td class=\"p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]\">已配置</td>",
+            "target": [
+              "tr:nth-child(10) > td:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "models": [
+    {
+      "id": "agent-sol",
+      "kind": "agent",
+      "name": "GPT-6.1 Sol",
+      "brandIcon": "/design-preview/brands/openai.svg",
+      "color": "#888888",
+      "description": "KIE · 理解产品、规划图包与对话",
+      "seconds": 8,
+      "price": 0.003,
+      "referenceImagePrice": 0,
+      "provider": "kie",
+      "failureRate": 0,
+      "enabled": true,
+      "visible": true,
+      "isDefault": false
+    },
+    {
+      "id": "agent-zenmux-flash",
+      "kind": "agent",
+      "name": "Gemini 3.8 Flash",
+      "brandIcon": "/design-preview/brands/google.svg",
+      "color": "#888888",
+      "description": "ZenMux · 理解产品、规划图包与对话",
+      "seconds": 8,
+      "price": 0.003,
+      "referenceImagePrice": 0,
+      "provider": "zenmux",
+      "failureRate": 0,
+      "enabled": true,
+      "visible": true,
+      "isDefault": true
+    },
+    {
+      "id": "image-banana",
+      "kind": "image",
+      "name": "Nano Banana 2.1",
+      "brandIcon": "/design-preview/brands/google.svg",
+      "color": "#888888",
+      "description": "KIE · 多图参考与产品场景，支持1K/2K/4K",
+      "seconds": 35,
+      "price": 0.03,
+      "pricesByResolution": {
+        "1K": 0.02,
+        "2K": 0.03,
+        "4K": 0.045
+      },
+      "supportedResolutions": [
+        "1K",
+        "2K",
+        "4K"
+      ],
+      "referenceImagePrice": 0,
+      "provider": "kie",
+      "failureRate": 0,
+      "enabled": true,
+      "visible": true,
+      "isDefault": true
+    },
+    {
+      "id": "image-banana-2",
+      "kind": "image",
+      "name": "Nano Banana 2",
+      "brandIcon": "/design-preview/brands/google.svg",
+      "color": "#888888",
+      "description": "KIE · 快速多图生成，支持1K/2K/4K",
+      "seconds": 35,
+      "price": 0.06,
+      "pricesByResolution": {
+        "1K": 0.04,
+        "2K": 0.06,
+        "4K": 0.09
+      },
+      "supportedResolutions": [
+        "1K",
+        "2K",
+        "4K"
+      ],
+      "referenceImagePrice": 0,
+      "provider": "kie",
+      "failureRate": 0,
+      "enabled": true,
+      "visible": true,
+      "isDefault": false
+    },
+    {
+      "id": "image-banana-pro",
+      "kind": "image",
+      "name": "Nano Banana Pro",
+      "brandIcon": "/design-preview/brands/google.svg",
+      "color": "#888888",
+      "description": "KIE · 材质细节与精细修改，支持1K/2K/4K",
+      "seconds": 35,
+      "price": 0.09,
+      "pricesByResolution": {
+        "1K": 0.09,
+        "2K": 0.09,
+        "4K": 0.12
+      },
+      "supportedResolutions": [
+        "1K",
+        "2K",
+        "4K"
+      ],
+      "referenceImagePrice": 0,
+      "provider": "kie",
+      "failureRate": 0,
+      "enabled": true,
+      "visible": true,
+      "isDefault": false
+    },
+    {
+      "id": "image-gpt-25",
+      "kind": "image",
+      "name": "GPT Image 2.5",
+      "brandIcon": "/design-preview/brands/openai.svg",
+      "color": "#888888",
+      "description": "KIE · Sunburst画质版，多图参考与指令精修",
+      "seconds": 35,
+      "price": 0.05,
+      "pricesByResolution": {
+        "1K": 0.03,
+        "2K": 0.05,
+        "4K": 0.08
+      },
+      "supportedResolutions": [
+        "1K",
+        "2K",
+        "4K"
+      ],
+      "referenceImagePrice": 0,
+      "provider": "kie",
+      "failureRate": 0,
+      "enabled": true,
+      "visible": true,
+      "isDefault": false
+    },
+    {
+      "id": "image-qwen3",
+      "kind": "image",
+      "name": "Qwen3",
+      "brandIcon": "",
+      "color": "#888888",
+      "description": "KIE · Qwen Image 3.0，支持1K/2K、最多3张参考图",
+      "seconds": 35,
+      "price": 0.024,
+      "pricesByResolution": {
+        "1K": 0.024,
+        "2K": 0.024
+      },
+      "supportedResolutions": [
+        "1K",
+        "2K"
+      ],
+      "referenceImagePrice": 0.0025,
+      "provider": "kie",
+      "failureRate": 0,
+      "enabled": true,
+      "visible": true,
+      "isDefault": false
+    }
+  ]
+}

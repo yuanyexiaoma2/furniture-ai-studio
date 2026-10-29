@@ -55,6 +55,7 @@
 .p-mask-tools [role=slider] { min-width: 100px; }
 .p-mask-tools>span { font-size: var(--text-sm); white-space: nowrap; }
 .p-editor-footer { display: flex; gap: 8px; padding: 6px; background: var(--p-glass); border-radius: var(--radius-control); border: 1px solid var(--border); }
+.p-editor-footer input { border-color: var(--input); }
 .p-edit-popup { position: absolute; inset: 0; z-index: 45; background: var(--p-overlay); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-expand-modal { background: var(--p-panel); border-radius: var(--radius-panel); padding: 20px; box-shadow: 0 20px 100px var(--p-shadow-strong); }

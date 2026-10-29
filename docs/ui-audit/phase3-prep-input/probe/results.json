@@ -1,0 +1,101 @@
+{
+  "method": "复制真实/admin/users共享Input DOM到creative根下，以原2b纸色声明作A/B覆盖；非新增产品入口，不写数据库。",
+  "results": [
+    {
+      "width": 1440,
+      "theme": "light",
+      "beforeStyle": {
+        "color": "rgb(24, 24, 27)",
+        "background": "rgb(255, 254, 250)",
+        "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "border": "1px solid rgb(113, 113, 122)"
+      },
+      "afterStyle": {
+        "color": "rgb(24, 24, 27)",
+        "background": "rgb(255, 255, 255)",
+        "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "border": "1px solid rgb(113, 113, 122)"
+      },
+      "changedPixels": 10891,
+      "outsideInput": 0
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "beforeStyle": {
+        "color": "rgb(250, 250, 250)",
+        "background": "rgb(255, 254, 250)",
+        "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "border": "1px solid rgb(113, 113, 122)"
+      },
+      "afterStyle": {
+        "color": "rgb(250, 250, 250)",
+        "background": "rgb(22, 22, 26)",
+        "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "border": "1px solid rgb(113, 113, 122)"
+      },
+      "changedPixels": 11064,
+      "outsideInput": 0
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "beforeStyle": {
+        "color": "rgb(24, 24, 27)",
+        "background": "rgb(255, 254, 250)",
+        "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "border": "1px solid rgb(113, 113, 122)"
+      },
+      "afterStyle": {
+        "color": "rgb(24, 24, 27)",
+        "background": "rgb(255, 255, 255)",
+        "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "border": "1px solid rgb(113, 113, 122)"
+      },
+      "changedPixels": 10891,
+      "outsideInput": 0
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "beforeStyle": {
+        "color": "rgb(250, 250, 250)",
+        "background": "rgb(255, 254, 250)",
+        "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "border": "1px solid rgb(113, 113, 122)"
+      },
+      "afterStyle": {
+        "color": "rgb(250, 250, 250)",
+        "background": "rgb(22, 22, 26)",
+        "fontFamily": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei UI\", system-ui, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "border": "1px solid rgb(113, 113, 122)"
+      },
+      "changedPixels": 11064,
+      "outsideInput": 0
+    }
+  ]
+}

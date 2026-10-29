@@ -7,6 +7,7 @@ import {createHash} from "node:crypto";
 import {emptyProfile,profileFields} from "../src/lib/profile-rules";
 import {auditStudioPage} from "./ui-studio-audit";
 import {compareScreenshots} from "./ui-image-diff";
+import {collectRenderEnvironment,checkRenderBaseline} from "./ui-render-environment";
 import {chromium,expect} from "@playwright/test";
 const args=process.argv.slice(2),option=(k:string,d:string)=>args.find(a=>a.startsWith(k+"="))?.slice(k.length+1)??d;
 const mode=option("--mode","baseline"),baseURL=option("--base-url","http://localhost:3000"),output=path.resolve(option("--output","docs/ui-audit/baseline-studio"));
@@ -19,6 +20,16 @@ if(mode==="baseline"&&!commit.startsWith("99f3187"))throw Error("studio基线必
 await mkdir(output,{recursive:true});
 if(mode==="baseline"&&!args.includes("--force")){try{await readFile(path.join(output,"manifest.json"));throw Error("基线已存在，覆盖需--force");}catch(e){if((e as NodeJS.ErrnoException).code!=="ENOENT")throw e;}}
 const browser=await chromium.launch({channel:"chrome",headless:true}),results:Record<string,unknown>[]=[],failures:string[]=[];
+let renderEnvironment:Awaited<ReturnType<typeof collectRenderEnvironment>>;
+try{renderEnvironment=await collectRenderEnvironment(browser.version());}catch(error){await browser.close();throw error;}
+// 历史studio基线没有字体记录，不伪造历史信息；可显式指定本轮原版基线作环境锚点。
+const environmentBaseline=option("--environment-baseline",baseline);
+if(mode==="compare"){try{
+ const historical=JSON.parse(await readFile(path.join(baseline,"manifest.json"),"utf8"));
+ if(historical.renderEnvironment)await checkRenderBaseline(baseline,renderEnvironment);
+ else if(environmentBaseline===baseline||historical.browserVersion!==renderEnvironment.chromeVersion)throw Error("旧studio基线缺少字体指纹，或Chrome版本不同；须重拍原版，不能计算差异率。历史基线同版本时可显式指定本轮原版--environment-baseline作为环境锚点，历史字体状态仍标为未知。");
+ await checkRenderBaseline(environmentBaseline,renderEnvironment);
+}catch(error){await browser.close();throw error;}}
 try{
  const login=await browser.newContext(),page=await login.newPage();await page.goto(baseURL+"/login");await page.getByLabel("公司邮箱").fill(process.env.ADMIN_EMAIL??"");await page.getByLabel("密码",{exact:true}).fill(process.env.ADMIN_PASSWORD??"");await page.getByRole("button",{name:"进入工作台"}).click();await page.waitForURL(baseURL+"/");
  const auth=await login.storageState(),products=await(await login.request.get(baseURL+"/api/studio")).json() as {id:string;sku:string}[];
@@ -58,6 +69,6 @@ try{
    results.push({name,...comparison,icons,url:state.url,status:response.status(),sha256:createHash("sha256").update(image).digest("hex"),theme,width,variables:await page.evaluate(()=>{const s=getComputedStyle(document.documentElement);return Object.fromEntries(["--background","--primary","--foreground"].map(k=>[k,s.getPropertyValue(k).trim()]));})});console.log(name+" OK");
   }catch(e){failures.push(name+": "+String(e));console.error(failures.at(-1));}finally{await context.close();}
  }
- await writeFile(path.join(output,"manifest.json"),JSON.stringify({mode,commit,baseline:mode==="compare"?path.relative(process.cwd(),baseline):null,referenceCommit:mode==="compare"?execFileSync("git",["log","-1","--format=%H","--",path.relative(process.cwd(),baseline)],{encoding:"utf8"}).trim():null,browserVersion:browser.version(),capturedAt:new Date().toISOString(),productId:product.id,sku:product.sku,results,failures,overThreshold:results.filter(r=>Number(r.differencePercent)>.1).map(r=>({name:r.name,differencePercent:r.differencePercent})),excluded:[{url:"/design-preview/icons",reason:"SHOW_UNCONNECTED_FEATURES=false，404；不修改开关"},{url:"/design、旧design-preview业务路径",reason:"删除或301到正式路由；creative基线已覆盖"},{url:"/reviews/*",reason:"独立HTML评审route，非(studio)页面，不参与旧CSS迁移"}]},null,2));
+ await writeFile(path.join(output,"manifest.json"),JSON.stringify({mode,commit,baseline:mode==="compare"?path.relative(process.cwd(),baseline):null,referenceCommit:mode==="compare"?execFileSync("git",["log","-1","--format=%H","--",path.relative(process.cwd(),baseline)],{encoding:"utf8"}).trim():null,browserVersion:browser.version(),renderEnvironment,environmentReference:mode==="compare"?path.relative(process.cwd(),environmentBaseline):null,capturedAt:new Date().toISOString(),productId:product.id,sku:product.sku,results,failures,overThreshold:results.filter(r=>Number(r.differencePercent)>.1).map(r=>({name:r.name,differencePercent:r.differencePercent})),excluded:[{url:"/design-preview/icons",reason:"SHOW_UNCONNECTED_FEATURES=false，404；不修改开关"},{url:"/design、旧design-preview业务路径",reason:"删除或301到正式路由；creative基线已覆盖"},{url:"/reviews/*",reason:"独立HTML评审route，非(studio)页面，不参与旧CSS迁移"}]},null,2));
 }finally{await browser.close();}
 console.log(JSON.stringify({captured:results.length,failures}));if(failures.length)process.exitCode=1;

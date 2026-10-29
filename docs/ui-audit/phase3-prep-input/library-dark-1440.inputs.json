@@ -1,0 +1,20 @@
+[
+  {
+    "label": "导入品类",
+    "slot": null,
+    "x": 197,
+    "y": 267.390625,
+    "width": 1046,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "选择Listing文件夹",
+    "slot": null,
+    "x": 197,
+    "y": 315.390625,
+    "width": 257,
+    "height": 22.390625,
+    "background": "rgba(0, 0, 0, 0)"
+  }
+]

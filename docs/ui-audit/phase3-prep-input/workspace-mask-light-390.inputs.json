@@ -1,0 +1,29 @@
+[
+  {
+    "label": "工作台上传实拍",
+    "slot": null,
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "画布上传参考图",
+    "slot": null,
+    "x": 0,
+    "y": 106,
+    "width": 0,
+    "height": 0,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "局部修改要求",
+    "slot": null,
+    "x": -79.765625,
+    "y": 654.75,
+    "width": 240,
+    "height": 40.390625,
+    "background": "rgb(255, 255, 255)"
+  }
+]

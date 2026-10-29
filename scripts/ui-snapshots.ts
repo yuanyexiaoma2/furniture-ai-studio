@@ -7,17 +7,19 @@ import {execFileSync} from "node:child_process";
 import {chromium,expect,type Page} from "@playwright/test";
 import sharp from "sharp";
 import {compareScreenshots} from "./ui-image-diff";
+import {collectRenderEnvironment,checkRenderBaseline} from "./ui-render-environment";
+import {auditStudioPage} from "./ui-studio-audit";
 import {emptyProfile,profileFields,understanding} from "../src/lib/profile-rules";
 
 const args=process.argv.slice(2),option=(key:string,fallback:string)=>args.find(a=>a.startsWith(key+"="))?.slice(key.length+1)??fallback;
 if(args.includes("--suite=studio")&&!args.includes("--help")){await import("./ui-snapshots-studio");process.exit(process.exitCode??0);}
-if(args.includes("--help")){console.log("node --import tsx scripts/ui-snapshots.ts --mode=baseline|compare|capture [--baseline=<目录>] [--output=<目录>] [--allow-size-change] [--small-text]\n默认44个creative状态；--suite=studio补拍旧页36张（基线99f3187）。capture只拍摄不比较，--small-text补拍12种小字状态。所有业务写请求在浏览器拦截。");process.exit(0);}
+if(args.includes("--help")){console.log("node --import tsx scripts/ui-snapshots.ts --mode=baseline|compare|capture [--baseline=<目录>] [--output=<目录>] [--allow-size-change] [--audit] [--audit-report-only] [--small-text]\n默认44个creative状态；阶段3唯一基线为baseline-phase3（1e6e4bf）。比较前必须核对Chrome/操作系统/字体指纹。--suite=studio补拍旧页36张，历史旧页可显式指定--environment-baseline=<本轮原版基线>，不伪造历史字体记录。capture只拍摄不比较，--small-text补拍12种小字状态。所有业务写请求在浏览器拦截。");process.exit(0);}
 const mode=option("--mode","compare"),baseURL=option("--base-url","http://localhost:3000"),root=path.resolve(option("--baseline","docs/ui-audit/baseline")),output=path.resolve(option("--output","docs/ui-audit/phase1")),only=option("--only","");
 if(!["baseline","compare","capture"].includes(mode))throw Error("mode仅允许baseline、compare或capture");
 if(mode==="compare"&&root===output)throw Error("对比输出目录不能覆盖基线目录");
 if(!["localhost","127.0.0.1"].includes(new URL(baseURL).hostname))throw Error("仅允许本地服务");
 const commit=execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim();
-if(mode==="baseline"&&!commit.startsWith("a1e3f51"))throw Error("原始基线必须在a1e3f51上建立");
+if(mode==="baseline"&&!(path.basename(root)==="baseline-phase3"?commit.startsWith("1e6e4bf"):commit.startsWith("a1e3f51")))throw Error("原始基线须在a1e3f51建立；baseline-phase3须在已审阅的1e6e4bf建立");
 const destination=mode==="baseline"?root:output;
 await mkdir(destination,{recursive:true});
 if(mode==="baseline"&&!args.includes("--force")){try{await readFile(path.join(root,"manifest.json"));throw Error("基线已存在；确认覆盖时显式传--force");}catch(e){if((e as NodeJS.ErrnoException).code!=="ENOENT")throw e;}}
@@ -30,6 +32,8 @@ if(args.includes("--small-text")){
  Object.assign(snapshot.agent,{tools:[{id:"ui-tool",callId:"ui-tool",name:"view_images",status:"success",error:null,result:{analysis:"已核对产品实拍"}}],cards:[{id:"ui-question",kind:"questions",status:"pending",data:{questions:[{question:"请选择这个图位的方向",options:["保留当前方案"]}]}}]});
 }
 const browser=await chromium.launch({channel:process.env.PLAYWRIGHT_CHANNEL==="chromium"?undefined:"chrome",headless:true});
+let renderEnvironment:Awaited<ReturnType<typeof collectRenderEnvironment>>;
+try{renderEnvironment=await collectRenderEnvironment(browser.version());if(mode==="compare")await checkRenderBaseline(root,renderEnvironment);}catch(error){await browser.close();throw error;}
 const failures:string[]=[],results:{name:string;width:number;height:number;changedPixels:number;totalPixels:number;differencePercent:number;sha256:string;baselineSize?:{width:number;height:number}}[]=[];
 try{
  const login=await browser.newContext(),loginPage=await login.newPage();
@@ -93,6 +97,12 @@ try{
    if(pageErrors.length)throw Error("页面运行错误："+pageErrors.join("；"));
    if(state==="admin")await expect(page.locator(".p-admin-table tbody tr")).toHaveCount(adminCatalog.models.length);
    const image=await page.screenshot({path:path.join(destination,name+".png"),fullPage:!state.startsWith("workspace"),animations:"disabled",caret:"hide"});
+   if(args.includes("--surface-proof"))await writeFile(path.join(destination,name+".inputs.json"),JSON.stringify(await page.locator("input").evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return {label:e.getAttribute("aria-label"),slot:e.getAttribute("data-slot"),x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height,background:s.backgroundColor};})),null,2));
+   if(args.includes("--audit")){
+    const audit=await auditStudioPage(page,false,".p-app *,.p-portal *");
+    await writeFile(path.join(destination,name+".audit.json"),JSON.stringify(audit,null,2));
+    if(mode==="compare"&&!args.includes("--audit-report-only")&&(audit.contrastFailures.length||audit.controlContrastFailures.length||audit.controls.some(c=>!c.exempt&&c.boundary&&c.boundary.contrast<3)||(audit.axe.violations as {impact:string}[]).some(v=>["serious","critical"].includes(v.impact))))throw Error("实际文字/控件对比度未通过，详见audit.json；基线或--audit-report-only仅记录原版缺陷");
+   }
    if(args.includes("--small-text")){
     const metrics=await page.evaluate(()=>[...document.querySelectorAll<HTMLElement>(".t11-references,.t11-references>span,.t11-progress-heading small,.t11-progress-step small,.t11-generation-progress small,.t11-awaiting,.t11-save-status,.t11-save-status button,.t11-canvas-history small")].filter(e=>e.getClientRects().length).map(e=>{const r=e.getBoundingClientRect();return {tag:e.tagName,classes:e.className,text:e.innerText,fontSize:getComputedStyle(e).fontSize,clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,left:r.left,right:r.right,viewport:innerWidth,horizontalOverflow:e.scrollWidth>e.clientWidth+1,outsideViewport:r.left<0||r.right>innerWidth+1};}));
     await writeFile(path.join(destination,name+".text-metrics.json"),JSON.stringify(metrics,null,2));
@@ -124,8 +134,9 @@ try{
   }catch(e){failures.push(name+": "+String(e));console.error(failures.at(-1));}finally{await context.close();}
  }
 }finally{await browser.close();}
-const referenceCommit=mode==="compare"?execFileSync("git",["log","-1","--format=%H","--",path.relative(process.cwd(),path.join(root,"manifest.json"))],{encoding:"utf8"}).trim():null;
-await writeFile(path.join(destination,"manifest.json"),JSON.stringify({mode,commit,referenceCommit,referenceDirectory:mode==="compare"?path.relative(process.cwd(),root):null,browserVersion:browser.version(),capturedAt:new Date().toISOString(),fixedTime:fixed,normalization:"独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",results,failures},null,2));
+// 新基线尚未提交时git log没有记录；以已核实的基线manifest源提交为准。
+const referenceCommit=mode==="compare"?JSON.parse(await readFile(path.join(root,"manifest.json"),"utf8")).commit:null;
+await writeFile(path.join(destination,"manifest.json"),JSON.stringify({mode,commit,referenceCommit,referenceDirectory:mode==="compare"?path.relative(process.cwd(),root):null,browserVersion:browser.version(),renderEnvironment,capturedAt:new Date().toISOString(),fixedTime:fixed,normalization:"独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",results,failures},null,2));
 console.log(JSON.stringify({captured:results.length,failures,overThreshold:results.filter(r=>r.differencePercent>.1).map(r=>({name:r.name,percent:r.differencePercent}))},null,2));if(failures.length)process.exitCode=1;
 async function settle(page:Page,state:string){
  await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(async img=>{if(img.loading==="lazy")img.loading="eager";try{await img.decode();}catch{if(!img.complete||!img.naturalWidth)throw Error("图片加载失败："+img.getAttribute("src"));}}));});

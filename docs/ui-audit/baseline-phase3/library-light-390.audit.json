@@ -1,0 +1,366 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#71717a",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#e4e4e7",
+    "--input": "#e4e4e7",
+    "--ring": "#1f3a2e",
+    "--p-subtle": "#71717a",
+    "--p-text": "#52525b",
+    "--p-panel": "#fff",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#fffefa",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "a",
+      "text": "首页",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 26,
+      "scrollWidth": 26,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a",
+      "text": "SKU",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 23,
+      "scrollWidth": 23,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "a.active",
+      "text": "模板库",
+      "fontSize": "13px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 39,
+      "scrollWidth": 39,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.p-subtle",
+      "text": "品类视觉经验",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 326,
+      "scrollWidth": 326,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h1.text-[length:var(--text-xl)].font-medium",
+      "text": "模板库",
+      "fontSize": "28px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 326,
+      "scrollWidth": 326,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.p-subtle",
+      "text": "积累画面表达；具体产品外观由每次实拍分析决定。示例数据已排除检索。",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 326,
+      "scrollWidth": 326,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2.font-medium",
+      "text": "历史 Listing · 单个文件夹导入",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 284,
+      "scrollWidth": 284,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.p-subtle",
+      "text": "图片 + 可选 TXT/JSON 参数。按文件名排序拆解，先待审；不创建或绑定 SKU。此操作会调用当前 Agent 模型。",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 284,
+      "scrollWidth": 284,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.bg-secondary.text-secondary-foreground.shadow-sm.hover:bg-secondary/80.h-9.px-4.py-2",
+      "text": "场景经验 · 1",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 16.118381484528566,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "卖点表达 · 0",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "配饰与陈列 · 0",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 120,
+      "scrollWidth": 120,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "图位顺序 · 0",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "优秀案例 · 0",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 106,
+      "scrollWidth": 106,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "p.p-subtle",
+      "text": "客厅家具 · 截图测试夹具",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 284,
+      "scrollWidth": 284,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "h2.my-2.font-medium",
+      "text": "自然简约客厅",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 284,
+      "scrollWidth": 284,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "summary",
+      "text": "查看内容",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 284,
+      "scrollWidth": 284,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "pre.mt-3.whitespace-pre-wrap.break-words.text-xs.leading-6",
+      "text": "",
+      "fontSize": "12px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 284,
+      "scrollWidth": 284,
+      "overflow": false,
+      "wrap": "break-word"
+    }
+  ],
+  "contrastFailures": [],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "INPUT",
+      "label": "导入品类",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(228, 228, 231)",
+      "borderWidth": "1px",
+      "contrast": 1.2688774649087908,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 4.832895561154151
+    },
+    {
+      "tag": "INPUT",
+      "label": "选择Listing文件夹",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(228, 228, 231)",
+      "borderWidth": "0px",
+      "contrast": 1.2688774649087908,
+      "exempt": true,
+      "textContrast": null,
+      "placeholderContrast": null
+    }
+  ],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "p-topbar"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "rounded-[var(--radius-panel)] border bg-background p-5 space-y-3"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}

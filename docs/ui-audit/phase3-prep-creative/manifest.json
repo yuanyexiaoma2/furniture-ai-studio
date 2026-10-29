@@ -1,0 +1,714 @@
+{
+  "mode": "compare",
+  "commit": "1e6e4bf43e221df9846294cc126c51644e6820e2",
+  "referenceCommit": "1e6e4bf43e221df9846294cc126c51644e6820e2",
+  "referenceDirectory": "docs\\ui-audit\\baseline-phase3",
+  "browserVersion": "156.0.8078.49",
+  "renderEnvironment": {
+    "schemaVersion": 1,
+    "chromeVersion": "156.0.8078.49",
+    "os": {
+      "platform": "win32",
+      "release": "10.0.26200",
+      "version": "Windows 11 Pro",
+      "arch": "x64"
+    },
+    "fonts": [
+      {
+        "family": "Segoe UI",
+        "installed": true,
+        "files": [
+          {
+            "path": "C:\\WINDOWS\\Fonts\\SegUIVar.ttf",
+            "sha256": "27ca1ab4bd5ad3b0404ee6a9a03b143408dbd7e5a4c9e4b2054639c03fc0f682"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeui.ttf",
+            "sha256": "704eada12961a27fd271f7d3b09e2066520e758390c1776744eff430fee30f6e"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuib.ttf",
+            "sha256": "b169e636719880976a97e94e3b1cb3dbe5f4a38eabc037bf9f2a9165154c3ad2"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuii.ttf",
+            "sha256": "f9feaeee8b20751c15700b4fb03571b335f52e91edece7fb7aa1ceaa6eeb0db7"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuil.ttf",
+            "sha256": "0dbddf9e20b2dc0facd568c877aa1155b3597c09a7ca41d00ca580af25d1cc51"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuisl.ttf",
+            "sha256": "288a8e3fcd0f6090881dcc469b557f55e0a85864abe1cc24330bb4f08105f69b"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\segoeuiz.ttf",
+            "sha256": "f2ecff1a943929f07a7b872c948b1de57fe688ac7d0bab6fc9f624c95a97dbfe"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguibl.ttf",
+            "sha256": "bdf29c9b7484c631f19d6ef436a63d15f8a1a82bc856f1a0f6906c41a097d2b1"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguibli.ttf",
+            "sha256": "6efcb158b0093bdeb6c308a93e10c2240e6510b99b756d9583cb59b7e219aaf9"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguiemj.ttf",
+            "sha256": "451df9bb5546055af625ff86aa72695df43e8e170b4c6c1316fe44e9c7a22f7c"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguihis.ttf",
+            "sha256": "a162ceeaf701b55d11c542daf1c39c52bfaf686496505bff2eb75ca24814c136"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguili.ttf",
+            "sha256": "07bbf002d8dccb6bf7db8e31207076bf357fe92b1e5f82a20d2c941d59ebeb96"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisb.ttf",
+            "sha256": "6c3fd894b19950b10c34bf64069ef821eaf2f58f959146306fee5b367472e501"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisbi.ttf",
+            "sha256": "16847ed882097cd1c0d45c63b6d75c3021f2133c64db03796f57dac198d0b2ad"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisli.ttf",
+            "sha256": "032eb41f836c3d6fd765dc4c287ea87f7f0c392a454ffc58d7e5fbe29d1fee86"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\seguisym.ttf",
+            "sha256": "a4a35dcc62cd30e1a6c97b695ecef83e59d2b149e3af834f6a49f11851d56b37"
+          }
+        ]
+      },
+      {
+        "family": "Microsoft YaHei UI",
+        "installed": true,
+        "files": [
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyh.ttc",
+            "sha256": "d79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyhbd.ttc",
+            "sha256": "4508821b3dffe01f0ef5e5326a3e60df705a44633858811f67b6982dce3f6ee6"
+          },
+          {
+            "path": "C:\\WINDOWS\\Fonts\\msyhl.ttc",
+            "sha256": "7e9bdf90bb5d3fe1b5975fc8ae31944b8fa674122261f92c28d4ec0b9c482fa1"
+          }
+        ]
+      },
+      {
+        "family": "PingFang SC",
+        "installed": false,
+        "files": []
+      }
+    ]
+  },
+  "capturedAt": "2026-10-29T03:51:56.203Z",
+  "fixedTime": "2026-10-28T06:00:00.000Z",
+  "normalization": "独立上下文、固定数据/模型目录/日期/语言/时区/像素比、关闭截图动画与光标、冻结打字机；不掩盖UI元素",
+  "results": [
+    {
+      "name": "home-light-1440",
+      "width": 1440,
+      "height": 1224,
+      "changedPixels": 62049,
+      "totalPixels": 1762560,
+      "differencePercent": 3.5203907952069713,
+      "alignedDifferencePercent": 3.5203907952069713,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "6942d55a86ae2e895ca20f2d74c53a99e71346fb1c1268c8a7b41b41f578ab66"
+    },
+    {
+      "name": "skus-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 0,
+      "totalPixels": 1440000,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "e13d841cc560a07098775514467618944fbb9e9cc31aa74e497551c68dd4a93e"
+    },
+    {
+      "name": "workspace-empty-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 1058,
+      "totalPixels": 1440000,
+      "differencePercent": 0.07347222222222222,
+      "alignedDifferencePercent": 0.07347222222222222,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "94cdc58b90eec262285508ddef34875fe116708066e6fa2abae6ca55241b5412"
+    },
+    {
+      "name": "workspace-images-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 1421,
+      "totalPixels": 1440000,
+      "differencePercent": 0.09868055555555556,
+      "alignedDifferencePercent": 0.09868055555555556,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "393aa100034422f1bed370e0bdf2e78fa08d3b2ed5fbcbe59448793d6ab8eaa6"
+    },
+    {
+      "name": "workspace-single-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 1421,
+      "totalPixels": 1440000,
+      "differencePercent": 0.09868055555555556,
+      "alignedDifferencePercent": 0.09868055555555556,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "c80aa1755d7c6d48a3b0ade44105f61c058519526bc57eb55790879e148c2bf5"
+    },
+    {
+      "name": "workspace-multi-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 1421,
+      "totalPixels": 1440000,
+      "differencePercent": 0.09868055555555556,
+      "alignedDifferencePercent": 0.09868055555555556,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "59415967890257dfbd0080b55c62eb54278063ca191f94aaf8184a2e790e697b"
+    },
+    {
+      "name": "workspace-mask-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 16181,
+      "totalPixels": 1440000,
+      "differencePercent": 1.1236805555555556,
+      "alignedDifferencePercent": 1.1236805555555556,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "15d7bd4b5f00c7720676b3f09728840930468d0c06be82c640cde293f18ce2e4"
+    },
+    {
+      "name": "workspace-expand-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 1705,
+      "totalPixels": 1440000,
+      "differencePercent": 0.11840277777777777,
+      "alignedDifferencePercent": 0.11840277777777777,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "070e89115f25eb6e0951dc98619bd353c220a779aa717bfbd2524c3c45f1a6e8"
+    },
+    {
+      "name": "workspace-product-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 8371,
+      "totalPixels": 1440000,
+      "differencePercent": 0.5813194444444445,
+      "alignedDifferencePercent": 0.5813194444444445,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "3a96870ffbf139525397c43e619fc33303d8338d0fde143fbcccb9a21b8fae89"
+    },
+    {
+      "name": "library-light-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 2200,
+      "totalPixels": 1440000,
+      "differencePercent": 0.1527777777777778,
+      "alignedDifferencePercent": 0.1527777777777778,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1b0db4e74e8e0d68b28ff1c63b40afa9680158d796219b2014b1e68f029d58ed"
+    },
+    {
+      "name": "admin-light-1440",
+      "width": 1440,
+      "height": 1276,
+      "changedPixels": 1440,
+      "totalPixels": 1837440,
+      "differencePercent": 0.07836990595611285,
+      "alignedDifferencePercent": 0.07836990595611285,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "8f22a3be485e92e1b6de67fdbef9cdb7126c0cfc5d17a5bc76e1bdd5d21f391e",
+      "creativeRegion": {
+        "width": 1248,
+        "height": 1000,
+        "changedPixels": 1440,
+        "totalPixels": 1248000,
+        "differencePercent": 0.11538461538461539,
+        "alignedDifferencePercent": 0.11538461538461539,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "crop": {
+          "left": 96,
+          "top": 147,
+          "width": 1248,
+          "height": 1000
+        },
+        "comparison": "同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"
+      }
+    },
+    {
+      "name": "home-dark-1440",
+      "width": 1440,
+      "height": 1224,
+      "changedPixels": 73785,
+      "totalPixels": 1762560,
+      "differencePercent": 4.186240468409586,
+      "alignedDifferencePercent": 4.186240468409586,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "6c8fd75888370fa402226c34be338b29aad4b099e45bb60325ddbb63bf7ef35c"
+    },
+    {
+      "name": "skus-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 4118,
+      "totalPixels": 1440000,
+      "differencePercent": 0.28597222222222224,
+      "alignedDifferencePercent": 0.28597222222222224,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "e4956e230ba797399809f90208dfb88373da7573c068452914d06c1bf24a2f19"
+    },
+    {
+      "name": "workspace-empty-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 18235,
+      "totalPixels": 1440000,
+      "differencePercent": 1.2663194444444443,
+      "alignedDifferencePercent": 1.2663194444444443,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "bcbff2c6c5a828a38f8ebbf6b2ac65d6698c322f0815b6fd23a8705646405aef"
+    },
+    {
+      "name": "workspace-images-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 18315,
+      "totalPixels": 1440000,
+      "differencePercent": 1.2718749999999999,
+      "alignedDifferencePercent": 1.2718749999999999,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "14329c124824937ad4e3c6b8ff0cb2a97c444676a0dde519a69ba39a7eb0b083"
+    },
+    {
+      "name": "workspace-single-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 25731,
+      "totalPixels": 1440000,
+      "differencePercent": 1.786875,
+      "alignedDifferencePercent": 1.786875,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "42f09590de439ff47be722c839749278888e527e4b8130f7f02963190205c0f1"
+    },
+    {
+      "name": "workspace-multi-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 21458,
+      "totalPixels": 1440000,
+      "differencePercent": 1.490138888888889,
+      "alignedDifferencePercent": 1.490138888888889,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "9a27718e231c0fa14b630bfddab87928234523beb3c82a3aa85d356aa186ef8b"
+    },
+    {
+      "name": "workspace-mask-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 46262,
+      "totalPixels": 1440000,
+      "differencePercent": 3.2126388888888893,
+      "alignedDifferencePercent": 3.2126388888888893,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "88d18849d5d73bd73845c71677b539ad10cf9386d6a544b39fb4e7fd145da194"
+    },
+    {
+      "name": "workspace-expand-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 21687,
+      "totalPixels": 1440000,
+      "differencePercent": 1.5060416666666667,
+      "alignedDifferencePercent": 1.5060416666666667,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "72002a5890ea87f01d7c70bdc8e36f3bad97e8391fe60624dd997443beee5276"
+    },
+    {
+      "name": "workspace-product-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 30468,
+      "totalPixels": 1440000,
+      "differencePercent": 2.1158333333333337,
+      "alignedDifferencePercent": 2.1158333333333337,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "d68dfda2198e11cdc92347736ff46488d35e5288586d0736b73b36313cba6fd2"
+    },
+    {
+      "name": "library-dark-1440",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 19074,
+      "totalPixels": 1440000,
+      "differencePercent": 1.3245833333333334,
+      "alignedDifferencePercent": 1.3245833333333334,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "9cfb60a6f1ef260bfac6db23ab4ca85a2015deb3feeeffe19494d7c7bb11d580"
+    },
+    {
+      "name": "admin-dark-1440",
+      "width": 1440,
+      "height": 1276,
+      "changedPixels": 20375,
+      "totalPixels": 1837440,
+      "differencePercent": 1.108879745733194,
+      "alignedDifferencePercent": 1.108879745733194,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "c094c6080a41af9517bea46468521d99acd4750450a7cb7e02780d23265d6bae",
+      "creativeRegion": {
+        "width": 1248,
+        "height": 1000,
+        "changedPixels": 17495,
+        "totalPixels": 1248000,
+        "differencePercent": 1.4018429487179487,
+        "alignedDifferencePercent": 1.4018429487179487,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "crop": {
+          "left": 96,
+          "top": 147,
+          "width": 1248,
+          "height": 1000
+        },
+        "comparison": "同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"
+      }
+    },
+    {
+      "name": "home-light-390",
+      "width": 390,
+      "height": 1485,
+      "changedPixels": 57372,
+      "totalPixels": 579150,
+      "differencePercent": 9.906241906241906,
+      "alignedDifferencePercent": 9.906241906241906,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "05140f31f81a0a343fe55cb369988b79dae6fbe1a0e86f1ff0713b95b1fb7a1a"
+    },
+    {
+      "name": "skus-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "totalPixels": 329160,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1468146ed80bf2fb4b50a1520c2409702504dc6b0b3dabcb344e6d951d037419"
+    },
+    {
+      "name": "workspace-empty-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 366,
+      "totalPixels": 329160,
+      "differencePercent": 0.1111921254101349,
+      "alignedDifferencePercent": 0.1111921254101349,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "4130ccc3e4655921db1204330ca1fc5cfe9cdae2ec751641a8d219c3fd2a45e2"
+    },
+    {
+      "name": "workspace-images-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 316,
+      "totalPixels": 329160,
+      "differencePercent": 0.09600194434317658,
+      "alignedDifferencePercent": 0.09600194434317658,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "d5c3b3d597df6de92b5a577d38142f31028f729590775b2489f500c444f36aa1"
+    },
+    {
+      "name": "workspace-single-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 316,
+      "totalPixels": 329160,
+      "differencePercent": 0.09600194434317658,
+      "alignedDifferencePercent": 0.09600194434317658,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "edb5ecddb91bdfa89d330c88994f948169289b725ee14776a70a4f79963169dd"
+    },
+    {
+      "name": "workspace-multi-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 316,
+      "totalPixels": 329160,
+      "differencePercent": 0.09600194434317658,
+      "alignedDifferencePercent": 0.09600194434317658,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "952aac617c1671383d1fc3c2a8badb998aec2e3efb2a509c87d217177cc33bb6"
+    },
+    {
+      "name": "workspace-mask-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 1342,
+      "totalPixels": 329160,
+      "differencePercent": 0.4077044598371613,
+      "alignedDifferencePercent": 0.4077044598371613,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "8b48768913095bd25babd16e5c6e2d7600653a0becc4482a4965e1b9c02660be"
+    },
+    {
+      "name": "workspace-expand-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 649,
+      "totalPixels": 329160,
+      "differencePercent": 0.19716855024911897,
+      "alignedDifferencePercent": 0.19716855024911897,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "c36d71fc1e7e6abfceb03d4eeb768aae1b30ae4df6778bffb2d3ffca70635b5e"
+    },
+    {
+      "name": "workspace-product-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 3636,
+      "totalPixels": 329160,
+      "differencePercent": 1.104629967189209,
+      "alignedDifferencePercent": 1.104629967189209,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "1b76d4f48d19d398898d76661a2bf699aab8ba9818793fa2708e1b527969e707"
+    },
+    {
+      "name": "library-light-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 676,
+      "totalPixels": 329160,
+      "differencePercent": 0.20537124802527648,
+      "alignedDifferencePercent": 0.20537124802527648,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "7443b07c5c99db86747cd612b5b4b0315dbd45ebe8b8fe8d61b5c05256b00904"
+    },
+    {
+      "name": "admin-light-390",
+      "width": 390,
+      "height": 1157,
+      "changedPixels": 0,
+      "totalPixels": 451230,
+      "differencePercent": 0,
+      "alignedDifferencePercent": 0,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "6a5128c5dc693c1014680750cc6d2e72d9cf5d7fe20a373d03c27a8b0b74c5c6",
+      "creativeRegion": {
+        "width": 354,
+        "height": 911,
+        "changedPixels": 0,
+        "totalPixels": 322494,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "crop": {
+          "left": 18,
+          "top": 155,
+          "width": 354,
+          "height": 911
+        },
+        "comparison": "同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"
+      }
+    },
+    {
+      "name": "home-dark-390",
+      "width": 390,
+      "height": 1485,
+      "changedPixels": 65511,
+      "totalPixels": 579150,
+      "differencePercent": 11.311577311577311,
+      "alignedDifferencePercent": 11.311577311577311,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "b38af2b590cc4fabf3407c4229843ecc41daa2309d2d65520ce25c0eebffb52a"
+    },
+    {
+      "name": "skus-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 2477,
+      "totalPixels": 329160,
+      "differencePercent": 0.7525215700571151,
+      "alignedDifferencePercent": 0.7525215700571151,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "8ded9d8bed4566b7479be738143250d918a9c931ec74e73658ab591d43d3603e"
+    },
+    {
+      "name": "workspace-empty-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 5545,
+      "totalPixels": 329160,
+      "differencePercent": 1.6845910803256776,
+      "alignedDifferencePercent": 1.6845910803256776,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "bb0b279a72a0b5ddac63521251a76e8119a8d7de07902aee8b3b3229adf23d84"
+    },
+    {
+      "name": "workspace-images-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 4192,
+      "totalPixels": 329160,
+      "differencePercent": 1.2735447806537854,
+      "alignedDifferencePercent": 1.2735447806537854,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "52accb5640bc068c266e42d30d56f0c8cac7a7b7ee5d61e97c80a51f051d5c3d"
+    },
+    {
+      "name": "workspace-single-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 6739,
+      "totalPixels": 329160,
+      "differencePercent": 2.0473326042046422,
+      "alignedDifferencePercent": 2.0473326042046422,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "34da0a29767f37ae3649cec0ca02fe4a4335752d1ef9c636ba2d0a3bcc48bec0"
+    },
+    {
+      "name": "workspace-multi-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 6174,
+      "totalPixels": 329160,
+      "differencePercent": 1.8756835581480131,
+      "alignedDifferencePercent": 1.8756835581480131,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "52c814549b1758ff6eb34c8bc3cf4dbc7ae9e77d29d69abb7ecc3b4b70c606d3"
+    },
+    {
+      "name": "workspace-mask-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 27931,
+      "totalPixels": 329160,
+      "differencePercent": 8.485538947624256,
+      "alignedDifferencePercent": 8.485538947624256,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "0d469420e44f52230c1e6b3676cb7f645c45a57ec7aeb216294055c53dd94c0d"
+    },
+    {
+      "name": "workspace-expand-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 8737,
+      "totalPixels": 329160,
+      "differencePercent": 2.654332239640296,
+      "alignedDifferencePercent": 2.654332239640296,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "6783029962c57f14a2ef0cfd641b276644958f9f07e95e6cedf8882030170447"
+    },
+    {
+      "name": "workspace-product-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 13497,
+      "totalPixels": 329160,
+      "differencePercent": 4.1004374772147285,
+      "alignedDifferencePercent": 4.1004374772147285,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "7639a1fa8a80f773b8b7b3a9c0f20611f249e3e3acdb29dd3a0065a7fbe1fe79"
+    },
+    {
+      "name": "library-dark-390",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 14059,
+      "totalPixels": 329160,
+      "differencePercent": 4.27117511240734,
+      "alignedDifferencePercent": 4.27117511240734,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "d4bba98104d20f2cff9a835d8e8a23e2d31c7d4a339e7c0c3aaae4d278652a96"
+    },
+    {
+      "name": "admin-dark-390",
+      "width": 390,
+      "height": 1157,
+      "changedPixels": 5757,
+      "totalPixels": 451230,
+      "differencePercent": 1.2758460208762714,
+      "alignedDifferencePercent": 1.2758460208762714,
+      "verticalOffset": 0,
+      "alignmentRange": 8,
+      "sha256": "786a835b5677abb09a685de22e9a77fcec0175e98f01eb06eb551f42530e0149",
+      "creativeRegion": {
+        "width": 354,
+        "height": 911,
+        "changedPixels": 4977,
+        "totalPixels": 322494,
+        "differencePercent": 1.5432845262237438,
+        "alignedDifferencePercent": 1.5432845262237438,
+        "verticalOffset": 0,
+        "alignmentRange": 8,
+        "crop": {
+          "left": 18,
+          "top": 155,
+          "width": 354,
+          "height": 911
+        },
+        "comparison": "同一布局坐标的真实PNG裁切；全页严格差异仍独立记录"
+      }
+    }
+  ],
+  "failures": []
+}

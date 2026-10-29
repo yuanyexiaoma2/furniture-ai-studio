@@ -1,0 +1,594 @@
+{
+  "referenceCommit": "1e6e4bf",
+  "environmentAnchor": "baseline-phase3/manifest.json",
+  "method": "历史phase2b-studio保持不变。额外在同环境比较已审阅原版与当前构建，不把历史字体差异直接归因于改色，也不降低严格阈值。",
+  "results": [
+    {
+      "name": "login-light-1440",
+      "archivedStrict": 1.7804861111111112,
+      "originalToArchive": 1.7804861111111112,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "product-light-1440",
+      "archivedStrict": 4.555984096374068,
+      "originalToArchive": 4.555984096374068,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 4667,
+        "changedPixels": 0,
+        "totalPixels": 6720480,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "agent-light-1440",
+      "archivedStrict": 1.8949359038725442,
+      "originalToArchive": 1.8949359038725442,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 9959,
+        "changedPixels": 0,
+        "totalPixels": 14340960,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "admin-light-1440",
+      "archivedStrict": 0.9993749999999999,
+      "originalToArchive": 0.9993749999999999,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "users-light-1440",
+      "archivedStrict": 1.550087060615954,
+      "originalToArchive": 1.550087060615954,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1021,
+        "changedPixels": 0,
+        "totalPixels": 1470240,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "gateways-light-1440",
+      "archivedStrict": 2.2576418475688103,
+      "originalToArchive": 2.2576418475688103,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1643,
+        "changedPixels": 0,
+        "totalPixels": 2365920,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "models-light-1440",
+      "archivedStrict": 1.766370602577499,
+      "originalToArchive": 1.688000696621386,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1276,
+        "changedPixels": 1440,
+        "totalPixels": 1837440,
+        "differencePercent": 0.07836990595611285,
+        "alignedDifferencePercent": 0.07836990595611285,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "templates-light-1440",
+      "archivedStrict": 0.8469444444444444,
+      "originalToArchive": 0.8469444444444444,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "forbidden-light-1440",
+      "archivedStrict": 0.64,
+      "originalToArchive": 0.64,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "login-dark-1440",
+      "archivedStrict": 1.8016666666666667,
+      "originalToArchive": 1.8016666666666667,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "product-dark-1440",
+      "archivedStrict": 4.614908458919601,
+      "originalToArchive": 4.614908458919601,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 4667,
+        "changedPixels": 0,
+        "totalPixels": 6720480,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "agent-dark-1440",
+      "archivedStrict": 1.918881302228024,
+      "originalToArchive": 1.918881302228024,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 9959,
+        "changedPixels": 0,
+        "totalPixels": 14340960,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "admin-dark-1440",
+      "archivedStrict": 1.008888888888889,
+      "originalToArchive": 1.008888888888889,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "users-dark-1440",
+      "archivedStrict": 1.5640983784960278,
+      "originalToArchive": 1.5640983784960278,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1021,
+        "changedPixels": 0,
+        "totalPixels": 1470240,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "gateways-dark-1440",
+      "archivedStrict": 2.2841431662947183,
+      "originalToArchive": 2.2841431662947183,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1643,
+        "changedPixels": 0,
+        "totalPixels": 2365920,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "models-dark-1440",
+      "archivedStrict": 2.8128809648206197,
+      "originalToArchive": 1.704001219087426,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1276,
+        "changedPixels": 20375,
+        "totalPixels": 1837440,
+        "differencePercent": 1.108879745733194,
+        "alignedDifferencePercent": 1.108879745733194,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "templates-dark-1440",
+      "archivedStrict": 0.856875,
+      "originalToArchive": 0.856875,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "forbidden-dark-1440",
+      "archivedStrict": 0.6492361111111111,
+      "originalToArchive": 0.6492361111111111,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1000,
+        "changedPixels": 0,
+        "totalPixels": 1440000,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "login-light-390",
+      "archivedStrict": 4.774257248002872,
+      "originalToArchive": 4.774257248002872,
+      "sourceComparison": {
+        "width": 390,
+        "height": 857,
+        "changedPixels": 0,
+        "totalPixels": 334230,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "product-light-390",
+      "archivedStrict": 27.576009536341157,
+      "originalToArchive": 27.576009536341157,
+      "sourceComparison": {
+        "width": 390,
+        "height": 9529,
+        "changedPixels": 0,
+        "totalPixels": 3716310,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "agent-light-390",
+      "archivedStrict": 4.780645984305108,
+      "originalToArchive": 4.780645984305108,
+      "sourceComparison": {
+        "width": 390,
+        "height": 12462,
+        "changedPixels": 0,
+        "totalPixels": 4860180,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "admin-light-390",
+      "archivedStrict": 3.9077039759633614,
+      "originalToArchive": 3.9077039759633614,
+      "sourceComparison": {
+        "width": 390,
+        "height": 879,
+        "changedPixels": 0,
+        "totalPixels": 342810,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "users-light-390",
+      "archivedStrict": 3.493104118104118,
+      "originalToArchive": 3.493104118104118,
+      "sourceComparison": {
+        "width": 390,
+        "height": 1584,
+        "changedPixels": 0,
+        "totalPixels": 617760,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "gateways-light-390",
+      "archivedStrict": 5.622211471268075,
+      "originalToArchive": 5.622211471268075,
+      "sourceComparison": {
+        "width": 390,
+        "height": 2385,
+        "changedPixels": 0,
+        "totalPixels": 930150,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "models-light-390",
+      "archivedStrict": 2.9204618487245972,
+      "originalToArchive": 2.9204618487245972,
+      "sourceComparison": {
+        "width": 390,
+        "height": 1157,
+        "changedPixels": 0,
+        "totalPixels": 451230,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "templates-light-390",
+      "archivedStrict": 3.4022967553773245,
+      "originalToArchive": 3.4022967553773245,
+      "sourceComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "forbidden-light-390",
+      "archivedStrict": 2.7400048608579417,
+      "originalToArchive": 2.7400048608579417,
+      "sourceComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "login-dark-390",
+      "archivedStrict": 4.826915597043952,
+      "originalToArchive": 4.826915597043952,
+      "sourceComparison": {
+        "width": 390,
+        "height": 857,
+        "changedPixels": 0,
+        "totalPixels": 334230,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "product-dark-390",
+      "archivedStrict": 28.77757775858311,
+      "originalToArchive": 28.77757775858311,
+      "sourceComparison": {
+        "width": 390,
+        "height": 9529,
+        "changedPixels": 0,
+        "totalPixels": 3716310,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "agent-dark-390",
+      "archivedStrict": 4.8296153640400155,
+      "originalToArchive": 4.8296153640400155,
+      "sourceComparison": {
+        "width": 390,
+        "height": 12462,
+        "changedPixels": 0,
+        "totalPixels": 4860180,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "admin-dark-390",
+      "archivedStrict": 3.950001458533882,
+      "originalToArchive": 3.950001458533882,
+      "sourceComparison": {
+        "width": 390,
+        "height": 879,
+        "changedPixels": 0,
+        "totalPixels": 342810,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "users-dark-390",
+      "archivedStrict": 3.5301735301735304,
+      "originalToArchive": 3.5301735301735304,
+      "sourceComparison": {
+        "width": 390,
+        "height": 1584,
+        "changedPixels": 0,
+        "totalPixels": 617760,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "gateways-dark-390",
+      "archivedStrict": 5.688222329731764,
+      "originalToArchive": 5.688222329731764,
+      "sourceComparison": {
+        "width": 390,
+        "height": 2385,
+        "changedPixels": 0,
+        "totalPixels": 930150,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "models-dark-390",
+      "archivedStrict": 4.219799215477694,
+      "originalToArchive": 2.9439531946014226,
+      "sourceComparison": {
+        "width": 390,
+        "height": 1157,
+        "changedPixels": 5757,
+        "totalPixels": 451230,
+        "differencePercent": 1.2758460208762714,
+        "alignedDifferencePercent": 1.2758460208762714,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "templates-dark-390",
+      "archivedStrict": 3.446044476850164,
+      "originalToArchive": 3.446044476850164,
+      "sourceComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "forbidden-dark-390",
+      "archivedStrict": 2.779195528010694,
+      "originalToArchive": 2.779195528010694,
+      "sourceComparison": {
+        "width": 390,
+        "height": 844,
+        "changedPixels": 0,
+        "totalPixels": 329160,
+        "differencePercent": 0,
+        "alignedDifferencePercent": 0,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    }
+  ],
+  "changed": [
+    {
+      "name": "models-light-1440",
+      "archivedStrict": 1.766370602577499,
+      "originalToArchive": 1.688000696621386,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1276,
+        "changedPixels": 1440,
+        "totalPixels": 1837440,
+        "differencePercent": 0.07836990595611285,
+        "alignedDifferencePercent": 0.07836990595611285,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "models-dark-1440",
+      "archivedStrict": 2.8128809648206197,
+      "originalToArchive": 1.704001219087426,
+      "sourceComparison": {
+        "width": 1440,
+        "height": 1276,
+        "changedPixels": 20375,
+        "totalPixels": 1837440,
+        "differencePercent": 1.108879745733194,
+        "alignedDifferencePercent": 1.108879745733194,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    },
+    {
+      "name": "models-dark-390",
+      "archivedStrict": 4.219799215477694,
+      "originalToArchive": 2.9439531946014226,
+      "sourceComparison": {
+        "width": 390,
+        "height": 1157,
+        "changedPixels": 5757,
+        "totalPixels": 451230,
+        "differencePercent": 1.2758460208762714,
+        "alignedDifferencePercent": 1.2758460208762714,
+        "verticalOffset": 0,
+        "alignmentRange": 8
+      }
+    }
+  ]
+}

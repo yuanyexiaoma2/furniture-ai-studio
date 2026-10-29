@@ -21,6 +21,13 @@
 - 没有削弱断言：保存后的链接和上传结果仍按原断言检查；完整回归重跑 10 项通过，2 项专用 Agent 按设计另跑。
 - 复现/复查：`npm run test:e2e -- tests/visual-plan.spec.ts`；日志见 `.local/verification/ui-phase2a/e2e-final.log` 与 `e2e-acceptance.log`。
 
+## KI-003：模板导航后立即退出的会话读取竞态（待独立排查）
+
+- 位置：`tests/auth.spec.ts` 的 `loginAfterLogout`；生产会话读取与退出链路待另开任务定位。
+- 现象：导航到模板页后立即退出，偶发没有停留在登录页，而落回首页；可能有尚未完成的会话读取/导航竞态，尚未确认根因。
+- 阶段2b测试改动仅在模板导航后增加 `await page.waitForLoadState("networkidle")`，等待读取结束；退出、重新登录和角色断言均保留。鉴权逻辑没有修改，也不宣称竞态已修复。
+- 复查命令：`npm run test:e2e -- tests/auth.spec.ts`；阶段2b日志：`.local/verification/ui-phase2b/e2e-review-build.log`。需另开业务任务排查，阶段3准备不修改鉴权。
+
 ## 其他基线说明
 
 - `npm run test:e2e` 中 `tests/agent.spec.ts` 的两项用例原本就要求通过 `npm run test:agent:browser` 在隔离数据库与本地 mock 网关下单独运行；常规回归显示 2 skipped 是设计行为。

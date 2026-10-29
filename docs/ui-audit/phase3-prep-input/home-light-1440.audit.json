@@ -1,0 +1,2494 @@
+{
+  "variables": {
+    "--background": "#fff",
+    "--foreground": "#18181b",
+    "--card": "#fff",
+    "--card-foreground": "#18181b",
+    "--popover": "#fff",
+    "--popover-foreground": "#18181b",
+    "--primary": "#1f3a2e",
+    "--primary-foreground": "#fff",
+    "--secondary": "#f4f4f5",
+    "--secondary-foreground": "#18181b",
+    "--muted": "#f7f7f8",
+    "--muted-foreground": "#71717a",
+    "--accent": "#f4f4f5",
+    "--accent-foreground": "#18181b",
+    "--destructive": "#bc3f40",
+    "--border": "#e4e4e7",
+    "--input": "#e4e4e7",
+    "--ring": "#1f3a2e",
+    "--p-subtle": "#71717a",
+    "--p-text": "#52525b",
+    "--p-panel": "#fff",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#fff",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "span",
+      "text": "家具创作室",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 79,
+      "scrollWidth": 79,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 0,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 58,
+          "y": 19.703125,
+          "width": 78.515625,
+          "height": 21
+        }
+      ]
+    },
+    {
+      "selector": "a.active",
+      "text": "首页",
+      "fontSize": "14px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.71676507806213,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 1,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 192.515625,
+          "y": 20.296875,
+          "width": 28,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "SKU",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 25,
+      "scrollWidth": 25,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 2,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 250.515625,
+          "y": 20.296875,
+          "width": 25.1875,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "a",
+      "text": "模板库",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 42,
+      "scrollWidth": 42,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 3,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 305.703125,
+          "y": 20.296875,
+          "width": 42,
+          "height": 19
+        }
+      ]
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 7.032446443609283,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": false,
+      "index": 4,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 1384.5,
+          "y": 21.09375,
+          "width": 13,
+          "height": 17
+        }
+      ]
+    },
+    {
+      "selector": "span.p-eyebrow",
+      "text": "家具商品图",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 6.878620053921522,
+      "clientWidth": 80,
+      "scrollWidth": 80,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 5,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 693.25,
+          "y": 154.5625,
+          "width": 66.5,
+          "height": 17
+        }
+      ],
+      "domContrast": 7.729820868495424,
+      "rasterSamples": 487
+    },
+    {
+      "selector": "h1",
+      "text": "制作产品图片",
+      "fontSize": "40px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 15.875872604242247,
+      "clientWidth": 231,
+      "scrollWidth": 231,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 6,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 604.5,
+          "y": 187.359375,
+          "width": 231,
+          "height": 53
+        }
+      ],
+      "domContrast": 17.71676507806213,
+      "rasterSamples": 4120
+    },
+    {
+      "selector": "p",
+      "text": "上传产品实拍，选择任务开始制作。",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.089972118418544,
+      "clientWidth": 231,
+      "scrollWidth": 231,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 7,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 608,
+          "y": 257.359375,
+          "width": 224,
+          "height": 19
+        }
+      ],
+      "domContrast": 7.729820868495424,
+      "rasterSamples": 1386
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "亚马逊套图",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.678243022333464,
+      "clientWidth": 91,
+      "scrollWidth": 91,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 8,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 533.578125,
+          "y": 308.34375,
+          "width": 65,
+          "height": 17
+        }
+      ],
+      "domContrast": 7.729820868495424,
+      "rasterSamples": 470
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "A+ 详情",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.678243022333464,
+      "clientWidth": 73,
+      "scrollWidth": 73,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 9,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 634.578125,
+          "y": 308.34375,
+          "width": 46.84375,
+          "height": 17
+        }
+      ],
+      "domContrast": 7.729820868495424,
+      "rasterSamples": 266
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "场景图",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.678243022333464,
+      "clientWidth": 65,
+      "scrollWidth": 65,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 10,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 717.421875,
+          "y": 308.34375,
+          "width": 39,
+          "height": 17
+        }
+      ],
+      "domContrast": 7.729820868495424,
+      "rasterSamples": 288
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "白底图",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.678243022333464,
+      "clientWidth": 65,
+      "scrollWidth": 65,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 11,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 792.421875,
+          "y": 308.34375,
+          "width": 39,
+          "height": 17
+        }
+      ],
+      "domContrast": 7.729820868495424,
+      "rasterSamples": 284
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "尺寸图",
+      "fontSize": "13px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.725091480010672,
+      "clientWidth": 65,
+      "scrollWidth": 65,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 12,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 867.421875,
+          "y": 308.34375,
+          "width": 39,
+          "height": 17
+        }
+      ],
+      "domContrast": 7.729820868495424,
+      "rasterSamples": 217
+    },
+    {
+      "selector": "kbd.p-tab-hint",
+      "text": "Tab",
+      "fontSize": "12px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 33,
+      "scrollWidth": 33,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 13,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 1049.90625,
+          "y": 393.75,
+          "width": 21.09375,
+          "height": 14
+        }
+      ],
+      "domContrast": 4.832895561154151,
+      "rasterSamples": 103
+    },
+    {
+      "selector": "span",
+      "text": "添加",
+      "fontSize": "14px",
+      "color": "rgb(82, 82, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 7.729820868495424,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 14,
+      "opacity": 1,
+      "foreground": [
+        82,
+        82,
+        91,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 385,
+          "y": 509.546875,
+          "width": 28,
+          "height": 19
+        }
+      ],
+      "domContrast": 7.729820868495424,
+      "rasterSamples": 226
+    },
+    {
+      "selector": "span.p-model-label",
+      "text": "Gemini 3.8 Flash",
+      "fontSize": "13px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 11.219105093353505,
+      "clientWidth": 94,
+      "scrollWidth": 94,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 15,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 455,
+          "y": 510.75,
+          "width": 93.515625,
+          "height": 17
+        }
+      ],
+      "domContrast": 11.219105093353505,
+      "rasterSamples": 469
+    },
+    {
+      "selector": "span.p-model-label",
+      "text": "Nano Banana 2.1",
+      "fontSize": "13px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 11.219105093353505,
+      "clientWidth": 97,
+      "scrollWidth": 97,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 16,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 616.515625,
+          "y": 510.75,
+          "width": 97.28125,
+          "height": 17
+        }
+      ],
+      "domContrast": 11.219105093353505,
+      "rasterSamples": 451
+    },
+    {
+      "selector": "span",
+      "text": "联网 开",
+      "fontSize": "13px",
+      "color": "rgb(31, 58, 46)",
+      "background": [
+        244,
+        244,
+        245
+      ],
+      "contrast": 11.219105093353505,
+      "clientWidth": 43,
+      "scrollWidth": 43,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 17,
+      "opacity": 1,
+      "foreground": [
+        31,
+        58,
+        46,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 816.796875,
+          "y": 510.75,
+          "width": 29.5625,
+          "height": 17
+        },
+        {
+          "x": 846.359375,
+          "y": 510.75,
+          "width": 13,
+          "height": 17
+        }
+      ],
+      "domContrast": 11.219105093353505,
+      "rasterSamples": 301
+    },
+    {
+      "selector": "p.p-home-footnote",
+      "text": "拖入产品实拍或文档，先用手边的资料开始\n随时补充，不打断创作",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.5932404672616665,
+      "clientWidth": 419,
+      "scrollWidth": 419,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 18,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 533.5,
+          "y": 579.75,
+          "width": 247,
+          "height": 17
+        }
+      ],
+      "domContrast": 4.832895561154151,
+      "rasterSamples": 1495
+    },
+    {
+      "selector": "span",
+      "text": "随时补充，不打断创作",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.559116686973566,
+      "clientWidth": 130,
+      "scrollWidth": 130,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 19,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 799.5,
+          "y": 579.75,
+          "width": 130,
+          "height": 17
+        }
+      ],
+      "domContrast": 4.832895561154151,
+      "rasterSamples": 791
+    },
+    {
+      "selector": "h2",
+      "text": "选择任务",
+      "fontSize": "16px",
+      "color": "rgb(24, 24, 27)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 17.300290984451657,
+      "clientWidth": 1200,
+      "scrollWidth": 1200,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 20,
+      "opacity": 1,
+      "foreground": [
+        24,
+        24,
+        27,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 120,
+          "y": 663,
+          "width": 62.40625,
+          "height": 21
+        }
+      ],
+      "domContrast": 17.71676507806213,
+      "rasterSamples": 591
+    },
+    {
+      "selector": "span",
+      "text": "实拍",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        234,
+        229,
+        220
+      ],
+      "contrast": 3.630956771973389,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 21,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 148,
+          "y": 861.84375,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "domContrast": 1.2545049412515508,
+      "rasterSamples": 180
+    },
+    {
+      "selector": "span",
+      "text": "主图",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        221,
+        216,
+        206
+      ],
+      "contrast": 2.1971264489520768,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 22,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 290.796875,
+          "y": 789.796875,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "domContrast": 1.4200680808629145,
+      "rasterSamples": 199
+    },
+    {
+      "selector": "span",
+      "text": "场景",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        221,
+        216,
+        206
+      ],
+      "contrast": 1.6136683963629248,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 23,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 394.21875,
+          "y": 789.8125,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "domContrast": 1.4200680808629145,
+      "rasterSamples": 195
+    },
+    {
+      "selector": "span",
+      "text": "卖点",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        221,
+        216,
+        206
+      ],
+      "contrast": 10.91404093866672,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 24,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 290.796875,
+          "y": 869.125,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "domContrast": 1.4200680808629145,
+      "rasterSamples": 183
+    },
+    {
+      "selector": "span",
+      "text": "尺寸",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        221,
+        216,
+        206
+      ],
+      "contrast": 3.361053878217736,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 25,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 394.21875,
+          "y": 869.140625,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "domContrast": 1.4200680808629145,
+      "rasterSamples": 119
+    },
+    {
+      "selector": "h3",
+      "text": "做一套图包",
+      "fontSize": "20px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        220,
+        216,
+        209
+      ],
+      "contrast": 3.133913074226513,
+      "clientWidth": 339,
+      "scrollWidth": 339,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 26,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 144,
+          "y": 872.984375,
+          "width": 100,
+          "height": 27
+        }
+      ],
+      "domContrast": 1.4202465270568796,
+      "rasterSamples": 1164
+    },
+    {
+      "selector": "p",
+      "text": "拖入实拍，生成主图、场景、卖点、尺寸",
+      "fontSize": "14px",
+      "color": "rgba(255, 255, 255, 0.9)",
+      "background": [
+        220,
+        216,
+        209
+      ],
+      "contrast": 3.1864094984818934,
+      "clientWidth": 339,
+      "scrollWidth": 339,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 27,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        0.9019607843137255
+      ],
+      "ranges": [
+        {
+          "x": 144,
+          "y": 911.984375,
+          "width": 252,
+          "height": 19
+        }
+      ],
+      "domContrast": 1.374968934780573,
+      "rasterSamples": 1517
+    },
+    {
+      "selector": "span",
+      "text": "调整前",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        161.33333333333334,
+        158.4,
+        153.26666666666668
+      ],
+      "contrast": 2.697147209141791,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 28,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 619.71875,
+          "y": 739,
+          "width": 36,
+          "height": 16
+        }
+      ],
+      "domContrast": 2.6574955560203017,
+      "rasterSamples": 338
+    },
+    {
+      "selector": "span",
+      "text": "调整后",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        161.33333333333334,
+        158.4,
+        153.26666666666668
+      ],
+      "contrast": 1.9197964092167106,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 29,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 792,
+          "y": 739,
+          "width": 36,
+          "height": 16
+        }
+      ],
+      "domContrast": 2.6574955560203017,
+      "rasterSamples": 308
+    },
+    {
+      "selector": "h3",
+      "text": "改一张图",
+      "fontSize": "20px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        220,
+        216,
+        209
+      ],
+      "contrast": 6.284817963164059,
+      "clientWidth": 339,
+      "scrollWidth": 339,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 30,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 550.65625,
+          "y": 873,
+          "width": 80,
+          "height": 27
+        }
+      ],
+      "domContrast": 1.4202465270568796,
+      "rasterSamples": 854
+    },
+    {
+      "selector": "p",
+      "text": "换背景、去杂物、局部修改",
+      "fontSize": "14px",
+      "color": "rgba(255, 255, 255, 0.9)",
+      "background": [
+        220,
+        216,
+        209
+      ],
+      "contrast": 5.098234584590479,
+      "clientWidth": 339,
+      "scrollWidth": 339,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 31,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        0.9019607843137255
+      ],
+      "ranges": [
+        {
+          "x": 550.65625,
+          "y": 912,
+          "width": 168,
+          "height": 19
+        }
+      ],
+      "domContrast": 1.374968934780573,
+      "rasterSamples": 1345
+    },
+    {
+      "selector": "p",
+      "text": "已保存的产品与图包",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 117,
+      "scrollWidth": 117,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 32,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 120,
+          "y": 1092,
+          "width": 117,
+          "height": 17
+        }
+      ],
+      "domContrast": 4.832895561154151,
+      "rasterSamples": 709
+    },
+    {
+      "selector": "a",
+      "text": "继续上次的创作",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 4.832895561154151,
+      "clientWidth": 115,
+      "scrollWidth": 115,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 33,
+      "opacity": 1,
+      "foreground": [
+        113,
+        113,
+        122,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 1205,
+          "y": 1092,
+          "width": 91,
+          "height": 17
+        }
+      ],
+      "domContrast": 4.832895561154151,
+      "rasterSamples": 644
+    }
+  ],
+  "contrastFailures": [
+    {
+      "selector": "span",
+      "text": "实拍",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        234,
+        229,
+        220
+      ],
+      "contrast": 3.630956771973389,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 21,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 148,
+          "y": 861.84375,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "domContrast": 1.2545049412515508,
+      "rasterSamples": 180
+    },
+    {
+      "selector": "span",
+      "text": "主图",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        221,
+        216,
+        206
+      ],
+      "contrast": 2.1971264489520768,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 22,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 290.796875,
+          "y": 789.796875,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "domContrast": 1.4200680808629145,
+      "rasterSamples": 199
+    },
+    {
+      "selector": "span",
+      "text": "场景",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        221,
+        216,
+        206
+      ],
+      "contrast": 1.6136683963629248,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 23,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 394.21875,
+          "y": 789.8125,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "domContrast": 1.4200680808629145,
+      "rasterSamples": 195
+    },
+    {
+      "selector": "span",
+      "text": "尺寸",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        221,
+        216,
+        206
+      ],
+      "contrast": 3.361053878217736,
+      "clientWidth": 24,
+      "scrollWidth": 24,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 25,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 394.21875,
+          "y": 869.140625,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "domContrast": 1.4200680808629145,
+      "rasterSamples": 119
+    },
+    {
+      "selector": "h3",
+      "text": "做一套图包",
+      "fontSize": "20px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        220,
+        216,
+        209
+      ],
+      "contrast": 3.133913074226513,
+      "clientWidth": 339,
+      "scrollWidth": 339,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 26,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 144,
+          "y": 872.984375,
+          "width": 100,
+          "height": 27
+        }
+      ],
+      "domContrast": 1.4202465270568796,
+      "rasterSamples": 1164
+    },
+    {
+      "selector": "p",
+      "text": "拖入实拍，生成主图、场景、卖点、尺寸",
+      "fontSize": "14px",
+      "color": "rgba(255, 255, 255, 0.9)",
+      "background": [
+        220,
+        216,
+        209
+      ],
+      "contrast": 3.1864094984818934,
+      "clientWidth": 339,
+      "scrollWidth": 339,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 27,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        0.9019607843137255
+      ],
+      "ranges": [
+        {
+          "x": 144,
+          "y": 911.984375,
+          "width": 252,
+          "height": 19
+        }
+      ],
+      "domContrast": 1.374968934780573,
+      "rasterSamples": 1517
+    },
+    {
+      "selector": "span",
+      "text": "调整前",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        161.33333333333334,
+        158.4,
+        153.26666666666668
+      ],
+      "contrast": 2.697147209141791,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 28,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 619.71875,
+          "y": 739,
+          "width": 36,
+          "height": 16
+        }
+      ],
+      "domContrast": 2.6574955560203017,
+      "rasterSamples": 338
+    },
+    {
+      "selector": "span",
+      "text": "调整后",
+      "fontSize": "12px",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        161.33333333333334,
+        158.4,
+        153.26666666666668
+      ],
+      "contrast": 1.9197964092167106,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal",
+      "raster": true,
+      "index": 29,
+      "opacity": 1,
+      "foreground": [
+        255,
+        255,
+        255,
+        1
+      ],
+      "ranges": [
+        {
+          "x": 792,
+          "y": 739,
+          "width": 36,
+          "height": 16
+        }
+      ],
+      "domContrast": 2.6574955560203017,
+      "rasterSamples": 308
+    }
+  ],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [
+    {
+      "tag": "TEXTAREA",
+      "label": "首页创作要求",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(82, 82, 91)",
+      "borderWidth": "0px",
+      "contrast": 7.729820868495424,
+      "exempt": false,
+      "textContrast": null,
+      "placeholderContrast": 4.832895561154151
+    }
+  ],
+  "whiteSurfaces": [
+    {
+      "tag": "HEADER",
+      "classes": "p-topbar"
+    },
+    {
+      "tag": "DIV",
+      "classes": "w-theme-segments"
+    },
+    {
+      "tag": "DIV",
+      "classes": "p-home-input "
+    },
+    {
+      "tag": "KBD",
+      "classes": "p-tab-hint"
+    }
+  ],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"p-eyebrow\"><span></span>家具商品图</span>",
+            "target": [
+              ".p-eyebrow"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "30.0pt (40px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "3:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<h1>制作产品图片</h1>",
+            "target": [
+              "h1"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<p>上传产品实拍，选择任务开始制作。</p>",
+            "target": [
+              ".p-home-heading > p"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".p-intent-row > .px-4.py-2.hover\\:bg-accent:nth-child(1)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".p-intent-row > .px-4.py-2.hover\\:bg-accent:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".p-intent-row > .px-4.py-2.hover\\:bg-accent:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".px-4.py-2.hover\\:bg-accent:nth-child(4)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".p-intent-row > .px-4.py-2.hover\\:bg-accent:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<textarea class=\"flex min-h-[60px] w-...\" rows=\"3\" aria-label=\"首页创作要求\" placeholder=\"把新品实拍拖进来，帮我做一套亚\" style=\"\">",
+            "target": [
+              "textarea"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<kbd class=\"p-tab-hint\">Tab</kbd>",
+            "target": [
+              "kbd"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>添加</span>",
+            "target": [
+              ".p-composer-add > span"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"p-model-label\">Gemini 3.8 Flash</span>",
+            "target": [
+              "button[aria-label=\"智能体模型\"] > .p-model-label"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"p-model-label\">Nano Banana 2.1</span>",
+            "target": [
+              "button[aria-label=\"生图模型\"] > .p-model-label"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>联网 开</span>",
+            "target": [
+              ".w-web-toggle > span"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<p class=\"p-home-footnote\">",
+            "target": [
+              ".p-home-footnote"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>随时补充，不打断创作</span>",
+            "target": [
+              ".p-home-footnote > span"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<h2>选择任务</h2>",
+            "target": [
+              "h2"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"做一套图包\">",
+                    "target": [
+                      "button[aria-label=\"做一套图包\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>实拍</span>",
+            "target": [
+              ".r1-pack-original > span"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"做一套图包\">",
+                    "target": [
+                      "button[aria-label=\"做一套图包\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>主图</span>",
+            "target": [
+              ".r1-output-0 > span"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"做一套图包\">",
+                    "target": [
+                      "button[aria-label=\"做一套图包\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>场景</span>",
+            "target": [
+              ".r1-output-1 > span"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"做一套图包\">",
+                    "target": [
+                      "button[aria-label=\"做一套图包\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>卖点</span>",
+            "target": [
+              ".r1-output-2 > span"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"做一套图包\">",
+                    "target": [
+                      "button[aria-label=\"做一套图包\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>尺寸</span>",
+            "target": [
+              ".r1-output-3 > span"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "15.0pt (20px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"做一套图包\">",
+                    "target": [
+                      "button[aria-label=\"做一套图包\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<h3>做一套图包</h3>",
+            "target": [
+              "button[aria-label=\"做一套图包\"] > .r1-task-caption > h3"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"做一套图包\">",
+                    "target": [
+                      "button[aria-label=\"做一套图包\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<p>拖入实拍，生成主图、场景、卖点、尺寸</p>",
+            "target": [
+              "button[aria-label=\"做一套图包\"] > .r1-task-caption > p"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"改一张图\">",
+                    "target": [
+                      "button[aria-label=\"改一张图\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>调整前</span>",
+            "target": [
+              ".r1-edit-art > span:nth-child(4)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"改一张图\">",
+                    "target": [
+                      "button[aria-label=\"改一张图\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>调整后</span>",
+            "target": [
+              "span:nth-child(5)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "15.0pt (20px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"改一张图\">",
+                    "target": [
+                      "button[aria-label=\"改一张图\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<h3>改一张图</h3>",
+            "target": [
+              "button[aria-label=\"改一张图\"] > .r1-task-caption > h3"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-task-card\" aria-label=\"改一张图\">",
+                    "target": [
+                      "button[aria-label=\"改一张图\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<p>换背景、去杂物、局部修改</p>",
+            "target": [
+              "button[aria-label=\"改一张图\"] > .r1-task-caption > p"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<p>已保存的产品与图包</p>",
+            "target": [
+              ".l-home-last > p"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<main class=\"p-home l-home\">",
+                    "target": [
+                      "main"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a pseudo element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<a href=\"/skus\">",
+            "target": [
+              ".l-home-last > a[href$=\"skus\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}

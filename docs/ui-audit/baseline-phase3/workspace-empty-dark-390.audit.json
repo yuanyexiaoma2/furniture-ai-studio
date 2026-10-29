@@ -1,0 +1,532 @@
+{
+  "variables": {
+    "--background": "#0e0e10",
+    "--foreground": "#fafafa",
+    "--card": "#16161a",
+    "--card-foreground": "#fafafa",
+    "--popover": "#1e1e23",
+    "--popover-foreground": "#fafafa",
+    "--primary": "#fafafa",
+    "--primary-foreground": "#18181b",
+    "--secondary": "#26262c",
+    "--secondary-foreground": "#fafafa",
+    "--muted": "#16161a",
+    "--muted-foreground": "#71717a",
+    "--accent": "#26262c",
+    "--accent-foreground": "#fafafa",
+    "--destructive": "#e58181",
+    "--border": "#ffffff14",
+    "--input": "#ffffff14",
+    "--ring": "#6c907d",
+    "--p-subtle": "#71717a",
+    "--p-text": "#a1a1aa",
+    "--p-panel": "#16161a",
+    "--studio-muted-ink": "",
+    "--studio-control-line": "",
+    "--studio-input-surface": "#fffefa",
+    "--radius": ".75rem",
+    "--font-body": "\"Microsoft YaHei UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+  },
+  "controlContrastFailures": [],
+  "textMetrics": [
+    {
+      "selector": "strong",
+      "text": "新建创作",
+      "fontSize": "13px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 18.475690284819883,
+      "clientWidth": 52,
+      "scrollWidth": 52,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "产品卡 · 未建档",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 7.524375494018192,
+      "clientWidth": 95,
+      "scrollWidth": 95,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.p-avatar",
+      "text": "管",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        38,
+        38,
+        44
+      ],
+      "contrast": 5.869374838533013,
+      "clientWidth": 28,
+      "scrollWidth": 28,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button",
+      "text": "对话",
+      "fontSize": "12px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 3.7336665965662377,
+      "clientWidth": 64,
+      "scrollWidth": 64,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button",
+      "text": "画布",
+      "fontSize": "12px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        38,
+        38,
+        44
+      ],
+      "contrast": 14.411927178336601,
+      "clientWidth": 64,
+      "scrollWidth": 64,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "图层",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        28.745098039215684,
+        28.745098039215684,
+        33.509803921568626
+      ],
+      "contrast": 6.56926092430991,
+      "clientWidth": 87,
+      "scrollWidth": 87,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.inline-flex.items-center.justify-center.gap-2.whitespace-nowrap.rounded-[var(--radius-control)].text-sm.font-medium.transition-colors.focus-visible:outline-none.focus-visible:ring-1.focus-visible:ring-ring.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg]:size-4.[&_svg]:shrink-0.hover:bg-accent.hover:text-accent-foreground.h-9.px-4.py-2",
+      "text": "历史",
+      "fontSize": "14px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        28.745098039215684,
+        28.745098039215684,
+        33.509803921568626
+      ],
+      "contrast": 6.56926092430991,
+      "clientWidth": 87,
+      "scrollWidth": 87,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span.p-zoom-label",
+      "text": "72%",
+      "fontSize": "13px",
+      "color": "rgb(161, 161, 170)",
+      "background": [
+        30,
+        30,
+        35
+      ],
+      "contrast": 6.476388788882193,
+      "clientWidth": 45,
+      "scrollWidth": 45,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "strong",
+      "text": "把实拍拖到这里",
+      "fontSize": "20px",
+      "color": "rgb(250, 250, 250)",
+      "background": [
+        17.607843137254903,
+        17.607843137254903,
+        20.96078431372549
+      ],
+      "contrast": 17.9674797530314,
+      "clientWidth": 140,
+      "scrollWidth": 140,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "支持 JPG、PNG、WEBP",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        17.607843137254903,
+        17.607843137254903,
+        20.96078431372549
+      ],
+      "contrast": 3.8804543257979645,
+      "clientWidth": 136,
+      "scrollWidth": 136,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.r1-template-link",
+      "text": "从模板开始",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 3.9902130556588946,
+      "clientWidth": 91,
+      "scrollWidth": 91,
+      "overflow": false,
+      "wrap": "normal"
+    }
+  ],
+  "contrastFailures": [
+    {
+      "selector": "button",
+      "text": "对话",
+      "fontSize": "12px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        22,
+        22,
+        26
+      ],
+      "contrast": 3.7336665965662377,
+      "clientWidth": 64,
+      "scrollWidth": 64,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "span",
+      "text": "支持 JPG、PNG、WEBP",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        17.607843137254903,
+        17.607843137254903,
+        20.96078431372549
+      ],
+      "contrast": 3.8804543257979645,
+      "clientWidth": 136,
+      "scrollWidth": 136,
+      "overflow": false,
+      "wrap": "normal"
+    },
+    {
+      "selector": "button.r1-template-link",
+      "text": "从模板开始",
+      "fontSize": "13px",
+      "color": "rgb(113, 113, 122)",
+      "background": [
+        14,
+        14,
+        16
+      ],
+      "contrast": 3.9902130556588946,
+      "clientWidth": 91,
+      "scrollWidth": 91,
+      "overflow": false,
+      "wrap": "normal"
+    }
+  ],
+  "smallFonts": [],
+  "overflows": [],
+  "controls": [],
+  "whiteSurfaces": [],
+  "pageOverflow": false,
+  "axe": {
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#71717a",
+                  "bgColor": "#16161a",
+                  "contrastRatio": 3.73,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"p-workspace-view-switch\" role=\"tablist\" aria-label=\"工作区视图\"><button role=\"tab\" aria-selected=\"false\" aria-controls=\"workspace-chat\">对话</button><button role=\"tab\" aria-selected=\"true\" aria-controls=\"workspace-canvas\">画布</button></div>",
+                    "target": [
+                      ".p-workspace-view-switch"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 3.73 (foreground color: #71717a, background color: #16161a, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button role=\"tab\" aria-selected=\"false\" aria-controls=\"workspace-chat\">对话</button>",
+            "target": [
+              "button[aria-controls=\"workspace-chat\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.73 (foreground color: #71717a, background color: #16161a, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".p-bottom-tools > .px-4.py-2.hover\\:bg-accent:nth-child(1)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button data-slot=\"button\" class=\"inline-flex items-ce...\">",
+            "target": [
+              ".p-bottom-tools > .px-4.py-2.hover\\:bg-accent:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgOverlap",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because it is overlapped by another element"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"p-zoom-label\">72%</span>",
+            "target": [
+              ".p-zoom-label"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "15.0pt (20px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-drop-target\">",
+                    "target": [
+                      ".r1-drop-target"
+                    ]
+                  },
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<strong>把实拍拖到这里</strong>",
+            "target": [
+              ".r1-drop-target > strong"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"r1-drop-target\">",
+                    "target": [
+                      ".r1-drop-target"
+                    ]
+                  },
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>支持 JPG、PNG、WEBP</span>",
+            "target": [
+              "span:nth-child(3)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<svg class=\"react-flow__background\" data-testid=\"rf__background\" style=\"position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; --xy-background-pattern-color-props: var(--p-dot);\">",
+                    "target": [
+                      ".react-flow__background"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button class=\"r1-template-link\">",
+            "target": [
+              ".r1-template-link"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          }
+        ]
+      }
+    ],
+    "passes": [
+      "color-contrast"
+    ]
+  }
+}

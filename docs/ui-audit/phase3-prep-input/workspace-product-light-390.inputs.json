@@ -1,0 +1,110 @@
+[
+  {
+    "label": "工作台上传实拍",
+    "slot": null,
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "画布上传参考图",
+    "slot": null,
+    "x": 0,
+    "y": 106,
+    "width": 0,
+    "height": 0,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "品类",
+    "slot": null,
+    "x": 46.5,
+    "y": 545.828125,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "结构与部件（含数量）",
+    "slot": null,
+    "x": 46.5,
+    "y": 620.625,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "尺寸",
+    "slot": null,
+    "x": 46.5,
+    "y": 695.421875,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "颜色与材质纹理",
+    "slot": null,
+    "x": 46.5,
+    "y": 770.21875,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "五金样式与位置",
+    "slot": null,
+    "x": 46.5,
+    "y": 845.015625,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "Logo / 标签",
+    "slot": null,
+    "x": 46.5,
+    "y": 919.8125,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "易被 AI 改错的细节",
+    "slot": null,
+    "x": 46.5,
+    "y": 994.609375,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "核心卖点（按优先级）",
+    "slot": null,
+    "x": 46.5,
+    "y": 1069.40625,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "目标人群",
+    "slot": null,
+    "x": 46.5,
+    "y": 1144.203125,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "label": "适用空间与风格",
+    "slot": null,
+    "x": 46.5,
+    "y": 1219,
+    "width": 317.5,
+    "height": 36,
+    "background": "rgba(0, 0, 0, 0)"
+  }
+]
