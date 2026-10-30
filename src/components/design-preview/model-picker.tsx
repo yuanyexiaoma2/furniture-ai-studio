@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- 本地官方 SVG 品牌图形。 */
 "use client";
+import {FEATURE_WEB_RESEARCH} from "@/lib/project-features";
 import {useState} from "react";
 import {Globe,ArrowUp,Bot,Check,ChevronDown,Image as SceneImage,LockKeyhole,MoreHorizontal,Plus,SlidersHorizontal,Sparkles} from "@/components/icons/concept-icons";
 import {models,modelRate,type MockModel,type ModelKind} from "@/design-preview/mock/models";
@@ -42,7 +43,7 @@ export function ComposerToolbar({scope,count=4,ratio="1:1",onCount,onRatio,onAdd
  const state=useModelStore(),selection=resolveSelection(state,scope); const canSend=!!selection.agentId&&!!selection.imageId&&!disabled;
  const image=(state.catalog??models).find(m=>m.id===(selection.auto?selection.imageIds[0]:selection.imageId));
  const resolutions=image?.supportedResolutions??["1K","2K","4K"];
- const web=<Button variant="ghost" role="switch" aria-label="联网" aria-checked={selection.webEnabled??true} className={`p-model-capsule w-web-toggle ${selection.webEnabled?"is-on":""}`} onClick={()=>state.updateSelection(scope,{webEnabled:!selection.webEnabled})}><Globe size="sm"/><span>联网 {selection.webEnabled?"开":"关"}</span></Button>;
+ const web=FEATURE_WEB_RESEARCH&&<Button variant="ghost" role="switch" aria-label="联网" aria-checked={selection.webEnabled??true} className={`p-model-capsule w-web-toggle ${selection.webEnabled?"is-on":""}`} onClick={()=>state.updateSelection(scope,{webEnabled:!selection.webEnabled})}><Globe size="sm"/><span>联网 {selection.webEnabled?"开":"关"}</span></Button>;
  const parameters=<Popover><PopoverTrigger asChild><Button variant="ghost" className="p-model-capsule" aria-label="图片参数"><SlidersHorizontal size="sm"/><span>{[onRatio?ratio:null,onCount?count+" 张":null,selection.resolution==="auto"?"自适应":selection.resolution].filter(Boolean).join(" · ")}</span></Button></PopoverTrigger><PopoverContent className="p-portal p-parameter-panel" side="top"><div><h3>图片参数</h3><label>分辨率<Select value={selection.resolution??"auto"} onValueChange={v=>state.updateSelection(scope,{resolution:v as "auto"|"1K"|"2K"|"4K"})}><SelectTrigger aria-label="分辨率"><SelectValue/></SelectTrigger><SelectContent className="p-portal">{["auto",...resolutions].map(v=><SelectItem key={v} value={v}>{v==="auto"?"自适应":v}</SelectItem>)}</SelectContent></Select></label>{onRatio&&<label>图片比例<Select value={ratio} onValueChange={onRatio}><SelectTrigger aria-label="图片比例"><SelectValue/></SelectTrigger><SelectContent className="p-portal">{["1:1","4:3","3:4","16:9","9:16"].map(v=><SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent></Select></label>}{onCount&&<label>生成张数<Select value={String(count)} onValueChange={v=>onCount?.(Number(v))}><SelectTrigger aria-label="生成张数"><SelectValue/></SelectTrigger><SelectContent className="p-portal">{[1,2,3,4].map(n=><SelectItem key={n} value={String(n)}>{n}</SelectItem>)}</SelectContent></Select></label>}</div></PopoverContent></Popover>;
  return <div className="p-composer-toolbar is-compact" data-composer-scope={scope}>
  <Button variant="ghost" className="p-composer-add" aria-label="添加实拍" onClick={onAdd}><Plus size="sm"/><span>添加</span></Button>

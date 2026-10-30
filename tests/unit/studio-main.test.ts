@@ -1,11 +1,12 @@
 import {test} from "node:test";import assert from "node:assert/strict";
 import {passedProbe,agentCanBeUsed,userSelectedAgent,imageRetryAllowed,uploadIssue} from "../../src/lib/studio-rules";
+import {FEATURE_WEB_RESEARCH} from "../../src/lib/project-features";
 import {DEFAULT_AGENT} from "../../src/lib/agent-default";
 import {agentToolSchemas,llmAgentTools} from "../../src/lib/agent-tool-schemas";
 import {PromptComposer} from "../../src/design-preview/library/prompt-composer";
 import {seedProducts,seedScenes,seedProps,seedPropSets,administrator} from "../../src/design-preview/mock/library";
 test("模型开放需20次样本、至少95%参数和格式正确及20轮上下文通过",()=>{assert.equal(passedProbe({toolCalls:20,formatCorrect:20,parameterCorrect:19,contextStable:20}),true);for(const p of [{toolCalls:19,formatCorrect:20,parameterCorrect:20,contextStable:20},{toolCalls:20,formatCorrect:20,parameterCorrect:18,contextStable:20},{toolCalls:20,formatCorrect:18,parameterCorrect:20,contextStable:20},{toolCalls:20,formatCorrect:20,parameterCorrect:20,contextStable:19},{}])assert.equal(passedProbe(p),false);});
-test("关闭联网时工具schema不提供web_search；输入长度和数量在服务器验证",()=>{assert(!llmAgentTools(false).some(t=>t.function.name==="web_search"));assert(llmAgentTools(true).some(t=>t.function.name==="web_search"));assert(!agentToolSchemas.web_search.safeParse({query:"",max_results:3}).success);assert(!agentToolSchemas.web_search.safeParse({query:"产品",max_results:6}).success);});
+test("项目或会话关闭联网时不暴露web_search；输入长度和数量仍验证",()=>{assert(!llmAgentTools(false).some(t=>t.function.name==="web_search"));assert.equal(llmAgentTools(true).some(t=>t.function.name==="web_search"),FEATURE_WEB_RESEARCH);assert(!agentToolSchemas.web_search.safeParse({query:"",max_results:3}).success);assert(!agentToolSchemas.web_search.safeParse({query:"产品",max_results:6}).success);});
 
 test("用户指定的ZenMux默认Agent可用，KIE探测和其他未验证模型不被放行",()=>{
  const kieProbe={toolCalls:20,formatCorrect:19,parameterCorrect:16,contextStable:20};

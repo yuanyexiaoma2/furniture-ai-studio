@@ -1,5 +1,17 @@
 # 开发记录
 
+## 2026-10-30 · 任务12-A：后台清理（界面保持不变）
+
+- 按用户纠正，撤回12-A所有未提交的界面重写：home、app、canvas-empty、admin、product-editor、visual-plan-card、workspace-progress、agent-workspace和model-store等恢复HEAD，canvas、live-workspace、model-picker、pattern-library恢复后只加入口开关。没有CSS/样式文件改动，不改布局、间距、颜色、文案或组件结构；假数据、PrototypeSkuGallery和原型展示保留。
+- 仅隐藏标记优秀、联网、Listing导入及模板审核/JSON：画布优秀按钮和其案例审核卡受CASE开关控制，联网按钮受WEB开关控制，模板页仅对原ListingImport与内容details加开关，保留标题、分类标签、卡片和原文。暂停服务仍在调用模型/对应数据操作前跳过或拒绝。
+- 保留AGENTS.md个人工具方向、成本优先、真实ZenMux/KIE状态，新增硬规则：除非用户明确要求改界面，任何任务都不许改动页面布局和样式。README保留安装/启动/环境变量；五项功能开关默认关闭，代码和已有数据库数据保留。
+- 保留后台清理：propose_image_pack只公开reason并复用唯一proposeVisualPlan，旧slots参数继续兼容；当前用户对话传入现有规划调用，retrieveLibrary返回空、researchCompetitors返回skipped，搜索/导入/案例提炼和旧案例确认受服务端开关拦截。不增加模型调用环节，不改数据库结构或费用/预留/账本/队列/熔断/双网关。
+- 保留通用提示词清理：层数/层间距改为部件数量/尺寸比例，移除半透明拆卸默认及经验/竞品优先指令；产品事实只来自当前资料和对话。scene.ts原本没有“洗衣机应置于产品旁”，未伪称本轮删除；实际原文见docs/task12a-cleanup.md。
+- 用户确认的延期：12-B再接通对话参考图到生图请求，目前仅对话模型收到引用，图包生图只读取方案冻结的产品实拍；12-C再做无AI手动收藏，旧优秀案例提炼代码保留并暂停。AGENTS已记接线文件/函数和暂停清单。
+- 保留共享mock文件注释和技术债：models.ts提供真实模型类型/默认值/前端估价；library-store.ts的readMockFiles用于真实附件预览、移除和上传配对，后续单独拆分改名，本轮不删实现。
+- 测试代码保留，12-A浏览器断言同步为原模板页结构保留、仅导入/审核/JSON入口隐藏。用户本次指定仅跑lint和build，不截图、不审计、不跑完整回归，不调用模型；此前112项单元和3项浏览器通过对应界面回退前的工作树，不用作本次恢复界面的验收结论。
+- 本次lint通过；首次build编译完成后遇Next.js安全升级提醒而中止，按提示原样重跑npm run build通过，未改依赖版本。Next.js建议升级到安全版本，留待单独任务。本次按用户要求提交“任务12-A：后台清理（界面保持不变）”，不推送。最终文件和提示词清单见docs/task12a-cleanup.md。
+
 ## 2026-10-29 · ui(input-style)：补齐输入框焦点清理
 
 - 移除旧p-console-input的focus-within边框/光晕，静止表面、边框、投影、圆角与p-chat-input共用composer变量。

@@ -1,4 +1,5 @@
 import "server-only";
+import {FEATURE_CASE_EXTRACTION} from "./project-features";
 import {randomUUID} from "node:crypto";
 import {db} from "./db";
 import {agentSession,json} from "./agent-state";
@@ -9,6 +10,7 @@ import {selectedCandidate,settingsOf} from "./studio-models";
 import {z} from "zod";
 
 export async function proposeExcellentCase(productId:string,userId:string,assetId:string){
+ if(!FEATURE_CASE_EXTRACTION)throw new StudioError("AI优秀案例提炼已暂停；手动收藏留待任务12-C",403);
  const final=await db.imageSlot.findFirst({where:{finalAssetId:assetId,deletedAt:null,pack:{productId,isCurrent:true}}});
  if(!final)throw new StudioError("先将图片设为终稿，再提炼优秀案例",409);
  const snapshot=final.visualPlan as {slot?:unknown}|null;

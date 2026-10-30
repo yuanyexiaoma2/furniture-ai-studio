@@ -1,4 +1,5 @@
 import "server-only";
+import {FEATURE_WEB_RESEARCH,FEATURE_LIBRARY_RETRIEVAL} from "./project-features";
 import {z} from "zod";
 import {db} from "./db";
 import {agentSession,json} from "./agent-state";
@@ -9,7 +10,7 @@ import {researchEnvelope,propPoolFrom} from "./visual-reference-rules";
 import {resolveCompetitorImages} from "./visual-reference-images";
 import {writeProductReviewSafely} from "./visual-review";
 import {StudioError} from "./studio-error";
-import {identityLockSchema,researchSchema,retrievePatterns,validateVisualPlan,composeVisualSlot,visualSlotSchema,requiresDirections,type VisualPlan,type VisualSlot,type IdentityLock} from "./visual-plan-rules";
+import {identityLockSchema,researchSchema,retrievePatterns,validateVisualPlan,composeVisualSlot,visualSlotSchema,requiresDirections,type VisualPlan,type VisualSlot,type IdentityLock,type VisualPattern} from "./visual-plan-rules";
 import type {Prisma} from "@/generated/prisma/client";
 import {createHash} from "node:crypto";
 const parseJson=(s:string)=>JSON.parse(s.replace(/^\s*```(?:json)?\s*|\s*```\s*$/g,""));
@@ -27,6 +28,7 @@ export async function analyzeProduct(productId:string,userId:string):Promise<Ide
  return {...result,sellingPoints:[...result.sellingPoints].sort((a,b)=>a.priority-b.priority),referenceAssetIds:product.assets.map(a=>a.id),identityVersionId:product.identityVersions[0]?.id??null};
 }
 export async function researchCompetitors(productId:string,userId:string,identity:IdentityLock){
+ if(!FEATURE_WEB_RESEARCH)return researchSchema.parse({status:"skipped",note:"联网搜索与竞品分析已暂停，方案仅基于当前产品资料和对话",commonScenes:[],commonExpressions:[],homogeneity:[],opportunities:[],sources:[],references:[],cachedAt:new Date().toISOString()});
  const product=await db.product.findUniqueOrThrow({where:{id:productId}}),session=await agentSession(productId,userId);
  const envelope=researchEnvelope(product.visualResearch),cached=researchSchema.safeParse(envelope.cache);
  const cacheKey=createHash("sha256").update(JSON.stringify({inputs:envelope.inputs,category:product.category,dimensions:product.dimensions,materials:product.materials,colors:product.colors,sellingPoints:product.sellingPoints,photos:identity.referenceAssetIds,identityVersionId:identity.identityVersionId})).digest("hex");
@@ -52,6 +54,7 @@ export async function researchCompetitors(productId:string,userId:string,identit
 }
 
 export async function retrieveLibrary(category:string,sellingPoints:string[]){
+ if(!FEATURE_LIBRARY_RETRIEVAL)return {entries:[] as VisualPattern[],note:"自动检索经验库已暂停，仅使用当前产品资料和对话"};
  const rows=await db.studioLibraryEntry.findMany();
  return retrievePatterns(rows.map(r=>r.data),category,sellingPoints);
 }
@@ -71,9 +74,10 @@ export async function proposeVisualPlan(productId:string,userId:string,options:{
  const identity=identityLockSchema.parse(options.previousPlan?.identityLock??options.identity??await analyzeProduct(productId,userId));
  const research=await researchCompetitors(productId,userId,identity),library=await retrieveLibrary(product.category,identity.sellingPoints.map(s=>s.name));
  const {scope,priorKeys}=await readVisualHistory(productId,product.category),propPool=propPoolFrom(library.entries);
+ const conversation=await db.chatMessage.findMany({where:{sessionId:session.id,role:"user"},orderBy:{createdAt:"desc"},take:20,select:{content:true}});
  const scenePool=library.entries.filter(e=>e.type==="scene_pattern").map(e=>String(e.content.roomType??e.name));
  const shape=z.object({reason:z.string(),slots:z.array(visualSlotSchema).min(1).max(options.singleIntent?1:12),propPool:z.array(z.string()).optional()});
- const raw=shape.parse(await askVisual(productId,userId,"为本次新产品制定视觉方案，按 identityLock 的真实卖点规划，不套用任何旧 SKU 结构。每个图位提供卖点、场景、道具、陈列、机位、光线、环境色调、构图、后期需求和依据。参考库图位顺序但可按产品调整。场景优先从 scenePool 挑选，关键方向可给出有依据的新场景候选供美工选择。场景图之间空间不重复、环境道具从 propPool 中选择，不能自造池外道具；不同场景图道具不重复，避免同品类最近5个SKU和本产品已用组合。主图纯白无配饰。尺寸/文字/数字/图标/线稿只放 postNotes，由美工后期处理；干净摄影底图不渲染它们。特写允许局部取景；拆卸只在本次身份有明确证据时使用，默认不展示半透明拆下的部件。evidence 只能使用检索条目ID、竞品图片ref、提供的来源URL或 identityLock。竞品逐图拆解优先，联网 supplement 仅作低权重文字补充。图位4–7及8必须提供2–3个有实质差异的 directions，每个包含完整画面字段、id、label和一句reason，selectedDirectionId 为 null 等美工选择。不是改同义词，要改变场景、陈列或机位。其它图位可只有一个方向。propPool为空时在方案 propPool 中提出少量通用品类道具供美工选择；不可包含本产品结构或尺寸。"+(options.singleIntent?"只输出一个图位，遵循 singleIntent。":"")+" JSON结构："+JSON.stringify(z.toJSONSchema(shape)),{identityLock:identity,research,library:library.entries,libraryNote:library.note,scenePool,propPool,previousCombinationKeys:priorKeys,...options},[],14000));
+ const raw=shape.parse(await askVisual(productId,userId,"为本次新产品制定视觉方案，按 identityLock 的真实卖点规划，不套用任何旧 SKU 结构。每个图位提供卖点、场景、道具、陈列、机位、光线、环境色调、构图、后期需求和依据。仅根据当前产品资料和对话要求安排图位，不套用固定品类图位。场景优先从 scenePool 挑选，关键方向可给出有依据的新场景候选供美工选择。场景图之间空间不重复、环境道具从 propPool 中选择，不能自造池外道具；不同场景图道具不重复，避免同品类最近5个SKU和本产品已用组合。主图纯白无配饰。尺寸/文字/数字/图标/线稿只放 postNotes，由美工后期处理；干净摄影底图不渲染它们。特写允许局部取景；产品变化只能来自当前资料支持的事实与用户明确要求。暂停检索与竞品分析时，evidence 使用 identityLock，不得编造检索条目或外部来源。图位4–7及8必须提供2–3个有实质差异的 directions，每个包含完整画面字段、id、label和一句reason，selectedDirectionId 为 null 等美工选择。不是改同义词，要改变场景、陈列或机位。其它图位可只有一个方向。propPool为空时在方案 propPool 中提出少量通用品类道具供美工选择；不可包含本产品结构或尺寸。"+(options.singleIntent?"只输出一个图位，遵循 singleIntent。":"")+" JSON结构："+JSON.stringify(z.toJSONSchema(shape)),{identityLock:identity,conversation:conversation.reverse().map(m=>m.content),research,library:library.entries,libraryNote:library.note,scenePool,propPool,previousCombinationKeys:priorKeys,...options},[],14000));
  const plan=validateVisualPlan({version:1,productId,identityLock:identity,research,libraryIds:library.entries.map(e=>e.id),libraryNote:library.note,...raw,slots:raw.slots.map(s=>({...s,...(s.directions?.length?{selectedDirectionId:null}:{}),...(options.singleIntent&&options.aspectRatio?{aspectRatio:options.aspectRatio}:{})})),createdAt:new Date().toISOString(),scenePool:[...new Set([...scenePool,...raw.slots.flatMap(s=>[s.scene,...s.directions?.map(d=>d.scene)??[]])])],comparisonScope:scope,excludedCombinationKeys:priorKeys,propPool:propPool.length?propPool:raw.propPool??[]},priorKeys);
  for(const [i,s] of plan.slots.entries())if(requiresDirections(s,i)&&(!s.directions||s.directions.length<2))throw new StudioError("关键图位需提供2–3个方向，请重新规划",502);
  await db.agentCard.updateMany({where:{sessionId:session.id,kind:"pack",status:"pending"},data:{status:"cancelled"}});

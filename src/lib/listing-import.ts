@@ -1,4 +1,5 @@
 import "server-only";
+import {FEATURE_LIBRARY_IMPORT} from "./project-features";
 import {randomUUID} from "node:crypto";
 import {z} from "zod";
 import {db} from "./db";
@@ -12,6 +13,7 @@ import {listingAnalysisSchema,reviewedListingEntries} from "./listing-import-rul
 type AnalyzeListing=(input:Parameters<typeof chatWithGateway>[1],userId:string)=>Promise<unknown>;
 const analyzeListing:AnalyzeListing=async(input,userId)=>(await chatWithGateway("llm-vision",input,{userId,candidate:await selectedCandidate("agent",{})})).result.json;
 export async function importListingFolder(userId:string,category:string,files:File[],analyze:AnalyzeListing=analyzeListing){
+ if(!FEATURE_LIBRARY_IMPORT)throw new StudioError("历史Listing导入已暂停",403);
  if(!category.trim()||category.length>100)throw new StudioError("请填写品类");
  const images=files.filter(f=>/\.(jpe?g|png|webp)$/i.test(f.name)),parameters=files.filter(f=>/\.(txt|json)$/i.test(f.name));
  if(!images.length||images.length>30||files.reduce((n,f)=>n+f.size,0)>100*1024*1024)throw new StudioError("请选择单个文件夹，包含1–30张图片，总计100MB以内");
@@ -27,6 +29,7 @@ export async function importListingFolder(userId:string,category:string,files:Fi
  }finally{if(keys.length){await db.asset.deleteMany({where:{id:{in:assetIds}}});for(const key of keys)await deleteObject(key).catch(()=>undefined);}}
 }
 export async function approveListingImport(userId:string,id:string,raw:unknown){
+ if(!FEATURE_LIBRARY_IMPORT)throw new StudioError("历史Listing审核已暂停",403);
  return db.$transaction(async tx=>{
   const row=await tx.studioLibraryEntry.findUniqueOrThrow({where:{id}}),draft=patternSchema.parse(row.data);
   if(draft.status!=="draft"||draft.content.isListingImport!==true)throw new StudioError("导入记录已审核或不是Listing草稿",409);

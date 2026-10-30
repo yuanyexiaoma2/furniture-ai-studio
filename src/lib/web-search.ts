@@ -1,4 +1,5 @@
 import "server-only";
+import {FEATURE_WEB_RESEARCH} from "./project-features";
 import {db} from "./db";
 import {chatWithGateway} from "./llm-router";
 import {selectedCandidate,settingsOf} from "./studio-models";
@@ -6,6 +7,7 @@ import {StudioError} from "./studio-error";
 export type SearchSource={title:string;url:string;content:string};
 // 搜索作为现有 LLM 调用记录，继续使用原来的配额、估价与实际账单回填。
 export async function webSearch(sessionId:string,userId:string,query:string,maxResults=3,verify=false){
+ if(!FEATURE_WEB_RESEARCH)throw new StudioError("联网搜索与竞品分析已暂停",403);
  const q=query.trim();if(!q||q.length>500||!Number.isInteger(maxResults)||maxResults<1||maxResults>5)throw new StudioError("搜索词需为1～500字，结果数量为1～5");
  if(!verify&&process.env.GOOGLE_SEARCH_ENABLED!=="true")throw new StudioError("联网补充已关闭；仍可使用竞品截图和经验库",503);
  const session=await db.agentSession.findUniqueOrThrow({where:{id:sessionId}}),candidate=await selectedCandidate("agent",settingsOf(session.settings));

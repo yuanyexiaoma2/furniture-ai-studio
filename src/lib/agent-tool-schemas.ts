@@ -1,4 +1,5 @@
 ﻿import { z } from "zod";
+import {FEATURE_WEB_RESEARCH} from "./project-features";
 import { profileFields, profileFieldSchema } from "./profile-rules";
 import { slotSchema } from "./pack-rules";
 const id = z.string().min(1).max(100);
@@ -27,10 +28,10 @@ export const toolDescriptions: Record<AgentToolName, string> = {
   update_profile_draft: "更新草稿字段。优先将read_product_materials.sourceReferences短编号(P、D1、I1、M1等)写入来源id；服务器精确映射到真实ID。禁止猜测长ID。每字段有 value/status/sources/conflicts；矛盾列出来源并标推测，不能写正式版本。美工亲自确认的信息才 confirmed。",
   ask_user: "展示最多 3 个结构化问题，尽量提供选项，只问图片和材料无法确定的问题；随后等待美工回答。",
   request_profile_confirmation: "展示可编辑的产品理解确认卡；正式档案和身份特征仅由美工确认后写入。",
-  propose_image_pack: "启动统一视觉方案流程：分析本产品身份与卖点、竞品研究、检索品类经验、输出可编辑图位卡。reason 写用户目标，slots 可省略，仅作为建议；最终方案必须由服务器真实分析与检索生成，人工确认后冻结。只需一张时在 reason 明确单图请求。",
+  propose_image_pack: "调用唯一的proposeVisualPlan流程，根据当前产品实拍、已确认资料与对话输出可编辑方案卡。reason 写用户目标，slots可省略；暂停自动检索与竞品分析，不生成第二套独立方案。只传reason，不在此工具参数中再策划图位；旧slots仅作兼容。人工确认后冻结；单张请求在reason注明。",
   generate_slot: "为单个已确认图位生成 1～4 张，先展示费用卡；手动模式只能当前未挑好终稿的第一个 AI 图位。",
   generate_batch: "快速模式为全部 AI 场景图位生成，费用确认后才执行；第一批始终手动确认。",
   edit_image: "判断修改范围：更换整体场景、光线或构图用 mode=whole；只改某一区域或物件用 mode=local。local 会要求美工在画布框选或涂抹后提交，不能无蒙版执行。身份锁始终沿用源图。整图先确认费用，新版本加入原图位。",
   set_final: "请求在确认卡中将指定候选设为该图位终稿，不能由模型直接确认。",
 };
-export function llmAgentTools(webEnabled=true) { return Object.entries(agentToolSchemas).filter(([name])=>webEnabled||name!=="web_search").map(([name, schema]) => ({ type: "function" as const, function: { name, description: toolDescriptions[name as AgentToolName], parameters: z.toJSONSchema(schema, { unrepresentable: "any" }) as Record<string, unknown> } })); }
+export function llmAgentTools(webEnabled=true) { return Object.entries(agentToolSchemas).filter(([name])=>FEATURE_WEB_RESEARCH&&webEnabled||name!=="web_search").map(([name, schema]) => ({ type: "function" as const, function: { name, description: toolDescriptions[name as AgentToolName], parameters: z.toJSONSchema(name==="propose_image_pack"?proposalSchema.pick({reason:true}):schema, { unrepresentable: "any" }) as Record<string, unknown> } })); }

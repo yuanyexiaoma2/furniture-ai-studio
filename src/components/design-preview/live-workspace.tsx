@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- 通过鉴权接口读取私有图片。 */
 "use client";
+import {FEATURE_CASE_EXTRACTION} from "@/lib/project-features";
 import {VersionHistory} from "./version-history";
 import {VisualPlanCard} from "./visual-plan-card";
 import type {VisualPlan} from "@/lib/visual-plan-rules";
@@ -113,7 +114,7 @@ function RealCard({card,act}:{card:Card;act:(action:string,data?:Record<string,u
  if(card.kind==="pack")return <div className="l-shooting-card"><h3>图包方案</h3><p>{String(d.reason??"")}</p>{(d.slots as {name:string;candidateCount:number}[]).map((slot,i)=><p key={i}>{i+1}. {slot.name} · {slot.candidateCount} 张候选</p>)}<Button disabled={live.busy} onClick={()=>void act("approve",{cardId:card.id})}>确认图包方案</Button></div>;
  if(card.kind==="cost"){const q=d.quote as {estimatedCostUsd:number;totalCount:number;risk?:{ready:boolean};shortage?:number};return <div className="l-shooting-card"><h3>确认生成费用</h3><p>预计 $ {Number(q.estimatedCostUsd).toFixed(2)} · 估 · {q.totalCount??1} 张</p>{q.risk&&!q.risk.ready&&<p className="p-subtle">部分信息缺失，生成将遵循可见实拍，不编造尺寸。确认后继续。</p>}<Button disabled={live.busy||!!q.shortage} onClick={()=>void act("approve",{cardId:card.id,changes:{acceptRisk:true}})}>确认并生成</Button></div>;}
  if(card.kind==="questions"){const questions=d.questions as {question:string;options:string[]}[];return <div className="l-shooting-card"><h3>{questions[0]?.question}</h3>{questions[0]?.options.map(option=><Button key={option} variant="outline" onClick={()=>void act("approve",{cardId:card.id,changes:{answers:[option]}})}>{option}</Button>)}</div>;}
- if(card.kind==="library_case")return <div className="l-shooting-card"><h3>确认沉淀优秀案例</h3><p>{String(d.note)}</p><pre className="whitespace-pre-wrap text-xs">{JSON.stringify(d.entries,null,2)}</pre><Button disabled={live.busy} onClick={()=>void act("approve",{cardId:card.id})}>确认入库</Button></div>;
+ if(card.kind==="library_case")return FEATURE_CASE_EXTRACTION?<div className="l-shooting-card"><h3>确认沉淀优秀案例</h3><p>{String(d.note)}</p><pre className="whitespace-pre-wrap text-xs">{JSON.stringify(d.entries,null,2)}</pre><Button disabled={live.busy} onClick={()=>void act("approve",{cardId:card.id})}>确认入库</Button></div>:null;
  if(card.kind==="mask_request")return <div className="l-shooting-card"><h3>请在画布选择修改区域</h3><p>{String(d.instruction)}</p><Button onClick={()=>{usePreviewStore.getState().select([String(d.assetId)]);usePreviewStore.getState().setEditor({id:String(d.assetId),action:"paint"});}}>框选或涂抹</Button></div>;
  if(card.kind==="final")return <div className="l-shooting-card"><h3>设为这个图位的终稿？</h3><Button onClick={()=>void act("approve",{cardId:card.id})}><Check size="sm"/>确认终稿</Button></div>;
  return <div className="p-subtle">待确认：{s.product.name}</div>;

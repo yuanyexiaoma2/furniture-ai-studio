@@ -1,4 +1,5 @@
 ﻿import "server-only";
+import {FEATURE_CASE_EXTRACTION} from "./project-features";
 import { createHash } from "node:crypto";
 import { db } from "./db";
 import { quoteBatch, submitBatch, mutatePack } from "./image-packs";
@@ -143,6 +144,7 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
       if (!asset || !job || !slot) throw new StudioError("候选图或图位已失效，请重新选择", 409);
       await tx.imageSlot.update({ where: { id: selection.slotId }, data: { finalAssetId: selection.assetId } }); result = { finalAssetId: selection.assetId };
     } else if(card.kind==="library_case"){
+      if(!FEATURE_CASE_EXTRACTION)throw new StudioError("案例提炼审核已暂停",403);
       const entries=(raw.entries as unknown[]).map(e=>patternSchema.parse(e));
       for(const entry of entries.filter(e=>e.type==="case")){
         const assetId=String(entry.content.originalImageRef??"");

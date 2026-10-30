@@ -57,7 +57,7 @@ export function retrievePatterns(rows:unknown[],category:string,sellingPoints:st
  return {entries:pool.map((p,i)=>({p,i,score:p.sellingPoints.reduce((n,s)=>n+(sellingPoints.some(t=>t.includes(s)||s.includes(t))?2:0),0)})).sort((a,b)=>b.score-a.score||a.i-b.i).slice(0,40).map(x=>x.p),note:exact.length?"使用同品类经验":related.length?"没有同品类经验，使用相近品类经验；具体功能以本产品实拍为准":"没有可用的同品类或相近品类经验，本方案仅依据本产品和可用竞品资料"};
 }
 export function composeVisualSlot(slot:VisualSlot){
- return [`画面目标：${slot.sellingPoint}`,`空间：${slot.scene}`,`环境配饰：${slot.props.join("、")||"无"}`,`陈列：${slot.display}`,`机位：${slot.camera}`,`光线：${slot.light}`,`环境色调：${slot.palette}`,`构图：${slot.composition}`,slot.slotType==="main"?"亚马逊主图：纯白背景RGB(255,255,255)，产品完整入画且长边占画面至少85%，输出长边不少于2000像素。":"",slot.slotType==="detail"?"允许局部取景；所有可见结构必须真实，未验证的拆卸状态不得展示。":"产品结构、层数和层间距比例保持不变，产品完整入画。",slot.needs_post?"只生成干净摄影底图，为后期设计留白。":"",slot.notes].filter(Boolean).join("\n");
+ return [`画面目标：${slot.sellingPoint}`,`空间：${slot.scene}`,`环境配饰：${slot.props.join("、")||"无"}`,`陈列：${slot.display}`,`机位：${slot.camera}`,`光线：${slot.light}`,`环境色调：${slot.palette}`,`构图：${slot.composition}`,slot.slotType==="main"?"亚马逊主图：纯白背景RGB(255,255,255)，产品完整入画且长边占画面至少85%，输出长边不少于2000像素。":"",slot.slotType==="detail"?"允许局部取景；所有可见结构必须真实，未验证的拆卸状态不得展示。":"产品结构、部件数量和尺寸比例保持不变，产品完整入画。",slot.needs_post?"只生成干净摄影底图，为后期设计留白。":"",slot.notes].filter(Boolean).join("\n");
 }
 
 // 限制集中在最终包装层，内部引用只留在元数据里。
