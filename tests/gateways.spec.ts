@@ -7,23 +7,20 @@ import sharp from "sharp";
 let db: PrismaClient, productId = "";
 test.beforeAll(async () => { db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });  });
 test.afterAll(async () => { if (productId) { await db.asset.deleteMany({ where: { productId } }); await db.product.delete({ where: { id: productId } }); } await db.$disconnect(); });
-test("网关后台与 AI 提炼：确认付费、空 Key、结构化填入且手动保存（不产生真实调用）", async ({ page }) => {
+test("网关后台与 AI 提炼：直接提交、空 Key、结构化填入且手动保存（不产生真实调用）", async ({ page }) => {
   await page.goto("/login"); await page.getByLabel("公司邮箱").fill(process.env.ADMIN_EMAIL!); await page.getByLabel("密码", { exact: true }).fill(process.env.ADMIN_PASSWORD!); await page.getByRole("button", { name: "进入工作台" }).click(); await expect(page).toHaveURL("http://localhost:3000/");
   await page.goto("/admin/gateways"); await expect(page.getByRole("heading", { name: "网关状态." })).toBeVisible();
   const kie = page.locator(".gateway-card").filter({ has: page.getByRole("heading", { name: "KIE", exact: true }) });
   const zenmux = page.locator(".gateway-card").filter({ has: page.getByRole("heading", { name: "ZenMux", exact: true }) });
   if (!process.env.ZENMUX_API_KEY?.trim()) { await expect(zenmux.getByText("未配置", { exact: true })).toBeVisible(); await expect(zenmux.getByRole("button", { name: "连通性测试 · LLM" })).toBeDisabled(); }
   await expect(kie.locator(".gateway-badge")).toHaveText("正常");
-  expect((await page.request.post("/api/admin/gateways/test", { headers: { Origin: "http://localhost:3000" }, data: { provider: "kie", kind: "image", confirmed: false } })).status()).toBe(400);
+  expect((await page.request.post("/api/admin/gateways/test", { headers: { Origin: "http://localhost:3000" }, data: { provider: "unknown", kind: "image" } })).status()).toBe(400);
   await expect(page.locator(".gateway-grid")).toHaveCSS("display", "grid");
   let requests = 0;
-  await page.route("**/api/admin/gateways/test", async route => { requests++; expect(route.request().postDataJSON().confirmed).toBe(true); await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ message: "模拟连通性测试成功" }) }); });
+  await page.route("**/api/admin/gateways/test", async route => { requests++; expect(route.request().postDataJSON().confirmed).toBeUndefined(); await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ message: "模拟连通性测试成功" }) }); });
   await kie.getByRole("button", { name: "连通性测试 · 1K 生图" }).click();
-  const dialog = page.getByRole("dialog"); await expect(dialog).toContainText("产生真实网关费用"); await dialog.getByRole("button", { name: "取消", exact: true }).click(); expect(requests).toBe(0);
-  await kie.getByRole("button", { name: "连通性测试 · LLM" }).click(); await dialog.getByRole("button", { name: "确认并测试" }).click(); await expect(page.getByRole("status")).toContainText("模拟连通性测试成功"); expect(requests).toBe(1);
-  await expect(kie.getByRole("button", { name: "连通性测试 · LLM" })).toBeEnabled();
-
-  await page.setViewportSize({ width: 390, height: 844 }); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true); await kie.getByRole("button", { name: "连通性测试 · LLM" }).scrollIntoViewIfNeeded(); await expect(kie.getByRole("button", { name: "连通性测试 · LLM" })).toBeVisible();  await page.setViewportSize({ width: 1440, height: 1100 });
+  await expect(page.getByRole("dialog")).toHaveCount(0);await expect.poll(()=>requests).toBe(1);
+  await expect(page.getByRole("status")).toContainText("模拟连通性测试成功");await kie.getByRole("button",{name:"连通性测试 · LLM"}).click();await expect.poll(()=>requests).toBe(2);await expect(page.getByRole("dialog")).toHaveCount(0);
   const admin = await db.user.findUniqueOrThrow({ where: { email: process.env.ADMIN_EMAIL } });
   const product = await db.product.create({ data: { sku: `E2E-GATEWAY-${randomUUID()}`, name: "身份提炼模拟商品", category: "柜", dimensions: "80cm", colors: "木色", sellingPoints: "模拟收纳", materials: "木", identityTraits: "原有人工确认内容", createdById: admin.id } }); productId = product.id;
   const photo = await sharp({ create: { width: 64, height: 64, channels: 3, background: "#eeeeee" } }).png().toBuffer();

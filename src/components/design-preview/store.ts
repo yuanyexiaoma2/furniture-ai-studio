@@ -1,12 +1,12 @@
 "use client";
 import {create} from "zustand";
 import {applyNodeChanges,type Node,type NodeChange} from "@xyflow/react";
-import {demoSession,estimateCost,resolveSelection,useModelStore} from "./model-store";
+import {demoSession,resolveSelection,useModelStore} from "./model-store";
 import {models} from "@/design-preview/mock/models";
 import {originalPhotoReferences,useLibraryStore} from "./library/library-store";
 import type {ImageAction,OnImageAction} from "./contracts";
 import type {CopyLayout} from "@/design-preview/workflows/types";
-export type ImageData = {naturalWidth?:number;naturalHeight?:number;generationStage?:string;hideFinalBadge?:boolean;externalLabel?:boolean;error?:string;jobId?:string;variantColor?:string;copy?:CopyLayout;label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
+export type ImageData = {costUsd?:number|null;reservedUsd?:number;costEstimated?:boolean;naturalWidth?:number;naturalHeight?:number;generationStage?:string;hideFinalBadge?:boolean;externalLabel?:boolean;error?:string;jobId?:string;variantColor?:string;copy?:CopyLayout;label:string;slot:string;image:string;final?:boolean;loading?:boolean;effect?:string;editCount?:number;highlight?:boolean;candidateCount?:number};
 export type StudioNode = Node<ImageData>;
 export const frameNames=["产品主图","客厅场景","空间搭配","材质细节","核心卖点","尺寸说明","安装说明"];
 export const imagePath=(name:string)=>/^(\/|data:|blob:)/.test(name)?name:`/design-preview/${name}.webp`;
@@ -39,7 +39,7 @@ export const usePreviewStore=create<PreviewStore>((set,get)=>({
   if(get().liveMode&&onAction){const accepted=await onAction({action,imageId:id,originalImage:node.data.image,originalPhotoReferences:[],productReferences:[],mask,instruction,editCount:node.data.editCount??0});if(accepted===false)return false;set({editor:null});return true;}
   const isFrame=node.type==='frame';const seed=isFrame?{...node,type:'picture',style:{width:224,height:180},dragHandle:undefined,data:{...node.data,image:'sofa',label:'新候选',effect:'',final:false}}:node;
   if(!originalPhotoReferences().length)throw new Error("修图必须同时保留原始实拍");
-  const quote=estimateCost(useModelStore.getState(),demoSession,count);if(quote>.20&&typeof window!=="undefined"&&!window.confirm("本次预计 $"+quote.toFixed(2)+"，超过单次 $0.20 的确认额度。是否继续？"))return false;
+
   const beforeIds=new Set(get().nodes.map(n=>n.id));
   const original=/^(blob:|data:|\/)/.test(seed.data.image)?seed.data.image:imagePath(seed.data.image);
   const accepted=await onAction?.({action,imageId:id,originalImage:original,originalPhotoReferences:originalPhotoReferences(),productReferences:[...originalPhotoReferences(),...get().references.map(ref=>{const image=get().nodes.find(n=>n.id===ref)?.data.image??ref;return /^(blob:|data:|\/)/.test(image)?image:imagePath(image);})],mask,editCount:node.data.editCount??0});

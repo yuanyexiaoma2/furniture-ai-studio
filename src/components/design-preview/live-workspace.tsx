@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element -- 通过鉴权接口读取私有图片。 */
 "use client";
+import {submitEditImmediately} from "@/lib/direct-submission";
+import {QuestionsCard,ProfileForm} from "./interaction-cards";
+import {currentGenerationSlot,type UserQuestion} from "@/lib/interaction-rules";
 import {VersionHistory} from "./version-history";
 import {VisualPlanCard} from "./visual-plan-card";
 import type {VisualPlan} from "@/lib/visual-plan-rules";
@@ -17,12 +20,11 @@ import {WorkspaceProgress} from "./workspace-progress";
 import {consumeAgentStream} from "@/lib/agent-stream";
 import type {AgentEvent} from "@/lib/planning-agent";
 import {useLiveStore,studioFetch,cancelLiveLoad} from "./live-store";
-import {useModelStore,resolveSelection,demoSession} from "./model-store";
+import {useModelStore,resolveSelection,demoSession,estimateImageCost} from "./model-store";
 
 import {ComposerToolbar} from "./model-picker";
 import {Button} from "./ui/button";
 import {Textarea} from "./ui/textarea";
-import {Input} from "./ui/input";
 import {Sheet,SheetContent,SheetHeader,SheetTitle,SheetDescription} from "./ui/sheet";
 import {Popover,PopoverTrigger,PopoverContent} from "./ui/popover";
 import {Command,CommandInput,CommandList,CommandEmpty,CommandGroup,CommandItem} from "./ui/command";
@@ -30,15 +32,16 @@ import {Switch} from "./ui/switch";
 import {Sparkles,Upload,Shapes,Check,ChevronDown} from "@/components/icons/concept-icons";
 import {IconBadge} from "@/components/icons/icon-badge";
 import {taskCatalog} from "@/design-preview/mock/tasks";
-import {profileFields,profileLabels,type Profile} from "@/lib/profile-rules";
+import {type Profile} from "@/lib/profile-rules";
 import {shotLabels,type ShotAngle} from "@/design-preview/library/types";
 import type {ActionRequest} from "./contracts";
+const editRequestKeys=new Map<string,string>();
 const notify=(e:unknown)=>toast.error(e instanceof Error?e.message:"操作失败，请稍后重试");
 export function RealWorkspace(){return <Suspense fallback={<div>正在打开工作台…</div>}><RealWorkspaceInner/></Suspense>;}
 function RealWorkspaceInner(){
  const live=useLiveStore(),router=useRouter(),params=useSearchParams(),id=params.get("sku")??"",initialized=useRef(false);
  useCanvasPersistence(id);
- useEffect(()=>{useModelStore.getState().startSession(demoSession,true);usePreviewStore.setState({liveMode:true});if(useLiveStore.getState().snapshot?.product.id!==id)useLiveStore.setState({snapshot:null});const params=new URLSearchParams(window.location.search),productId=id;if(!productId){useLiveStore.setState({snapshot:null});usePreviewStore.setState({nodes:[]});return;}let active=true;async function load(){try{await useLiveStore.getState().load(productId!);if(!active)return;const snapshot=useLiveStore.getState().snapshot!;useModelStore.getState().startSession(demoSession);if(!initialized.current){initialized.current=true;const selection=snapshot.settings;if(selection.agentId)useModelStore.getState().updateSelection(demoSession,{agentId:selection.agentId,imageId:selection.imageId,imageIds:selection.imageIds,auto:selection.auto,webEnabled:selection.webEnabled,resolution:selection.resolution});if(params.get("init")==="1"&&!snapshot.agent.cards.length)await useLiveStore.getState().act("inspect");}}catch(e){if(active)useLiveStore.setState({error:e instanceof Error?e.message:"加载失败"});}}void load();const timer=setInterval(()=>{void load();},4000);return()=>{active=false;cancelLiveLoad();clearInterval(timer);initialized.current=false;};},[id]);
+ useEffect(()=>{useLiveStore.setState({generationChoiceRequired:false});useModelStore.getState().startSession(demoSession,true);usePreviewStore.setState({liveMode:true});if(useLiveStore.getState().snapshot?.product.id!==id)useLiveStore.setState({snapshot:null});const params=new URLSearchParams(window.location.search),productId=id;if(!productId){useLiveStore.setState({snapshot:null});usePreviewStore.setState({nodes:[]});return;}let active=true;async function load(){try{await useLiveStore.getState().load(productId!);if(!active)return;const snapshot=useLiveStore.getState().snapshot!;useModelStore.getState().startSession(demoSession);if(!initialized.current){initialized.current=true;const selection=snapshot.settings;if(selection.agentId)useModelStore.getState().updateSelection(demoSession,{agentId:selection.agentId,imageId:selection.imageId,imageIds:selection.imageIds,auto:selection.auto,webEnabled:selection.webEnabled,resolution:selection.resolution});if(params.get("init")==="1"&&!snapshot.agent.cards.length)await useLiveStore.getState().act("inspect");}}catch(e){if(active)useLiveStore.setState({error:e instanceof Error?e.message:"加载失败"});}}void load();const timer=setInterval(()=>{void load();},4000);return()=>{active=false;cancelLiveLoad();clearInterval(timer);initialized.current=false;};},[id]);
  const upload=async(files:File[])=>{try{if(!id){useLiveStore.getState().addFiles(files);const productId=await useLiveStore.getState().create("为这个产品做一套图包");router.push("/workspace?sku="+productId+"&init=1");return;}const form=new FormData();files.forEach(f=>form.append("files",f));const response=await studioFetch<{results:{error?:string}[]}>("/api/products/"+id+"/documents",{method:"POST",body:form});if(response.results.some(r=>r.error))throw Error("部分文件上传或解析失败，请检查资料列表后重试");await useLiveStore.getState().act("inspect");}catch(e){notify(e);}};
  async function action(request:ActionRequest){
  const s=useLiveStore.getState().snapshot;if(!s)return;
@@ -54,9 +57,13 @@ function RealWorkspaceInner(){
  const selection=resolveSelection(useModelStore.getState(),demoSession);await live.act("settings",selection);
  let maskAssetId:string|undefined;if(request.mask){const form=new FormData();form.append("mask",request.mask,"mask.png");maskAssetId=(await studioFetch<{assetId:string}>("/api/studio/"+id,{method:"POST",body:form})).assetId;}
  const instruction=intent+(request.expansion?" 扩图尺寸及原图位置："+JSON.stringify(request.expansion):"");
- const quote=await studioFetch<{estimatedCostUsd:number;fingerprint:string;warning:string|null}>("/api/studio/"+id,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"edit_quote",data:{assetId:request.imageId,instruction,...(maskAssetId?{maskAssetId}:{}),...(request.expansion?{expansion:request.expansion}:{})}})});
- if(!window.confirm("本次预计 $"+quote.estimatedCostUsd.toFixed(2)+"（估）。同时使用原图和原始实拍。"+(quote.warning??"")+"是否继续？"))return false;
- await live.act("edit",{fingerprint:quote.fingerprint,assetId:request.imageId,instruction:intent+(request.expansion?" 扩图尺寸及原图位置："+JSON.stringify(request.expansion):""),...(maskAssetId?{maskAssetId}:{}),...(request.expansion?{expansion:request.expansion}:{}),requestKey:crypto.randomUUID()});usePreviewStore.getState().setEditor(null);toast.success("修改已提交，新候选会加入当前图位");
+ const maskHash=request.mask?Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",await request.mask.arrayBuffer()))).map(n=>n.toString(16).padStart(2,"0")).join(""):"";
+ const signature=JSON.stringify([id,request.imageId,request.action,instruction,maskHash]);if(!editRequestKeys.has(signature))editRequestKeys.set(signature,crypto.randomUUID());
+ const {quote}=await submitEditImmediately({assetId:request.imageId,instruction,...(maskAssetId?{maskAssetId}:{}),...(request.expansion?{expansion:request.expansion}:{})},editRequestKeys.get(signature)!,{
+  quote:selection=>studioFetch("/api/studio/"+id,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"edit_quote",data:selection})}),
+  submit:body=>live.act("edit",body)
+ });
+ editRequestKeys.delete(signature);if(quote.warning)toast.info(quote.warning);usePreviewStore.getState().setEditor(null);toast.success("修改已提交，新候选会加入当前图位");
  }catch(e){notify(e);throw e;}
  }
  return <Workspace live chat={<RealChat key={id} onUpload={upload}/>} onUpload={upload} onAction={action}/>;
@@ -68,6 +75,8 @@ function RealChat({onUpload}:{onUpload:(files:File[])=>Promise<void>}){
  const router=useRouter(),live=useLiveStore(),snapshot=live.snapshot,[text,setText]=useState(""),[stream,setStream]=useState(""),[sending,setSending]=useState(false),body=useRef<HTMLDivElement>(null);
  const nodes=usePreviewStore(s=>s.nodes),selected=usePreviewStore(s=>s.selected),pinned=usePreviewStore(s=>s.references),[events,setEvents]=useState<AgentEvent[]>([]),requestRef=useRef<{text:string;id:string}|null>(null);
  const references=[...new Set([...selected,...pinned])].map(id=>nodes.find(n=>n.id===id)).filter((n):n is NonNullable<typeof n>=>!!n&&n.type==="picture"&&n.data.image.startsWith("/api/assets/"));
+ const modelState=useModelStore(),currentCount=snapshot?(currentGenerationSlot(snapshot.pack.slots)?.candidateCount??1):1,batchCount=snapshot?.pack.slots.filter(s=>s.method==="ai_scene"&&s.goal.trim()).reduce((n,s)=>n+s.candidateCount,0)??1,generationCount=snapshot?.agent.session.mode==="manual"?currentCount:batchCount;
+ const generationEstimate=estimateImageCost(modelState,demoSession,generationCount);
  const tooManyReferences=references.length>6,canvasReady=useCanvasSession(s=>s.hydrated&&s.dataReady);
  const drop=useDropzone({noClick:true,onDropAccepted:files=>void onUpload(files)});
  useEffect(()=>{body.current?.scrollTo({top:body.current.scrollHeight,behavior:"smooth"});},[snapshot?.agent.messages.length,snapshot?.agent.cards.length,stream]);
@@ -87,7 +96,7 @@ function RealChat({onUpload}:{onUpload:(files:File[])=>Promise<void>}){
  }catch(e){notify(e);}finally{await live.load(snapshot.product.id).catch(notify);setSending(false);setStream("");}
  }
 
- const pending=snapshot?.agent.cards.filter(c=>c.status==="pending")??[],total=snapshot?(snapshot.agent.costs.llmUsd+snapshot.agent.costs.imagesUsd+snapshot.agent.costs.searchUsd):0;
+ const pending=snapshot?.agent.cards.filter(c=>c.status==="pending"&&c.kind!=="cost")??[],total=snapshot?(snapshot.agent.costs.llmUsd+snapshot.agent.costs.imagesUsd+snapshot.agent.costs.searchUsd):0;
  return <aside className="p-chat l-chat"><div className="p-chat-header"><h2><span className="p-agent-avatar"><Sparkles size="sm"/></span>创作搭档</h2><span className="p-subtle">本次 $ {total.toFixed(2)}{snapshot?.agent.costs.estimated?" · 估":""}</span></div><div className="p-chat-body" ref={body}>
  {!snapshot&&<div className="w-task-entries">{taskCatalog.filter(t=>SHOW_UNCONNECTED_FEATURES||["pack","edit"].includes(t.id)).map(t=><button key={t.id} className="w-task-entry" onClick={()=>{if(["variants","translate","check"].includes(t.id)){toast.info("即将开放");return;}setText(t.id==="pack"?"为产品做一套图包":"帮我修改一张图片");drop.open();}}><IconBadge concept={t.concept}/><span><strong>{t.title}</strong><small>{["variants","translate","check"].includes(t.id)?"即将开放":t.description}</small></span></button>)}</div>}
  {snapshot?.agent.messages.filter(m=>m.role!=="tool"&&typeof (m.content as {text?:string}).text==="string").map(m=>{const text=String((m.content as {text?:string}).text??"");if(!text||m.role==="system"&&/[{}]|美工确认|美工在看板/.test(text))return null;return <div key={m.id} className={m.role==="user"?"p-chat-bubble":"p-agent-message"}><p>{text.replace(/KIE|ZenMux/gi,"模型服务")}</p>{Array.isArray((m.content as {referenceAssetIds?:string[]}).referenceAssetIds)&&<div className="t11-message-references" aria-label="这条消息引用的图片">{((m.content as {referenceAssetIds:string[]}).referenceAssetIds).map(id=><img key={id} src={"/api/assets/"+id} alt="历史引用图片"/>)}</div>}</div>;})}
@@ -97,7 +106,7 @@ function RealChat({onUpload}:{onUpload:(files:File[])=>Promise<void>}){
  {snapshot?.settings.categoryConfirmed&&<ShootingNotice/>}
  {snapshot?.settings.categoryConfirmed&&!snapshot.agent.session.confirmedProfileId&&!pending.some(c=>c.kind==="profile"||c.kind==="shooting")&&<Button disabled={live.busy} onClick={()=>void act("profile")}>核对产品档案</Button>}
  {snapshot?.agent.session.confirmedProfileId&&!snapshot.agent.session.confirmedPack&&!pending.some(c=>c.kind==="pack")&&<Button disabled={live.busy} onClick={()=>void act("plan")}>规划图包</Button>}
- {snapshot?.agent.session.confirmedPack&&!pending.some(c=>c.kind==="cost")&&<Button disabled={live.busy} onClick={()=>void act("generate")}>生成候选 · 先查看费用</Button>}
+ {snapshot?.agent.session.confirmedPack&&<><Button disabled={live.busy} onClick={()=>void act("generate")}>生成候选</Button><small className="p-subtle">预估约 $ {generationEstimate.toFixed(4)}</small></>}{live.generationChoiceRequired&&<div className="l-shooting-card"><p>当前是逐张模式</p><Button disabled={live.busy} onClick={()=>void act("generate",{scope:"batch"})}>切回整套</Button><small className="p-subtle">预估约 $ {estimateImageCost(modelState,demoSession,batchCount).toFixed(4)}</small><Button variant="outline" disabled={live.busy} onClick={()=>void act("generate",{scope:"current"})}>只生成当前图位</Button><small className="p-subtle">预估约 $ {estimateImageCost(modelState,demoSession,currentCount).toFixed(4)}</small></div>}
  <VersionHistory/>
  {snapshot?.searches.map(s=><details key={s.id} className="p-subtle"><summary>查了 {s.resultCount} 个网页</summary>{(s.sources as {url:string;title:string}[]).map(r=><a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer">{r.title}</a>)}</details>)}
  {stream&&<div className="p-agent-message"><p>{stream}</p></div>}{(live.busy||sending)&&<div className="p-subtle" role="status">正在处理，请稍候…</div>}{live.error&&<div role="alert" className="l-shooting-card"><p>{live.error.replace(/KIE|ZenMux/gi,"模型服务")}</p><Button variant="outline" onClick={()=>{if(snapshot)void live.load(snapshot.product.id).catch(notify);}}>刷新进度</Button></div>}
@@ -108,20 +117,15 @@ function RealCard({card,act}:{card:Card;act:(action:string,data?:Record<string,u
  const live=useLiveStore(),s=live.snapshot!,d=card.data as Record<string,unknown>;
  if(card.kind==="category")return <div className="r4-category-confirm l-shooting-card"><span className="l-card-eyebrow"><IconBadge concept="product"/>确认产品</span><h3>{d.name?"看起来是"+String(d.name)+"，对吗？":"还没看出产品品类，可以确认一下吗？"}</h3><div>{!!d.categoryId&&<Button disabled={live.busy} onClick={()=>void act("category",{categoryId:d.categoryId})}>是</Button>}<CategorySelect/></div></div>;
  if(card.kind==="shooting")return <div className="r4-shooting-choice l-shooting-card"><h3>这个品类默认采用严格拍摄标准。</h3><p>按清单核对资料，还是这次先快速开始？</p><Button disabled={live.busy} onClick={()=>void act("shooting",{mode:"strict"})}>按严格来</Button><Button variant="outline" disabled={live.busy} onClick={()=>void act("shooting",{mode:"quick"})}>这次先快速</Button></div>;
- if(card.kind==="profile")return <ProfileForm profile={d.profile as Profile} onSave={profile=>act("approve",{cardId:card.id,changes:{profile}})}/>;
+ if(card.kind==="profile")return <ProfileForm busy={live.busy} profile={d.profile as Profile} onSave={profile=>act("approve",{cardId:card.id,changes:{profile}})}/>;
  if(card.kind==="pack"&&d.visualPlan)return <VisualPlanCard cardId={card.id} initial={d.visualPlan as VisualPlan} busy={live.busy} act={act}/>;
  if(card.kind==="pack")return <div className="l-shooting-card"><h3>图包方案</h3><p>{String(d.reason??"")}</p>{(d.slots as {name:string;candidateCount:number}[]).map((slot,i)=><p key={i}>{i+1}. {slot.name} · {slot.candidateCount} 张候选</p>)}<Button disabled={live.busy} onClick={()=>void act("approve",{cardId:card.id})}>确认图包方案</Button></div>;
- if(card.kind==="cost"){const q=d.quote as {estimatedCostUsd:number;totalCount:number;risk?:{ready:boolean};shortage?:number};return <div className="l-shooting-card"><h3>确认生成费用</h3><p>预计 $ {Number(q.estimatedCostUsd).toFixed(2)} · 估 · {q.totalCount??1} 张</p>{q.risk&&!q.risk.ready&&<p className="p-subtle">部分信息缺失，生成将遵循可见实拍，不编造尺寸。确认后继续。</p>}<Button disabled={live.busy||!!q.shortage} onClick={()=>void act("approve",{cardId:card.id,changes:{acceptRisk:true}})}>确认并生成</Button></div>;}
- if(card.kind==="questions"){const questions=d.questions as {question:string;options:string[]}[];return <div className="l-shooting-card"><h3>{questions[0]?.question}</h3>{questions[0]?.options.map(option=><Button key={option} variant="outline" onClick={()=>void act("approve",{cardId:card.id,changes:{answers:[option]}})}>{option}</Button>)}</div>;}
+ if(card.kind==="cost")return null;
+ if(card.kind==="questions")return <QuestionsCard questions={d.questions as UserQuestion[]} busy={live.busy} onSubmit={answers=>void act("approve",{cardId:card.id,changes:{answers}})}/>;
  if(card.kind==="library_case")return <div className="l-shooting-card"><h3>确认沉淀优秀案例</h3><p>{String(d.note)}</p><pre className="whitespace-pre-wrap text-xs">{JSON.stringify(d.entries,null,2)}</pre><Button disabled={live.busy} onClick={()=>void act("approve",{cardId:card.id})}>确认入库</Button></div>;
  if(card.kind==="mask_request")return <div className="l-shooting-card"><h3>请在画布选择修改区域</h3><p>{String(d.instruction)}</p><Button onClick={()=>{usePreviewStore.getState().select([String(d.assetId)]);usePreviewStore.getState().setEditor({id:String(d.assetId),action:"paint"});}}>框选或涂抹</Button></div>;
  if(card.kind==="final")return <div className="l-shooting-card"><h3>设为这个图位的终稿？</h3><Button onClick={()=>void act("approve",{cardId:card.id})}><Check size="sm"/>确认终稿</Button></div>;
  return <div className="p-subtle">待确认：{s.product.name}</div>;
-}
-function ProfileForm({profile,onSave}:{profile:Profile;onSave:(p:Profile)=>Promise<void>}){
- const [value,setValue]=useState(profile),busy=useLiveStore(s=>s.busy);
- function save(){const next=structuredClone(value);for(const f of Object.values(next)){if(f.value.trim()&&!f.conflicts.length)f.status="confirmed";else if(!f.value.trim())f.status="missing";}void onSave(next).catch(notify);}
- return <div className="l-shooting-card"><h3>核对产品档案</h3><p className="p-subtle">确认可见特征；没有依据的尺寸和结构请留空。</p>{profileFields.map(k=><label className="t10-profile-field" key={k}><span>{profileLabels[k]}</span><Input aria-label={profileLabels[k]} value={value[k].value} onChange={e=>setValue(s=>({...s,[k]:{...s[k],value:e.target.value}}))}/></label>)}<Button disabled={busy} onClick={save}>确认并保存档案</Button></div>;
 }
 function ShootingNotice(){
  const live=useLiveStore(),s=live.snapshot!,category=s.categories.find(c=>c.id===s.settings.categoryId),angles=Object.values(s.settings.photoAngles??{}),missing=category?.strictChecklist.filter(r=>r.required&&!angles.includes(r.angle))??[];
@@ -131,7 +135,7 @@ function ShootingNotice(){
 }
 export function RealProductCard({open,onOpenChange}:{open:boolean;onOpenChange:(v:boolean)=>void}){
  const live=useLiveStore(),s=live.snapshot;
- return <Sheet open={open} onOpenChange={onOpenChange}><SheetContent className="p-portal p-product-sheet"><SheetHeader className="p-product-header"><SheetTitle>{s?.product.name??"产品卡 · 未建档"}</SheetTitle><SheetDescription>{s?"实拍和已确认特征会用于每次生成与修改":"上传产品实拍后开始建档"}</SheetDescription>{s&&<div className="t10-product-heading"><Button variant="outline" asChild><Link href={"/products/"+s.product.id}>产品资料</Link></Button><CategorySelect label={s.product.category}/><span>{s.settings.shootingMode==="strict"?"严格":"快速"}</span>{s.settings.shootingMode!=="strict"&&<Button variant="ghost" onClick={()=>void live.act("shooting",{mode:"strict"}).catch(notify)}>升级为严格</Button>}</div>}</SheetHeader><div className="p-product-content">{s&&<><p>理解度 {s.agent.understanding.percent}% · {s.product.assets.length} 张实拍</p><div className="p-assets-grid">{s.product.assets.map(p=><img key={p.id} src={"/api/assets/"+p.id} alt={"产品实拍 · "+(shotLabels[s.settings.photoAngles?.[p.id] as ShotAngle]??"角度待确认")}/>)}</div><ShootingNotice/><ProfileForm key={s.agent.session.draftRevision} profile={s.agent.profile} onSave={async profile=>{await live.act("profile");const card=useLiveStore.getState().snapshot?.agent.cards.find(c=>c.kind==="profile"&&c.status==="pending");if(card)await live.act("approve",{cardId:card.id,changes:{profile}});}}/></>}</div></SheetContent></Sheet>;
+ return <Sheet open={open} onOpenChange={onOpenChange}><SheetContent className="p-portal p-product-sheet"><SheetHeader className="p-product-header"><SheetTitle>{s?.product.name??"产品卡 · 未建档"}</SheetTitle><SheetDescription>{s?"实拍和已确认特征会用于每次生成与修改":"上传产品实拍后开始建档"}</SheetDescription>{s&&<div className="t10-product-heading"><Button variant="outline" asChild><Link href={"/products/"+s.product.id}>产品资料</Link></Button><CategorySelect label={s.product.category}/><span>{s.settings.shootingMode==="strict"?"严格":"快速"}</span>{s.settings.shootingMode!=="strict"&&<Button variant="ghost" onClick={()=>void live.act("shooting",{mode:"strict"}).catch(notify)}>升级为严格</Button>}</div>}</SheetHeader><div className="p-product-content">{s&&<><p>理解度 {s.agent.understanding.percent}% · {s.product.assets.length} 张实拍</p><div className="p-assets-grid">{s.product.assets.map(p=><img key={p.id} src={"/api/assets/"+p.id} alt={"产品实拍 · "+(shotLabels[s.settings.photoAngles?.[p.id] as ShotAngle]??"角度待确认")}/>)}</div><ShootingNotice/><ProfileForm busy={live.busy} key={s.agent.session.draftRevision} profile={s.agent.profile} onSave={async profile=>{await live.act("profile");const card=useLiveStore.getState().snapshot?.agent.cards.find(c=>c.kind==="profile"&&c.status==="pending");if(card)await live.act("approve",{cardId:card.id,changes:{profile}});}}/></>}</div></SheetContent></Sheet>;
 }
 export function RealExport({open,onOpenChange}:{open:boolean;onOpenChange:(v:boolean)=>void}){
  const s=useLiveStore(state=>state.snapshot),[resolution,setResolution]=useState<"2K"|"4K">("2K"),[busy,setBusy]=useState(false),[partial,setPartial]=useState(false),missing=s?.pack.slots.filter(slot=>!slot.finalAssetId)??[];

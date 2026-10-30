@@ -17,6 +17,7 @@ export async function agentSession(productId: string, userId: string) {
 export async function agentSnapshot(productId: string, userId: string) {
   const session = await agentSession(productId, userId);
   await recoverAgentCards(session.id);
+  await db.agentCard.updateMany({where:{sessionId:session.id,kind:"cost",status:"pending"},data:{status:"cancelled"}});
   if(!session.runningAt||Date.now()-session.runningAt.getTime()>300000)await db.agentToolCall.updateMany({where:{sessionId:session.id,status:"running",createdAt:{lt:new Date(Date.now()-300000)}},data:{status:"failed",error:"上次处理已中断，请核对已保存结果后继续；没有自动重试",completedAt:new Date()}});
   const [messages, cards, documents, calls, jobs, tools] = await Promise.all([
     db.chatMessage.findMany({ where: { sessionId: session.id }, orderBy: [{ createdAt: "asc" }, { id: "asc" }] }),

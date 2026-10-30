@@ -1,18 +1,19 @@
 ﻿import "server-only";
-import { createHash } from "node:crypto";
+import { randomUUID, createHash } from "node:crypto";
 import { db } from "./db";
-import { quoteBatch, submitBatch, mutatePack } from "./image-packs";
+import { quoteBatch, submitImmediateBatch, mutatePack } from "./image-packs";
 import { configuredCandidate, monthlySpendUsd, assertUsdQuota } from "./quota";
 import { prepareEditInput, enqueueImageJob } from "./scene-generation";
 import { getBoss, workerIsReady } from "./generation-queue";
 import { StudioError } from "./studio-error";
 import { json } from "./agent-state";
-import { autoApproval, profileSchema, understanding,emptyProfile } from "./profile-rules";
+import { profileSchema, understanding,emptyProfile } from "./profile-rules";
 import {confirmVisualPlan,planToProposal} from "./visual-planning";
 import {visualPlanSchema,patternSchema,composeIdentityLock,visualPlanDiff} from "./visual-plan-rules";
 import {writeProductReviewSafely} from "./visual-review";
 import { confirmProfile } from "./product-profile";
 import { proposalSchema, agentToolSchemas } from "./agent-tool-schemas";
+import {currentGenerationSlot,validateQuestionAnswers} from "./interaction-rules";
 import { slotSchema } from "./pack-rules";
 import type { Prisma } from "@/generated/prisma/client";
 export type PaidAction = { operation: "generate_slot"; slotId: string; count: number } | { operation: "generate_batch" } | { operation: "edit_image"; assetId: string; instruction: string };
@@ -21,9 +22,10 @@ async function validGeneration(sessionId: string, action: PaidAction) {
   if (!session.confirmedProfileId || !session.confirmedPack) throw new StudioError("请先在卡片上确认产品档案和图包方案", 409);
   if (session.mode === "manual" && action.operation === "generate_batch") throw new StudioError("手动模式每次只推进一个图位，请切换快速模式或选择当前图位", 409);
   if (action.operation === "generate_slot") {
-    const slots = await db.imageSlot.findMany({ where: { pack: { productId: session.productId, isCurrent: true }, deletedAt: null, method: "ai_scene" }, orderBy: { order: "asc" } });
+    const pack=await db.imagePack.findFirst({where:{productId:session.productId,isCurrent:true},include:{slots:{where:{deletedAt:null},orderBy:{order:"asc"}}}});
+    const slots=pack?.slots??[];
     if (!slots.some(s => s.id === action.slotId)) throw new StudioError("图位不属于当前 SKU", 404);
-    if (session.mode === "manual" && slots.find(s => !s.finalAssetId)?.id !== action.slotId) throw new StudioError("请先挑好当前图位的终稿，再推进下一个图位", 409);
+    if (session.mode === "manual" && currentGenerationSlot(slots,pack?.confirmedPlanId)?.id !== action.slotId) throw new StudioError("请先挑好当前图位的终稿，再推进下一个图位", 409);
   }
   return session;
 }
@@ -43,15 +45,37 @@ export async function quoteAgentAction(sessionId: string, action: PaidAction) {
   }
   return db.$transaction(async tx => { const prepared = await prepareEdit(tx, session.productId, action); const user = await tx.user.findUniqueOrThrow({ where: { id: session.createdById } }), used = await monthlySpendUsd(tx, user.id); return { fingerprint: prepared.fingerprint, estimatedCostUsd: prepared.estimate, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: Math.max(0, prepared.estimate + used - Number(user.monthlyQuota)), totalCount: 1, slotCount: 1, skipped: [], risk, content: action.instruction }; });
 }
-export async function createCostCard(sessionId: string, action: PaidAction) {
-  const session = await validGeneration(sessionId, action), quote = await quoteAgentAction(sessionId, action);
-  const data = { action, quote };
-  const old = await db.agentCard.findFirst({ where: { sessionId, kind: "cost", status: "pending", data: { path: ["action"], equals: json(action) } } });
-  const card = old ? await db.agentCard.update({ where: { id: old.id }, data: { data: json(data) } }) : await db.agentCard.create({ data: { sessionId, kind: "cost", data: json(data) } });
-  const priorBatch = await db.agentCard.findFirst({ where: { sessionId, kind: "cost", status: "executed", data: { path: ["action", "operation"], equals: "generate_batch" } } });
-  const automatic = autoApproval({ enabled: session.autoConfirm, firstConfirmed: session.firstGenerationConfirmed && (action.operation !== "generate_batch" || Boolean(priorBatch)), costUsd: quote.estimatedCostUsd, risk: !quote.risk.ready || (session.mode === "manual" && action.operation === "generate_slot") });
-  if (automatic && quote.shortage <= 0) { const result = await approveAgentCard(sessionId, card.id, { acceptRisk: false }, true); return { cardId: card.id, automatic: true, result }; }
-  return { cardId: card.id, waitForUser: true, quote };
+export async function submitAgentAction(sessionId:string,action:PaidAction,requestKey:string=randomUUID()){
+ const session=await validGeneration(sessionId,action);
+ if(action.operation!=="edit_image"){
+  const result=await submitImmediateBatch(session.createdById,session.productId,action.operation==="generate_slot"?{slotId:action.slotId,count:action.count}:{},requestKey,sessionId);
+  return {...result,instruction:"已提交生成，等待任务结果；不要重复提交同一要求。"};
+ }
+ if(!await workerIsReady())throw new StudioError("生图 worker 未就绪",503);await getBoss();
+ return db.$transaction(async tx=>{
+  await tx.$queryRaw`SELECT id FROM "User" WHERE id=${session.createdById} FOR UPDATE`;
+  const existing=await tx.generationJob.findFirst({where:{sessionId,createdById:session.createdById,input:{path:["agentRequestKey"],equals:requestKey}}});
+  if(existing)return {jobId:existing.id,estimatedCostUsd:Number(existing.reservedUsd),submitted:true};
+  const prepared=await prepareEdit(tx,session.productId,action);await assertUsdQuota(tx,session.createdById,prepared.estimate);
+  const jobId=await enqueueImageJob(tx,{productId:session.productId,sessionId,slotId:prepared.slotId,logicalModel:"edit",createdById:session.createdById,reservedUsd:prepared.estimate,input:json({...prepared.input,agentRequestKey:requestKey})});
+  return {jobId,estimatedCostUsd:prepared.estimate,submitted:true};
+ },{timeout:30000});
+}
+const studioGenerationDependencies={
+ session:(productId:string,userId:string)=>db.agentSession.findUniqueOrThrow({where:{productId_createdById:{productId,createdById:userId}}}),
+ switchToBatch:(sessionId:string)=>db.agentSession.update({where:{id:sessionId},data:{mode:"quick"}}),
+ pack:(productId:string)=>db.imagePack.findFirst({where:{productId,isCurrent:true},include:{slots:{where:{deletedAt:null},orderBy:{order:"asc"}}}}),
+ submit:submitAgentAction
+};
+export async function studioGenerate(productId:string,userId:string,scope:"batch"|"current"|undefined,requestKey:string,deps=studioGenerationDependencies){
+ const session=await deps.session(productId,userId);
+ if(session.mode==="manual"&&!scope)return {modeChoiceRequired:true};
+ if(scope==="batch"&&session.mode!=="quick")await deps.switchToBatch(session.id);
+ if(scope==="current"){
+  const pack=await deps.pack(productId),slot=currentGenerationSlot(pack?.slots??[],pack?.confirmedPlanId);if(!slot)throw new StudioError("当前没有待生成的图位，请先规划或选择终稿",409);
+  return deps.submit(session.id,{operation:"generate_slot",slotId:slot.id,count:slot.candidateCount},requestKey);
+ }
+ return deps.submit(session.id,{operation:"generate_batch"},requestKey);
 }
 async function applyProposal(tx: Prisma.TransactionClient, productId: string, raw: unknown,cardId:string) {
   const proposal = proposalSchema.parse(raw);
@@ -78,26 +102,7 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
   if (card.status === "executed") return card.result;
   if (card.status !== "pending") throw new StudioError("确认卡已取消或正在执行，请刷新核对", 409);
   const raw = card.data as Record<string, unknown>;
-  if (card.kind === "cost") {
-    const action = raw.action as PaidAction;
-    const quote = await quoteAgentAction(sessionId, action), old = raw.quote as typeof quote;
-    if (quote.fingerprint !== old.fingerprint) { await db.agentCard.update({ where: { id: card.id }, data: { data: json({ action, quote }) } }); throw new StudioError("图位、身份或价格变化，费用卡已更新，请重新确认", 409); }
-    if (!quote.risk.ready && changes.acceptRisk !== true) throw new StudioError("产品仍有缺失或冲突，请勾选已了解风险后再生成", 409);
-    if (automatic && !autoApproval({ enabled: session.autoConfirm, firstConfirmed: session.firstGenerationConfirmed, costUsd: quote.estimatedCostUsd, risk: !quote.risk.ready || (session.mode === "manual" && action.operation === "generate_slot") })) throw new StudioError("当前操作必须人工确认", 409);
-    const claimed = await db.agentCard.updateMany({ where: { id: cardId, status: "pending" }, data: { status: "executing", data: json({ ...raw, startedAt: new Date().toISOString() }) } });
-    if (!claimed.count) throw new StudioError("确认卡正在执行，请勿重复提交", 409);
-    try {
-      let result;
-      if (action.operation !== "edit_image") result = { batchId: await submitBatch(session.createdById, session.productId, action.operation === "generate_slot" ? { slotId: action.slotId, count: action.count } : {}, quote.fingerprint, card.id, session.id) };
-      else {
-        if (!await workerIsReady()) throw new StudioError("生图 worker 未就绪", 503); await getBoss();
-        result = await db.$transaction(async tx => { await tx.$queryRaw`SELECT id FROM "User" WHERE id=${session.createdById} FOR UPDATE`; const existing = await tx.generationJob.findFirst({ where: { sessionId, input: { path: ["agentCardId"], equals: card.id } } }); if (existing) return { jobId: existing.id }; const prepared = await prepareEdit(tx, session.productId, action); if (prepared.fingerprint !== quote.fingerprint) throw new StudioError("编辑输入已变化，请重新确认", 409); await assertUsdQuota(tx, session.createdById, prepared.estimate); return { jobId: await enqueueImageJob(tx, { productId: session.productId, sessionId, slotId: prepared.slotId, logicalModel: "edit", createdById: session.createdById, reservedUsd: prepared.estimate, input: json({ ...prepared.input, agentCardId: card.id }) }) }; }, { timeout: 30000 });
-      }
-      await db.$transaction(async tx => { await tx.agentCard.update({ where: { id: cardId }, data: { status: "executed", result: json(result) } }); await tx.agentSession.update({ where: { id: sessionId }, data: { firstGenerationConfirmed: true } }); });
-      await db.chatMessage.create({ data: { productId: session.productId, sessionId, role: "system", content: json({ text: `${automatic ? "自动确认" : "美工已确认"}费用卡并入队：${JSON.stringify(result)}` }) } });
-      return result;
-    } catch (error) { await db.agentCard.update({ where: { id: cardId }, data: { status: "pending" } }); throw error; }
-  }
+  if(card.kind==="cost")throw new StudioError("旧费用卡已停用，请直接点击生成或修改",409);
   if (automatic) throw new StudioError("该卡片必须人工确认", 403);
   const confirmedResult=await db.$transaction(async tx => {
     await tx.$queryRaw`SELECT id FROM "AgentSession" WHERE id=${sessionId} FOR UPDATE`;
@@ -134,7 +139,7 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
     }
     else if (card.kind === "questions") {
       const questions = (raw.questions ?? []) as { question: string; options: string[]; allowFreeText: boolean }[];
-      const answers = zAnswers(changes.answers, questions);
+      const answers = validateQuestionAnswers(changes.answers, questions);
       await tx.chatMessage.create({ data: { productId: session.productId, sessionId, role: "user", content: json({ text: questions.map((q, i) => `${q.question}：${answers[i]}`).join("\n") }) } }); result = { answered: true };
     } else if (card.kind === "final") {
       const selection = agentToolSchemas.set_final.parse(raw);
@@ -156,9 +161,5 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
   }, { timeout: 20000 });
   if(card.kind==="pack")await writeProductReviewSafely(session.productId);
   return confirmedResult;
-}
-function zAnswers(raw: unknown, questions: { options: string[]; allowFreeText: boolean }[]) {
-  if (!Array.isArray(raw) || raw.length !== questions.length || raw.some((a, i) => typeof a !== "string" || !a.trim() || a.length > 2000 || (!questions[i].allowFreeText && !questions[i].options.includes(a)))) throw new StudioError("请回答全部问题，或点击停止提问继续策划");
-  return raw as string[];
 }
 export async function boardFinal(productId: string, slotId: string, assetId: string) { return mutatePack(productId, { action: "final", slotId, assetId }); }

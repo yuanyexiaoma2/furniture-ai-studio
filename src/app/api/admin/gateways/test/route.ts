@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
+import {gatewayTestSchema} from "@/lib/gateway-test-rules";
 import { fromPrisma } from "pg-boss";
 import { db } from "@/lib/db";
 import { studioUser, studioError, StudioError } from "@/lib/studio-api";
@@ -8,11 +8,11 @@ import { gatewayConfigured, candidatesFor } from "@/lib/gateway-router";
 import { getBoss, SUBMIT_QUEUE, workerIsReady } from "@/lib/generation-queue";
 import { assertUsdQuota } from "@/lib/quota";
 import { estimateImageUsd } from "@/lib/gateway-cost";
-const schema = z.object({ provider: z.enum(["zenmux", "kie"]), kind: z.enum(["llm", "image"]), confirmed: z.literal(true) });
+const schema=gatewayTestSchema;
 export async function POST(request: Request) {
   try {
     const user = await studioUser(request, true); if (user.role !== "admin") throw new StudioError("只有管理员可以测试网关", 403);
-    const input = schema.safeParse(await request.json().catch(() => null)); if (!input.success) throw new StudioError("请确认测试会产生费用并选择网关");
+    const input = schema.safeParse(await request.json().catch(() => null)); if (!input.success) throw new StudioError("请选择有效的网关和测试类型");
     const { provider, kind } = input.data; if (!gatewayConfigured(provider)) throw new StudioError(`${provider === "kie" ? "KIE" : "ZenMux"} 未配置，请填写 Key 后重启`, 503);
     if (kind === "llm") {
       const reply = await chatWithGateway("llm-vision", { messages: [{ role: "user", content: "你好，请用一句简短中文回应。" }] }, { userId: user.id, provider });

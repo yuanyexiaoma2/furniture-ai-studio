@@ -1,7 +1,7 @@
 ﻿import "dotenv/config";
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { emptyProfile, understanding, findConflicts, autoApproval, stopsQuestions, profileSchema } from "../../src/lib/profile-rules";
+import { emptyProfile, understanding, findConflicts, stopsQuestions, profileSchema } from "../../src/lib/profile-rules";
 import { agentToolSchemas } from "../../src/lib/agent-tool-schemas";
 import { KieLLMProvider } from "../../src/lib/kie-llm-provider";
 import { readKieStream } from "../../src/lib/kie-http";
@@ -18,11 +18,7 @@ test("不同资料尺寸冲突保留两个来源，一致值不产生冲突", ()
   const evidence = [{ field: "dimensions" as const, value: "80cm", source: { kind: "document" as const, id: "manual", quote: "80cm" } }, { field: "dimensions" as const, value: "90cm", source: { kind: "document" as const, id: "sheet", quote: "90cm" } }];
   assert.equal(findConflicts(evidence).length, 1); assert.equal(findConflicts(evidence)[0].evidence.length, 2); evidence[1].value = " 80 cm "; assert.equal(findConflicts(evidence).length, 0);
 });
-test("自动确认默认关、首次必须人工、最多1美元、风险和非法费用禁止自动", () => {
-  const base = { enabled: true, firstConfirmed: true, costUsd: 1, risk: false };
-  assert.equal(autoApproval(base), true);
-  for (const change of [{ enabled: false }, { firstConfirmed: false }, { costUsd: 1.000001 }, { risk: true }, { costUsd: NaN }, { costUsd: -1 }]) assert.equal(autoApproval({ ...base, ...change }), false);
-});
+
 test("问卡最多3个问题，用户停止后停止提问", () => {
   const q = { question: "尺寸哪份为准？", options: ["说明书", "参数表"], allowFreeText: true };
   assert.equal(agentToolSchemas.ask_user.safeParse({ questions: [q,q,q] }).success, true);

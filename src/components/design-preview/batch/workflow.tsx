@@ -28,7 +28,7 @@ export function launchWorkflow(kind:WorkflowKind,request=""){useWorkflowStore.ge
 export function workflowIntent(text:string):WorkflowKind|null{if(/批量|变体|再做.*色|米白|焦糖/.test(text))return"variants";if(/翻译|多语言|德语|日语/.test(text))return"translate";if(/导出|检查/.test(text))return"check";return null;}
 export function WorkflowChat({onCollapse}:{onCollapse:()=>void}){
  const state=useWorkflowStore(),flow=useReactFlow(),task=useLibraryStore(s=>s.task);
- const [variantType,setVariantType]=useState<"color"|"material">("color"),[text,setText]=useState(""),[variants,setVariants]=useState<ProductVariant[]>(()=>{const match=presetVariants.find(v=>state.request?.includes(v.name));return structuredClone(match?[match]:presetVariants);}),[ids,setIds]=useState<string[]>(()=>state.pack?.images.filter(i=>state.active!=="translate"||i.copy).map(i=>i.id)??[]),[targets,setTargets]=useState<Site[]>(["US","DE","JP"]),[glossaryId,setGlossaryId]=useState("G01"),[longAck,setLongAck]=useState(false),[busy,setBusy]=useState(false),[done,setDone]=useState(false),[feeOpen,setFeeOpen]=useState(false),[templates,setTemplates]=useState(state.request==="templates");
+ const [variantType,setVariantType]=useState<"color"|"material">("color"),[text,setText]=useState(""),[variants,setVariants]=useState<ProductVariant[]>(()=>{const match=presetVariants.find(v=>state.request?.includes(v.name));return structuredClone(match?[match]:presetVariants);}),[ids,setIds]=useState<string[]>(()=>state.pack?.images.filter(i=>state.active!=="translate"||i.copy).map(i=>i.id)??[]),[targets,setTargets]=useState<Site[]>(["US","DE","JP"]),[glossaryId,setGlossaryId]=useState("G01"),[longAck,setLongAck]=useState(false),[busy,setBusy]=useState(false),[done,setDone]=useState(false),[templates,setTemplates]=useState(state.request==="templates");
  const active=state.active,pack=state.pack,glossary=state.glossaries.find(g=>g.id===glossaryId)??state.glossaries[0],modelState=useModelStore();
  const body=useRef<HTMLDivElement>(null);
  useEffect(()=>{useModelStore.getState().startSession(demoSession);},[]);
@@ -40,11 +40,11 @@ export function WorkflowChat({onCollapse}:{onCollapse:()=>void}){
  const slots=pack?.images.filter(i=>active!=="translate"||i.copy)??[],selectedIds=ids.filter(id=>slots.some(i=>i.id===id));
  const missingMaterial=variantType==="material"&&variants.some(v=>v.referenceSource!=="photo");
  const tooLong=pack?longTranslations(pack,selectedIds,targets,glossary):[],cost=estimateCost(modelState,demoSession,selectedIds.length*(active==="translate"?targets.length:variants.length));
- async function generate(confirmed=false){if(!pack||active!=="variants"&&active!=="translate")return;try{
+ async function generate(){if(!pack||active!=="variants"&&active!=="translate")return;try{
  const selection=resolveSelection(useModelStore.getState(),demoSession),model=models.find(m=>m.id===(selection.auto?selection.imageIds[0]:selection.imageId));
  if(active==="translate"&&tooLong.length&&!longAck){toast.info("请先确认过长译文");return;}
  const frames=makeFrames({pack,ids:selectedIds,variants:variants.map(v=>({...v,type:variantType})),targets,kind:active,glossary,model:model?.name??"",brand:state.brands.find(b=>b.id===state.assignments[pack.sku]),stamp:"W"+crypto.randomUUID()});
- if(cost>.20&&!confirmed){setFeeOpen(true);return;}setFeeOpen(false);setBusy(true);
+ setBusy(true);
  syncFrames(pack,[...state.outputs,...frames],true);setTimeout(()=>flow.fitView({nodes:frames.map(f=>({id:f.id})),padding:"80px",duration:200}),80);
  await new Promise(r=>setTimeout(r,1400));state.saveOutputs(frames,active==="variants"?variants.map(v=>({...v,type:variantType})):undefined);syncFrames(pack,useWorkflowStore.getState().outputs);setBusy(false);setDone(true);setTimeout(()=>flow.fitView({nodes:frames.map(f=>({id:f.id})),padding:"80px",duration:200}),70);
  }catch(error){setBusy(false);toast.error(error instanceof Error?error.message:"请检查输入");}}
@@ -64,7 +64,7 @@ export function WorkflowChat({onCollapse}:{onCollapse:()=>void}){
  {done&&<div className="w-success"><span className="concept-icon-box"><Check size="md"/></span><div><strong>{active==="variants"?variants.length+" 个颜色 Frame 已准备好":"站点版本已放到画布"}</strong><p>原图包保留。选中图片可以继续调整。</p></div></div>}</>}
  {(modelState.events[demoSession]??[]).map((event,i)=><p className="p-system-message" key={i}>{event}</p>)}
  </div><div {...drop.getRootProps()} className="p-console"><input {...drop.getInputProps()} aria-label="工作流上传产品资料"/><div className="p-console-input"><Textarea className="shadow-none focus-visible:ring-0 focus-visible:outline-none border-0" rows={3} aria-label="创作控制台" placeholder="说说你的想法，或把资料拖进来…" value={text} onChange={e=>setText(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();send();}}}/><ComposerToolbar scope={demoSession} onAdd={drop.open} onSend={send} showCost={!!text.trim()} disabled={!text.trim()||busy}/></div></div>
- <Dialog open={feeOpen} onOpenChange={setFeeOpen}><DialogContent className="p-portal"><DialogHeader><DialogTitle>确认批量任务费用</DialogTitle><DialogDescription>预计 ${cost.toFixed(2)}，超过单次 $0.20 确认额度。静态演示不会扣费。</DialogDescription></DialogHeader><Button onClick={()=>void generate(true)}>确认费用并生成</Button></DialogContent></Dialog>
+
  <Dialog open={templates} onOpenChange={setTemplates}><DialogContent className="p-portal"><DialogHeader><DialogTitle>从场景开始</DialogTitle><DialogDescription>选择场景后添加产品实拍，继续确认产品。</DialogDescription></DialogHeader><div className="w-template-choices">{useLibraryStore.getState().data.scenes.slice(0,3).map(s=><button key={s.id} onClick={()=>{useLibraryStore.getState().setTemplate(s.id);setTemplates(false);drop.open();}}><img src={s.coverImage} alt=""/><strong>{s.name}</strong></button>)}</div></DialogContent></Dialog></aside>;
 }
 export function ExportCheckCard({pack}:{pack:FinalPack}){

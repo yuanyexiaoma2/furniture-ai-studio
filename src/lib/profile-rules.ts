@@ -20,5 +20,5 @@ export function findConflicts(evidence: { field: typeof profileFields[number]; v
 export function profileIdentity(profile: Profile) {
   return requiredFields.map(key => `${profileLabels[key]}（${profile[key].status === "confirmed" ? "已确认" : profile[key].status === "inferred" ? "推测，请严格参考实拍" : "待核对，不得编造"}）\n${profile[key].value || "未知，遵循实拍可见外观"}`).join("\n\n");
 }
-export function autoApproval(input: { enabled: boolean; firstConfirmed: boolean; costUsd: number; risk: boolean }) { return input.enabled && input.firstConfirmed && !input.risk && Number.isFinite(input.costUsd) && input.costUsd >= 0 && input.costUsd <= 1; }
+
 export function stopsQuestions(text: string) { return /够了|开始吧|停止提问|不用再问|先开始/.test(text); }

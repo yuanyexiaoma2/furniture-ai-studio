@@ -2,12 +2,12 @@
 import {useEffect,useRef,useState} from "react";
 import {Stage,Layer,Rect,Image as KonvaImage,Transformer} from "react-konva";
 import Konva from "konva";
-import {demoSession,estimateCost,useModelStore} from "./model-store";
+import {demoSession,estimateImageCost,useModelStore} from "./model-store";
 import {Button} from "./ui/button";
 import {Dialog,DialogContent,DialogTitle,DialogDescription} from "./ui/dialog";
 import {X} from "@/components/icons/concept-icons";
 export default function ExpandEditor({src,onCancel,onConfirm}:{src:string;onCancel:()=>void;onConfirm:(extent:{width:number;height:number;offsetX:number;offsetY:number})=>void|boolean|Promise<void|boolean>}){
- const quote=estimateCost(useModelStore(),demoSession,1);
+ const quote=estimateImageCost(useModelStore(),demoSession,1);
  const [image,setImage]=useState<HTMLImageElement|null>(null),[ratio,setRatio]=useState('自定义'),[box,setBox]=useState({x:160,y:80,width:340,height:220}),[stroke]=useState(()=>getComputedStyle(document.documentElement).getPropertyValue('--p-selection').trim());
  const [submitting,setSubmitting]=useState(false);
  const stageArea=useRef<HTMLDivElement>(null),[stageWidth,setStageWidth]=useState(680),stageScale=stageWidth/680;

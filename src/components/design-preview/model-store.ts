@@ -43,9 +43,10 @@ export const useModelStore=create<ModelState>()(persist((set,get)=>({
  const previous=value as Partial<ModelState>;
  return {...previous,defaults:{...defaults,...previous.defaults,agent:defaults.agent},home:{...initialSelection,...previous.home,agentId:defaults.agent}};
 }}));
-export function estimateCost(state:ModelState,scope:string,count:number){
- const selected=resolveSelection(state,scope);const agent=(state.catalog??models).find(m=>m.id===selected.agentId);
+export function estimateImageCost(state:ModelState,scope:string,count:number){
+ const selected=resolveSelection(state,scope);
  const imageModels=(state.catalog??models).filter(m=>selected.auto?selected.imageIds.includes(m.id):m.id===selected.imageId);
  const imagePrice=Math.max(0,...imageModels.map(m=>(m.pricesByResolution?.[selected.resolution==="4K"?"4K":selected.resolution==="1K"?"1K":"2K"]??modelRate(m,selected.qualities[m.id]).price)+(m.referenceImagePrice??0)*3));
- return (agent?.price??0)+imagePrice*count;
+ return imagePrice*count;
 }
+export function estimateCost(state:ModelState,scope:string,count:number){const selected=resolveSelection(state,scope),agent=(state.catalog??models).find(m=>m.id===selected.agentId);return (agent?.price??0)+estimateImageCost(state,scope,count);}

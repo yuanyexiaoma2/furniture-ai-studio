@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { studioUser, studioError, StudioError } from "@/lib/studio-api";
-import { packSnapshot, mutatePack, quoteBatch, submitBatch } from "@/lib/image-packs";
+import { packSnapshot, mutatePack, quoteBatch, submitImmediateBatch } from "@/lib/image-packs";
 import { agentSession, recordBoardEvent } from "@/lib/agent-state";
 import { z } from "zod";
 export const runtime = "nodejs";
@@ -18,10 +18,10 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
       const selection = selectionSchema.safeParse(body.selection ?? {});
       if (!selection.success) throw new StudioError("生成范围参数无效");
       if (body.action === "quote") return NextResponse.json(await quoteBatch(user.id, id, selection.data));
-      if (typeof body.fingerprint !== "string" || !z.string().uuid().safeParse(body.requestKey).success) throw new StudioError("请先查看生成确认框");
-      const batchId = await submitBatch(user.id, id, selection.data, body.fingerprint, body.requestKey, (await agentSession(id, user.id)).id);
+      if (!z.string().uuid().safeParse(body.requestKey).success) throw new StudioError("提交编号无效，请重试");
+      const {batchId,estimatedCostUsd}=await submitImmediateBatch(user.id,id,selection.data,body.requestKey,(await agentSession(id,user.id)).id);
       await recordBoardEvent(id, user.id, { action: "generate", selection: selection.data, batchId });
-      return NextResponse.json({ batchId }, { status: 202 });
+      return NextResponse.json({ batchId,estimatedCostUsd }, { status: 202 });
     }
     await mutatePack(id, body);
     await recordBoardEvent(id, user.id, body);

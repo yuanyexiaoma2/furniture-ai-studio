@@ -24,7 +24,7 @@ test.afterAll(async () => {
   if (userId) await db.user.delete({ where: { id: userId } });
   for (const key of keys) await s3.send(new DeleteObjectCommand({ Bucket: "assets", Key: key })); s3.destroy(); await db.$disconnect();
 });
-test("图包：默认草稿→意图→确认6张→候选→终稿持久化→ZIP（模拟结果，不调用付费网关）", async ({ page }) => {
+test("图包：默认草稿→意图→直接生成6张→候选→终稿持久化→ZIP（模拟结果，不调用付费网关）", async ({ page }) => {
   const errors: string[] = []; page.on("pageerror", e => errors.push(e.message));
   await page.goto("/login"); await page.getByLabel("公司邮箱").fill(email); await page.getByLabel("密码", { exact: true }).fill(password); await page.getByRole("button", { name: "进入工作台" }).click(); await page.waitForURL("http://localhost:3000/");
   // 浏览器交互使用真实CRUD/估价/终稿/导出，只有收费提交响应替换为fixture；真实事务生成由隔离集成测试覆盖。
@@ -38,7 +38,7 @@ test("图包：默认草稿→意图→确认6张→候选→终稿持久化→Z
       const asset = await db.asset.create({ data: { productId, type: "generated", storageKey: key, width: 256, height: 256, createdById: userId } });
       await db.generationJob.create({ data: { productId, slotId: slot.id, batchId: batch.id, logicalModel: "scene-main", provider: "kie", model: "模拟模型", createdById: userId, status: "success", costUsd: 0.03, credits: 6, costEstimated: false, resultAssetIds: [asset.id], completedAt: new Date(), input: { identityVersionId: version.id, identityTraits: version.text } } });
     }
-    await route.fulfill({ status: 202, contentType: "application/json", body: JSON.stringify({ batchId: batch.id }) });
+    await route.fulfill({ status: 202, contentType: "application/json", body: JSON.stringify({ batchId: batch.id,estimatedCostUsd:0.18 }) });
   });
   await page.goto(`/products/${productId}/pack`); await page.getByRole("button", { name: "套用默认图包" }).click(); await expect(page.locator(".pack-slot")).toHaveCount(7);
   for (const name of ["主图", "客厅场景", "卧室场景"]) { const slot = page.locator(".pack-slot").filter({ has: page.getByRole("heading", { name, exact: true }) }); await slot.getByLabel(`${name}场景意图`).fill(`模拟${name}意图`); await slot.getByRole("button", { name: "保存图位" }).click(); await expect(slot.getByRole("button", { name: "再来 2 张" })).toBeEnabled(); }
@@ -49,8 +49,8 @@ test("图包：默认草稿→意图→确认6张→候选→终稿持久化→Z
   const session=await db.agentSession.findUniqueOrThrow({where:{productId_createdById:{productId,createdById:userId}}}),confirmed=await db.agentCard.create({data:{sessionId:session.id,kind:"pack",status:"executed",data:{visualPlan:JSON.parse(JSON.stringify(visual))},result:{note:"本地测试准备的确认快照，无模型调用"}}});
   await db.imagePack.update({where:{id:currentPack.id},data:{confirmedPlanId:confirmed.id}});
   for(const [i,slot] of active.entries())await db.imageSlot.update({where:{id:slot.id},data:{visualPlan:JSON.parse(JSON.stringify({plan:visual,slot:visual.slots[i],confirmationCardId:confirmed.id}))}});
-  const quoteReply=page.waitForResponse(r=>r.url().endsWith(`/api/products/${productId}/pack`)&&r.request().method()==="POST"&&r.request().postDataJSON().action==="quote");
-  await page.getByRole("button", { name: "批量生成候选图", exact: true }).click(); const quote=await (await quoteReply).json(); const dialog = page.getByRole("dialog"); await expect(dialog).toContainText("6 张"); expect(quote.estimatedCostUsd).toBeGreaterThan(0); expect(quote.provider).toBe("kie"); await expect(dialog).toContainText("$"+quote.estimatedCostUsd.toFixed(6)); await expect(dialog).toContainText(String(quote.estimatedCredits)+" "+(quote.creditEquivalent?"KIE 等值积分":"积分")); expect(quote.skipped).toEqual([]); await expect(dialog).not.toContainText("其他空间场景"); await dialog.getByRole("button", { name: "确认并生成" }).click();
+  const generationReply=page.waitForResponse(r=>r.url().endsWith(`/api/products/${productId}/pack`)&&r.request().method()==="POST"&&r.request().postDataJSON().action==="generate");
+  await page.getByRole("button",{name:"批量生成候选图",exact:true}).click();const result=await(await generationReply).json();expect(result.batchId).toBeTruthy();expect(result.estimatedCostUsd).toBeGreaterThan(0);await expect(page.getByRole("dialog")).toHaveCount(0);
   await expect(page.getByText("已完成 6 / 6，失败 0", { exact: true })).toBeVisible(); await expect(page.locator(".pack-candidates .generation-card")).toHaveCount(6);
   for (const name of ["主图", "客厅场景", "卧室场景"]) { const slot = page.locator(".pack-slot").filter({ has: page.getByRole("heading", { name, exact: true }) }); await slot.getByRole("button", { name: "设为终稿", exact: true }).first().click(); await expect(slot.getByRole("button", { name: "终稿 · 取消终稿" })).toBeVisible(); }
   await page.reload(); await expect(page.getByRole("button", { name: "终稿 · 取消终稿" })).toHaveCount(3);

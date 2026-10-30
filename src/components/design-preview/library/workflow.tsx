@@ -8,7 +8,6 @@ import {toast} from "sonner";
 import {Button} from "../ui/button";
 import {Textarea} from "../ui/textarea";
 import {Input} from "../ui/input";
-import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from "../ui/dialog";
 import {ComposerToolbar} from "../model-picker";
 import {demoSession,estimateCost,resolveSelection,useModelStore} from "../model-store";
 import {usePreviewStore} from "../store";
@@ -24,7 +23,7 @@ import {launchWorkflow,workflowIntent} from "../batch/workflow";
 import {StrictNotice} from "./shooting";
 export function LibraryChat({onCollapse,onFocus}:{onCollapse:()=>void;onFocus:(id:string)=>void}){
  const state=useLibraryStore(),task=state.task!,modelState=useModelStore();
- const [text,setText]=useState(""),[busy,setBusy]=useState(false),[count,setCount]=useState(4),[ratio,setRatio]=useState("1:1"),[feeOpen,setFeeOpen]=useState(false);
+ const [text,setText]=useState(""),[busy,setBusy]=useState(false),[count,setCount]=useState(4),[ratio,setRatio]=useState("1:1");
  const body=useRef<HTMLDivElement>(null),selected=usePreviewStore(s=>s.contextId);
  const ready=task.categoryConfirmed!==false&&!task.shootingChoicePending;
  const cost=estimateCost(modelState,demoSession,count);
@@ -32,12 +31,12 @@ export function LibraryChat({onCollapse,onFocus}:{onCollapse:()=>void;onFocus:(i
  useEffect(()=>{body.current?.scrollTo({top:body.current.scrollHeight,behavior:"smooth"});},[task.messages.length,task.suggestions.length,busy]);
  const drop=useDropzone({noClick:true,onDropAccepted:async files=>{const incoming=await readMockFiles(files);state.ingest(incoming.photos,incoming.documents,true);toast.success("资料已补充，产品卡角度清单已更新");}});
  function plan(){try{state.preparePlan(count,cost);}catch(error){toast.error(error instanceof Error?error.message:"请先补充一张实拍");}}
- async function generate(confirmed=false){
+ async function generate(){
   const current=useLibraryStore.getState();if(!current.task)return;
   // 模型切换后以当前报价重排配方，并在付费动作前展示本次费用。
   try{current.preparePlan(count,cost);}catch(error){toast.error(String(error));return;}
-  if(cost>.20&&!confirmed){setFeeOpen(true);return;}
-  setFeeOpen(false);setBusy(true);usePreviewStore.getState().update("frame-0",{loading:true});
+
+  setBusy(true);usePreviewStore.getState().update("frame-0",{loading:true});
   await new Promise(resolve=>setTimeout(resolve,1100));
   const images=usePreviewStore.getState().addBatch([25,5,7,28].slice(0,count).map(n=>"r3-"+String(n).padStart(2,"0")));
   const selection=resolveSelection(useModelStore.getState(),demoSession),model=models.find(m=>m.id===(selection.auto?selection.imageIds[0]:selection.imageId))!;
@@ -57,7 +56,7 @@ export function LibraryChat({onCollapse,onFocus}:{onCollapse:()=>void;onFocus:(i
  {task.suggestions.filter(s=>s.status!=="dismissed").map(s=><CaptureCard key={s.id} suggestion={s}/>)}
  {(modelState.events[demoSession]??[]).map((event,i)=><p className="p-system-message" key={i}>{event}</p>)}
  </div><div {...drop.getRootProps()} className={`p-console ${drop.isDragActive?"p-drop-active":""}`}><input {...drop.getInputProps()} aria-label="对话上传资料"/><div className="l-console-meta"><span>{task.categoryConfirmed===false?"待确认品类":state.data.categories.find(c=>c.id===task.product.categoryId)?.name}</span><span>{task.product.photos.length} 张原始实拍</span></div><div className="p-console-input"><Textarea className="shadow-none focus-visible:ring-0 focus-visible:outline-none border-0" rows={3} aria-label="创作控制台" placeholder={selected?"选中了图片，说说想改哪里…":"说说你的想法，或把资料拖进来…"} value={text} onChange={e=>setText(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();send();}}}/><ComposerToolbar scope={demoSession} count={count} ratio={ratio} onCount={setCount} onRatio={setRatio} onAdd={drop.open} onSend={send} showCost={!!text.trim()} disabled={!text.trim()||busy}/></div></div>
- <Dialog open={feeOpen} onOpenChange={setFeeOpen}><DialogContent className="p-portal"><DialogHeader><DialogTitle>确认这次创作费用</DialogTitle><DialogDescription>本次预计 ${cost.toFixed(2)}，超过单次 ${(.20).toFixed(2)} 的确认额度。</DialogDescription></DialogHeader><p>这是本地费用演示，不会产生扣费。</p><Button onClick={()=>void generate(true)}>确认费用并生成</Button></DialogContent></Dialog></aside>;
+</aside>;
 }
 function CaptureCard({suggestion:s}:{suggestion:Suggestion}){
  const state=useLibraryStore(),[name,setName]=useState(s.name);

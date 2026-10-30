@@ -9,7 +9,7 @@ import { agentSession, agentSnapshot, json } from "./agent-state";
 import { agentToolSchemas, llmAgentTools, type AgentToolName } from "./agent-tool-schemas";
 import { classifyDocument } from "./product-documents";
 import { emptyProfile, profileSchema, understanding, stopsQuestions, type Profile } from "./profile-rules";
-import { createCostCard } from "./agent-actions";
+import { submitAgentAction } from "./agent-actions";
 import { StudioError } from "./studio-error";
 import type { LLMInput, LLMMessage } from "./llm-provider";
 import { defaultSlots } from "./pack-rules";
@@ -73,7 +73,7 @@ export async function runAgentTurn(productId: string, userId: string, text: stri
           seenCalls.add(signature);
           if (waiting && !["read_product_materials", "view_images"].includes(name)) throw new StudioError("已有确认卡正在等待美工，本轮不再创建其他操作", 409);
           if (["ask_user", "request_profile_confirmation"].includes(name) && (!materialsRead || materialImages.some(id => !viewed.has(id)))) throw new StudioError("请先读取全部资料并查看所有图片，再提问或请求理解确认");
-          result = await executeAgentTool(session.id, name, args);
+          result = await executeAgentTool(session.id, name, args,"tool-"+requestKey+"-"+call.id);
           if (name === "read_product_materials") { materialsRead = true; materialImages = (result as { images: { id: string }[] }).images.map(i => i.id); }
           if (name === "view_images") for (const imageId of (result as { images: string[] }).images) viewed.add(imageId);
           if ((result as { waitForUser?: boolean })?.waitForUser) waiting = true;
@@ -94,7 +94,7 @@ export async function runAgentTurn(productId: string, userId: string, text: stri
   } finally { if(activeTools.size)await db.agentToolCall.updateMany({where:{sessionId:session.id,callId:{in:[...activeTools]},status:"running"},data:{status:"failed",error:"处理被中断，请核对已保存结果后继续；未自动重试",completedAt:new Date()}});await db.agentSession.update({ where: { id: session.id }, data: { runningAt: null } }); }
   emit({ type: "done", snapshot: await agentSnapshot(productId, userId) });
 }
-export async function executeAgentTool(sessionId: string, name: AgentToolName, raw: unknown) {
+export async function executeAgentTool(sessionId: string, name: AgentToolName, raw: unknown,requestKey?:string) {
   const session = await db.agentSession.findUniqueOrThrow({ where: { id: sessionId } });
   const productId = session.productId;
   const args = agentToolSchemas[name].parse(await resolveSourceAliases(sessionId, name, raw));
@@ -140,7 +140,7 @@ export async function executeAgentTool(sessionId: string, name: AgentToolName, r
   }
   if (name === "ask_user" && session.stopQuestions) return { stopped: true, instruction: "美工要求停止提问。列出未知项后请求理解确认卡，矛盾在卡上人工解决。" };
   if (["generate_slot", "generate_batch", "edit_image"].includes(name)) {
-    if (name === "generate_slot") { const a = agentToolSchemas.generate_slot.parse(args); return createCostCard(sessionId, { operation: name, ...a }); }
+    if (name === "generate_slot") { const a = agentToolSchemas.generate_slot.parse(args); return submitAgentAction(sessionId, { operation: name, ...a },requestKey); }
     if (name === "edit_image") {
       const a = agentToolSchemas.edit_image.parse(args);
       if(a.mode==="local"){
@@ -148,9 +148,9 @@ export async function executeAgentTool(sessionId: string, name: AgentToolName, r
         const card=await db.agentCard.create({data:{sessionId,kind:"mask_request",data:json({...a,productId})}});
         return {cardId:card.id,waitForUser:true,instruction:"在画布选定修改区域后，按本卡要求提交局部修改"};
       }
-      return createCostCard(sessionId, { operation: name, assetId:a.assetId,instruction:a.instruction });
+      return submitAgentAction(sessionId, { operation: name, assetId:a.assetId,instruction:a.instruction },requestKey);
     }
-    return createCostCard(sessionId, { operation: "generate_batch" });
+    return submitAgentAction(sessionId, { operation: "generate_batch" },requestKey);
   }
   if(name==="propose_image_pack"){
     const proposal=agentToolSchemas.propose_image_pack.parse(args);

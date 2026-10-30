@@ -5,7 +5,7 @@ import {studioUser,studioError,StudioError} from "@/lib/studio-api";
 import {db} from "@/lib/db";
 import {studioSnapshot,inspectStudioProduct,confirmStudioCategory,studioShooting,studioProfileCard,planStudioTask,updateStudioSettings,studioEdit,quoteStudioEdit} from "@/lib/studio-main";
 import {agentSession,json} from "@/lib/agent-state";
-import {approveAgentCard,createCostCard} from "@/lib/agent-actions";
+import {approveAgentCard,studioGenerate} from "@/lib/agent-actions";
 import {inspectPhoto,putObject} from "@/lib/storage";
 import {quoteBatch,submitBatch} from "@/lib/image-packs";
 import {logStudioReadError} from "@/lib/server-read-error";
@@ -39,7 +39,7 @@ export async function POST(request:Request,context:Ctx){
   await lockedOperation(session.id,"plan_image_pack",()=>proposeVisualPlan(productId,user.id,{previousPlan,originalPlan:visualPlanSchema.parse((card.data as {originalVisualPlan?:unknown}).originalVisualPlan??previousPlan),feedback:z.string().min(1).max(8000).parse(data.feedback)}));
  }
  else if(body.action==="excellent")await proposeExcellentCase(productId,user.id,z.string().parse(data.assetId));
- else if(body.action==="generate")await createCostCard(session.id,{operation:"generate_batch"});
+ else if(body.action==="generate"){const result=await studioGenerate(productId,user.id,z.enum(["batch","current"]).optional().parse(data.scope),z.string().uuid().parse(data.requestKey));return NextResponse.json(result);}
  else if(body.action==="approve")await approveAgentCard(session.id,z.string().parse(data.cardId),(data.changes??{}) as Record<string,unknown>);
  else if(body.action==="edit_quote"){const a=z.object({assetId:z.string(),instruction:z.string().trim().min(1).max(8000),maskAssetId:z.string().optional(),expansion:z.object({width:z.number(),height:z.number(),offsetX:z.number(),offsetY:z.number()}).optional()}).strict().parse(data);const quote=await quoteStudioEdit(productId,user.id,a.assetId,a.instruction,a);await db.chatMessage.create({data:{sessionId:session.id,productId,role:"system",content:{text:"本次修改预计 $"+quote.estimatedCostUsd.toFixed(2)+"（估），确认后开始。"+(quote.warning??"")}}});return NextResponse.json(quote);}
  else if(body.action==="edit"){

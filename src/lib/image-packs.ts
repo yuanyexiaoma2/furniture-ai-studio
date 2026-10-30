@@ -120,12 +120,32 @@ export async function submitBatch(userId: string, productId: string, selection: 
     const retried = await tx.generationJob.findFirst({ where: { productId, createdById: userId, input: { path: ["batchRequestKey"], equals: requestKey } } });
     if (retried?.batchId) return retried.batchId;
     const plan = await planBatch(tx, productId, selection, userId), quote = summarizePlan(plan);
-    if (fingerprint !== quote.fingerprint) throw new StudioError("图位、身份特征或价格已变化，请重新查看生成确认框", 409);
+    if (fingerprint !== quote.fingerprint) throw new StudioError("图位、身份特征或价格已变化，请重试生成", 409);
     await assertUsdQuota(tx, userId, quote.estimatedCostUsd);
     const batch = plan.old ? await tx.generationBatch.findUniqueOrThrow({ where: { id: plan.old.batchId! } }) : await tx.generationBatch.create({ data: { packId: plan.pack.id, createdById: userId, slotCount: quote.slotCount, totalCount: quote.totalCount, estimatedCostUsd: quote.estimatedCostUsd, requestKey } });
     for (const entry of plan.entries) for (let n = 0; n < entry.count; n++) await enqueueImageJob(tx, { productId, sessionId, slotId: entry.slotId, batchId: batch.id, retryOfId: plan.old?.id, logicalModel: "scene-main", createdById: userId, input: { ...entry.prepared.input, selectedCandidate:JSON.parse(JSON.stringify(plan.candidate)), batchRequestKey: requestKey }, reservedUsd: entry.prepared.estimate });
     return batch.id;
   }, { timeout: 30000 });
+}
+
+// 费用只展示：报价后直接交给原有提交事务，额度预留、指纹和队列逻辑不变。
+const immediateBatchDependencies={
+ quote:quoteBatch,submit:submitBatch,
+ replay:async(userId:string,productId:string,requestKey:string)=>{
+  const jobs=await db.generationJob.findMany({where:{productId,createdById:userId,input:{path:["batchRequestKey"],equals:requestKey}},select:{batchId:true,reservedUsd:true}});
+  return jobs[0]?.batchId?{batchId:jobs[0].batchId,estimatedCostUsd:roundUsd(jobs.reduce((sum,j)=>sum+Number(j.reservedUsd),0))}:null;
+ }
+};
+export async function submitImmediateBatch(userId:string,productId:string,selection:BatchSelection,requestKey:string,sessionId?:string,deps=immediateBatchDependencies){
+ const previous=await deps.replay(userId,productId,requestKey);if(previous)return {...previous,submitted:true as const};
+ let quote=await deps.quote(userId,productId,selection),batchId:string;
+ try{batchId=await deps.submit(userId,productId,selection,quote.fingerprint,requestKey,sessionId);}
+ catch(error){
+  // 指纹变化发生在扣款/入队前；刷新一次报价仍使用同一请求号，不增加人工费用确认。
+  if(!(error instanceof StudioError)||error.status!==409||!error.message.startsWith("图位、身份特征或价格已变化"))throw error;
+  quote=await deps.quote(userId,productId,selection);batchId=await deps.submit(userId,productId,selection,quote.fingerprint,requestKey,sessionId);
+ }
+ return {batchId,estimatedCostUsd:quote.estimatedCostUsd,submitted:true as const};
 }
 
 export async function packSnapshot(productId: string) {

@@ -16,7 +16,7 @@ export function ProductEditor({ product, readonly, onUpdate, children }: { produ
   const [analyzing, setAnalyzing] = useState(false);
   const identityRef = useRef<HTMLTextAreaElement>(null);
   async function analyze() {
-    if (identityRef.current?.value.trim() && !window.confirm("AI 提炼会替换文本框当前内容并产生网关费用，结果不会自动保存。是否继续？")) return;
+    if (identityRef.current?.value.trim() && !window.confirm("AI 提炼会替换文本框当前内容，结果不会自动保存。是否继续？")) return;
     setAnalyzing(true); setError(""); setNotice("");
     try {
       const response = await fetch(`/api/products/${current.id}/identity`, { method: "POST", signal: AbortSignal.timeout(65000) });
