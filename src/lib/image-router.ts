@@ -1,18 +1,18 @@
 import "server-only";
 import {requestFromGenerationInput} from "./generation-references";
-import {imageRetryAllowed} from "./studio-rules";
+import {imageRouteCandidates} from "./image-models";
 import { db } from "./db";
 import { routeCall, candidatesFor, gatewayConfigured } from "./gateway-router";
 import { databaseCircuit } from "./gateway-circuit";
 import { imageProvider } from "./gateway-providers";
-import { GatewayError, ImageTaskFailure, gatewayException } from "./gateway-error";
+import { GatewayError, ImageTaskFailure,ImageResultTransferFailure, gatewayException,switchableGatewayFailure } from "./gateway-error";
 import { saveGenerationResult } from "./save-generation-result";
 import type { ImageGeneration, ImageRequest, ImageProvider } from "./image-provider";
 import type { LogicalModel, ModelCandidate } from "./models.config";
 import type { Prisma } from "@/generated/prisma/client";
-import { estimateImageUsd, costFields, roundUsd } from "./gateway-cost";
+import { estimateImageUsd, costFields, imageAttemptTotals } from "./gateway-cost";
 import { assertUsdQuota } from "./quota";
-import { ReferenceImageFailure, KieError } from "./kie-http";
+import { ReferenceImageFailure } from "./kie-http";
 
 export async function submitGatewayJob(id: string, factory = imageProvider) {
   const claimed = await db.generationJob.updateMany({ where: { id, status: "pending" }, data: { status: "running", startedAt: new Date(), workerInstanceId: process.env.GENERATION_WORKER_INSTANCE_ID ?? "manual-test" } });
@@ -22,36 +22,28 @@ export async function submitGatewayJob(id: string, factory = imageProvider) {
 async function generate(id: string, factory: (candidate: ModelCandidate) => ImageProvider, alreadyFallback = false) {
   const job = await db.generationJob.findUniqueOrThrow({ where: { id }, include: { attempts: true } });
   if (job.status !== "running") return;
-  const input = job.input as Record<string, unknown>;
+  const input:Record<string,unknown> = {...job.input as Record<string, unknown>,chargeSuccessfulAttemptOnly:true};
   const request: ImageRequest = requestFromGenerationInput(input);
   const photos = await db.asset.findMany({ where: { id: { in: request.referenceImages.map(p => p.id) } }, select: { width: true, height: true } });
-  let activeAttempt: string | undefined;
+  let activeAttempt: string | undefined,upstreamSucceeded=false;
   try {
-    const routed = await routeCall<ImageGeneration>({ logical: job.logicalModel as LogicalModel, circuit: databaseCircuit, alreadyFallback, probe: typeof input.testProvider === "string", isSuccessful: result => result.kind === "done",
+    const routed = await routeCall<ImageGeneration>({ logical: job.logicalModel as LogicalModel, circuit: databaseCircuit, alreadyFallback:alreadyFallback||job.attempts.some(a=>a.provider==="kie"&&a.status==="failed"), probe: typeof input.testProvider === "string", isSuccessful: result => result.kind === "done",
       previousErrors: job.attempts.filter(a => a.status === "failed" && a.error).map(a => a.error!), previousProvider: job.provider === "zenmux" ? "zenmux" : "kie",
-      candidates: input.selectedCandidate ? [input.selectedCandidate as ModelCandidate] : typeof input.testProvider === "string" ? candidatesFor("scene-main").filter(c => c.provider === input.testProvider) : undefined,
-      excluded: Number(input.autoRetryCount??0)===1&&job.attempts.length===1?[]:job.attempts.map(a => `${a.provider}:${a.model}`), configured: gatewayConfigured,
+      candidates: input.selectedCandidate ? imageRouteCandidates(input.selectedCandidate as ModelCandidate) : typeof input.testProvider === "string" ? candidatesFor("scene-main").filter(c => c.provider === input.testProvider) : undefined,
+      excluded: job.attempts.map(a => `${a.provider}:${a.model}`), configured: gatewayConfigured,
       async call(candidate) {
-        try { return await factory(candidate).generate(request); }
-        catch (error) {
-          if (!(error instanceof ReferenceImageFailure) || !request.referenceImages.length || Number(input.referenceRetryCount ?? 0) >= 1) throw error;
-          if (activeAttempt) await db.generationAttempt.update({ where: { id: activeAttempt }, data: { status: "failed", completedAt: new Date(), ...costFields(error.cost, 0), error: error.message } });
-          await markReferenceRetry(id);
-          const estimate = estimateImageUsd(candidate, request.resolution, request.prompt, photos);
-          activeAttempt = await db.$transaction(async tx => { const prior = await tx.generationAttempt.aggregate({ where: { jobId: id }, _sum: { costUsd: true } }); const reservation = estimate + Number(prior._sum.costUsd ?? 0); await assertUsdQuota(tx, job.createdById, reservation, { jobId: id }); const current = await tx.generationJob.update({ where: { id }, data: { reservedUsd: reservation } }); return (await tx.generationAttempt.create({ data: { jobId: id, provider: candidate.provider, model: candidate.model, fallback: current.fallback, costUsd: estimate, costEstimated: true } })).id; });
-          try { return await factory(candidate).generate({ ...request, forceReferenceUpload: true }); }
-          catch (failure) { const detail = gatewayException(candidate.provider, failure); throw new GatewayError(candidate.provider, `参考图重传后重试仍失败：${detail.message}`, detail.status, false, detail.uncertain); }
-        }
+        try{const result=await factory(candidate).generate(request);upstreamSucceeded=true;return result;}
+        catch(error){if(error instanceof ReferenceImageFailure)throw new GatewayError(candidate.provider,error.message,502,true,false);throw error;}
       },
       hooks: {
         async start(candidate, fallback) {
           activeAttempt = await db.$transaction(async tx => {
             const current = await tx.generationJob.findUniqueOrThrow({ where: { id } });
-            const prior = await tx.generationAttempt.aggregate({ where: { jobId: id }, _sum: { costUsd: true } });
             const estimate = estimateImageUsd(candidate, request.resolution, request.prompt, photos);
-            const reservation = roundUsd(Number(prior._sum.costUsd ?? 0) + estimate);
+            const reservation = estimate;
+            const failures=await tx.generationAttempt.findMany({where:{jobId:id,status:"failed"},select:{error:true}});
             await assertUsdQuota(tx, current.createdById, reservation, { jobId: id });
-            const claimed = await tx.generationJob.updateMany({ where: { id, status: "running" }, data: { provider: candidate.provider, model: candidate.model, fallback, reservedUsd: reservation, externalTaskId: null, error: null, input: { ...(current.input as object), submissionAttempted: true } as Prisma.InputJsonValue } });
+            const claimed = await tx.generationJob.updateMany({ where: { id, status: "running" }, data: { provider: candidate.provider, model: candidate.model, fallback, reservedUsd: reservation, externalTaskId: null, error: null, input: { ...(current.input as object), chargeSuccessfulAttemptOnly:true,submissionAttempted: true,...(fallback?{switchReason:failures.map(a=>a.error).filter(Boolean).join("；")||String(input.switchReason??"KIE调用失败，切换同款ZenMux")}:{}) } as Prisma.InputJsonValue } });
             if (!claimed.count) throw new Error("任务已结束，停止提交");
             return (await tx.generationAttempt.create({ data: { jobId: id, provider: candidate.provider, model: candidate.model, fallback, costUsd: estimate, costEstimated: true } })).id;
           });
@@ -61,7 +53,8 @@ async function generate(id: string, factory: (candidate: ModelCandidate) => Imag
         async failure(attemptId, error, durationMs) {
           attemptId = activeAttempt ?? attemptId;
           const attempt = await db.generationAttempt.findUniqueOrThrow({ where: { id: attemptId } });
-          await db.generationAttempt.update({ where: { id: attemptId }, data: { status: "failed", durationMs, error: error.message, completedAt: new Date(), ...costFields(error.cost, error.status < 500 && error.status !== 429 ? 0 : Number(attempt.costUsd ?? 0)), externalGenerationId: error.externalGenerationId, ...(attempt.provider === "zenmux" ? { billingState: error.externalGenerationId ? "pending" : "unavailable", nextBillingAt: error.externalGenerationId ? new Date(Date.now() + 5 * 60_000) : null } : {}) } });
+          await db.generationAttempt.update({ where: { id: attemptId }, data: { status: "failed", durationMs, error: error.message+(error.uncertain?"；原请求扣费状态未确定，保留上游审计供核对":""), completedAt: new Date(), ...costFields(error.cost, error.status < 500 && error.status !== 429 ? 0 : Number(attempt.costUsd ?? 0)), externalGenerationId: error.externalGenerationId, ...(attempt.provider === "zenmux" ? { billingState: error.externalGenerationId ? "pending" : "unavailable", nextBillingAt: error.externalGenerationId ? new Date(Date.now() + 5 * 60_000) : null } : {}) } });
+          await db.generationJob.updateMany({where:{id,status:"running"},data:{reservedUsd:0,costUsd:0,costEstimated:false}});
           if (error.uncertain) { const current = await db.generationJob.findUniqueOrThrow({ where: { id } }); await db.generationJob.update({ where: { id }, data: { input: { ...(current.input as object), submissionAttempted: true, uncertainCharge: true } as Prisma.InputJsonValue } }); }
         },
       },
@@ -69,16 +62,18 @@ async function generate(id: string, factory: (candidate: ModelCandidate) => Imag
     if (routed.fallback && routed.warnings.length) await db.generationJob.update({ where: { id }, data: { error: `已自动切换备用线路：${routed.warnings.join('；')}` } });
   } catch (error) {
     if (activeAttempt) await db.generationAttempt.updateMany({ where: { id: activeAttempt, status: "running" }, data: { status: "failed", completedAt: new Date(), error: "调用或结果转存失败，请核对网关记录" } });
+    if(upstreamSucceeded){await failGatewayJob(id,new GatewayError(job.provider==="zenmux"?"zenmux":"kie","上游已接受请求或返回图片，本地保存失败；未再次付费提交",500,false,true));return;}
     const failure=gatewayException(job.provider==="zenmux"?"zenmux":"kie",error);
-    if(failure.retryable&&!failure.uncertain&&await retryOnce(id,factory))return;
+    if(switchableGatewayFailure(failure)&&await retryOnce(id,factory))return;
     await failGatewayJob(id, error);
   }
 }
 async function retryOnce(id:string,factory:(candidate:ModelCandidate)=>ImageProvider){
- const current=await db.generationJob.findUniqueOrThrow({where:{id}}),input=current.input as Record<string,unknown>;
- if(!imageRetryAllowed(input,true,false))return false;
- await db.generationJob.update({where:{id},data:{input:{...input,autoRetryCount:1,uncertainCharge:false} as Prisma.InputJsonValue,externalTaskId:null,error:"生成失败，正在自动重试1次"}});
- await generate(id,factory);return true;
+ const current=await db.generationJob.findUniqueOrThrow({where:{id},include:{attempts:true}}),input=current.input as Record<string,unknown>;
+ const route=input.selectedCandidate?imageRouteCandidates(input.selectedCandidate as ModelCandidate):candidatesFor(current.logicalModel as LogicalModel);
+ if(input.testProvider||Number(input.autoRetryCount??0)>=1||current.attempts.some(a=>a.provider==="zenmux")||!current.attempts.some(a=>a.provider==="kie"&&a.status==="failed")||!route.some(c=>c.provider==="zenmux"&&gatewayConfigured(c.provider)))return false;
+ await db.generationJob.update({where:{id},data:{deadlineAt:new Date(Date.now()+10*60_000),input:{...input,autoRetryCount:1,chargeSuccessfulAttemptOnly:true} as Prisma.InputJsonValue,externalTaskId:null,error:"KIE失败，正在切换同款ZenMux一次"}});
+ await generate(id,factory,true);return true;
 }
 async function complete(jobId: string, attemptId: string, result: ImageGeneration, duration: number) {
   if (result.kind === "pending") {
@@ -95,36 +90,20 @@ async function complete(jobId: string, attemptId: string, result: ImageGeneratio
 export async function pollGatewayJob(id: string, factory = imageProvider) {
   const job = await db.generationJob.findUnique({ where: { id }, include: { attempts: { orderBy: { createdAt: "desc" }, take: 1 } } });
   if (!job || job.status !== "running" || !job.externalTaskId) return;
-  const candidate = ((job.input as Record<string,unknown>).selectedCandidate as ModelCandidate|undefined) ?? candidatesFor(job.logicalModel as LogicalModel).find(c => c.provider === job.provider && c.model === job.model);
+  const selected=(job.input as Record<string,unknown>).selectedCandidate as ModelCandidate|undefined;
+  const candidate=(selected?imageRouteCandidates(selected):candidatesFor(job.logicalModel as LogicalModel)).find(c=>c.provider===job.provider&&c.model===job.model);
   if (!candidate) { await failGatewayJob(id, new Error("任务使用的模型配置已移除")); return; }
   const attempt = job.attempts[0];
   let result: ImageGeneration;
   try { result = await factory(candidate).poll!(job.externalTaskId); }
   catch (error) {
-    if (error instanceof ReferenceImageFailure) {
-      const input = job.input as Record<string, unknown>;
-      if (Number(input.referenceRetryCount ?? 0) >= 1 || !(input.referenceAssetIds as string[])?.length) { await finishFailedAttempt(attempt.id, error); await failGatewayJob(id, error); return; }
-      await finishFailedAttempt(attempt.id, error);
-      await markReferenceRetry(id);
-      // 同一家重传，单独记录第二次实际提交，不标记为备用，不经过网关切换。
-      const candidateProvider = factory(candidate);
-      try {
-        const request: ImageRequest = {...requestFromGenerationInput(input),forceReferenceUpload:true};
-        const photos = await db.asset.findMany({ where: { id: { in: request.referenceImages.map(a => a.id) } }, select: { width: true, height: true } });
-        const estimate = estimateImageUsd(candidate, request.resolution, request.prompt, photos);
-        const retry = await db.$transaction(async tx => { const sum = await tx.generationAttempt.aggregate({ where: { jobId: id }, _sum: { costUsd: true } }); const reservation = Number(sum._sum.costUsd ?? 0) + estimate; await assertUsdQuota(tx, job.createdById, reservation, { jobId: id }); await tx.generationJob.update({ where: { id }, data: { externalTaskId: null, reservedUsd: reservation } }); return tx.generationAttempt.create({ data: { jobId: id, provider: candidate.provider, model: candidate.model, fallback: job.fallback, costUsd: estimate, costEstimated: true } }); });
-        const started = Date.now();
-        try { await complete(id, retry.id, await candidateProvider.generate(request), Date.now() - started); }
-        catch (failure) { await finishFailedAttempt(retry.id, failure); await failGatewayJob(id, failure); }
-      } catch (failure) { await failGatewayJob(id, failure); }
-      return;
-    }
+    if(error instanceof ReferenceImageFailure){await finishFailedAttempt(attempt.id,error);if(!await retryOnce(id,factory))await failGatewayJob(id,error);return;}
     const failure = gatewayException(candidate.provider, error);
-    // 查询网络故障或下载故障重试原任务，不再重复付费提交。
-    if (failure.uncertain || !(error instanceof ImageTaskFailure) && !(error instanceof KieError && error.businessFailure) && failure.retryable) { await scheduleRetry(id, "查询或下载暂时失败，正在重试原任务；10 分钟后停止等待"); return; }
+    // 已成功图片的下载/转存只重试原结果，不能再生成；网关查询故障按要求切同款一次。
+    if (error instanceof ImageResultTransferFailure) { await scheduleRetry(id, "查询或下载暂时失败，正在重试原任务；10 分钟后停止等待"); return; }
     await finishFailedAttempt(attempt.id, error);
     await databaseCircuit.failure(candidate.provider);
-    if (failure.retryable) {if(!await retryOnce(id,factory))await failGatewayJob(id,failure);}
+    if (switchableGatewayFailure(failure)) {if(!await retryOnce(id,factory))await failGatewayJob(id,failure);}
     else await failGatewayJob(id, new GatewayError(candidate.provider, `${failure.message}；未自动切换`, failure.status, false));
     return;
   }
@@ -133,12 +112,13 @@ export async function pollGatewayJob(id: string, factory = imageProvider) {
   catch { await scheduleRetry(id, "结果转存暂时失败，正在重试原任务；不会再次提交付费生成"); }
 }
 async function scheduleRetry(id: string, error: string | null = null) { await db.generationJob.updateMany({ where: { id, status: "running" }, data: { nextPollAt: new Date(Date.now() + 5000), error } }); }
-async function markReferenceRetry(id: string) { const current = await db.generationJob.findUniqueOrThrow({ where: { id } }); await db.generationJob.update({ where: { id }, data: { input: { ...(current.input as object), referenceRetryCount: 1 } as Prisma.InputJsonValue, error: "参考图链接无法访问，正在重新上传并重试一次（仍使用 KIE）" } }); }
 async function finishFailedAttempt(id: string, error: unknown) {
   const attempt = await db.generationAttempt.findUniqueOrThrow({ where: { id } });
   const cost = error instanceof ReferenceImageFailure ? error.cost : (error as { cost?: import("./image-provider").GatewayCost }).cost;
   const detail = gatewayException(attempt.provider === "zenmux" ? "zenmux" : "kie", error);
-  await db.generationAttempt.update({ where: { id }, data: { status: "failed", completedAt: new Date(), durationMs: Date.now() - attempt.createdAt.getTime(), error: detail.message, ...costFields(cost, attempt.externalTaskId || detail.uncertain || error instanceof ReferenceImageFailure || error instanceof ImageTaskFailure ? Number(attempt.costUsd ?? 0) : 0) } });
+  await db.generationAttempt.update({ where: { id }, data: { status: "failed", completedAt: new Date(), durationMs: Date.now() - attempt.createdAt.getTime(), error: detail.message+(detail.uncertain?"；原请求扣费状态未确定，保留上游审计供核对":""), ...costFields(cost, attempt.externalTaskId || detail.uncertain || error instanceof ReferenceImageFailure || error instanceof ImageTaskFailure ? Number(attempt.costUsd ?? 0) : 0) } });
+  const job=await db.generationJob.findUniqueOrThrow({where:{id:attempt.jobId}});
+  if((job.input as Record<string,unknown>).chargeSuccessfulAttemptOnly){const attempts=await db.generationAttempt.findMany({where:{jobId:job.id}});await db.generationJob.update({where:{id:job.id},data:{reservedUsd:0,...imageAttemptTotals(job.input as Record<string,unknown>,attempts)}});}
 }
 async function failGatewayJob(id: string, error: unknown) {
   await db.$transaction(async tx => {
@@ -147,6 +127,7 @@ async function failGatewayJob(id: string, error: unknown) {
     if (job.status !== "running") return;
     const detail = gatewayException(job.provider === "zenmux" ? "zenmux" : "kie", error);
     const input = job.input as Record<string, unknown>;
+    if(input.chargeSuccessfulAttemptOnly){await tx.generationJob.update({where:{id},data:{status:"failed",completedAt:new Date(),reservedUsd:0,costUsd:0,credits:null,costEstimated:false,error:detail.message+"；本次生成未成功，失败预留已释放；上游尝试记录保留供审计"}});return;}
     const release = !input.uncertainCharge && !detail.uncertain;
     const sum = await tx.generationAttempt.aggregate({ where: { jobId: id }, _sum: { costUsd: true, credits: true } });
     const estimated = Boolean(await tx.generationAttempt.findFirst({ where: { jobId: id, costEstimated: true } })) || sum._sum.costUsd === null && !release;

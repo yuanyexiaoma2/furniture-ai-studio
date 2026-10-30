@@ -1,6 +1,6 @@
 import "server-only";
 import { db } from "./db";
-import { roundUsd } from "./gateway-cost";
+import { roundUsd,imageAttemptTotals } from "./gateway-cost";
 import { gatewayConfigured } from "./gateway-router";
 import type { Prisma } from "@/generated/prisma/client";
 
@@ -41,7 +41,8 @@ export async function reconcileZenMuxCosts(fetcher = fetch, now = new Date()) {
         else {
           await tx.generationAttempt.update({ where: { id: row.id }, data });
           const attempts = await tx.generationAttempt.findMany({ where: { jobId: (row as typeof images[number]).jobId } });
-          await tx.generationJob.update({ where: { id: (row as typeof images[number]).jobId }, data: { costUsd: attempts.reduce((sum, a) => sum + Number(a.costUsd ?? 0), 0), costEstimated: attempts.some(a => a.costEstimated) } });
+          const job=await tx.generationJob.findUniqueOrThrow({where:{id:(row as typeof images[number]).jobId}});
+          await tx.generationJob.update({ where: { id: job.id }, data:imageAttemptTotals(job.input as Record<string,unknown>,attempts) });
         }
       }, { timeout: 15_000 });
     } catch { /* 单条失败不阻塞后续账单和 worker 的生图轮询。 */ }

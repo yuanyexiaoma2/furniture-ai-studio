@@ -4,17 +4,17 @@ import {DEFAULT_AGENT} from "../../src/lib/agent-default";
 import {agentToolSchemas,llmAgentTools} from "../../src/lib/agent-tool-schemas";
 import {PromptComposer} from "../../src/design-preview/library/prompt-composer";
 import {seedProducts,seedScenes,seedProps,seedPropSets,administrator} from "../../src/design-preview/mock/library";
-test("模型开放需20次样本、至少95%参数和格式正确及20轮上下文通过",()=>{assert.equal(passedProbe({toolCalls:20,formatCorrect:20,parameterCorrect:19,contextStable:20}),true);for(const p of [{toolCalls:19,formatCorrect:20,parameterCorrect:20,contextStable:20},{toolCalls:20,formatCorrect:20,parameterCorrect:18,contextStable:20},{toolCalls:20,formatCorrect:18,parameterCorrect:20,contextStable:20},{toolCalls:20,formatCorrect:20,parameterCorrect:20,contextStable:19},{}])assert.equal(passedProbe(p),false);});
+test("探测推荐指标仍保留20次样本和95%，仅作风险参考",()=>{assert.equal(passedProbe({toolCalls:20,formatCorrect:20,parameterCorrect:19,contextStable:20}),true);for(const p of [{toolCalls:19,formatCorrect:20,parameterCorrect:20,contextStable:20},{toolCalls:20,formatCorrect:20,parameterCorrect:18,contextStable:20},{toolCalls:20,formatCorrect:18,parameterCorrect:20,contextStable:20},{toolCalls:20,formatCorrect:20,parameterCorrect:20,contextStable:19},{}])assert.equal(passedProbe(p),false);});
 test("关闭联网时工具schema不提供web_search；输入长度和数量在服务器验证",()=>{assert(!llmAgentTools(false).some(t=>t.function.name==="web_search"));assert(llmAgentTools(true).some(t=>t.function.name==="web_search"));assert(!agentToolSchemas.web_search.safeParse({query:"",max_results:3}).success);assert(!agentToolSchemas.web_search.safeParse({query:"产品",max_results:6}).success);});
 
-test("用户指定的ZenMux默认Agent可用，KIE探测和其他未验证模型不被放行",()=>{
+test("所有已配置ZenMux Agent可用，未验证也不设开放门槛；不启用KIE LLM",()=>{
  const kieProbe={toolCalls:20,formatCorrect:19,parameterCorrect:16,contextStable:20};
  assert.equal(passedProbe(kieProbe),false);
  assert.equal(agentCanBeUsed(DEFAULT_AGENT.id,DEFAULT_AGENT.candidate,{}),true);
  assert.equal(userSelectedAgent(DEFAULT_AGENT.id,{...DEFAULT_AGENT.candidate,provider:"kie"}),false);
  assert.equal(agentCanBeUsed("agent-flash",{provider:"kie",model:"gemini-3-8-flash-openai"},kieProbe),false);
- assert.equal(agentCanBeUsed("agent-zenmux",{provider:"zenmux",model:"google/gemini-2.5-pro"},{}),false);
- assert.equal(agentCanBeUsed(DEFAULT_AGENT.id,{provider:"zenmux",model:"other"},{}),false);
+ assert.equal(agentCanBeUsed("agent-haiku",{provider:"zenmux",model:"anthropic/claude-haiku-5.5"},{}),true);
+ assert.equal(agentCanBeUsed(DEFAULT_AGENT.id,{provider:"zenmux",model:"other"},{}),true);
 });
 test("未知尺寸不编造测量值，锁定外观始终进入真实组合提示词",()=>{const product=structuredClone(seedProducts[0]);product.dimensions={width:0,depth:0,height:0,unit:"cm"};const input={template:seedScenes[0],product,propSets:seedPropSets.filter(s=>s.id==="G01"),props:seedProps,variables:{},actor:administrator};assert.throws(()=>PromptComposer.compose(input));const composed=PromptComposer.compose({...input,dimensionsUnknown:true});assert(composed.finalPrompt.includes("dimensions unknown"));assert(!composed.finalPrompt.includes("0 × 0"));assert(composed.finalPrompt.includes("Locked product features:"));assert.equal(composed.originalPhotoIds.length,product.photos.length);assert.equal(PromptComposer.compose({...input,dimensionsUnknown:true}).finalPrompt,composed.finalPrompt);});
 

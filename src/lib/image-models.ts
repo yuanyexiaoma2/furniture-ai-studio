@@ -14,3 +14,18 @@ export const kieImageModels:readonly KieImageSpec[]=[
 ];
 export function kieImageSpec(model:string){return kieImageModels.find(spec=>spec.model===model);}
 export function imageCandidate(spec:KieImageSpec):ModelCandidate{return {provider:"kie",model:spec.model,supportsTools:false,pricing:{currency:"credits",images:spec.prices,inputImage:spec.inputImageCredits,estimateSource:spec.source}};}
+
+// 同款映射核对自ZenMux模型页和Google Gemini图片协议；不可用相近型号替换。
+export const zenmuxImageModels:{kieModel:string;candidate:ModelCandidate;maxReferences:number}[]=[
+ {kieModel:"nano-banana-2-1",maxReferences:14,candidate:{provider:"zenmux",model:"google/gemini-nano-banana-2.1",imageProtocol:"gemini",supportsTools:false,pricing:{currency:"USD",inputPerMillion:1.5,outputPerMillion:7.5,imageOutputPerMillion:30,imageTokens:{"1K":1120,"2K":1680,"4K":3780},estimateSource:"https://zenmux.ai/google/gemini-nano-banana-2.1"}}},
+ {kieModel:"nano-banana-2",maxReferences:14,candidate:{provider:"zenmux",model:"google/gemini-3.1-flash-image",imageProtocol:"gemini",supportsTools:false,pricing:{currency:"USD",inputPerMillion:.5,outputPerMillion:3,imageOutputPerMillion:60,imageTokens:{"1K":1120,"2K":1680,"4K":2520},estimateSource:"https://ai.google.dev/gemini-api/docs/pricing"}}},
+ {kieModel:"nano-banana-pro",maxReferences:14,candidate:{provider:"zenmux",model:"google/gemini-3-pro-image",imageProtocol:"gemini",supportsTools:false,pricing:{currency:"USD",inputPerMillion:2,outputPerMillion:12,imageOutputPerMillion:120,imageTokens:{"1K":1120,"2K":1120,"4K":2000},estimateSource:"https://zenmux.ai/google/gemini-3-pro-image"}}},
+ {kieModel:"gpt-image-2-5-sunburst-image-to-image",maxReferences:16,candidate:{provider:"zenmux",model:"openai/gpt-image-2.5-sunburst",imageProtocol:"vertex-edit",supportsTools:false,pricing:{currency:"USD",images:{"1K":.03,"2K":.05,"4K":.08},estimateSource:"https://kie.ai/gpt-image-2-5；仅沿用KIE同款预算作回退预留参考，不是ZenMux报价；实际成功费用由ZenMux账单回填"}}},
+ {kieModel:"qwen3/image-to-image",maxReferences:3,candidate:{provider:"zenmux",model:"qwen/qwen-image-3.0",imageProtocol:"vertex-edit",supportsTools:false,pricing:{currency:"USD",images:{"1K":.03,"2K":.03},inputImage:.003,estimateSource:"https://zenmux.ai/qwen/qwen-image-3.0"}}}
+];
+export function imageRouteCandidates(selected:ModelCandidate){
+ const match=zenmuxImageModels.find(m=>selected.provider==="kie"?m.kieModel===selected.model:m.candidate.model===selected.model);
+ if(!match)return selected.provider==="kie"?[selected]:[];
+ const primary=kieImageModels.find(m=>m.model===match.kieModel)!;
+ return [imageCandidate(primary),match.candidate];
+}

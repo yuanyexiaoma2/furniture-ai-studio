@@ -26,7 +26,7 @@ export function kieFailure(code: number, detail?: unknown) {
   const msg = safeKieMessage(detail);
   if (referenceImageUnavailable(msg)) return new ReferenceImageFailure(msg);
   if (/insufficient (?:balance|credits?|funds)|not enough (?:balance|credits?|funds)|balance|credits? (?:exhausted|depleted)|余额不足|积分不足/i.test(msg)) return new KieError("账户余额不足，请充值后重试", 402);
-  if (/content.*(?:block|filter|prohibit)|safety|policy|违规|内容.*拦截|安全.*拦截/i.test(msg)) return new KieError("内容被安全策略拦截，请调整提示词后重试", 500);
+  if (/content.*(?:block|filter|prohibit)|safety|policy|违规|内容.*拦截|安全.*拦截/i.test(msg)) return new KieError("内容被安全策略拦截，请调整提示词后重试", 422);
   if (code === 401 || code === 403) return new KieError("KIE 密钥无效或无访问权限，请检查 KIE_API_KEY 后重新生成", code);
   if (code === 402) return new KieError("KIE 账户积分不足，请充值后重新生成", code);
   if (code === 429) return new KieError("KIE 请求过于频繁，退避重试后仍未成功，请稍后重新生成", code);

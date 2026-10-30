@@ -4,7 +4,6 @@ import { kieRequest } from "@/lib/kie-http";
 import { GatewayError, gatewayException } from "@/lib/gateway-error";
 import { withImages, parseChatReply, structuredResult } from "@/lib/llm-format";
 import type { LLMProvider, LLMInput, LLMResult, LLMMessage, ToolCall } from "@/lib/llm-provider";
-import { models } from "./models.config";
 import { kieCreditCost } from "./gateway-cost";
 
 export type KieLLMConfig = { model: string; endpoint: string; protocol: "chat" | "responses"; supportsTools: boolean };
@@ -31,7 +30,7 @@ export class KieLLMProvider implements LLMProvider {
     } catch (error) { const failure = gatewayException("kie", error); failure.cost ??= kieCreditCost(reply?.credits_consumed); throw failure; }
   }
 }
-function defaultConfig(): KieLLMConfig { const c = models["llm-vision"].find(c => c.provider === "kie")!; return { model: c.model, endpoint: c.endpoint!, protocol: c.protocol ?? "chat", supportsTools: c.supportsTools }; }
+function defaultConfig():KieLLMConfig {return {model:"gemini-3-6-flash-openai",endpoint:"https://api.kie.ai/gemini-3-6-flash-openai/v1/chat/completions",protocol:"chat",supportsTools:false};} // 仅保留旧协议适配及模拟测试；业务工厂禁止KIE LLM。
 function responseMessages(message: LLMMessage): Record<string, unknown>[] {
   if (message.role === "tool") return [{ type: "function_call_output", call_id: message.tool_call_id, output: message.content }];
   const parts = typeof message.content === "string" ? [{ type: "text" as const, text: message.content }] : message.content;

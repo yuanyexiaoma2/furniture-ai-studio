@@ -53,15 +53,15 @@ test("空 Key 的两个 ZenMux Provider 都不可用且不调用 SDK", async () 
   try { const images = new ZenMuxImageProvider(); const llm = new ZenMuxLLMProvider(); assert.equal(images.isConfigured(), false); assert.equal(llm.isConfigured(), false); await assert.rejects(images.generate(imageInput), /未配置/); await assert.rejects(llm.chat({ messages: [] }), /未配置/); }
   finally { process.env.ZENMUX_API_KEY = current; }
 });
-test("ZenMux 生图：无图片、安全拦截、5xx、429 可切换，400 不切换", async () => {
+test("ZenMux 生图：无图片、5xx、429可切换，安全拦截和400不切换", async () => {
   for (const response of [{ candidates: [{ content: { parts: [{ text: "没有图片" }] } }] }, { promptFeedback: { blockReason: "SAFETY" } }]) {
-    await assert.rejects(new ZenMuxImageProvider(undefined, { models: { generateContent: async () => response } }, read).generate(imageInput), e => e instanceof GatewayError && e.retryable);
+    await assert.rejects(new ZenMuxImageProvider(undefined, { models: { generateContent: async () => response } }, read).generate(imageInput), e => e instanceof GatewayError && e.retryable === !Object.hasOwn(response,"promptFeedback"));
   }
   for (const status of [500, 503, 429, 400]) await assert.rejects(new ZenMuxImageProvider(undefined, { models: { generateContent: async () => { throw { status, message: "模拟失败" }; } } }, read).generate(imageInput), e => e instanceof GatewayError && e.status === status && e.retryable === (status !== 400));
 });
 test("ZenMux LLM：data URL、结构化 JSON、工具调用与 token 用量", async () => {
   const provider = new ZenMuxLLMProvider(undefined, async body => {
-    assert.equal(body.model, "google/gemini-2.5-pro"); assert.equal(body.max_completion_tokens, 2200); assert.ok(body.response_format); assert.match(JSON.stringify(body.messages), /data:image\/png;base64,/);
+    assert.equal(body.model, "google/gemini-3.8-flash"); assert.equal(body.max_completion_tokens, 2200); assert.ok(body.response_format); assert.match(JSON.stringify(body.messages), /data:image\/png;base64,/);
     return { choices: [{ message: { content: '{"ok":true}' } }], usage: { prompt_tokens: 5, completion_tokens: 7, total_tokens: 12 } };
   }, read);
   const result = await provider.chat({ messages: [{ role: "user", content: "请读图" }], images: [{ id: "photo" }], responseFormat: { type: "json_object" } });

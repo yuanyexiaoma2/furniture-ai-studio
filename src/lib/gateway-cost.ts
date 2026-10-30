@@ -30,3 +30,9 @@ export function kieCreditCost(value: unknown): GatewayCost | undefined {
   if (typeof value !== "number" || !Number.isFinite(value) || value < 0) return undefined;
   return { amount: value, currency: "credits" };
 }
+
+// 任务14起，失败尝试保留供应商审计，但不重复汇入用户成功图片账单。
+export function imageAttemptTotals(input:Record<string,unknown>,attempts:{status:string;costUsd:unknown;credits?:unknown;costEstimated:boolean}[]){
+ const billable=input.chargeSuccessfulAttemptOnly?attempts.filter(a=>a.status==="success"):attempts;
+ return {costUsd:roundUsd(billable.reduce((sum,a)=>sum+Number(a.costUsd??0),0)),credits:billable.some(a=>a.credits!=null)?roundUsd(billable.reduce((sum,a)=>sum+Number(a.credits??0),0)):null,costEstimated:billable.some(a=>a.costEstimated)};
+}

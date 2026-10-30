@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {kieImageSpec} from "./image-models";
+import {kieImageSpec,zenmuxImageModels} from "./image-models";
 import type {ModelCandidate} from "./models.config";
 import type {ImageRequest} from "./image-provider";
 import {StudioError} from "./studio-error";
@@ -15,7 +15,7 @@ export function conversationImages(settings:unknown):ConversationImage[]{
  return Array.isArray(raw)?raw.flatMap(v=>{const p=conversationImageSchema.safeParse(v);return p.success?[p.data]:[];}):[];
 }
 export function imageReferenceLimit(candidate:Pick<ModelCandidate,"provider"|"model">){
- const limit=candidate.provider==="kie"?kieImageSpec(candidate.model)?.maxReferences:candidate.model==="google/gemini-nano-banana-2.1"?14:undefined;
+ const limit=candidate.provider==="kie"?kieImageSpec(candidate.model)?.maxReferences:zenmuxImageModels.find(m=>m.candidate.model===candidate.model)?.maxReferences;
  if(limit==null)throw new StudioError("当前模型未登记可核实的多图输入能力，请选择已支持多图的生图模型；不会改成文字参考",409);
  return limit;
 }

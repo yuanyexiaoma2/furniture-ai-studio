@@ -1,4 +1,5 @@
-import { GatewayError, gatewayException, type GatewayName } from "./gateway-error";
+import { GatewayError, gatewayException, switchableGatewayFailure, type GatewayName } from "./gateway-error";
+import {imageRouteCandidates} from "./image-models";
 import { models, type LogicalModel, type ModelCandidate } from "./models.config";
 
 export type CircuitState = { consecutiveFailures: number; windowStartedAt: number | null; openUntil: number | null };
@@ -11,8 +12,8 @@ export function circuitFailure(state: CircuitState, now: number): CircuitState {
 export interface CircuitStore { isOpen(provider: GatewayName): Promise<boolean>; success(provider: GatewayName): Promise<void>; failure(provider: GatewayName): Promise<void> }
 export function gatewayPreference() { const value = process.env.GATEWAY_PREFERENCE; return value === "kie" || value === "zenmux" ? value : "auto"; }
 export function candidatesFor(logical: LogicalModel, preference = gatewayPreference()): readonly ModelCandidate[] {
-  const preferred=preference==="auto"?(logical==="scene-main"||logical==="edit"?"kie":"zenmux"):preference;
-  return [...models[logical]].sort((a, b) => Number(b.provider === preferred) - Number(a.provider === preferred));
+  if(logical==="llm-agent"||logical==="llm-vision")return models[logical].filter(c=>c.provider==="zenmux");
+  void preference;return imageRouteCandidates(models[logical][0]);
 }
 export function gatewayConfigured(provider: GatewayName) { return Boolean(process.env[provider === "kie" ? "KIE_API_KEY" : "ZENMUX_API_KEY"]?.trim()); }
 export type RouteHooks<T> = {
@@ -29,9 +30,10 @@ export async function routeCall<T>(options: {
   const failures: string[] = [...(options.previousErrors ?? [])];
   let lastProvider: GatewayName = options.previousProvider ?? "kie";
   let fallback = options.alreadyFallback ?? false;
-  // 汇总线路错误时保留任何一次扣费不确定，不能让上层把断网当作可安全重发。
+  // 汇总保留扣费不确定标记；图片仅允许按同款映射切换一次，原请求仍保留审计。
   let uncertain = false;
-  for (const candidate of options.candidates ?? candidatesFor(options.logical)) {
+  const list=options.candidates??candidatesFor(options.logical);
+  for (const candidate of list.filter(c=>options.logical.startsWith("llm-")?c.provider==="zenmux":true)) {
     if (!candidate.model || !(options.configured ?? gatewayConfigured)(candidate.provider) || options.excluded?.includes(`${candidate.provider}:${candidate.model}`)) continue;
     lastProvider = candidate.provider;
     if (!options.probe && await options.circuit.isOpen(candidate.provider)) { failures.push(`${candidate.provider === "kie" ? "KIE" : "ZenMux"} 已熔断`); fallback = true; continue; }
@@ -45,7 +47,7 @@ export async function routeCall<T>(options: {
       await options.hooks.failure(id, failure, now() - start);
       await options.circuit.failure(candidate.provider);
       failures.push(failure.message);
-      if (!failure.retryable) throw new GatewayError(candidate.provider, `${failure.message}；该错误未自动切换${fallback ? '（本次已尝试备用线路）' : ''}`, failure.status, false, uncertain);
+      if (!switchableGatewayFailure(failure)) throw new GatewayError(candidate.provider, `${failure.message}；该错误未自动切换${fallback ? '（本次已尝试备用线路）' : ''}`, failure.status, false, uncertain);
       fallback = true; continue;
     }
     // 本地保存 / 记录失败不能再次发起付费生成。

@@ -1,0 +1,388 @@
+{
+  "model": "google/gemini-2.5-pro",
+  "provider": "zenmux",
+  "protocol": "openai-chat-completions",
+  "updatedAt": "2026-10-30T09:29:51.110Z",
+  "rows": [
+    {
+      "phase": "tools",
+      "index": 0,
+      "durationMs": 510,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 968c30c67dbb4cf1baf8daf60bc9d8ad)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 1,
+      "durationMs": 340,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: bfb958fcfd8843dda6c7b1e2968c4e28)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 2,
+      "durationMs": 388,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 13654e2781464cddb058ea122087c2bc)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 3,
+      "durationMs": 357,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 0c6043977ec040cdb1b9a4e6ac4146a3)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 4,
+      "durationMs": 408,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 8d96f6c92fa7475aa63a734db525925e)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 5,
+      "durationMs": 419,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 2912406db21044b9b6c36a69a3dabc4d)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 6,
+      "durationMs": 882,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 859802e918cb4f4fb237b27388121de6)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 7,
+      "durationMs": 394,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 277d4a14e548416b8d4af856dd345c8c)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 8,
+      "durationMs": 386,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 9032322664534280bd5bf06e530ba8f3)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 9,
+      "durationMs": 389,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: dfb360b702304ce28ab3451fadf07913)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 10,
+      "durationMs": 964,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 72c91ad3661d464393e30ea914a6050b)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 11,
+      "durationMs": 845,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 22279a57b88d4f648572a7a59ade4464)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 12,
+      "durationMs": 388,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 1e7408dc3afe47b1ad1c5c70a8693bc5)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 13,
+      "durationMs": 433,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: f70a97e6a23e4e48825dab46918ab20f)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 14,
+      "durationMs": 483,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: a5849dfa83cc4b469c8b5d5de39cade5)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 15,
+      "durationMs": 919,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 174b1362e4f347a5a97863c5c87022a5)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 16,
+      "durationMs": 872,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 4029a01c4a894641baaf46d3d3395e1e)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 17,
+      "durationMs": 408,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 1864fb347ff2457e9b90bb139e3d5dc2)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 18,
+      "durationMs": 369,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: e0728b30f3414e6a8c6182a6e16e81a6)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "tools",
+      "index": 19,
+      "durationMs": 426,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 86302e874b764245a252e6d0cc9e8de7)；该错误未自动切换",
+      "formatCorrect": false,
+      "parameterCorrect": false
+    },
+    {
+      "phase": "context",
+      "index": 0,
+      "durationMs": 374,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 4d9e35f220dc40b29d951a8e002f7125)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 1,
+      "durationMs": 385,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: f61709fdb34b4ddb88b7fbd5478ed5b9)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 2,
+      "durationMs": 341,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: ed9abcb5065142238eef447490a4cfcb)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 3,
+      "durationMs": 450,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: bde640a6bf4f407995c8392c34987291)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 4,
+      "durationMs": 852,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: d9d9092d9f9d444e81cbf6835ed48ade)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 5,
+      "durationMs": 845,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: ef8f785697594806aea10addfe49dd06)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 6,
+      "durationMs": 899,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: cad80a59a7714b90b1d5ce97122bed52)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 7,
+      "durationMs": 943,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 05d8eab4511949a38eb70e4f163c32ec)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 8,
+      "durationMs": 392,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 43d090923f7e4a239cd57baf83523a8a)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 9,
+      "durationMs": 799,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 07929e9d08ef447a97d090c71039fece)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 10,
+      "durationMs": 376,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 6c2ad6baeb2d4ad4ae07ab7114d869c0)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 11,
+      "durationMs": 846,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: f3ddfc3ed7c14610b4e54a682ee9df64)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 12,
+      "durationMs": 358,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: c77dc387838947ad9433b118980d5e02)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 13,
+      "durationMs": 446,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: ab41fbcc726544308cac316c5e27502c)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 14,
+      "durationMs": 788,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 5e39d774f2814f0dbded10bc1e371491)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 15,
+      "durationMs": 998,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: e4bfb4715fc2473d942f75c909fe5226)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 16,
+      "durationMs": 877,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: fb009cd7f0b841319c4eab86f6c3d4ef)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 17,
+      "durationMs": 1958,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: c2be96abdc6548659c685b2a3f5e3c6a)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 18,
+      "durationMs": 342,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 72dddee7d3904d45af8990c943b6b3bd)；该错误未自动切换",
+      "stable": false
+    },
+    {
+      "phase": "context",
+      "index": 19,
+      "durationMs": 481,
+      "text": "",
+      "toolCalls": [],
+      "error": "ZenMux：服务请求失败（404）：404 Publisher model `gemini-2.5-pro` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations. (request_id: 045ab5d3f9654645ad672c3b7a8a4dbe)；该错误未自动切换",
+      "stable": false
+    }
+  ]
+}

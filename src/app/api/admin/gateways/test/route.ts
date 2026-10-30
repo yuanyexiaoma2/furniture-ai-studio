@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   try {
     const user = await studioUser(request, true); if (user.role !== "admin") throw new StudioError("只有管理员可以测试网关", 403);
     const input = schema.safeParse(await request.json().catch(() => null)); if (!input.success) throw new StudioError("请选择有效的网关和测试类型");
-    const { provider, kind } = input.data; if (!gatewayConfigured(provider)) throw new StudioError(`${provider === "kie" ? "KIE" : "ZenMux"} 未配置，请填写 Key 后重启`, 503);
+    const {kind}=input.data,provider=kind==="llm"?"zenmux":input.data.provider; if (!gatewayConfigured(provider)) throw new StudioError(`${provider === "kie" ? "KIE" : "ZenMux"} 未配置，请填写 Key 后重启`, 503);
     if (kind === "llm") {
       const reply = await chatWithGateway("llm-vision", { messages: [{ role: "user", content: "你好，请用一句简短中文回应。" }] }, { userId: user.id, provider });
       return NextResponse.json({ message: reply.result.text, provider: reply.candidate.provider, fallback: reply.fallback });

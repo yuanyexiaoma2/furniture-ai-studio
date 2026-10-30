@@ -5,7 +5,7 @@ import { inspectPhoto, putObject, deleteObject,readObject } from "@/lib/storage"
 import {compositeMaskedEdit} from "./masked-edit";
 import type { GatewayCost, TokenUsage } from "./image-provider";
 import {writeProductReviewSafely} from "./visual-review";
-import { costFields } from "./gateway-cost";
+import { costFields,imageAttemptTotals } from "./gateway-cost";
 
 // 同步 / 异步网关共享：先保存文件，再在同一事务写 Asset 和成功状态。
 export async function saveGenerationResult(jobId: string, images: Buffer[], meta?: { attemptId: string; durationMs: number; cost?: GatewayCost; estimateUsd: number; usage?: TokenUsage; externalGenerationId?: string }) {
@@ -39,7 +39,7 @@ export async function saveGenerationResult(jobId: string, images: Buffer[], meta
         const money = costFields(meta.cost, meta.estimateUsd);
         await tx.generationAttempt.update({ where: { id: meta.attemptId }, data: { status: "success", completedAt: new Date(), durationMs: meta.durationMs, ...money, usage: meta.usage, externalGenerationId: meta.externalGenerationId, ...(job.provider === "zenmux" ? { billingState: meta.externalGenerationId ? "pending" : "unavailable", nextBillingAt: meta.externalGenerationId ? new Date(Date.now() + 5 * 60_000) : null } : {}) } });
         const attempts = await tx.generationAttempt.findMany({ where: { jobId } });
-        await tx.generationJob.update({ where: { id: jobId }, data: { costUsd: attempts.reduce((sum, a) => sum + Number(a.costUsd ?? 0), 0), credits: attempts.some(a => a.credits !== null) ? attempts.reduce((sum, a) => sum + Number(a.credits ?? 0), 0) : null, costEstimated: attempts.some(a => a.costEstimated), reservedUsd: 0 } });
+        await tx.generationJob.update({ where: { id: jobId }, data: { ...imageAttemptTotals(job.input as Record<string,unknown>,attempts), reservedUsd: 0 } });
       }
       return ids;
     });

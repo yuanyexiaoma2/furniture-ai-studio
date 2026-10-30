@@ -21,6 +21,7 @@ export type ModelCandidate = {
   model: string;
   endpoint?: string;
   protocol?: "chat" | "responses";
+  imageProtocol?: "gemini" | "vertex-edit";
   supportsTools: boolean;
   pricing: { currency: "credits" | "USD"; images?: Partial<Record<"1K" | "2K" | "4K", number>>; inputImage?: number; inputPerMillion?: number; outputPerMillion?: number; imageTokens?: Partial<Record<"1K" | "2K" | "4K", number>>; imageOutputPerMillion?: number; longContextInputPerMillion?: number; longContextOutputPerMillion?: number; estimateSource?: string };
 };
@@ -32,13 +33,11 @@ export const models = {
   "scene-main": imageCandidates,
   edit: imageCandidates,
   "llm-vision": [
-    { provider: "zenmux", model: "google/gemini-2.5-pro", supportsTools: true, pricing: { currency: "USD", inputPerMillion: 1.25, outputPerMillion: 10, longContextInputPerMillion: 2.5, longContextOutputPerMillion: 15, estimateSource: "Google 上游分档参考，ZenMux 账单回填为准" } },
-    { provider: "kie", model: "gemini-3-6-flash-openai", endpoint: "https://api.kie.ai/gemini-3-6-flash-openai/v1/chat/completions", protocol: "chat", supportsTools: false, pricing: { currency: "credits", inputPerMillion: 45, outputPerMillion: 225 } },
+    DEFAULT_AGENT.candidate,
   ],
-  // KIE Responses 工具模型；单价来源 kie.ai/gpt-6-1-sol（2026-10-14）。
+  // 所有智能体调用只走ZenMux，不跨供应商回退。
   "llm-agent": [
     DEFAULT_AGENT.candidate,
-    { provider: "kie", model: "gpt-6-1-sol", endpoint: "https://api.kie.ai/codex/v1/responses", protocol: "responses", supportsTools: true, pricing: { currency: "credits", inputPerMillion: 120, outputPerMillion: 600 } },
   ],
 } satisfies Record<string, readonly ModelCandidate[]>;
 export function modelLabel() { return KIE_IMAGE_MODEL.label; }

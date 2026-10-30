@@ -15,6 +15,11 @@ export class GatewayError extends Error {
   }
 }
 export class ImageTaskFailure extends GatewayError {}
+export class ImageResultTransferFailure extends GatewayError {}
+export function switchableGatewayFailure(error:GatewayError){
+ if([400,401,402,403,404,409,413,422].includes(error.status)||/insufficient|quota|余额不足|积分不足|额度不足|配额不足|safety|content.?filter|content.?policy|审核|安全策略|invalid.*(?:parameter|argument)|参数.*(?:错误|无效)/i.test(error.message))return false;
+ return error.retryable;
+}
 export function gatewayException(provider: GatewayName, error: unknown): GatewayError {
   if (error instanceof GatewayError) return error;
   const detail = error as { status?: number; code?: number; message?: string; name?: string };

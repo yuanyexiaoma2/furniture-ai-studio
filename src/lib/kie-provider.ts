@@ -8,7 +8,7 @@ import { kieCreditCost } from "./gateway-cost";
 import type { ImageInput, ImageProvider, ImageResult, ImageRequest, ImageGeneration } from "@/lib/image-provider";
 import {buildKieImageInput,validateImageSelection} from "./image-model-input";
 import {kieImageSpec} from "./image-models";
-import { ImageTaskFailure } from "@/lib/gateway-error";
+import { ImageTaskFailure,ImageResultTransferFailure } from "@/lib/gateway-error";
 import { downloadResultImage } from "@/lib/remote-image";
 
 export class KieProvider implements ImageProvider {
@@ -25,8 +25,8 @@ export class KieProvider implements ImageProvider {
   async poll(taskId: string): Promise<ImageGeneration> {
     const result = await this.getResult(taskId);
     if (result.status === "pending") return { kind: "pending", taskId };
-    if (result.status === "failed") { if (result.referenceUnavailable) throw new ReferenceImageFailure(result.error, result.cost); const status = result.code && result.code >= 400 && result.code <= 599 ? result.code : 500; const error = new ImageTaskFailure("kie", result.error, status, status === 429 || status >= 500); Object.assign(error, { cost: result.cost }); throw error; }
-    return { kind: "done", images: await Promise.all(result.urls.map((url) => this.download(url))), cost: result.cost };
+    if (result.status === "failed") { if (result.referenceUnavailable) throw new ReferenceImageFailure(result.error, result.cost); const classified=kieFailure(result.code??500,result.error);if(!classified.retryable)throw classified; const status = result.code && result.code >= 400 && result.code <= 599 ? result.code : 500; const error = new ImageTaskFailure("kie", result.error, status, status === 429 || status >= 500); Object.assign(error, { cost: result.cost }); throw error; }
+    try{return { kind: "done", images: await Promise.all(result.urls.map((url) => this.download(url))), cost: result.cost };}catch{throw new ImageResultTransferFailure("kie","生成已成功，结果下载暂时失败；继续下载原任务",502,true,false);}
   }
   private baseUrl = process.env.KIE_BASE_URL?.trim() || "https://api.kie.ai";
   private uploadBaseUrl = process.env.KIE_UPLOAD_BASE_URL?.trim() || "https://kieai.redpandaai.co";

@@ -27,7 +27,7 @@ test("统一美元：KIE保留原积分、actual零值，ZenMux使用上游预�
   assert.deepEqual(costFields(undefined, 0.03), { costUsd: 0.03, credits: null, costEstimated: true });
   assert.equal(kieCreditCost(-1), undefined); assert.equal(kieCreditCost("") , undefined); assert.equal(kieCreditCost(NaN), undefined); assert.equal(kieCreditCost(0)?.amount, 0);
   assert.ok(estimateImageUsd(zen, "4K") > 0.1134); assert.ok(estimateImageUsd(zen, "4K", "提示词", [{ width: 2048, height: 2048 }]) > estimateImageUsd(zen, "4K"));
-  const vision = models["llm-vision"].find(c => c.provider === "kie")!; assert.equal(estimateLlmUsd(vision, 1000, 1000), 0.00135);
+  const vision = models["llm-vision"][0]; assert.equal(estimateLlmUsd(vision, 1000, 1000), 0.0045);
 });
 test("ZenMux延迟账单：准确ID/model才回填，零费用有效，未就绪保留预估", async () => {
   const model = models["scene-main"].find(c => c.provider === "zenmux")!.model;

@@ -11,9 +11,9 @@ import {db} from "../../src/lib/db";
 after(()=>db.$disconnect());
 
 const request:ImageRequest={prompt:"保留木色、双柜门和五金位置",referenceImages:[{id:"a"},{id:"b"}],aspectRatio:"1:1",resolution:"2K",outputFormat:"png"};
-test("缺省路由按用途选择：智能体ZenMux、生图和编辑KIE，显式网关偏好仍有效",()=>{
+test("缺省路由按用途选择：智能体ZenMux、生图和编辑KIE，旧网关偏好不改变新固定业务路由",()=>{
  assert.equal(candidatesFor("llm-agent","auto")[0].provider,"zenmux");assert.equal(candidatesFor("llm-vision","auto")[0].provider,"zenmux");
- for(const logical of ["scene-main","edit"] as const){assert.equal(candidatesFor(logical,"auto")[0].provider,"kie");assert.equal(candidatesFor(logical,"zenmux")[0].provider,"zenmux");}
+ for(const logical of ["scene-main","edit"] as const){assert.equal(candidatesFor(logical,"auto")[0].provider,"kie");assert.equal(candidatesFor(logical,"zenmux")[0].provider,"kie");}
 });
 test("五个生图模型实际提交各自的官方字段，无真实上传或付费调用",async()=>{
  for(const spec of kieImageModels){

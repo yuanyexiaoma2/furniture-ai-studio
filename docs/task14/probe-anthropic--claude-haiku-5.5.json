@@ -1,0 +1,568 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "provider": "zenmux",
+  "protocol": "openai-chat-completions",
+  "updatedAt": "2026-10-30T09:29:26.746Z",
+  "rows": [
+    {
+      "phase": "tools",
+      "index": 0,
+      "durationMs": 2304,
+      "logId": "cmvurrv1b0014lkv89g2zfogh",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01Riv5PgoZCJcy3R69kNj3yb",
+          "type": "function",
+          "function": {
+            "name": "pick_category",
+            "arguments": "{\"category\":\"边桌\"}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 1,
+      "durationMs": 1623,
+      "logId": "cmvurrwta0015lkv8ljow7ae3",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_014J1XgQb6UtLzzyPoPfunEt",
+          "type": "function",
+          "function": {
+            "name": "set_count",
+            "arguments": "{\"count\":3}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 2,
+      "durationMs": 1857,
+      "logId": "cmvurry2e0016lkv82mvfwz6s",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_012SK2KUYhxBKYs5sbHpZ4CY",
+          "type": "function",
+          "function": {
+            "name": "select_source",
+            "arguments": "{\"source\":\"I2\"}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 3,
+      "durationMs": 2808,
+      "logId": "cmvurrzhz0017lkv8ya9mun7n",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01Qunds4fj9v9p5iiVAPGRP1",
+          "type": "function",
+          "function": {
+            "name": "set_color",
+            "arguments": "{\"color\":\"米白\",\"locked\":true}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 4,
+      "durationMs": 1946,
+      "logId": "cmvurs1o10018lkv8ycepjjwf",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_019drfiKaVyTFoRq7DjXcLVv",
+          "type": "function",
+          "function": {
+            "name": "choose_slots",
+            "arguments": "{\"slots\":[\"S1\",\"S3\"]}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 5,
+      "durationMs": 1452,
+      "logId": "cmvurs3640019lkv86lm3bwvj",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01BcpuCFrJGdfHNA9x8qc52A",
+          "type": "function",
+          "function": {
+            "name": "pick_category",
+            "arguments": "{\"category\":\"边桌\"}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 6,
+      "durationMs": 1334,
+      "logId": "cmvurs4ai001alkv877fm9gsq",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01Br3tSWDHcuG42pKHpwVum2",
+          "type": "function",
+          "function": {
+            "name": "set_count",
+            "arguments": "{\"count\":3}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 7,
+      "durationMs": 1293,
+      "logId": "cmvurs5bh001blkv806p8mz42",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01Lx7ydb4tredvzZuHcvwpfQ",
+          "type": "function",
+          "function": {
+            "name": "select_source",
+            "arguments": "{\"source\":\"I2\"}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 8,
+      "durationMs": 2312,
+      "logId": "cmvurs6bf001clkv8goo7kxyp",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01RJuq4qEaV8EihggisWQuaT",
+          "type": "function",
+          "function": {
+            "name": "set_color",
+            "arguments": "{\"color\":\"米白\",\"locked\":true}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 9,
+      "durationMs": 1696,
+      "logId": "cmvurs83n001dlkv8y5n8x8jr",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_0153Uv7qymSPQJDC6YfwoW62",
+          "type": "function",
+          "function": {
+            "name": "choose_slots",
+            "arguments": "{\"slots\":[\"S1\",\"S3\"]}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 10,
+      "durationMs": 2548,
+      "logId": "cmvurs9er001elkv87pb0gha9",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01FmFfx7v2WhkYGHj3TJYDdh",
+          "type": "function",
+          "function": {
+            "name": "pick_category",
+            "arguments": "{\"category\":\"边桌\"}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 11,
+      "durationMs": 1996,
+      "logId": "cmvursbdk001flkv8t3mjkvx0",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_018tfaSmzdu4gX5dgqTVUcfw",
+          "type": "function",
+          "function": {
+            "name": "set_count",
+            "arguments": "{\"count\":3}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 12,
+      "durationMs": 1562,
+      "logId": "cmvurscx1001glkv8w2bek8bi",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01VofybCEob3uiRAunWQcdu9",
+          "type": "function",
+          "function": {
+            "name": "select_source",
+            "arguments": "{\"source\":\"I2\"}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 13,
+      "durationMs": 2368,
+      "logId": "cmvurse4f001hlkv89ypev09t",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_011ToLvCN8LEZQj1VFsJNodr",
+          "type": "function",
+          "function": {
+            "name": "set_color",
+            "arguments": "{\"color\":\"米白\",\"locked\":true}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 14,
+      "durationMs": 1388,
+      "logId": "cmvursfy6001ilkv8i4zbodb8",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_018BupaKyra8bUFdnPuMA1N5",
+          "type": "function",
+          "function": {
+            "name": "choose_slots",
+            "arguments": "{\"slots\":[\"S1\",\"S3\"]}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 15,
+      "durationMs": 2060,
+      "logId": "cmvursh0s001jlkv8hwrmz347",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01DXjQT933jMjrrtyrbqiDpN",
+          "type": "function",
+          "function": {
+            "name": "pick_category",
+            "arguments": "{\"category\":\"边桌\"}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 16,
+      "durationMs": 1729,
+      "logId": "cmvursim0001klkv8kpt11fxw",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01CLNvW2hDdnzpgmFoiRoKUC",
+          "type": "function",
+          "function": {
+            "name": "set_count",
+            "arguments": "{\"count\":3}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 17,
+      "durationMs": 1593,
+      "logId": "cmvursjy1001llkv8ooan5bcx",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01RFf6erBvhKWtn9J92cUpHx",
+          "type": "function",
+          "function": {
+            "name": "select_source",
+            "arguments": "{\"source\":\"I2\"}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 18,
+      "durationMs": 1682,
+      "logId": "cmvursl6c001mlkv8j8lehdbi",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01VT93Tat72u9xLiPWAaTuXo",
+          "type": "function",
+          "function": {
+            "name": "set_color",
+            "arguments": "{\"color\":\"米白\",\"locked\":true}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "tools",
+      "index": 19,
+      "durationMs": 2217,
+      "logId": "cmvursmh2001nlkv8ibs9057a",
+      "text": "",
+      "toolCalls": [
+        {
+          "id": "toolu_vrtx_01J1EZNik7wJXuaaAo2kkgQh",
+          "type": "function",
+          "function": {
+            "name": "choose_slots",
+            "arguments": "{\"slots\":[\"S1\",\"S3\"]}"
+          }
+        }
+      ],
+      "formatCorrect": true,
+      "parameterCorrect": true
+    },
+    {
+      "phase": "context",
+      "index": 0,
+      "durationMs": 1094,
+      "logId": "cmvurso6n001olkv85iwq937i",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":1,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 1,
+      "durationMs": 1230,
+      "logId": "cmvursp12001plkv8u6rjlqip",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":2,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 2,
+      "durationMs": 1716,
+      "logId": "cmvurspz9001qlkv8s3b0f8ch",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":3,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 3,
+      "durationMs": 1887,
+      "logId": "cmvursrb2001rlkv8mntlswec",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":4,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 4,
+      "durationMs": 1196,
+      "logId": "cmvurssrh001slkv86sx3lnk9",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":5,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 5,
+      "durationMs": 1605,
+      "logId": "cmvurstol001tlkv844u232lk",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":6,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 6,
+      "durationMs": 2044,
+      "logId": "cmvursux6001ulkv85vfnop7v",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":7,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 7,
+      "durationMs": 1309,
+      "logId": "cmvurswhy001vlkv8sdf4a5bz",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":8,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 8,
+      "durationMs": 1999,
+      "logId": "cmvursxid001wlkv897ejzp42",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":9,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 9,
+      "durationMs": 1243,
+      "logId": "cmvursz1x001xlkv8ggejwgkw",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":10,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 10,
+      "durationMs": 1964,
+      "logId": "cmvurt00i001ylkv862fgc7xi",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":11,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 11,
+      "durationMs": 2103,
+      "logId": "cmvurt1j3001zlkv8egspqiyi",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":12,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 12,
+      "durationMs": 1294,
+      "logId": "cmvurt35h0020lkv8m5k7fz9o",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":13,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 13,
+      "durationMs": 1525,
+      "logId": "cmvurt45g0021lkv8s5riacml",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":14,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 14,
+      "durationMs": 1528,
+      "logId": "cmvurt5bt0022lkv8oz8g35pz",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":15,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 15,
+      "durationMs": 1711,
+      "logId": "cmvurt6ia0023lkv8tghhdbad",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":16,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 16,
+      "durationMs": 1137,
+      "logId": "cmvurt7tu0024lkv88sdjtmpz",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":17,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 17,
+      "durationMs": 1963,
+      "logId": "cmvurt8pf0025lkv88jzmdy2e",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":18,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 18,
+      "durationMs": 1603,
+      "logId": "cmvurta7y0026lkv8d7mf3ltd",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":19,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    },
+    {
+      "phase": "context",
+      "index": 19,
+      "durationMs": 1438,
+      "logId": "cmvurtbgj0027lkv81j31g17o",
+      "text": "{\"SKU\":\"CN-1027\",\"品类\":\"边桌\",\"轮次\":20,\"锁定\":\"四条直腿\"}",
+      "toolCalls": [],
+      "stable": true
+    }
+  ]
+}

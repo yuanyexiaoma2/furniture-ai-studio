@@ -15,7 +15,7 @@ if (!originalUrl || !["localhost", "127.0.0.1"].includes(new URL(originalUrl).ho
 const databaseName = `verify_agent_${randomUUID().replaceAll("-", "")}`, pool = new Pool({ connectionString: originalUrl });
 await pool.query(`CREATE DATABASE "${databaseName}"`);
 const isolated = new URL(originalUrl); isolated.pathname = `/${databaseName}`; process.env.DATABASE_URL = isolated.href;
-process.env.GOOGLE_SEARCH_ENABLED="false"; process.env.KIE_API_KEY = "agent-local-test-key"; process.env.ZENMUX_API_KEY = ""; process.env.GATEWAY_PREFERENCE = "kie"; process.env.PG_BOSS_SCHEMA = "pgboss";
+process.env.GOOGLE_SEARCH_ENABLED="false"; process.env.KIE_API_KEY = "agent-local-test-key"; process.env.ZENMUX_API_KEY = "agent-local-test-key"; process.env.GATEWAY_PREFERENCE = "kie"; process.env.PG_BOSS_SCHEMA = "pgboss";
 type Step = { name: string; args: unknown } | ((materials: Materials) => { name: string; args: unknown });
 type Materials = { product: { id: string }; documents: { id: string; type: string; assetId: string }[]; images: { id: string }[]; conversation: { id: string }[]; pack?: { slots: { id: string; finalAssetId: string | null; method: string }[] } };
 let refreshHeartbeat: (() => Promise<unknown>) | undefined;
@@ -38,30 +38,32 @@ function phase(name: string, params: Record<string, unknown> = {}) {
   else steps = [];
 }
 const mock = createServer(async (request, response) => {
+  response.setHeader("Content-Type","application/json");
   const chunks: Buffer[] = []; for await (const chunk of request) chunks.push(Buffer.from(chunk));
   const bytes = Buffer.concat(chunks); let body: Record<string, unknown> = {}; try { body = JSON.parse(bytes.toString()); } catch {}
   if (request.url === "/control") { await refreshHeartbeat?.(); if (body.phase === "complete") await completeBrowser?.(String(body.productId)); else phase(String(body.phase), body); response.end("{}"); return; }
   if (request.headers.authorization !== "Bearer agent-local-test-key") { response.writeHead(401); response.end(JSON.stringify({ code: 401 })); return; }
   if (request.url?.includes("file-stream-upload")) { response.end(JSON.stringify({ success: true, code: 200, data: { downloadUrl: "https://fixture.invalid/reference.png" } })); return; }
-  if (request.url?.includes("chat/completions")) { response.end(JSON.stringify({ choices: [{ message: { content: "图片为同款双门四脚实木边柜；实拍图，可见黑色竖直把手。" } }], usage: { prompt_tokens: 300, completion_tokens: 50, total_tokens: 350 }, credits_consumed: 0.1 })); return; }
   if (request.url?.includes("createTask")) { response.end(JSON.stringify({ code: 200, data: { taskId: `mock-agent-image-${++submitted}` } })); return; }
   if (request.url?.includes("recordInfo")) { response.end(JSON.stringify({ code: 200, data: { state: "success", resultJson: JSON.stringify({ resultUrls: ["https://fixture.invalid/result.png"] }), creditsConsumed: 6 } })); return; }
-  if (!request.url?.includes("responses")) { response.writeHead(404); response.end("{}"); return; }
+  if (!request.url?.includes("responses")&&!request.url?.includes("chat/completions")) { response.writeHead(404); response.end("{}"); return; }
   calls++;
+  for(const message of (body.messages??[]) as {role:string;content:unknown}[])if(message.role==="tool"){try{const data=JSON.parse(String(message.content));if(data.product&&data.documents)latestMaterials=data;}catch{}}
   for (const item of (body.input ?? []) as { type?: string; output?: string }[]) { if (item.type === "function_call_output") { try { const data = JSON.parse(item.output ?? "{}"); if (data.product && data.documents) latestMaterials = data; } catch {} } }
   const step = Array.isArray(body.tools) && body.tools.length ? steps.shift() : undefined, tool = typeof step === "function" ? step(latestMaterials) : step;
-  const inputText=JSON.stringify(body.input??[]);
+  const inputText=JSON.stringify(body.messages??body.input??[]);
   let structured:unknown;
   if(inputText.includes("分析本产品实拍和参数"))structured={traits:"双门四脚木纹边柜，两个黑色把手",structure:"两扇门、四条腿、两个竖直把手",materials:"木质",colors:"橡木色和黑色五金",functions:["封闭储物"],sellingPoints:[{name:"封闭储物",evidence:"实拍和已确认档案",priority:1}]};
   if(inputText.includes("为本次新产品制定视觉方案")){visualRevision++;structured={propPool:["模拟环境配饰1","模拟环境配饰2","模拟环境配饰3"],reason:"按本产品检索并规划的模拟视觉方案",slots:["主图","客厅场景","卧室场景","其他空间场景","卖点图","细节图","安装示意图"].map((name,i)=>({key:"mock-"+i,name,slotType:i===0?"main":i<4?"scene":i===4?"selling_point":i===5?"detail":"installation",method:i<4?"ai_scene":"manual_upload",sellingPoint:"封闭储物",scene:i===0?"纯白背景":name,props:i<4&&i>0?["模拟环境配饰"+i]:[],display:"保持完整产品真实比例",camera:"模拟取景版本"+visualRevision,light:"柔和自然光",palette:"中性环境",composition:"完整产品入画",needs_post:i>=4,postNotes:i>=4?"后期人工排版":"",evidence:["identityLock"],notes:"",combinationKey:""})).map((slot,i)=>i>=3?{...slot,directions:[{...slot,id:"a",label:"方向A",reason:"侧重真实用途"},{...slot,id:"b",label:"方向B",reason:"更突出空间比例",camera:slot.camera+"另一侧"}],selectedDirectionId:null}:slot)};}
   const output = tool ? [{ type: "function_call", call_id: `mock-call-${calls}`, name: tool.name, arguments: JSON.stringify(tool.args) }] : [{ type: "message", role: "assistant", content: [{ type: "output_text", text: structured?JSON.stringify(structured):"当前操作已经记录，请查看确认卡或候选看板。" }] }];
   const result = { status: "completed", output, usage: { input_tokens: 500, output_tokens: 150, total_tokens: 650 }, credits_consumed: 0.1 };
+  if(request.url?.includes("chat/completions")){const text=structured?JSON.stringify(structured):"当前操作已经记录，请查看确认卡或候选看板。",toolCalls=tool?[{id:`mock-call-${calls}`,type:"function",function:{name:tool.name,arguments:JSON.stringify(tool.args)}}]:[];if(body.stream){response.setHeader("Content-Type","text/event-stream");response.write(`data: ${JSON.stringify({id:"mock-chat",choices:[{delta:{content:tool?null:text,tool_calls:toolCalls.map((c,index)=>({...c,index}))}}]})}\n\n`);response.end(`data: ${JSON.stringify({choices:[],usage:{prompt_tokens:500,completion_tokens:150,total_tokens:650}})}\n\ndata: [DONE]\n\n`);}else response.end(JSON.stringify({id:"mock-chat",choices:[{message:{content:tool?null:text,tool_calls:toolCalls}}],usage:{prompt_tokens:500,completion_tokens:150,total_tokens:650}}));return;}
   if (body.stream) { response.setHeader("Content-Type", "text/event-stream"); if (!tool) response.write(`data: ${JSON.stringify({ type: "response.output_text.delta", delta: "当前操作已经记录，请查看确认卡或候选看板。" })}\n\n`); response.end(`data: ${JSON.stringify({ type: "response.completed", response: result })}\n\n`); }
   else response.end(JSON.stringify(result));
 });
 await new Promise<void>(r => mock.listen(0, "127.0.0.1", r));
 const address = mock.address(); if (!address || typeof address === "string") throw new Error("mock启动失败");
-const mockUrl = `http://127.0.0.1:${address.port}`; process.env.KIE_BASE_URL = process.env.KIE_UPLOAD_BASE_URL = mockUrl;
+const mockUrl = `http://127.0.0.1:${address.port}`; process.env.KIE_BASE_URL = process.env.KIE_UPLOAD_BASE_URL = mockUrl;process.env.ZENMUX_BASE_URL=mockUrl+"/v1";
 let cleanup: (() => Promise<void>) | undefined, heartbeat: NodeJS.Timeout | undefined, nextProcess: ReturnType<typeof spawn> | undefined;
 try {
   const migration = spawnSync(process.execPath, ["node_modules/prisma/build/index.js", "migrate", "deploy"], { env: process.env, encoding: "utf8" }); if (migration.status) throw new Error(migration.stderr);
@@ -70,7 +72,7 @@ try {
   const tick = () => db.workerHeartbeat.upsert({ where: { id: WORKER_ID }, create: { id: WORKER_ID, instanceId: "agent-mock" }, update: { instanceId: "agent-mock", updatedAt: new Date() } }); refreshHeartbeat = tick; await tick(); heartbeat = setInterval(() => { void tick(); }, 5000);
   cleanup = async () => { if (heartbeat) clearInterval(heartbeat); for (const asset of await db.asset.findMany()) await deleteObject(asset.storageKey).catch(() => undefined); for (const doc of await db.productDocument.findMany({ where: { assetId: null } })) await deleteObject(doc.storageKey).catch(() => undefined); await boss.stop(); await db.$disconnect(); };
   const {models:mockModels}=await import("../src/lib/models.config");
-  await db.studioModel.create({data:{id:"mock-agent",name:"隔离模拟Agent",kind:"agent",visible:true,candidate:JSON.parse(JSON.stringify(mockModels["llm-agent"].find(c=>c.provider==="kie"))),probe:{toolCalls:20,parameterCorrect:20,formatCorrect:20,contextStable:20}}});
+  await db.studioModel.create({data:{id:"mock-agent",name:"隔离模拟Agent",kind:"agent",visible:true,candidate:JSON.parse(JSON.stringify(mockModels["llm-agent"][0])),probe:{toolCalls:20,parameterCorrect:20,formatCorrect:20,contextStable:20}}});
   const user = await db.user.create({ data: { name: "Agent隔离验收", email: "agent-test@example.invalid", passwordHash: await bcrypt.hash("agent-test-password-123",12), monthlyQuota: 20 } });
   const product = await db.product.create({ data: { sku: "MOCK-AGENT-5", name: "模拟边柜", category: "储物柜", dimensions: "80x40x90cm", colors: "木色", materials: "橡木", sellingPoints: [], createdById: user.id } });
   const png = await sharp({ create: { width: 64, height: 64, channels: 3, background: "#d8c8b2" } }).png().toBuffer();
