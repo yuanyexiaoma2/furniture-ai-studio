@@ -1,78 +1,48 @@
 # 项目：家具电商 AI 生图工作台（个人工具）
 
-## 当前方向
-- 这是个人自费用的工具，调用成本优先。对话 Agent 是主角：先围绕当前产品资料和用户意见讨论方案，用户确认方案及费用后才生图，不自动开始下一批。
-- 用户应能随时在对话中提供参考图，最终生图应真正携带这些参考图；当前尚有接线缺口，见“已知问题/12-B”，不能声称已经完成。
-- 满意的生成图由用户手动收藏到素材库，收藏不调用 AI；当前尚无独立手动收藏，留到12-C。本轮只暂停旧AI提炼入口。
-- 任何改动都优先考虑调用成本，不新增自动调用模型的环节；不为整理素材、收藏或页面初始化引入新的模型请求。
+## 目标与成本原则
+- 目标是让工具更好用：围绕当前产品资料与用户对话策划、确认方案、生成、修改和挑选图片。
+- 控制成本的方式是让用户看到费用、自己决定，不是关闭功能。联网搜索、竞品分析、经验检索、标记优秀、Listing导入和模板审核沿用原功能与原配置，不设置12-A暂停开关或拦截。
+- 生图默认每图位1张、1K，用户可自行调高数量和分辨率；保留生图前费用确认卡。已有明确设置和历史冻结输入不自动重置。
+- 不为本轮验收调用真实或付费模型；需要真实验证时给用户步骤，由用户决定是否执行。
 
-## 暂停功能清单
-代码和数据库中已有数据保留，使用 src/lib/project-features.ts 中的统一开关控制，默认全部关闭；恢复前需用户明确授权并评估调用成本。
+## 界面硬规则
+- 除非用户明确要求，不许改动界面布局和样式。后台、提示词或默认参数任务不得顺带改变页面结构、间距、颜色、文案、图标或假数据展示。
+- 本轮恢复12-A之前的已认可界面，只有用户指定的数量/分辨率默认值可调整；不截图、录屏或制作GIF。
 
-| 功能 | 开关（.env.example中默认false） |
-|---|---|
-| 批量导入历史Listing及导入审核 | NEXT_PUBLIC_FEATURE_LIBRARY_IMPORT |
-| 品类打法/经验汇总和逐条审核逻辑、原始JSON展示 | NEXT_PUBLIC_FEATURE_LIBRARY_PATTERNS |
-| 自动检索经验库 | NEXT_PUBLIC_FEATURE_LIBRARY_RETRIEVAL |
-| 联网搜索、Google Search补充、竞品截图/链接分析 | NEXT_PUBLIC_FEATURE_WEB_RESEARCH |
-| 标记优秀、AI提炼案例及其确认入库 | NEXT_PUBLIC_FEATURE_CASE_EXTRACTION |
+## 技术栈与架构
+- Next.js App Router + TypeScript，Tailwind CSS + shadcn/ui；不擅自更换。
+- PostgreSQL + Prisma；pg-boss任务队列，不引入Redis；本地docker compose运行Postgres和MinIO。
+- S3兼容存储、Auth.js账号密码登录、sharp图片处理；Web与worker为独立进程。
+- 外部API仅在服务端调用，密钥不得发送到前端、日志或Git。不得输出真实.env中的密钥。
+- 图像继续走ImageProvider及models.config.ts路由表；记录实际provider/model、参数、费用和发起人。
+- 不改费用公式、预留、账本、队列、熔断、双网关或数据库结构。默认参数变化必须同时用于报价和提交；保留原费用确认、指纹和权限检查。
+- 不删除或重置现有产品、模板库、案例、生成记录或已确认方案。
 
-- 本轮界面恢复到上次提交，只给标记优秀、联网、Listing导入、模板审核/JSON加开关判断；保留品类卡片、假数据展示、原有文案和页面结构，不用整页暂停说明替换模板库。
-- 暂停的不仅是按钮：服务端也应在读库、联网或调用模型之前跳过/拒绝相应操作。旧确认卡不能重新触发已暂停的案例流程。
-- 标记优秀的原代码保留，不能把AI提炼伪装成手动收藏；12-C按用户另行给出的要求实现普通收藏。
-- 不清空或删除用户资料、模板库、历史案例、图包、生成记录或已收藏资源。
+## 供应商与功能状态
+- ZenMux和KIE都已接入；当前对话Agent默认ZenMux Gemini 3.8 Flash（google/gemini-3.8-flash），生图默认KIE Nano Banana 2.1。
+- 对话配置为ZENMUX_API_KEY、ZENMUX_BASE_URL；ZenMux生图备用线路为ZENMUX_VERTEX_BASE_URL。KIE使用KIE_API_KEY、KIE_BASE_URL、KIE_UPLOAD_BASE_URL，异步结果由worker转存S3。
+- auto网关偏好沿用原路由与熔断策略；具体模型支持的分辨率和参数以代码登记及真实目录为准，不猜模型ID。
+- 12-A新增的project-features.ts和NEXT_PUBLIC_FEATURE_*开关已删除，服务端暂停拦截全部撤销；不影响此前已有的会话联网选择、GOOGLE_SEARCH_ENABLED、权限、模型能力和账号配置检查。是否能返回联网结果仍取决于既有配置与上游支持，本轮不调用模型验证。
+- 标记优秀仍是原有AI提炼和人工确认入库流程，并非无AI手动收藏；本轮恢复原入口和逻辑。
 
-## 技术栈与架构（不擅自更换）
-- Next.js App Router + TypeScript，Tailwind CSS + shadcn/ui。
-- PostgreSQL + Prisma；pg-boss任务队列，不引入Redis。
-- S3兼容存储（本地MinIO），Auth.js账号密码登录，sharp处理图片；保留现有LLM/图像Provider及SDK集成。
-- 本地docker compose运行Postgres、MinIO；Next.js Web与生图worker为独立进程。
-- 外部API只在服务端调用，密钥不得发送到前端、写入日志或提交Git。真实.env被忽略，文档以.env.example为准，不读取或传播真实密钥。
-- 生图继续通过ImageProvider、models.config.ts和现有路由表；GenerationJob记录实际provider、model、参数、费用、发起人与结果。
-- 不改费用公式、费用指纹、配额预留、账本、队列、熔断或双网关；HTTP接口契约变更需先征求用户确认。
-- 不改数据库结构；没有明确授权不迁移或删除数据库数据。
-
-## 供应商实际状态（按代码配置）
-- ZenMux和KIE均已接入，不再是“ZenMux待开通”。配置存在不等于本轮验证了上游能力或账号余额；本轮不调用模型探测。
-- 对话Agent默认ZenMux Gemini 3.8 Flash，模型ID为google/gemini-3.8-flash（src/lib/agent-default.ts）；使用ZENMUX_API_KEY与ZENMUX_BASE_URL。当前并未读取LLM_MODEL覆盖该默认值。
-- 生图默认KIE Nano Banana 2.1（nano-banana-2-1），目录还包含代码登记的GPT Image 2.5、Nano Banana 2、Nano Banana Pro、Qwen3；具体模型与参数以image-models.ts及数据库目录为准，不猜新ID或参数。
-- KIE使用KIE_API_KEY、KIE_BASE_URL、KIE_UPLOAD_BASE_URL；异步taskId由worker轮询并转存S3。KIE_CALLBACK_URL本地留空。
-- ZenMux生图通过Google Gemini协议，地址为ZENMUX_VERTEX_BASE_URL；保留现有备用路由。
-- GATEWAY_PREFERENCE=auto时，生图优先KIE，对话优先ZenMux；按现有候选、配置凭据和熔断状态回退。未配置密钥的网关自动跳过。
-- GOOGLE_SEARCH_ENABLED仍是旧联网能力开关，但当前还受FEATURE_WEB_RESEARCH暂停开关限制，不能绕过暂停状态。
-
-## 方案与提示词约定
-- 方案只有一个真实入口：planning-agent.ts的propose_image_pack转调visual-planning.ts的proposeVisualPlan；其他规划入口也复用该函数，不维护第二套图位生成逻辑。
-- propose_image_pack对模型只暴露用户目标reason；旧slots参数仅兼容历史调用。具体图位由统一方案流程生成，用户确认后冻结，再报价/提交。
-- retrieveLibrary关闭时直接返回空集合，不查询或利用其他产品的经验；researchCompetitors关闭时直接返回已跳过，不读竞品、联网或调用模型。
-- 全局提示词（src/prompts及其他prompt构建文件）只放通用规则。具体结构、部件、尺寸、颜色、材质、功能及特殊陈列只能来自当前产品资料和对话，不把某个SKU或品类的规则写入全局。
-- 未知或矛盾资料应明确提示；不猜测尺寸、隐藏部件、性能或拆装状态。产品身份约束来自当前实拍和已确认资料。
-- 图像最终包装层保留通用无文字/数字/图标/尺寸线/水印/logo规则；尺寸和说明由后期处理。默认2K；亚马逊主图沿用纯白、产品占比至少85%、长边至少2000px规则。
-- 不调用付费模型；任务12-A不调用任何真实模型。需要真实验证时给用户手动步骤，不替用户执行。
+## 方案、提示词与生成约定
+- propose_image_pack只表达目标reason，统一调用visual-planning.ts的proposeVisualPlan，不维护第二套图位生成逻辑；旧slots仅兼容历史调用。
+- proposeVisualPlan接收当前会话最近20条用户意见，与产品资料一起进入已有方案调用；竞品研究、经验库检索按原流程执行。
+- 全局prompt只放对所有产品适用的规则；具体结构、部件、尺寸、颜色、材质和拆装状态来自当前产品资料及用户对话。
+- 不在全局写死层数/层间距、半透明拆卸等产品特定规则；产品结构、部件数量和尺寸比例要与当前实拍一致。
+- 保留主图、特写和后期叠加的既有通用要求；亚马逊主图仍要求至少2000px，1K时由原校验提示用户改选2K/4K，不擅自提高分辨率或费用。
+- 用户确认产品理解、方案及费用后再生成；人工选择终稿。自动确认和快速/手动模式沿用原实现，不替用户开启或修改。
 
 ## 开发约定
-- 硬规则：除非用户明确要求改界面，任何任务都不许改动页面布局和样式。后台清理不得顺带重排界面、调整间距/颜色/文字或替换组件结构；获准隐藏入口时仅加开关判断。
-- UI文案、代码注释使用中文；不实现当前任务以外的功能。
-- 不确定是否可删的组件、数据或逻辑先保留并列出，不擅自删除。用户已要求本轮保留假数据展示，不得以清理为由修改已认可界面。
-- 常规代码任务至少通过npm run lint、npm run typecheck，并按改动运行必要的无模型测试及build。
-- 纯样式小改动（颜色、圆角、间距、边框）只跑npm run lint和npm run build，不截图、不做像素对比、不跑完整回归。改交互、布局结构或阶段结束时再做相应完整验收；不得为验收调用真实模型。
-- 浏览器录屏、截图、GIF只在用户明确要求时制作。
-- README只保留安装、启动、环境变量说明。开发记录和待办写入docs/CHANGELOG.md。
-- 默认不自行提交或推送；按当前任务明确要求执行。
+- UI文案和代码注释使用中文；不实现当前任务之外的功能。
+- 不确定是否能删的共享代码先保留；mock/models.ts和library-store.ts中仍有真实模型类型、估价、附件预览与上传配对用途，不能因文件名整文件删除。
+- 按当前任务执行验证；本轮只跑npm run lint、npm run build，不截图、不跑完整回归、不调用模型。
+- 纯样式小改动只跑lint和build；截图、录屏、GIF只在用户明确要求时制作。
+- 开发记录写入docs/CHANGELOG.md；不得把过时交付说明当成当前状态。
+- 用户明确要求提交后才提交；未授权不推送。
 
-## 已知问题
-### 12-B：对话参考图尚未接到图包生图请求
-- 对话引用的图片目前只送给对话模型；图包生图只读取方案冻结的产品实拍，参考图没有传给生图模型。本轮只记录，不修改生图链路。
-- 前端：src/components/design-preview/live-workspace.tsx的RealChat.send传递canvas.referenceAssetIds；服务端src/lib/planning-agent.ts的runAgentTurn经canvasContext收集引用，在LLMInput.images中送给对话模型。
-- 方案建立与冻结：src/lib/visual-planning.ts的analyzeProduct/proposeVisualPlan生成identityLock.referenceAssetIds；confirmVisualPlan校验引用。src/lib/agent-actions.ts的approveAgentCard/applyProposal把已确认plan与slot快照写入ImageSlot.visualPlan。
-- 图包报价/提交：src/lib/image-packs.ts的planBatch把图位快照交给src/lib/scene-generation.ts的prepareSceneInput；该函数仅用冻结identityLock.referenceAssetIds并按type=photo读取，写入GenerationJob.input.referenceAssetIds。
-- 最终生图请求：src/lib/image-router.ts的generate把input.referenceAssetIds映射为ImageRequest.referenceImages，再交给ImageProvider（例如src/lib/kie-provider.ts的KieProvider.generate）。12-B应贯通引用选择、冻结、报价、提交和最终请求，保持它们使用同一份引用快照，另行确认费用影响。
-
-### 12-C：手动收藏尚未实现
-- 当前proposeExcellentCase（src/lib/visual-case.ts）会调用AI提炼，已在UI和服务端暂停；旧数据和代码保留。
-- 后续普通收藏应由用户手动操作、不调用AI；本轮不改收藏逻辑、不新建收藏接口。
-
-### 技术债：共享类型和真实预览仍位于旧mock文件
-- 用户确认本轮保留src/design-preview/mock/models.ts：真实模型页面、选择器、model-store复用模型类型、默认值、modelRate和前端费用估算。真实目录优先来自/api/studio/models，服务端报价仍为最终依据。
-- 用户确认本轮保留src/components/design-preview/library/library-store.ts中的readMockFiles、附件状态等：用于首页/画布真实上传文件的Data URL预览、文件名与逐个移除。
-- 后续单独拆分并改名，将共享类型/真实附件预览与旧示例库隔离；不要整文件删除，不在本轮改变费用估算或上传逻辑。两个文件顶部均已标注真实用途与不可删除说明。
+## 已知问题与后续事项
+- 12-B：对话引用图片目前只传给对话模型，图包生图仅读取冻结的产品实拍。前端RealChat.send → planning-agent.runAgentTurn/canvasContext → LLMInput.images；生图链为proposeVisualPlan/confirmVisualPlan → agent-actions.approveAgentCard/applyProposal冻结ImageSlot.visualPlan → image-packs.planBatch → scene-generation.prepareSceneInput → image-router.generate。参考图尚未贯通，本轮不修改。
+- 12-C：独立无AI手动收藏尚未实现；恢复的“标记优秀”仍可能调用AI提炼，不要把它称为免费收藏。
+- 共享类型与真实附件预览仍位于旧mock目录/状态文件，后续单独拆分改名；本轮恢复原文件，不改这些共享实现。

@@ -10,7 +10,7 @@ import { configuredCandidate, monthlySpendUsd, assertUsdQuota } from "./quota";
 import { prepareSceneInput, enqueueImageJob } from "./scene-generation";
 import { workerIsReady, getBoss, expireOverdueJobs } from "./generation-queue";
 import { roundUsd, estimateImageUsd } from "./gateway-cost";
-import { KIE_USD_PER_CREDIT, type SceneAspectRatio } from "./models.config";
+import { imageResolution, KIE_USD_PER_CREDIT, type SceneAspectRatio } from "./models.config";
 import { quotaShortage } from "./quota-math";
 
 async function lockProduct(tx: Prisma.TransactionClient, productId: string) {
@@ -30,7 +30,7 @@ export async function mutatePack(productId: string, action: Record<string, unkno
     if (action.action === "defaults") {
       if (slots.length && action.confirmed !== true) throw new StudioError("图包已有图位，请确认套用；已有候选图和终稿会保留", 409);
       // 仅补充缺失的默认图位，不重置任何既有图位内容或结果。
-      for (const s of defaultSlots) if (!slots.some(old => old.name === s.name && old.slotType === s.slotType)) await tx.imageSlot.create({ data: { ...s, packId: pack.id, order: order++, goal: "" } });
+      for (const s of defaultSlots) if (!slots.some(old => old.name === s.name && old.slotType === s.slotType)) await tx.imageSlot.create({ data: { ...s, candidateCount:1, packId: pack.id, order: order++, goal: "" } });
       return;
     }
     if (action.action === "add") {
@@ -76,7 +76,7 @@ async function planBatch(tx: Prisma.TransactionClient, productId: string, select
   const session=await tx.agentSession.findUnique({where:{productId_createdById:{productId,createdById:userId}}});
   const settings=settingsOf(session?.settings);
   const candidate=settings.imageId?await selectedCandidate("image",settings):await configuredCandidate("scene-main");
-  const resolution=settings.resolution==="4K"?"4K":settings.resolution==="1K"?"1K":"2K";
+  const resolution=imageResolution(settings.resolution);
   const pack = await tx.imagePack.findFirst({ where: { productId, isCurrent: true }, include: { slots: { where: { deletedAt: null }, orderBy: { order: "asc" } } } });
   if (!pack) throw new StudioError("请先套用默认图包或新增图位");
   if (selection.retryJobId) {

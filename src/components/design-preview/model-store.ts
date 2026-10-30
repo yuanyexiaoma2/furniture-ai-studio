@@ -26,7 +26,7 @@ export function resolveSelection(state:Pick<ModelState,"availability"|"defaults"
  const defaultImage=images.find(m=>m.id===state.defaults.image)?.id??images[0]?.id??"";
  const agentId=agents.some(m=>m.id===raw.agentId)?raw.agentId:agents.find(m=>m.id===state.defaults.agent)?.id??agents[0]?.id??"";
  const imageIds=[...new Set([defaultImage,...raw.imageIds.filter(id=>images.some(m=>m.id===id))])].filter(Boolean);
- return {auto:raw.auto??true,qualities:raw.qualities??{},webEnabled:raw.webEnabled??true,resolution:raw.resolution??"auto",agentId,imageIds,imageId:images.some(m=>m.id===raw.imageId)?raw.imageId:defaultImage};
+ return {auto:raw.auto??true,qualities:raw.qualities??{},webEnabled:raw.webEnabled??true,resolution:raw.resolution??"1K",agentId,imageIds,imageId:images.some(m=>m.id===raw.imageId)?raw.imageId:defaultImage};
 }
 export const useModelStore=create<ModelState>()(persist((set,get)=>({
  ...initial(),setCatalog:catalog=>set(s=>({catalog,availability:Object.fromEntries(catalog.map(m=>[m.id,{enabled:m.enabled,visible:m.visible}])),defaults:{agent:catalog.find(m=>m.kind==="agent"&&m.isDefault)?.id??s.defaults.agent,image:catalog.find(m=>m.kind==="image"&&m.isDefault)?.id??s.defaults.image}})),
@@ -46,6 +46,6 @@ export const useModelStore=create<ModelState>()(persist((set,get)=>({
 export function estimateCost(state:ModelState,scope:string,count:number){
  const selected=resolveSelection(state,scope);const agent=(state.catalog??models).find(m=>m.id===selected.agentId);
  const imageModels=(state.catalog??models).filter(m=>selected.auto?selected.imageIds.includes(m.id):m.id===selected.imageId);
- const imagePrice=Math.max(0,...imageModels.map(m=>(m.pricesByResolution?.[selected.resolution==="4K"?"4K":selected.resolution==="1K"?"1K":"2K"]??modelRate(m,selected.qualities[m.id]).price)+(m.referenceImagePrice??0)*3));
+ const imagePrice=Math.max(0,...imageModels.map(m=>(m.pricesByResolution?.[selected.resolution==="4K"?"4K":selected.resolution==="2K"?"2K":"1K"]??modelRate(m,selected.qualities[m.id]).price)+(m.referenceImagePrice??0)*3));
  return (agent?.price??0)+imagePrice*count;
 }

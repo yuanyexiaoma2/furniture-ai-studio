@@ -1,5 +1,4 @@
 ﻿import "server-only";
-import {FEATURE_WEB_RESEARCH} from "./project-features";
 import {proposeVisualPlan} from "./visual-planning";
 import {settingsOf,selectedCandidate} from "./studio-models";
 import {webSearch} from "./web-search";
@@ -100,7 +99,7 @@ export async function executeAgentTool(sessionId: string, name: AgentToolName, r
   const productId = session.productId;
   const args = agentToolSchemas[name].parse(await resolveSourceAliases(sessionId, name, raw));
   if(name==="inspect_canvas"){const latest=await db.chatMessage.findFirst({where:{sessionId,role:"user"},orderBy:{createdAt:"desc"}});const selected=(latest?.content as {canvasSelection?:CanvasSelection}|null)?.canvasSelection;const canvas=await canvasContext(productId,session.createdById,selected);const a=agentToolSchemas.inspect_canvas.parse(args);const matched=canvas.elements.filter(e=>(!a.elementId||e.id===a.elementId||e.alias===a.elementId)&&(!a.region||e.x+e.width>=a.region.x&&e.x<=a.region.x+a.region.width&&e.y+e.height>=a.region.y&&e.y<=a.region.y+a.region.height));return {...canvas.summary,matchedCount:matched.length,elements:matched.slice(0,60)};}
-  if(name==="web_search"){if(!FEATURE_WEB_RESEARCH)throw new StudioError("联网搜索已暂停",403);if(settingsOf(session.settings).webEnabled===false)throw new StudioError("本会话已关闭联网，不能搜索网页",403);const a=agentToolSchemas.web_search.parse(args);return webSearch(sessionId,session.createdById,a.query,a.max_results);}
+  if(name==="web_search"){if(settingsOf(session.settings).webEnabled===false)throw new StudioError("本会话已关闭联网，不能搜索网页",403);const a=agentToolSchemas.web_search.parse(args);return webSearch(sessionId,session.createdById,a.query,a.max_results);}
   if (name === "read_product_materials") {
     const product = await db.product.findUniqueOrThrow({ where: { id: productId } });
     const docs = await db.productDocument.findMany({ where: { productId }, orderBy: { createdAt: "asc" } });

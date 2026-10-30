@@ -1,8 +1,4 @@
 "use client";
-/** 此文件虽沿用mock命名和旧原型状态，但被真实功能引用，不可删除。
- * 具体用途：首页readMockFiles把用户文件转为图片Data URL/文档文件名，供真实附件预览、逐个移除和原文件上传配对；画布也复用上传预览/引用。
- * 暂停的是假库展示，不是这些共享工具；后续将共享类型、真实附件预览和旧原型状态分别拆分改名。
- */
 import {create} from "zustand";
 import {createJSONStorage,persist} from "zustand/middleware";
 import {seedLibrary,designer,administrator} from "@/design-preview/mock/library";

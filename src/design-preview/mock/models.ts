@@ -1,10 +1,6 @@
-/** 此文件虽名为mock，但被真实功能引用，不可删除。
- * 具体用途：模型页面/选择器共用ModelKind、Quality、MockModel类型；model-store复用默认值、modelRate与前端费用估算。
- * 真实页面优先读取/api/studio/models；这里仍保留历史回退目录和展示估值，不能冒充服务端报价。后续单独拆分改名。
- */
 import {kieImageModels,DEFAULT_IMAGE_ID} from "@/lib/image-models";
 import {DEFAULT_AGENT} from "@/lib/agent-default";
-
+/** 静态原型唯一模型目录；价格与耗时均为演示值，不是服务报价。 */
 export type ModelKind = "agent" | "image";
 export type Quality = "auto" | "standard" | "fine";
 export type ModelTier = { id: Quality; label: string; seconds: number; price: number };
