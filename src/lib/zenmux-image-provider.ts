@@ -1,4 +1,5 @@
 import "server-only";
+import {imageReferenceLimit} from "./generation-references";
 import { GoogleGenAI, type GenerateContentParameters } from "@google/genai";
 import { assetBytes } from "@/lib/asset-bytes";
 import { GatewayError, gatewayException } from "@/lib/gateway-error";
@@ -15,6 +16,7 @@ export class ZenMuxImageProvider implements ImageProvider {
   isConfigured() { return Boolean(process.env.ZENMUX_API_KEY?.trim()); }
   async generate(input: ImageRequest): Promise<ImageGeneration> {
     if (!this.isConfigured()) throw new GatewayError("zenmux", "未配置 ZENMUX_API_KEY", 503, false);
+    if(input.referenceImages.length>imageReferenceLimit({provider:"zenmux",model:this.model}))throw new GatewayError("zenmux","图片数量超过当前模型输入上限，未提交也不会改成文字参考",400,false);
     let reply: Reply | undefined;
     try {
       const references = await Promise.all(input.referenceImages.map(async ({ id }) => {

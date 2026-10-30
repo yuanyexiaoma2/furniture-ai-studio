@@ -9,11 +9,11 @@ import {Button} from "./ui/button";
 import {Slider} from "./ui/slider";
 import type {MaskExportHandle} from "./contracts";
 type Stroke={tool:"brush"|"eraser"|"rect";size:number;points:number[]};
-type Props={action:string;src:string;width:number;height:number;onConfirm:(mask:Blob,instruction:string)=>void|boolean|Promise<void|boolean>;onCancel:()=>void};
-const MaskEditor=forwardRef<MaskExportHandle,Props>(function MaskEditor({action,src,width,height,onConfirm,onCancel},ref){
+type Props={initialInstruction?:string;action:string;src:string;width:number;height:number;onConfirm:(mask:Blob,instruction:string)=>void|boolean|Promise<void|boolean>;onCancel:()=>void};
+const MaskEditor=forwardRef<MaskExportHandle,Props>(function MaskEditor({initialInstruction,action,src,width,height,onConfirm,onCancel},ref){
  const quote=estimateImageCost(useModelStore(),demoSession,1);
  const [strokes,setStrokes]=useState<Stroke[]>([]),[tool,setTool]=useState<"brush"|"eraser"|"rect">('brush'),[size,setSize]=useState(18),[maskColor]=useState(()=>typeof window==='undefined'?'':getComputedStyle(document.documentElement).getPropertyValue('--p-mask').trim());
- const [instruction,setInstruction]=useState(action==="erase"?"移除蒙版白色区域内的物件，自然补全背景":"");
+ const [instruction,setInstruction]=useState(initialInstruction??(action==="erase"?"移除蒙版白色区域内的物件，自然补全背景":""));
  const drawing=useRef(false),stage=useRef<Konva.Stage>(null);
  const [submitting,setSubmitting]=useState(false);
  async function exportMask(){

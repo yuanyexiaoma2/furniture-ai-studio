@@ -3,10 +3,10 @@
 ## 用户已确认的决定
 - 目标是让工具更好用，不关闭功能；生成和修改点击后直接提交，不做任何费用确认弹窗或卡片，费用只做展示和记账。服务端仍估价、检查额度、预留和记账，余额不足照常报错。
 - 除非用户明确要求，不许改动界面布局、样式和按钮。
-- 下一步是12-B：把对话里的参考图传给生图模型；保留“已知问题”中的文件和函数位置，12-A不提前接线。
+- 任务13-2已接通对话参考图：每图位0–2张，冻结用途与图片，生图实际传入图片；修改默认沿用原图实际使用的参考图，明确指定新图时替换。未知用途用一句普通对话询问，不加确认弹窗。
 - 当前12-A只保留特定产品提示词清理、统一方案入口和对话用户意见传递；不删、不隐藏首页、按钮、示意图或其他界面。唯一获准的样式修改是首页/对话底栏模型与联网按钮恢复常驻浅灰胶囊底色（亮暗均有）。
 - 12-A之前的界面基准为00c7c3a；本条取代此前所有12-A调整。数量、分辨率、输入框边框/圆角/聚焦表现均保持该基准，不保留前轮1张/1K改动；任务13-1明确取消所有费用确认，覆盖原费用卡约定。
-- 不为验收调用真实或付费模型；真实验证由用户自行决定。任务13-1执行lint、typecheck、单元测试和build，不截图，不调用真实模型。
+- 不为验收调用真实或付费模型；真实验证由用户自行决定。当前任务执行lint、typecheck、单元测试和build，不截图，不调用真实模型。
 
 ## 技术栈与架构
 - Next.js App Router + TypeScript，Tailwind CSS + shadcn/ui；不擅自更换。
@@ -35,18 +35,22 @@
 ## 开发约定
 - UI文案和代码注释使用中文；不实现当前任务之外的功能。
 - 不确定是否能删的共享代码先保留；mock/models.ts和library-store.ts中仍有真实模型类型、估价、附件预览与上传配对用途，不能因文件名整文件删除。
-- 按当前任务执行验证；任务13-1跑npm run lint、npm run typecheck、单元测试和npm run build；模型调用仅使用本地模拟，不调用真实模型，不截图。
+- 按当前任务执行验证；当前任务跑npm run lint、npm run typecheck、单元测试和npm run build；模型调用仅使用本地模拟，不调用真实模型，不截图。
 - 纯样式小改动只跑lint和build；截图、录屏、GIF只在用户明确要求时制作。
 - 开发记录写入docs/CHANGELOG.md；不得把过时交付说明当成当前状态。
 - 用户明确要求提交后才提交；未授权不推送。
 
 ## 已知问题与后续事项
-### 12-B：对话参考图尚未接到图包生图请求
-- 对话引用图片目前只送给对话模型；图包生图仅读取方案冻结的产品实拍，参考图没有传给生图模型。下一步12-B贯通此链路，本轮不改动。
+### 任务13-2：对话参考图链路已修复
+- 原12-B缺口已接通：用途保存在AgentSession.settings.conversationImages，图位绑定保存在VisualSlot.references，冻结到ImageSlot.visualPlan，最终GenerationJob.input保存referenceUsage、omittedReferences、referenceLimit和有序referenceAssetIds。没有数据库结构迁移。
+- 产品图与参考图分开；参考图只参考purpose明确的光线、构图、场景、色调、道具等，不改变产品身份。用途不清时用一句普通对话询问；上传风格参考不自动取消产品档案/方案。
+- 方案卡沿用原样式，允许移除/替换参考图并编辑用途；冻结时验证对话来源、归属、未删除、每图位不超过2张。修改默认沿用原图实际使用的参考图，edit_image.references或局部编辑请求可显式替换，空数组表示不用参考。
 - 对话入口：src/components/design-preview/live-workspace.tsx的RealChat.send传递canvas.referenceAssetIds；src/lib/planning-agent.ts的runAgentTurn经canvasContext解析引用，在LLMInput.images里传给对话模型。
+- 用途记录：src/lib/conversation-images.ts的saveConversationImages/requireResolvedImages；src/lib/planning-agent.ts的set_image_roles工具处理和resolveSourceAliases。
 - 建立与冻结方案：src/lib/visual-planning.ts的analyzeProduct/proposeVisualPlan生成identityLock.referenceAssetIds，confirmVisualPlan校验；src/lib/agent-actions.ts的approveAgentCard/applyProposal冻结ImageSlot.visualPlan。
-- 报价与提交：src/lib/image-packs.ts的planBatch调用src/lib/scene-generation.ts的prepareSceneInput，后者按冻结的identityLock.referenceAssetIds且仅type=photo读实拍，写入GenerationJob.input.referenceAssetIds。
-- 最终请求：src/lib/image-router.ts的generate将input.referenceAssetIds映射为ImageRequest.referenceImages，再交给ImageProvider，例如src/lib/kie-provider.ts的KieProvider.generate。12-B应使引用选择、方案冻结、报价、提交和最终生成使用同一份引用快照。
+- 报价与提交：src/lib/image-packs.ts的planBatch调用src/lib/scene-generation.ts的prepareSceneInput，后者读取冻结的identityLock.referenceAssetIds产品实拍及slot.references参考图，按模型上限选择并生成逐张用途说明。报价/提交指纹包含同一图片快照。
+- 最终请求：src/lib/image-router.ts的generate将input.referenceAssetIds映射为ImageRequest.referenceImages，再交给ImageProvider，例如src/lib/kie-provider.ts的KieProvider.generate。src/lib/generation-references.ts的requestFromGenerationInput验证顺序，KIE实际发送image_input/input_urls/image_urls，ZenMux发送inlineData。未知多图能力直接报错，不用文字描述替代。
+- 上限以供应商文档登记为准，场景图优先产品实拍、再按顺序保留参考图；局部编辑必须先保留编辑原图和蒙版，并至少保留1张实拍，其余同样按产品优先。省略信息显示在图片信息中。
 
 ### 其他已知事项
 - 独立无AI手动收藏尚未实现；当前“标记优秀”仍为原有AI提炼及人工确认入库，不要称为免费收藏。

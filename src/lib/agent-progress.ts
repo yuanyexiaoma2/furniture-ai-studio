@@ -1,4 +1,4 @@
-export const progressLabels:Record<string,string>={inspect_canvas:"读取画布",read_product_materials:"读取产品资料",view_images:"查看引用图片",update_profile_draft:"更新产品理解",ask_user:"准备核对问题",request_profile_confirmation:"准备档案确认",propose_image_pack:"规划图包",generate_slot:"核算图位费用",generate_batch:"核算整套费用",edit_image:"核算调整费用",set_final:"准备终稿确认",web_search:"查找外部资料",inspect_product:"识别实拍与产品资料",plan_image_pack:"规划图包方案"};
+export const progressLabels:Record<string,string>={set_image_roles:"记录图片用途",inspect_canvas:"读取画布",read_product_materials:"读取产品资料",view_images:"查看引用图片",update_profile_draft:"更新产品理解",ask_user:"准备核对问题",request_profile_confirmation:"准备档案确认",propose_image_pack:"规划图包",generate_slot:"核算图位费用",generate_batch:"核算整套费用",edit_image:"核算调整费用",set_final:"准备终稿确认",web_search:"查找外部资料",inspect_product:"识别实拍与产品资料",plan_image_pack:"规划图包方案"};
 export function progressLabel(name:string){return progressLabels[name]??"处理创作任务";}
 export function progressSummary(result:unknown){
  const r=result&&typeof result==="object"?result as Record<string,unknown>:{};

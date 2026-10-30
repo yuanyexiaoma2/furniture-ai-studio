@@ -1,4 +1,6 @@
 import "server-only";
+import {fitReferenceUsage,referencePurposePrompt,type ReferenceUse} from "./generation-references";
+import {wrapImagePrompt} from "./visual-plan-rules";
 import {fitImageReferences,validateImageSelection} from "./image-model-input";
 import {selectedCandidate,settingsOf} from "./studio-models";
 import { createHash } from "node:crypto";
@@ -84,10 +86,13 @@ async function planBatch(tx: Prisma.TransactionClient, productId: string, select
     if (!old || old.productId !== productId || !old.batchId || !old.slotId || !pack.slots.some(s => s.id === old.slotId) || old.status !== "failed" || old.retriedBy) throw new StudioError("只能重试当前图包尚未重试的失败候选图", 409);
     const raw = old.input as Record<string, Prisma.InputJsonValue>;
     const assets = await tx.asset.findMany({ where: { id: { in: raw.referenceAssetIds as string[] },productId,deletedAt:null } });
-    const refs=fitImageReferences(candidate,(raw.referenceAssetIds as string[]).flatMap(id=>assets.filter(a=>a.id===id)));
-    validateImageSelection(candidate,String(raw.resolution??"2K"),String(raw.aspect_ratio),String(raw.prompt),refs.length);
-    const input = { ...raw, referenceAssetIds:refs.map(a=>a.id), selectedCandidate:JSON.parse(JSON.stringify(candidate)), autoRetryCount:0, submissionAttempted: false, uncertainCharge: false, referenceRetryCount: 0, image_input: [] };
-    return { pack, candidate, skipped: [] as string[], entries: [{ slotId: old.slotId, count: 1, prepared: { input, estimate: estimateImageUsd(candidate,(raw.resolution??"2K") as "1K"|"2K"|"4K", String(raw.prompt), refs) } }], old };
+    if(assets.length!==(raw.referenceAssetIds as string[]).length)throw new StudioError("原任务使用的图片已删除，请重新选择参考图",409);
+    const snapshot=raw.referenceUsage?fitReferenceUsage(candidate,raw.referenceUsage as unknown as ReferenceUse[]):null;
+    const prompt=snapshot?wrapImagePrompt(String(raw.basePrompt??raw.prompt)+"\n"+referencePurposePrompt(snapshot.referenceUsage),snapshot.referenceAssetIds):String(raw.prompt);
+    const refs=snapshot?snapshot.referenceAssetIds.map(id=>assets.find(a=>a.id===id)!):fitImageReferences(candidate,(raw.referenceAssetIds as string[]).flatMap(id=>assets.filter(a=>a.id===id)));
+    validateImageSelection(candidate,String(raw.resolution??"2K"),String(raw.aspect_ratio),prompt,refs.length);
+    const input = { ...raw,...(snapshot?{...snapshot,omittedReferences:[...((raw.omittedReferences??[]) as unknown as ReferenceUse[]),...snapshot.omittedReferences]}:{}),prompt, referenceAssetIds:refs.map(a=>a.id), selectedCandidate:JSON.parse(JSON.stringify(candidate)), autoRetryCount:0, submissionAttempted: false, uncertainCharge: false, referenceRetryCount: 0, image_input: [] };
+    return { pack, candidate, skipped: [] as string[], entries: [{ slotId: old.slotId, count: 1, prepared: { input, estimate: estimateImageUsd(candidate,(raw.resolution??"2K") as "1K"|"2K"|"4K", prompt, refs) } }], old };
   }
   const activeSlots=pack.confirmedPlanId?pack.slots.filter(s=>(s.visualPlan as {confirmationCardId?:string}|null)?.confirmationCardId===pack.confirmedPlanId):pack.slots;
   const selected = selection.slotId ? activeSlots.filter(s => s.id === selection.slotId) : activeSlots;

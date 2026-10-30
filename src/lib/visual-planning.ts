@@ -1,4 +1,6 @@
 import "server-only";
+import {requireResolvedImages} from "./conversation-images";
+import {conversationImages} from "./generation-references";
 import {z} from "zod";
 import {db} from "./db";
 import {agentSession,json} from "./agent-state";
@@ -19,11 +21,12 @@ export async function askVisual(productId:string,userId:string,system:string,pay
  return parseJson(reply.result.text);
 }
 export async function analyzeProduct(productId:string,userId:string):Promise<IdentityLock>{
- const product=await db.product.findUniqueOrThrow({where:{id:productId},include:{assets:{where:{type:"photo",deletedAt:null},orderBy:[{sortOrder:"asc"},{id:"asc"}],take:3},identityVersions:{orderBy:[{savedAt:"desc"},{id:"desc"}],take:1},documents:{where:{parseStatus:"ready",OR:[{assetId:null},{asset:{deletedAt:null}}]},orderBy:{createdAt:"asc"},take:20}}});
+ const session=await agentSession(productId,userId),excluded=conversationImages(session.settings).filter(i=>i.role==="reference").map(i=>i.assetId);
+ const product=await db.product.findUniqueOrThrow({where:{id:productId},include:{assets:{where:{type:"photo",deletedAt:null,id:{notIn:excluded}},orderBy:[{sortOrder:"asc"},{id:"asc"}],take:3},identityVersions:{orderBy:[{savedAt:"desc"},{id:"desc"}],take:1},documents:{where:{parseStatus:"ready",OR:[{assetId:null},{asset:{deletedAt:null}}]},orderBy:{createdAt:"asc"},take:20}}});
  if(!product.assets.length)throw new StudioError("请先上传产品实拍再规划",409);
- const supplementPhotos=product.documents.filter(d=>d.assetId&&!product.assets.some(a=>a.id===d.assetId)).slice(0,3).map(d=>d.assetId!);
+ const supplementPhotos=product.documents.filter(d=>d.assetId&&!excluded.includes(d.assetId)&&!product.assets.some(a=>a.id===d.assetId)).slice(0,3).map(d=>d.assetId!);
  const shape=identityLockSchema.omit({referenceAssetIds:true,identityVersionId:true});
- const result=shape.parse(await askVisual(productId,userId,"分析本产品实拍和参数，提取真实结构、材质、颜色、功能点和按重要性排序的卖点。不能因模板里有某种功能就认定本产品拥有；遮挡、尺寸和拆卸状态不清楚时明确未知。仅从外观推测的材料必须标注‘视觉推测，待核对’，不能把基材或性能当作已证实事实。已确认身份是约束。traits 是完整的本次身份锁；字段结构："+JSON.stringify(z.toJSONSchema(shape)),{name:product.name,category:product.category,dimensions:product.dimensions,materials:product.materials,colors:product.colors,sellingPoints:product.sellingPoints,confirmedIdentity:product.identityTraits,supplementaryDocuments:product.documents.map(d=>({filename:d.filename,text:d.text,imageType:d.imageType}))},[...product.assets.map(a=>a.id),...supplementPhotos],3000));
+ const result=shape.parse(await askVisual(productId,userId,"分析本产品实拍和参数，提取真实结构、材质、颜色、功能点和按重要性排序的卖点。不能因模板里有某种功能就认定本产品拥有；遮挡、尺寸和拆卸状态不清楚时明确未知。仅从外观推测的材料必须标注‘视觉推测，待核对’，不能把基材或性能当作已证实事实。已确认身份是约束。traits 是完整的本次身份锁；字段结构："+JSON.stringify(z.toJSONSchema(shape)),{name:product.name,category:product.category,dimensions:product.dimensions,materials:product.materials,colors:product.colors,sellingPoints:product.sellingPoints,confirmedIdentity:product.identityTraits,supplementaryDocuments:product.documents.filter(d=>!d.assetId||!excluded.includes(d.assetId)).map(d=>({filename:d.filename,text:d.text,imageType:d.imageType}))},[...product.assets.map(a=>a.id),...supplementPhotos],3000));
  return {...result,sellingPoints:[...result.sellingPoints].sort((a,b)=>a.priority-b.priority),referenceAssetIds:product.assets.map(a=>a.id),identityVersionId:product.identityVersions[0]?.id??null};
 }
 export async function researchCompetitors(productId:string,userId:string,identity:IdentityLock){
@@ -68,14 +71,15 @@ export function planToProposal(plan:VisualPlan){
 }
 export async function proposeVisualPlan(productId:string,userId:string,options:{singleIntent?:string;aspectRatio?:VisualSlot["aspectRatio"];feedback?:string;previousPlan?:VisualPlan;originalPlan?:VisualPlan;identity?:IdentityLock}={}){
  const session=await agentSession(productId,userId),product=await db.product.findUniqueOrThrow({where:{id:productId}});
+ const imageState=await requireResolvedImages(session.id),images=imageState.images;
  const identity=identityLockSchema.parse(options.previousPlan?.identityLock??options.identity??await analyzeProduct(productId,userId));
  const research=await researchCompetitors(productId,userId,identity),library=await retrieveLibrary(product.category,identity.sellingPoints.map(s=>s.name));
  const {scope,priorKeys}=await readVisualHistory(productId,product.category),propPool=propPoolFrom(library.entries);
  const conversation=await db.chatMessage.findMany({where:{sessionId:session.id,role:"user"},orderBy:{createdAt:"desc"},take:20,select:{content:true}});
  const scenePool=library.entries.filter(e=>e.type==="scene_pattern").map(e=>String(e.content.roomType??e.name));
  const shape=z.object({reason:z.string(),slots:z.array(visualSlotSchema).min(1).max(options.singleIntent?1:12),propPool:z.array(z.string()).optional()});
- const raw=shape.parse(await askVisual(productId,userId,"为本次新产品制定视觉方案，按 identityLock 的真实卖点规划，不套用任何旧 SKU 结构。每个图位提供卖点、场景、道具、陈列、机位、光线、环境色调、构图、后期需求和依据。根据当前产品资料和用户目标安排图位；经验库只作表达参考，不套用固定图位顺序。场景优先从 scenePool 挑选，关键方向可给出有依据的新场景候选供美工选择。场景图之间空间不重复、环境道具从 propPool 中选择，不能自造池外道具；不同场景图道具不重复，避免同品类最近5个SKU和本产品已用组合。主图纯白无配饰。尺寸/文字/数字/图标/线稿只放 postNotes，由美工后期处理；干净摄影底图不渲染它们。特写允许局部取景；产品变化只能来自当前资料支持的事实与用户明确要求。evidence 只能使用检索条目ID、竞品图片ref、提供的来源URL或 identityLock。竞品逐图拆解优先，联网 supplement 仅作低权重文字补充。图位4–7及8必须提供2–3个有实质差异的 directions，每个包含完整画面字段、id、label和一句reason，selectedDirectionId 为 null 等美工选择。不是改同义词，要改变场景、陈列或机位。其它图位可只有一个方向。propPool为空时在方案 propPool 中提出少量通用品类道具供美工选择；不可包含本产品结构或尺寸。"+(options.singleIntent?"只输出一个图位，遵循 singleIntent。":"")+" JSON结构："+JSON.stringify(z.toJSONSchema(shape)),{identityLock:identity,conversation:conversation.reverse().map(m=>m.content),research,library:library.entries,libraryNote:library.note,scenePool,propPool,previousCombinationKeys:priorKeys,...options},[],14000));
- const plan=validateVisualPlan({version:1,productId,identityLock:identity,research,libraryIds:library.entries.map(e=>e.id),libraryNote:library.note,...raw,slots:raw.slots.map(s=>({...s,...(s.directions?.length?{selectedDirectionId:null}:{}),...(options.singleIntent&&options.aspectRatio?{aspectRatio:options.aspectRatio}:{})})),createdAt:new Date().toISOString(),scenePool:[...new Set([...scenePool,...raw.slots.flatMap(s=>[s.scene,...s.directions?.map(d=>d.scene)??[]])])],comparisonScope:scope,excludedCombinationKeys:priorKeys,propPool:propPool.length?propPool:raw.propPool??[]},priorKeys);
+ const raw=shape.parse(await askVisual(productId,userId,"对话图片中的产品图与参考图用途已在conversationImages中说明，按每个参考图purpose只借鉴指定方面，不把其中家具搬进画面。每图位references最多2张，格式{assetId,purpose}，assetId只能来自conversationImages的reference图片，不匹配的图位用空数组；主图仍保持纯白，不从参考图引入场景或道具，所有图位不得改变产品身份。为本次新产品制定视觉方案，按 identityLock 的真实卖点规划，不套用任何旧 SKU 结构。每个图位提供卖点、场景、道具、陈列、机位、光线、环境色调、构图、后期需求和依据。根据当前产品资料和用户目标安排图位；经验库只作表达参考，不套用固定图位顺序。场景优先从 scenePool 挑选，关键方向可给出有依据的新场景候选供美工选择。场景图之间空间不重复、环境道具从 propPool 中选择，不能自造池外道具；不同场景图道具不重复，避免同品类最近5个SKU和本产品已用组合。主图纯白无配饰。尺寸/文字/数字/图标/线稿只放 postNotes，由美工后期处理；干净摄影底图不渲染它们。特写允许局部取景；产品变化只能来自当前资料支持的事实与用户明确要求。evidence 只能使用检索条目ID、竞品图片ref、提供的来源URL或 identityLock。竞品逐图拆解优先，联网 supplement 仅作低权重文字补充。图位4–7及8必须提供2–3个有实质差异的 directions，每个包含完整画面字段、id、label和一句reason，selectedDirectionId 为 null 等美工选择。不是改同义词，要改变场景、陈列或机位。其它图位可只有一个方向。propPool为空时在方案 propPool 中提出少量通用品类道具供美工选择；不可包含本产品结构或尺寸。"+(options.singleIntent?"只输出一个图位，遵循 singleIntent。":"")+" JSON结构："+JSON.stringify(z.toJSONSchema(shape)),{conversationImages:images,identityLock:identity,conversation:conversation.reverse().map(m=>m.content),research,library:library.entries,libraryNote:library.note,scenePool,propPool,previousCombinationKeys:priorKeys,...options},images.filter(i=>i.role==="reference").slice(-10).map(i=>i.assetId),14000));
+ const plan=validateVisualPlan({version:1,productId,conversationImages:images,identityLock:identity,research,libraryIds:library.entries.map(e=>e.id),libraryNote:library.note,...raw,slots:raw.slots.map(s=>({...s,...(s.directions?.length?{selectedDirectionId:null}:{}),...(options.singleIntent&&options.aspectRatio?{aspectRatio:options.aspectRatio}:{})})),createdAt:new Date().toISOString(),scenePool:[...new Set([...scenePool,...raw.slots.flatMap(s=>[s.scene,...s.directions?.map(d=>d.scene)??[]])])],comparisonScope:scope,excludedCombinationKeys:priorKeys,propPool:propPool.length?propPool:raw.propPool??[]},priorKeys);
  for(const [i,s] of plan.slots.entries())if(requiresDirections(s,i)&&(!s.directions||s.directions.length<2))throw new StudioError("关键图位需提供2–3个方向，请重新规划",502);
  await db.agentCard.updateMany({where:{sessionId:session.id,kind:"pack",status:"pending"},data:{status:"cancelled"}});
  const card=await db.agentCard.create({data:{sessionId:session.id,kind:"pack",data:json({...planToProposal(plan),originalVisualPlan:options.originalPlan??options.previousPlan??plan})}});
@@ -85,6 +89,8 @@ export async function proposeVisualPlan(productId:string,userId:string,options:{
 export async function confirmVisualPlan(tx:Prisma.TransactionClient,productId:string,raw:unknown){
  const plan=validateVisualPlan(raw);if(plan.productId!==productId)throw new StudioError("方案不属于本产品",409);
  for(const s of plan.slots)if(s.directions?.length&&!s.directions.some(d=>d.id===s.selectedDirectionId))throw new StudioError("请先为关键图位选择一个方向",409);
+ const referenceIds=[...new Set(plan.slots.flatMap(s=>s.references?.map(r=>r.assetId)??[]))];
+ if(referenceIds.length!==await tx.asset.count({where:{id:{in:referenceIds},productId,type:{not:"mask"},deletedAt:null}}))throw new StudioError("方案参考图已删除或不属于本产品，请重新选择",409);
  const photos=await tx.asset.count({where:{id:{in:plan.identityLock.referenceAssetIds},productId,type:"photo",deletedAt:null}});
  if(photos!==plan.identityLock.referenceAssetIds.length)throw new StudioError("方案中的实拍已变化，请重新规划",409);
  return plan;

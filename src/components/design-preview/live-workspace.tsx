@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- 通过鉴权接口读取私有图片。 */
 "use client";
+import {conversationImages,type SlotReference} from "@/lib/generation-references";
 import {submitEditImmediately} from "@/lib/direct-submission";
 import {QuestionsCard,ProfileForm} from "./interaction-cards";
 import {currentGenerationSlot,type UserQuestion} from "@/lib/interaction-rules";
@@ -42,7 +43,7 @@ function RealWorkspaceInner(){
  const live=useLiveStore(),router=useRouter(),params=useSearchParams(),id=params.get("sku")??"",initialized=useRef(false);
  useCanvasPersistence(id);
  useEffect(()=>{useLiveStore.setState({generationChoiceRequired:false});useModelStore.getState().startSession(demoSession,true);usePreviewStore.setState({liveMode:true});if(useLiveStore.getState().snapshot?.product.id!==id)useLiveStore.setState({snapshot:null});const params=new URLSearchParams(window.location.search),productId=id;if(!productId){useLiveStore.setState({snapshot:null});usePreviewStore.setState({nodes:[]});return;}let active=true;async function load(){try{await useLiveStore.getState().load(productId!);if(!active)return;const snapshot=useLiveStore.getState().snapshot!;useModelStore.getState().startSession(demoSession);if(!initialized.current){initialized.current=true;const selection=snapshot.settings;if(selection.agentId)useModelStore.getState().updateSelection(demoSession,{agentId:selection.agentId,imageId:selection.imageId,imageIds:selection.imageIds,auto:selection.auto,webEnabled:selection.webEnabled,resolution:selection.resolution});if(params.get("init")==="1"&&!snapshot.agent.cards.length)await useLiveStore.getState().act("inspect");}}catch(e){if(active)useLiveStore.setState({error:e instanceof Error?e.message:"加载失败"});}}void load();const timer=setInterval(()=>{void load();},4000);return()=>{active=false;cancelLiveLoad();clearInterval(timer);initialized.current=false;};},[id]);
- const upload=async(files:File[])=>{try{if(!id){useLiveStore.getState().addFiles(files);const productId=await useLiveStore.getState().create("为这个产品做一套图包");router.push("/workspace?sku="+productId+"&init=1");return;}const form=new FormData();files.forEach(f=>form.append("files",f));const response=await studioFetch<{results:{error?:string}[]}>("/api/products/"+id+"/documents",{method:"POST",body:form});if(response.results.some(r=>r.error))throw Error("部分文件上传或解析失败，请检查资料列表后重试");await useLiveStore.getState().act("inspect");}catch(e){notify(e);}};
+ const upload=async(files:File[])=>{try{if(!id){useLiveStore.getState().addFiles(files);const productId=await useLiveStore.getState().create("为这个产品做一套图包");router.push("/workspace?sku="+productId+"&init=1");return;}const form=new FormData();files.forEach(f=>form.append("files",f));form.append("conversation","true");const response=await studioFetch<{results:{assetId?:string;error?:string}[]}>("/api/products/"+id+"/documents",{method:"POST",body:form});if(response.results.some(r=>r.error))throw Error("部分文件上传或解析失败，请检查资料列表后重试");await useLiveStore.getState().load(id);for(const result of response.results)if(result.assetId)usePreviewStore.getState().addReference(result.assetId);}catch(e){notify(e);}};
  async function action(request:ActionRequest){
  const s=useLiveStore.getState().snapshot;if(!s)return;
  try{
@@ -58,8 +59,8 @@ function RealWorkspaceInner(){
  let maskAssetId:string|undefined;if(request.mask){const form=new FormData();form.append("mask",request.mask,"mask.png");maskAssetId=(await studioFetch<{assetId:string}>("/api/studio/"+id,{method:"POST",body:form})).assetId;}
  const instruction=intent+(request.expansion?" 扩图尺寸及原图位置："+JSON.stringify(request.expansion):"");
  const maskHash=request.mask?Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",await request.mask.arrayBuffer()))).map(n=>n.toString(16).padStart(2,"0")).join(""):"";
- const signature=JSON.stringify([id,request.imageId,request.action,instruction,maskHash]);if(!editRequestKeys.has(signature))editRequestKeys.set(signature,crypto.randomUUID());
- const {quote}=await submitEditImmediately({assetId:request.imageId,instruction,...(maskAssetId?{maskAssetId}:{}),...(request.expansion?{expansion:request.expansion}:{})},editRequestKeys.get(signature)!,{
+ const signature=JSON.stringify([id,request.imageId,request.action,instruction,maskHash,request.references]);if(!editRequestKeys.has(signature))editRequestKeys.set(signature,crypto.randomUUID());
+ const {quote}=await submitEditImmediately({assetId:request.imageId,instruction,...(request.references?{references:request.references}:{}),...(maskAssetId?{maskAssetId}:{}),...(request.expansion?{expansion:request.expansion}:{})},editRequestKeys.get(signature)!,{
   quote:selection=>studioFetch("/api/studio/"+id,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"edit_quote",data:selection})}),
   submit:body=>live.act("edit",body)
  });
@@ -118,12 +119,12 @@ function RealCard({card,act}:{card:Card;act:(action:string,data?:Record<string,u
  if(card.kind==="category")return <div className="r4-category-confirm l-shooting-card"><span className="l-card-eyebrow"><IconBadge concept="product"/>确认产品</span><h3>{d.name?"看起来是"+String(d.name)+"，对吗？":"还没看出产品品类，可以确认一下吗？"}</h3><div>{!!d.categoryId&&<Button disabled={live.busy} onClick={()=>void act("category",{categoryId:d.categoryId})}>是</Button>}<CategorySelect/></div></div>;
  if(card.kind==="shooting")return <div className="r4-shooting-choice l-shooting-card"><h3>这个品类默认采用严格拍摄标准。</h3><p>按清单核对资料，还是这次先快速开始？</p><Button disabled={live.busy} onClick={()=>void act("shooting",{mode:"strict"})}>按严格来</Button><Button variant="outline" disabled={live.busy} onClick={()=>void act("shooting",{mode:"quick"})}>这次先快速</Button></div>;
  if(card.kind==="profile")return <ProfileForm busy={live.busy} profile={d.profile as Profile} onSave={profile=>act("approve",{cardId:card.id,changes:{profile}})}/>;
- if(card.kind==="pack"&&d.visualPlan)return <VisualPlanCard cardId={card.id} initial={d.visualPlan as VisualPlan} busy={live.busy} act={act}/>;
+ if(card.kind==="pack"&&d.visualPlan)return <VisualPlanCard cardId={card.id} initial={d.visualPlan as VisualPlan} availableImages={conversationImages(s.settings)} busy={live.busy} act={act}/>;
  if(card.kind==="pack")return <div className="l-shooting-card"><h3>图包方案</h3><p>{String(d.reason??"")}</p>{(d.slots as {name:string;candidateCount:number}[]).map((slot,i)=><p key={i}>{i+1}. {slot.name} · {slot.candidateCount} 张候选</p>)}<Button disabled={live.busy} onClick={()=>void act("approve",{cardId:card.id})}>确认图包方案</Button></div>;
  if(card.kind==="cost")return null;
  if(card.kind==="questions")return <QuestionsCard questions={d.questions as UserQuestion[]} busy={live.busy} onSubmit={answers=>void act("approve",{cardId:card.id,changes:{answers}})}/>;
  if(card.kind==="library_case")return <div className="l-shooting-card"><h3>确认沉淀优秀案例</h3><p>{String(d.note)}</p><pre className="whitespace-pre-wrap text-xs">{JSON.stringify(d.entries,null,2)}</pre><Button disabled={live.busy} onClick={()=>void act("approve",{cardId:card.id})}>确认入库</Button></div>;
- if(card.kind==="mask_request")return <div className="l-shooting-card"><h3>请在画布选择修改区域</h3><p>{String(d.instruction)}</p><Button onClick={()=>{usePreviewStore.getState().select([String(d.assetId)]);usePreviewStore.getState().setEditor({id:String(d.assetId),action:"paint"});}}>框选或涂抹</Button></div>;
+ if(card.kind==="mask_request")return <div className="l-shooting-card"><h3>请在画布选择修改区域</h3><p>{String(d.instruction)}</p><Button onClick={()=>{usePreviewStore.getState().select([String(d.assetId)]);usePreviewStore.getState().setEditor({id:String(d.assetId),action:"paint",instruction:String(d.instruction),references:d.references as SlotReference[]|undefined});}}>框选或涂抹</Button></div>;
  if(card.kind==="final")return <div className="l-shooting-card"><h3>设为这个图位的终稿？</h3><Button onClick={()=>void act("approve",{cardId:card.id})}><Check size="sm"/>确认终稿</Button></div>;
  return <div className="p-subtle">待确认：{s.product.name}</div>;
 }

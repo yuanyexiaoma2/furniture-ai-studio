@@ -1,4 +1,5 @@
 import {z} from "zod";
+import {slotReferenceSchema,conversationImageSchema} from "./generation-references";
 
 export const patternTypes=["scene_pattern","selling_point_pattern","prop_pool","slot_sequence","case"] as const;
 export const patternSchema=z.object({
@@ -11,10 +12,10 @@ export type VisualPattern=z.infer<typeof patternSchema>;
 export const identityLockSchema=z.object({traits:z.string().min(1),structure:z.string(),materials:z.string(),colors:z.string(),functions:z.array(z.string()),sellingPoints:z.array(z.object({name:z.string(),evidence:z.string(),priority:z.number().int()})).min(1),referenceAssetIds:z.array(z.string()).min(1),identityVersionId:z.string().nullable()});
 const slotBaseSchema=z.object({key:z.string().min(1),name:z.string().min(1),slotType:z.enum(["main","scene","dimension","selling_point","detail","installation"]),method:z.enum(["ai_scene","manual_upload"]).optional(),aspectRatio:z.enum(["1:1","2:3","3:2","3:4","4:3","4:5","5:4","9:16","16:9","21:9","1:4","4:1","1:8","8:1","auto"]).optional(),sellingPoint:z.string(),scene:z.string(),props:z.array(z.string()),display:z.string(),camera:z.string(),light:z.string(),palette:z.string(),composition:z.string(),needs_post:z.boolean(),postNotes:z.string(),evidence:z.array(z.string()).min(1),notes:z.string().default(""),combinationKey:z.string().default("")});
 export const directionSchema=slotBaseSchema.omit({key:true,name:true,slotType:true,method:true,aspectRatio:true,notes:true,combinationKey:true}).extend({id:z.string().min(1),label:z.string().min(1),reason:z.string().min(1)});
-export const visualSlotSchema=slotBaseSchema.extend({directions:z.array(directionSchema).max(3).optional(),selectedDirectionId:z.string().nullable().optional()});
+export const visualSlotSchema=slotBaseSchema.extend({references:z.array(slotReferenceSchema).max(2).optional(),directions:z.array(directionSchema).max(3).optional(),selectedDirectionId:z.string().nullable().optional()});
 export const referenceBreakdownSchema=z.object({ref:z.string(),space:z.string(),props:z.array(z.string()),display:z.string(),sellingExpression:z.string(),camera:z.string()});
 export const researchSchema=z.object({status:z.enum(["success","skipped"]),note:z.string(),commonScenes:z.array(z.string()),commonExpressions:z.array(z.string()),homogeneity:z.array(z.string()),opportunities:z.array(z.string()),sources:z.array(z.object({title:z.string(),url:z.string().url(),content:z.string()})),cachedAt:z.string(),references:z.array(referenceBreakdownSchema).default([]),supplement:z.object({status:z.enum(["success","skipped"]),note:z.string(),text:z.string(),sources:z.array(z.object({title:z.string(),url:z.string(),content:z.string()}))}).optional()});
-export const visualPlanSchema=z.object({version:z.literal(1),productId:z.string(),identityLock:identityLockSchema,research:researchSchema,libraryIds:z.array(z.string()),libraryNote:z.string(),reason:z.string(),slots:z.array(visualSlotSchema).min(1).max(30),createdAt:z.string(),propPool:z.array(z.string()).optional(),scenePool:z.array(z.string()).optional(),comparisonScope:z.array(z.string()).optional(),excludedCombinationKeys:z.array(z.string()).optional()});
+export const visualPlanSchema=z.object({version:z.literal(1),productId:z.string(),identityLock:identityLockSchema,research:researchSchema,libraryIds:z.array(z.string()),libraryNote:z.string(),reason:z.string(),slots:z.array(visualSlotSchema).min(1).max(30),createdAt:z.string(),conversationImages:z.array(conversationImageSchema).optional(),propPool:z.array(z.string()).optional(),scenePool:z.array(z.string()).optional(),comparisonScope:z.array(z.string()).optional(),excludedCombinationKeys:z.array(z.string()).optional()});
 export type VisualPlan=z.infer<typeof visualPlanSchema>;
 export type VisualSlot=z.infer<typeof visualSlotSchema>;
 export function requiresDirections(s:VisualSlot,index:number){const n=Number(/(?:^|[^0-9])([1-9])(?:[^0-9]|$)/.exec(s.key)?.[1]??index+1);return n>=4&&n<=8;}
@@ -32,6 +33,8 @@ export function validateVisualPlan(raw:unknown,previousKeys:string[]=[]){
  const plan=visualPlanSchema.parse(raw),keys=new Set([...previousKeys,...plan.excludedCombinationKeys??[]]),scenes=new Set<string>(),props=new Set<string>(),slotKeys=new Set<string>();
  for(const s of plan.slots){
   if(slotKeys.has(s.key))throw new Error("图位标识重复");slotKeys.add(s.key);
+  if(new Set(s.references?.map(r=>r.assetId)).size!==(s.references?.length??0))throw new Error("同一图位不能重复绑定参考图");
+  for(const ref of s.references??[])if(!plan.conversationImages?.some(i=>i.assetId===ref.assetId&&i.role==="reference")||plan.identityLock.referenceAssetIds.includes(ref.assetId))throw new Error("参考图必须来自当前对话的参考图，不能作为产品身份实拍");
   s.combinationKey=visualCombinationKey(s);
   if(keys.has(s.combinationKey))throw new Error("画面组合重复，请替换场景或陈列");keys.add(s.combinationKey);
   if(s.slotType==="scene"){

@@ -4,7 +4,7 @@ import {StudioError} from "./studio-error";
 import {gatewayConfigured} from "./gateway-router";
 import type {ModelCandidate} from "./models.config";
 import type {MockModel} from "@/design-preview/mock/models";
-export type StudioSettings={agentId?:string;imageId?:string;imageIds?:string[];auto?:boolean;webEnabled?:boolean;resolution?:"auto"|"1K"|"2K"|"4K";shootingMode?:"quick"|"strict";categoryConfirmed?:boolean;categoryId?:string;photoAngles?:Record<string,string>;strictSkipped?:boolean;quickHintSeen?:boolean;planRecipes?:Record<string,unknown>};
+export type StudioSettings={conversationImages?:import("./generation-references").ConversationImage[];agentId?:string;imageId?:string;imageIds?:string[];auto?:boolean;webEnabled?:boolean;resolution?:"auto"|"1K"|"2K"|"4K";shootingMode?:"quick"|"strict";categoryConfirmed?:boolean;categoryId?:string;photoAngles?:Record<string,string>;strictSkipped?:boolean;quickHintSeen?:boolean;planRecipes?:Record<string,unknown>};
 export function settingsOf(value:unknown):StudioSettings{return(value&&typeof value==="object"?value:{}) as StudioSettings;}
 import {agentCanBeUsed,userSelectedAgent} from "./studio-rules";
 import {DEFAULT_IMAGE_ID,kieImageSpec} from "./image-models";

@@ -1,4 +1,5 @@
 import "server-only";
+import {requestFromGenerationInput} from "./generation-references";
 import {imageRetryAllowed} from "./studio-rules";
 import { db } from "./db";
 import { routeCall, candidatesFor, gatewayConfigured } from "./gateway-router";
@@ -22,7 +23,7 @@ async function generate(id: string, factory: (candidate: ModelCandidate) => Imag
   const job = await db.generationJob.findUniqueOrThrow({ where: { id }, include: { attempts: true } });
   if (job.status !== "running") return;
   const input = job.input as Record<string, unknown>;
-  const request: ImageRequest = { prompt: String(input.prompt), referenceImages: (input.referenceAssetIds as string[]).map(id => ({ id })), aspectRatio: String(input.aspect_ratio), resolution: input.resolution as ImageRequest["resolution"], outputFormat: input.output_format as ImageRequest["outputFormat"] };
+  const request: ImageRequest = requestFromGenerationInput(input);
   const photos = await db.asset.findMany({ where: { id: { in: request.referenceImages.map(p => p.id) } }, select: { width: true, height: true } });
   let activeAttempt: string | undefined;
   try {
@@ -108,7 +109,7 @@ export async function pollGatewayJob(id: string, factory = imageProvider) {
       // 同一家重传，单独记录第二次实际提交，不标记为备用，不经过网关切换。
       const candidateProvider = factory(candidate);
       try {
-        const request: ImageRequest = { prompt: String(input.prompt), referenceImages: (input.referenceAssetIds as string[]).map(id => ({ id })), aspectRatio: String(input.aspect_ratio), resolution: input.resolution as ImageRequest["resolution"], outputFormat: input.output_format as ImageRequest["outputFormat"], forceReferenceUpload: true };
+        const request: ImageRequest = {...requestFromGenerationInput(input),forceReferenceUpload:true};
         const photos = await db.asset.findMany({ where: { id: { in: request.referenceImages.map(a => a.id) } }, select: { width: true, height: true } });
         const estimate = estimateImageUsd(candidate, request.resolution, request.prompt, photos);
         const retry = await db.$transaction(async tx => { const sum = await tx.generationAttempt.aggregate({ where: { jobId: id }, _sum: { costUsd: true } }); const reservation = Number(sum._sum.costUsd ?? 0) + estimate; await assertUsdQuota(tx, job.createdById, reservation, { jobId: id }); await tx.generationJob.update({ where: { id }, data: { externalTaskId: null, reservedUsd: reservation } }); return tx.generationAttempt.create({ data: { jobId: id, provider: candidate.provider, model: candidate.model, fallback: job.fallback, costUsd: estimate, costEstimated: true } }); });

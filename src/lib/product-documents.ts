@@ -5,11 +5,11 @@ import { documentType, parseDocument, MAX_DOCUMENT_BYTES } from "./document-pars
 import { inspectPhoto, putObject, deleteObject } from "./storage";
 import { StudioError } from "./studio-error";
 export const imageTypes = ["photo", "white_bg", "render_3d", "detail", "other"] as const;
-export async function uploadProductDocuments(productId: string, userId: string, files: File[]) {
+export async function uploadProductDocuments(productId: string, userId: string, files: File[],conversation=false) {
   if (!await db.product.findUnique({ where: { id: productId } })) throw new StudioError("商品不存在", 404);
   if (files.reduce((n, file) => n + file.size, 0) > 100 * 1024 * 1024) throw new StudioError("单次上传不能超过 100MB");
   if (!files.length || files.length > 15) throw new StudioError("每次可上传 1～15 个文件");
-  const results: { filename: string; id?: string; error?: string }[] = [];
+  const results: { filename: string; id?: string; assetId?:string; error?: string }[] = [];
   for (const file of files) {
     let key: string | undefined; let documentId: string | undefined;
     try {
@@ -26,7 +26,7 @@ export async function uploadProductDocuments(productId: string, userId: string, 
       });
       documentId = document.id; key = undefined;
       if (!photo) await db.productDocument.update({ where: { id: document.id }, data: { text: await parseDocument(bytes, type), parseStatus: "ready" } });
-      results.push({ filename: file.name, id: document.id });
+      results.push({ filename: file.name, id: document.id,...(document.assetId?{assetId:document.assetId}:{}) });
     } catch (error) {
       const message = error instanceof Error && /[\u3400-\u9fff]/.test(error.message) ? error.message : "解析失败，请检查文件是否损坏、加密或格式不符";
       if (documentId) await db.productDocument.update({ where: { id: documentId }, data: { parseStatus: "failed", error: message } });
@@ -34,9 +34,16 @@ export async function uploadProductDocuments(productId: string, userId: string, 
       results.push({ filename: file.name, ...(documentId ? { id: documentId } : {}), error: message });
     }
   }
+  // 对话附件可能只是风格参考，不因上传就覆盖产品身份或取消已确认方案。
+  if(conversation&&results.some(r=>r.assetId)){
+    const session=await db.agentSession.findUniqueOrThrow({where:{productId_createdById:{productId,createdById:userId}}});
+    await db.chatMessage.create({data:{productId,sessionId:session.id,role:"user",content:{text:"添加了对话图片，具体用途以接下来的要求为准。",referenceAssetIds:results.flatMap(r=>r.assetId?[r.assetId]:[])}}});
+  }
+  if(!conversation||files.some(f=>documentType(f.name)!=="image")){
   await db.agentSession.updateMany({ where: { productId }, data: { confirmedProfileId: null, confirmedPack: false, draftRevision: { increment: 1 } } });
   const sessions = await db.agentSession.findMany({ where: { productId }, select: { id: true } });
   await db.agentCard.updateMany({ where: { sessionId: { in: sessions.map(s => s.id) }, kind: { in: ["profile", "pack", "cost"] }, status: "pending" }, data: { status: "cancelled" } });
+  }
   return results;
 }
 export async function classifyDocument(productId: string, documentId: string, imageType: typeof imageTypes[number]) {

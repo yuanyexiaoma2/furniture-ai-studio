@@ -6,7 +6,7 @@ import {canvasLayoutSchema,canvasSelectionSchema,emptyCanvasLayout,reconcileCanv
 
 export async function canvasRegistry(productId:string):Promise<CanvasElement[]>{
  const [photos,pack]=await Promise.all([
-  db.asset.findMany({where:{productId,deletedAt:null,type:"photo"},orderBy:[{sortOrder:"asc"},{id:"asc"}],select:{id:true,type:true}}),
+  db.asset.findMany({where:{productId,deletedAt:null,type:{in:["photo","style_ref","white_bg"]}},orderBy:[{sortOrder:"asc"},{id:"asc"}],select:{id:true,type:true}}),
   db.imagePack.findFirst({where:{productId,isCurrent:true},include:{slots:{where:{deletedAt:null},orderBy:{order:"asc"},include:{jobs:{where:{retriedBy:null},orderBy:[{createdAt:"asc"},{id:"asc"}]}}}}}),
  ]);
  const elements:CanvasElement[]=[];

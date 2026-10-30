@@ -1,4 +1,5 @@
 ﻿import "server-only";
+import {conversationImages} from "./generation-references";
 import { db } from "./db";
 import { emptyProfile, profileSchema, understanding } from "./profile-rules";
 import type { Prisma } from "@/generated/prisma/client";
@@ -32,7 +33,7 @@ export async function agentSnapshot(productId: string, userId: string) {
   const profile = parsed.success&&Object.values(parsed.data).some(f=>f.value.trim()) ? parsed.data : saved.success?saved.data:emptyProfile();
   const searches=await db.searchCall.findMany({where:{sessionId:session.id}});
   const cost = (rows: typeof calls) => rows.reduce((sum, r) => sum + Number(r.costUsd ?? (["pending", "running"].includes(r.status) ? r.reservedUsd : 0)), 0);
-  return { session: { id: session.id, mode: session.mode, autoConfirm: session.autoConfirm, stopQuestions: session.stopQuestions, confirmedProfileId: session.confirmedProfileId, confirmedPack: session.confirmedPack, draftRevision: session.draftRevision, running: Boolean(session.runningAt && Date.now() - session.runningAt.getTime() < 5 * 60000) }, profile, understanding: understanding(profile), messages, cards, documents, tools, costs: { llmUsd: cost(calls), imagesUsd: cost(jobs), searchUsd:searches.reduce((n,s)=>n+Number(s.costUsd),0), estimated:searches.some(s=>s.costEstimated)|| [...calls, ...jobs].some(r => r.costEstimated || r.costUsd === null) } };
+  return { conversationImages:conversationImages(session.settings),session: { id: session.id, mode: session.mode, autoConfirm: session.autoConfirm, stopQuestions: session.stopQuestions, confirmedProfileId: session.confirmedProfileId, confirmedPack: session.confirmedPack, draftRevision: session.draftRevision, running: Boolean(session.runningAt && Date.now() - session.runningAt.getTime() < 5 * 60000) }, profile, understanding: understanding(profile), messages, cards, documents, tools, costs: { llmUsd: cost(calls), imagesUsd: cost(jobs), searchUsd:searches.reduce((n,s)=>n+Number(s.costUsd),0), estimated:searches.some(s=>s.costEstimated)|| [...calls, ...jobs].some(r => r.costEstimated || r.costUsd === null) } };
 }
 export type AgentSnapshot = Awaited<ReturnType<typeof agentSnapshot>>;
 export async function recordBoardEvent(productId: string, userId: string, action: Record<string, unknown>) {
