@@ -2,14 +2,14 @@ import {DEFAULT_AGENT} from "./agent-default";
 import {imageCandidate,kieImageModels} from "./image-models";
 // 模型值已由官方 createTask 示例核实，详见 docs/kie-notes.md。
 export const KIE_USD_PER_CREDIT = 0.005;
-export const IMAGE_DEFAULTS = { resolution: "1K", output_format: "png", aspect_ratio: "1:1" } as const;
+export const IMAGE_DEFAULTS = { resolution: "2K", output_format: "png", aspect_ratio: "1:1" } as const;
 export const LLM_OUTPUT_BUDGET = 2200;
 export const IMAGE_TEXT_OUTPUT_BUDGET = 1024;
 export const KIE_IMAGE_MODEL = {
   provider: "kie",
   model: "nano-banana-2-1",
   label: "Nano Banana 2.1",
-  resolution: "1K",
+  resolution: "2K",
   output_format: "png",
   aspect_ratio: "1:1",
   prices: { "1K": 4, "2K": 6, "4K": 9 },
@@ -46,12 +46,10 @@ export function modelLabel() { return KIE_IMAGE_MODEL.label; }
 export const sceneAspectRatios = ["1:1", "2:3", "3:2", "3:4", "4:3", "4:5", "5:4", "9:16", "16:9", "21:9", "1:4", "4:1", "1:8", "8:1", "auto"] as const;
 export const sceneResolutions = ["1K", "2K", "4K"] as const;
 export type SceneResolution = typeof sceneResolutions[number];
-// 未选择或自动分辨率均使用低成本默认值；用户明确选择2K/4K时保留。
-export function imageResolution(value:unknown):SceneResolution{return value==="4K"?"4K":value==="2K"?"2K":IMAGE_DEFAULTS.resolution;}
 export type SceneAspectRatio = typeof sceneAspectRatios[number];
 export type LogicalModel = keyof typeof models;
 
-export function modelCost(_logicalModel: LogicalModel, resolution: SceneResolution = IMAGE_DEFAULTS.resolution) {
+export function modelCost(_logicalModel: LogicalModel, resolution: SceneResolution = "2K") {
   const config = KIE_IMAGE_MODEL;
   const credits = config.prices[resolution];
   return { credits, usd: credits * config.usdPerCredit };

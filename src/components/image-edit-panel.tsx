@@ -11,7 +11,7 @@ import type { GenerationAvailability } from "@/lib/scene-generation";
 export function ImageEditPanel({ source, product, availability, readonly, onClose, onQueued }: { source: ProductSnapshot["jobs"][number]; product: ProductSnapshot; availability: GenerationAvailability; readonly: boolean; onClose: () => void; onQueued: () => Promise<void> }) {
   const panel = useRef<HTMLElement>(null);
   const instruction = useRef<HTMLTextAreaElement>(null);
-  const [resolution, setResolution] = useState<SceneResolution>("1K");
+  const [resolution, setResolution] = useState<SceneResolution>(source.resolution === "4K" ? "4K" : "2K");
   const [aspectRatio, setAspectRatio] = useState<SceneAspectRatio>(sceneAspectRatios.includes(source.aspectRatio as SceneAspectRatio) ? source.aspectRatio as SceneAspectRatio : "1:1");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");

@@ -1,14 +1,12 @@
 # 项目：家具电商 AI 生图工作台（个人工具）
 
-## 目标与成本原则
-- 目标是让工具更好用：围绕当前产品资料与用户对话策划、确认方案、生成、修改和挑选图片。
-- 控制成本的方式是让用户看到费用、自己决定，不是关闭功能。联网搜索、竞品分析、经验检索、标记优秀、Listing导入和模板审核沿用原功能与原配置，不设置12-A暂停开关或拦截。
-- 生图默认每图位1张、1K，用户可自行调高数量和分辨率；保留生图前费用确认卡。已有明确设置和历史冻结输入不自动重置。
-- 不为本轮验收调用真实或付费模型；需要真实验证时给用户步骤，由用户决定是否执行。
-
-## 界面硬规则
-- 除非用户明确要求，不许改动界面布局和样式。后台、提示词或默认参数任务不得顺带改变页面结构、间距、颜色、文案、图标或假数据展示。
-- 本轮恢复12-A之前的已认可界面，只有用户指定的数量/分辨率默认值可调整；不截图、录屏或制作GIF。
+## 用户已确认的决定
+- 目标是让工具更好用，不关闭功能；成本靠费用确认卡让用户自己决定。
+- 除非用户明确要求，不许改动界面布局、样式和按钮。
+- 下一步是12-B：把对话里的参考图传给生图模型；保留“已知问题”中的文件和函数位置，12-A不提前接线。
+- 当前12-A只保留特定产品提示词清理、统一方案入口和对话用户意见传递；不删、不隐藏首页、按钮、示意图或其他界面。唯一获准的样式修改是首页/对话底栏模型与联网按钮恢复常驻浅灰胶囊底色（亮暗均有）。
+- 12-A之前的界面基准为00c7c3a；本条取代此前所有12-A调整。数量、分辨率、费用确认、输入框边框/圆角/聚焦表现均恢复或保持该基准，不保留前轮1张/1K改动。
+- 不为验收调用真实或付费模型；真实验证由用户自行决定。本次只跑lint和build，不截图、不跑完整回归。
 
 ## 技术栈与架构
 - Next.js App Router + TypeScript，Tailwind CSS + shadcn/ui；不擅自更换。
@@ -16,7 +14,7 @@
 - S3兼容存储、Auth.js账号密码登录、sharp图片处理；Web与worker为独立进程。
 - 外部API仅在服务端调用，密钥不得发送到前端、日志或Git。不得输出真实.env中的密钥。
 - 图像继续走ImageProvider及models.config.ts路由表；记录实际provider/model、参数、费用和发起人。
-- 不改费用公式、预留、账本、队列、熔断、双网关或数据库结构。默认参数变化必须同时用于报价和提交；保留原费用确认、指纹和权限检查。
+- 不改费用公式、预留、账本、队列、熔断、双网关或数据库结构；保留原生成参数、费用确认、指纹和权限检查。
 - 不删除或重置现有产品、模板库、案例、生成记录或已确认方案。
 
 ## 供应商与功能状态
@@ -30,8 +28,8 @@
 - propose_image_pack只表达目标reason，统一调用visual-planning.ts的proposeVisualPlan，不维护第二套图位生成逻辑；旧slots仅兼容历史调用。
 - proposeVisualPlan接收当前会话最近20条用户意见，与产品资料一起进入已有方案调用；竞品研究、经验库检索按原流程执行。
 - 全局prompt只放对所有产品适用的规则；具体结构、部件、尺寸、颜色、材质和拆装状态来自当前产品资料及用户对话。
-- 不在全局写死层数/层间距、半透明拆卸等产品特定规则；产品结构、部件数量和尺寸比例要与当前实拍一致。
-- 保留主图、特写和后期叠加的既有通用要求；亚马逊主图仍要求至少2000px，1K时由原校验提示用户改选2K/4K，不擅自提高分辨率或费用。
+- 不在全局写死层数/层间距、半透明拆卸或固定参考库图位顺序等规则；根据当前产品资料和用户目标安排图位，经验库只作表达参考。
+- 保留主图、特写和后期叠加的既有通用要求，亚马逊主图仍要求至少2000px，不擅自改变分辨率或费用。
 - 用户确认产品理解、方案及费用后再生成；人工选择终稿。自动确认和快速/手动模式沿用原实现，不替用户开启或修改。
 
 ## 开发约定
@@ -43,6 +41,13 @@
 - 用户明确要求提交后才提交；未授权不推送。
 
 ## 已知问题与后续事项
-- 12-B：对话引用图片目前只传给对话模型，图包生图仅读取冻结的产品实拍。前端RealChat.send → planning-agent.runAgentTurn/canvasContext → LLMInput.images；生图链为proposeVisualPlan/confirmVisualPlan → agent-actions.approveAgentCard/applyProposal冻结ImageSlot.visualPlan → image-packs.planBatch → scene-generation.prepareSceneInput → image-router.generate。参考图尚未贯通，本轮不修改。
-- 12-C：独立无AI手动收藏尚未实现；恢复的“标记优秀”仍可能调用AI提炼，不要把它称为免费收藏。
-- 共享类型与真实附件预览仍位于旧mock目录/状态文件，后续单独拆分改名；本轮恢复原文件，不改这些共享实现。
+### 12-B：对话参考图尚未接到图包生图请求
+- 对话引用图片目前只送给对话模型；图包生图仅读取方案冻结的产品实拍，参考图没有传给生图模型。下一步12-B贯通此链路，本轮不改动。
+- 对话入口：src/components/design-preview/live-workspace.tsx的RealChat.send传递canvas.referenceAssetIds；src/lib/planning-agent.ts的runAgentTurn经canvasContext解析引用，在LLMInput.images里传给对话模型。
+- 建立与冻结方案：src/lib/visual-planning.ts的analyzeProduct/proposeVisualPlan生成identityLock.referenceAssetIds，confirmVisualPlan校验；src/lib/agent-actions.ts的approveAgentCard/applyProposal冻结ImageSlot.visualPlan。
+- 报价与提交：src/lib/image-packs.ts的planBatch调用src/lib/scene-generation.ts的prepareSceneInput，后者按冻结的identityLock.referenceAssetIds且仅type=photo读实拍，写入GenerationJob.input.referenceAssetIds。
+- 最终请求：src/lib/image-router.ts的generate将input.referenceAssetIds映射为ImageRequest.referenceImages，再交给ImageProvider，例如src/lib/kie-provider.ts的KieProvider.generate。12-B应使引用选择、方案冻结、报价、提交和最终生成使用同一份引用快照。
+
+### 其他已知事项
+- 独立无AI手动收藏尚未实现；当前“标记优秀”仍为原有AI提炼及人工确认入库，不要称为免费收藏。
+- 共享类型与真实附件预览仍位于旧mock目录/状态文件，后续单独拆分改名；本轮不删、不改这些共享实现。

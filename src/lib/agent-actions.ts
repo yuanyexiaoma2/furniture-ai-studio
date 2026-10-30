@@ -1,6 +1,4 @@
 ﻿import "server-only";
-import {imageResolution,type SceneResolution} from "./models.config";
-import {settingsOf} from "./studio-models";
 import { createHash } from "node:crypto";
 import { db } from "./db";
 import { quoteBatch, submitBatch, mutatePack } from "./image-packs";
@@ -29,10 +27,10 @@ async function validGeneration(sessionId: string, action: PaidAction) {
   }
   return session;
 }
-async function prepareEdit(tx: Prisma.TransactionClient, productId: string, action: Extract<PaidAction, { operation: "edit_image" }>,resolution:SceneResolution) {
+async function prepareEdit(tx: Prisma.TransactionClient, productId: string, action: Extract<PaidAction, { operation: "edit_image" }>) {
   const job = await tx.generationJob.findFirst({ where: { productId, status: "success", resultAssetIds: { array_contains: [action.assetId] } }, include: { slot: true } });
   if (!job?.slot || job.slot.deletedAt || !await tx.imagePack.findFirst({ where: { id: job.slot.packId, isCurrent: true, productId } })) throw new StudioError("请选择当前图包的有效候选图", 404);
-  const candidate = await configuredCandidate("edit"), prepared = await prepareEditInput(tx, productId, action.instruction, job.slot.aspectRatio as "1:1", resolution, { sourceJobId: job.id, sourceAssetId: action.assetId }, candidate);
+  const candidate = await configuredCandidate("edit"), prepared = await prepareEditInput(tx, productId, action.instruction, job.slot.aspectRatio as "1:1", "2K", { sourceJobId: job.id, sourceAssetId: action.assetId }, candidate);
   return { ...prepared, slotId: job.slot.id, fingerprint: createHash("sha256").update(JSON.stringify({ ...prepared, candidate, slotId: job.slot.id })).digest("hex") };
 }
 export async function quoteAgentAction(sessionId: string, action: PaidAction) {
@@ -43,7 +41,7 @@ export async function quoteAgentAction(sessionId: string, action: PaidAction) {
     const slots = await db.imageSlot.findMany({ where: { pack: { productId: session.productId, isCurrent: true }, deletedAt: null, method: "ai_scene", ...(action.operation === "generate_slot" ? { id: action.slotId } : {}) }, orderBy: { order: "asc" } });
     return { ...quote, risk, content: slots.filter(slot => slot.goal.trim()).map(slot => `${slot.name}：${slot.goal}`).join("\n") };
   }
-  return db.$transaction(async tx => { const prepared = await prepareEdit(tx, session.productId, action,imageResolution(settingsOf(session.settings).resolution)); const user = await tx.user.findUniqueOrThrow({ where: { id: session.createdById } }), used = await monthlySpendUsd(tx, user.id); return { fingerprint: prepared.fingerprint, estimatedCostUsd: prepared.estimate, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: Math.max(0, prepared.estimate + used - Number(user.monthlyQuota)), totalCount: 1, slotCount: 1, skipped: [], risk, content: action.instruction }; });
+  return db.$transaction(async tx => { const prepared = await prepareEdit(tx, session.productId, action); const user = await tx.user.findUniqueOrThrow({ where: { id: session.createdById } }), used = await monthlySpendUsd(tx, user.id); return { fingerprint: prepared.fingerprint, estimatedCostUsd: prepared.estimate, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: Math.max(0, prepared.estimate + used - Number(user.monthlyQuota)), totalCount: 1, slotCount: 1, skipped: [], risk, content: action.instruction }; });
 }
 export async function createCostCard(sessionId: string, action: PaidAction) {
   const session = await validGeneration(sessionId, action), quote = await quoteAgentAction(sessionId, action);
@@ -93,7 +91,7 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
       if (action.operation !== "edit_image") result = { batchId: await submitBatch(session.createdById, session.productId, action.operation === "generate_slot" ? { slotId: action.slotId, count: action.count } : {}, quote.fingerprint, card.id, session.id) };
       else {
         if (!await workerIsReady()) throw new StudioError("生图 worker 未就绪", 503); await getBoss();
-        result = await db.$transaction(async tx => { await tx.$queryRaw`SELECT id FROM "User" WHERE id=${session.createdById} FOR UPDATE`; const existing = await tx.generationJob.findFirst({ where: { sessionId, input: { path: ["agentCardId"], equals: card.id } } }); if (existing) return { jobId: existing.id }; const prepared = await prepareEdit(tx, session.productId, action,imageResolution(settingsOf(session.settings).resolution)); if (prepared.fingerprint !== quote.fingerprint) throw new StudioError("编辑输入已变化，请重新确认", 409); await assertUsdQuota(tx, session.createdById, prepared.estimate); return { jobId: await enqueueImageJob(tx, { productId: session.productId, sessionId, slotId: prepared.slotId, logicalModel: "edit", createdById: session.createdById, reservedUsd: prepared.estimate, input: json({ ...prepared.input, agentCardId: card.id }) }) }; }, { timeout: 30000 });
+        result = await db.$transaction(async tx => { await tx.$queryRaw`SELECT id FROM "User" WHERE id=${session.createdById} FOR UPDATE`; const existing = await tx.generationJob.findFirst({ where: { sessionId, input: { path: ["agentCardId"], equals: card.id } } }); if (existing) return { jobId: existing.id }; const prepared = await prepareEdit(tx, session.productId, action); if (prepared.fingerprint !== quote.fingerprint) throw new StudioError("编辑输入已变化，请重新确认", 409); await assertUsdQuota(tx, session.createdById, prepared.estimate); return { jobId: await enqueueImageJob(tx, { productId: session.productId, sessionId, slotId: prepared.slotId, logicalModel: "edit", createdById: session.createdById, reservedUsd: prepared.estimate, input: json({ ...prepared.input, agentCardId: card.id }) }) }; }, { timeout: 30000 });
       }
       await db.$transaction(async tx => { await tx.agentCard.update({ where: { id: cardId }, data: { status: "executed", result: json(result) } }); await tx.agentSession.update({ where: { id: sessionId }, data: { firstGenerationConfirmed: true } }); });
       await db.chatMessage.create({ data: { productId: session.productId, sessionId, role: "system", content: json({ text: `${automatic ? "自动确认" : "美工已确认"}费用卡并入队：${JSON.stringify(result)}` }) } });

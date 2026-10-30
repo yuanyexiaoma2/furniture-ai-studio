@@ -23,7 +23,7 @@ export function ProductStudio({ initial, initialAvailability, readonly }: { init
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [refreshError, setRefreshError] = useState("");
-  const [resolution, setResolution] = useState<SceneResolution>("1K");
+  const [resolution, setResolution] = useState<SceneResolution>("2K");
   const [aspectRatio, setAspectRatio] = useState<SceneAspectRatio>("1:1");
   const [editSource, setEditSource] = useState<ProductSnapshot["jobs"][number] | null>(null);
   const refresh = useCallback(async (signal?: AbortSignal) => {

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { IMAGE_DEFAULTS, sceneAspectRatios, sceneResolutions } from "@/lib/models.config";
+import { sceneAspectRatios, sceneResolutions } from "@/lib/models.config";
 
 const text = (label: string, max: number) => z.string().trim().min(1, `请填写${label}`).max(max, `${label}内容过长`);
 export const productSchema = z.object({
@@ -11,7 +11,7 @@ export const productSchema = z.object({
 });
 const generationOptions = {
   aspectRatio: z.enum(sceneAspectRatios, { error: "不支持该画面比例" }).default("1:1"),
-  resolution: z.enum(sceneResolutions, { error: "请选择 1K、2K 或 4K 分辨率" }).default(IMAGE_DEFAULTS.resolution),
+  resolution: z.enum(sceneResolutions, { error: "请选择 2K 或 4K 分辨率" }).default("2K"),
 };
 export const sceneSchema = z.object({ sceneIntent: text("场景意图", 8000), ...generationOptions });
 export const editSchema = z.object({ sourceJobId: text("原图任务编号", 100), sourceAssetId: text("原图编号", 100), editIntent: text("修改要求", 8000), ...generationOptions });

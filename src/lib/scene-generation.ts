@@ -16,7 +16,7 @@ import type { Prisma } from "@/generated/prisma/client";
 import type { ModelCandidate } from "./models.config";
 
 // 单张与图包共用身份冻结、参考图和事务入队，批次负责一次性校验总配额。
-export async function prepareSceneInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, candidate: ModelCandidate, resolution: SceneResolution = IMAGE_DEFAULTS.resolution, frozen?:unknown) {
+export async function prepareSceneInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, candidate: ModelCandidate, resolution: SceneResolution = "2K", frozen?:unknown) {
   await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${productId}, 0))`;
   const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], take: 3 } } });
   if (!product) throw new StudioError("商品不存在", 404);
@@ -54,7 +54,7 @@ export async function generationAvailability(userId: string) {
 export type GenerationAvailability = Awaited<ReturnType<typeof generationAvailability>>;
 
 type EditSource = { sourceJobId: string; sourceAssetId: string };
-export async function createSceneJob(userId: string, productId: string, sceneIntent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution = IMAGE_DEFAULTS.resolution,frozen?:unknown) {
+export async function createSceneJob(userId: string, productId: string, sceneIntent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution = "2K",frozen?:unknown) {
   return createImageJob(userId, productId, sceneIntent, aspectRatio, resolution,undefined,frozen);
 }
 export async function createEditJob(userId: string, productId: string, editIntent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution, source: EditSource) {

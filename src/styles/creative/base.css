@@ -231,7 +231,7 @@
 .p-portal.p-tooltip-content { background: var(--foreground); color: var(--background); font-size: var(--text-xs); line-height: 1.5; padding: 6px 10px; border-radius: var(--radius-panel); max-width: min(280px,calc(100vw - 24px)); box-shadow: 0 3px 12px var(--p-shadow); pointer-events: none; }
 .p-portal.p-tooltip-content :where(strong,span,kbd) { color: inherit; }
 
-/* 首页/对话底栏不常驻胶囊底色；其他按钮及聚焦规则不变。 */
+/* 首页/对话底栏模型与联网按钮常驻浅灰胶囊底色；输入面板及聚焦规则不变。 */
 :is(.p-home-input,.p-chat-input) { --composer-model-line:var(--color-transparent); }
-:is(.p-home-input,.p-chat-input) .p-composer-toolbar [data-slot=button].p-model-capsule { background:var(--color-transparent); border-color:var(--color-transparent); }
+:is(.p-home-input,.p-chat-input) .p-composer-toolbar [data-slot=button].p-model-capsule { background:var(--secondary); border-color:var(--color-transparent); }
 :is(.p-home-input,.p-chat-input) .p-composer-toolbar [data-slot=button].p-model-capsule:hover { background:var(--p-hover); }

@@ -29,7 +29,7 @@ export function ModelPicker({kind,scope,menu=false}:{kind:ModelKind;scope:string
  {kind==="agent"?<header><h3>智能体</h3><p>负责理解产品、规划图包、和你对话</p></header>:<><header><h3>生图模型</h3></header><div className="p-auto-line"><div><strong><Sparkles size="sm"/>Auto</strong><p>当前优先使用默认模型。要固定其他模型，请关闭 Auto 后选择。</p></div><Switch aria-label="自动挑选生图模型" checked={selected.auto} onCheckedChange={auto=>state.updateSelection(scope,{auto},auto?"生图模型已切换为自动挑选":"生图模型已改为手动指定")}/></div></>}
  <div className="p-model-list" role={kind==="agent"||!selected.auto?"radiogroup":"group"} aria-label={label+"列表"}>{list.map(m=>{
   const checked=kind==="agent"?m.id===selected.agentId:selected.auto?selected.imageIds.includes(m.id):m.id===selected.imageId;
-  const locked=kind==="image"&&selected.auto&&m.id===defaultImage;const rate=modelRate(m,selected.qualities[m.id]);const price=(m.pricesByResolution?.[selected.resolution==="4K"?"4K":selected.resolution==="2K"?"2K":"1K"]??rate.price)+(m.referenceImagePrice??0)*3;
+  const locked=kind==="image"&&selected.auto&&m.id===defaultImage;const rate=modelRate(m,selected.qualities[m.id]);const price=(m.pricesByResolution?.[selected.resolution==="4K"?"4K":selected.resolution==="1K"?"1K":"2K"]??rate.price)+(m.referenceImagePrice??0)*3;
   return <div className={`p-model-entry ${checked?"is-checked":""}`} key={m.id}>
    <button className="p-model-row" role={kind==="agent"||!selected.auto?"radio":"checkbox"} aria-checked={checked} aria-disabled={locked||undefined} aria-label={m.name} onClick={()=>choose(m.id)}><BrandIcon model={m}/><span className="p-model-copy"><strong>{m.name}</strong><span>{m.description}</span>{kind==="image"&&<small>约 {rate.seconds} 秒 <i/>约 ${price.toFixed(2)}</small>}</span><span className="p-model-row-end">{m.tag&&<em>{m.tag}</em>}{locked&&<LockKeyhole size="sm"/>}<span className={`p-model-check ${selected.auto&&kind==="image"?"is-square":""}`}>{checked&&<Check size="sm"/>}</span></span></button>
    {m.tiers&&checked&&<div className="p-quality-options" role="group" aria-label={m.name+"质量档"}>{m.tiers.map(t=><Button key={t.id} variant="ghost" aria-pressed={(selected.qualities[m.id]??"auto")===t.id} className={(selected.qualities[m.id]??"auto")===t.id?"active":""} onClick={()=>state.updateSelection(scope,{qualities:{...selected.qualities,[m.id]:t.id}})}>{t.label}</Button>)}</div>}
@@ -38,7 +38,7 @@ export function ModelPicker({kind,scope,menu=false}:{kind:ModelKind;scope:string
  <footer>{kind==="agent"?"管理员可以在后台调整可用模型":selected.auto?"默认模型优先；按任务自动选模尚未开放":"已手动指定 · 本次创作使用所选模型"}</footer>
  </div></PopoverContent></Popover>;
 }
-export function ComposerToolbar({scope,count=1,ratio="1:1",onCount,onRatio,onAdd,onSend,disabled,extra,showCost=false}:{scope:string;count?:number;ratio?:string;onCount?:(n:number)=>void;onRatio?:(n:string)=>void;onAdd:()=>void;onSend:()=>void;disabled:boolean;showCost?:boolean;extra?:React.ReactNode}){
+export function ComposerToolbar({scope,count=4,ratio="1:1",onCount,onRatio,onAdd,onSend,disabled,extra,showCost=false}:{scope:string;count?:number;ratio?:string;onCount?:(n:number)=>void;onRatio?:(n:string)=>void;onAdd:()=>void;onSend:()=>void;disabled:boolean;showCost?:boolean;extra?:React.ReactNode}){
  const state=useModelStore(),selection=resolveSelection(state,scope); const canSend=!!selection.agentId&&!!selection.imageId&&!disabled;
  const image=(state.catalog??models).find(m=>m.id===(selection.auto?selection.imageIds[0]:selection.imageId));
  const resolutions=image?.supportedResolutions??["1K","2K","4K"];
