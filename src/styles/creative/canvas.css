@@ -12,6 +12,7 @@
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
 .p-image-node { width: 224px; height: 180px; border-radius: var(--radius-control); overflow: visible; background: var(--p-panel); position: relative; }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
+.p-image-node[data-asset-role]>img { object-fit: contain; }
 .p-image-node>img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-control); display: block; pointer-events: none; }
 .react-flow__node.selected .p-image-node { outline: 2px solid var(--p-selection); outline-offset: 3px; }
 /* TODO 待确认：此选择器与其他同优先级规则存在交叉属性依赖，保留分段顺序；见phase2a/todo-dependencies.json */
@@ -70,6 +71,19 @@
 .p-expand-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
 .p-compare-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
 .p-compare-grid img { width: 100%; height: 230px; object-fit: cover; border-radius: var(--radius-control); }
+.p-compare-grid img { object-fit: contain; background: var(--p-panel); }
+.p-canvas-context { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; max-width: calc(100% - 24px); padding: 4px 8px; border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--p-floating); font-size: var(--text-xs); }
+.p-canvas-context>span { max-width: 300px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.p-canvas-more { display: flex; flex-direction: column; gap: 4px; width: 210px; }
+.p-canvas-more button { justify-content: flex-start; }
+.p-canvas-more small { padding: 8px; line-height: 1.5; }
+.p-layer-panel { max-height: min(65vh,560px); overflow-y: auto; }
+.p-layer-panel section { display: flex; flex-direction: column; gap: 3px; }
+.p-layer-panel .p-canvas-child { justify-content: flex-start; padding-left: 24px; }
+.p-canvas-version { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; padding: 8px; border-radius: var(--radius-control); text-align: left; }
+.p-canvas-version:hover { background: var(--p-hover); }
+.p-canvas-version small { color: var(--muted-foreground); }
+.t11-canvas-history section { margin-bottom: 12px; }
 @keyframes p-spin {
   to { transform: rotate(360deg); }
 }
@@ -248,7 +262,7 @@
 .p-canvas-wrap .p-canvas-minimap { display:block; bottom:68px; }
 .p-canvas-wrap .p-save-panel { bottom:64px; margin:0 12px; }
 .p-canvas-wrap .p-layer-panel { bottom:68px; }
-@container(max-width:620px) {
+@container(max-width:900px) {
  .p-viewport-panel .p-canvas-guide { position:absolute; right:0; bottom:calc(100% + 64px); }
  .p-canvas-wrap .p-dock-panel { bottom:64px; }
  .p-canvas-wrap .p-save-panel { bottom:116px; }

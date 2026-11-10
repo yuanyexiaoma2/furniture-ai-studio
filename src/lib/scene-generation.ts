@@ -1,5 +1,5 @@
 import "server-only";
-import {visualPlanSchema,visualSlotSchema,composeIdentityLock,composeVisualSlot,wrapImagePrompt,sanitizePrompt} from "./visual-plan-rules";
+import {visualPlanSchema,visualSlotSchema,composeIdentityLock,composeVisualSlot,wrapImagePrompt,sanitizePrompt,referenceAdaptationChanged} from "./visual-plan-rules";
 import { fromPrisma } from "pg-boss";
 import { db } from "@/lib/db";
 import { getBoss, SUBMIT_QUEUE, workerIsReady, expireOverdueJobs, MAX_JOB_MS } from "@/lib/generation-queue";
@@ -15,6 +15,7 @@ import { buildEditPrompt } from "@/prompts/edit";
 import { StudioError } from "@/lib/studio-error";
 import type { Prisma } from "@/generated/prisma/client";
 import type { ModelCandidate } from "./models.config";
+import { validateExpansion, expansionAspectRatio, type Expansion } from "./expansion-rules";
 
 // 单张与图包共用身份冻结、参考图和事务入队，批次负责一次性校验总配额。
 export async function prepareSceneInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, candidate: ModelCandidate, resolution: SceneResolution = "2K", frozen?:unknown) {
@@ -25,6 +26,7 @@ export async function prepareSceneInput(tx: Prisma.TransactionClient, productId:
   if(!frozen)throw new StudioError("请先规划并确认视觉方案，再生成图位",409);
   const snapshot=frozen as {plan:unknown;slot:unknown;confirmationCardId?:string},plan=visualPlanSchema.parse(snapshot.plan),slot=visualSlotSchema.parse(snapshot.slot);
   if(plan.productId!==productId||!plan.slots.some(s=>s.key===slot.key&&JSON.stringify(s)===JSON.stringify(slot)))throw new StudioError("图位快照无效，请重新确认方案",409);
+  if(referenceAdaptationChanged(slot))throw new StudioError("参考图已更换，请重新适配画面描述",409);
   if(slot.slotType==="main"&&resolution==="1K")throw new StudioError("亚马逊主图长边需至少2000像素，请选择2K或4K");
   const refs=await tx.asset.findMany({where:{id:{in:plan.identityLock.referenceAssetIds},productId,type:"photo",deletedAt:null}});
   if(refs.length!==plan.identityLock.referenceAssetIds.length)throw new StudioError("方案参考图已变更，请重新规划",409);
@@ -90,7 +92,7 @@ async function createImageJob(userId: string, productId: string, intent: string,
   }, { timeout: 15000 });
 }
 
-export async function prepareEditInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution, source: EditSource, candidate: ModelCandidate,additionalReferenceIds:string[] = [],referenceOverride?:SlotReference[]) {
+export async function prepareEditInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution, source: EditSource, candidate: ModelCandidate,additionalReferenceIds:string[] = [],referenceOverride?:SlotReference[],expansion?:Expansion) {
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${productId}, 0))`;
     const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], take: 3 } } });
     if (!product) throw new StudioError("商品不存在", 404);
@@ -107,6 +109,9 @@ export async function prepareEditInput(tx: Prisma.TransactionClient, productId: 
     const identity=String(sourceInput.identityTraits??product.identityTraits);
     if(!identity.trim()||identity==="null")throw new StudioError("源图没有有效身份快照，请先重新分析产品");
     const originalAsset = await tx.asset.findUniqueOrThrow({ where: { id: source.sourceAssetId } });
+    if(expansion&&additionalReferenceIds.length)throw new StudioError("扩图不能同时使用局部修改蒙版");
+    const extent=expansion?validateExpansion(expansion,{width:originalAsset.width!,height:originalAsset.height!}):undefined;
+    if(extent)aspectRatio=expansionAspectRatio(extent,candidate) as SceneAspectRatio;
     const extra=additionalReferenceIds.length?await tx.asset.findMany({where:{id:{in:additionalReferenceIds},productId,type:"mask",deletedAt:null}}):[];
     if(extra.length!==new Set(additionalReferenceIds).size)throw new StudioError("蒙版不属于当前SKU或已删除");
     const lockedPlan=(sourceInput.visualPlan as {plan?:unknown}|null)?.plan;
@@ -122,7 +127,8 @@ export async function prepareEditInput(tx: Prisma.TransactionClient, productId: 
     if(styleAssets.length!==styles.length)throw new StudioError("修改参考图已失效或不属于本产品，请重新选择",409);
     const referenceSnapshot=selectGenerationReferences(candidate,orderedPhotos.map(a=>a.id),styles,originalAsset.id,extra[0]?.id);
     const all=[originalAsset,...extra,...orderedPhotos,...styleAssets],references=referenceSnapshot.referenceAssetIds.map(id=>all.find(a=>a.id===id)!);
-    const basePrompt=sanitizePrompt(buildEditPrompt(identity,intent,additionalReferenceIds.length>0),[product.id,product.sku,...all.map(a=>a.id)]);
+    const expansionInstruction=extent?`\n编辑源图已放在扩展画布中，四周白色新增区域需要延续背景。画布为${extent.width}×${extent.height}像素，原图左上角为(${extent.offsetX},${extent.offsetY})，原图区域为${originalAsset.width}×${originalAsset.height}像素。保持原图的位置、比例、产品和已有场景，只补全新增区域；白色边缘不是原场景。`:"";
+    const basePrompt=sanitizePrompt(buildEditPrompt(identity,intent,additionalReferenceIds.length>0)+expansionInstruction,[product.id,product.sku,...all.map(a=>a.id)]);
     const prompt=wrapImagePrompt(basePrompt+"\n"+referencePurposePrompt(referenceSnapshot.referenceUsage),[product.id,product.sku,...all.map(a=>a.id)]);
     if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
     validateImageSelection(candidate,resolution,aspectRatio,prompt,references.length);
@@ -130,5 +136,6 @@ export async function prepareEditInput(tx: Prisma.TransactionClient, productId: 
     if(extra.some(m=>m.width!==originalAsset.width||m.height!==originalAsset.height))throw new StudioError("蒙版尺寸必须与原图完全一致");
     if(additionalReferenceIds.length>1)throw new StudioError("一次局部修改只能使用一张蒙版");
     if(extra.length&&!references.some(r=>r.id===extra[0].id))throw new StudioError("当前模型不能同时接收原图和蒙版，请更换编辑模型");
-    return { estimate: estimateImageUsd(candidate, resolution, prompt, references), input: { prompt,basePrompt,...referenceSnapshot, ...source, editIntent: intent, editMode:extra.length?"masked":"whole", maskAssetId:extra[0]?.id??null,visualPlan:JSON.parse(JSON.stringify(sourceInput.visualPlan??null)),identityTraits:identity, identityVersionId: (sourceInput.identityVersionId as string|null)??version?.id??null, identitySavedById: (sourceInput.identitySavedById as string|null)??null, identitySavedAt: (sourceInput.identitySavedAt as string|null)??null, image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false } };
+    const estimatedReferences=references.map(r=>extent&&r.id===source.sourceAssetId?{...r,width:extent.width,height:extent.height}:r);
+    return { estimate: estimateImageUsd(candidate, resolution, prompt, estimatedReferences), input: { prompt,basePrompt,...referenceSnapshot, ...source, editIntent: intent, editMode:extent?"expanded":extra.length?"masked":"whole", ...(extent?{expansion:extent}:{}), maskAssetId:extra[0]?.id??null,visualPlan:JSON.parse(JSON.stringify(sourceInput.visualPlan??null)),identityTraits:identity, identityVersionId: (sourceInput.identityVersionId as string|null)??version?.id??null, identitySavedById: (sourceInput.identitySavedById as string|null)??null, identitySavedAt: (sourceInput.identitySavedAt as string|null)??null, image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false } };
 }

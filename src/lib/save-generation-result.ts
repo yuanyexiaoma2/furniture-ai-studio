@@ -6,9 +6,12 @@ import {compositeMaskedEdit} from "./masked-edit";
 import type { GatewayCost, TokenUsage } from "./image-provider";
 import {writeProductReviewSafely} from "./visual-review";
 import { costFields,imageAttemptTotals } from "./gateway-cost";
+import { lockGenerationAttempt } from "./generation-attempt";
+import { compositeExpandedEdit } from "./expanded-edit";
+import type { Expansion } from "./expansion-rules";
 
 // 同步 / 异步网关共享：先保存文件，再在同一事务写 Asset 和成功状态。
-export async function saveGenerationResult(jobId: string, images: Buffer[], meta?: { attemptId: string; durationMs: number; cost?: GatewayCost; estimateUsd: number; usage?: TokenUsage; externalGenerationId?: string }) {
+export async function saveGenerationResult(jobId: string, images: Buffer[], meta?: { attemptId: string; durationMs: number; cost?: GatewayCost; estimateUsd: number; usage?: TokenUsage; externalGenerationId?: string }, io = { inspectPhoto, putObject, deleteObject, readObject, writeProductReviewSafely }) {
   if (!images.length) throw new Error("生图未返回结果图片");
   const job = await db.generationJob.findUniqueOrThrow({ where: { id: jobId } });
   const stored: { key: string; width: number; height: number }[] = [];
@@ -16,16 +19,21 @@ export async function saveGenerationResult(jobId: string, images: Buffer[], meta
     for (const image of images) {
       let bytes=image;
       const input=job.input as Record<string,unknown>;
+      if(input.editMode==="expanded"){
+        const original=await db.asset.findFirstOrThrow({where:{id:String(input.sourceAssetId),productId:job.productId}});
+        bytes=await compositeExpandedEdit((await io.readObject(original.storageKey)).bytes,bytes,input.expansion as Expansion);
+      }
       if(input.editMode==="masked"){
         const original=await db.asset.findFirstOrThrow({where:{id:String(input.sourceAssetId),productId:job.productId}});
         const mask=await db.asset.findFirstOrThrow({where:{id:String(input.maskAssetId),productId:job.productId,type:"mask"}});
-        bytes=await compositeMaskedEdit((await readObject(original.storageKey)).bytes,bytes,(await readObject(mask.storageKey)).bytes);
+        bytes=await compositeMaskedEdit((await io.readObject(original.storageKey)).bytes,bytes,(await io.readObject(mask.storageKey)).bytes);
       }
-      const photo = await inspectPhoto(bytes);
+      const photo = await io.inspectPhoto(bytes);
       const key = `products/${job.productId ?? "gateway-tests"}/generated/${jobId}-${randomUUID()}.${photo.extension}`;
-      await putObject(key, bytes, photo.mime); stored.push({ key, width: photo.width, height: photo.height });
+      await io.putObject(key, bytes, photo.mime); stored.push({ key, width: photo.width, height: photo.height });
     }
     const ids = await db.$transaction(async (tx) => {
+      if(meta&&!await lockGenerationAttempt(tx,jobId,meta.attemptId))throw new Error("该尝试已结束或已切换线路，停止转存旧结果");
       const failures = job.fallback ? await tx.generationAttempt.findMany({ where: { jobId, status: "failed" }, select: { error: true } }) : [];
       const explanation = failures.map(a => a.error).filter(Boolean).join('；');
       const claimed = await tx.generationJob.updateMany({ where: { id: jobId, status: "running" }, data: { status: "success", completedAt: new Date(), error: job.fallback && explanation ? `已自动切换备用线路：${explanation}` : null } });
@@ -44,7 +52,7 @@ export async function saveGenerationResult(jobId: string, images: Buffer[], meta
       return ids;
     });
     stored.length = 0;
-    if(job.productId)await writeProductReviewSafely(job.productId);
+    if(job.productId)await io.writeProductReviewSafely(job.productId);
     return ids;
-  } finally { for (const file of stored) await deleteObject(file.key).catch(() => undefined); }
+  } finally { for (const file of stored) await io.deleteObject(file.key).catch(() => undefined); }
 }

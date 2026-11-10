@@ -2,7 +2,7 @@ import "dotenv/config";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {fixture} from "../fixtures/visual-plan";
-import {validateVisualPlan} from "../../src/lib/visual-plan-rules";
+import {validateVisualPlan,bindPlanningReferences,referenceAdaptationChanged,requiresDirections} from "../../src/lib/visual-plan-rules";
 import {prepareSceneInput,prepareEditInput} from "../../src/lib/scene-generation";
 import {confirmVisualPlan} from "../../src/lib/visual-planning";
 import {requireResolvedImages,currentEditReferences} from "../../src/lib/conversation-images";
@@ -12,14 +12,16 @@ import {imageCandidate,kieImageModels} from "../../src/lib/image-models";
 import {conversationImageSchema,imageReferenceLimit,selectGenerationReferences,requestFromGenerationInput,inheritedReferences,type SlotReference} from "../../src/lib/generation-references";
 import type {Prisma} from "../../src/generated/prisma/client";
 import type {ModelCandidate} from "../../src/lib/models.config";
+import {prepareAgentEdit} from "../../src/lib/agent-actions";
+import {databaseCircuit} from "../../src/lib/gateway-circuit";
 
 const styles:SlotReference[]=[{assetId:"style-a",purpose:"只参考右侧柔和光线"},{assetId:"style-b",purpose:"只参考冷灰环境色调"}];
 const candidate=imageCandidate(kieImageModels[0]);
 const qwen=imageCandidate(kieImageModels.find(s=>s.id==="image-qwen3")!);
-function context(){
+function context(references:SlotReference[]=styles){
  const assets=[...["photo-a","photo-b"].map(id=>({id,productId:"product-a",type:"photo",deletedAt:null,width:100,height:100})),...styles.map(r=>({id:r.assetId,productId:"product-a",type:"style_ref",deletedAt:null,width:100,height:100})),{id:"source",productId:"product-a",type:"generated",deletedAt:null,width:100,height:100},{id:"mask",productId:"product-a",type:"mask",deletedAt:null,width:100,height:100}];
  const product={id:"product-a",sku:"SECRET-SKU",identityTraits:"已有身份",assets:assets.filter(a=>a.type==="photo")};
- const plan=validateVisualPlan({...structuredClone(fixture),conversationImages:styles.map(r=>({...r,role:"reference"})),identityLock:{...fixture.identityLock,referenceAssetIds:product.assets.map(a=>a.id)},slots:[{...fixture.slots[0],references:styles}]});
+ const plan=validateVisualPlan({...structuredClone(fixture),conversationImages:references.map(r=>({...r,role:"reference"})),identityLock:{...fixture.identityLock,referenceAssetIds:product.assets.map(a=>a.id)},slots:bindPlanningReferences([{...fixture.slots[0],references}],references.map(r=>({...r,role:"reference"})))});
  const frozen={plan,slot:plan.slots[0],confirmationCardId:"confirmed-card"};
  let sourceInput:Record<string,unknown>={};
  const find=({where}: {where:{id:string}})=>assets.find(a=>a.id===where.id);
@@ -34,6 +36,44 @@ async function kieBody(input:Record<string,unknown>,c=candidate){
  provider.submit=async(_model,value)=>{body=value;return "mock-task";};
  await provider.generate(requestFromGenerationInput(input));return body!;
 }
+
+test("无参考方案直接使用具体陈列生成，不因第4图位要求额外方向或参考图",async()=>{
+ const s=context([]),slot={...s.frozen.slot,key:"slot-4",scene:"玄关门侧的窄墙面",props:["素面收纳盘"],display:"收纳盘放在台面右后方，左侧留空，露出把手和完整轮廓",camera:"与台面齐平的前侧视角",references:[]};
+ const frozen={...s.frozen,slot,plan:{...s.plan,slots:[slot]}};
+ assert.equal(requiresDirections(slot,3),false);
+ const confirmed=await confirmVisualPlan(s.tx,"product-a",frozen.plan);assert.equal(confirmed.slots.length,1);
+ const prepared=await prepareSceneInput(s.tx,"product-a","忽略旧提示词","1:1",candidate,"2K",frozen);
+ const body=await kieBody(prepared.input);
+ assert.match(String(body.prompt),/收纳盘放在台面右后方/);assert.match(String(body.prompt),/左侧留空/);assert.equal(body.resolution,"2K");
+ assert.deepEqual(requestFromGenerationInput(prepared.input).referenceImages.map(i=>i.id),["photo-a","photo-b"]);
+});
+
+test("扩图冻结真实范围并改变最终KIE比例，原实拍和风格引用保持顺序",async()=>{
+ const s=await scene();s.setSource(s.prepared.input);
+ const extent={width:160,height:120,offsetX:30,offsetY:10};
+ const prepared=await prepareEditInput(s.tx,"product-a","向左右扩展背景","1:1","4K",{sourceJobId:"job",sourceAssetId:"source"},candidate,[],undefined,extent);
+ assert.equal(prepared.input.aspect_ratio,"4:3");assert.equal(prepared.input.editMode,"expanded");assert.deepEqual(prepared.input.expansion,extent);
+ const request=requestFromGenerationInput(prepared.input);assert.deepEqual(request.referenceImages[0],{id:"source",expansion:extent});assert(request.referenceImages.slice(1).every(r=>!r.expansion));
+ const body=await kieBody(prepared.input);assert.equal(body.aspect_ratio,"4:3");assert.equal(body.resolution,"4K");assert.match(String(body.prompt),/只补全新增区域/);
+ await assert.rejects(prepareEditInput(s.tx,"product-a","扩展","1:1","2K",{sourceJobId:"job",sourceAssetId:"source"},candidate,["mask"],undefined,extent),/不能同时/);
+});
+
+test("对话修改的1K、2K、4K与Auto设置进入实际KIE请求和费用估算",async t=>{
+ const previous=process.env.KIE_API_KEY;process.env.KIE_API_KEY="local-test";
+ t.mock.method(databaseCircuit,"isOpen",async()=>false);
+ try{
+  const s=await scene();s.setSource(s.prepared.input);
+  const tx=s.tx as unknown as {generationJob:{findFirst:()=>Promise<unknown>};imagePack:{findFirst:()=>Promise<unknown>}};
+  tx.generationJob.findFirst=async()=>({id:"job",slot:{id:"slot",packId:"pack",aspectRatio:"1:1",deletedAt:null}});
+  tx.imagePack={findFirst:async()=>({id:"pack"})};
+  for(const resolution of ["1K","2K","4K","auto"] as const){
+   const result=await prepareAgentEdit(s.tx,"product-a",{operation:"edit_image",assetId:"source",instruction:"只修改背景"},{resolution});
+   const expected=resolution==="auto"?"2K":resolution;
+   assert.equal((await kieBody(result.input)).resolution,expected);
+   assert.equal(result.estimate,({"1K":.02,"2K":.03,"4K":.045})[expected]);
+  }
+ }finally{if(previous===undefined)delete process.env.KIE_API_KEY;else process.env.KIE_API_KEY=previous;}
+});
 test("当前全部模型输入上限均有登记；未知模型不退化成文字参考",()=>{
  assert.deepEqual(kieImageModels.map(s=>imageReferenceLimit(imageCandidate(s))),[10,16,10,8,3]);
  assert.equal(imageReferenceLimit({provider:"zenmux",model:"google/gemini-nano-banana-2.1"}),14);
@@ -120,4 +160,64 @@ test("ZenMux最终Gemini请求使用inlineData传入每张实图，顺序和用�
 });
 test("请求顺序与用途元数据不一致时停止，不能带错参考",()=>{
  assert.throws(()=>requestFromGenerationInput({referenceAssetIds:["b"],referenceUsage:[{assetId:"a",role:"product",purpose:"锁定产品"}]}),/顺序不一致/);
+});
+
+test("反推适配冻结来源，KIE只接收实拍和完整画面文字；连续修改不重新带入参考图",async()=>{
+ const refs=styles.map(r=>({...r,mode:"prompt_only" as const})),s=context(refs);
+ s.plan.slots[0].display="书籍集中在左下方，右侧留空，不遮挡产品";
+ s.plan.slots[0].palette="环境与道具自由配色，与产品本色协调；产品颜色保持实拍";
+ await confirmVisualPlan(s.tx,"product-a",s.plan);
+ const prepared=await prepareSceneInput(s.tx,"product-a","旧意图","1:1",candidate,"2K",s.frozen);
+ assert.deepEqual(prepared.input.referenceAssetIds,["photo-a","photo-b"]);
+ assert.deepEqual(prepared.input.promptReferences,refs);
+ assert.deepEqual(prepared.input.omittedReferences,[]);
+ const body=await kieBody(prepared.input);
+ assert.equal((body.image_input as string[]).length,2);
+ assert.match(String(body.prompt),/书籍集中在左下方/);
+ assert.match(String(body.prompt),/环境与道具自由配色/);
+ assert.doesNotMatch(String(body.prompt),/第3张|style-a|style-b/);
+ s.setSource(prepared.input);
+ const edit=await prepareEditInput(s.tx,"product-a","只把书移到右边，其余保留","1:1","2K",{sourceJobId:"job",sourceAssetId:"source"},candidate);
+ assert.deepEqual(edit.input.referenceAssetIds,["source","photo-a","photo-b"]);
+ assert.deepEqual(inheritedReferences(edit.input),refs);
+ assert.deepEqual((await kieBody(edit.input)).image_input,["source","photo-a","photo-b"].map(id=>"https://fixture.invalid/"+id+".png"));
+ s.setSource(edit.input);
+ const second=await prepareEditInput(s.tx,"product-a","稍微提亮","1:1","2K",{sourceJobId:"job",sourceAssetId:"source"},candidate);
+ assert.deepEqual(second.input.promptReferences,refs);
+});
+
+test("反推来源不占图片限额，图片参考与反推可混用，明确清空会清掉两种来源",async()=>{
+ const refs=[{...styles[0],mode:"prompt_only" as const},styles[1]],s=context(refs);
+ const prepared=await prepareSceneInput(s.tx,"product-a","旧意图","1:1",qwen,"2K",s.frozen);
+ assert.deepEqual(prepared.input.referenceAssetIds,["photo-a","photo-b","style-b"]);
+ assert.deepEqual(prepared.input.promptReferences,[refs[0]]);
+ assert.deepEqual(prepared.input.omittedReferences,[]);
+ assert.equal(prepared.estimate,.0315);
+ s.setSource(prepared.input);
+ const edit=await prepareEditInput(s.tx,"product-a","只修改光线","1:1","2K",{sourceJobId:"job",sourceAssetId:"source"},candidate,[],[]);
+ assert.deepEqual(inheritedReferences(edit.input),[]);
+});
+
+test("多张参考分别绑定图位，不强迫图位4另选方向，允许按参考复用池外道具",()=>{
+ const refs=styles.map(r=>({...r,mode:"prompt_only" as const}));
+ const images=refs.map(r=>({...r,role:"reference" as const}));
+ const slots=bindPlanningReferences(refs.map((r,i)=>({...fixture.slots[0],key:`slot-${i+4}`,references:[r],evidence:[r.assetId],props:["参考图中的托盘"]})),images);
+ const plan=validateVisualPlan({...fixture,conversationImages:images,propPool:["花瓶"],slots});
+ assert.deepEqual(plan.slots.map(s=>s.references?.map(r=>r.assetId)),[["style-a"],["style-b"]]);
+ assert.equal(requiresDirections(plan.slots[0],3),false);
+});
+
+test("反推后更换参考或用途必须更新文字；不能把旧描述当作新参考的适配结果",()=>{
+ const s=context(styles.map(r=>({...r,mode:"prompt_only" as const})));
+ assert.equal(referenceAdaptationChanged(s.plan.slots[0]),false);
+ s.plan.slots[0].references![0].purpose="改为参考左侧光线";
+ assert.equal(referenceAdaptationChanged(s.plan.slots[0]),true);
+ assert.throws(()=>validateVisualPlan(s.plan),/按意见重写/);
+});
+
+test("反推参考仍检查归属和删除，不因未传给生图而绕过验证",async()=>{
+ const s=context(styles.map(r=>({...r,mode:"prompt_only" as const})));
+ s.assets.find(a=>a.id==="style-a")!.deletedAt=new Date() as unknown as null;
+ await assert.rejects(confirmVisualPlan(s.tx,"product-a",s.plan),/已删除/);
+ await assert.rejects(prepareSceneInput(s.tx,"product-a","意图","1:1",candidate,"2K",s.frozen),/已删除/);
 });

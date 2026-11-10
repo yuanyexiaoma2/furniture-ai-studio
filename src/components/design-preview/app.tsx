@@ -28,8 +28,8 @@ import {IconGuide} from "./icon-guide";
 
 export type PreviewPage="home"|"skus"|"workspace"|"product"|"admin"|"library"|"icons";
 const emptySubscribe=()=>()=>{};
-export function TipButton({label,children,onClick,className="",side="top",disabled=false}:{label:string;children:React.ReactNode;onClick?:()=>void;className?:string;side?:"top"|"right"|"bottom"|"left";disabled?:boolean}) {
- return <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon" className={`p-icon-button ${className}`} aria-label={label} onClick={onClick} disabled={disabled}>{children}</Button></TooltipTrigger><TooltipContent className="p-portal" side={side} sideOffset={8} collisionPadding={12}>{label}</TooltipContent></Tooltip>;
+export function TipButton({label,children,onClick,className="",side="top",disabled=false,pressed}:{label:string;children:React.ReactNode;onClick?:()=>void;className?:string;side?:"top"|"right"|"bottom"|"left";disabled?:boolean;pressed?:boolean}) {
+ return <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon" className={`p-icon-button ${className}`} aria-label={label} aria-pressed={pressed} onClick={onClick} disabled={disabled}>{children}</Button></TooltipTrigger><TooltipContent className="p-portal" side={side} sideOffset={8} collisionPadding={12}>{label}</TooltipContent></Tooltip>;
 }
 export function Pick({label,value,values,onChange}:{label:string;value:string;values:string[];onChange:(v:string)=>void}){return <Select value={value} onValueChange={onChange}><SelectTrigger aria-label={label}><SelectValue /></SelectTrigger><SelectContent className="p-portal">{values.map(v=><SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent></Select>;}
 export function PreviewApp({page}:{page:PreviewPage}) {
@@ -42,7 +42,7 @@ export function PreviewApp({page}:{page:PreviewPage}) {
  const workspace=page==="workspace"||page==="product";
  const requestedExport=mounted&&new URLSearchParams(window.location.search).get("export")==="1";
  useEffect(()=>{syncTheme(theme??"system");},[theme,syncTheme]);
- return <div className="p-app"><header className="p-topbar">
+ return <div className="p-app" data-workspace={workspace||undefined}><header className="p-topbar">
    {workspace?<TipButton label="返回 SKU" onClick={async()=>{try{await useCanvasSession.getState().flush();router.push('/skus');}catch(e){toast.error(e instanceof Error?e.message:"布局尚未保存，请重试后返回");}}}><ArrowLeft size="md"/></TipButton>:<Link className="p-logo" href="/"><Layers strokeWidth={1.7}/><span>家具创作室</span></Link>}
    {!workspace&&<nav className="p-product-nav" aria-label="产品导航"><Link className={page==="home"?"active":""} href="/">首页</Link><Link className={page==="skus"?"active":""} href="/skus">SKU</Link>{<Link className={page==="library"?"active":""} href="/library">模板库</Link>}</nav>}
    {workspace&&<><div className="p-topbar-title">{live?.product.assets[0]&&<img src={"/api/assets/"+live.product.assets[0].id} alt="SKU 缩略图"/>}<strong>{live?.product.name??"新建创作"}</strong></div>{SHOW_UNCONNECTED_FEATURES&&<Button className="p-coming-brand" variant="ghost" disabled>品牌 · 即将开放</Button>}<Button variant="outline" className="p-top-product-button" onClick={()=>setProductOpen(true)} aria-label={understanding?"产品卡，理解度 "+understanding+"%":"产品卡 · 未建档"}>{understanding>0&&<span className="p-mini-ring" style={{background:"conic-gradient(var(--p-selection) "+understanding+"%,var(--border) 0)"}} aria-hidden="true"/>}<span>{understanding?"产品卡":"产品卡 · 未建档"}</span></Button></>}

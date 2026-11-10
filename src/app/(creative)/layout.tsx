@@ -10,6 +10,7 @@ import "@/styles/creative/chat.css";
 import "@/styles/creative/canvas.css";
 import "@/styles/creative/library.css";
 import "@/styles/creative/admin.css";
+import "@/styles/creative/workspace.css";
 export const metadata: Metadata = { title: "家具创作室" };
 export default function PreviewLayout({ children }: { children: React.ReactNode }) {
   return <PreviewProvider>{children}</PreviewProvider>;

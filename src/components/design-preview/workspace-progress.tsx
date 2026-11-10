@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- 版本缩略图使用已有资产接口，不产生模型调用。 */
 "use client";
 import {Check,LoaderCircle,ChevronDown} from "@/components/icons/concept-icons";
 import {progressLabel,progressSummary} from "@/lib/agent-progress";
@@ -5,10 +6,14 @@ import type {AgentEvent} from "@/lib/planning-agent";
 import type {StudioSnapshot} from "@/lib/studio-main";
 import {useLiveStore} from "./live-store";
 
-export function CanvasHistory(){
+export function CanvasHistory({onFocus}:{onFocus?:(id:string)=>void}){
  const snapshot=useLiveStore(s=>s.snapshot);
  const rows=snapshot?.agent.tools.slice(-20).reverse()??[];
- return <div className="t11-canvas-history">{rows.map(t=><div key={t.id}><span>{progressLabel(t.name)}</span><small>{t.status==="running"?"进行中":t.status==="failed"?"未完成":"已完成"}</small></div>)}{!rows.length&&<p className="p-subtle">处理资料或发送消息后，执行记录会保存在这里。</p>}</div>;
+ return <div className="t11-canvas-history">
+ {snapshot?.pack.slots.map(slot=>{const versions=slot.jobs.filter(j=>!j.retriedById).flatMap<{asset:{id:string}|null;source:unknown}>(job=>job.assets.length?job.assets.map(a=>({asset:a,source:job.input.sourceAssetId})):[{asset:null,source:null}]);return versions.length>0&&<section key={slot.id}><h4>{slot.name}</h4>{versions.map((v,i)=>({...v,number:i+1})).reverse().map(v=>v.asset&&<button type="button" className="p-canvas-version" key={v.asset.id} onClick={()=>onFocus?.(v.asset!.id)}><img loading="lazy" src={"/api/assets/"+v.asset.id} alt=""/><span className="p-version-copy"><strong>版本 {v.number} · {v.source?"修改":"生成"}</strong><small>{v.asset.id===slot.finalAssetId?"当前终稿":"点击定位到画布"}</small></span>{v.asset.id===slot.finalAssetId&&<Check size="sm"/>}</button>)}</section>;})}
+ {!snapshot?.pack.slots.some(s=>s.jobs.some(j=>j.assets.length))&&<p className="p-subtle">生成后在这里找回每个版本。定位已隐藏的图片会将它恢复到画布。</p>}
+ <details><summary>处理记录</summary>{rows.map(t=><div key={t.id}><span>{progressLabel(t.name)}</span><small>{t.status==="running"?"进行中":t.status==="failed"?"未完成":"已完成"}</small></div>)}</details>
+ </div>;
 }
 
 export function WorkspaceProgress({snapshot,events}:{snapshot:StudioSnapshot;events:AgentEvent[]}){

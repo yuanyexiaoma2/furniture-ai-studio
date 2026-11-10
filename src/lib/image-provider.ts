@@ -14,7 +14,7 @@ export type ImageResult =
 export type ImageResolution = "1K" | "2K" | "4K";
 export type ImageRequest = {
   prompt: string;
-  referenceImages: { id: string }[];
+  referenceImages: { id: string; expansion?: import("./expansion-rules").Expansion }[];
   aspectRatio: string;
   resolution: ImageResolution;
   outputFormat: "png" | "jpg";

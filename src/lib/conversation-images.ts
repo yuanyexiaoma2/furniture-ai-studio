@@ -33,7 +33,8 @@ export async function saveConversationImages(sessionId:string,raw:unknown){
     await tx.productDocument.updateMany({where:{productId:session.productId,assetId:asset.id},data:{imageType:"photo"}});
    }
    if(item.role==="product"&&asset.type==="generated")throw new StudioError("生成候选可作为参考图或编辑原图；请用产品实拍锁定产品身份");
-   merged.set(item.assetId,item);
+   const prior=merged.get(item.assetId);
+   merged.set(item.assetId,item.role==="reference"?{...item,mode:item.mode??(prior?.role==="reference"?prior.mode??"image":"prompt_only")}:item);
   }
   const images=[...merged.values()];
   await tx.agentSession.update({where:{id:sessionId},data:{settings:json({...settings,conversationImages:images})}});
@@ -44,5 +45,5 @@ export async function currentEditReferences(sessionId:string,sourceAssetId:strin
  const state=await deps.read(sessionId,[sourceAssetId]);
  if(state.unresolved.includes(sourceAssetId))await deps.save(sessionId,[{assetId:sourceAssetId,role:"source",purpose:"待编辑原图"}]);
  if(explicit?.some(r=>!state.images.some(i=>i.role==="reference"&&i.assetId===r.assetId)))throw new StudioError("新参考图必须先在当前对话说明用途",409);
- return explicit;
+ return explicit?.map(r=>{const image=state.images.find(i=>i.assetId===r.assetId);return {...r,...(!r.mode&&image?.mode?{mode:image.mode}:{})};});
 }

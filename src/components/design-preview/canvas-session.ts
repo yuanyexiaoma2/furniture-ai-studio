@@ -23,14 +23,14 @@ export function useCanvasPersistence(productId:string){
   let active=true,hydrated=false,localRevision=0,localCanWrite=true,conflicted=false,lastSaved="",timer:ReturnType<typeof setTimeout>|undefined,inFlight:Promise<void>|null=null;
   const endpoint="/api/studio/"+productId+"/canvas";
   useCanvasSession.setState({dataReady:false,hydrated:false,productId,revision:0,layout:emptyCanvasLayout(),viewport:null,registryIds:[],baseNodes:[],status:"loading",message:"",canWrite:true});
-  usePreviewStore.setState({nodes:[],selected:[],hiddenIds:[],references:[],editor:null,contextId:null,referencePicking:false,tool:"select"});
+  usePreviewStore.setState({chatRequest:null,nodes:[],selected:[],hiddenIds:[],references:[],editor:null,contextId:null,referencePicking:false,tool:"select"});
   async function request(method:"GET"|"PUT",body?:unknown,keepalive=false){const response=await fetch(endpoint,{method,...(body?{headers:{"Content-Type":"application/json"},body:JSON.stringify(body),keepalive}:{}),cache:"no-store"});const data=await response.json();if(!response.ok)throw Object.assign(Error(data.error??"画布保存失败"),{status:response.status});return data as {revision:number;layout:CanvasLayout;canWrite?:boolean};}
   async function reload(){
    if(inFlight)await inFlight;
    const data=await request("GET");if(!active)return;localRevision=data.revision;localCanWrite=data.canWrite!==false;conflicted=false;
    applyingCanvasLayout=true;
    useCanvasSession.setState({hydrated:true,revision:data.revision,layout:data.layout,viewport:data.layout.viewport,canWrite:data.canWrite!==false,status:"saved",message:""});
-   usePreviewStore.setState({nodes:applyCanvasLayout(useCanvasSession.getState().baseNodes,data.layout),hiddenIds:data.layout.hiddenIds});
+   usePreviewStore.setState({nodes:applyCanvasLayout(useCanvasSession.getState().baseNodes,data.layout).map(n=>({...n,selected:false})),hiddenIds:data.layout.hiddenIds,selected:[],contextId:null,editor:null,references:[]});
    lastSaved=JSON.stringify(captureCanvasLayout());hydrated=true;applyingCanvasLayout=false;
   }
   async function flush(keepalive=false,captured?:CanvasLayout):Promise<void>{

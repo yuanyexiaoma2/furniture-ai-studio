@@ -119,7 +119,7 @@ export async function studioEdit(productId:string,userId:string,assetId:string,i
  await tx.$queryRaw`SELECT id FROM "User" WHERE id=${userId} FOR UPDATE`;
  const references=await currentEditReferences(session.id,assetId,options.references);
  const existing=options.requestKey?await tx.generationJob.findFirst({where:{productId,sessionId:session.id,input:{path:["requestKey"],equals:options.requestKey}}}):null;if(existing)return {jobId:existing.id,estimatedCostUsd:Number(existing.reservedUsd),warning:null};
- const prepared=await prepareEditInput(tx,productId,instruction,source.slot!.aspectRatio as "1:1",settingsOf(session.settings).resolution==="4K"?"4K":settingsOf(session.settings).resolution==="1K"?"1K":"2K",{sourceJobId:source.id,sourceAssetId:assetId},candidate,options.maskAssetId?[options.maskAssetId]:[],references);
+ const prepared=await prepareEditInput(tx,productId,instruction,source.slot!.aspectRatio as "1:1",settingsOf(session.settings).resolution==="4K"?"4K":settingsOf(session.settings).resolution==="1K"?"1K":"2K",{sourceJobId:source.id,sourceAssetId:assetId},candidate,options.maskAssetId?[options.maskAssetId]:[],references,options.expansion);
  if(options.fingerprint&&options.fingerprint!==editFingerprint(prepared.input,candidate,options))throw new StudioError("产品档案、模型或费用已变化，请重试修改",409);
  if(options.maskAssetId){const mask=await tx.asset.findFirst({where:{id:options.maskAssetId,productId,type:"mask",createdById:userId}});if(!mask)throw new StudioError("蒙版不属于当前SKU，请重新涂抹",404);}
  await assertUsdQuota(tx,userId,prepared.estimate);
@@ -130,14 +130,14 @@ export async function studioEdit(productId:string,userId:string,assetId:string,i
 }
 export const newRequestKey=()=>randomUUID();
 
-function editFingerprint(input:unknown,candidate:unknown,options:{references?:SlotReference[];maskAssetId?:string;expansion?:unknown}){return createHash("sha256").update(JSON.stringify({input,candidate,mask:options.maskAssetId??null,expansion:options.expansion??null})).digest("hex");}
-export async function quoteStudioEdit(productId:string,userId:string,assetId:string,instruction:string,options:{references?:SlotReference[];maskAssetId?:string;expansion?:unknown}={}){
+function editFingerprint(input:unknown,candidate:unknown,options:{references?:SlotReference[];maskAssetId?:string;expansion?:import("./expansion-rules").Expansion}){return createHash("sha256").update(JSON.stringify({input,candidate,mask:options.maskAssetId??null,expansion:options.expansion??null})).digest("hex");}
+export async function quoteStudioEdit(productId:string,userId:string,assetId:string,instruction:string,options:{references?:SlotReference[];maskAssetId?:string;expansion?:import("./expansion-rules").Expansion}={}){
  const session=await agentSession(productId,userId),settings=settingsOf(session.settings);
  if(!session.confirmedProfileId||!session.confirmedPack)throw new StudioError("请先确认产品档案和图包方案，再修改图片",409);
  const source=await db.generationJob.findFirst({where:{productId,status:"success",resultAssetIds:{array_contains:[assetId]}},include:{slot:true}});
  if(!source?.slot||source.slot.deletedAt)throw new StudioError("请选择当前图包的已完成候选图",404);
  const candidate=await selectedCandidate("image",settings);
  const references=await currentEditReferences(session.id,assetId,options.references);
- const prepared=await db.$transaction(tx=>prepareEditInput(tx,productId,instruction,source.slot!.aspectRatio as "1:1",settings.resolution==="4K"?"4K":settings.resolution==="1K"?"1K":"2K",{sourceJobId:source.id,sourceAssetId:assetId},candidate,options.maskAssetId?[options.maskAssetId]:[],references),{timeout:30000});
+ const prepared=await db.$transaction(tx=>prepareEditInput(tx,productId,instruction,source.slot!.aspectRatio as "1:1",settings.resolution==="4K"?"4K":settings.resolution==="1K"?"1K":"2K",{sourceJobId:source.id,sourceAssetId:assetId},candidate,options.maskAssetId?[options.maskAssetId]:[],references,options.expansion),{timeout:30000});
  return{estimatedCostUsd:prepared.estimate,estimated:true,fingerprint:editFingerprint(prepared.input,candidate,options),warning:Number((source.input as Record<string,unknown>).editCount??0)>=3?"建议回到原图重做":null};
 }

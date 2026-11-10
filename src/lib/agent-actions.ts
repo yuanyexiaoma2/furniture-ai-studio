@@ -32,10 +32,10 @@ async function validGeneration(sessionId: string, action: PaidAction) {
   }
   return session;
 }
-async function prepareEdit(tx: Prisma.TransactionClient, productId: string, action: Extract<PaidAction, { operation: "edit_image" }>,settings:StudioSettings={}) {
+export async function prepareAgentEdit(tx: Prisma.TransactionClient, productId: string, action: Extract<PaidAction, { operation: "edit_image" }>,settings:StudioSettings={}) {
   const job = await tx.generationJob.findFirst({ where: { productId, status: "success", resultAssetIds: { array_contains: [action.assetId] } }, include: { slot: true } });
   if (!job?.slot || job.slot.deletedAt || !await tx.imagePack.findFirst({ where: { id: job.slot.packId, isCurrent: true, productId } })) throw new StudioError("请选择当前图包的有效候选图", 404);
-  const candidate = settings.imageId?await selectedCandidate("image",settings):await configuredCandidate("edit"), prepared = await prepareEditInput(tx, productId, action.instruction, job.slot.aspectRatio as "1:1", "2K", { sourceJobId: job.id, sourceAssetId: action.assetId }, candidate,[],action.references);
+  const candidate = settings.imageId?await selectedCandidate("image",settings):await configuredCandidate("edit"), prepared = await prepareEditInput(tx, productId, action.instruction, job.slot.aspectRatio as "1:1", settings.resolution === "4K" ? "4K" : settings.resolution === "1K" ? "1K" : "2K", { sourceJobId: job.id, sourceAssetId: action.assetId }, candidate,[],action.references);
   return { ...prepared,input:{...prepared.input,...(settings.imageId?{selectedCandidate:JSON.parse(JSON.stringify(candidate))}:{})},slotId: job.slot.id, fingerprint: createHash("sha256").update(JSON.stringify({ ...prepared, candidate, slotId: job.slot.id })).digest("hex") };
 }
 export async function quoteAgentAction(sessionId: string, action: PaidAction) {
@@ -46,7 +46,7 @@ export async function quoteAgentAction(sessionId: string, action: PaidAction) {
     const slots = await db.imageSlot.findMany({ where: { pack: { productId: session.productId, isCurrent: true }, deletedAt: null, method: "ai_scene", ...(action.operation === "generate_slot" ? { id: action.slotId } : {}) }, orderBy: { order: "asc" } });
     return { ...quote, risk, content: slots.filter(slot => slot.goal.trim()).map(slot => `${slot.name}：${slot.goal}`).join("\n") };
   }
-  return db.$transaction(async tx => { const prepared = await prepareEdit(tx, session.productId, action,settingsOf(session.settings)); const user = await tx.user.findUniqueOrThrow({ where: { id: session.createdById } }), used = await monthlySpendUsd(tx, user.id); return { fingerprint: prepared.fingerprint, estimatedCostUsd: prepared.estimate, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: Math.max(0, prepared.estimate + used - Number(user.monthlyQuota)), totalCount: 1, slotCount: 1, skipped: [], risk, content: action.instruction }; });
+  return db.$transaction(async tx => { const prepared = await prepareAgentEdit(tx, session.productId, action,settingsOf(session.settings)); const user = await tx.user.findUniqueOrThrow({ where: { id: session.createdById } }), used = await monthlySpendUsd(tx, user.id); return { fingerprint: prepared.fingerprint, estimatedCostUsd: prepared.estimate, remaining: Math.max(0, Number(user.monthlyQuota) - used), shortage: Math.max(0, prepared.estimate + used - Number(user.monthlyQuota)), totalCount: 1, slotCount: 1, skipped: [], risk, content: action.instruction }; });
 }
 export async function submitAgentAction(sessionId:string,action:PaidAction,requestKey:string=randomUUID()){
  const session=await validGeneration(sessionId,action);
@@ -61,7 +61,7 @@ export async function submitAgentAction(sessionId:string,action:PaidAction,reque
   await tx.$queryRaw`SELECT id FROM "User" WHERE id=${session.createdById} FOR UPDATE`;
   const existing=await tx.generationJob.findFirst({where:{sessionId,createdById:session.createdById,input:{path:["agentRequestKey"],equals:requestKey}}});
   if(existing)return {jobId:existing.id,estimatedCostUsd:Number(existing.reservedUsd),submitted:true};
-  const prepared=await prepareEdit(tx,session.productId,action,settingsOf(session.settings));await assertUsdQuota(tx,session.createdById,prepared.estimate);
+  const prepared=await prepareAgentEdit(tx,session.productId,action,settingsOf(session.settings));await assertUsdQuota(tx,session.createdById,prepared.estimate);
   const jobId=await enqueueImageJob(tx,{productId:session.productId,sessionId,slotId:prepared.slotId,logicalModel:"edit",createdById:session.createdById,reservedUsd:prepared.estimate,input:json({...prepared.input,agentRequestKey:requestKey})});
   return {jobId,estimatedCostUsd:prepared.estimate,submitted:true};
  },{timeout:30000});
@@ -131,7 +131,7 @@ export async function approveAgentCard(sessionId: string, cardId: string, change
         // 美工只能改画面选择，不能通过确认请求替换身份、来源或产品归属。
         const freshSession=await tx.agentSession.findUniqueOrThrow({where:{id:sessionId}});
         const pool=[...new Map([...(saved.conversationImages??[]),...conversationImages(freshSession.settings)].map(i=>[i.assetId,i])).values()];
-        const plan=await confirmVisualPlan(tx,session.productId,{...saved,...(pool.length||saved.conversationImages?{conversationImages:pool}:{}),slots:edited.slots.map(s=>({...s,directions:saved.slots.find(p=>p.key===s.key)?.directions}))});
+        const plan=await confirmVisualPlan(tx,session.productId,{...saved,...(pool.length||saved.conversationImages?{conversationImages:pool}:{}),slots:edited.slots.map(s=>({...s,adaptedReferences:saved.slots.find(p=>p.key===s.key)?.adaptedReferences,directions:saved.slots.find(p=>p.key===s.key)?.directions}))});
         const original=visualPlanSchema.parse(raw.originalVisualPlan??saved);
         await tx.agentCard.update({where:{id:cardId},data:{data:json({...raw,originalVisualPlan:original,confirmedVisualPlan:plan,planDiff:visualPlanDiff(original,plan),confirmedAt:new Date().toISOString(),confirmedById:session.createdById})}});
         proposal=planToProposal(plan);

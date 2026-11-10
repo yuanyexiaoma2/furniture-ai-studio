@@ -10,6 +10,8 @@ import {buildKieImageInput,validateImageSelection} from "./image-model-input";
 import {kieImageSpec} from "./image-models";
 import { ImageTaskFailure,ImageResultTransferFailure } from "@/lib/gateway-error";
 import { downloadResultImage } from "@/lib/remote-image";
+import { expansionGuide } from "./expanded-edit";
+import type { Expansion } from "./expansion-rules";
 
 export class KieProvider implements ImageProvider {
   constructor(private model = models["scene-main"].find(c => c.provider === "kie")!.model, private download: (url: string) => Promise<Buffer> = downloadResultImage) {}
@@ -17,7 +19,7 @@ export class KieProvider implements ImageProvider {
   async generate(input: ImageRequest): Promise<ImageGeneration> {
     validateImageSelection({provider:"kie",model:this.model,supportsTools:false,pricing:{currency:"credits"}},input.resolution,input.aspectRatio,input.prompt,input.referenceImages.length);
     const urls: string[] = [];
-    for (const asset of input.referenceImages) urls.push(await this.uploadFile(asset.id, input.forceReferenceUpload,kieImageSpec(this.model)?.maxReferenceBytes));
+    for (const asset of input.referenceImages) urls.push(await this.uploadFile(asset.id, input.forceReferenceUpload,kieImageSpec(this.model)?.maxReferenceBytes,asset.expansion));
     const requestInput=buildKieImageInput(this.model,input,urls);
     const taskId = await this.submit(this.model, requestInput);
     return { kind: "pending", taskId, requestInput };
@@ -31,11 +33,12 @@ export class KieProvider implements ImageProvider {
   private baseUrl = process.env.KIE_BASE_URL?.trim() || "https://api.kie.ai";
   private uploadBaseUrl = process.env.KIE_UPLOAD_BASE_URL?.trim() || "https://kieai.redpandaai.co";
 
-  async uploadFile(assetId: string, force = false,maxBytes=30*1024*1024) {
+  async uploadFile(assetId: string, force = false,maxBytes=30*1024*1024,expansion?:Expansion) {
     const key = process.env.KIE_API_KEY?.trim();
     if (!key) throw new KieError("尚未配置 KIE_API_KEY，请联系管理员", 401);
     const asset = await db.asset.findUniqueOrThrow({ where: { id: assetId } });
-    const { bytes } = await readObject(asset.storageKey);
+    const file = await readObject(asset.storageKey);
+    const bytes = expansion ? await expansionGuide(file.bytes,expansion) : file.bytes;
     if(bytes.length>maxBytes)throw new KieError(`${kieImageSpec(this.model)?.name??"所选模型"}的参考图每张不能超过${maxBytes/1024/1024}MB，请压缩后重新上传`,400);
     const photo = await inspectPhoto(bytes);
     const contentHash = createHash("sha256").update(bytes).digest("hex");

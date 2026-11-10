@@ -1,5 +1,6 @@
 "use client";
 import { useEffect,useState } from "react";
+import {usePathname} from "next/navigation";
 import { ThemeProvider } from "next-themes";
 import {SessionProvider} from "next-auth/react";
 import { TooltipProvider } from "./ui/tooltip";
@@ -11,10 +12,11 @@ import type {MockModel} from "@/design-preview/mock/models";
 import {useModelStore} from "./model-store";
 import {useLibraryStore} from "./library/library-store";
 export function PreviewProvider({children}:{children:React.ReactNode}) {
+  const pathname=usePathname();
   const [ready,setReady]=useState(false);
   // 先恢复持久状态，再挂载会初始化会话的子组件，避免默认值覆盖已存选择。
   useEffect(()=>{let active=true;Promise.all([useModelStore.persist.rehydrate(),useLibraryStore.persist.rehydrate(),useWorkflowStore.persist.rehydrate()]).then(()=>{if(active){useModelStore.getState().setCatalog([]);studioFetch<{models:MockModel[]}>("/api/studio/models").then(r=>{if(active)useModelStore.getState().setCatalog(r.models);}).catch(()=>{});setReady(true);}});return()=>{active=false;};},[]);
   // 离开预览时恢复业务页面原有的主题环境。
   useEffect(()=>()=>{document.documentElement.classList.remove("dark","light");document.documentElement.style.removeProperty('color-scheme');},[]);
-  return <SessionProvider refetchOnWindowFocus={false}><ThemeProvider attribute="class" storageKey="furniture-preview-theme" defaultTheme="system" enableSystem disableTransitionOnChange><TooltipProvider delayDuration={250}>{ready?children:<div role="status" className="p-preview-loading">正在打开创作空间…</div>}<Toaster icons={{success:<Check size="sm"/>,error:<X size="sm"/>,info:<CircleHelp size="sm"/>,warning:<CircleHelp size="sm"/>,loading:<Sparkles size="sm"/>}} className="p-portal" position="bottom-right" toastOptions={{className:"p-toast"}} /></TooltipProvider></ThemeProvider></SessionProvider>;
+  return <SessionProvider refetchOnWindowFocus={false}><ThemeProvider attribute="class" storageKey="furniture-preview-theme" defaultTheme="system" enableSystem disableTransitionOnChange><TooltipProvider delayDuration={250}>{ready?children:<div role="status" className="p-preview-loading">正在打开创作空间…</div>}<Toaster icons={{success:<Check size="sm"/>,error:<X size="sm"/>,info:<CircleHelp size="sm"/>,warning:<CircleHelp size="sm"/>,loading:<Sparkles size="sm"/>}} className="p-portal" position={pathname==="/workspace"?"top-right":"bottom-right"} offset={pathname==="/workspace"?{top:80,right:24}:undefined} mobileOffset={pathname==="/workspace"?{top:112,right:16}:undefined} toastOptions={{className:"p-toast"}} /></TooltipProvider></ThemeProvider></SessionProvider>;
 }

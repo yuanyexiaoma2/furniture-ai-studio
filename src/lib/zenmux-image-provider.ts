@@ -7,6 +7,7 @@ import { GatewayError, gatewayException } from "@/lib/gateway-error";
 import type { ImageProvider, ImageRequest, ImageGeneration } from "@/lib/image-provider";
 import { models, IMAGE_TEXT_OUTPUT_BUDGET } from "./models.config";
 import { imageUsageUsd } from "./gateway-cost";
+import { expansionGuide } from "./expanded-edit";
 
 type Client = { models: { generateContent: (input: GenerateContentParameters) => Promise<unknown>;editImage?:(input:EditImageParameters)=>Promise<unknown> } };
 type Part = { inlineData?: { data?: string; mimeType?: string }; inline_data?: { data?: string; mime_type?: string } };
@@ -15,6 +16,10 @@ type Reply = { responseId?: string; response_id?: string; promptFeedback?: { blo
 export class ZenMuxImageProvider implements ImageProvider {
   constructor(private model = models["scene-main"].find(c => c.provider === "zenmux")!.model, private injected?: Client, private read = assetBytes) {}
   isConfigured() { return Boolean(process.env.ZENMUX_API_KEY?.trim()); }
+  private async readReference(reference: ImageRequest["referenceImages"][number]) {
+    const file=await this.read(reference.id);
+    return reference.expansion?{bytes:await expansionGuide(file.bytes,reference.expansion),mime:"image/png"}:file;
+  }
   async generate(input: ImageRequest): Promise<ImageGeneration> {
     if (!this.isConfigured()) throw new GatewayError("zenmux", "未配置 ZENMUX_API_KEY", 503, false);
     if(input.referenceImages.length>imageReferenceLimit({provider:"zenmux",model:this.model}))throw new GatewayError("zenmux","图片数量超过当前模型输入上限，未提交也不会改成文字参考",400,false);
@@ -24,15 +29,15 @@ export class ZenMuxImageProvider implements ImageProvider {
       if(registered?.candidate.imageProtocol==="vertex-edit"){
         const client=this.injected??new GoogleGenAI({apiKey:process.env.ZENMUX_API_KEY!.trim(),vertexai:true,httpOptions:{baseUrl:process.env.ZENMUX_VERTEX_BASE_URL?.trim()||"https://zenmux.ai/api/vertex-ai",apiVersion:"v1",timeout:90000,retryOptions:{attempts:1}}});
         if(!client.models.editImage)throw new GatewayError("zenmux","当前客户端未提供官方editImage协议",400,false);
-        const referenceImages=await Promise.all(input.referenceImages.map(async({id},index)=>{const file=await this.read(id);return Object.assign(new RawReferenceImage(),{referenceId:index+1,referenceImage:{imageBytes:file.bytes.toString("base64"),mimeType:file.mime}});}));
+        const referenceImages=await Promise.all(input.referenceImages.map(async(reference,index)=>{const file=await this.readReference(reference);return Object.assign(new RawReferenceImage(),{referenceId:index+1,referenceImage:{imageBytes:file.bytes.toString("base64"),mimeType:file.mime}});}));
         const response=await client.models.editImage({model:this.model,prompt:input.prompt,referenceImages,config:{numberOfImages:1,outputMimeType:input.outputFormat==="jpg"?"image/jpeg":"image/png",...(input.aspectRatio!=="auto"?{aspectRatio:input.aspectRatio}:{}),httpOptions:{extraBody:{imageSize:zenmuxImageSize(input.resolution,input.aspectRatio),resolution:input.resolution}}}}) as {generatedImages?:{image?:{imageBytes?:string};raiFilteredReason?:string}[];sdkHttpResponse?:{headers?:Record<string,string>}};
         if(response.generatedImages?.some(i=>i.raiFilteredReason))throw new GatewayError("zenmux","内容被安全策略拦截",422,false);
         const images=response.generatedImages?.flatMap(i=>i.image?.imageBytes?[Buffer.from(i.image.imageBytes,"base64")]:[])??[];
         if(!images.length)throw new GatewayError("zenmux","返回内容中没有图片",502,true);
         return {kind:"done",images,externalGenerationId:response.sdkHttpResponse?.headers?.["x-generation-id"]};
       }
-      const references = await Promise.all(input.referenceImages.map(async ({ id }) => {
-        const { bytes, mime } = await this.read(id);
+      const references = await Promise.all(input.referenceImages.map(async (reference) => {
+        const { bytes, mime } = await this.readReference(reference);
         return { inlineData: { mimeType: mime, data: bytes.toString("base64") } };
       }));
       const client = this.injected ?? new GoogleGenAI({ apiKey: process.env.ZENMUX_API_KEY!.trim(), vertexai: true, httpOptions: { baseUrl: process.env.ZENMUX_VERTEX_BASE_URL?.trim() || "https://zenmux.ai/api/vertex-ai", apiVersion: "v1", timeout: 30000, retryOptions: { attempts: 1 } } });

@@ -3,6 +3,26 @@ import assert from "node:assert/strict";
 import {canvasLayoutSchema,canvasSelectionSchema,emptyCanvasLayout,reconcileCanvasLayout,sameCanvasLayout,summarizeCanvas,type CanvasElement} from "../../src/lib/canvas-rules";
 import {consumeAgentStream} from "../../src/lib/agent-stream";
 import {progressSummary} from "../../src/lib/agent-progress";
+import {usePreviewStore,type StudioNode} from "../../src/components/design-preview/store";
+import {arrangeCanvasNodes,restoreCanvasNodes} from "../../src/components/design-preview/canvas-operations";
+import {canvasGridSize} from "../../src/lib/canvas-arrangement";
+
+const picture=(id:string,parentId="frame"):StudioNode=>({id,type:"picture",parentId,position:{x:40,y:30},data:{image:"/api/assets/"+id,label:id,slot:"场景"}});
+test("选图、取消、移除分组保持操作对象及图片高亮同步，不遗留隐藏引用",()=>{
+ const saved=usePreviewStore.getState();try{
+  usePreviewStore.setState({nodes:[{id:"frame",type:"frame",position:{x:0,y:0},data:{image:"",label:"场景",slot:"场景"}},picture("a"),picture("b")],selected:[],references:[],hiddenIds:[]});
+  const store=usePreviewStore.getState();store.select(["a","a","missing"]);assert.deepEqual(usePreviewStore.getState().selected,["a"]);assert.equal(usePreviewStore.getState().contextId,"a");assert.equal(usePreviewStore.getState().nodes.find(n=>n.id==="a")?.selected,true);
+  store.select([]);assert.equal(usePreviewStore.getState().contextId,null);assert(usePreviewStore.getState().nodes.every(n=>!n.selected));
+  store.addReference("a");store.select(["frame"]);store.removeSelected();assert.deepEqual(usePreviewStore.getState().references,[]);assert.deepEqual(usePreviewStore.getState().selected,[]);assert.deepEqual(usePreviewStore.getState().nodes,[]);assert(usePreviewStore.getState().hiddenIds.includes("a"));
+ }finally{usePreviewStore.setState(saved);}
+});
+test("整理按图位分行，保留图片身份、终稿与便签；恢复隐藏子图同时恢复父组",()=>{
+ const frame:StudioNode={id:"frame",type:"frame",position:{x:500,y:800},data:{image:"",label:"场景",slot:"场景"}};
+ const note:StudioNode={id:"note-1",type:"note",position:{x:17,y:29},data:{image:"",label:"不要改这条便签",slot:"便签"}};
+ const pictures=Array.from({length:7},(_,i)=>picture(String(i))),nodes=arrangeCanvasNodes([frame,...pictures,note]);
+ assert.equal(nodes.find(n=>n.id==="3")?.position.y,300);assert.equal(nodes.find(n=>n.id==="6")?.position.y,570);assert.deepEqual(nodes.at(-1),note);assert(canvasGridSize(7).width<1000);
+ const restored=restoreCanvasNodes([note],nodes,["frame",...pictures.map(p=>p.id)],"3");assert.deepEqual(restored.nodes.map(n=>n.id),["note-1","frame","3"]);assert(!restored.hiddenIds.includes("frame"));assert(restored.hiddenIds.includes("0"));assert.deepEqual(restored.nodes[0],note);
+});
 
 test("布局拒绝重复ID、外部图片字段、非法坐标和过量引用",()=>{
  const layout=emptyCanvasLayout();assert(canvasLayoutSchema.safeParse(layout).success);

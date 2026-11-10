@@ -23,7 +23,7 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
   await db.agentToolCall.create({data:{sessionId:session.id,callId:run,name:"view_images",arguments:{},result:{analysis:"已核对实拍；产品木色保持不变。"},status:"success",completedAt:new Date()}});
   await db.agentToolCall.create({data:{sessionId:session.id,callId:run+"-failed",name:"web_search",arguments:{},status:"failed",error:"联网暂未配置，可以关闭联网继续"}});
   async function login(p:Page){await p.goto("/login");await p.getByLabel("公司邮箱").fill(email);await p.getByLabel("密码",{exact:true}).fill(password);await p.getByRole("button",{name:"进入工作台"}).click();await expect(p).toHaveURL(/\/$/);}
-  await login(page);const endpoint=`/api/studio/${productId}/canvas`,origin="http://localhost:3000";
+  await login(page);const endpoint=`/api/studio/${productId}/canvas`,origin=new URL(process.env.E2E_BASE_URL??"http://localhost:3000").origin;
   const layout={version:1,nodes:[{id:"slot-"+slot.id,x:420,y:180},{id:"job-"+pendingJob.id,x:130,y:60}],notes:[{id:"note-browser",text:"保留产品木色与五金",x:460,y:100,width:220,height:160}],hiddenIds:[],viewport:{x:100,y:80,zoom:.7}};
   expect((await page.request.put(endpoint,{headers:{Origin:origin},data:{revision:0,layout}})).status()).toBe(200);
   await page.goto(`/workspace?sku=${productId}`);
@@ -48,6 +48,11 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
   await page.keyboard.press("Escape");await expect(preview).toHaveCount(0);await expect(page.getByLabel("本次引用图片")).toContainText("本次引用 1 张");
   await picture.dblclick();await expect(preview).toBeVisible();await preview.getByRole("button",{name:"关闭",exact:true}).click();await expect(preview).toHaveCount(0);
   await expect(page.getByRole("button",{name:"缩放百分比菜单"})).toHaveText("70%");
+  // 修改入口将选图送到输入区；取消选择后不再隐式引用旧图片。
+  await page.getByRole("button",{name:"描述修改",exact:true}).click();await expect(page.getByLabel("工作台创作要求")).toBeFocused();
+  await page.getByRole("button",{name:"取消选择",exact:true}).click();await expect(page.getByLabel("本次引用图片")).toHaveCount(0);
+  await picture.getByRole("button",{name:"图片更多操作",exact:true}).click();await expect(page.getByRole("toolbar",{name:"图片操作",exact:true})).toBeVisible();
+  await expect(page.getByLabel("本次引用图片")).toContainText("选中 · ");
   // 暂停前端轮询，模拟正式图片先入库、自动保存仍带旧占位图的竞争时序。
   const snapshotUrl="/api/studio/"+productId,frozen=await (await page.request.get(snapshotUrl)).json();
   await page.route("**"+snapshotUrl,route=>route.fulfill({status:200,json:frozen}));
@@ -73,6 +78,10 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
   await picture.click();await page.keyboard.press("Delete");
   await expect.poll(async()=>((await (await page.request.get(endpoint)).json()).layout.hiddenIds)).toContain(assets[1]);
   await page.reload();await expect(picture).toHaveCount(0);expect(await db.asset.count({where:{id:assets[1]}})).toBe(1);
+  await page.getByLabel("图片版本",{exact:true}).click();
+  await page.locator(".p-canvas-version").filter({hasText:"版本 1"}).click();await expect(picture).toBeVisible();
+  await expect.poll(async()=>((await (await page.request.get(endpoint)).json()).layout.hiddenIds.includes(assets[1]))).toBe(false);
+  await page.getByRole("button",{name:"收起",exact:true}).click();
   await page.getByLabel("添加便签（N）").click();
   await expect.poll(async()=>((await (await page.request.get(endpoint)).json()).layout.notes.length)).toBe(2);
   const savedNotes=(await (await page.request.get(endpoint)).json()).layout.notes;const addedNoteId=savedNotes.find((n:{id:string})=>n.id!=="note-browser").id;

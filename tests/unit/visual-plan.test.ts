@@ -15,11 +15,11 @@ test("种子转换：五种类型齐全，产品身份和具体尺寸不进入�
 });
 test("检索：排除示例和待上传案例",()=>{const result=retrievePatterns([...entries,{...entries[0],id:"sample",is_sample:true}],"鞋架",["窄空间"]);assert.equal(result.entries.length,15);assert.ok(result.entries.every(e=>e.id!=="sample"&&e.status==="ready"));});
 test("检索：缺同品类时明确相近品类；无关联不乱用",()=>{assert.match(retrievePatterns(entries,"书架",[]).note,/相近品类/);assert.equal(retrievePatterns(entries,"餐桌",[]).entries.length,0);});
-test("方案：场景去重、道具去重、同 SKU combinationKey 去重",()=>{
+test("方案：允许复用满意的场景、道具和历史组合",()=>{
  const p=validateVisualPlan(fixture);assert.ok(p.slots[0].combinationKey);
- assert.throws(()=>validateVisualPlan(p,[p.slots[0].combinationKey]),/组合重复/);
- assert.throws(()=>validateVisualPlan({...p,slots:[p.slots[0],{...p.slots[0],key:"other",props:["花瓶"]}]}),/场景图/);
- assert.throws(()=>validateVisualPlan({...p,slots:[p.slots[0],{...p.slots[0],key:"other",scene:"衣帽间"}]}),/道具重复/);
+ assert.doesNotThrow(()=>validateVisualPlan(p,[p.slots[0].combinationKey]));
+ assert.doesNotThrow(()=>validateVisualPlan({...p,slots:[p.slots[0],{...p.slots[0],key:"other",props:["花瓶"]}]}));
+ assert.doesNotThrow(()=>validateVisualPlan({...p,slots:[p.slots[0],{...p.slots[0],key:"other",scene:"衣帽间"}]}));
 });
 test("方案：拒绝伪造依据、重复图位",()=>{assert.throws(()=>validateVisualPlan({...fixture,slots:[{...fixture.slots[0],evidence:["fake"]}]}),/依据/);assert.throws(()=>validateVisualPlan({...fixture,slots:[fixture.slots[0],fixture.slots[0]]}),/图位标识/);});
 test("最终摄影意图：后期说明、内部依据不进入提示词",()=>{const text=composeVisualSlot(fixture.slots[0]);assert.ok(text.includes("干净摄影底图"));assert.equal(text.includes("scene-a"),false);assert.equal(text.includes("尺寸后期添加"),false);});

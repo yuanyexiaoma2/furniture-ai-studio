@@ -1,4 +1,5 @@
 import "server-only";
+import {canvasGridPosition,canvasGridSize} from "./canvas-arrangement";
 import {db} from "./db";
 import {agentSession,json} from "./agent-state";
 import {StudioError} from "./studio-error";
@@ -11,13 +12,14 @@ export async function canvasRegistry(productId:string):Promise<CanvasElement[]>{
  ]);
  const elements:CanvasElement[]=[];
  if(photos.length){elements.push({id:"reference-frame",type:"frame",label:"产品实拍与风格参考",x:-620,y:0,width:540,height:Math.max(280,Math.ceil(photos.length/2)*250+50)});photos.forEach((p,i)=>elements.push({id:p.id,type:"picture",assetId:p.id,label:(p.type==="photo"?"原始实拍 ":"风格参考 ")+(i+1),parentId:"reference-frame",x:24+(i%2)*260,y:30+Math.floor(i/2)*250,width:240,height:220}));}
- for(const [i,slot]of(pack?.slots??[]).entries()){
+ let nextTop=0;
+ for(const slot of pack?.slots??[]){
   const parentId="slot-"+slot.id,children:CanvasElement[]=[];
   for(const job of slot.jobs){const assets=Array.isArray(job.resultAssetIds)?job.resultAssetIds.filter((id):id is string=>typeof id==="string"):[];
-   if(assets.length)for(const assetId of assets)children.push({id:assetId,type:"picture",assetId,slotId:slot.id,parentId,label:slot.name+" · 候选 "+(children.length+1),final:assetId===slot.finalAssetId,x:24+children.length*260,y:30,width:240,height:220});
-   else children.push({id:"job-"+job.id,type:"picture",slotId:slot.id,parentId,label:slot.name+" · "+(job.status==="failed"?"生成失败":"生成任务"),x:24+children.length*260,y:30,width:240,height:220});
+   if(assets.length)for(const assetId of assets)children.push({id:assetId,type:"picture",assetId,slotId:slot.id,parentId,label:slot.name+" · 候选 "+(children.length+1),final:assetId===slot.finalAssetId,...canvasGridPosition(children.length),width:240,height:220});
+   else children.push({id:"job-"+job.id,type:"picture",slotId:slot.id,parentId,label:slot.name+" · "+(job.status==="failed"?"生成失败":"生成任务"),...canvasGridPosition(children.length),width:240,height:220});
   }
-  elements.push({id:parentId,type:"frame",slotId:slot.id,label:slot.name,x:0,y:i*340,width:Math.max(540,children.length*260+48),height:280},...children);
+  const size=canvasGridSize(children.length);elements.push({id:parentId,type:"frame",slotId:slot.id,label:slot.name,x:0,y:nextTop,...size},...children);nextTop+=size.height+70;
  }
  // 不把已删除资源暴露给模型，即使历史任务仍保留旧ID。
  const assetIds=elements.flatMap(e=>e.assetId?[e.assetId]:[]),valid=new Set((await db.asset.findMany({where:{id:{in:assetIds},productId,deletedAt:null},select:{id:true}})).map(a=>a.id));

@@ -43,7 +43,15 @@ export async function recoverInterruptedJobs(instanceId: string, boss: PgBoss) {
     }
     const message = job.provider === "zenmux" ? "ZenMux 同步请求因 worker 重启中断，已标记失败；可重新生成，先核对未知扣费" : "生图提交因 worker 重启中断，未获得任务编号；已标记失败，请核对网关记录后重新生成";
     await db.$transaction(async tx => {
-      await tx.generationJob.update({ where: { id: job.id }, data: { status: "failed", completedAt: new Date(), costUsd: job.costUsd ?? job.reservedUsd, costEstimated: true, error: message } });
+      await tx.$queryRaw`SELECT id FROM "GenerationJob" WHERE id=${job.id} FOR UPDATE`;
+      const current = await tx.generationJob.findUniqueOrThrow({ where: { id: job.id } });
+      if (current.status !== "running" || current.provider !== job.provider || current.externalTaskId !== job.externalTaskId) return;
+      const successOnly = (current.input as Record<string, unknown>).chargeSuccessfulAttemptOnly === true;
+      await tx.generationJob.update({ where: { id: job.id }, data: {
+        status: "failed", completedAt: new Date(), nextPollAt: null,
+        ...(successOnly ? { costUsd: 0, reservedUsd: 0, credits: null, costEstimated: false } : { costUsd: current.costUsd ?? current.reservedUsd, costEstimated: true }),
+        error: message + (successOnly ? "；本次生成未成功，失败预留已释放；上游尝试保留供核对，不代表供应商退款" : ""),
+      } });
       await tx.$executeRaw`UPDATE "GenerationAttempt" SET status='failed', "completedAt"=NOW(), "durationMs"=GREATEST(0,EXTRACT(EPOCH FROM (NOW()-"createdAt"))*1000)::integer, error=${message} WHERE "jobId"=${job.id} AND status IN ('running','pending')`;
     });
   }

@@ -2,6 +2,8 @@
 import {useEffect,useRef,useState} from "react";
 import {Stage,Layer,Rect,Image as KonvaImage,Transformer} from "react-konva";
 import Konva from "konva";
+import {containExpansion,expansionFromPreview} from "@/lib/expansion-rules";
+import {toast} from "sonner";
 import {demoSession,estimateImageCost,useModelStore} from "./model-store";
 import {Button} from "./ui/button";
 import {Dialog,DialogContent,DialogTitle,DialogDescription} from "./ui/dialog";
@@ -12,10 +14,20 @@ export default function ExpandEditor({src,onCancel,onConfirm}:{src:string;onCanc
  const [submitting,setSubmitting]=useState(false);
  const stageArea=useRef<HTMLDivElement>(null),[stageWidth,setStageWidth]=useState(680),stageScale=stageWidth/680;
  useEffect(()=>{if(!stageArea.current)return;const observer=new ResizeObserver(([entry])=>setStageWidth(Math.min(680,entry.contentRect.width)));observer.observe(stageArea.current);return()=>observer.disconnect();},[image]);
+ const imageScale=image?Math.min(224/image.naturalWidth,180/image.naturalHeight):1;
+ const source={x:228+(224-(image?.naturalWidth??224)*imageScale)/2,y:114+(180-(image?.naturalHeight??180)*imageScale)/2,width:(image?.naturalWidth??224)*imageScale,height:(image?.naturalHeight??180)*imageScale};
  const rect=useRef<Konva.Rect>(null),transformer=useRef<Konva.Transformer>(null);
  useEffect(()=>{const img=new window.Image();img.onload=()=>setImage(img);img.src=src;return()=>{img.onload=null;};},[src]);
  // Dialog 的 Portal 晚于父组件挂载；图片就绪后再绑定变换框，确保拖动手柄可用。
  useEffect(()=>{if(rect.current)transformer.current?.nodes([rect.current]);},[image]);
  function preset(value:string){setRatio(value);setBox(value==='1:1'?{x:200,y:25,width:300,height:300}:value==='4:3'?{x:160,y:55,width:400,height:300}:value==='16:9'?{x:100,y:35,width:520,height:292}:box);}
- return <Dialog open onOpenChange={open=>!open&&!submitting&&onCancel()}><DialogContent className="p-portal p-expand-dialog"><DialogDescription className="sr-only">拖动边框调整扩展范围，原图始终保留。</DialogDescription><div className="p-expand-modal"><div className="p-expand-heading"><DialogTitle>扩展画面</DialogTitle><div className="p-inline-options">{['1:1','4:3','16:9','自定义'].map(v=><Button key={v} variant={ratio===v?'secondary':'ghost'} onClick={()=>preset(v)}>{v}</Button>)}<Button size="icon" variant="ghost" aria-label="取消扩图" disabled={submitting} onClick={onCancel}><X size="md"/></Button></div></div><div className="p-expand-stage" ref={stageArea}><Stage width={stageWidth} height={380*stageScale} scaleX={stageScale} scaleY={stageScale}><Layer>{image&&<KonvaImage image={image} x={228} y={114} width={224} height={180}/>}<Rect ref={rect} {...box} stroke={stroke} strokeWidth={2} dash={[6,5]} draggable onDragEnd={e=>setBox(s=>({...s,x:e.target.x(),y:e.target.y()}))} onTransformEnd={()=>{if(!rect.current)return;const r=rect.current;setBox({x:r.x(),y:r.y(),width:Math.max(224,r.width()*r.scaleX()),height:Math.max(180,r.height()*r.scaleY())});r.scaleX(1);r.scaleY(1);setRatio('自定义');}}/><Transformer ref={transformer} rotateEnabled={false} keepRatio={ratio!=='自定义'} borderStroke={stroke} anchorStroke={stroke} boundBoxFunc={(oldBox,next)=>Math.abs(next.width)<224||Math.abs(next.height)<180?oldBox:next}/></Layer></Stage></div><div className="p-expand-footer"><span className="p-subtle">拖动边框调整范围 · 原图保留</span><div className="p-inline-options"><Button variant="outline" disabled={submitting} onClick={onCancel}>取消</Button><Button disabled={submitting} onClick={async()=>{setSubmitting(true);try{await onConfirm({width:Math.round(box.width),height:Math.round(box.height),offsetX:228-box.x,offsetY:114-box.y});}catch{/* 保留扩图范围，错误由工作台统一提示。 */}finally{setSubmitting(false);}}}>{submitting?"正在提交…":`确认 · 约 ${quote.toFixed(2)}`}</Button></div></div></div></DialogContent></Dialog>;
+ async function submitExpansion(){
+  if(!image)return;
+  let extent;
+  try{extent=expansionFromPreview(containExpansion(box,source),source,{width:image.naturalWidth,height:image.naturalHeight});}
+  catch{toast.error("扩图范围过大或未完整包含原图，请调整边框");return;}
+  setSubmitting(true);
+  try{await onConfirm(extent);}catch{/* 保留扩图范围，提交错误由工作台统一提示。 */}finally{setSubmitting(false);}
+ }
+ return <Dialog open onOpenChange={open=>!open&&!submitting&&onCancel()}><DialogContent className="p-portal p-expand-dialog"><DialogDescription className="sr-only">拖动边框调整扩展范围，原图始终保留。</DialogDescription><div className="p-expand-modal"><div className="p-expand-heading"><DialogTitle>扩展画面</DialogTitle><div className="p-inline-options">{['1:1','4:3','16:9','自定义'].map(v=><Button key={v} variant={ratio===v?'secondary':'ghost'} onClick={()=>preset(v)}>{v}</Button>)}<Button size="icon" variant="ghost" aria-label="取消扩图" disabled={submitting} onClick={onCancel}><X size="md"/></Button></div></div><div className="p-expand-stage" ref={stageArea}><Stage width={stageWidth} height={380*stageScale} scaleX={stageScale} scaleY={stageScale}><Layer>{image&&<KonvaImage image={image} {...source}/>}<Rect ref={rect} {...box} stroke={stroke} strokeWidth={2} dash={[6,5]} draggable onDragEnd={e=>setBox(s=>containExpansion({...s,x:e.target.x(),y:e.target.y()},source))} onTransformEnd={()=>{if(!rect.current)return;const r=rect.current;setBox(containExpansion({x:r.x(),y:r.y(),width:Math.max(224,r.width()*r.scaleX()),height:Math.max(180,r.height()*r.scaleY())},source));r.scaleX(1);r.scaleY(1);setRatio('自定义');}}/><Transformer ref={transformer} rotateEnabled={false} keepRatio={ratio!=='自定义'} borderStroke={stroke} anchorStroke={stroke} boundBoxFunc={(oldBox,next)=>Math.abs(next.width)<224||Math.abs(next.height)<180?oldBox:next}/></Layer></Stage></div><div className="p-expand-footer"><span className="p-subtle">拖动边框调整范围 · 原图保留</span><div className="p-inline-options"><Button variant="outline" disabled={submitting} onClick={onCancel}>取消</Button><Button disabled={submitting||!image} onClick={()=>void submitExpansion()}>{submitting?"正在提交…":`确认 · 约 ${quote.toFixed(2)}`}</Button></div></div></div></DialogContent></Dialog>;
 }

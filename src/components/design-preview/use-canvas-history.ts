@@ -3,7 +3,7 @@ import {useEffect,useRef,useState} from "react";
 import {usePreviewStore,type StudioNode} from "./store";
 import {applyCanvasLayout,applyingCanvasLayout,useCanvasSession} from "./canvas-session";
 import {captureLayoutHistory} from "./canvas-layout-history";
-import type {CanvasLayout} from "@/lib/canvas-rules";
+import {sameCanvasLayout,type CanvasLayout} from "@/lib/canvas-rules";
 
 export function useCanvasHistory(live:boolean,productId:string){
  const commands=useRef({undo:()=>{},redo:()=>{}}),[available,setAvailable]=useState({undo:false,redo:false});
@@ -18,7 +18,7 @@ export function useCanvasHistory(live:boolean,productId:string){
    const ids=live?[...session.registryIds].sort().join("|"):"prototype";
    const next=captureLayoutHistory(state.nodes,state.hiddenIds);
    if(!present||registry!==ids||applyingCanvasLayout){registry=ids;present=next;past=[];future=[];notify();return;}
-   if(applying||state.nodes.some(n=>n.dragging)||JSON.stringify(next)===JSON.stringify(present))return;
+   if(applying||state.nodes.some(n=>n.dragging)||sameCanvasLayout(next,present))return;
    past=[...past,present].slice(-50);present=next;future=[];notify();
   }
   function move(direction:"undo"|"redo"){
@@ -28,7 +28,7 @@ export function useCanvasHistory(live:boolean,productId:string){
    if(direction==="undo"){past=past.slice(0,-1);future=[...future,present];}else{future=future.slice(0,-1);past=[...past,present];}
    // 基础节点始终取最新数据：撤销布局不会把已完成任务变回生成中。
    const current=usePreviewStore.getState();for(const n of live?session.baseNodes:current.nodes)if(n.type!=="note")bases.set(n.id,n);
-   applying=true;present=target;usePreviewStore.setState({nodes:applyCanvasLayout([...bases.values()],target),hiddenIds:target.hiddenIds,selected:[],contextId:null});applying=false;notify();
+   applying=true;present=target;usePreviewStore.setState({nodes:applyCanvasLayout([...bases.values()],target).map(n=>({...n,selected:false})),hiddenIds:target.hiddenIds,selected:[],contextId:null,editor:null,references:current.references.filter(id=>!target.hiddenIds.includes(id)&&!target.hiddenIds.includes(bases.get(id)?.parentId??""))});applying=false;notify();
   }
   commands.current={undo:()=>move("undo"),redo:()=>move("redo")};observe();
   const unsub=usePreviewStore.subscribe(observe),sessionUnsub=useCanvasSession.subscribe((n,p)=>{if(n.hydrated!==p.hydrated||n.dataReady!==p.dataReady||n.registryIds!==p.registryIds)observe();});

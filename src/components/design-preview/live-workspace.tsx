@@ -13,6 +13,8 @@ import Link from "next/link";
 import {useSearchParams,useRouter} from "next/navigation";
 import {useDropzone} from "react-dropzone";
 import {toast} from "sonner";
+import {PanelLeftClose,MessageCircle} from "@/components/icons/concept-icons";
+import {TipButton} from "./app";
 import {Workspace} from "./canvas";
 import {imageActionIntents} from "@/prompts/image-actions";
 import {useCanvasPersistence,useCanvasSession} from "./canvas-session";
@@ -30,7 +32,7 @@ import {Sheet,SheetContent,SheetHeader,SheetTitle,SheetDescription} from "./ui/s
 import {Popover,PopoverTrigger,PopoverContent} from "./ui/popover";
 import {Command,CommandInput,CommandList,CommandEmpty,CommandGroup,CommandItem} from "./ui/command";
 import {Switch} from "./ui/switch";
-import {Sparkles,Upload,Shapes,Check,ChevronDown} from "@/components/icons/concept-icons";
+import {Upload,Shapes,Check,ChevronDown} from "@/components/icons/concept-icons";
 import {IconBadge} from "@/components/icons/icon-badge";
 import {taskCatalog} from "@/design-preview/mock/tasks";
 import {type Profile} from "@/lib/profile-rules";
@@ -67,14 +69,16 @@ function RealWorkspaceInner(){
  editRequestKeys.delete(signature);if(quote.warning)toast.info(quote.warning);usePreviewStore.getState().setEditor(null);toast.success("修改已提交，新候选会加入当前图位");
  }catch(e){notify(e);throw e;}
  }
- return <Workspace live chat={<RealChat key={id} onUpload={upload}/>} onUpload={upload} onAction={action}/>;
+ return <Workspace live chat={onCollapse=><RealChat key={id} onUpload={upload} onCollapse={onCollapse}/>} onUpload={upload} onAction={action}/>;
 }
 function CategorySelect({label="换一个"}:{label?:string}){
  const s=useLiveStore(),[open,setOpen]=useState(false);return <Popover open={open} onOpenChange={setOpen}><PopoverTrigger asChild><Button variant="outline"><Shapes size="sm"/>{label}<ChevronDown size="sm"/></Button></PopoverTrigger><PopoverContent className="p-portal r4-category-picker"><Command><CommandInput placeholder="搜索品类…" aria-label="搜索产品品类"/><CommandList><CommandEmpty>没有找到品类</CommandEmpty><CommandGroup>{s.snapshot?.categories.map(c=><CommandItem key={c.id} value={c.name} onSelect={()=>{setOpen(false);void s.act("category",{categoryId:c.id}).catch(notify);}}>{c.name}</CommandItem>)}</CommandGroup></CommandList></Command></PopoverContent></Popover>;
 }
-function RealChat({onUpload}:{onUpload:(files:File[])=>Promise<void>}){
+function RealChat({onUpload,onCollapse}:{onUpload:(files:File[])=>Promise<void>;onCollapse:()=>void}){
  const router=useRouter(),live=useLiveStore(),snapshot=live.snapshot,[text,setText]=useState(""),[stream,setStream]=useState(""),[sending,setSending]=useState(false),body=useRef<HTMLDivElement>(null);
- const nodes=usePreviewStore(s=>s.nodes),selected=usePreviewStore(s=>s.selected),pinned=usePreviewStore(s=>s.references),[events,setEvents]=useState<AgentEvent[]>([]),requestRef=useRef<{text:string;id:string}|null>(null);
+ const nodes=usePreviewStore(s=>s.nodes),selected=usePreviewStore(s=>s.selected),pinned=usePreviewStore(s=>s.references),[events,setEvents]=useState<AgentEvent[]>([]),requestRef=useRef<{signature:string;id:string}|null>(null);
+ const composer=useRef<HTMLTextAreaElement>(null),chatRequest=usePreviewStore(s=>s.chatRequest);
+ useEffect(()=>{if(chatRequest)composer.current?.focus();},[chatRequest]);
  const references=[...new Set([...selected,...pinned])].map(id=>nodes.find(n=>n.id===id)).filter((n):n is NonNullable<typeof n>=>!!n&&n.type==="picture"&&n.data.image.startsWith("/api/assets/"));
  const modelState=useModelStore(),currentCount=snapshot?(currentGenerationSlot(snapshot.pack.slots)?.candidateCount??1):1,batchCount=snapshot?.pack.slots.filter(s=>s.method==="ai_scene"&&s.goal.trim()).reduce((n,s)=>n+s.candidateCount,0)??1,generationCount=snapshot?.agent.session.mode==="manual"?currentCount:batchCount;
  const generationEstimate=estimateImageCost(modelState,demoSession,generationCount);
@@ -89,7 +93,8 @@ function RealChat({onUpload}:{onUpload:(files:File[])=>Promise<void>}){
  try{
   await useCanvasSession.getState().flush();
   await live.act("settings",resolveSelection(useModelStore.getState(),demoSession));
-  if(requestRef.current?.text!==text)requestRef.current={text,id:crypto.randomUUID()};
+  const signature=JSON.stringify([text,selected,references.map(n=>n.id)]);
+  if(requestRef.current?.signature!==signature)requestRef.current={signature,id:crypto.randomUUID()};
   const response=await fetch("/api/products/"+snapshot.product.id+"/agent",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text,requestKey:requestRef.current.id,canvas:{selectedIds:selected.slice(0,20),referenceAssetIds:references.map(n=>n.id)}})});
   if(!response.ok)throw Error((await response.json()).error);setText("");
   await consumeAgentStream(response.body!,event=>{if(event.type==="delta")setStream(s=>s+(event.text??""));if(event.type==="tool")setEvents(old=>[...old.filter(e=>e.callId!==event.callId),event]);if(event.type==="error")notify(Error(event.text));if(event.type==="done"){done=true;requestRef.current=null;}});
@@ -98,7 +103,7 @@ function RealChat({onUpload}:{onUpload:(files:File[])=>Promise<void>}){
  }
 
  const pending=snapshot?.agent.cards.filter(c=>c.status==="pending"&&c.kind!=="cost")??[],total=snapshot?(snapshot.agent.costs.llmUsd+snapshot.agent.costs.imagesUsd+snapshot.agent.costs.searchUsd):0;
- return <aside className="p-chat l-chat"><div className="p-chat-header"><h2><span className="p-agent-avatar"><Sparkles size="sm"/></span>创作搭档</h2><span className="p-subtle">本次 $ {total.toFixed(2)}{snapshot?.agent.costs.estimated?" · 估":""}</span></div><div className="p-chat-body" ref={body}>
+ return <aside className="p-chat l-chat"><div className="p-chat-header"><div className="p-chat-heading"><span className="p-agent-avatar"><MessageCircle size="md"/></span><div><h2>创作搭档</h2><span className="p-chat-subtitle">讨论方向，选图后继续调整</span></div></div><TipButton label="收起对话" onClick={onCollapse}><PanelLeftClose size="md"/></TipButton></div><div className="p-chat-session-cost">本次创作 <span>$ {total.toFixed(2)}{snapshot?.agent.costs.estimated?" · 估":""}</span></div><div className="p-chat-body" ref={body}>
  {!snapshot&&<div className="w-task-entries">{taskCatalog.filter(t=>SHOW_UNCONNECTED_FEATURES||["pack","edit"].includes(t.id)).map(t=><button key={t.id} className="w-task-entry" onClick={()=>{if(["variants","translate","check"].includes(t.id)){toast.info("即将开放");return;}setText(t.id==="pack"?"为产品做一套图包":"帮我修改一张图片");drop.open();}}><IconBadge concept={t.concept}/><span><strong>{t.title}</strong><small>{["variants","translate","check"].includes(t.id)?"即将开放":t.description}</small></span></button>)}</div>}
  {snapshot?.agent.messages.filter(m=>m.role!=="tool"&&typeof (m.content as {text?:string}).text==="string").map(m=>{const text=String((m.content as {text?:string}).text??"");if(!text||m.role==="system"&&/[{}]|美工确认|美工在看板/.test(text))return null;return <div key={m.id} className={m.role==="user"?"p-chat-bubble":"p-agent-message"}><p>{text.replace(/KIE|ZenMux/gi,"模型服务")}</p>{Array.isArray((m.content as {referenceAssetIds?:string[]}).referenceAssetIds)&&<div className="t11-message-references" aria-label="这条消息引用的图片">{((m.content as {referenceAssetIds:string[]}).referenceAssetIds).map(id=><img key={id} src={"/api/assets/"+id} alt="历史引用图片"/>)}</div>}</div>;})}
  {snapshot&&!snapshot.agent.cards.length&&<Button variant="outline" disabled={live.busy} onClick={()=>void act("inspect")}>识别实拍与产品资料</Button>}
@@ -111,7 +116,7 @@ function RealChat({onUpload}:{onUpload:(files:File[])=>Promise<void>}){
  <VersionHistory/>
  {snapshot?.searches.map(s=><details key={s.id} className="p-subtle"><summary>查了 {s.resultCount} 个网页</summary>{(s.sources as {url:string;title:string}[]).map(r=><a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer">{r.title}</a>)}</details>)}
  {stream&&<div className="p-agent-message"><p>{stream}</p></div>}{(live.busy||sending)&&<div className="p-subtle" role="status">正在处理，请稍候…</div>}{live.error&&<div role="alert" className="l-shooting-card"><p>{live.error.replace(/KIE|ZenMux/gi,"模型服务")}</p><Button variant="outline" onClick={()=>{if(snapshot)void live.load(snapshot.product.id).catch(notify);}}>刷新进度</Button></div>}
- </div><div {...drop.getRootProps()} className="p-chat-input">{references.length>0&&<div className="t11-references" aria-label="本次引用图片"><span>本次引用 {references.length} 张</span>{references.map(n=><button key={n.id} type="button" className="t11-reference" aria-label={"取消引用 "+n.data.label} title={n.data.slot+" · "+n.data.label} onClick={()=>{usePreviewStore.setState(s=>({references:s.references.filter(id=>id!==n.id),selected:s.selected.filter(id=>id!==n.id),nodes:s.nodes.map(node=>node.id===n.id?{...node,selected:false}:node)}));}}><img src={n.data.image} alt={n.data.label}/><span>{n.data.label}</span><span aria-hidden="true">×</span></button>)}</div>}{tooManyReferences&&<p role="alert">一次最多引用6张图片，请减少选择。</p>}<input {...drop.getInputProps()} aria-label="工作台上传实拍"/><Textarea className="shadow-none focus-visible:ring-0 focus-visible:outline-none border-0" rows={3} aria-label="工作台创作要求" placeholder="说说需要调整哪里，或拖入补充资料…" value={text} onChange={e=>setText(e.target.value)}/><ComposerToolbar scope={demoSession} count={1} onAdd={drop.open} onSend={()=>void send()} disabled={!text.trim()||live.busy||sending||tooManyReferences||!!snapshot?.agent.session.running||!!snapshot&&!canvasReady} showCost={!!text.trim()}/></div></aside>;
+ </div><div {...drop.getRootProps()} className="p-chat-input">{references.length>0&&<div className="t11-references" aria-label="本次引用图片"><span>本次引用 {references.length} 张</span>{references.map(n=><button key={n.id} type="button" className="t11-reference" aria-label={"取消引用 "+n.data.label} title={(selected.includes(n.id)?"当前选中，随本次消息发送":"已固定引用，取消后不再发送")+" · "+n.data.slot+" · "+n.data.label} onClick={()=>{const store=usePreviewStore.getState();usePreviewStore.setState({references:store.references.filter(id=>id!==n.id)});store.select(store.selected.filter(id=>id!==n.id));}}><img src={n.data.image} alt={n.data.label}/><span>{selected.includes(n.id)?"选中 · ":"引用 · "}{n.data.label}</span><span aria-hidden="true">×</span></button>)}</div>}{tooManyReferences&&<p role="alert">一次最多引用6张图片，请减少选择。</p>}<input {...drop.getInputProps()} aria-label="工作台上传实拍"/><Textarea ref={composer} className="shadow-none focus-visible:ring-0 focus-visible:outline-none border-0" rows={3} aria-label="工作台创作要求" placeholder={references.length?"说明这些图片各自的用途，或说清改哪里、保留什么…":"描述想要的场景，或选中图片后说说怎么改…"} value={text} onChange={e=>setText(e.target.value)}/><ComposerToolbar scope={demoSession} count={1} onAdd={drop.open} onSend={()=>void send()} disabled={!text.trim()||live.busy||sending||tooManyReferences||!!snapshot?.agent.session.running||!!snapshot&&!canvasReady} showCost={!!text.trim()}/></div></aside>;
 }
 type Card=NonNullable<ReturnType<typeof useLiveStore.getState>["snapshot"]>["agent"]["cards"][number];
 function RealCard({card,act}:{card:Card;act:(action:string,data?:Record<string,unknown>)=>Promise<void>}){
