@@ -1,5 +1,6 @@
 import {NextResponse} from "next/server";
 import {z} from "zod";
+import {appearanceChangeSchema} from "@/lib/appearance-change";
 import {randomUUID} from "node:crypto";
 import {studioUser,studioError,StudioError} from "@/lib/studio-api";
 import {db} from "@/lib/db";
@@ -14,6 +15,7 @@ import {expansionSchema} from "@/lib/expansion-rules";
 import {slotReferenceSchema} from "@/lib/generation-references";
 import {visualPlanSchema} from "@/lib/visual-plan-rules";
 import {proposeExcellentCase} from "@/lib/visual-case";
+const compatibleEdit=(v:{appearanceChange?:unknown;references?:unknown;maskAssetId?:unknown;expansion?:unknown})=>!v.appearanceChange||(!v.references&&!v.maskAssetId&&!v.expansion);
 export const runtime="nodejs";export const maxDuration=300;
 type Ctx={params:Promise<{id:string}>};
 export async function GET(request:Request,context:Ctx){try{const user=await studioUser(request);return NextResponse.json(await studioSnapshot((await context.params).id,user.id));}catch(e){logStudioReadError(request,e);return studioError(e,"读取工作台失败，请检查服务后刷新");}}
@@ -43,9 +45,9 @@ export async function POST(request:Request,context:Ctx){
  else if(body.action==="excellent")await proposeExcellentCase(productId,user.id,z.string().parse(data.assetId));
  else if(body.action==="generate"){const result=await studioGenerate(productId,user.id,z.enum(["batch","current"]).optional().parse(data.scope),z.string().uuid().parse(data.requestKey));return NextResponse.json(result);}
  else if(body.action==="approve")await approveAgentCard(session.id,z.string().parse(data.cardId),(data.changes??{}) as Record<string,unknown>);
- else if(body.action==="edit_quote"){const a=z.object({references:z.array(slotReferenceSchema).max(2).optional(),assetId:z.string(),instruction:z.string().trim().min(1).max(8000),maskAssetId:z.string().optional(),expansion:expansionSchema.optional()}).strict().parse(data);const quote=await quoteStudioEdit(productId,user.id,a.assetId,a.instruction,a);await db.chatMessage.create({data:{sessionId:session.id,productId,role:"system",content:{text:"本次修改预计 $"+quote.estimatedCostUsd.toFixed(2)+"（估），提交后开始。"+(quote.warning??"")}}});return NextResponse.json(quote);}
+ else if(body.action==="edit_quote"){const a=z.object({appearanceChange:appearanceChangeSchema.optional(),references:z.array(slotReferenceSchema).max(2).optional(),assetId:z.string(),instruction:z.string().trim().min(1).max(8000),maskAssetId:z.string().optional(),expansion:expansionSchema.optional()}).strict().refine(compatibleEdit,{message:"同款换色请与场景参考、蒙版或扩图分步提交"}).parse(data);const quote=await quoteStudioEdit(productId,user.id,a.assetId,a.instruction,a);await db.chatMessage.create({data:{sessionId:session.id,productId,role:"system",content:{text:"本次修改预计 $"+quote.estimatedCostUsd.toFixed(2)+"（估），提交后开始。"+(quote.warning??"")}}});return NextResponse.json(quote);}
  else if(body.action==="edit"){
- const a=z.object({references:z.array(slotReferenceSchema).max(2).optional(),assetId:z.string(),instruction:z.string().trim().min(1).max(8000),maskAssetId:z.string().optional(),expansion:expansionSchema.optional(),requestKey:z.string().uuid(),fingerprint:z.string().min(1)}).strict().parse(data);
+ const a=z.object({appearanceChange:appearanceChangeSchema.optional(),references:z.array(slotReferenceSchema).max(2).optional(),assetId:z.string(),instruction:z.string().trim().min(1).max(8000),maskAssetId:z.string().optional(),expansion:expansionSchema.optional(),requestKey:z.string().uuid(),fingerprint:z.string().min(1)}).strict().refine(compatibleEdit,{message:"同款换色请与场景参考、蒙版或扩图分步提交"}).parse(data);
  const result=await studioEdit(productId,user.id,a.assetId,a.instruction,a);await db.chatMessage.create({data:{sessionId:session.id,productId,role:"system",content:json({text:result.warning??"已按要求提交修改，原图与原始实拍均已保留",jobId:result.jobId})}});return NextResponse.json(result);
  }else if(body.action==="retry"){
  const jobId=z.string().parse(data.jobId),quote=await quoteBatch(user.id,productId,{retryJobId:jobId});if(!session.confirmedProfileId||!session.confirmedPack)throw new StudioError("档案或方案已变化，请重新确认后再试",409);return NextResponse.json({batchId:await submitBatch(user.id,productId,{retryJobId:jobId},quote.fingerprint,z.string().uuid().parse(data.requestKey),session.id)});

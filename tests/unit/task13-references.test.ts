@@ -14,10 +14,19 @@ import type {Prisma} from "../../src/generated/prisma/client";
 import type {ModelCandidate} from "../../src/lib/models.config";
 import {prepareAgentEdit} from "../../src/lib/agent-actions";
 import {databaseCircuit} from "../../src/lib/gateway-circuit";
+import {studioEditReferences} from "../../src/lib/studio-main";
 
 const styles:SlotReference[]=[{assetId:"style-a",purpose:"只参考右侧柔和光线"},{assetId:"style-b",purpose:"只参考冷灰环境色调"}];
 const candidate=imageCandidate(kieImageModels[0]);
 const qwen=imageCandidate(kieImageModels.find(s=>s.id==="image-qwen3")!);
+test("换色面板显式选中的新上传图直接记录用途，普通修改仍走原用途校验",async()=>{
+ let saved:unknown,current=0;
+ const deps={state:async()=>({unresolved:["new-color"],images:[],assetIds:["new-color"]}),save:async(_id:string,images:unknown)=>{saved=images;},current:async()=>{current++;return undefined;}} as unknown as NonNullable<Parameters<typeof studioEditReferences>[3]>;
+ await studioEditReferences("session","source",{appearanceChange:{referenceAssetId:"new-color",description:"",environment:"keep"}},deps);
+ assert.match(JSON.stringify(saved),/产品颜色与材质/);assert.equal(current,0);
+ saved=null;await studioEditReferences("session","source",{},deps);assert.equal(saved,null);assert.equal(current,1);
+ await assert.rejects(studioEditReferences("session","source",{appearanceChange:{description:"白色",environment:"keep"},references:[]},deps),/分步提交/);
+});
 function context(references:SlotReference[]=styles){
  const assets=[...["photo-a","photo-b"].map(id=>({id,productId:"product-a",type:"photo",deletedAt:null,width:100,height:100})),...styles.map(r=>({id:r.assetId,productId:"product-a",type:"style_ref",deletedAt:null,width:100,height:100})),{id:"source",productId:"product-a",type:"generated",deletedAt:null,width:100,height:100},{id:"mask",productId:"product-a",type:"mask",deletedAt:null,width:100,height:100}];
  const product={id:"product-a",sku:"SECRET-SKU",identityTraits:"已有身份",assets:assets.filter(a=>a.type==="photo")};
@@ -36,6 +45,37 @@ async function kieBody(input:Record<string,unknown>,c=candidate){
  provider.submit=async(_model,value)=>{body=value;return "mock-task";};
  await provider.generate(requestFromGenerationInput(input));return body!;
 }
+
+test("换色请求实际传入颜色图，连续修改继承变体且不恢复旧色",async()=>{
+ const s=await scene();s.setSource(s.prepared.input);
+ const appearance={referenceAssetId:"style-a",description:"深胡桃木台面、哑光黑框架",environment:"keep" as const};
+ const changed=await prepareEditInput(s.tx,"product-a","只换产品颜色材质","1:1","2K",{sourceJobId:"job",sourceAssetId:"source"},candidate,[],undefined,undefined,appearance);
+ const body=await kieBody(changed.input);
+ assert.deepEqual(body.image_input,["source","photo-a","photo-b","style-a"].map(id=>"https://fixture.invalid/"+id+".png"));
+ assert.match(String(body.prompt),/深胡桃木台面/);assert.match(String(body.prompt),/旧颜色材质不覆盖/);assert.doesNotMatch(String(body.prompt),/颜色和材质必须一致/);
+ assert.deepEqual(changed.input.appearanceChange,appearance);
+ s.setSource(changed.input);
+ const next=await prepareEditInput(s.tx,"product-a","只移走花瓶","1:1","2K",{sourceJobId:"job",sourceAssetId:"source"},candidate);
+ assert.deepEqual(next.input.appearanceChange,appearance);assert(next.input.referenceAssetIds.includes("style-a"));
+ assert.match(next.input.prompt,/不恢复成旧实拍颜色/);assert.match(next.input.prompt,/只移走花瓶/);
+ const replaced=await prepareEditInput(s.tx,"product-a","换白色","1:1","2K",{sourceJobId:"job",sourceAssetId:"source"},candidate,[],undefined,undefined,{description:"哑光白色",environment:"adapt"});
+ assert(!replaced.input.referenceAssetIds.includes("style-a"));assert.doesNotMatch(replaced.input.prompt,/深胡桃木/);
+});
+
+test("换色拒绝跨产品、已删除参考和会省略颜色图的模型，不放宽普通编辑",async()=>{
+ const s=await scene();s.setSource(s.prepared.input);
+ const source={sourceJobId:"job",sourceAssetId:"source"};
+ const appearance={referenceAssetId:"style-a",description:"",environment:"keep" as const};
+ await assert.rejects(prepareEditInput(s.tx,"product-a","换色","1:1","2K",source,qwen,[],undefined,undefined,appearance),/无法保留颜色材质参考/);
+ await assert.rejects(prepareEditInput(s.tx,"product-a","换色","1:1","2K",source,candidate,["mask"],undefined,undefined,appearance),/分步调整/);
+ const target=s.assets.find(a=>a.id==="style-a")!;target.productId="other";
+ await assert.rejects(prepareEditInput(s.tx,"product-a","换色","1:1","2K",source,candidate,[],undefined,undefined,appearance),/不属于本产品/);
+ target.productId="product-a";Object.assign(target,{deletedAt:new Date()});
+ await assert.rejects(prepareEditInput(s.tx,"product-a","换色","1:1","2K",source,candidate,[],undefined,undefined,appearance),/已失效/);
+ Object.assign(target,{deletedAt:null});
+ const normal=await prepareEditInput(s.tx,"product-a","移走花瓶","1:1","2K",source,candidate);
+ assert.equal(normal.input.appearanceChange,undefined);assert.match(normal.input.prompt,/颜色和材质必须一致/);
+});
 
 test("无参考方案直接使用具体陈列生成，不因第4图位要求额外方向或参考图",async()=>{
  const s=context([]),slot={...s.frozen.slot,key:"slot-4",scene:"玄关门侧的窄墙面",props:["素面收纳盘"],display:"收纳盘放在台面右后方，左侧留空，露出把手和完整轮廓",camera:"与台面齐平的前侧视角",references:[]};

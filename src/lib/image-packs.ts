@@ -1,4 +1,5 @@
 import "server-only";
+import {appearanceChangeSchema} from "./appearance-change";
 import {fitReferenceUsage,referencePurposePrompt,type ReferenceUse} from "./generation-references";
 import {wrapImagePrompt} from "./visual-plan-rules";
 import {fitImageReferences,validateImageSelection} from "./image-model-input";
@@ -88,7 +89,9 @@ async function planBatch(tx: Prisma.TransactionClient, productId: string, select
     const assets = await tx.asset.findMany({ where: { id: { in: raw.referenceAssetIds as string[] },productId,deletedAt:null } });
     if(assets.length!==(raw.referenceAssetIds as string[]).length)throw new StudioError("原任务使用的图片已删除，请重新选择参考图",409);
     const snapshot=raw.referenceUsage?fitReferenceUsage(candidate,raw.referenceUsage as unknown as ReferenceUse[]):null;
-    const prompt=snapshot?wrapImagePrompt(String(raw.basePrompt??raw.prompt)+"\n"+referencePurposePrompt(snapshot.referenceUsage),snapshot.referenceAssetIds):String(raw.prompt);
+    const appearance=raw.appearanceChange?appearanceChangeSchema.parse(raw.appearanceChange):undefined;
+    if(appearance?.referenceAssetId&&snapshot&&!snapshot.referenceAssetIds.includes(appearance.referenceAssetId))throw new StudioError("当前模型无法保留换色参考，请选择支持更多图片的模型",409);
+    const prompt=snapshot?wrapImagePrompt(String(raw.basePrompt??raw.prompt)+"\n"+referencePurposePrompt(snapshot.referenceUsage,appearance),snapshot.referenceAssetIds):String(raw.prompt);
     const refs=snapshot?snapshot.referenceAssetIds.map(id=>assets.find(a=>a.id===id)!):fitImageReferences(candidate,(raw.referenceAssetIds as string[]).flatMap(id=>assets.filter(a=>a.id===id)));
     validateImageSelection(candidate,String(raw.resolution??"2K"),String(raw.aspect_ratio),prompt,refs.length);
     const input = { ...raw,...(snapshot?{...snapshot,omittedReferences:[...((raw.omittedReferences??[]) as unknown as ReferenceUse[]),...snapshot.omittedReferences]}:{}),prompt, referenceAssetIds:refs.map(a=>a.id), selectedCandidate:JSON.parse(JSON.stringify(candidate)), autoRetryCount:0, submissionAttempted: false, uncertainCharge: false, referenceRetryCount: 0, image_input: [] };

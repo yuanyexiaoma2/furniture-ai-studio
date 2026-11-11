@@ -8,7 +8,7 @@ import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from ".
 
 export type PreviewImage={id:string;src:string;label:string};
 
-export function ImagePreview({image,onClose}:{image:PreviewImage;onClose:()=>void}){
+export function ImagePreview({image,onClose,onEdit,onRecolor}:{image:PreviewImage;onClose:()=>void;onEdit?:()=>void;onRecolor?:()=>void}){
  const stage=useRef<HTMLDivElement>(null);
  const [bounds,setBounds]=useState({width:0,height:0}),[natural,setNatural]=useState({width:0,height:0}),[scale,setScale]=useState<number|null>(null),[failed,setFailed]=useState(false);
  const fit=natural.width&&bounds.width?Math.min((bounds.width-48)/natural.width,(bounds.height-48)/natural.height,1):1;
@@ -24,7 +24,7 @@ export function ImagePreview({image,onClose}:{image:PreviewImage;onClose:()=>voi
   <div className="p-image-preview-stage" ref={stage}>
    {failed?<p role="alert">图片加载失败，请关闭后重试。</p>:<div className="p-image-preview-surface"><img src={image.src} alt={image.label} draggable={false} onLoad={event=>setNatural({width:event.currentTarget.naturalWidth,height:event.currentTarget.naturalHeight})} onError={()=>setFailed(true)} style={{width:natural.width?natural.width*zoom:undefined,height:natural.height?natural.height*zoom:undefined,visibility:natural.width&&bounds.width?"visible":"hidden"}}/></div>}
   </div>
-  <div className="p-image-preview-footer"><span>{natural.width?`${natural.width} × ${natural.height} px`:failed?"":"正在加载原图…"}</span><div role="group" aria-label="图片预览缩放">
+  <div className="p-image-preview-footer">{onEdit&&<Button onClick={onEdit}>修改这张图</Button>}{onRecolor&&<Button variant="outline" onClick={onRecolor}>同款换色 / 材质</Button>}<span>{natural.width?`${natural.width} × ${natural.height} px`:failed?"":"正在加载原图…"}</span><div role="group" aria-label="图片预览缩放">
    <Button variant="ghost" size="icon" aria-label="缩小图片" disabled={!natural.width||zoom<=.1} onClick={()=>changeZoom(zoom/1.25)}><ZoomOut size="md"/></Button>
    <output aria-label="图片缩放比例">{Math.round(zoom*100)}%</output>
    <Button variant="ghost" size="icon" aria-label="放大图片" disabled={!natural.width||zoom>=4} onClick={()=>changeZoom(zoom*1.25)}><ZoomIn size="md"/></Button>

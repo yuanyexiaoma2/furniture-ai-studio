@@ -16,6 +16,7 @@ import { StudioError } from "@/lib/studio-error";
 import type { Prisma } from "@/generated/prisma/client";
 import type { ModelCandidate } from "./models.config";
 import { validateExpansion, expansionAspectRatio, type Expansion } from "./expansion-rules";
+import {appearanceChangeSchema,appearanceInstruction,type AppearanceChange} from "./appearance-change";
 
 // 单张与图包共用身份冻结、参考图和事务入队，批次负责一次性校验总配额。
 export async function prepareSceneInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, candidate: ModelCandidate, resolution: SceneResolution = "2K", frozen?:unknown) {
@@ -92,7 +93,8 @@ async function createImageJob(userId: string, productId: string, intent: string,
   }, { timeout: 15000 });
 }
 
-export async function prepareEditInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution, source: EditSource, candidate: ModelCandidate,additionalReferenceIds:string[] = [],referenceOverride?:SlotReference[],expansion?:Expansion) {
+export async function prepareEditInput(tx: Prisma.TransactionClient, productId: string, intent: string, aspectRatio: SceneAspectRatio, resolution: SceneResolution, source: EditSource, candidate: ModelCandidate,additionalReferenceIds:string[] = [],referenceOverride?:SlotReference[],expansion?:Expansion,appearanceChange?:AppearanceChange) {
+    if(appearanceChange&&(additionalReferenceIds.length||expansion||referenceOverride))throw new StudioError("同款换色不能同时提交蒙版、扩图或场景参考，请分步调整");
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${productId}, 0))`;
     const product = await tx.product.findUnique({ where: { id: productId }, include: { assets: { where: { type: "photo", deletedAt: null }, orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }, { id: "asc" }], take: 3 } } });
     if (!product) throw new StudioError("商品不存在", 404);
@@ -106,6 +108,7 @@ export async function prepareEditInput(tx: Prisma.TransactionClient, productId: 
 
     const sourceJob=await tx.generationJob.findUniqueOrThrow({where:{id:source.sourceJobId}});
     const sourceInput=sourceJob.input as Record<string,unknown>;
+    const appearance=appearanceChange?appearanceChangeSchema.parse(appearanceChange):sourceInput.appearanceChange?appearanceChangeSchema.parse(sourceInput.appearanceChange):undefined;
     const identity=String(sourceInput.identityTraits??product.identityTraits);
     if(!identity.trim()||identity==="null")throw new StudioError("源图没有有效身份快照，请先重新分析产品");
     const originalAsset = await tx.asset.findUniqueOrThrow({ where: { id: source.sourceAssetId } });
@@ -119,17 +122,19 @@ export async function prepareEditInput(tx: Prisma.TransactionClient, productId: 
     // 已归档实拍的文件为历史任务保留，连续编辑沿用原始快照，不换成后来上传的照片。
     const originalPhotos=parsedPlan.success?await tx.asset.findMany({where:{id:{in:parsedPlan.data.identityLock.referenceAssetIds},productId,type:"photo"}}):product.assets;
     if(parsedPlan.success&&originalPhotos.length!==parsedPlan.data.identityLock.referenceAssetIds.length)throw new StudioError("源图的身份参考已删除，请重新分析产品并规划",409);
-    const orderedPhotos=parsedPlan.success?parsedPlan.data.identityLock.referenceAssetIds.map(id=>originalPhotos.find(a=>a.id===id)!):originalPhotos;
+    const orderedPhotos=(parsedPlan.success?parsedPlan.data.identityLock.referenceAssetIds.map(id=>originalPhotos.find(a=>a.id===id)!):originalPhotos).filter(a=>a.id!==appearance?.referenceAssetId);
     if(!orderedPhotos.length)throw new StudioError("修图必须包含原始实拍；请先上传至少1张实拍");
-    const styles=referenceOverride??inheritedReferences(sourceInput);
+    const styles:SlotReference[]=appearanceChange?(appearanceChange.referenceAssetId?[{assetId:appearanceChange.referenceAssetId,mode:"image",purpose:"仅替换产品颜色与材质，保持原图造型、机位和构图"}]:[]):referenceOverride??inheritedReferences(sourceInput);
+    if(appearance?.referenceAssetId&&!styles.some(r=>r.assetId===appearance.referenceAssetId))styles.unshift({assetId:appearance.referenceAssetId,mode:"image",purpose:"保持已指定的产品颜色与材质变体"});
     if(styles.length>2||new Set(styles.map(r=>r.assetId)).size!==styles.length)throw new StudioError("每次修改最多使用两张不同参考图");
-    const styleAssets=await tx.asset.findMany({where:{id:{in:styles.map(r=>r.assetId)},productId,type:{not:"mask"},...(referenceOverride?{deletedAt:null}:{})}});
+    const styleAssets=await tx.asset.findMany({where:{id:{in:styles.map(r=>r.assetId)},productId,type:{not:"mask"},...((referenceOverride||appearanceChange)?{deletedAt:null}:{})}});
     if(styleAssets.length!==styles.length)throw new StudioError("修改参考图已失效或不属于本产品，请重新选择",409);
     const referenceSnapshot=selectGenerationReferences(candidate,orderedPhotos.map(a=>a.id),styles,originalAsset.id,extra[0]?.id);
+    if(appearance?.referenceAssetId&&!referenceSnapshot.referenceAssetIds.includes(appearance.referenceAssetId))throw new StudioError("当前模型输入上限无法保留颜色材质参考，请选择支持更多图片的模型",409);
     const all=[originalAsset,...extra,...orderedPhotos,...styleAssets],references=referenceSnapshot.referenceAssetIds.map(id=>all.find(a=>a.id===id)!);
     const expansionInstruction=extent?`\n编辑源图已放在扩展画布中，四周白色新增区域需要延续背景。画布为${extent.width}×${extent.height}像素，原图左上角为(${extent.offsetX},${extent.offsetY})，原图区域为${originalAsset.width}×${originalAsset.height}像素。保持原图的位置、比例、产品和已有场景，只补全新增区域；白色边缘不是原场景。`:"";
-    const basePrompt=sanitizePrompt(buildEditPrompt(identity,intent,additionalReferenceIds.length>0)+expansionInstruction,[product.id,product.sku,...all.map(a=>a.id)]);
-    const prompt=wrapImagePrompt(basePrompt+"\n"+referencePurposePrompt(referenceSnapshot.referenceUsage),[product.id,product.sku,...all.map(a=>a.id)]);
+    const basePrompt=sanitizePrompt(buildEditPrompt(identity,intent,additionalReferenceIds.length>0,appearance?(appearanceChange?appearanceInstruction(appearance):`延续第一张原图已完成的颜色材质变体。${appearance.description} 原颜色参考仅用于核对当前变体，不重新改变已经完成的产品配色、环境或道具；本轮仅执行此次修改要求。`):undefined)+expansionInstruction,[product.id,product.sku,...all.map(a=>a.id)]);
+    const prompt=wrapImagePrompt(basePrompt+"\n"+referencePurposePrompt(referenceSnapshot.referenceUsage,appearance),[product.id,product.sku,...all.map(a=>a.id)]);
     if (prompt.length > 20000) throw new StudioError("组合后的提示词不能超过 20000 字符");
     validateImageSelection(candidate,resolution,aspectRatio,prompt,references.length);
     const version = await tx.productIdentityVersion.findFirst({ where: { productId }, orderBy: [{ savedAt: "desc" }, { id: "desc" }] });
@@ -137,5 +142,5 @@ export async function prepareEditInput(tx: Prisma.TransactionClient, productId: 
     if(additionalReferenceIds.length>1)throw new StudioError("一次局部修改只能使用一张蒙版");
     if(extra.length&&!references.some(r=>r.id===extra[0].id))throw new StudioError("当前模型不能同时接收原图和蒙版，请更换编辑模型");
     const estimatedReferences=references.map(r=>extent&&r.id===source.sourceAssetId?{...r,width:extent.width,height:extent.height}:r);
-    return { estimate: estimateImageUsd(candidate, resolution, prompt, estimatedReferences), input: { prompt,basePrompt,...referenceSnapshot, ...source, editIntent: intent, editMode:extent?"expanded":extra.length?"masked":"whole", ...(extent?{expansion:extent}:{}), maskAssetId:extra[0]?.id??null,visualPlan:JSON.parse(JSON.stringify(sourceInput.visualPlan??null)),identityTraits:identity, identityVersionId: (sourceInput.identityVersionId as string|null)??version?.id??null, identitySavedById: (sourceInput.identitySavedById as string|null)??null, identitySavedAt: (sourceInput.identitySavedAt as string|null)??null, image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false } };
+    return { estimate: estimateImageUsd(candidate, resolution, prompt, estimatedReferences), input: { prompt,basePrompt,...referenceSnapshot, ...(appearance?{appearanceChange:appearance}:{}), ...source, editIntent: intent, editMode:extent?"expanded":extra.length?"masked":"whole", ...(extent?{expansion:extent}:{}), maskAssetId:extra[0]?.id??null,visualPlan:JSON.parse(JSON.stringify(sourceInput.visualPlan??null)),identityTraits:identity, identityVersionId: (sourceInput.identityVersionId as string|null)??version?.id??null, identitySavedById: (sourceInput.identitySavedById as string|null)??null, identitySavedAt: (sourceInput.identitySavedAt as string|null)??null, image_input: [], aspect_ratio: aspectRatio, resolution, output_format: IMAGE_DEFAULTS.output_format, submissionAttempted: false } };
 }

@@ -4,6 +4,8 @@ import {createServer,type Server} from "node:http";
 import {readFileSync,readdirSync} from "node:fs";
 import {resolve} from "node:path";
 import sharp from "sharp";
+import {fixture} from "./fixtures/visual-plan";
+import {bindPlanningReferences} from "../src/lib/visual-plan-rules";
 import {emptyProfile} from "../src/lib/profile-rules";
 import {models} from "../src/design-preview/mock/models";
 
@@ -23,7 +25,9 @@ test("真实工作台组件：引用、修改对象、版本比较、布局撤�
  const errors:string[]=[],unexpected:string[]=[];page.on("pageerror",error=>{errors.push(error.message);console.error("隔离画布运行错误",error.message);});
  const photo={id:"photo-local",type:"photo",width:512,height:512},style={id:"style-local",type:"style_ref",width:512,height:512};
  const jobs=Array.from({length:5},(_,i)=>({id:"generation-"+i,status:"success",retriedById:null,assets:[{id:"result-"+i,width:512,height:512}],input:i?{sourceAssetId:"result-0",editCount:1}:{},costUsd:0,reservedUsd:0,costEstimated:false,provider:"simulation",model:"本地模拟"}));
- const snapshot={product:{id:"canvas-local",sku:"LOCAL",name:"模拟产品",category:"收纳柜",assets:[photo]},conversationAssets:[style],settings:{webEnabled:false,conversationImages:[{assetId:style.id,role:"reference",purpose:"参考陈列",mode:"prompt_only"}]},categories:[],searches:[],pack:{slots:[{id:"scene",name:"玄关场景",slotType:"scene",goal:"展示收纳",method:"ai_scene",candidateCount:1,finalAssetId:null as string|null,jobs}]},agent:{session:{id:"session",mode:"quick",running:false,confirmedPack:false,confirmedProfileId:null},profile:emptyProfile(),understanding:{percent:0},costs:{llmUsd:0,imagesUsd:0,searchUsd:0,estimated:false},cards:[],messages:[],tools:[],documents:[]}};
+ const snapshot={product:{id:"canvas-local",sku:"LOCAL",name:"模拟产品",category:"收纳柜",assets:[photo]},conversationAssets:[style],settings:{webEnabled:false,conversationImages:[{assetId:style.id,role:"reference",purpose:"参考陈列",mode:"prompt_only"}]},categories:[],searches:[],pack:{slots:[{id:"scene",name:"玄关场景",slotType:"scene",goal:"展示收纳",method:"ai_scene",candidateCount:1,finalAssetId:null as string|null,jobs}]},agent:{session:{id:"session",mode:"quick",running:false,confirmedPack:false,confirmedProfileId:null},profile:emptyProfile(),understanding:{percent:0},costs:{llmUsd:0,imagesUsd:0,searchUsd:0,estimated:false},cards:[] as {id:string;kind:string;status:string;data:Record<string,unknown>}[],messages:[],tools:[],documents:[]}};
+ let rewritten:Record<string,unknown>|undefined;
+ const edits:Record<string,unknown>[]=[],saved:Record<string,unknown>[]=[];let reused=false;
  let layout={version:1,nodes:[] as {id:string;x:number;y:number}[],notes:[],hiddenIds:[] as string[],viewport:{x:490,y:110,zoom:.55}},revision=0,submitted:Record<string,unknown>|undefined;
  const png=await sharp({create:{width:512,height:512,channels:3,background:"#bcb3a5"}}).png().toBuffer();
  await page.route("**/*",async route=>{
@@ -34,7 +38,8 @@ test("真实工作台组件：引用、修改对象、版本比较、布局撤�
   if(path==="/api/studio/models")return respond({models});
   if(path.startsWith("/api/assets/"))return route.fulfill({status:200,contentType:"image/png",body:png});
   if(path.endsWith("/canvas")){if(request.method()==="PUT"){const body=request.postDataJSON();layout=body.layout;revision++;}return respond({layout,revision,canWrite:true});}
-  if(path==="/api/studio/canvas-local"){if(request.method()==="POST"){const body=request.postDataJSON();if(body.action!=="settings")unexpected.push(body.action);return respond({ok:true});}return respond(snapshot);}
+  if(path==="/api/studio/canvas-local"){if(request.method()==="POST"){const body=request.postDataJSON();if(body.action==="rewrite_plan"){rewritten=body.data;snapshot.agent.cards=[];return respond({ok:true});}if(body.action==="edit_quote")return respond({estimatedCostUsd:.04,fingerprint:"local-fingerprint",warning:null});if(body.action==="edit"){edits.push(body.data);return respond({jobId:"local-new-edit"});}if(body.action!=="settings")unexpected.push(body.action);return respond({ok:true});}return respond(snapshot);}
+  if(path==="/api/studio/saved-references"){if(request.method()==="GET")return respond(saved);const body=request.postDataJSON();if(body.action==="save"){saved.push({id:"local-saved",...body.data,prompt:"旧产品提示词，只供追溯"});return respond(saved[0]);}if(body.action==="reuse"){reused=true;return respond({assetId:"style-local"});}}
   if(path==="/api/products/canvas-local/agent"){submitted=request.postDataJSON();return route.fulfill({status:200,contentType:"text/event-stream",body:'data: {"type":"done"}\n\n'});}
   if(path==="/api/products/canvas-local/pack"){const body=request.postDataJSON();snapshot.pack.slots[0].finalAssetId=body.assetId;return respond({ok:true});}
   unexpected.push(path);await route.abort();
@@ -43,7 +48,10 @@ test("真实工作台组件：引用、修改对象、版本比较、布局撤�
  await expect(page.getByText("布局已保存",{exact:true})).toBeAttached();
  const first=page.locator('[data-picture="result-0"]');
  await first.click();await expect(page.getByLabel("本次引用图片")).toContainText("选中 · 版本 1");
- await page.getByRole("button",{name:"描述修改",exact:true}).click();await expect(page.getByLabel("工作台创作要求")).toBeFocused();
+ await first.getByRole("button",{name:"放大查看图片",exact:true}).click();await page.getByRole("dialog").getByRole("button",{name:"修改这张图",exact:true}).click();await expect(page.getByRole("dialog",{name:"修改这张图",exact:true})).toBeVisible();await page.getByRole("button",{name:"暂不修改",exact:true}).click();
+ await page.getByRole("button",{name:"描述修改",exact:true}).click();await expect(page.getByLabel("本次修改要求")).toBeFocused();
+ await page.getByLabel("本次修改要求").fill("先保留这条单图草稿");await page.getByRole("button",{name:"暂不修改",exact:true}).click();
+ await page.getByRole("button",{name:"描述修改",exact:true}).click();await expect(page.getByLabel("本次修改要求")).toHaveValue("先保留这条单图草稿");await page.setViewportSize({width:390,height:844});await expect.poll(async()=>(await page.getByRole("dialog",{name:"修改这张图",exact:true}).boundingBox())!.width).toBeLessThanOrEqual(390);await expect.poll(async()=>(await page.getByRole("dialog",{name:"修改这张图",exact:true}).boundingBox())!.x).toBeGreaterThanOrEqual(0);await page.getByRole("button",{name:"暂不修改",exact:true}).click();await page.setViewportSize({width:1280,height:800});
  await page.getByLabel("工作台创作要求").fill("保留这条未发送的修改意见");
  await page.getByRole("button",{name:"收起对话",exact:true}).click();await expect(page.locator("#workspace-chat")).toBeHidden();
  await page.getByRole("button",{name:"展开对话",exact:true}).click();await expect(page.getByLabel("工作台创作要求")).toHaveValue("保留这条未发送的修改意见");
@@ -55,8 +63,15 @@ test("真实工作台组件：引用、修改对象、版本比较、布局撤�
  const dialog=page.getByRole("dialog",{name:"对比选中的图片"});await expect(dialog.locator("img")).toHaveCount(2);
  await expect(dialog.locator("img").first()).toHaveAttribute("src","/api/assets/result-0");
  await dialog.getByRole("button",{name:"继续调整这张",exact:true}).first().click();await expect(dialog).toHaveCount(0);
- await page.getByRole("button",{name:"描述修改",exact:true}).click();await page.getByLabel("工作台创作要求").fill("只把台面道具移到右侧，其他保持");await page.getByRole("button",{name:"发送创作要求",exact:true}).click();
+ await expect(page.getByRole("dialog",{name:"修改这张图",exact:true})).toBeVisible();await page.getByLabel("本次修改要求").fill("只把台面道具移到右侧，其他保持");await page.getByRole("button",{name:"按意见生成新版本",exact:true}).click();
+ await expect.poll(()=>edits.length).toBe(1);expect(edits[0].assetId).toBe("result-0");expect(edits[0].instruction).toContain("道具移到右侧");expect(edits[0].fingerprint).toBe("local-fingerprint");expect(submitted).toBeUndefined();
+ await page.getByLabel("工作台创作要求").fill("再讨论这个图位");await page.getByRole("button",{name:"发送创作要求",exact:true}).click();
  await expect.poll(()=>submitted?.canvas).toEqual({selectedIds:["result-0"],referenceAssetIds:["result-0"]});
+ await page.getByRole("button",{name:"更多图片操作",exact:true}).click();await page.getByRole("button",{name:"同款换色 / 材质",exact:true}).click();
+ await page.getByLabel("颜色材质参考",{exact:true}).selectOption("style-local");await page.getByLabel("目标颜色和材质",{exact:true}).fill("深胡桃木台面、哑光黑框架");await page.getByRole("button",{name:"生成同款新配色",exact:true}).click();
+ await expect.poll(()=>edits.length).toBe(2);expect(edits[1].appearanceChange).toEqual({referenceAssetId:"style-local",description:"深胡桃木台面、哑光黑框架",environment:"keep"});
+ await page.getByRole("button",{name:"收藏",exact:true}).click();await page.getByLabel("收藏名称",{exact:true}).fill("玄关右侧留白");await page.getByRole("button",{name:"保存到我的收藏",exact:true}).click();await expect.poll(()=>saved.length).toBe(1);
+ await page.getByRole("button",{name:"我的收藏",exact:true}).click();await expect(page.getByRole("dialog",{name:"我的收藏",exact:true})).toContainText("玄关右侧留白");await page.getByRole("button",{name:"用作当前产品参考",exact:true}).click();await expect.poll(()=>reused).toBe(true);await expect(page.getByLabel("本次引用图片")).toContainText("场景参考");await page.getByLabel("取消引用 场景参考 2",{exact:true}).click();
  await page.getByRole("button",{name:"更多图片操作",exact:true}).click();await page.getByRole("button",{name:"从画布隐藏",exact:true}).click();await expect(first).toHaveCount(0);await expect(page.getByLabel("本次引用图片")).toHaveCount(0);
  await expect.poll(()=>layout.hiddenIds).toContain("result-0");
  await page.getByLabel("图片版本",{exact:true}).click();await page.locator(".p-canvas-version").filter({hasText:"版本 1"}).click();await expect(first).toBeVisible();await page.getByRole("button",{name:"收起",exact:true}).click();
@@ -77,6 +92,15 @@ test("真实工作台组件：引用、修改对象、版本比较、布局撤�
  }
  await page.setViewportSize({width:390,height:844});await page.getByRole("tab",{name:"画布",exact:true}).click();await expect(page.locator("#workspace-chat")).toBeHidden();await page.getByLabel("图片版本",{exact:true}).click();await expect(page.locator(".p-canvas-version").first()).toBeVisible();await page.getByRole("button",{name:"收起",exact:true}).click();await page.getByRole("tab",{name:"对话",exact:true}).click();await expect(page.getByLabel("工作台创作要求")).toBeVisible();
  await page.setViewportSize({width:1100,height:800});
+ const reference={assetId:"style-local",purpose:"参考摆放和光线",mode:"prompt_only" as const};
+ const plan={...structuredClone(fixture),conversationImages:[{...reference,role:"reference" as const}],identityLock:{...fixture.identityLock,referenceAssetIds:["photo-local"]},slots:bindPlanningReferences([{...fixture.slots[0],references:[reference]}],[{...reference,role:"reference"}])};
+ snapshot.agent.cards=[{id:"plan-local",kind:"pack",status:"pending",data:{visualPlan:plan}}];
  await page.reload();await expect(page.getByText("布局已保存",{exact:true})).toBeAttached();
+ await expect(page.getByAltText("产品身份实拍 1")).toBeAttached();await expect(page.getByRole("button",{name:"采用这套方案",exact:true})).toBeEnabled();
+ await page.getByRole("button",{name:"环境自由配色",exact:true}).click();await expect(page.getByLabel("门厅 环境色调",{exact:true})).toHaveValue(/产品颜色保持实拍/);
+ await page.getByLabel("门厅 陈列",{exact:true}).fill("托盘放右后方，左侧留白，不挡把手");
+ await page.getByRole("button",{name:"放大门厅参考图1",exact:true}).click();await expect(page.getByRole("dialog")).toBeVisible();await page.getByRole("dialog").getByRole("button",{name:"关闭",exact:true}).click();
+ await page.getByRole("button",{name:"借鉴氛围",exact:true}).click();await expect(page.getByRole("button",{name:"采用这套方案",exact:true})).toBeDisabled();await page.getByRole("button",{name:"按意见重写",exact:true}).click();
+ await expect.poll(()=>rewritten?.feedback).toContain("托盘放右后方");expect(rewritten?.feedback).toContain("只借鉴整体氛围");
  expect(snapshot.pack.slots[0].finalAssetId).toBe("result-0");expect(unexpected).toEqual([]);expect(errors).toEqual([]);
 });

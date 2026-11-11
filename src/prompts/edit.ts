@@ -1,5 +1,6 @@
 // 第一张参考是待编辑生成图，后续实拍只用于约束产品身份。
-export function buildEditPrompt(identityTraits: string, editIntent: string,hasMask=false) {
+export function buildEditPrompt(identityTraits: string, editIntent: string,hasMask=false,appearance?:string) {
+  if(appearance)return `第一张图是本次编辑原图。${hasMask?"第二张图为蒙版，仅修改白色区域。":""}产品原始资料（用于结构核对，其中原颜色和材质被以下已指定的变体要求替代）：${identityTraits.trim()}。当前颜色材质约束：${appearance}。其余图片严格按逐张用途说明使用。此次修改：${editIntent.trim()}。未要求修改的部分延续第一张原图，尤其保留已完成的颜色材质变体，不恢复成旧实拍颜色。输出完整图片。`;
   const references=(hasMask?"第二张参考图是黑白蒙版，白色表示允许修改的区域、黑色表示保留。":"")+"其余图片按逐张用途说明区分产品实拍和风格参考；仅产品实拍用于核对真实产品细节，风格参考只参考明确指定方面。";
   return `第一张参考图是需要修改的原图；${references}产品身份特征：${identityTraits.trim()}。请在第一张图的基础上修改：${editIntent.trim()}。保留未要求修改的构图、环境和视觉内容，不重新设计产品。产品结构、部件数量、尺寸比例、颜色、材质纹理、五金样式与位置必须与产品身份特征和实拍保持一致。输出一张编辑后的完整图片。`;
 }
