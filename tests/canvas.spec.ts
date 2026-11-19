@@ -48,8 +48,9 @@ test("首批融合：刷新恢复布局和便签、选图引用、进度留存�
   await page.keyboard.press("Escape");await expect(preview).toHaveCount(0);await expect(page.getByLabel("本次引用图片")).toContainText("本次引用 1 张");
   await picture.dblclick();await expect(preview).toBeVisible();await preview.getByRole("button",{name:"关闭",exact:true}).click();await expect(preview).toHaveCount(0);
   await expect(page.getByRole("button",{name:"缩放百分比菜单"})).toHaveText("70%");
-  // 修改入口将选图送到输入区；取消选择后不再隐式引用旧图片。
-  await page.getByRole("button",{name:"描述修改",exact:true}).click();await expect(page.getByLabel("工作台创作要求")).toBeFocused();
+  // 修改入口绑定当前选图；取消选择后不再隐式引用旧图片。
+  await page.getByRole("button",{name:"修改这张图",exact:true}).click();await expect(page.getByLabel("本次修改要求")).toBeFocused();
+  await page.getByRole("button",{name:"暂不修改",exact:true}).click();
   await page.getByRole("button",{name:"取消选择",exact:true}).click();await expect(page.getByLabel("本次引用图片")).toHaveCount(0);
   await picture.getByRole("button",{name:"图片更多操作",exact:true}).click();await expect(page.getByRole("toolbar",{name:"图片操作",exact:true})).toBeVisible();
   await expect(page.getByLabel("本次引用图片")).toContainText("选中 · ");

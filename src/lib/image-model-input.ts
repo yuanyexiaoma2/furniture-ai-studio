@@ -8,7 +8,8 @@ export function validateImageSelection(candidate:ModelCandidate,resolution:strin
  if(!(resolution in spec.prices))throw new StudioError(`${spec.name}不支持${resolution}，请选择${Object.keys(spec.prices).join("或")}`);
  if(!spec.ratios.includes(ratio))throw new StudioError(`${spec.name}不支持${ratio}比例，请重新选择`);
  if(prompt.length>spec.maxPrompt)throw new StudioError(`${spec.name}的完整提示词最多${spec.maxPrompt}字符，请缩短创作要求或选择其他模型`);
- if(count<1||count>spec.maxReferences)throw new StudioError(`${spec.name}需要1至${spec.maxReferences}张参考图`);
+ const minimum=spec.minReferences??1;
+ if(count<minimum||count>spec.maxReferences)throw new StudioError(`${spec.name}需要${minimum}至${spec.maxReferences}张参考图`);
 }
 export function fitImageReferences<T extends {id:string}>(candidate:ModelCandidate,references:T[]){
  const limit=candidate.provider==="kie"?kieImageSpec(candidate.model)?.maxReferences:undefined;

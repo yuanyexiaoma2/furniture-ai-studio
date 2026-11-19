@@ -2,7 +2,7 @@ import "dotenv/config";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {saveReference,listSavedReferences,reuseReference} from "../../src/lib/saved-references";
-import {savedGenerationSnapshot} from "../../src/lib/saved-reference-rules";
+import {savedGenerationSnapshot,templatePrompt,filterTemplates,savedReferenceSchema,savedReferenceInput} from "../../src/lib/saved-reference-rules";
 type IO=NonNullable<Parameters<typeof reuseReference>[3]>;
 
 test("收藏保存真实生成快照、重复保存更新同一条记录，并按用户隔离",async()=>{
@@ -47,4 +47,13 @@ test("复用收藏把参考复制到当前产品，保留现有用途并阻止�
 
 test("老记录无参考字段仍能收藏，任意上游字段不进入收藏",()=>{
  assert.deepEqual(savedGenerationSnapshot({prompt:"画面",apiKey:"secret",resolution:"2K"}),{prompt:"画面",references:[],plan:null,appearanceChange:null,resolution:"2K"});
+});
+
+test("模板保留原始提示词，复用版本可独立修改；旧收藏仍可检索",()=>{
+ const base={version:1,ownerId:"a",productId:"p",assetId:"i",jobId:"j",name:"玄关留白",purpose:"自然光",createdAt:"today",prompt:"原始产品描述",references:[],model:"mock",resolution:"2K"};
+ const old={...savedReferenceSchema.parse(base),id:"old"},current={...savedReferenceSchema.parse({...base,category:"鞋架",scene:"玄关",reusablePrompt:"修改后的模板描述"}),id:"new"};
+ assert.equal(templatePrompt(old),base.prompt);assert.equal(templatePrompt(current),"修改后的模板描述");assert.equal(current.prompt,base.prompt);
+ assert.deepEqual(filterTemplates([old,current],"","","","鞋架").map(r=>r.id),["new","old"]);
+ assert.deepEqual(filterTemplates([old,current],"修改后","鞋架","玄关").map(r=>r.id),["new"]);assert.equal(filterTemplates([old,current],"","桌子").length,0);
+ assert(!savedReferenceInput.safeParse({productId:"p",assetId:"i",name:"模板",purpose:"场景",reusablePrompt:"a".repeat(20001)}).success);
 });

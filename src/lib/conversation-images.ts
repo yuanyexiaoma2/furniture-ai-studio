@@ -41,9 +41,16 @@ export async function saveConversationImages(sessionId:string,raw:unknown){
   return {images,instruction:"图片用途已保存。参考图只使用purpose指定方面；用途不明确时用一句话追问，不创建确认卡。"};
  });
 }
-export async function currentEditReferences(sessionId:string,sourceAssetId:string,explicit?:SlotReference[],deps={read:requireResolvedImages,save:saveConversationImages}){
- const state=await deps.read(sessionId,[sourceAssetId]);
- if(state.unresolved.includes(sourceAssetId))await deps.save(sessionId,[{assetId:sourceAssetId,role:"source",purpose:"待编辑原图"}]);
+async function isDirectEditSource(sessionId:string,sourceAssetId:string){
+ const session=await db.agentSession.findUniqueOrThrow({where:{id:sessionId},select:{productId:true}});
+ return !!await db.generationJob.findFirst({where:{productId:session.productId,status:"success",resultAssetIds:{array_contains:[sourceAssetId]},input:{path:["generationMode"],equals:"direct"}},select:{id:true}});
+}
+export async function currentEditReferences(sessionId:string,sourceAssetId:string,explicit?:SlotReference[],deps:{read:typeof requireResolvedImages;save:typeof saveConversationImages;directSource?:typeof isDirectEditSource;state?:typeof conversationImageState}={read:requireResolvedImages,save:saveConversationImages,directSource:isDirectEditSource,state:conversationImageState}){
+ // 独立生成沿用已冻结用途，不读取无关对话附件。显式加入新参考时仍校验其用途。
+ const direct=await deps.directSource?.(sessionId,sourceAssetId);
+ if(direct&&!explicit?.length)return explicit;
+ const state=direct?await deps.state!(sessionId):await deps.read(sessionId,[sourceAssetId]);
+ if(!direct&&state.unresolved.includes(sourceAssetId))await deps.save(sessionId,[{assetId:sourceAssetId,role:"source",purpose:"待编辑原图"}]);
  if(explicit?.some(r=>!state.images.some(i=>i.role==="reference"&&i.assetId===r.assetId)))throw new StudioError("新参考图必须先在当前对话说明用途",409);
  return explicit?.map(r=>{const image=state.images.find(i=>i.assetId===r.assetId);return {...r,...(!r.mode&&image?.mode?{mode:image.mode}:{})};});
 }

@@ -1,0 +1,113 @@
+{
+  "productId": "cmwk2pfws00004sv8sifm7nat",
+  "records": [
+    {
+      "name": "expand",
+      "jobId": "cmwk2pusp0002hsv89ag1houb",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "resolution": "4K",
+      "aspectRatio": "4:3",
+      "status": "success",
+      "recordedCostUsd": 0.04,
+      "selected": true,
+      "references": [
+        "scene",
+        "wood"
+      ],
+      "prompt": "产品必须严格保持参考实拍的尺寸比例和结构：长而窄的两块拼接木台面，中间拼缝可见；黑色方管两侧框架，台面下左右有短斜支撑，只有一层靠近地面的长木置物板。不得加抽屉、不得加层板、不得加粗台腿、不得把长桌变成矮胖桌。所有产品完整可见，不裁桌脚。不出现文字、数字、品牌、水印、UI标签或装饰性图标。高端家具商品摄影，真实木纹和自然光影。 以第一张入户玄关场景图为编辑原图，第二张为产品结构核对。将正方形照片仅向左右扩展成4:3横向照片，原图内容完整居中占画面中央75%宽度和100%高度，完整保留中间原图的桌子、灯、镜子、花瓶、书本、篮子、木箱、陶罐和地毯的原始位置及比例。左右各扩展原图宽度的六分之一，延续白色护墙板、木地板和右侧门框。不是重新摆拍，不改变相机，不缩放中心原图，不改变原本光线。只补出两侧真实连续空间。"
+    },
+    {
+      "name": "refine",
+      "jobId": "cmwk2puu90004hsv8fv1kl05y",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "resolution": "4K",
+      "aspectRatio": "1:1",
+      "status": "success",
+      "recordedCostUsd": 0.04,
+      "selected": true,
+      "references": [
+        "wood"
+      ],
+      "prompt": "产品必须严格保持参考实拍的尺寸比例和结构：长而窄的两块拼接木台面，中间拼缝可见；黑色方管两侧框架，台面下左右有短斜支撑，只有一层靠近地面的长木置物板。不得加抽屉、不得加层板、不得加粗台腿、不得把长桌变成矮胖桌。所有产品完整可见，不裁桌脚。不出现文字、数字、品牌、水印、UI标签或装饰性图标。高端家具商品摄影，真实木纹和自然光影。 仅精修第一张产品白底主图，不改变产品形状、透视、占画面比例、位置或颜色。输出仍为同样1:1方图，桌子所有部件与参考原图像素位置尽可能一致。提升木纹和哑光金属的质感、消除过锐边缘、光照变得柔和均匀，增加非常轻柔自然的落地阴影，背景保持纯白。看起来是专业棚拍修图，不是重建产品或重新设计家具。"
+    },
+    {
+      "name": "direct",
+      "jobId": "cmwk2puvd0006hsv80rxg909r",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "resolution": "4K",
+      "aspectRatio": "4:3",
+      "status": "success",
+      "recordedCostUsd": 0.04,
+      "selected": true,
+      "references": [
+        "wood"
+      ],
+      "prompt": "产品必须严格保持参考实拍的尺寸比例和结构：长而窄的两块拼接木台面，中间拼缝可见；黑色方管两侧框架，台面下左右有短斜支撑，只有一层靠近地面的长木置物板。不得加抽屉、不得加层板、不得加粗台腿、不得把长桌变成矮胖桌。所有产品完整可见，不裁桌脚。不出现文字、数字、品牌、水印、UI标签或装饰性图标。高端家具商品摄影，真实木纹和自然光影。 使用第一张木色主图中的完全相同玄关桌制作一张漂亮的新场景图。画幅4:3横向，保持宽长桌比例，产品完整可见占画面宽度78%左右。现代温暖极简入户玄关，淡米色石灰墙面，左侧窄高玻璃窗外绿叶虚化，自然晨光形成柔和窗影，浅橡木地板。桌面右端仅放一个奶油白陶瓷花瓶插两枝橄榄枝，左端放一只低矮浅色石质托盘。下层置物板只放两本浅色画册。整体克制、干净、有留白，真实电商家具摄影。产品复古棕木色与黑框不改变，不加任何图文版式。"
+    },
+    {
+      "name": "recolor",
+      "jobId": "cmwk2sm3l0001dov88fa9plpr",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "resolution": "4K",
+      "aspectRatio": "4:3",
+      "status": "success",
+      "recordedCostUsd": 0.04,
+      "selected": true,
+      "references": [
+        "expand",
+        "black"
+      ],
+      "prompt": "产品必须严格保持参考实拍的尺寸比例和结构：长而窄的两块拼接木台面，中间拼缝可见；黑色方管两侧框架，台面下左右有短斜支撑，只有一层靠近地面的长木置物板。不得加抽屉、不得加层板、不得加粗台腿、不得把长桌变成矮胖桌。所有产品完整可见，不裁桌脚。不出现文字、数字、品牌、水印、UI标签或装饰性图标。高端家具商品摄影，真实木纹和自然光影。 第一张是待编辑的完整场景，第二张是同款黑色产品实拍，仅作为目标色和木纹材质依据。只把第一张场景中玄关桌的棕色木台面和棕色下层置物板变为第二张所示的雅黑木纹；黑金属支架保持原样。必须保持第一张中的桌子位置、比例、透视、全部结构、桌面拼缝、所有灯具花瓶书本篮子陶罐以及墙面地面光线与相机完全一致。禁止移动桌子、改变腿长、改变桌板厚度或增删道具。像照片局部调色一样仅改变木板颜色。原场景构图完全不变，输出同样4:3横向。"
+    },
+    {
+      "name": "cutout",
+      "jobId": "cmwk2sm550003dov8zjntk841",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "resolution": "4K",
+      "aspectRatio": "4:3",
+      "status": "success",
+      "recordedCostUsd": 0.04,
+      "selected": false,
+      "references": [
+        "expand",
+        "wood"
+      ],
+      "prompt": "产品必须严格保持参考实拍的尺寸比例和结构：长而窄的两块拼接木台面，中间拼缝可见；黑色方管两侧框架，台面下左右有短斜支撑，只有一层靠近地面的长木置物板。不得加抽屉、不得加层板、不得加粗台腿、不得把长桌变成矮胖桌。所有产品完整可见，不裁桌脚。不出现文字、数字、品牌、水印、UI标签或装饰性图标。高端家具商品摄影，真实木纹和自然光影。 第一张是要抠图的场景，第二张是该桌子白底实拍，用于核对被道具遮挡的产品结构。只提取第一张中的玄关桌本体，删除所有房间背景、镜子、灯、花瓶、托盘、书本、篮子、木箱、陶罐和地毯，替换为纯白背景。保留第一张中桌子的位置、大小、透视、产品轮廓和整个黑色支架，维持原本长宽高比例与木纹颜色；补全被道具遮挡的桌面和下层置物板。桌子不要缩放，不要重新换角度。输出4:3横向，空白区域纯白，不绘制棋盘格，不添加阴影背景。"
+    },
+    {
+      "name": "cutout-aligned",
+      "jobId": "cmwkbnksg0001hkv8vhrphzpl",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "resolution": "4K",
+      "aspectRatio": "4:3",
+      "status": "success",
+      "recordedCostUsd": 0.04,
+      "selected": false,
+      "references": [
+        "expand"
+      ],
+      "prompt": "严格局部编辑此唯一输入照片，只移除背景和摆件。必须锁定原照片的相机、透视、画幅以及桌子所在位置和大小，不重新拍摄，不自动居中，不自动放大桌子。桌子包围盒约为画幅左19%至右79%，顶部37%至底部95%，请保留这些坐标，画面上方大面积白色空白是正确的。把墙壁、镜子、灯、植物、花瓶、书本、篮子、木箱、陶罐、门、地板、地毯全部去除为纯白色，只保留棕色木台面、黑色支架、棕色下层置物板构成的原桌子，补齐被道具遮挡的台面。原桌子每条边、每根腿、所有斜撑和螺丝的屏幕位置都保持不动，木纹本色保持不变。不要换成白底商品照的另一机位，不能镜像左右，不加投影，不画棋盘格，不加文字，输出同样4:3照片。产品必须严格保持参考实拍的尺寸比例和结构：长而窄的两块拼接木台面，中间拼缝可见；黑色方管两侧框架，台面下左右有短斜支撑，只有一层靠近地面的长木置物板。不得加抽屉、不得加层板、不得加粗台腿、不得把长桌变成矮胖桌。所有产品完整可见，不裁桌脚。不出现文字、数字、品牌、水印、UI标签或装饰性图标。高端家具商品摄影，真实木纹和自然光影。"
+    },
+    {
+      "name": "cutout-mask",
+      "jobId": "cmwkbtcmm0001nkv8auv21c92",
+      "provider": "kie",
+      "model": "nano-banana-2-1",
+      "resolution": "4K",
+      "aspectRatio": "1:1",
+      "status": "success",
+      "recordedCostUsd": 0.04,
+      "selected": true,
+      "references": [
+        "wood"
+      ],
+      "prompt": "Return ONLY a black-and-white binary segmentation mask of the console table in the input product photograph, on the exact same square canvas and with the exact same camera, coordinates, silhouette and scale. Every visible pixel belonging to the wooden tabletop, black metal legs, braces, screws, feet, and low wooden shelf must be solid WHITE (#FFFFFF). All background and all open spaces between the legs and shelves must be solid BLACK (#000000). White solid filled silhouette of the furniture, black negative space, no outlines, no shadows, no grayscale, no photograph, no color, no text. Preserve the original silhouette exactly. This is an alpha matte for extracting the original pixels; not a new product photo."
+    }
+  ]
+}

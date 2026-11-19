@@ -7,6 +7,8 @@ import type { LLMProvider, LLMInput } from "@/lib/llm-provider";
 import { models, LLM_OUTPUT_BUDGET } from "./models.config";
 
 type Body = OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming;
+// 多图识别与整套规划需要等待完整响应，保留210秒中断回收之前的保存余量。
+const NON_STREAMING_TIMEOUT_MS = 180_000;
 export class ZenMuxLLMProvider implements LLMProvider {
   constructor(private model = models["llm-vision"].find(c => c.provider === "zenmux")!.model, private complete?: (body: Body) => Promise<unknown>, private read = assetBytes) {}
   isConfigured() { return Boolean(process.env.ZENMUX_API_KEY?.trim()); }
@@ -23,9 +25,9 @@ export class ZenMuxLLMProvider implements LLMProvider {
         for await (const chunk of stream) { id = chunk.id; usage = chunk.usage ?? usage; const delta = chunk.choices[0]?.delta; if (delta?.content) { text += delta.content; input.onDelta(delta.content); } for (const c of delta?.tool_calls ?? []) { const old = calls.get(c.index) ?? { id: "", type: "function" as const, function: { name: "", arguments: "" } }; old.id = c.id ?? old.id; old.function.name += c.function?.name ?? ""; old.function.arguments += c.function?.arguments ?? ""; calls.set(c.index, old); } }
         return parseChatReply({ id, usage, choices: [{ message: { content: text, tool_calls: [...calls.values()] } }] }, input, "zenmux");
       }
-      const response = this.complete ? await this.complete(body) : await new OpenAI({ apiKey: process.env.ZENMUX_API_KEY!.trim(), baseURL: process.env.ZENMUX_BASE_URL?.trim() || "https://zenmux.ai/api/v1", timeout: 25000, maxRetries: 0 }).chat.completions.create(body);
+      const response = this.complete ? await this.complete(body) : await new OpenAI({ apiKey: process.env.ZENMUX_API_KEY!.trim(), baseURL: process.env.ZENMUX_BASE_URL?.trim() || "https://zenmux.ai/api/v1", timeout: NON_STREAMING_TIMEOUT_MS, maxRetries: 0 }).chat.completions.create(body);
       reply = response;
       return parseChatReply(response, input, "zenmux");
-    } catch (error) { const failure = gatewayException("zenmux", error); const id = (reply as { id?: unknown } | undefined)?.id; if (typeof id === "string") failure.externalGenerationId = id; throw failure; }
+    } catch (error) { const failure = error instanceof OpenAI.APIConnectionTimeoutError ? new GatewayError("zenmux", `请求等待超过${input.onDelta ? 90 : NON_STREAMING_TIMEOUT_MS / 1000}秒，上游处理状态未确定，请先核对调用记录`, 504, true, true) : gatewayException("zenmux", error); const id = (reply as { id?: unknown } | undefined)?.id; if (typeof id === "string") failure.externalGenerationId = id; throw failure; }
   }
 }

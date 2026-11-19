@@ -13,7 +13,7 @@ export function GatewayManager({ initial }: { initial: GatewayStatus }) {
   useEffect(() => { const timer = setInterval(() => void refresh().catch(() => {}), 5000); return () => clearInterval(timer); }, []);
   async function test(input:{provider:Provider;kind:"llm"|"image"}) {
     if(submitting.current)return;submitting.current=true;setPending(`${input.provider}:${input.kind}`); setNotice(""); setError("");
-    try { const reply = await fetch("/api/admin/gateways/test", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(input) }); const result = await reply.json(); if (!reply.ok) throw new Error(result.error); setNotice(`${input.provider === "kie" ? "KIE" : "ZenMux"}：${result.message}${result.jobId ? ` 任务 ${result.jobId}` : ''}`); await refresh(); }
+    try { const reply = await fetch("/api/admin/gateways/test", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(input) }); const result = await reply.json(); if (!reply.ok) throw new Error(result.error); setNotice(`${(result.provider??(input.kind==="llm"?"zenmux":input.provider)) === "kie" ? "KIE" : "ZenMux"}：${result.message}${result.jobId ? ` 任务 ${result.jobId}` : ''}`); await refresh(); }
     catch (e) { setError(e instanceof Error ? e.message : "测试失败，请检查网络"); }
     finally { submitting.current=false;setPending(""); }
   }

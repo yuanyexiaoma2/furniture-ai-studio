@@ -4,10 +4,39 @@ import {canvasLayoutSchema,canvasSelectionSchema,emptyCanvasLayout,reconcileCanv
 import {consumeAgentStream} from "../../src/lib/agent-stream";
 import {progressSummary} from "../../src/lib/agent-progress";
 import {usePreviewStore,type StudioNode} from "../../src/components/design-preview/store";
-import {arrangeCanvasNodes,restoreCanvasNodes} from "../../src/components/design-preview/canvas-operations";
+import {arrangeCanvasNodes,restoreCanvasNodes,placeCanvasResults} from "../../src/components/design-preview/canvas-operations";
+import {syncLiveCanvas} from "../../src/components/design-preview/live-store";
+import {applyCanvasLayout,useCanvasSession} from "../../src/components/design-preview/canvas-session";
+import type {StudioSnapshot} from "../../src/lib/studio-main";
 import {canvasGridSize} from "../../src/lib/canvas-arrangement";
 
 const picture=(id:string,parentId="frame"):StudioNode=>({id,type:"picture",parentId,position:{x:40,y:30},data:{image:"/api/assets/"+id,label:id,slot:"场景"}});
+
+test("修改任务倒序返回也追加到空位，完成后替换占位并保持原图位置和版本关系",()=>{
+ const saved=usePreviewStore.getState(),canvas=useCanvasSession.getState();
+ try{
+  usePreviewStore.setState({nodes:[],selected:[],references:[],hiddenIds:[]});useCanvasSession.setState({status:"saved",layout:emptyCanvasLayout()});
+  const original={id:"original-job",createdAt:"2026-11-13T00:00:00Z",input:{},assets:[{id:"original",width:100,height:100}],status:"success",reservedUsd:0,costUsd:.03};
+  const edited={...original,id:"edit-job",createdAt:"2026-11-13T01:00:00Z",status:"pending",assets:[],input:{sourceAssetId:"original"}};
+  const snapshot={product:{id:"canvas-edit-regression",assets:[]},conversationAssets:[],settings:{},pack:{slots:[{id:"s",name:"场景",jobs:[original]}]}} as unknown as StudioSnapshot;
+  syncLiveCanvas(snapshot);const source=usePreviewStore.getState().nodes.find(n=>n.id==="original")!;
+  snapshot.pack.slots[0].jobs=[edited,original] as unknown as StudioSnapshot["pack"]["slots"][number]["jobs"];
+  syncLiveCanvas(snapshot);
+  const placeholder=usePreviewStore.getState().nodes.find(n=>n.id==="job-edit-job")!;
+  assert.notDeepEqual(placeholder.position,source.position);assert.deepEqual(usePreviewStore.getState().nodes.find(n=>n.id==="original")!.position,source.position);
+  edited.assets=[{id:"edited",width:100,height:100}] as never[];edited.status="success";
+  syncLiveCanvas(snapshot);const result=usePreviewStore.getState().nodes.find(n=>n.id==="edited")!;
+  assert.deepEqual(result.position,placeholder.position);assert.equal(result.data.sourceAssetId,"original");assert.match(result.data.label,/版本 2.*修改/);
+ }finally{usePreviewStore.setState(saved);useCanvasSession.setState(canvas);}
+});
+
+test("刷新修复旧版完全重叠的版本，同时保留其他自由位置、便签和隐藏状态",()=>{
+ const frame:StudioNode={id:"slot-test",type:"frame",position:{x:600,y:700},data:{image:"",label:"场景",slot:"场景"}},a=picture("a",frame.id),b=picture("b",frame.id),c={...picture("c",frame.id),position:{x:900,y:500}};
+ const layout={...emptyCanvasLayout(),nodes:[{id:"a",x:40,y:30},{id:"b",x:40,y:30},{id:"c",x:900,y:500}],hiddenIds:["hidden"],notes:[{id:"note-one",text:"保留便签",x:9,y:11}]};
+ const nodes=applyCanvasLayout([frame,a,b,c],layout);
+ assert.deepEqual(nodes.find(n=>n.id==="a")?.position,a.position);assert.notDeepEqual(nodes.find(n=>n.id==="b")?.position,a.position);assert.deepEqual(nodes.find(n=>n.id==="c")?.position,c.position);assert.equal(nodes.find(n=>n.id==="note-one")?.data.label,"保留便签");
+ assert.deepEqual(placeCanvasResults(nodes,new Set(nodes.map(n=>n.id))),nodes);
+});
 test("选图、取消、移除分组保持操作对象及图片高亮同步，不遗留隐藏引用",()=>{
  const saved=usePreviewStore.getState();try{
   usePreviewStore.setState({nodes:[{id:"frame",type:"frame",position:{x:0,y:0},data:{image:"",label:"场景",slot:"场景"}},picture("a"),picture("b")],selected:[],references:[],hiddenIds:[]});

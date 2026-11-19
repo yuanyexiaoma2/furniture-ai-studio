@@ -19,7 +19,7 @@ test("正式入口与旧路径301：保留登录回跳和查询参数，默认�
   await expect(page).toHaveURL(/\/login\?callbackUrl=%2Fskus$/);
   await page.getByLabel("公司邮箱").fill(email);await page.getByLabel("密码",{exact:true}).fill(password);await page.getByRole("button",{name:"进入工作台"}).click();
   await expect(page).toHaveURL(/\/skus$/);await expect(page.getByRole("heading",{name:"全部 SKU",exact:true})).toBeVisible();
-  await page.goto("/");await expect(page).toHaveURL(/\/$/);await expect(page.getByRole("heading",{name:"制作产品图片",exact:true})).toBeVisible();
+  await page.goto("/");await expect(page).toHaveURL(/\/$/);await expect(page.getByRole("heading",{name:"亲爱的朋友，开始创作吧！",exact:true})).toBeVisible();
   await expect(page.getByRole("button",{name:/批量.*颜色|多语言|导出前检查/})).toHaveCount(0);
   await expect(page.getByRole("link",{name:"模板库",exact:true})).toBeVisible();
   await expect(page.getByRole("heading",{name:"场景模板",exact:true})).toHaveCount(0);
@@ -30,7 +30,7 @@ test("正式入口与旧路径301：保留登录回跳和查询参数，默认�
   expect((await page.request.get("/admin/models")).status()).toBe(403);
   await page.context().clearCookies();await page.goto("/login");
   await page.getByLabel("公司邮箱").fill(email);await page.getByLabel("密码",{exact:true}).fill(password);await page.getByRole("button",{name:"进入工作台"}).click();
-  await expect(page).toHaveURL(/\/$/);await expect(page.getByRole("heading",{name:"制作产品图片",exact:true})).toBeVisible();
+  await expect(page).toHaveURL(/\/$/);await expect(page.getByRole("heading",{name:"亲爱的朋友，开始创作吧！",exact:true})).toBeVisible();
 
   await page.setViewportSize({width:390,height:844});
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);

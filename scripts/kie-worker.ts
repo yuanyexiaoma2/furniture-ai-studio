@@ -36,7 +36,14 @@ await reconcile();
 // 每 0.5 秒调度已到期的 5 秒轮询，避免固定扫描导致轮询间隔变成 10 秒。
 const timer = setInterval(() => void reconcile(), 500);
 let billing = false;
-const billingTimer = setInterval(() => { if (billing || shuttingDown) return; billing = true; void reconcileZenMuxCosts().finally(() => { billing = false; }); }, 60_000);
+async function reconcileBilling() {
+  if (billing || shuttingDown) return;
+  billing = true;
+  try { await reconcileZenMuxCosts(); }
+  catch { console.error("账单同步暂时失败，将在下一轮重试"); }
+  finally { billing = false; }
+}
+const billingTimer = setInterval(() => void reconcileBilling(), 60_000);
 console.log("双网关 worker 已启动：串行提交、5 秒轮询、10 分钟超时");
 
 async function stop() {

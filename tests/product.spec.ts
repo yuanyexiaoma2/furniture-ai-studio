@@ -22,7 +22,7 @@ async function login(page: Page, email: string, secret: string) {
   await page.getByLabel("密码", { exact: true }).fill(secret);
   await page.getByRole("button", { name: "进入工作台" }).click();
   await expect(page).toHaveURL(`${origin}/`);
-  await expect(page.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "亲爱的朋友，开始创作吧！" })).toBeVisible();
 }
 
 test.beforeAll(async () => {

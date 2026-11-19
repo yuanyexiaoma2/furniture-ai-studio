@@ -20,7 +20,7 @@ async function login(page: Page, email: string, password: string) {
   await page.getByLabel("密码", { exact: true }).fill(password);
   await page.getByRole("button", { name: "进入工作台" }).click();
   await expect(page).toHaveURL("http://localhost:3000/");
-  await expect(page.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "亲爱的朋友，开始创作吧！" })).toBeVisible();
 }
 
 async function createUser(page: Page, name: string, email: string, role: string) {
@@ -71,7 +71,7 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   await admin.getByRole("button", { name: "进入工作台" }).click();
   await expect(admin.getByRole("main").getByRole("alert")).toContainText("邮箱或密码不正确");
   await login(admin, process.env.ADMIN_EMAIL!, process.env.ADMIN_PASSWORD!);
-  await expect(admin.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
+  await expect(admin.getByRole("heading", { name: "亲爱的朋友，开始创作吧！" })).toBeVisible();
   await admin.goto("/admin/models");
   await expect(admin.getByRole("heading", { name: "模型管理", exact: true })).toBeVisible();
   await expect(admin.getByRole("button", { name: "新增配置", exact: true })).toHaveCount(0);
@@ -98,7 +98,7 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   await admin.getByRole("button", { name: "退出登录" }).click();
   await expect(admin).toHaveURL(/\/login(?:\?.*)?$/);
   await login(admin, designerEmail, password);
-  await expect(admin.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
+  await expect(admin.getByRole("heading", { name: "亲爱的朋友，开始创作吧！" })).toBeVisible();
   await loginAfterLogout(admin, process.env.ADMIN_EMAIL!, process.env.ADMIN_PASSWORD!);
 
   const viewerContext = await browser.newContext(); contexts.push(viewerContext);
@@ -139,7 +139,7 @@ test("完整验收：登录、用户创建、角色限制、密码重置与会�
   expect((await designer.goto("/admin"))?.status()).toBe(403);
   await admin.setViewportSize({ width: 390, height: 844 });
   await admin.goto("/");
-  await expect(admin.getByRole("heading", { name: "制作产品图片" })).toBeVisible();
+  await expect(admin.getByRole("heading", { name: "亲爱的朋友，开始创作吧！" })).toBeVisible();
   expect(await admin.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 
 });

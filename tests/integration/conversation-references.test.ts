@@ -38,7 +38,7 @@ test("首页首次识别同时区分产品/参考；不明用途只问一句；�
   const draft=(await db.agentSession.findUniqueOrThrow({where:{id:session.id}})).profileDraft as {structureAndParts:{sources:{id:string}[]}};assert.equal(draft.structureAndParts.sources[0].id,photos[0].id);
   await db.agentSession.update({where:{id:session.id},data:{settings:{}}});ambiguous=false;await inspectStudioProduct(productId,userId,chat);assert.equal(calls,2);assert.equal(await db.agentCard.count({where:{sessionId:session.id,kind:"category",status:"pending"}}),1);
   await assert.rejects(saveConversationImages(session.id,[{assetId:"foreign",role:"reference",purpose:"构图"}]),/当前对话/);
-  const override=[{assetId:photos[1].id,purpose:"只参考光线"}];assert.deepEqual(await currentEditReferences(session.id,"unused-source",override),override);
+  const override=[{assetId:photos[1].id,purpose:"只参考光线",mode:"prompt_only" as const}];assert.deepEqual(await currentEditReferences(session.id,"unused-source",override),override);
   assert.equal(await db.generationJob.count({where:{productId}}),0);assert.equal(await db.llmCall.count({where:{productId}}),0);
  }finally{
   if(productId){await db.chatMessage.deleteMany({where:{productId}});await db.agentCard.deleteMany({where:{session:{productId}}});await db.agentSession.deleteMany({where:{productId}});await db.productDocument.deleteMany({where:{productId}});await db.asset.deleteMany({where:{productId}});await db.product.delete({where:{id:productId}});}

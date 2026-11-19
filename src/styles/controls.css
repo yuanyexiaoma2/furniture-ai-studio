@@ -1,0 +1,28 @@
+/* 普通输入只改变本身的边线。鼠标点击和键盘进入都不会叠加外圈。 */
+:is(.login-shell,.studio-shell,.p-app,.p-portal) :is(input:where(:not([type]),[type=text],[type=email],[type=password],[type=search],[type=number],[type=url],[type=tel]),textarea,select,[data-slot=select-trigger]):focus {
+  border-color:color-mix(in srgb,var(--ring) 78%,var(--input));
+  outline:none;
+  box-shadow:none;
+}
+:is(.login-shell,.studio-shell,.p-app,.p-portal) :is(input,textarea,select,[data-slot=select-trigger])[aria-invalid=true] {
+  border-color:var(--destructive);
+  box-shadow:none;
+}
+
+/* 操作控件仅在键盘导航时显示一圈焦点，图片的选中状态仍由画布自身绘制。 */
+:is(.login-shell,.studio-shell,.p-app,.p-portal) :where(button,a[href],summary,[role=tab],input[type=checkbox],input[type=radio]):where(:not([data-slot=select-trigger])):focus-visible {
+  outline:2px solid var(--ring);
+  outline-offset:2px;
+  box-shadow:none;
+}
+:is(.login-shell,.studio-shell,.p-app,.p-portal) :where(input[type=checkbox],input[type=radio]) {
+  accent-color:var(--ring);
+}
+
+/* 方便系统高对比度模式识别可编辑控件。 */
+@media (forced-colors:active) {
+  :is(.login-shell,.studio-shell,.p-app,.p-portal) :is(input:where(:not([type]),[type=text],[type=email],[type=password],[type=search],[type=number],[type=url],[type=tel]),textarea,select,[data-slot=select-trigger]):focus {
+    outline:1px solid Highlight;
+    outline-offset:1px;
+  }
+}

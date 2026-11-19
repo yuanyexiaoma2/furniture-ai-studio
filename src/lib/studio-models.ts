@@ -4,7 +4,7 @@ import {StudioError} from "./studio-error";
 import {gatewayConfigured} from "./gateway-router";
 import type {ModelCandidate} from "./models.config";
 import type {MockModel} from "@/design-preview/mock/models";
-export type StudioSettings={conversationImages?:import("./generation-references").ConversationImage[];agentId?:string;imageId?:string;imageIds?:string[];auto?:boolean;webEnabled?:boolean;resolution?:"auto"|"1K"|"2K"|"4K";shootingMode?:"quick"|"strict";categoryConfirmed?:boolean;categoryId?:string;photoAngles?:Record<string,string>;strictSkipped?:boolean;quickHintSeen?:boolean;planRecipes?:Record<string,unknown>};
+export type StudioSettings={initialInspectionAttempted?:boolean;conversationImages?:import("./generation-references").ConversationImage[];agentId?:string;imageId?:string;imageIds?:string[];auto?:boolean;webEnabled?:boolean;resolution?:"auto"|"1K"|"2K"|"4K";shootingMode?:"quick"|"strict";categoryConfirmed?:boolean;categoryId?:string;photoAngles?:Record<string,string>;strictSkipped?:boolean;quickHintSeen?:boolean;planRecipes?:Record<string,unknown>};
 export function settingsOf(value:unknown):StudioSettings{const settings=(value&&typeof value==="object"?value:{}) as StudioSettings;return {...settings,...(settings.agentId?{agentId:canonicalAgentId(settings.agentId)}:{})};}
 import {canonicalAgentId,zenmuxAgentCandidate,probeWarning} from "./agent-models";
 import {userSelectedAgent} from "./studio-rules";

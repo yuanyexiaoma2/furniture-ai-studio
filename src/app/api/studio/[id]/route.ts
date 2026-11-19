@@ -4,7 +4,7 @@ import {appearanceChangeSchema} from "@/lib/appearance-change";
 import {randomUUID} from "node:crypto";
 import {studioUser,studioError,StudioError} from "@/lib/studio-api";
 import {db} from "@/lib/db";
-import {studioSnapshot,inspectStudioProduct,confirmStudioCategory,studioShooting,studioProfileCard,planStudioTask,updateStudioSettings,studioEdit,quoteStudioEdit} from "@/lib/studio-main";
+import {studioSnapshot,claimInitialInspection,inspectStudioProduct,confirmStudioCategory,studioShooting,studioProfileCard,planStudioTask,updateStudioSettings,studioEdit,quoteStudioEdit} from "@/lib/studio-main";
 import {agentSession,json} from "@/lib/agent-state";
 import {approveAgentCard,studioGenerate} from "@/lib/agent-actions";
 import {inspectPhoto,putObject} from "@/lib/storage";
@@ -15,6 +15,7 @@ import {expansionSchema} from "@/lib/expansion-rules";
 import {slotReferenceSchema} from "@/lib/generation-references";
 import {visualPlanSchema} from "@/lib/visual-plan-rules";
 import {proposeExcellentCase} from "@/lib/visual-case";
+import {retryDirectImage} from "@/lib/direct-image-generation";
 const compatibleEdit=(v:{appearanceChange?:unknown;references?:unknown;maskAssetId?:unknown;expansion?:unknown})=>!v.appearanceChange||(!v.references&&!v.maskAssetId&&!v.expansion);
 export const runtime="nodejs";export const maxDuration=300;
 type Ctx={params:Promise<{id:string}>};
@@ -30,7 +31,7 @@ export async function POST(request:Request,context:Ctx){
  }
  const body=z.object({action:z.string(),data:z.record(z.string(),z.unknown()).default({})}).strict().parse(await request.json()),data=body.data;
  const session=await agentSession(productId,user.id);
- if(body.action==="inspect")await lockedOperation(session.id,"inspect_product",()=>inspectStudioProduct(productId,user.id));
+ if(body.action==="inspect"){const options=z.object({initial:z.boolean().optional()}).strict().parse(data);if(!options.initial||await claimInitialInspection(session.id))await lockedOperation(session.id,"inspect_product",()=>inspectStudioProduct(productId,user.id));}
  else if(body.action==="settings")await updateStudioSettings(productId,user.id,data);
  else if(body.action==="category")await confirmStudioCategory(productId,user.id,z.string().parse(data.categoryId));
  else if(body.action==="shooting")await studioShooting(productId,user.id,z.enum(["quick","strict"]).parse(data.mode),data.skip===true);
@@ -45,11 +46,13 @@ export async function POST(request:Request,context:Ctx){
  else if(body.action==="excellent")await proposeExcellentCase(productId,user.id,z.string().parse(data.assetId));
  else if(body.action==="generate"){const result=await studioGenerate(productId,user.id,z.enum(["batch","current"]).optional().parse(data.scope),z.string().uuid().parse(data.requestKey));return NextResponse.json(result);}
  else if(body.action==="approve")await approveAgentCard(session.id,z.string().parse(data.cardId),(data.changes??{}) as Record<string,unknown>);
- else if(body.action==="edit_quote"){const a=z.object({appearanceChange:appearanceChangeSchema.optional(),references:z.array(slotReferenceSchema).max(2).optional(),assetId:z.string(),instruction:z.string().trim().min(1).max(8000),maskAssetId:z.string().optional(),expansion:expansionSchema.optional()}).strict().refine(compatibleEdit,{message:"同款换色请与场景参考、蒙版或扩图分步提交"}).parse(data);const quote=await quoteStudioEdit(productId,user.id,a.assetId,a.instruction,a);await db.chatMessage.create({data:{sessionId:session.id,productId,role:"system",content:{text:"本次修改预计 $"+quote.estimatedCostUsd.toFixed(2)+"（估），提交后开始。"+(quote.warning??"")}}});return NextResponse.json(quote);}
+ else if(body.action==="edit_quote"){const a=z.object({appearanceChange:appearanceChangeSchema.optional(),references:z.array(slotReferenceSchema).max(2).optional(),assetId:z.string(),instruction:z.string().trim().min(1).max(8000),maskAssetId:z.string().optional(),expansion:expansionSchema.optional()}).strict().refine(compatibleEdit,{message:"同款换色请与场景参考、蒙版或扩图分步提交"}).parse(data);const quote=await quoteStudioEdit(productId,user.id,a.assetId,a.instruction,a);return NextResponse.json(quote);}
  else if(body.action==="edit"){
  const a=z.object({appearanceChange:appearanceChangeSchema.optional(),references:z.array(slotReferenceSchema).max(2).optional(),assetId:z.string(),instruction:z.string().trim().min(1).max(8000),maskAssetId:z.string().optional(),expansion:expansionSchema.optional(),requestKey:z.string().uuid(),fingerprint:z.string().min(1)}).strict().refine(compatibleEdit,{message:"同款换色请与场景参考、蒙版或扩图分步提交"}).parse(data);
  const result=await studioEdit(productId,user.id,a.assetId,a.instruction,a);await db.chatMessage.create({data:{sessionId:session.id,productId,role:"system",content:json({text:result.warning??"已按要求提交修改，原图与原始实拍均已保留",jobId:result.jobId})}});return NextResponse.json(result);
  }else if(body.action==="retry"){
+ const directJobId=z.string().parse(data.jobId),directJob=await db.generationJob.findFirst({where:{id:directJobId,productId},select:{input:true,logicalModel:true}});
+ if(directJob?.logicalModel==="edit"||(directJob?.input as Record<string,unknown>|undefined)?.generationMode==="direct")return NextResponse.json(await retryDirectImage(user.id,productId,directJobId,z.string().uuid().parse(data.requestKey)));
  const jobId=z.string().parse(data.jobId),quote=await quoteBatch(user.id,productId,{retryJobId:jobId});if(!session.confirmedProfileId||!session.confirmedPack)throw new StudioError("档案或方案已变化，请重新确认后再试",409);return NextResponse.json({batchId:await submitBatch(user.id,productId,{retryJobId:jobId},quote.fingerprint,z.string().uuid().parse(data.requestKey),session.id)});
  }else throw new StudioError("不支持此操作，请刷新工作台",400);
  return NextResponse.json(await studioSnapshot(productId,user.id));

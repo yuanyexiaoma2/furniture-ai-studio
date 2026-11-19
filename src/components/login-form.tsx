@@ -31,7 +31,7 @@ export function LoginForm({ destination }: { destination: string }) {
   return <form onSubmit={submit} noValidate className="space-y-5">
     <div className="space-y-2"><Label htmlFor="email">公司邮箱</Label><Input id="email" name="email" type="email" autoComplete="username" placeholder="你的公司邮箱" required maxLength={254} aria-invalid={!!fields.email} aria-describedby={fields.email?"email-error":undefined} onChange={()=>fields.email&&setFields(old=>({...old,email:""}))}/>{fields.email&&<p id="email-error" role="alert" className="text-sm text-destructive">{fields.email}</p>}</div>
     <div className="space-y-2"><Label htmlFor="password">密码</Label><Input id="password" name="password" type="password" autoComplete="current-password" placeholder="输入账号密码" required aria-invalid={!!fields.password} aria-describedby={fields.password?"password-error":undefined} onChange={()=>fields.password&&setFields(old=>({...old,password:""}))}/>{fields.password&&<p id="password-error" role="alert" className="text-sm text-destructive">{fields.password}</p>}</div>
-    <p role="alert" className="text-sm text-destructive min-h-5">{error}</p>
+    {error&&<p role="alert" className="text-sm text-destructive">{error}</p>}
     <Button type="submit" className="w-full h-12 justify-between" disabled={pending}>{pending ? "正在登录" : "进入工作台"}{pending ? <LoaderCircle className="animate-spin" /> : <ArrowRight size="sm" />}</Button>
   </form>;
 }

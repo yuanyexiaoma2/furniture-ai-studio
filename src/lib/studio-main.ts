@@ -18,6 +18,7 @@ import type {Category} from "@/design-preview/library/types";
 import {prepareEditInput,enqueueImageJob} from "./scene-generation";
 import {assertUsdQuota} from "./quota";
 import {workerIsReady,getBoss} from "./generation-queue";
+import {runStudioRequest,studioRequestFingerprint} from "./studio-requests";
 export async function studioSnapshot(productId:string,userId:string){
  const [product,agent,pack,categories]=await Promise.all([db.product.findUniqueOrThrow({where:{id:productId},include:{assets:{where:{type:"photo",deletedAt:null},orderBy:{sortOrder:"asc"}}}}),agentSnapshot(productId,userId),packSnapshot(productId),db.studioLibraryEntry.findMany({where:{kind:"category"}})]);
  const session=await agentSession(productId,userId),settings=settingsOf(session.settings);
@@ -28,8 +29,11 @@ export const selectionSchema=z.object({agentId:z.string(),imageId:z.string(),ima
 export async function updateStudioSettings(productId:string,userId:string,input:unknown){
  const selected=selectionSchema.parse(input),session=await agentSession(productId,userId);
  await selectedCandidate("agent",selected);await selectedCandidate("image",selected);for(const id of selected.imageIds)await selectedCandidate("image",{...selected,auto:false,imageId:id});
- const previous=settingsOf(session.settings);
- await db.agentSession.update({where:{id:session.id},data:{settings:json({...previous,...selected})}});
+ const previous=await db.$transaction(async tx=>{
+  await tx.$queryRaw`SELECT id FROM "AgentSession" WHERE id=${session.id} FOR UPDATE`;
+  const current=await tx.agentSession.findUniqueOrThrow({where:{id:session.id}}),previous=settingsOf(current.settings);
+  await tx.agentSession.update({where:{id:session.id},data:{settings:json({...previous,...selected})}});return previous;
+ });
  if(previous.agentId&&previous.agentId!==selected.agentId){const model=await db.studioModel.findUniqueOrThrow({where:{id:selected.agentId}});await message(session.id,productId,"system","已切换智能体为 "+model.name);}
 }
 async function message(sessionId:string,productId:string,role:"assistant"|"system"|"user",text:string){await db.chatMessage.create({data:{sessionId,productId,role,content:{text}}});}
@@ -39,14 +43,31 @@ export async function createStudioTask(userId:string,form:FormData){
  const issue=uploadIssue(files);if(issue)throw new StudioError(issue);
  if(files.length>15||files.reduce((n,f)=>n+f.size,0)>100*1024*1024)throw new StudioError("最多15个文件、合计100MB；请精简资料后重试");
  if(!text&&!files.length)throw new StudioError("请先写下要求或添加产品实拍");
- await selectedCandidate("agent",selection);await selectedCandidate("image",selection);for(const id of selection.imageIds)await selectedCandidate("image",{...selection,auto:false,imageId:id});
- const sku=String(form.get("sku")??"").trim()||/SKU\s*[:：]\s*([a-zA-Z0-9_-]{1,100})/i.exec(text)?.[1]||"NEW-"+Date.now().toString(36).toUpperCase();
- const product=await db.product.create({data:{sku,name:sku,category:"待确认",dimensions:"待补充",materials:"",colors:"待识别",sellingPoints:text,createdById:userId}});
- const session=await agentSession(product.id,userId);
- await db.agentSession.update({where:{id:session.id},data:{settings:json({...selection,shootingMode:"quick"})}});
- const results=files.length?await uploadProductDocuments(product.id,userId,files):[];
- if(text||results.some(r=>r.assetId))await db.chatMessage.create({data:{sessionId:session.id,productId:product.id,role:"user",content:json({text,referenceAssetIds:results.flatMap(r=>r.assetId?[r.assetId]:[])})}});
- return{productId:product.id,results};
+ const requestedSku=String(form.get("sku")??"").trim(),requestKey=String(form.get("requestKey")??"")||undefined;
+ const fingerprint=await studioRequestFingerprint({text,selection,requestedSku},files);
+ return runStudioRequest(userId,"create_project",requestKey,fingerprint,async({checkpoint})=>{
+  await selectedCandidate("agent",selection);await selectedCandidate("image",selection);for(const id of selection.imageIds)await selectedCandidate("image",{...selection,auto:false,imageId:id});
+  const {product,session}=await db.$transaction(async tx=>{
+   const sku=requestedSku||/SKU\s*[:：]\s*([a-zA-Z0-9_-]{1,100})/i.exec(text)?.[1]||"NEW-"+randomUUID().slice(0,8).toUpperCase();
+   const product=await tx.product.create({data:{sku,name:sku,category:"待确认",dimensions:"待补充",materials:"",colors:"待识别",sellingPoints:text,createdById:userId}});
+   const session=await tx.agentSession.create({data:{productId:product.id,createdById:userId,settings:json({...selection,shootingMode:"quick"})}});
+   await checkpoint({productId:product.id,results:[{error:"项目已保留，部分资料尚未完成，请进入工作台检查并补充"}],initializationReady:false},tx);
+   return {product,session};
+  });
+  const results=files.length?await uploadProductDocuments(product.id,userId,files):[];
+  if(text||results.some(r=>r.assetId))await db.chatMessage.create({data:{sessionId:session.id,productId:product.id,role:"user",content:json({text,referenceAssetIds:results.flatMap(r=>r.assetId?[r.assetId]:[])})}});
+  return {productId:product.id,results,initializationReady:!results.some(r=>r.error)};
+ });
+}
+export async function claimInitialInspection(sessionId:string){
+ return db.$transaction(async tx=>{
+  await tx.$queryRaw`SELECT id FROM "AgentSession" WHERE id=${sessionId} FOR UPDATE`;
+  const session=await tx.agentSession.findUniqueOrThrow({where:{id:sessionId}}),settings=settingsOf(session.settings);
+  if(settings.initialInspectionAttempted)return false;
+  const previous=await tx.agentToolCall.findFirst({where:{sessionId,name:"inspect_product"},select:{id:true}});
+  await tx.agentSession.update({where:{id:sessionId},data:{settings:json({...settings,initialInspectionAttempted:true})}});
+  return !previous;
+ });
 }
 const angles=["front","quarter","side","back","top","material","hardware","legs","inside","joint","unknown"] as const;
 const visionSchema=z.object({categoryId:z.string().nullable(),categoryName:z.string().max(80).optional(),name:z.string(),photos:z.array(z.object({ref:z.string(),angle:z.enum(angles),role:z.enum(["product","reference","unknown"]).optional(),purpose:z.string().max(1000).optional()})),fields:z.array(z.object({field:z.enum(profileFields),value:z.string().max(4000)}))}).strict();
@@ -119,8 +140,9 @@ export async function studioEditReferences(sessionId:string,assetId:string,optio
 }
 export async function studioEdit(productId:string,userId:string,assetId:string,instruction:string,options:{appearanceChange?:AppearanceChange;references?:SlotReference[];maskAssetId?:string;expansion?:{width:number;height:number;offsetX:number;offsetY:number};requestKey?:string;fingerprint?:string}={}){
  const session=await agentSession(productId,userId);
- if(!session.confirmedProfileId||!session.confirmedPack)throw new StudioError("请先确认产品档案和图包方案，再修改图片",409);
+
  const source=await db.generationJob.findFirst({where:{productId,status:"success",resultAssetIds:{array_contains:[assetId]}},include:{slot:true}});
+ if((!session.confirmedProfileId||!session.confirmedPack)&&(source?.input as Record<string,unknown>|undefined)?.generationMode!=="direct")throw new StudioError("请先确认产品档案和图包方案，再修改图片",409);
  if(!source?.slot||source.slot.deletedAt||!source.slotId)throw new StudioError("图片不属于当前图包的有效候选；请重新选择",404);
  if(!await workerIsReady())throw new StudioError("生成服务尚未启动，请管理员运行 npm run worker 后重试",503);
  await getBoss();const candidate=await selectedCandidate("image",settingsOf(session.settings));
@@ -142,8 +164,9 @@ export const newRequestKey=()=>randomUUID();
 function editFingerprint(input:unknown,candidate:unknown,options:{appearanceChange?:AppearanceChange;references?:SlotReference[];maskAssetId?:string;expansion?:import("./expansion-rules").Expansion}){return createHash("sha256").update(JSON.stringify({input,candidate,mask:options.maskAssetId??null,expansion:options.expansion??null})).digest("hex");}
 export async function quoteStudioEdit(productId:string,userId:string,assetId:string,instruction:string,options:{appearanceChange?:AppearanceChange;references?:SlotReference[];maskAssetId?:string;expansion?:import("./expansion-rules").Expansion}={}){
  const session=await agentSession(productId,userId),settings=settingsOf(session.settings);
- if(!session.confirmedProfileId||!session.confirmedPack)throw new StudioError("请先确认产品档案和图包方案，再修改图片",409);
+
  const source=await db.generationJob.findFirst({where:{productId,status:"success",resultAssetIds:{array_contains:[assetId]}},include:{slot:true}});
+ if((!session.confirmedProfileId||!session.confirmedPack)&&(source?.input as Record<string,unknown>|undefined)?.generationMode!=="direct")throw new StudioError("请先确认产品档案和图包方案，再修改图片",409);
  if(!source?.slot||source.slot.deletedAt)throw new StudioError("请选择当前图包的已完成候选图",404);
  const candidate=await selectedCandidate("image",settings);
  const references=await studioEditReferences(session.id,assetId,options);

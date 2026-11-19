@@ -14,7 +14,7 @@ export async function readReviewSource(productId:string,override?:VisualPlan){
  const assets=await db.asset.findMany({where:{id:{in:ids},productId,deletedAt:null}});
  const file=reviewFilename(product.sku),folder=file.slice(0,-5)+"-assets";
  const images=jobs.flatMap(j=>(Array.isArray(j.resultAssetIds)?j.resultAssetIds:[]).flatMap(id=>{const asset=assets.find(a=>a.id===id);if(!asset)return [];const ext=/\.(jpe?g|webp|png)$/i.exec(asset.storageKey)?.[1]??"png";return [{id:asset.id,slot:j.slot?.name??j.logicalModel,src:folder+"/"+asset.id+"."+ext}];}));
- const library=await db.studioLibraryEntry.findMany({select:{data:true}});
+ const library=await db.studioLibraryEntry.findMany({where:{kind:{notIn:["deleted_product","studio_request"]}},select:{data:true}});
  const libraryEntryCount=library.length,libraryEligibleCount=library.filter(row=>{const p=patternSchema.safeParse(row.data);return p.success&&!p.data.is_sample&&p.data.status==="ready";}).length;
  const plan=parsed.success?parsed.data:null;
  const planVersion=createHash("sha256").update(JSON.stringify({plan,images:images.map(i=>i.id),libraryEntryCount,libraryEligibleCount})).digest("hex").slice(0,16);

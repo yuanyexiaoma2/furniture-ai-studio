@@ -29,17 +29,27 @@ export async function inspectPhoto(bytes: Buffer) {
     if (!meta.format || !(meta.format in formats) || !meta.width || !meta.height || (meta.pages ?? 1) > 1) throw new Error();
     // 完整解码防止只有头部合法的损坏图片进入生图任务。
     await sharp(bytes, { limitInputPixels: 100_000_000 }).stats();
-    return { width: meta.width, height: meta.height, mime: formats[meta.format as keyof typeof formats], extension: meta.format === "jpeg" ? "jpg" : meta.format };
+    return { ...meta.autoOrient, mime: formats[meta.format as keyof typeof formats], extension: meta.format === "jpeg" ? "jpg" : meta.format };
   } catch { throw new Error("请上传有效的静态 JPEG、PNG 或 WEBP 图片"); }
 }
 
+async function orientPhoto(bytes:Buffer){
+  const meta=await sharp(bytes,{limitInputPixels:100_000_000}).metadata();
+  // 无方向信息的图片保持原字节，避免无意义的有损重编码。
+  return meta.orientation&&meta.orientation!==1?sharp(bytes,{limitInputPixels:100_000_000}).rotate().toBuffer():bytes;
+}
+const isPhoto=(mime:string)=>Object.values(formats).includes(mime as typeof formats[keyof typeof formats]);
 export async function putObject(key: string, bytes: Buffer, mime: string) {
-  await storage().send(new PutObjectCommand({ Bucket: bucket(), Key: key, Body: bytes, ContentType: mime }));
+  await storage().send(new PutObjectCommand({ Bucket: bucket(), Key: key, Body: isPhoto(mime)?await orientPhoto(bytes):bytes, ContentType: mime }));
 }
 export async function readObject(key: string) {
   const object = await storage().send(new GetObjectCommand({ Bucket: bucket(), Key: key }));
   if (!object.Body) throw new Error("未找到参考图文件");
-  return { bytes: Buffer.from(await object.Body.transformToByteArray()), mime: object.ContentType || "application/octet-stream" };
+  return { bytes:Buffer.from(await object.Body.transformToByteArray()), mime:object.ContentType||"application/octet-stream" };
+}
+export async function storedPhotoSize(storageKey:string){
+  const {bytes}=await readObject(storageKey);
+  return (await sharp(bytes,{limitInputPixels:100_000_000}).metadata()).autoOrient;
 }
 export async function deleteObject(key: string) {
   await storage().send(new DeleteObjectCommand({ Bucket: bucket(), Key: key }));

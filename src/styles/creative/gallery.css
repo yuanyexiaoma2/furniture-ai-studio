@@ -43,3 +43,26 @@
 .p-sku-card:hover { transform:none; }
 .p-sku-card:hover .p-sku-cover img { transform:scale(1.02); }
 .p-sku-card>strong { min-height:22px; line-height:22px; }
+/* 卡片辅助操作随标题出现，封面始终保留完整的产品展示区域。 */
+.p-sku-card-heading { display:flex; align-items:center; gap:8px; min-width:0; margin-top:10px; }
+.p-sku-card-heading>strong { flex:1; min-width:0; font-size:var(--text-body); font-weight:500; line-height:22px; }
+.p-sku-card .p-sku-menu-trigger { flex:none; width:30px; height:30px; padding:0; border:0; border-radius:8px; background:transparent; color:var(--p-subtle); box-shadow:none; opacity:0; pointer-events:none; transition:opacity .15s,background-color .15s,color .15s; }
+.p-sku-card:is(:hover,:focus-within) .p-sku-menu-trigger,.p-sku-menu-trigger[data-state="open"] { opacity:1; pointer-events:auto; }
+.p-sku-card .p-sku-menu-trigger:hover { background:var(--p-hover); color:var(--foreground); }
+.p-portal.p-sku-actions-menu { min-width:148px; padding:5px; border-color:var(--border); border-radius:10px; background:var(--p-floating); box-shadow:0 4px 18px var(--p-shadow); }
+.p-sku-actions-menu .p-sku-delete-item { gap:8px; min-height:36px; padding:8px 10px; border-radius:6px; font-size:13px; font-weight:400; color:var(--destructive); cursor:pointer; }
+.p-sku-actions-menu .p-sku-delete-item[data-highlighted] { background:color-mix(in srgb,var(--destructive) 7%,var(--p-floating)); color:var(--destructive); }
+.p-portal.p-sku-delete-dialog { width:min(420px,calc(100vw - 32px)); gap:20px; border-color:var(--border); border-radius:var(--radius-panel); background:var(--p-panel); }
+.p-sku-delete-dialog h2 { font-size:var(--text-xl); line-height:28px; font-weight:600; }
+.p-sku-delete-dialog .p-sku-delete-description { font-size:var(--text-sm); line-height:1.8; color:var(--p-subtle); }
+.p-sku-delete-target { display:flex; flex-direction:column; gap:4px; min-width:0; padding:12px 14px; border-radius:var(--radius-control); background:var(--muted); }
+.p-sku-delete-target strong { overflow-wrap:anywhere; font-size:var(--text-body); font-weight:500; }
+.p-sku-delete-target span { font-size:var(--text-xs); color:var(--p-subtle); }
+.p-sku-delete-footer { display:flex; justify-content:flex-end; gap:8px; }
+.p-sku-delete-footer button { min-width:76px; height:34px; padding-inline:14px; font-size:var(--text-sm); }
+@media (hover:none),(pointer:coarse),(max-width:760px) {
+ .p-sku-card .p-sku-menu-trigger { opacity:1; pointer-events:auto; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .p-sku-card .p-sku-menu-trigger { transition:none; }
+}

@@ -5,7 +5,7 @@ import { documentType, parseDocument, MAX_DOCUMENT_BYTES } from "./document-pars
 import { inspectPhoto, putObject, deleteObject } from "./storage";
 import { StudioError } from "./studio-error";
 export const imageTypes = ["photo", "white_bg", "render_3d", "detail", "other"] as const;
-export async function uploadProductDocuments(productId: string, userId: string, files: File[],conversation=false) {
+export async function uploadProductDocuments(productId: string, userId: string, files: File[],conversation:boolean|"direct"=false) {
   if (!await db.product.findUnique({ where: { id: productId } })) throw new StudioError("商品不存在", 404);
   if (files.reduce((n, file) => n + file.size, 0) > 100 * 1024 * 1024) throw new StudioError("单次上传不能超过 100MB");
   if (!files.length || files.length > 15) throw new StudioError("每次可上传 1～15 个文件");
@@ -35,7 +35,7 @@ export async function uploadProductDocuments(productId: string, userId: string, 
     }
   }
   // 对话附件可能只是风格参考，不因上传就覆盖产品身份或取消已确认方案。
-  if(conversation&&results.some(r=>r.assetId)){
+  if(conversation===true&&results.some(r=>r.assetId)){
     const session=await db.agentSession.findUniqueOrThrow({where:{productId_createdById:{productId,createdById:userId}}});
     await db.chatMessage.create({data:{productId,sessionId:session.id,role:"user",content:{text:"添加了对话图片，具体用途以接下来的要求为准。",referenceAssetIds:results.flatMap(r=>r.assetId?[r.assetId]:[])}}});
   }

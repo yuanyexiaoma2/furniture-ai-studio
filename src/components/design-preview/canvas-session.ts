@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import {create} from "zustand";
 import {canvasLayoutSchema,emptyCanvasLayout,type CanvasLayout} from "@/lib/canvas-rules";
 import {usePreviewStore,type StudioNode} from "./store";
+import {placeCanvasResults} from "./canvas-operations";
 
 type State={dataReady:boolean;hydrated:boolean;productId:string;revision:number;layout:CanvasLayout;viewport:CanvasLayout["viewport"];registryIds:string[];baseNodes:StudioNode[];status:"loading"|"saved"|"dirty"|"saving"|"error"|"conflict";message:string;canWrite:boolean;flush:()=>Promise<void>;reload:()=>Promise<void>};
 export const useCanvasSession=create<State>(()=>({dataReady:false,hydrated:false,productId:"",revision:0,layout:emptyCanvasLayout(),viewport:null,registryIds:[],baseNodes:[],status:"loading",message:"",canWrite:true,flush:async()=>{},reload:async()=>{}}));
@@ -10,7 +11,7 @@ export let applyingCanvasLayout=false;
 export function applyCanvasLayout(nodes:StudioNode[],layout:CanvasLayout){
  const positions=new Map(layout.nodes.map(n=>[n.id,n])),hidden=new Set(layout.hiddenIds);
  const next=nodes.filter(n=>n.type!=="note"&&!hidden.has(n.id)&&!hidden.has(n.parentId??"")).map(n=>{const p=positions.get(n.id);return p?{...n,position:{x:p.x,y:p.y},style:{...n.style,...(p.width?{width:p.width}:{}),...(p.height?{height:p.height}:{})}}:n;});
- return [...next,...layout.notes.map(n=>({id:n.id,type:"note",position:{x:n.x,y:n.y},style:{width:n.width??220,height:n.height??160},data:{image:"",slot:"便签",label:n.text}} as StudioNode))];
+ return placeCanvasResults([...next,...layout.notes.map(n=>({id:n.id,type:"note",position:{x:n.x,y:n.y},style:{width:n.width??220,height:n.height??160},data:{image:"",slot:"便签",label:n.text}} as StudioNode))],new Set(layout.nodes.map(n=>n.id)));
 }
 export function captureCanvasLayout():CanvasLayout{
  const preview=usePreviewStore.getState(),state=useCanvasSession.getState(),allowed=new Set(state.registryIds);
@@ -31,7 +32,9 @@ export function useCanvasPersistence(productId:string){
    applyingCanvasLayout=true;
    useCanvasSession.setState({hydrated:true,revision:data.revision,layout:data.layout,viewport:data.layout.viewport,canWrite:data.canWrite!==false,status:"saved",message:""});
    usePreviewStore.setState({nodes:applyCanvasLayout(useCanvasSession.getState().baseNodes,data.layout).map(n=>({...n,selected:false})),hiddenIds:data.layout.hiddenIds,selected:[],contextId:null,editor:null,references:[]});
-   lastSaved=JSON.stringify(captureCanvasLayout());hydrated=true;applyingCanvasLayout=false;
+   const current=captureCanvasLayout(),repaired=data.layout.nodes.some(saved=>current.nodes.some(node=>node.id===saved.id&&(node.x!==saved.x||node.y!==saved.y)));
+   lastSaved=JSON.stringify(repaired?data.layout:current);hydrated=true;applyingCanvasLayout=false;
+   if(repaired)changed();
   }
   async function flush(keepalive=false,captured?:CanvasLayout):Promise<void>{
    if(timer)clearTimeout(timer);

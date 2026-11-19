@@ -21,18 +21,20 @@ export function availableModels(state:Pick<ModelState,"availability"|"catalog">,
  return (state.catalog??models).filter(m=>m.kind===kind&&(state.availability[m.id]?.enabled??m.enabled)&&(state.availability[m.id]?.visible??m.visible));
 }
 export function resolveSelection(state:Pick<ModelState,"availability"|"defaults"|"home"|"sessions"|"catalog">,scope:string):ModelSelection {
- const raw=scope==="home"?state.home:state.sessions[scope]??state.home;
+ const raw=(scope==="home"?state.home:state.sessions[scope]??state.home)??initialSelection;
  const agents=availableModels(state,"agent"),images=availableModels(state,"image");
  const defaultImage=images.find(m=>m.id===state.defaults.image)?.id??images[0]?.id??"";
  const agentId=agents.some(m=>m.id===raw.agentId)?raw.agentId:agents.find(m=>m.id===state.defaults.agent)?.id??agents[0]?.id??"";
- const imageIds=[...new Set([defaultImage,...raw.imageIds.filter(id=>images.some(m=>m.id===id))])].filter(Boolean);
+ const previousImages=Array.isArray(raw.imageIds)?raw.imageIds:raw.imageId?[raw.imageId]:[];
+ const imageIds=[...new Set([defaultImage,...previousImages.filter(id=>images.some(m=>m.id===id))])].filter(Boolean);
  return {auto:raw.auto??true,qualities:raw.qualities??{},webEnabled:raw.webEnabled??true,resolution:raw.resolution??"auto",agentId,imageIds,imageId:images.some(m=>m.id===raw.imageId)?raw.imageId:defaultImage};
 }
 export const useModelStore=create<ModelState>()(persist((set,get)=>({
  ...initial(),setCatalog:catalog=>set(s=>({catalog,availability:Object.fromEntries(catalog.map(m=>[m.id,{enabled:m.enabled,visible:m.visible}])),defaults:{agent:catalog.find(m=>m.kind==="agent"&&m.isDefault)?.id??s.defaults.agent,image:catalog.find(m=>m.kind==="image"&&m.isDefault)?.id??s.defaults.image}})),
  startSession:(id,fresh=false)=>{if(!fresh&&get().sessions[id])return;const selected=resolveSelection(get(),"home");set(s=>({sessions:{...s.sessions,[id]:{...selected,imageIds:[...selected.imageIds],qualities:{...selected.qualities}}},...(fresh?{events:{...s.events,[id]:[]}}:{})}));},
  updateSelection:(scope,patch,message)=>set(s=>{
-  const next={...resolveSelection(s,scope),...patch};
+  const defined=Object.fromEntries(Object.entries(patch).filter(([,value])=>value!==undefined)) as Partial<ModelSelection>;
+  const next={...resolveSelection(s,scope),...defined};
   return {...(scope==="home"?{home:next}:{sessions:{...s.sessions,[scope]:next}}),...(scope!=="home"&&message?{events:{...s.events,[scope]:[...(s.events[scope]??[]),message]}}:{})};
  }),
  configure:(id,patch)=>set(s=>({availability:{...s.availability,[id]:{...s.availability[id],...patch}}})),

@@ -9,13 +9,19 @@ import {json} from "./agent-state";
 import {StudioError} from "./studio-error";
 import {patternSchema} from "./visual-plan-rules";
 import {listingAnalysisSchema,reviewedListingEntries} from "./listing-import-rules";
+import {runStudioRequest,studioRequestFingerprint} from "./studio-requests";
+import type {Prisma} from "@/generated/prisma/client";
 type AnalyzeListing=(input:Parameters<typeof chatWithGateway>[1],userId:string)=>Promise<unknown>;
 const analyzeListing:AnalyzeListing=async(input,userId)=>(await chatWithGateway("llm-vision",input,{userId,candidate:await selectedCandidate("agent",{})})).result.json;
-export async function importListingFolder(userId:string,category:string,files:File[],analyze:AnalyzeListing=analyzeListing){
+export async function importListingFolder(userId:string,category:string,files:File[],analyze:AnalyzeListing=analyzeListing,requestKey?:string){
  if(!category.trim()||category.length>100)throw new StudioError("请填写品类");
  const images=files.filter(f=>/\.(jpe?g|png|webp)$/i.test(f.name)),parameters=files.filter(f=>/\.(txt|json)$/i.test(f.name));
  if(!images.length||images.length>30||files.reduce((n,f)=>n+f.size,0)>100*1024*1024)throw new StudioError("请选择单个文件夹，包含1–30张图片，总计100MB以内");
  if(parameters.some(f=>f.size>1024*1024))throw new StudioError("参数文件需小于1MB");
+ const fingerprint=await studioRequestFingerprint({category:category.trim()},files);
+ return runStudioRequest(userId,"listing_import",requestKey,fingerprint,({checkpoint})=>importListingOnce(userId,category,images,parameters,analyze,checkpoint));
+}
+async function importListingOnce(userId:string,category:string,images:File[],parameters:File[],analyze:AnalyzeListing,checkpoint:(result:unknown,tx?:Prisma.TransactionClient)=>Promise<void>){
  const id="listing-"+randomUUID(),keys:string[]=[],assetIds:string[]=[];
  try{
   for(const file of images){const bytes=Buffer.from(await file.arrayBuffer()),photo=await inspectPhoto(bytes),key="library/imports/"+id+"/"+randomUUID()+"."+photo.extension;await putObject(key,bytes,photo.mime);keys.push(key);assetIds.push((await db.asset.create({data:{type:"style_ref",storageKey:key,width:photo.width,height:photo.height,createdById:userId}})).id);}
@@ -23,7 +29,9 @@ export async function importListingFolder(userId:string,category:string,files:Fi
   const analysis=listingAnalysisSchema.parse(reply);
   const entries=analysis.entries.map((e,i)=>patternSchema.parse({...e,id:id+"-"+i,categories:[category],is_sample:false,source:"用户提供",status:"draft"}));
   const draft=patternSchema.parse({id,type:"case",name:"Listing导入 · "+images[0].name.split(/[\\/]/)[0],categories:[category],is_sample:false,source:"用户提供",status:"draft",content:{isListingImport:true,summary:analysis.summary,originalImageRefs:[...assetIds],filenames:images.map(f=>f.name),proposedEntries:entries,entries}});
-  await db.studioLibraryEntry.create({data:{id,kind:"case",name:draft.name,data:json(draft)}});keys.length=0;assetIds.length=0;return draft;
+  try{await db.$transaction(async tx=>{await tx.studioLibraryEntry.create({data:{id,kind:"case",name:draft.name,data:json(draft)}});await checkpoint(draft,tx);});}
+  catch(error){if(!await db.studioLibraryEntry.findUnique({where:{id}}).catch(()=>null))throw error;}
+  keys.length=0;assetIds.length=0;return draft;
  }finally{if(keys.length){await db.asset.deleteMany({where:{id:{in:assetIds}}});for(const key of keys)await deleteObject(key).catch(()=>undefined);}}
 }
 export async function approveListingImport(userId:string,id:string,raw:unknown){

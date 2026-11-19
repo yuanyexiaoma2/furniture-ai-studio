@@ -36,7 +36,41 @@
 /* 准备修正：列表/首页内容上限共用；大型输入面板采用轻边框与固定投影，聚焦不变。  */
 :root { --content-max-list:1200px; --content-max-home:960px; --content-gutter:24px; --composer-surface:#fff; --composer-line:#ececee; --composer-shadow:0 4px 24px rgb(0 0 0 / .06); --radius-composer:20px; --task-label-scrim:rgba(0,0,0,.72); }
 :root.dark { --composer-surface:#1f1f22; --composer-line:rgb(255 255 255 / .06); --composer-shadow:none; }
+:root {
+  --home-mist:#edf3f9;
+  --home-glow:#ffffff;
+  --home-warm-light:#fff8ef;
+  --home-placeholder:#596572;
+  --home-composer-edge:#e0e8ef;
+  --home-composer-shadow:0 2px 5px rgb(28 47 68 / .04),0 12px 32px rgb(28 47 68 / .075);
+}
+:root.dark {
+  --home-mist:#222a32;
+  --home-glow:#36414b;
+  --home-warm-light:#332d2a;
+  --home-placeholder:#adb8c5;
+  --home-composer-edge:#414953;
+  --home-composer-shadow:0 10px 28px rgb(0 0 0 / .22);
+}
 @media(max-width:760px) { :root { --content-gutter:18px; } }
 
 /* 准备修正2：胶囊标签独立承托。 */
 :root { --task-pill:rgba(0,0,0,.55); --task-gradient-mid:rgba(0,0,0,.60); }
+
+/* 工作台独立的画布、边框与浮层色。 */
+.p-app[data-workspace] {
+ --p-canvas:#f3f4f3;
+ --p-dot:#d8ddda;
+ --ws-ink:#283e34;
+ --ws-tint:#eaf1ed;
+ --ws-edge:#e3e7e4;
+ --ws-shadow:0 2px 5px #1c302509,0 12px 32px #1c30250d;
+}
+.dark .p-app[data-workspace] {
+ --p-canvas:#171a19;
+ --p-dot:#303733;
+ --ws-ink:#bed8c9;
+ --ws-tint:#26372e;
+ --ws-edge:#333b36;
+ --ws-shadow:0 2px 6px #0002,0 12px 32px #0003;
+}

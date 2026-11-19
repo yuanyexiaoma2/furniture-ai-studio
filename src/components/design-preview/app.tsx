@@ -3,6 +3,7 @@
 import {SHOW_UNCONNECTED_FEATURES} from "@/lib/ui-features";
 import {useState,useEffect,useSyncExternalStore} from "react";
 import {useRouter} from "next/navigation";
+import {flushWorkspaceSettings} from "./workspace-settings";
 import {useSession,signOut} from "next-auth/react";
 import Link from "next/link";
 import {useTheme} from "next-themes";
@@ -21,18 +22,19 @@ import {useCanvasSession} from "./canvas-session";
 import {toast} from "sonner";
 
 import {Home} from "./home";
+import {ImageToolPage,type ImageTool} from "./image-tool-page";
 import {Admin} from "./admin";
 import {PatternLibrary} from "./pattern-library";
 import {IconGuide} from "./icon-guide";
 
 
-export type PreviewPage="home"|"skus"|"workspace"|"product"|"admin"|"library"|"icons";
+export type PreviewPage="home"|"skus"|"workspace"|"product"|"admin"|"library"|"icons"|"tools";
 const emptySubscribe=()=>()=>{};
 export function TipButton({label,children,onClick,className="",side="top",disabled=false,pressed}:{label:string;children:React.ReactNode;onClick?:()=>void;className?:string;side?:"top"|"right"|"bottom"|"left";disabled?:boolean;pressed?:boolean}) {
  return <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon" className={`p-icon-button ${className}`} aria-label={label} aria-pressed={pressed} onClick={onClick} disabled={disabled}>{children}</Button></TooltipTrigger><TooltipContent className="p-portal" side={side} sideOffset={8} collisionPadding={12}>{label}</TooltipContent></Tooltip>;
 }
 export function Pick({label,value,values,onChange}:{label:string;value:string;values:string[];onChange:(v:string)=>void}){return <Select value={value} onValueChange={onChange}><SelectTrigger aria-label={label}><SelectValue /></SelectTrigger><SelectContent className="p-portal">{values.map(v=><SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent></Select>;}
-export function PreviewApp({page}:{page:PreviewPage}) {
+export function PreviewApp({page,tool}:{page:PreviewPage;tool?:ImageTool}) {
  const {data:account}=useSession();const name=account?.user?.name??"账户",role=account?.user?.role;
  const router=useRouter();const {theme,setTheme}=useTheme();const syncTheme=usePreviewStore(s=>s.setTheme);
  const mounted=useSyncExternalStore(emptySubscribe,()=>true,()=>false);
@@ -49,9 +51,9 @@ export function PreviewApp({page}:{page:PreviewPage}) {
    <div className="p-topbar-end"><div className="w-theme-segments" role="group" aria-label="主题切换">{[{value:"system",label:"跟随系统",Icon:Monitor},{value:"light",label:"亮色",Icon:Sun},{value:"dark",label:"暗色",Icon:Moon}].map(t=><button key={t.value} aria-label={t.label+"主题"} title={t.label} aria-pressed={mounted&&theme===t.value} onClick={()=>setTheme(t.value)}><t.Icon size="md"/></button>)}</div>
    <TipButton label="设置" onClick={()=>setSettings(true)}><Settings2 size="md"/></TipButton>
    {workspace&&<Button className="p-top-export-button" aria-label="导出图包" onClick={()=>setExportOpen(true)}><Download size="md"/><span>导出图包</span></Button>}
-   <DropdownMenu><DropdownMenuTrigger asChild><Button variant="ghost" size="icon" className="p-icon-button" aria-label="头像菜单"><span className="p-avatar">{name.slice(0,1)}</span></Button></DropdownMenuTrigger><DropdownMenuContent className="p-portal" align="end"><DropdownMenuLabel>{name} · {role==="admin"?"管理员":role==="viewer"?"只读成员":"设计师"}</DropdownMenuLabel><DropdownMenuSeparator/><DropdownMenuRadioGroup value={theme} onValueChange={setTheme}><DropdownMenuRadioItem value="light"><Sun size="md" className="mr-2"/>亮色</DropdownMenuRadioItem><DropdownMenuRadioItem value="dark"><Moon size="md" className="mr-2"/>暗色</DropdownMenuRadioItem><DropdownMenuRadioItem value="system"><Monitor size="md" className="mr-2"/>跟随系统</DropdownMenuRadioItem></DropdownMenuRadioGroup><DropdownMenuSeparator/>{role==="admin"&&<DropdownMenuItem onClick={()=>router.push('/admin/models')}><UserRound size="md" className="mr-2"/>管理后台</DropdownMenuItem>}<DropdownMenuItem onClick={async()=>{try{if(workspace&&live)await useCanvasSession.getState().flush();await signOut({callbackUrl:"/login"});}catch(e){toast.error(e instanceof Error?e.message:"退出登录失败，请稍后重试");}}}>退出登录</DropdownMenuItem></DropdownMenuContent></DropdownMenu></div>
+   <DropdownMenu><DropdownMenuTrigger asChild><Button variant="ghost" size="icon" className="p-icon-button" aria-label="头像菜单"><span className="p-avatar">{name.slice(0,1)}</span></Button></DropdownMenuTrigger><DropdownMenuContent className="p-portal" align="end"><DropdownMenuLabel>{name} · {role==="admin"?"管理员":role==="viewer"?"只读成员":"设计师"}</DropdownMenuLabel><DropdownMenuSeparator/><DropdownMenuRadioGroup value={theme} onValueChange={setTheme}><DropdownMenuRadioItem value="light"><Sun size="md" className="mr-2"/>亮色</DropdownMenuRadioItem><DropdownMenuRadioItem value="dark"><Moon size="md" className="mr-2"/>暗色</DropdownMenuRadioItem><DropdownMenuRadioItem value="system"><Monitor size="md" className="mr-2"/>跟随系统</DropdownMenuRadioItem></DropdownMenuRadioGroup><DropdownMenuSeparator/>{role==="admin"&&<DropdownMenuItem onClick={()=>router.push('/admin/models')}><UserRound size="md" className="mr-2"/>管理后台</DropdownMenuItem>}<DropdownMenuItem onClick={async()=>{try{if(workspace&&live){await useCanvasSession.getState().flush();const id=useLiveStore.getState().snapshot?.product.id;if(id)await flushWorkspaceSettings(id);}await signOut({callbackUrl:"/login"});}catch(e){toast.error(e instanceof Error?e.message:"退出登录失败，请稍后重试");}}}>退出登录</DropdownMenuItem></DropdownMenuContent></DropdownMenu></div>
  </header>
- {page==="icons"&&<IconGuide/>}{page==="library"&&<PatternLibrary/>}{page==="home"&&<Home/>}{page==="skus"&&<RealSkuGallery/>}{workspace&&<RealWorkspace/>}{page==="admin"&&<Admin/>}
+ {page==="tools"&&tool&&<ImageToolPage key={tool} tool={tool}/>} {page==="icons"&&<IconGuide/>}{page==="library"&&<PatternLibrary/>}{page==="home"&&<Home/>}{page==="skus"&&<RealSkuGallery/>}{workspace&&<RealWorkspace/>}{page==="admin"&&<Admin/>}
  <Dialog open={assetsOpen} onOpenChange={setAssetsOpen}><DialogContent className="p-portal p-template-dialog"><DialogHeader><DialogTitle>素材库</DialogTitle><DialogDescription>收集灵感，让下一次创作更轻松。</DialogDescription></DialogHeader><div className="p-assets-grid">{["sofa","living","chair","room","interior","dining"].map(n=><img key={n} src={imagePath(n)} alt="家具灵感素材"/>)}</div></DialogContent></Dialog>
  <RealProductCard open={productOpen} onOpenChange={setProductOpen}/>
  <Dialog open={settings} onOpenChange={setSettings}><DialogContent className="p-portal"><DialogHeader><DialogTitle>设置</DialogTitle><DialogDescription>按你的创作习惯调整工作空间。</DialogDescription></DialogHeader><div className="p-settings"><strong>外观</strong><div>{[{value:"light",label:"亮色",Icon:Sun},{value:"dark",label:"暗色",Icon:Moon},{value:"system",label:"跟随系统",Icon:Monitor}].map(t=><Button key={t.value} variant={theme===t.value?"default":"outline"} onClick={()=>setTheme(t.value)}><t.Icon size="md"/>{t.label}</Button>)}</div><small>主题会保存在这台设备。创作和模型设置连接真实服务。</small></div></DialogContent></Dialog>

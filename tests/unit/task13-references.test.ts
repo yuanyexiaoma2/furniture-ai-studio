@@ -91,7 +91,7 @@ test("无参考方案直接使用具体陈列生成，不因第4图位要求额�
 test("扩图冻结真实范围并改变最终KIE比例，原实拍和风格引用保持顺序",async()=>{
  const s=await scene();s.setSource(s.prepared.input);
  const extent={width:160,height:120,offsetX:30,offsetY:10};
- const prepared=await prepareEditInput(s.tx,"product-a","向左右扩展背景","1:1","4K",{sourceJobId:"job",sourceAssetId:"source"},candidate,[],undefined,extent);
+ const prepared=await prepareEditInput(s.tx,"product-a","向左右扩展背景","1:1","4K",{sourceJobId:"job",sourceAssetId:"source"},candidate,[],undefined,extent,undefined,async()=>({width:100,height:100}));
  assert.equal(prepared.input.aspect_ratio,"4:3");assert.equal(prepared.input.editMode,"expanded");assert.deepEqual(prepared.input.expansion,extent);
  const request=requestFromGenerationInput(prepared.input);assert.deepEqual(request.referenceImages[0],{id:"source",expansion:extent});assert(request.referenceImages.slice(1).every(r=>!r.expansion));
  const body=await kieBody(prepared.input);assert.equal(body.aspect_ratio,"4:3");assert.equal(body.resolution,"4K");assert.match(String(body.prompt),/只补全新增区域/);

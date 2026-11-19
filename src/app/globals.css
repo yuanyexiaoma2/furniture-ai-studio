@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "../styles/creative/tokens.css";
+@import "../styles/controls.css";
 
 .gateway-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .gateway-card, .gateway-routes { padding: 28px; }
@@ -238,7 +239,6 @@ a, button, summary { touch-action: manipulation; }
 .create-user-form { padding: 24px; display: flex; flex-direction: column; gap: 19px; }
 .form-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .studio-select { background: var(--card); min-height: 42px; border: 1px solid var(--input); border-radius: 8px; padding: 0 12px; font-size: 13px; color: var(--p-text); width: 100%; }
-.studio-select:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 .user-row { padding: 22px 25px; border-bottom: 1px solid var(--border); }
 .user-row:last-child { border-bottom: 0; }
 .user-row-main { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
@@ -258,7 +258,6 @@ a, button, summary { touch-action: manipulation; }
 .field-stack { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
 .field-hint { font-size: 12px; line-height: 1.9; color: var(--p-text); font-weight: 400; }
 .studio-textarea { width: 100%; border: 1px solid var(--input); border-radius: 8px; padding: 12px; background: var(--card); font: inherit; font-size: 13px; line-height: 1.85; resize: vertical; min-height: 90px; }
-.studio-textarea:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 .product-fields { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .product-fields:disabled { opacity: .7; }
 .product-form { padding: 26px; display: flex; flex-direction: column; gap: 22px; }
@@ -295,7 +294,6 @@ a, button, summary { touch-action: manipulation; }
 .scene-form { padding: 26px; display: flex; flex-direction: column; gap: 16px; }
 .scene-form > label, .aspect-options legend { font-size: 13px; color: var(--p-text); }
 .scene-form textarea { font: inherit; font-size: 13px; line-height: 1.9; border: 1px solid var(--border); padding: 14px; border-radius: 6px; resize: vertical; background: var(--card); width: 100%; min-height: 120px; }
-.scene-form textarea:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 .scene-form textarea::placeholder { color: var(--p-text); }
 .aspect-options { display: flex; gap: 10px; flex-wrap: wrap; }
 .aspect-options legend { margin-bottom: 12px; }
@@ -499,8 +497,8 @@ a, button, summary { touch-action: manipulation; }
 .login-story-center h1,.login-story-center h1 span,.login-form-wrap h2 { color:var(--foreground); font-weight:600; }
 .architectural-art { margin:24px 0 0; }
 .art-wall,.art-chair { left:0; }
-.login-shell [data-slot=input]:focus-visible { outline:2px solid var(--ring); outline-offset:2px; box-shadow:none; }
 .login-shell button[type=submit] { opacity:1; background:var(--primary); color:var(--primary-foreground); }
+.login-shell button[type=submit]:enabled:hover { background:color-mix(in srgb,var(--primary) 88%,var(--card)); }
 .login-shell button[type=submit]:disabled { background:var(--muted); color:var(--muted-foreground); }
 
 /* 登录左栏桌面呼吸空间；手机沿用18px安全边距。 */

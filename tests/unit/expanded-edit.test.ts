@@ -8,6 +8,7 @@ import { ZenMuxImageProvider } from "../../src/lib/zenmux-image-provider";
 import { KieProvider } from "../../src/lib/kie-provider";
 import { imageCandidate, kieImageModels, zenmuxImageModels } from "../../src/lib/image-models";
 import type { ImageRequest } from "../../src/lib/image-provider";
+import {inspectPhoto} from "../../src/lib/storage";
 
 const extent={width:16,height:9,offsetX:4,offsetY:2};
 const original=()=>sharp({create:{width:8,height:4,channels:4,background:{r:60,g:100,b:150,alpha:.5}}}).png().toBuffer();
@@ -34,6 +35,21 @@ test("扩图输出尺寸准确，原图区域含透明通道逐像素不变，�
  assert.equal(meta.width,16);assert.equal(meta.height,9);
  assert.deepEqual(await sharp(output).extract({left:4,top:2,width:8,height:4}).ensureAlpha().raw().toBuffer(),await sharp(image).ensureAlpha().raw().toBuffer());
  assert.deepEqual([...await sharp(output).extract({left:0,top:0,width:1,height:1}).ensureAlpha().raw().toBuffer()],[255,0,0,255]);
+});
+test("带 EXIF 旋转的历史照片使用显示方向校验，定位及叠回的像素一致",async()=>{
+ const rgb=Buffer.from(Array.from({length:8*4*3},(_,i)=>i*7%256));
+ const rotated=await sharp(rgb,{raw:{width:8,height:4,channels:3}}).jpeg().withMetadata({orientation:6}).toBuffer();
+ const photo=await inspectPhoto(rotated);
+ assert.deepEqual([photo.width,photo.height],[4,8]);
+ const target={width:6,height:12,offsetX:1,offsetY:2},region={left:1,top:2,width:4,height:8};
+ const expected=await sharp(rotated).rotate().ensureAlpha().raw().toBuffer();
+ const guide=await expansionGuide(rotated,target);
+ const output=await compositeExpandedEdit(rotated,guide,target);
+ for(const image of [guide,output]){
+  const meta=await sharp(image).metadata();
+  assert.deepEqual([meta.width,meta.height],[6,12]);
+  assert.deepEqual(await sharp(image).extract(region).ensureAlpha().raw().toBuffer(),expected);
+ }
 });
 test("所有模型扩图选用已登记比例，自定义范围保持精确输出尺寸",()=>{
  for(const spec of kieImageModels)assert.equal(expansionAspectRatio({width:1600,height:900,offsetX:0,offsetY:0},imageCandidate(spec)),"16:9");

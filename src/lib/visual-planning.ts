@@ -16,6 +16,7 @@ import {StudioError} from "./studio-error";
 import {identityLockSchema,researchSchema,retrievePatterns,bindPlanningReferences,validateVisualPlan,composeVisualSlot,visualSlotSchema,type VisualPlan,type VisualSlot,type IdentityLock} from "./visual-plan-rules";
 import type {Prisma} from "@/generated/prisma/client";
 import {createHash} from "node:crypto";
+import {researchCacheState} from "./research-cache";
 const parseJson=(s:string)=>JSON.parse(s.replace(/^\s*```(?:json)?\s*|\s*```\s*$/g,""));
 export async function askVisual(productId:string,userId:string,system:string,payload:unknown,images:string[]=[],maxOutputTokens=6500){
  const s=await agentSession(productId,userId),candidate=await selectedCandidate("agent",settingsOf(s.settings));
@@ -33,12 +34,14 @@ export async function analyzeProduct(productId:string,userId:string):Promise<Ide
 }
 export async function researchCompetitors(productId:string,userId:string,identity:IdentityLock){
  const product=await db.product.findUniqueOrThrow({where:{id:productId}}),session=await agentSession(productId,userId);
- const envelope=researchEnvelope(product.visualResearch),cached=researchSchema.safeParse(envelope.cache);
+ const envelope=researchEnvelope(product.visualResearch),settings=settingsOf(session.settings);
  const cacheKey=createHash("sha256").update(JSON.stringify({inputs:envelope.inputs,category:product.category,dimensions:product.dimensions,materials:product.materials,colors:product.colors,sellingPoints:product.sellingPoints,photos:identity.referenceAssetIds,identityVersionId:identity.identityVersionId})).digest("hex");
- const prior=envelope.cache as {cacheKey?:string}|null;
- if(cached.success&&prior?.cacheKey===cacheKey&&Date.now()-Date.parse(cached.data.cachedAt)<(cached.data.status==="success"?7*86400000:15*60000))return cached.data;
+ const searchKey=JSON.stringify({version:2,enabled:process.env.GOOGLE_SEARCH_ENABLED==="true"&&settings.webEnabled!==false,agentId:settings.agentId??null});
+ const cached=researchCacheState(envelope.cache,cacheKey,searchKey);
+ if(cached.research&&cached.searchFresh)return cached.research;
  const base={status:"skipped" as const,note:"未提供竞品参考，方案仅基于经验库",commonScenes:[],commonExpressions:[],homogeneity:[],opportunities:[],sources:[],references:[],cachedAt:new Date().toISOString()};
- let research:z.infer<typeof researchSchema>=base;
+ let research:z.infer<typeof researchSchema>=cached.research??base;
+ if(!cached.research){
  const resolved=await resolveCompetitorImages(productId,userId,envelope.inputs),ids=resolved.images.map(i=>i.id);
  if(ids.length){
   const shape=researchSchema.omit({status:true,sources:true,cachedAt:true,supplement:true});
@@ -46,13 +49,14 @@ export async function researchCompetitors(productId:string,userId:string,identit
   if(raw.references.length!==ids.length||raw.references.some((r,i)=>r.ref!==ids[i]))throw new StudioError("竞品逐图拆解不完整，请重试",502);
   research={...base,...raw,status:"success",note:raw.note+(resolved.notes.length?"；"+resolved.notes.join("；"):""),sources:resolved.sources};
  }else if(resolved.notes.length)research.note+="；"+resolved.notes.join("；");
+ }
  let supplement:{status:"success"|"skipped";note:string;text:string;sources:{title:string;url:string;content:string}[]}={status:"skipped",note:"联网补充已关闭",text:"",sources:[]};
  if(settingsOf(session.settings).webEnabled!==false)try{
    const found=await webSearch(session.id,userId,product.category+" 用户评论痛点、品类热门关键词、风格趋势",3);
    supplement={status:"success",note:found.note,text:found.sources.map(s=>s.content).join("\n"),sources:found.sources};
  }catch(error){supplement.note=error instanceof Error?error.message:"联网补充失败";}
  research.supplement=supplement;
- await db.product.update({where:{id:productId},data:{visualResearch:json({inputs:envelope.inputs,cache:{...research,cacheKey}})}});
+ await db.product.update({where:{id:productId},data:{visualResearch:json({inputs:envelope.inputs,cache:{...research,cacheKey,searchCacheKey:searchKey,searchCachedAt:new Date().toISOString()}})}});
  return research;
 }
 
